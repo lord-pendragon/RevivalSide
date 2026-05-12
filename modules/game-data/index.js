@@ -5,6 +5,8 @@ const ROOT_DIR = path.resolve(__dirname, "..", "..");
 const TABLE_ROOTS = [
   path.join(ROOT_DIR, "gameplay-tables-json", "Assetbundles"),
   path.join(ROOT_DIR, "gameplay-tables-json", "StreamingAssets"),
+  path.join(ROOT_DIR, "gameplay-jsons", "Assetbundles"),
+  path.join(ROOT_DIR, "gameplay-jsons", "StreamingAssets"),
 ];
 
 let cachedData = null;

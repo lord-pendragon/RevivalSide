@@ -2,7 +2,7 @@
 
 RevivalSide is a local CounterSide revival research server. It includes the Node.js TCP listener, packet handlers, capture tooling, a C# combat-host bridge, and project-built combat-host binaries.
 
-This repository intentionally does not track client assets, raw packet captures, decompiled `Assembly-CSharp` source dumps, decrypted Lua table output, account databases, or raw game DLLs. Each collaborator generates those locally from their own installed client. A sanitized tutorial fixture bundle is tracked so new contributors can run the current tutorial flow without making their own packet captures first.
+This repository intentionally does not track client assets, raw packet captures, decompiled `Assembly-CSharp` source dumps, full decrypted Lua table output, account databases, or raw game DLLs. Each collaborator generates those locally from their own installed client. A sanitized tutorial fixture bundle and a slim prepackaged gameplay JSON fallback are tracked so new contributors can run the current tutorial flow and create table-backed local accounts without making their own packet captures first.
 
 ## What Is Tracked
 
@@ -12,6 +12,7 @@ This repository intentionally does not track client assets, raw packet captures,
 - `combat-host/`: C# local combat host and managed assembly patcher.
 - `prebuilt/combat-host/`: published RevivalSide combat host binaries.
 - `tools/`: capture, table extraction, packet schema, and setup helper scripts.
+- `gameplay-jsons/`: slim checked-in gameplay table fallback for fresh account defaults, unit rosters, exp tables, and tutorial event decks.
 - `stages/`: hand-authored stage definitions used by current tutorial work.
 - `server-data/captured-*`: sanitized HTTP, login/content, and tutorial game-stream fixtures.
 - `packet-schema.json`: generated protocol reference used for packet work.
@@ -30,7 +31,7 @@ npm install
 npm run build:combat-host
 ```
 
-Then generate your local table data from your own CounterSide install.
+Fresh local accounts can use the checked-in `gameplay-jsons` fallback immediately. Generate full local table data from your own CounterSide install when you need the wiki, full extracted table coverage, or asset-dependent features.
 
 To run the local wiki:
 

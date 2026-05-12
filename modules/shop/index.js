@@ -5,7 +5,7 @@ const { buildUnitData, buildOperatorData, buildEquipItemData } = require("../pac
 const { grantRewardByType, mergeReward } = require("../reward");
 const {
   createEmptyReward,
-  isRealMoneyResourceProduct,
+  isRealMoneyProduct,
   grantShopProduct,
   spendShopPrice,
   grantFallbackResource,
@@ -127,8 +127,8 @@ function buildCashBuyPossibleResponse(ctx, request) {
   const productMarketID = request.productMarketID || "";
   const productId = resolveProductId(findProductIdByMarketId(productMarketID));
   const record = findProductRecord(productId);
-  if (isRealMoneyResourceProduct(record)) {
-    console.log(`[resource] bypass real-money validation productId=${productId} marketId=${JSON.stringify(productMarketID)}`);
+  if (isRealMoneyProduct(record)) {
+    console.log(`[resource] bypass external payment validation productId=${productId} marketId=${JSON.stringify(productMarketID)}`);
     return {
       packetId: PACKETS.SHOP_FIX_SHOP_BUY_ACK,
       payload: buildShopFixBuyAck(ctx, request, productId, { source: "cash", dedupe: false }),
@@ -143,8 +143,8 @@ function buildCashBuyPossibleResponse(ctx, request) {
 function buildSteamBuyInitResponse(ctx, request) {
   const productId = resolveProductId(request.productId || 0);
   const record = findProductRecord(productId);
-  if (isRealMoneyResourceProduct(record)) {
-    console.log(`[resource] bypass Steam validation productId=${productId}`);
+  if (isRealMoneyProduct(record)) {
+    console.log(`[resource] bypass Steam overlay productId=${productId}`);
     return {
       packetId: PACKETS.SHOP_FIX_SHOP_BUY_ACK,
       payload: buildShopFixBuyAck(ctx, request, productId, { source: "steam", dedupe: false }),

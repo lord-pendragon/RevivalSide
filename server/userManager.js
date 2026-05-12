@@ -155,6 +155,14 @@ async function routeRequest(config, html, req, res, requestUrl) {
     return;
   }
 
+  if (req.method === "POST" && action === "switch") {
+    const user = switchActiveUser(config.userDb, uid);
+    rebuildUserDbIndexes(config.userDb);
+    persist(config, "switch-user");
+    sendJson(res, 200, { user, users: buildUserSummaries(config.userDb), meta: buildDbMeta(config.userDb, config.userDbPath) });
+    return;
+  }
+
   if (req.method === "POST" && action === "tokens") {
     const user = getRequiredUser(config.userDb, uid);
     user.accessToken = config.makeAccessToken();
@@ -199,6 +207,7 @@ function createUser(config, body) {
   };
   config.ensureUserDefaults(user);
   config.userDb.users[userUid] = user;
+  if (!nonEmpty(config.userDb.activeUserUid)) config.userDb.activeUserUid = userUid;
   rebuildUserDbIndexes(config.userDb);
   return user;
 }
@@ -239,6 +248,7 @@ function replaceUser(userDb, currentUid, incoming) {
   }
   delete userDb.users[currentUid];
   userDb.users[nextUid] = user;
+  if (String(userDb.activeUserUid || "") === currentUid) userDb.activeUserUid = nextUid;
   bumpNextNumericId(userDb, "nextUserUid", nextUid);
   bumpNextNumericId(userDb, "nextFriendCode", user.friendCode);
   return user;
@@ -247,6 +257,7 @@ function replaceUser(userDb, currentUid, incoming) {
 function deleteUser(userDb, uid) {
   getRequiredUser(userDb, uid);
   delete userDb.users[uid];
+  if (String(userDb.activeUserUid || "") === String(uid)) userDb.activeUserUid = "";
 }
 
 function deleteUsers(userDb, userUids) {
@@ -262,7 +273,14 @@ function deleteUsers(userDb, userUids) {
     deletedUserUids.push(uid);
   }
   if (deletedUserUids.length === 0) throw httpError(404, "None of the selected profiles were found.");
+  if (deletedUserUids.includes(String(userDb.activeUserUid || ""))) userDb.activeUserUid = "";
   return deletedUserUids;
+}
+
+function switchActiveUser(userDb, uid) {
+  const user = getRequiredUser(userDb, uid);
+  userDb.activeUserUid = String(user.userUid || uid);
+  return user;
 }
 
 function getRequiredUser(userDb, uid) {
@@ -279,6 +297,7 @@ function replaceUserDb(target, incoming) {
     schemaVersion: Number(incoming.schemaVersion || 1),
     nextUserUid: String(incoming.nextUserUid || "1000000001"),
     nextFriendCode: String(incoming.nextFriendCode || "10000001"),
+    activeUserUid: nonEmpty(incoming.activeUserUid),
     users: incoming.users && typeof incoming.users === "object" && !Array.isArray(incoming.users) ? incoming.users : {},
   };
 
@@ -313,6 +332,7 @@ function rebuildUserDbIndexes(userDb) {
   userDb.schemaVersion = Number(userDb.schemaVersion || 1);
   userDb.nextUserUid = String(userDb.nextUserUid || "1000000001");
   userDb.nextFriendCode = String(userDb.nextFriendCode || "10000001");
+  userDb.activeUserUid = nonEmpty(userDb.activeUserUid);
   userDb.users = userDb.users && typeof userDb.users === "object" && !Array.isArray(userDb.users) ? userDb.users : {};
   userDb.usersBySteamAccountId = {};
   userDb.accessTokens = {};
@@ -333,6 +353,7 @@ function rebuildUserDbIndexes(userDb) {
     bumpNextNumericId(userDb, "nextUserUid", user.userUid);
     bumpNextNumericId(userDb, "nextFriendCode", user.friendCode);
   }
+  if (userDb.activeUserUid && !userDb.users[userDb.activeUserUid]) userDb.activeUserUid = "";
 }
 
 function buildUserSummaries(userDb) {
@@ -340,6 +361,7 @@ function buildUserSummaries(userDb) {
     .filter((user) => user && typeof user === "object")
     .map((user) => ({
       userUid: String(user.userUid || ""),
+      isActive: String(user.userUid || "") === String(userDb && userDb.activeUserUid || ""),
       friendCode: String(user.friendCode || ""),
       nickname: String(user.nickname || ""),
       level: Number(user.level || 0),
@@ -393,6 +415,7 @@ function buildDbMeta(userDb, userDbPath) {
     schemaVersion: Number(userDb && userDb.schemaVersion || 1),
     nextUserUid: String(userDb && userDb.nextUserUid || ""),
     nextFriendCode: String(userDb && userDb.nextFriendCode || ""),
+    activeUserUid: String(userDb && userDb.activeUserUid || ""),
     userCount: Object.keys(userDb && userDb.users || {}).length,
     sizeBytes,
     modifiedAt,
@@ -767,6 +790,10 @@ function buildUserManagerHtml(basePath) {
       background: #202a25;
     }
 
+    .user-row.login-active {
+      border-color: #6f927d;
+    }
+
     .user-entry.selected-delete .user-row {
       border-color: #755b40;
       background: #29231a;
@@ -954,6 +981,7 @@ function buildUserManagerHtml(basePath) {
           <button id="repairBtn" title="Apply game defaults">Repair</button>
           <button id="tokensBtn" title="Regenerate tokens">Tokens</button>
           <button id="cloneBtn" title="Clone selected profile">Clone</button>
+          <button id="switchBtn" title="Use selected profile on next login">Switch</button>
           <button id="deleteBtn" class="danger" title="Delete checked profiles">Delete selected</button>
           <div class="spacer"></div>
           <div class="status" id="statusLine">Ready</div>
@@ -968,6 +996,7 @@ function buildUserManagerHtml(basePath) {
     const state = {
       users: [],
       selectedUid: "",
+      activeUid: "",
       profile: null,
       db: null,
       visibleUids: [],
@@ -1000,6 +1029,7 @@ function buildUserManagerHtml(basePath) {
       repairBtn: document.getElementById("repairBtn"),
       tokensBtn: document.getElementById("tokensBtn"),
       cloneBtn: document.getElementById("cloneBtn"),
+      switchBtn: document.getElementById("switchBtn"),
       deleteBtn: document.getElementById("deleteBtn"),
       statusLine: document.getElementById("statusLine")
     };
@@ -1049,7 +1079,8 @@ function buildUserManagerHtml(basePath) {
     async function boot() {
       bindEvents();
       await refreshUsers();
-      if (state.users[0]) await selectUser(state.users[0].userUid);
+      const activeUser = state.users.find(function (user) { return user.userUid === state.activeUid; });
+      if (activeUser || state.users[0]) await selectUser((activeUser || state.users[0]).userUid);
       setStatus("Ready", "ok");
     }
 
@@ -1067,6 +1098,7 @@ function buildUserManagerHtml(basePath) {
       els.repairBtn.addEventListener("click", repairProfile);
       els.tokensBtn.addEventListener("click", regenerateTokens);
       els.cloneBtn.addEventListener("click", cloneProfile);
+      els.switchBtn.addEventListener("click", switchProfile);
       els.deleteBtn.addEventListener("click", deleteProfile);
       els.selectVisibleInput.addEventListener("change", function () {
         for (const uid of state.visibleUids) {
@@ -1093,7 +1125,9 @@ function buildUserManagerHtml(basePath) {
 
     function renderMeta(meta) {
       if (!meta) return;
-      els.dbMeta.textContent = meta.userCount + " profiles | " + formatBytes(meta.sizeBytes) + " | " + (meta.modifiedAt ? formatDate(meta.modifiedAt) : meta.userDbPath || "");
+      state.activeUid = meta.activeUserUid || "";
+      const activeText = state.activeUid ? "active " + state.activeUid : "no active profile";
+      els.dbMeta.textContent = meta.userCount + " profiles | " + activeText + " | " + formatBytes(meta.sizeBytes) + " | " + (meta.modifiedAt ? formatDate(meta.modifiedAt) : meta.userDbPath || "");
     }
 
     function getFilteredUsers() {
@@ -1125,7 +1159,8 @@ function buildUserManagerHtml(basePath) {
         });
 
         const row = document.createElement("button");
-        row.className = "user-row" + (user.userUid === state.selectedUid ? " active" : "");
+        const isLoginActive = user.isActive || user.userUid === state.activeUid;
+        row.className = "user-row" + (user.userUid === state.selectedUid ? " active" : "") + (isLoginActive ? " login-active" : "");
         row.type = "button";
         row.title = user.nickname || user.userUid;
         row.innerHTML =
@@ -1133,7 +1168,7 @@ function buildUserManagerHtml(basePath) {
           '<div class="user-line"></div>' +
           '<div class="user-line"></div>';
         row.querySelector(".user-name span:first-child").textContent = user.nickname || "(unnamed)";
-        row.querySelector(".user-name span:last-child").textContent = "Lv " + (user.level || 0);
+        row.querySelector(".user-name span:last-child").textContent = (isLoginActive ? "Active | " : "") + "Lv " + (user.level || 0);
         const lines = row.querySelectorAll(".user-line");
         lines[0].textContent = user.userUid + " | " + user.friendCode;
         lines[1].textContent = "U " + user.units + " S " + user.ships + " O " + user.operators + " E " + user.equips;
@@ -1190,6 +1225,7 @@ function buildUserManagerHtml(basePath) {
       els.repairBtn.disabled = !profileMode || !state.selectedUid;
       els.tokensBtn.disabled = !profileMode || !state.selectedUid;
       els.cloneBtn.disabled = !profileMode || !state.selectedUid;
+      els.switchBtn.disabled = !profileMode || !state.selectedUid || state.selectedUid === state.activeUid;
       renderDeleteSelectionControls();
       if (profileMode && state.profile) {
         els.nicknameInput.value = state.profile.nickname || "";
@@ -1369,6 +1405,22 @@ function buildUserManagerHtml(basePath) {
       if (nextUid) await selectUser(nextUid);
       else renderProfile();
       setStatus("Deleted " + deletedUserUids.length + " profile" + (deletedUserUids.length === 1 ? "" : "s"), "warn");
+    }
+
+    async function switchProfile() {
+      if (!state.selectedUid || state.selectedUid === state.activeUid) return;
+      if (state.dirty && !window.confirm("Discard unsaved edits before switching active profile?")) return;
+      const payload = await requestJson("/users/" + encodeURIComponent(state.selectedUid) + "/switch", {
+        method: "POST",
+        body: "{}"
+      });
+      state.profile = payload.user;
+      state.users = payload.users || state.users;
+      state.db = null;
+      renderMeta(payload.meta);
+      renderProfile();
+      renderUsers();
+      setStatus("Switched active profile to " + state.selectedUid, "ok");
     }
 
     async function regenerateTokens() {

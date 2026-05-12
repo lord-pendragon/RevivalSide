@@ -77,6 +77,7 @@ const {
   refreshMissionProgress,
   trackMissionEvent,
 } = require("../modules/account-progression");
+const { ensureOfficialNewAccountDefaults } = require("../modules/new-account");
 const {
   createEmptyReward,
   mergeReward,
@@ -96,6 +97,7 @@ const {
   getMissionTabTemplets,
   getMissionTempletsByTabId,
   getRewardGroupRecords,
+  getPlayerTotalExpForLevel,
 } = require("../modules/game-data");
 const {
   getAllContractStates,
@@ -290,6 +292,8 @@ const GUIDE_MISSION_TABS = Object.freeze(resolveGuideMissionTabs());
 const SIMULATION_MISSION_TABS = [6, 7, 8];
 const FAST_LOBBY_MISSION_TABS = uniqueMissionTabs([1, 2, 3, ...SIMULATION_MISSION_TABS, ...GUIDE_MISSION_TABS]);
 const POST_TUTORIAL_MIN_USER_LEVEL = Math.max(2, Number(process.env.CS_POST_TUTORIAL_MIN_USER_LEVEL || 2) || 2);
+const SEED_NEW_ACCOUNT_ROSTER = process.env.CS_SEED_NEW_ACCOUNT_ROSTER !== "0";
+const SEED_NEW_ACCOUNT_TROPHIES = process.env.CS_SEED_NEW_ACCOUNT_TROPHIES === "1";
 const USE_STEAM_TOKEN_AS_ACCESS_TOKEN = process.env.CS_USE_STEAM_TOKEN_AS_ACCESS_TOKEN === "1";
 const REWRITE_CAPTURED_SERVER_INFO = process.env.CS_REWRITE_CAPTURED_SERVER_INFO !== "0";
 const MIRROR_PUBLIC_HOST = process.env.CS_HTTP_MIRROR_HOST || "127.0.0.1";
@@ -538,6 +542,11 @@ function logRuntimeConfig() {
   }
   console.log(`[cfg] gameServer=${GAME_SERVER_IP}:${GAME_SERVER_PORT}`);
   console.log(`[cfg] accessTokenSource=${USE_STEAM_TOKEN_AS_ACCESS_TOKEN ? "steam" : "server-issued"}`);
+  console.log(
+    `[cfg] newAccountRoster=${SEED_NEW_ACCOUNT_ROSTER ? "on" : "off"} trophies=${
+      SEED_NEW_ACCOUNT_TROPHIES ? "on" : "off"
+    }`
+  );
   console.log(`[cfg] skipTutorialCutscene=${SKIP_TUTORIAL_CUTSCENE ? "on" : "off"}`);
   console.log(`[cfg] skipTutorialToWin=${SKIP_TUTORIAL_TO_WIN ? "on" : "off"}`);
   console.log(`[cfg] resetLocalProgressOnLogin=${RESET_LOCAL_PROGRESS_ON_LOGIN ? "on" : "off"}`);
@@ -4614,13 +4623,24 @@ function ensurePostTutorialUserLevel(user) {
   const beforeLevel = Math.max(1, Number(user.level || 1) || 1);
   const beforeExp = String(user.exp == null ? "0" : user.exp);
   const beforeTotalExp = String(user.totalExp == null ? "0" : user.totalExp);
-  if (beforeLevel < POST_TUTORIAL_MIN_USER_LEVEL) user.level = POST_TUTORIAL_MIN_USER_LEVEL;
+  if (beforeLevel < POST_TUTORIAL_MIN_USER_LEVEL) {
+    user.level = POST_TUTORIAL_MIN_USER_LEVEL;
+    user.exp = "0";
+    user.totalExp = getMinimumTotalExpForUserLevel(POST_TUTORIAL_MIN_USER_LEVEL).toString();
+  }
   ensureAccountProgress(user);
   return (
     beforeLevel !== Number(user.level || 1) ||
     beforeExp !== String(user.exp == null ? "0" : user.exp) ||
     beforeTotalExp !== String(user.totalExp == null ? "0" : user.totalExp)
   );
+}
+
+function getMinimumTotalExpForUserLevel(level) {
+  const targetLevel = Math.max(1, Number(level || 1) || 1);
+  const tableTotal = Number(getPlayerTotalExpForLevel(targetLevel) || 0);
+  if (tableTotal > 0 || targetLevel <= 1) return BigInt(Math.max(0, tableTotal));
+  return BigInt((targetLevel - 1) * 100);
 }
 
 function getJoinLobbyUserLevel(user) {
@@ -5780,7 +5800,7 @@ function buildMinimalUserOption(user) {
   const controls = getSavedCombatControls(user);
   return Buffer.concat([
     writeBool(controls.autoRespawnEnabled), // m_bAutoRespawn
-    writeSignedVarInt(0), // ActionCameraType
+    writeSignedVarInt(1), // ActionCameraType.All
     writeBool(true), // m_bTrackCamera
     writeBool(true), // m_bViewSkillCutIn
     writeBool(false), // m_bAutoWarfare
@@ -5988,6 +6008,7 @@ function normalizeUserDb(db) {
   db.schemaVersion = 1;
   db.nextUserUid = String(db.nextUserUid || "1000000001");
   db.nextFriendCode = String(db.nextFriendCode || "10000001");
+  db.activeUserUid = nonEmpty(db.activeUserUid);
   db.users = db.users && typeof db.users === "object" ? db.users : {};
   db.usersBySteamAccountId = {};
   db.accessTokens = db.accessTokens && typeof db.accessTokens === "object" ? db.accessTokens : {};
@@ -5998,6 +6019,7 @@ function normalizeUserDb(db) {
     if (user.accessToken) db.accessTokens[user.accessToken] = user.userUid;
     if (user.reconnectKey) db.reconnectKeys[user.reconnectKey] = user.userUid;
   }
+  if (db.activeUserUid && !db.users[db.activeUserUid]) db.activeUserUid = "";
   return db;
 }
 
@@ -6014,6 +6036,13 @@ function jsonUserDbReplacer(_key, value) {
 
 function getOrCreateUserForSteam(loginReq) {
   const steamAccountId = resolveSteamLoginKey(loginReq);
+  const activeUser = getActiveUserForLogin();
+  if (activeUser) {
+    attachSteamLoginIdentity(activeUser, loginReq, steamAccountId);
+    activeUser.lastLoginAt = new Date().toISOString();
+    return ensureUserDefaults(activeUser);
+  }
+
   const existingUid = findExistingUserUidForSteamLogin(loginReq, steamAccountId);
   if (existingUid && userDb.users[existingUid]) {
     const user = userDb.users[existingUid];
@@ -6039,10 +6068,25 @@ function getOrCreateUserForSteam(loginReq) {
     createdAt: new Date().toISOString(),
     lastLoginAt: new Date().toISOString(),
   });
+  const bootstrap = ensureOfficialNewAccountDefaults(user, {
+    seedRoster: SEED_NEW_ACCOUNT_ROSTER,
+    includeTrophies: SEED_NEW_ACCOUNT_TROPHIES,
+  });
+  ensureUserDefaults(user);
+  if (bootstrap.changed) {
+    console.log(
+      `[user-db] new-account-defaults uid=${userUid} units=${bootstrap.units} ships=${bootstrap.ships} operators=${bootstrap.operators} trophies=${bootstrap.trophies}`
+    );
+  }
 
   userDb.users[userUid] = user;
   indexSteamLoginUser(userDb, user);
   return user;
+}
+
+function getActiveUserForLogin() {
+  const activeUid = nonEmpty(userDb.activeUserUid);
+  return activeUid && userDb.users[activeUid] ? userDb.users[activeUid] : null;
 }
 
 function findExistingUserUidForSteamLogin(loginReq, steamAccountId) {
