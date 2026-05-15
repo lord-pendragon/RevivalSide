@@ -519,7 +519,7 @@ static MethodDefinition EnsureLobbyEventPassLayoutMethod(ModuleDefinition module
     EmitRectTransformVector2Call(il, rectTransform, setAnchorMin, vector2Ctor, 1f, 1f);
     EmitRectTransformVector2Call(il, rectTransform, setAnchorMax, vector2Ctor, 1f, 1f);
     EmitRectTransformVector2Call(il, rectTransform, setPivot, vector2Ctor, 1f, 1f);
-    EmitRectTransformVector2Call(il, rectTransform, setAnchoredPosition, vector2Ctor, -815f, -735f);
+    EmitRectTransformVector2Call(il, rectTransform, setAnchoredPosition, vector2Ctor, -815f, -82f);
     EmitRectTransformVector3Call(il, rectTransform, setLocalScale, vector3Ctor, 0.58f, 0.58f, 1f);
     il.Append(il.Create(OpCodes.Ldloc, rectTransform));
     il.Append(il.Create(OpCodes.Callvirt, module.ImportReference(setAsLastSibling)));
