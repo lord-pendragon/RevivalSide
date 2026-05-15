@@ -59,6 +59,7 @@ if (options.ApplyEventPassTimeGate && PatchEventPassTimeGate(module)) patches.Ad
 if (options.ApplyEventPassTempletFallback && PatchEventPassTempletFallback(module)) patches.Add("event-pass-templet-fallback");
 if (options.ApplyLobbyEventPassSelfActivation && PatchLobbyEventPassSelfActivation(module)) patches.Add("lobby-event-pass-self-activation");
 if (options.ApplyLobbyCounterPassFallbackRegistration && PatchLobbyCounterPassFallbackRegistration(module)) patches.Add("lobby-counter-pass-fallback-registration");
+if (options.ApplyLobbyEventPassLayout && PatchLobbyEventPassLayout(module)) patches.Add("lobby-event-pass-layout");
 var changed = patches.Count > 0;
 if (!changed)
 {
@@ -125,6 +126,7 @@ static int PrintStatus(string assemblyPath, string backupPath)
     Console.WriteLine($"[counter-pass-patch] event-pass-templet-fallback={HasEventPassTempletFallbackPatch(module)}");
     Console.WriteLine($"[counter-pass-patch] lobby-event-pass-self-activation={HasLobbyEventPassSelfActivationPatch(module)}");
     Console.WriteLine($"[counter-pass-patch] lobby-counter-pass-fallback-registration={HasLobbyCounterPassFallbackRegistrationPatch(module)}");
+    Console.WriteLine($"[counter-pass-patch] lobby-event-pass-layout={HasLobbyEventPassLayoutPatch(module)}");
     return 0;
 }
 
@@ -422,6 +424,143 @@ static bool HasLobbyEventPassSelfActivationPatch(ModuleDefinition module)
         && methodReference.Name == "get_gameObject") == true;
 }
 
+static bool PatchLobbyEventPassLayout(ModuleDefinition module)
+{
+    var type = module.Types.FirstOrDefault(item => item.FullName == "NKC.UI.Lobby.NKCUILobbyMenuEventPass")
+        ?? throw new InvalidOperationException("NKC.UI.Lobby.NKCUILobbyMenuEventPass was not found.");
+    var method = type.Methods.FirstOrDefault(item => item.Name == "CheckButtonEnable" && item.HasBody && item.Parameters.Count == 0)
+        ?? throw new InvalidOperationException("NKCUILobbyMenuEventPass.CheckButtonEnable was not found.");
+    var helper = EnsureLobbyEventPassLayoutMethod(module, type);
+    if (method.Body.Instructions.Any(instruction => instruction.Operand is MethodReference methodReference
+        && methodReference.Name == helper.Name
+        && methodReference.DeclaringType.FullName == type.FullName)) return false;
+
+    var storeFlag = method.Body.Instructions.FirstOrDefault(instruction => instruction.OpCode.Code is Code.Stloc_0 or Code.Stloc_S or Code.Stloc)
+        ?? throw new InvalidOperationException("CheckButtonEnable flag store was not found.");
+    var afterStore = storeFlag.Next ?? throw new InvalidOperationException("CheckButtonEnable flag store has no following instruction.");
+    var il = method.Body.GetILProcessor();
+    il.InsertBefore(afterStore, il.Create(OpCodes.Ldarg_0));
+    il.InsertBefore(afterStore, il.Create(OpCodes.Call, module.ImportReference(helper)));
+    return true;
+}
+
+static bool HasLobbyEventPassLayoutPatch(ModuleDefinition module)
+{
+    var type = module.Types.FirstOrDefault(item => item.FullName == "NKC.UI.Lobby.NKCUILobbyMenuEventPass");
+    if (type == null) return false;
+    var helper = type.Methods.FirstOrDefault(method => method.Name == "RevivalSideLayoutCounterPassMenu");
+    if (helper == null) return false;
+    var method = type.Methods.FirstOrDefault(item => item.Name == "CheckButtonEnable" && item.HasBody && item.Parameters.Count == 0);
+    return method?.Body.Instructions.Any(instruction => instruction.Operand is MethodReference methodReference
+        && methodReference.Name == helper.Name
+        && methodReference.DeclaringType.FullName == type.FullName) == true;
+}
+
+static MethodDefinition EnsureLobbyEventPassLayoutMethod(ModuleDefinition module, TypeDefinition eventPassType)
+{
+    const string methodName = "RevivalSideLayoutCounterPassMenu";
+    var existing = eventPassType.Methods.FirstOrDefault(method => method.Name == methodName);
+    if (existing != null) return existing;
+
+    var contentTypeField = FindInheritedFieldReference(module, eventPassType, "m_ContentsType");
+    var counterPassValue = FindEnumConstant(module, "NKM.Templet.ContentsType", "COUNTER_PASS");
+    var getComponent = FindMethodReference(module, "UnityEngine.Component", "GetComponent", 0)
+        ?? throw new InvalidOperationException("UnityEngine.Component.GetComponent<T>() was not found.");
+    var setAnchorMin = FindMethodReference(module, "UnityEngine.RectTransform", "set_anchorMin", 1)
+        ?? throw new InvalidOperationException("RectTransform.set_anchorMin was not found.");
+    var setAnchorMax = FindMethodReference(module, "UnityEngine.RectTransform", "set_anchorMax", 1)
+        ?? throw new InvalidOperationException("RectTransform.set_anchorMax was not found.");
+    var setPivot = FindMethodReference(module, "UnityEngine.RectTransform", "set_pivot", 1)
+        ?? throw new InvalidOperationException("RectTransform.set_pivot was not found.");
+    var setAnchoredPosition = FindMethodReference(module, "UnityEngine.RectTransform", "set_anchoredPosition", 1)
+        ?? throw new InvalidOperationException("RectTransform.set_anchoredPosition was not found.");
+    var setLocalScale = FindMethodReference(module, "UnityEngine.Transform", "set_localScale", 1)
+        ?? throw new InvalidOperationException("Transform.set_localScale was not found.");
+    var setAsLastSibling = FindMethodReference(module, "UnityEngine.Transform", "SetAsLastSibling", 0)
+        ?? throw new InvalidOperationException("Transform.SetAsLastSibling was not found.");
+    var vector2Ctor = FindConstructorReference(module, "UnityEngine.Vector2", 2)
+        ?? throw new InvalidOperationException("Vector2(float,float) constructor was not found.");
+    var vector3Ctor = FindConstructorReference(module, "UnityEngine.Vector3", 3)
+        ?? throw new InvalidOperationException("Vector3(float,float,float) constructor was not found.");
+    var rectTransformType = module.ImportReference(setAnchorMin.DeclaringType);
+    var getRectTransform = new GenericInstanceMethod(module.ImportReference(getComponent is GenericInstanceMethod genericMethod
+        ? genericMethod.ElementMethod
+        : getComponent));
+    getRectTransform.GenericArguments.Add(rectTransformType);
+
+    var method = new MethodDefinition(
+        methodName,
+        MethodAttributes.Private | MethodAttributes.HideBySig,
+        module.TypeSystem.Void);
+    method.Body.InitLocals = true;
+    var rectTransform = new VariableDefinition(rectTransformType);
+    method.Body.Variables.Add(rectTransform);
+
+    var il = method.Body.GetILProcessor();
+    var layoutStart = il.Create(OpCodes.Nop);
+    var ret = il.Create(OpCodes.Ret);
+
+    il.Append(il.Create(OpCodes.Ldarg_0));
+    il.Append(il.Create(OpCodes.Ldfld, contentTypeField));
+    il.Append(CreateLoadInt(il, counterPassValue));
+    il.Append(il.Create(OpCodes.Beq, layoutStart));
+    il.Append(il.Create(OpCodes.Ret));
+
+    il.Append(layoutStart);
+    il.Append(il.Create(OpCodes.Ldarg_0));
+    il.Append(il.Create(OpCodes.Call, getRectTransform));
+    il.Append(il.Create(OpCodes.Stloc, rectTransform));
+    var afterNullCheck = il.Create(OpCodes.Nop);
+    il.Append(il.Create(OpCodes.Ldloc, rectTransform));
+    il.Append(il.Create(OpCodes.Brtrue, afterNullCheck));
+    il.Append(il.Create(OpCodes.Ret));
+    il.Append(afterNullCheck);
+
+    EmitRectTransformVector2Call(il, rectTransform, setAnchorMin, vector2Ctor, 1f, 1f);
+    EmitRectTransformVector2Call(il, rectTransform, setAnchorMax, vector2Ctor, 1f, 1f);
+    EmitRectTransformVector2Call(il, rectTransform, setPivot, vector2Ctor, 1f, 1f);
+    EmitRectTransformVector2Call(il, rectTransform, setAnchoredPosition, vector2Ctor, -80f, -82f);
+    EmitRectTransformVector3Call(il, rectTransform, setLocalScale, vector3Ctor, 0.58f, 0.58f, 1f);
+    il.Append(il.Create(OpCodes.Ldloc, rectTransform));
+    il.Append(il.Create(OpCodes.Callvirt, module.ImportReference(setAsLastSibling)));
+    il.Append(ret);
+
+    eventPassType.Methods.Add(method);
+    return method;
+
+    static void EmitRectTransformVector2Call(
+        ILProcessor il,
+        VariableDefinition rectTransform,
+        MethodReference setter,
+        MethodReference vector2Ctor,
+        float x,
+        float y)
+    {
+        il.Append(il.Create(OpCodes.Ldloc, rectTransform));
+        il.Append(il.Create(OpCodes.Ldc_R4, x));
+        il.Append(il.Create(OpCodes.Ldc_R4, y));
+        il.Append(il.Create(OpCodes.Newobj, vector2Ctor));
+        il.Append(il.Create(OpCodes.Callvirt, setter));
+    }
+
+    static void EmitRectTransformVector3Call(
+        ILProcessor il,
+        VariableDefinition rectTransform,
+        MethodReference setter,
+        MethodReference vector3Ctor,
+        float x,
+        float y,
+        float z)
+    {
+        il.Append(il.Create(OpCodes.Ldloc, rectTransform));
+        il.Append(il.Create(OpCodes.Ldc_R4, x));
+        il.Append(il.Create(OpCodes.Ldc_R4, y));
+        il.Append(il.Create(OpCodes.Ldc_R4, z));
+        il.Append(il.Create(OpCodes.Newobj, vector3Ctor));
+        il.Append(il.Create(OpCodes.Callvirt, setter));
+    }
+}
+
 static bool PatchLobbyCounterPassFallbackRegistration(ModuleDefinition module)
 {
     var type = module.Types.FirstOrDefault(item => item.FullName == "NKC.UI.Lobby.NKCUILobbyV2")
@@ -550,6 +689,50 @@ static MethodDefinition EnsureCounterPassMenuResolver(ModuleDefinition module, T
     return method;
 }
 
+static FieldReference FindInheritedFieldReference(ModuleDefinition module, TypeDefinition type, string fieldName)
+{
+    TypeDefinition? current = type;
+    while (current != null)
+    {
+        var field = current.Fields.FirstOrDefault(item => item.Name == fieldName);
+        if (field != null) return module.ImportReference(field);
+        current = current.BaseType?.Resolve();
+    }
+
+    throw new InvalidOperationException($"{type.FullName}.{fieldName} was not found.");
+}
+
+static int FindEnumConstant(ModuleDefinition module, string typeFullName, string fieldName)
+{
+    var type = FindTypeDefinition(module, typeFullName)
+        ?? throw new InvalidOperationException($"{typeFullName} was not found.");
+    var field = type.Fields.FirstOrDefault(item => item.Name == fieldName)
+        ?? throw new InvalidOperationException($"{typeFullName}.{fieldName} was not found.");
+    if (field.Constant == null) throw new InvalidOperationException($"{typeFullName}.{fieldName} has no constant value.");
+    return Convert.ToInt32(field.Constant);
+}
+
+static TypeDefinition? FindTypeDefinition(ModuleDefinition module, string typeFullName)
+{
+    foreach (var type in module.Types)
+    {
+        var found = FindTypeDefinitionInType(type, typeFullName);
+        if (found != null) return found;
+    }
+    return null;
+}
+
+static TypeDefinition? FindTypeDefinitionInType(TypeDefinition type, string typeFullName)
+{
+    if (type.FullName == typeFullName) return type;
+    foreach (var nestedType in type.NestedTypes)
+    {
+        var found = FindTypeDefinitionInType(nestedType, typeFullName);
+        if (found != null) return found;
+    }
+    return null;
+}
+
 static MethodReference? FindMethodReference(ModuleDefinition module, string declaringTypeFullName, string methodName, int parameterCount)
 {
     foreach (var type in module.Types)
@@ -579,6 +762,40 @@ static MethodReference? FindMethodReferenceInType(TypeDefinition type, string de
     foreach (var nestedType in type.NestedTypes)
     {
         var found = FindMethodReferenceInType(nestedType, declaringTypeFullName, methodName, parameterCount);
+        if (found != null) return found;
+    }
+    return null;
+}
+
+static MethodReference? FindConstructorReference(ModuleDefinition module, string declaringTypeFullName, int parameterCount)
+{
+    foreach (var type in module.Types)
+    {
+        var found = FindConstructorReferenceInType(type, declaringTypeFullName, parameterCount);
+        if (found != null) return found;
+    }
+    return null;
+}
+
+static MethodReference? FindConstructorReferenceInType(TypeDefinition type, string declaringTypeFullName, int parameterCount)
+{
+    foreach (var method in type.Methods)
+    {
+        if (!method.HasBody) continue;
+        foreach (var instruction in method.Body.Instructions)
+        {
+            if (instruction.Operand is MethodReference methodReference
+                && methodReference.DeclaringType.FullName == declaringTypeFullName
+                && methodReference.Name == ".ctor"
+                && methodReference.Parameters.Count == parameterCount)
+            {
+                return methodReference;
+            }
+        }
+    }
+    foreach (var nestedType in type.NestedTypes)
+    {
+        var found = FindConstructorReferenceInType(nestedType, declaringTypeFullName, parameterCount);
         if (found != null) return found;
     }
     return null;
@@ -673,7 +890,8 @@ sealed record PatchOptions(
     bool ApplyEventPassTimeGate,
     bool ApplyEventPassTempletFallback,
     bool ApplyLobbyEventPassSelfActivation,
-    bool ApplyLobbyCounterPassFallbackRegistration)
+    bool ApplyLobbyCounterPassFallbackRegistration,
+    bool ApplyLobbyEventPassLayout)
 {
     public static PatchOptions Parse(string[] args)
     {
@@ -693,7 +911,8 @@ sealed record PatchOptions(
             ApplyEventPassTimeGate: !HasArg(args, "--no-time-gate"),
             ApplyEventPassTempletFallback: legacyAll || HasArg(args, "--include-template-fallback"),
             ApplyLobbyEventPassSelfActivation: envDrivenCounterPassPatch || legacyAll || HasArg(args, "--include-lobby-self-activation"),
-            ApplyLobbyCounterPassFallbackRegistration: envDrivenCounterPassPatch || legacyAll || HasArg(args, "--include-lobby-fallback"));
+            ApplyLobbyCounterPassFallbackRegistration: envDrivenCounterPassPatch || legacyAll || HasArg(args, "--include-lobby-fallback"),
+            ApplyLobbyEventPassLayout: (envDrivenCounterPassPatch || legacyAll || HasArg(args, "--include-lobby-layout")) && !HasArg(args, "--no-lobby-layout"));
     }
 
     private static bool HasArg(string[] args, string name)
