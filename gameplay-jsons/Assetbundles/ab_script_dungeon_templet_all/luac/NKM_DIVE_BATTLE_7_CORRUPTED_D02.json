@@ -1,0 +1,179 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DIVE_BATTLE_7_CORRUPTED_D02.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.0
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_COMMON_BEAST_RANGE_SUMMER_MOVE"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 1
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER_SUMMER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER_SUMMER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 3,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.15
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_SCOURGE_SUMMER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 8,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.05
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_NEEDLER_SUMMER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 10,
+            "m_fEventTimeEnd": 180,
+            "m_fEventTimeGap": 30,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_SCOURGE_SUMMER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 10,
+            "m_fEventTimeEnd": 180,
+            "m_fEventTimeGap": 30,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_RANGER_SUMMER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 15,
+            "m_fEventTimeEnd": 180,
+            "m_fEventTimeGap": 30,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_BITER_SUMMER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 15,
+            "m_fEventTimeEnd": 180,
+            "m_fEventTimeGap": 30,
+            "m_fEventPos": 0.2
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 1.0,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_COMMON_BEAST_RANGE_SUMMER_MOVE",
+    "m_fBossPosZ": 1,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER_SUMMER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER_SUMMER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 3,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.15
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_SCOURGE_SUMMER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 8,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.05
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_NEEDLER_SUMMER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 10,
+          "m_fEventTimeEnd": 180,
+          "m_fEventTimeGap": 30,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_SCOURGE_SUMMER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 10,
+          "m_fEventTimeEnd": 180,
+          "m_fEventTimeGap": 30,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_RANGER_SUMMER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 15,
+          "m_fEventTimeEnd": 180,
+          "m_fEventTimeGap": 30,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_BITER_SUMMER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 15,
+          "m_fEventTimeEnd": 180,
+          "m_fEventTimeGap": 30,
+          "m_fEventPos": 0.2
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

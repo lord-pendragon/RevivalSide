@@ -1,5 +1,5 @@
-const fs = require("fs");
 const path = require("path");
+const { readGameplayTableRecords } = require("../gameplay-jsons");
 const {
   readSignedVarInt,
   writeBool,
@@ -13,12 +13,6 @@ const {
 const { createEmptyReward, grantRewardByType, mergeReward } = require("../reward");
 
 const ROOT_DIR = path.resolve(__dirname, "..", "..");
-const TABLE_ROOTS = [
-  path.join(ROOT_DIR, "gameplay-tables-json", "Assetbundles"),
-  path.join(ROOT_DIR, "gameplay-tables-json", "StreamingAssets"),
-  path.join(ROOT_DIR, "gameplay-jsons", "Assetbundles"),
-  path.join(ROOT_DIR, "gameplay-jsons", "StreamingAssets"),
-];
 
 const PACKETS = Object.freeze({
   EVENT_PASS_LEVEL_COMPLETE_REQ: 3008,
@@ -527,19 +521,7 @@ function getTableSet() {
 }
 
 function readRecords(directory, fileName) {
-  for (const root of TABLE_ROOTS) {
-    const filePath = path.join(root, directory, "luac", fileName);
-    if (!fs.existsSync(filePath)) continue;
-    try {
-      const parsed = JSON.parse(fs.readFileSync(filePath, "utf8"));
-      if (Array.isArray(parsed.records)) return parsed.records;
-      if (Array.isArray(parsed.root)) return parsed.root;
-      if (parsed.root && typeof parsed.root === "object") return Object.values(parsed.root).filter((entry) => entry && typeof entry === "object");
-    } catch (error) {
-      console.log(`[counter-pass] failed to load ${filePath}: ${error.message}`);
-    }
-  }
-  return [];
+  return readGameplayTableRecords(directory, fileName, { rootDir: ROOT_DIR, logLabel: "counter-pass" });
 }
 
 function decodeMissionType(ctx, encryptedPayload) {

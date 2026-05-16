@@ -1,0 +1,1207 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_BOSS_RELIC_DOMINION.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 34,
+  "records": [
+    {
+      "__key": "m_UnitSizeX",
+      "value": 450
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 300
+    },
+    {
+      "__key": "m_bDieDeActive",
+      "value": false
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_SpriteOffsetX",
+      "value": 200
+    },
+    {
+      "__key": "m_NKC_TEAM_COLOR_TYPE",
+      "value": "NTCT_ONLY_SHADOW"
+    },
+    {
+      "__key": "m_fShadowOffsetX",
+      "value": 200
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 2000
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 5000
+    },
+    {
+      "__key": "m_fShadowRotateX",
+      "value": 250
+    },
+    {
+      "__key": "m_fShadowRotateZ",
+      "value": -140
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": false
+    },
+    {
+      "__key": "m_fGageScaleX",
+      "value": 200
+    },
+    {
+      "__key": "m_fGageOffsetX",
+      "value": 200
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 400
+    },
+    {
+      "__key": "m_SeeTarget",
+      "value": false
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 2500
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 2600
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 1200
+    },
+    {
+      "__key": "m_NKM_FIND_TARGET_TYPE",
+      "value": "NFTT_NEAR_ENEMY_AIR_FIRST"
+    },
+    {
+      "__key": "m_bTargetNoChange",
+      "value": false
+    },
+    {
+      "__key": "m_AttackedTargetTime",
+      "value": 1
+    },
+    {
+      "__key": "m_bAttackedTarget",
+      "value": true
+    },
+    {
+      "__key": "m_bNoMove",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageState",
+      "value": true
+    },
+    {
+      "__key": "m_fDamageUpFactor",
+      "value": 0.0
+    },
+    {
+      "__key": "m_fBuffEffectScaleFactor",
+      "value": 1.4
+    },
+    {
+      "__key": "m_bImmuneStun",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageStopTime",
+      "value": true
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1"
+        }
+      ]
+    },
+    {
+      "__key": "m_listSkillStateData",
+      "value": [
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 2000,
+          "m_fStartCool": 0.5
+        }
+      ]
+    },
+    {
+      "__key": "m_listHyperSkillStateData",
+      "value": [
+        {
+          "m_StateName": "USN_HYPER1",
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 2500,
+          "m_fStartCool": 0.7
+        }
+      ]
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_BuffStrID": "SHIP_BUFF_DOMINION_PASSIVE_LV3",
+          "m_BuffLevel": 1
+        },
+        {
+          "m_BuffStrID": "DEBUFF_MOB_ELITE_RELIC_DELTA_PASSIVE",
+          "m_BuffLevel": 1
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_START",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_EffectName": "AB_FX_NKM_SHIP_COFFIN_START",
+              "m_OffsetX": 350,
+              "m_OffsetZ": 0,
+              "m_AnimName": "BASE"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_MECHANIC_COFFIN_START"
+              ],
+              "m_b3D": true,
+              "m_bLoop": false,
+              "m_PlayRate": 1.0,
+              "m_bStopSound": false
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_StateCoolTime": 2.0,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.6333333333333333,
+              "m_DEName": "DE_NKM_MOB_ELITE_RELIC_SHIP_A_DOMINION_ATTACK1",
+              "m_OffsetX": 400,
+              "m_OffsetY": 1000,
+              "m_OffsetZ": 0,
+              "m_fAddRotate": 0,
+              "m_bShipSkillPos": false,
+              "m_bTargetPos": true
+            }
+          ],
+          "m_listNKMEventAnimSpeed": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0666666666666667,
+              "m_fAnimSpeed": 2.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.6333333333333333,
+              "m_fAnimSpeed": 1.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_28"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 0.6666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MISSILE_FIRE_03"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 1.1666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MISSILE_FIRE_04"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "SKILL1",
+          "m_fAnimSpeed": 1.3,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_StateCoolTime": 30,
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ]
+            },
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_22"
+              ]
+            },
+            {
+              "m_fEventTime": 0.6666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MISSILE_FIRE_02"
+              ]
+            },
+            {
+              "m_fEventTime": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MISSILE_FIRE"
+              ]
+            },
+            {
+              "m_fEventTime": 1.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MISSILE_FIRE"
+              ]
+            },
+            {
+              "m_fEventTime": 1.6666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MISSILE_FIRE"
+              ]
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": 2.3333333333333335,
+              "m_DEName": "DE_NKM_MOB_ELITE_RELIC_SHIP_A_DOMINION_SKILL1_START_A",
+              "m_bTargetPos": true,
+              "m_OffsetX": -120,
+              "m_OffsetY": 1700,
+              "m_OffsetZ": 0,
+              "m_fAddRotate": -90
+            },
+            {
+              "m_fEventTime": 2.3333333333333335,
+              "m_DEName": "DE_NKM_MOB_ELITE_RELIC_SHIP_A_DOMINION_SKILL1_START_B",
+              "m_bTargetPos": true,
+              "m_OffsetX": -75,
+              "m_OffsetY": 1700,
+              "m_OffsetZ": 0,
+              "m_fAddRotate": -90
+            },
+            {
+              "m_fEventTime": 2.3333333333333335,
+              "m_DEName": "DE_NKM_MOB_ELITE_RELIC_SHIP_A_DOMINION_SKILL1_START_C",
+              "m_bTargetPos": true,
+              "m_OffsetX": 60,
+              "m_OffsetY": 1700,
+              "m_OffsetZ": 0,
+              "m_fAddRotate": -90
+            },
+            {
+              "m_fEventTime": 2.3333333333333335,
+              "m_DEName": "DE_NKM_MOB_ELITE_RELIC_SHIP_A_DOMINION_SKILL1_START_D",
+              "m_bTargetPos": true,
+              "m_OffsetX": 10,
+              "m_OffsetY": 1700,
+              "m_OffsetZ": 0,
+              "m_fAddRotate": -90
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_DEName": "DE_NKM_MOB_ELITE_RELIC_SHIP_A_DOMINION_SKILL1",
+              "m_bTargetPos": true,
+              "m_OffsetX": 0,
+              "m_OffsetY": 350,
+              "m_OffsetZ": 0,
+              "m_fAddRotate": 0
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_HYPER1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "HYPER_SKILL1",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_StateCoolTime": 65,
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HYPER_ATTACK_START"
+              ]
+            },
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_23"
+              ]
+            },
+            {
+              "m_fEventTime": 0.6,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_TECH_06"
+              ],
+              "m_fLocalVol": 0.5
+            },
+            {
+              "m_fEventTime": 1.1666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_22"
+              ]
+            },
+            {
+              "m_fEventTime": 1.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_41"
+              ]
+            },
+            {
+              "m_fEventTime": 1.6666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_03"
+              ]
+            },
+            {
+              "m_fEventTime": 1.7333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_09"
+              ],
+              "m_fFocusRange": 9999.0
+            },
+            {
+              "m_fEventTime": 3.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_TECH_06"
+              ]
+            },
+            {
+              "m_fEventTime": 3.466666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_08"
+              ],
+              "m_fFocusRange": 9999.0
+            },
+            {
+              "m_fEventTime": 3.466666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_66"
+              ],
+              "m_fFocusRange": 9999.0
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.7333333333333334,
+              "m_fEventTimeMax": 2.066666666666667,
+              "m_fRangeMin": -9999.0,
+              "m_fRangeMax": 9999,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 99,
+              "m_DamageTempletName": "DT_NKM_MOB_ELITE_RELIC_SHIP_A_DOMINION_HYPER1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.066666666666667,
+              "m_fEventTimeMax": 2.4,
+              "m_fRangeMin": -9999.0,
+              "m_fRangeMax": 9999,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 99,
+              "m_DamageTempletName": "DT_NKM_MOB_ELITE_RELIC_SHIP_A_DOMINION_HYPER1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.4,
+              "m_fEventTimeMax": 2.7333333333333334,
+              "m_fRangeMin": -9999.0,
+              "m_fRangeMax": 9999,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 99,
+              "m_DamageTempletName": "DT_NKM_MOB_ELITE_RELIC_SHIP_A_DOMINION_HYPER1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 3.466666666666667,
+              "m_fEventTimeMax": 3.6,
+              "m_fRangeMin": -9999.0,
+              "m_fRangeMax": 9999,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 99,
+              "m_DamageTempletName": "DT_NKM_MOB_ELITE_RELIC_SHIP_A_DOMINION_HYPER1_LV2_END"
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 1.6666666666666667,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 1250,
+              "m_fCameraCrashGap": 4,
+              "m_fCameraCrashTime": 1.6666666666666667
+            },
+            {
+              "m_fEventTime": 3.466666666666667,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 3000,
+              "m_fCameraCrashGap": 10,
+              "m_fCameraCrashTime": 1.5
+            }
+          ],
+          "m_listNKMEventFadeWorld": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_fEventTimeMax": 333.3,
+              "m_fColorR": 0.0,
+              "m_fColorG": 0.0,
+              "m_fColorB": 0.3,
+              "m_fMapColorKeepTime": 0.3,
+              "m_fMapColorReturnTime": 1
+            }
+          ],
+          "m_listNKMEventCameraMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_fEventTimeMax": 1.7333333333333334,
+              "m_fPosXOffset": -600,
+              "m_fPosYOffset": 200,
+              "m_fZoom": -150,
+              "m_fMoveTrackingTime": 0.2,
+              "m_fZoomTrackingTime": 0.2,
+              "m_fCameraRadius": 0.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.7333333333333334,
+              "m_fEventTimeMax": 3.466666666666667,
+              "m_fFocusBlur": 1.0,
+              "m_fPosXOffset": 400,
+              "m_fPosYOffset": 200,
+              "m_fZoom": 0,
+              "m_fMoveTrackingTime": 1.6666666666666667,
+              "m_fZoomTrackingTime": 1.6666666666666667,
+              "m_fCameraRadius": 0.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 3.466666666666667,
+              "m_fEventTimeMax": 4.0,
+              "m_fFocusBlur": 0.5,
+              "m_fPosXOffset": 700,
+              "m_fPosYOffset": 200,
+              "m_fZoom": 0,
+              "m_fMoveTrackingTime": 0.1,
+              "m_fZoomTrackingTime": 0.1,
+              "m_fCameraRadius": 0.0
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_bAnimLoop": false,
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_MECHANIC_COFFIN_DAMAGE_DOWN"
+              ],
+              "m_b3D": true,
+              "m_bLoop": false,
+              "m_PlayRate": 1.0,
+              "m_bStopSound": false
+            }
+          ],
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+          "m_listNKMEventGameSpeed": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_fGameSpeed": 0.0,
+              "m_fTrackingTime": 3.0
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 5.0,
+              "m_fCameraCrashTime": 2
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 5.0,
+              "m_fCameraCrashTime": 0.3
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6666666666666666,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 5.0,
+              "m_fCameraCrashTime": 0.3
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 5.0,
+              "m_fCameraCrashTime": 0.3
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5666666666666667,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 30.0,
+              "m_fCameraCrashTime": 2
+            }
+          ],
+          "m_listNKMEventCameraMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 0.5,
+              "m_bForce": true,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 200,
+              "m_fZoom": -100,
+              "m_fFocusBlur": 0.3,
+              "m_fMoveTrackingTime": 0.2,
+              "m_fZoomTrackingTime": 1.0,
+              "m_fCameraRadius": 0.0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_UnitSizeX": 450,
+    "m_UnitSizeY": 300,
+    "m_bDieDeActive": false,
+    "m_SpriteScale": 1.0,
+    "m_SpriteOffsetX": 200,
+    "m_NKC_TEAM_COLOR_TYPE": "NTCT_ONLY_SHADOW",
+    "m_fShadowOffsetX": 200,
+    "m_fShadowScaleX": 2000,
+    "m_fShadowScaleY": 5000,
+    "m_fShadowRotateX": 250,
+    "m_fShadowRotateZ": -140,
+    "m_bShowGage": false,
+    "m_fGageScaleX": 200,
+    "m_fGageOffsetX": 200,
+    "m_fGageOffsetY": 400,
+    "m_SeeTarget": false,
+    "m_SeeRange": 2500,
+    "m_SeeRangeMax": 2600,
+    "m_TargetNearRange": 1200,
+    "m_NKM_FIND_TARGET_TYPE": "NFTT_NEAR_ENEMY_AIR_FIRST",
+    "m_bTargetNoChange": false,
+    "m_AttackedTargetTime": 1,
+    "m_bAttackedTarget": true,
+    "m_bNoMove": true,
+    "m_bNoDamageState": true,
+    "m_fDamageUpFactor": 0.0,
+    "m_fBuffEffectScaleFactor": 1.4,
+    "m_bImmuneStun": true,
+    "m_bNoDamageStopTime": true,
+    "m_listAttackStateData": [
+      {
+        "m_StateName": "USN_ATTACK1"
+      }
+    ],
+    "m_listSkillStateData": [
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 2000,
+        "m_fStartCool": 0.5
+      }
+    ],
+    "m_listHyperSkillStateData": [
+      {
+        "m_StateName": "USN_HYPER1",
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 2500,
+        "m_fStartCool": 0.7
+      }
+    ],
+    "m_listStaticBuffData": [
+      {
+        "m_BuffStrID": "SHIP_BUFF_DOMINION_PASSIVE_LV3",
+        "m_BuffLevel": 1
+      },
+      {
+        "m_BuffStrID": "DEBUFF_MOB_ELITE_RELIC_DELTA_PASSIVE",
+        "m_BuffLevel": 1
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_START",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_EffectName": "AB_FX_NKM_SHIP_COFFIN_START",
+            "m_OffsetX": 350,
+            "m_OffsetZ": 0,
+            "m_AnimName": "BASE"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_MECHANIC_COFFIN_START"
+            ],
+            "m_b3D": true,
+            "m_bLoop": false,
+            "m_PlayRate": 1.0,
+            "m_bStopSound": false
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_StateCoolTime": 2.0,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.6333333333333333,
+            "m_DEName": "DE_NKM_MOB_ELITE_RELIC_SHIP_A_DOMINION_ATTACK1",
+            "m_OffsetX": 400,
+            "m_OffsetY": 1000,
+            "m_OffsetZ": 0,
+            "m_fAddRotate": 0,
+            "m_bShipSkillPos": false,
+            "m_bTargetPos": true
+          }
+        ],
+        "m_listNKMEventAnimSpeed": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0666666666666667,
+            "m_fAnimSpeed": 2.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.6333333333333333,
+            "m_fAnimSpeed": 1.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_28"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 0.6666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MISSILE_FIRE_03"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 1.1666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MISSILE_FIRE_04"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "SKILL1",
+        "m_fAnimSpeed": 1.3,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_StateCoolTime": 30,
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ]
+          },
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_22"
+            ]
+          },
+          {
+            "m_fEventTime": 0.6666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MISSILE_FIRE_02"
+            ]
+          },
+          {
+            "m_fEventTime": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MISSILE_FIRE"
+            ]
+          },
+          {
+            "m_fEventTime": 1.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MISSILE_FIRE"
+            ]
+          },
+          {
+            "m_fEventTime": 1.6666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MISSILE_FIRE"
+            ]
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": 2.3333333333333335,
+            "m_DEName": "DE_NKM_MOB_ELITE_RELIC_SHIP_A_DOMINION_SKILL1_START_A",
+            "m_bTargetPos": true,
+            "m_OffsetX": -120,
+            "m_OffsetY": 1700,
+            "m_OffsetZ": 0,
+            "m_fAddRotate": -90
+          },
+          {
+            "m_fEventTime": 2.3333333333333335,
+            "m_DEName": "DE_NKM_MOB_ELITE_RELIC_SHIP_A_DOMINION_SKILL1_START_B",
+            "m_bTargetPos": true,
+            "m_OffsetX": -75,
+            "m_OffsetY": 1700,
+            "m_OffsetZ": 0,
+            "m_fAddRotate": -90
+          },
+          {
+            "m_fEventTime": 2.3333333333333335,
+            "m_DEName": "DE_NKM_MOB_ELITE_RELIC_SHIP_A_DOMINION_SKILL1_START_C",
+            "m_bTargetPos": true,
+            "m_OffsetX": 60,
+            "m_OffsetY": 1700,
+            "m_OffsetZ": 0,
+            "m_fAddRotate": -90
+          },
+          {
+            "m_fEventTime": 2.3333333333333335,
+            "m_DEName": "DE_NKM_MOB_ELITE_RELIC_SHIP_A_DOMINION_SKILL1_START_D",
+            "m_bTargetPos": true,
+            "m_OffsetX": 10,
+            "m_OffsetY": 1700,
+            "m_OffsetZ": 0,
+            "m_fAddRotate": -90
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_DEName": "DE_NKM_MOB_ELITE_RELIC_SHIP_A_DOMINION_SKILL1",
+            "m_bTargetPos": true,
+            "m_OffsetX": 0,
+            "m_OffsetY": 350,
+            "m_OffsetZ": 0,
+            "m_fAddRotate": 0
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_HYPER1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "HYPER_SKILL1",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_StateCoolTime": 65,
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HYPER_ATTACK_START"
+            ]
+          },
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_23"
+            ]
+          },
+          {
+            "m_fEventTime": 0.6,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_TECH_06"
+            ],
+            "m_fLocalVol": 0.5
+          },
+          {
+            "m_fEventTime": 1.1666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_22"
+            ]
+          },
+          {
+            "m_fEventTime": 1.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_41"
+            ]
+          },
+          {
+            "m_fEventTime": 1.6666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_03"
+            ]
+          },
+          {
+            "m_fEventTime": 1.7333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_09"
+            ],
+            "m_fFocusRange": 9999.0
+          },
+          {
+            "m_fEventTime": 3.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_TECH_06"
+            ]
+          },
+          {
+            "m_fEventTime": 3.466666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_08"
+            ],
+            "m_fFocusRange": 9999.0
+          },
+          {
+            "m_fEventTime": 3.466666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_66"
+            ],
+            "m_fFocusRange": 9999.0
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.7333333333333334,
+            "m_fEventTimeMax": 2.066666666666667,
+            "m_fRangeMin": -9999.0,
+            "m_fRangeMax": 9999,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 99,
+            "m_DamageTempletName": "DT_NKM_MOB_ELITE_RELIC_SHIP_A_DOMINION_HYPER1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.066666666666667,
+            "m_fEventTimeMax": 2.4,
+            "m_fRangeMin": -9999.0,
+            "m_fRangeMax": 9999,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 99,
+            "m_DamageTempletName": "DT_NKM_MOB_ELITE_RELIC_SHIP_A_DOMINION_HYPER1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.4,
+            "m_fEventTimeMax": 2.7333333333333334,
+            "m_fRangeMin": -9999.0,
+            "m_fRangeMax": 9999,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 99,
+            "m_DamageTempletName": "DT_NKM_MOB_ELITE_RELIC_SHIP_A_DOMINION_HYPER1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 3.466666666666667,
+            "m_fEventTimeMax": 3.6,
+            "m_fRangeMin": -9999.0,
+            "m_fRangeMax": 9999,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 99,
+            "m_DamageTempletName": "DT_NKM_MOB_ELITE_RELIC_SHIP_A_DOMINION_HYPER1_LV2_END"
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 1.6666666666666667,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 1250,
+            "m_fCameraCrashGap": 4,
+            "m_fCameraCrashTime": 1.6666666666666667
+          },
+          {
+            "m_fEventTime": 3.466666666666667,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 3000,
+            "m_fCameraCrashGap": 10,
+            "m_fCameraCrashTime": 1.5
+          }
+        ],
+        "m_listNKMEventFadeWorld": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_fEventTimeMax": 333.3,
+            "m_fColorR": 0.0,
+            "m_fColorG": 0.0,
+            "m_fColorB": 0.3,
+            "m_fMapColorKeepTime": 0.3,
+            "m_fMapColorReturnTime": 1
+          }
+        ],
+        "m_listNKMEventCameraMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_fEventTimeMax": 1.7333333333333334,
+            "m_fPosXOffset": -600,
+            "m_fPosYOffset": 200,
+            "m_fZoom": -150,
+            "m_fMoveTrackingTime": 0.2,
+            "m_fZoomTrackingTime": 0.2,
+            "m_fCameraRadius": 0.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.7333333333333334,
+            "m_fEventTimeMax": 3.466666666666667,
+            "m_fFocusBlur": 1.0,
+            "m_fPosXOffset": 400,
+            "m_fPosYOffset": 200,
+            "m_fZoom": 0,
+            "m_fMoveTrackingTime": 1.6666666666666667,
+            "m_fZoomTrackingTime": 1.6666666666666667,
+            "m_fCameraRadius": 0.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 3.466666666666667,
+            "m_fEventTimeMax": 4.0,
+            "m_fFocusBlur": 0.5,
+            "m_fPosXOffset": 700,
+            "m_fPosYOffset": 200,
+            "m_fZoom": 0,
+            "m_fMoveTrackingTime": 0.1,
+            "m_fZoomTrackingTime": 0.1,
+            "m_fCameraRadius": 0.0
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_bAnimLoop": false,
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_MECHANIC_COFFIN_DAMAGE_DOWN"
+            ],
+            "m_b3D": true,
+            "m_bLoop": false,
+            "m_PlayRate": 1.0,
+            "m_bStopSound": false
+          }
+        ],
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+        "m_listNKMEventGameSpeed": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_fGameSpeed": 0.0,
+            "m_fTrackingTime": 3.0
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 5.0,
+            "m_fCameraCrashTime": 2
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 5.0,
+            "m_fCameraCrashTime": 0.3
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6666666666666666,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 5.0,
+            "m_fCameraCrashTime": 0.3
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 5.0,
+            "m_fCameraCrashTime": 0.3
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5666666666666667,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 30.0,
+            "m_fCameraCrashTime": 2
+          }
+        ],
+        "m_listNKMEventCameraMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 0.5,
+            "m_bForce": true,
+            "m_fPosXOffset": 0,
+            "m_fPosYOffset": 200,
+            "m_fZoom": -100,
+            "m_fFocusBlur": 0.3,
+            "m_fMoveTrackingTime": 0.2,
+            "m_fZoomTrackingTime": 1.0,
+            "m_fCameraRadius": 0.0
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

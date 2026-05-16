@@ -1,0 +1,117 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_WINTERVACATION_3_2.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.2
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EVENT_VACATION_C_MIMIC_ADULT"
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_HP": 0.5,
+          "NST_ATK": 0.5,
+          "NST_DEF": 0.5,
+          "NST_EVADE": 0.5
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.3,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_WRAITH",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.3,
+            "m_fEventPos": 0.05
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_dungeonEventType": "FORCE_WIN",
+          "m_EventActionValue": 1,
+          "m_fEventDelay": 0,
+          "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+          "m_EventConditionNumValue": 35,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 0.2,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EVENT_VACATION_C_MIMIC_ADULT",
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_HP": 0.5,
+          "NST_ATK": 0.5,
+          "NST_DEF": 0.5,
+          "NST_EVADE": 0.5
+        }
+      }
+    },
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.3,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_WRAITH",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.3,
+          "m_fEventPos": 0.05
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_dungeonEventType": "FORCE_WIN",
+        "m_EventActionValue": 1,
+        "m_fEventDelay": 0,
+        "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+        "m_EventConditionNumValue": 35,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

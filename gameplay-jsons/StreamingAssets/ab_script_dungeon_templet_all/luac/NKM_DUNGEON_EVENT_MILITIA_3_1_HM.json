@@ -1,0 +1,325 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_EVENT_MILITIA_3_1_HM.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 5
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.7
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_MILITIA_CRIMINAL_SWIFT_H"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_SL_RIFLE_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 4,
+            "m_fEventTimeEnd": 240,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_SL_SNIPER_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 15,
+            "m_fEventTimeEnd": 240,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_SL_SHOTGUN_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 241,
+            "m_fEventTimeEnd": 241,
+            "m_fEventPos": 0.3
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_BOSS_MILITIA_CRIMINAL_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 10,
+            "m_fEventPos": 0.4
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "DEBUFF_MONSTER_X_MAS_STAT_DOWN",
+              "m_BuffLevel": 30
+            }
+          ]
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_BOSS_MILITIA_CRIMINAL_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 20,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_SL_RIFLE_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 30,
+            "m_fEventPos": 0.4
+          },
+          "m_listStaticBuffData": {}
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_SL_SNIPER_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 40,
+            "m_fEventPos": 0.1
+          },
+          "m_listStaticBuffData": {}
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_BOSS_MILITIA_CRIMINAL_HEAVY_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 60,
+            "m_fEventPos": 0.5
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "DEBUFF_MONSTER_X_MAS_STAT_DOWN",
+              "m_BuffLevel": 30
+            },
+            {
+              "m_BuffStrID": "BUFF_S_MILITIA_SEONGTAE_PASSIVE",
+              "m_BuffLevel": 5
+            }
+          ]
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_SL_SHOTGUN_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 65,
+            "m_fEventPos": 0.4
+          },
+          "m_listStaticBuffData": {}
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_BOSS_MILITIA_CRIMINAL_HEAVY_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 70,
+            "m_fEventPos": 0.35
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "DEBUFF_MONSTER_X_MAS_STAT_DOWN",
+              "m_BuffLevel": 30
+            }
+          ]
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_SL_SNIPER_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 80,
+            "m_fEventPos": 0.1
+          },
+          "m_listStaticBuffData": {}
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_SL_SNIPER_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 85,
+            "m_fEventPos": 0.1
+          },
+          "m_listStaticBuffData": {}
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_BOSS_MILITIA_CRIMINAL_SWIFT_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 90,
+            "m_fEventPos": 0.1
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "DEBUFF_MONSTER_X_MAS_STAT_DOWN",
+              "m_BuffLevel": 30
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 5,
+    "m_fCostSpeedRateB": 0.7,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_MILITIA_CRIMINAL_SWIFT_H",
+    "m_fBossPosZ": 0.6,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_SL_RIFLE_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 4,
+          "m_fEventTimeEnd": 240,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_SL_SNIPER_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 15,
+          "m_fEventTimeEnd": 240,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_SL_SHOTGUN_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 241,
+          "m_fEventTimeEnd": 241,
+          "m_fEventPos": 0.3
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_BOSS_MILITIA_CRIMINAL_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 10,
+          "m_fEventPos": 0.4
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "DEBUFF_MONSTER_X_MAS_STAT_DOWN",
+            "m_BuffLevel": 30
+          }
+        ]
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_BOSS_MILITIA_CRIMINAL_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 20,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_SL_RIFLE_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 30,
+          "m_fEventPos": 0.4
+        },
+        "m_listStaticBuffData": {}
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_SL_SNIPER_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 40,
+          "m_fEventPos": 0.1
+        },
+        "m_listStaticBuffData": {}
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_BOSS_MILITIA_CRIMINAL_HEAVY_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 60,
+          "m_fEventPos": 0.5
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "DEBUFF_MONSTER_X_MAS_STAT_DOWN",
+            "m_BuffLevel": 30
+          },
+          {
+            "m_BuffStrID": "BUFF_S_MILITIA_SEONGTAE_PASSIVE",
+            "m_BuffLevel": 5
+          }
+        ]
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_SL_SHOTGUN_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 65,
+          "m_fEventPos": 0.4
+        },
+        "m_listStaticBuffData": {}
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_BOSS_MILITIA_CRIMINAL_HEAVY_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 70,
+          "m_fEventPos": 0.35
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "DEBUFF_MONSTER_X_MAS_STAT_DOWN",
+            "m_BuffLevel": 30
+          }
+        ]
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_SL_SNIPER_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 80,
+          "m_fEventPos": 0.1
+        },
+        "m_listStaticBuffData": {}
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_SL_SNIPER_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 85,
+          "m_fEventPos": 0.1
+        },
+        "m_listStaticBuffData": {}
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_BOSS_MILITIA_CRIMINAL_SWIFT_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 90,
+          "m_fEventPos": 0.1
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "DEBUFF_MONSTER_X_MAS_STAT_DOWN",
+            "m_BuffLevel": 30
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

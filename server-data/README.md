@@ -17,6 +17,6 @@ Tracked capture-derived fixtures:
 - `captured-tcp/`: contents/login TCP fixtures.
 - `captured-game-flow/`: game-stream client/server packet fixtures.
 
-Regenerate table data from your own client. Do not commit account state, raw captures, full generated table output, or unsanitized fixture manifests.
+Regenerate table data from your own client when updating fixtures. Do not commit account state, raw captures, decrypted Lua intermediates, or unsanitized fixture manifests.
 
-The beginner setup guide writes parsed table JSON to `gameplay-tables-json/Assetbundles`. Older local setups may have the same data under `gameplay-tables-json/StreamingAssets`.
+The listener reads runtime tables from the checked-in `gameplay-jsons` tree. The local extraction pipeline may create temporary `gameplay-tables-json` output, then `npm run build:gameplay-jsons` copies the parsed tables into that canonical folder.

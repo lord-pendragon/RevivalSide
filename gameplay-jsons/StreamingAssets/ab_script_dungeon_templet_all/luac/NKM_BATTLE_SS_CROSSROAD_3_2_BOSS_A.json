@@ -1,0 +1,111 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_BATTLE_SS_CROSSROAD_3_2_BOSS_A.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MONSTER_BOSS_BASIC_NEPHILIM_MINOR_MOVE_N"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listDungeonDeck"
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_MAD_WRAITH_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 3,
+            "m_fEventTimeGap": 10,
+            "m_fEventPos": 0.2
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_UNIT_C_HILDE",
+          "m_UnitLevel": 30,
+          "m_UnitLimitBreakLevel": 1,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 30,
+            "m_fEventTimeGap": 15,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_C_JOO_SHI_YOON",
+          "m_UnitLevel": 30,
+          "m_UnitLimitBreakLevel": 1,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 32,
+            "m_fEventTimeGap": 15,
+            "m_fEventPos": 0.1
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 1,
+    "m_BossUnitStrID": "NKM_MONSTER_BOSS_BASIC_NEPHILIM_MINOR_MOVE_N",
+    "m_fBossPosZ": 0.6,
+    "m_listDungeonDeck": {},
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_MAD_WRAITH_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 3,
+          "m_fEventTimeGap": 10,
+          "m_fEventPos": 0.2
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_UNIT_C_HILDE",
+        "m_UnitLevel": 30,
+        "m_UnitLimitBreakLevel": 1,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 30,
+          "m_fEventTimeGap": 15,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_C_JOO_SHI_YOON",
+        "m_UnitLevel": 30,
+        "m_UnitLimitBreakLevel": 1,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 32,
+          "m_fEventTimeGap": 15,
+          "m_fEventPos": 0.1
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

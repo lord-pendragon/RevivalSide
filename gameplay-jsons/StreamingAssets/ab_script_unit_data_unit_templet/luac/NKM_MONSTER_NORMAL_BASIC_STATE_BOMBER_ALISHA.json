@@ -1,0 +1,590 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_MONSTER_NORMAL_BASIC_STATE_BOMBER_ALISHA.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 27,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_UNIT_BASE_NORMAL_AIR"
+    },
+    {
+      "__key": "m_UnitSizeX",
+      "value": 380
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 120
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 0.76
+    },
+    {
+      "__key": "m_bRespawnFreePos",
+      "value": true
+    },
+    {
+      "__key": "m_fForceRespawnXpos",
+      "value": 0
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.5
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.5
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 300
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 300
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 120
+    },
+    {
+      "__key": "m_bAirUnit",
+      "value": true
+    },
+    {
+      "__key": "m_fAirHigh",
+      "value": 380
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 700
+    },
+    {
+      "__key": "m_fGAccel",
+      "value": 1000
+    },
+    {
+      "__key": "m_SeeTarget",
+      "value": false
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 1500
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 1600
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 500
+    },
+    {
+      "__key": "m_AttackedTargetTime",
+      "value": 1
+    },
+    {
+      "__key": "m_bAttackedTarget",
+      "value": false
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageState",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageBackSpeed",
+      "value": true
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 2.0
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_BuffStrID": "BUFF_FIELD_06_ALISHA_SUMMON",
+          "m_BuffLevel": 1
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1,
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.1,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_AIR_SMALL_START"
+              ],
+              "m_b3D": false,
+              "m_bLoop": false,
+              "m_PlayRate": 1.0,
+              "m_bStopSound": false
+            }
+          ],
+          "m_listNKMEventSpeedX": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.0,
+              "m_fEventTimeMax": 3.3333333333333335,
+              "m_SpeedX": 300.0
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.1666666666666667,
+              "m_DEName": "DE_NKM_UNIT_M_STATE_BOMBER_ATTACK",
+              "m_OffsetX": 50,
+              "m_OffsetY": 40,
+              "m_OffsetZ": 10
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+          "m_StateName": "USN_ASTAND",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": true,
+          "m_MapPosOverStatePos": 0.9,
+          "m_MapPosOverState": "USN_ESCAPE"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_RUN",
+          "m_AnimName": "RUN",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 1,
+          "m_bRun": true,
+          "m_MapPosOverStatePos": 0.7,
+          "m_MapPosOverState": "USN_ESCAPE",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_DEName": "DE_NKM_UNIT_M_STATE_BOMBER_ATTACK",
+              "m_OffsetX": 50,
+              "m_OffsetY": 0,
+              "m_OffsetZ": 10
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8333333333333334,
+              "m_DEName": "DE_NKM_UNIT_M_STATE_BOMBER_ATTACK",
+              "m_OffsetX": 50,
+              "m_OffsetZ": 10
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.3333333333333333,
+              "m_DEName": "DE_NKM_UNIT_M_STATE_BOMBER_ATTACK",
+              "m_OffsetX": 50,
+              "m_OffsetZ": 10
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK1",
+          "m_AnimName": "ATTACK1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_bRun": true,
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.1,
+              "m_DEName": "DE_NKM_UNIT_M_STATE_BOMBER_ATTACK",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_OffsetZ": 1
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_MECHANIC_BOMBER_ATTACK"
+              ],
+              "m_bStopSound": false
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_StateName": "USN_ESCAPE",
+          "m_AnimName": "ESCAPE",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_listNKMEventInvincible": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_fEventTimeMax": 3.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_AIR_SMALL_START"
+              ]
+            }
+          ],
+          "m_listNKMEventCost": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_AddCost": 1
+            }
+          ],
+          "m_listNKMEventDissolve": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.3333333333333333,
+              "m_fDissolve": 1,
+              "m_fTrackTime": 0.3
+            }
+          ],
+          "m_listNKMEventDie": [
+            {
+              "m_bAnimTime": true,
+              "m_bImmediateDie": true,
+              "m_fEventTime": 1.4666666666666666
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_bAnimLoop": false,
+          "m_fAirHigh": 0.0,
+          "m_FootOnLandChangeState": "USN_DAMAGE_DIE",
+          "m_FootOffLandChangeState": "",
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0,
+              "m_EffectName": "AB_FX_air_explosion_fire",
+              "m_OffsetY": 100,
+              "m_OffsetZ": 0,
+              "m_AnimName": "BASE"
+            }
+          ],
+          "m_listNKMEventSpeedX": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 1,
+              "m_SpeedX": 900.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1,
+              "m_fEventTimeMax": 9999,
+              "m_SpeedX": 600.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_AIR_SMALL_DAMAGE_DOWN"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_bAnimLoop": false,
+          "m_listNKMEventDissolve": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_fDissolve": 1,
+              "m_fTrackTime": 1.5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_UNIT_BASE_NORMAL_AIR",
+    "m_UnitSizeX": 380,
+    "m_UnitSizeY": 120,
+    "m_SpriteScale": 0.76,
+    "m_bRespawnFreePos": true,
+    "m_fForceRespawnXpos": 0,
+    "m_fForceRespawnZposMin": 0.5,
+    "m_fForceRespawnZposMax": 0.5,
+    "m_fShadowScaleX": 300,
+    "m_fShadowScaleY": 300,
+    "m_fGageOffsetY": 120,
+    "m_bAirUnit": true,
+    "m_fAirHigh": 380,
+    "m_SpeedRun": 700,
+    "m_fGAccel": 1000,
+    "m_SeeTarget": false,
+    "m_SeeRange": 1500,
+    "m_SeeRangeMax": 1600,
+    "m_TargetNearRange": 500,
+    "m_AttackedTargetTime": 1,
+    "m_bAttackedTarget": false,
+    "m_bUseMotionBlur": true,
+    "m_bNoDamageState": true,
+    "m_bNoDamageBackSpeed": true,
+    "m_fDieCompleteTime": 2.0,
+    "m_listStaticBuffData": [
+      {
+        "m_BuffStrID": "BUFF_FIELD_06_ALISHA_SUMMON",
+        "m_BuffLevel": 1
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1,
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.1,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_AIR_SMALL_START"
+            ],
+            "m_b3D": false,
+            "m_bLoop": false,
+            "m_PlayRate": 1.0,
+            "m_bStopSound": false
+          }
+        ],
+        "m_listNKMEventSpeedX": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.0,
+            "m_fEventTimeMax": 3.3333333333333335,
+            "m_SpeedX": 300.0
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.1666666666666667,
+            "m_DEName": "DE_NKM_UNIT_M_STATE_BOMBER_ATTACK",
+            "m_OffsetX": 50,
+            "m_OffsetY": 40,
+            "m_OffsetZ": 10
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+        "m_StateName": "USN_ASTAND",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": true,
+        "m_MapPosOverStatePos": 0.9,
+        "m_MapPosOverState": "USN_ESCAPE"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_RUN",
+        "m_AnimName": "RUN",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 1,
+        "m_bRun": true,
+        "m_MapPosOverStatePos": 0.7,
+        "m_MapPosOverState": "USN_ESCAPE",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_DEName": "DE_NKM_UNIT_M_STATE_BOMBER_ATTACK",
+            "m_OffsetX": 50,
+            "m_OffsetY": 0,
+            "m_OffsetZ": 10
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8333333333333334,
+            "m_DEName": "DE_NKM_UNIT_M_STATE_BOMBER_ATTACK",
+            "m_OffsetX": 50,
+            "m_OffsetZ": 10
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.3333333333333333,
+            "m_DEName": "DE_NKM_UNIT_M_STATE_BOMBER_ATTACK",
+            "m_OffsetX": 50,
+            "m_OffsetZ": 10
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK1",
+        "m_AnimName": "ATTACK1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_bRun": true,
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.1,
+            "m_DEName": "DE_NKM_UNIT_M_STATE_BOMBER_ATTACK",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_OffsetZ": 1
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_MECHANIC_BOMBER_ATTACK"
+            ],
+            "m_bStopSound": false
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_StateName": "USN_ESCAPE",
+        "m_AnimName": "ESCAPE",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_listNKMEventInvincible": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_fEventTimeMax": 3.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_AIR_SMALL_START"
+            ]
+          }
+        ],
+        "m_listNKMEventCost": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_AddCost": 1
+          }
+        ],
+        "m_listNKMEventDissolve": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.3333333333333333,
+            "m_fDissolve": 1,
+            "m_fTrackTime": 0.3
+          }
+        ],
+        "m_listNKMEventDie": [
+          {
+            "m_bAnimTime": true,
+            "m_bImmediateDie": true,
+            "m_fEventTime": 1.4666666666666666
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_bAnimLoop": false,
+        "m_fAirHigh": 0.0,
+        "m_FootOnLandChangeState": "USN_DAMAGE_DIE",
+        "m_FootOffLandChangeState": "",
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0,
+            "m_EffectName": "AB_FX_air_explosion_fire",
+            "m_OffsetY": 100,
+            "m_OffsetZ": 0,
+            "m_AnimName": "BASE"
+          }
+        ],
+        "m_listNKMEventSpeedX": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 1,
+            "m_SpeedX": 900.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1,
+            "m_fEventTimeMax": 9999,
+            "m_SpeedX": 600.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_AIR_SMALL_DAMAGE_DOWN"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_bAnimLoop": false,
+        "m_listNKMEventDissolve": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_fDissolve": 1,
+            "m_fTrackTime": 1.5
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

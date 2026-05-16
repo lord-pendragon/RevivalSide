@@ -1,0 +1,300 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_UNIT_FUTURE_M_TITAN_PR_SUMMON.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 19,
+  "records": [
+    {
+      "__key": "m_UnitSizeX",
+      "value": 250
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 150
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_NKC_TEAM_COLOR_TYPE",
+      "value": "NTCT_NO"
+    },
+    {
+      "__key": "m_fAirHigh",
+      "value": 370
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.5
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.5
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": true
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 175
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 0
+    },
+    {
+      "__key": "m_bNoMove",
+      "value": true
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 500
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 600
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 50
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "__unparsed_expr": "L1_1 / 30"
+    },
+    {
+      "__key": "m_listFixedStatusEffect",
+      "value": [
+        "NUSE_STABLE_HP",
+        "NUSE_CLOCKING",
+        "NUSE_BLOCK_BUFF",
+        "NUSE_BLOCK_DEBUFF",
+        "NUSE_NO_DAMAGE_BACK_SPEED",
+        "NUSE_IMMUNE_CC",
+        "NUSE_IMMUNE_NEGATIVE_STATUS",
+        "NUSE_IMMUNE_SKILL_COOLTIME_DAMAGE"
+      ]
+    },
+    {
+      "__key": "m_listFixedStatusImmune",
+      "value": [
+        "NUSE_STUN",
+        "NUSE_NOHEAL"
+      ]
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1"
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "ASTART",
+          "m_fAnimSpeed": 1.0,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_DEName": "DE_UNIT_FUTURE_M_TITAN_PR_SUMMON",
+              "m_bHold": true,
+              "m_FollowType": "TDT_INVALID"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ASTAND",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": true
+        },
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": true,
+          "m_bNoAI": true,
+          "m_bInvincibleState": true,
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_DamageEffectID": "DE_UNIT_FUTURE_M_TITAN_PR_SUMMON",
+              "m_ChangeState": "DES_END"
+            }
+          ],
+          "m_listNKMEventDie": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 1.0,
+              "m_bImmediateDie": true
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_EXPLOSION_ENERGY_BIG_06"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_DamageEffectID": "DE_UNIT_FUTURE_M_TITAN_PR_SUMMON",
+              "m_ChangeState": "DES_END"
+            }
+          ],
+          "m_listNKMEventDie": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 1.0,
+              "m_bImmediateDie": true
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_EXPLOSION_ENERGY_BIG_06"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_UnitSizeX": 250,
+    "m_UnitSizeY": 150,
+    "m_SpriteScale": 1.0,
+    "m_NKC_TEAM_COLOR_TYPE": "NTCT_NO",
+    "m_fAirHigh": 370,
+    "m_fForceRespawnZposMin": 0.5,
+    "m_fForceRespawnZposMax": 0.5,
+    "m_bShowGage": true,
+    "m_fGageOffsetY": 175,
+    "m_SpeedRun": 0,
+    "m_bNoMove": true,
+    "m_SeeRange": 500,
+    "m_SeeRangeMax": 600,
+    "m_TargetNearRange": 50,
+    "m_fDieCompleteTime": {
+      "__unparsed_expr": "L1_1 / 30"
+    },
+    "m_listFixedStatusEffect": [
+      "NUSE_STABLE_HP",
+      "NUSE_CLOCKING",
+      "NUSE_BLOCK_BUFF",
+      "NUSE_BLOCK_DEBUFF",
+      "NUSE_NO_DAMAGE_BACK_SPEED",
+      "NUSE_IMMUNE_CC",
+      "NUSE_IMMUNE_NEGATIVE_STATUS",
+      "NUSE_IMMUNE_SKILL_COOLTIME_DAMAGE"
+    ],
+    "m_listFixedStatusImmune": [
+      "NUSE_STUN",
+      "NUSE_NOHEAL"
+    ],
+    "m_listAttackStateData": [
+      {
+        "m_StateName": "USN_ATTACK1"
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "ASTART",
+        "m_fAnimSpeed": 1.0,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_DEName": "DE_UNIT_FUTURE_M_TITAN_PR_SUMMON",
+            "m_bHold": true,
+            "m_FollowType": "TDT_INVALID"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ASTAND",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": true
+      },
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": true,
+        "m_bNoAI": true,
+        "m_bInvincibleState": true,
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_DamageEffectID": "DE_UNIT_FUTURE_M_TITAN_PR_SUMMON",
+            "m_ChangeState": "DES_END"
+          }
+        ],
+        "m_listNKMEventDie": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 1.0,
+            "m_bImmediateDie": true
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_EXPLOSION_ENERGY_BIG_06"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_DamageEffectID": "DE_UNIT_FUTURE_M_TITAN_PR_SUMMON",
+            "m_ChangeState": "DES_END"
+          }
+        ],
+        "m_listNKMEventDie": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 1.0,
+            "m_bImmediateDie": true
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_EXPLOSION_ENERGY_BIG_06"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

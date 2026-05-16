@@ -1,0 +1,816 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_warfare_map_templet_all\\luac\\WARFARE_DAILY_SEARCH_3.lua",
+  "rootName": "NKMWarfareMapTemplet",
+  "recordCount": 51,
+  "records": [
+    {
+      "__key": "m_MapSizeX",
+      "value": 7
+    },
+    {
+      "__key": "m_MapSizeY",
+      "value": 7
+    },
+    {
+      "__key": "NKMWarfareTile0",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_NKM_WARFARE_SPAWN_POINT_TYPE": "NWSPT_DIVE",
+      "m_BattleConditionStrID": "BC_FOG"
+    },
+    {
+      "__key": "NKMWarfareTile1",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile2",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile3",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_DungeonStrID": "NKM_DUNGEON_DAILY_SEARCH_WAVE_3",
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_NEAREST_ATK",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile4",
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    {
+      "__key": "NKMWarfareTile5",
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    {
+      "__key": "NKMWarfareTile6",
+      "m_TileType": "NWNTT_CHEST",
+      "m_DungeonStrID": "NKM_DUNGEON_DAILY_SEARCH_WAVE_3",
+      "m_bFlagDungeon": true,
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_DEFENSE"
+    },
+    {
+      "__key": "NKMWarfareTile7",
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    {
+      "__key": "NKMWarfareTile8",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile9",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile10",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile11",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile12",
+      "m_TileType": "NWMTT_RESUPPLY",
+      "m_BattleConditionStrID": "BC_FOG"
+    },
+    {
+      "__key": "NKMWarfareTile13",
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    {
+      "__key": "NKMWarfareTile14",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile15",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile16",
+      "m_TileType": "NWMTT_RESUPPLY",
+      "m_BattleConditionStrID": "BC_FOG"
+    },
+    {
+      "__key": "NKMWarfareTile17",
+      "m_TileType": "NWNTT_CHEST",
+      "m_BattleConditionStrID": "BC_FOG"
+    },
+    {
+      "__key": "NKMWarfareTile18",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile19",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile20",
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    {
+      "__key": "NKMWarfareTile21",
+      "m_TileType": "NWNTT_CHEST",
+      "m_BattleConditionStrID": "BC_FOG"
+    },
+    {
+      "__key": "NKMWarfareTile22",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile23",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile24",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_DungeonStrID": "NKM_DUNGEON_DAILY_SEARCH_WAVE_3",
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_NEAREST_ATK",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile25",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile26",
+      "m_TileType": "NWMTT_RESUPPLY",
+      "m_BattleConditionStrID": "BC_FOG"
+    },
+    {
+      "__key": "NKMWarfareTile27",
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    {
+      "__key": "NKMWarfareTile28",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_DungeonStrID": "NKM_DUNGEON_DAILY_SEARCH_WAVE_3",
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_NEAREST_ATK",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile29",
+      "m_TileType": "NWMTT_RESUPPLY",
+      "m_BattleConditionStrID": "BC_FOG"
+    },
+    {
+      "__key": "NKMWarfareTile30",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile31",
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    {
+      "__key": "NKMWarfareTile32",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile33",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile34",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile35",
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    {
+      "__key": "NKMWarfareTile36",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile37",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile38",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile39",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile40",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile41",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile42",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_NKM_WARFARE_SPAWN_POINT_TYPE": "NWSPT_DIVE",
+      "m_BattleConditionStrID": "BC_FOG"
+    },
+    {
+      "__key": "NKMWarfareTile43",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile44",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile45",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_DungeonStrID": "NKM_DUNGEON_DAILY_SEARCH_WAVE_3",
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_NEAREST_ATK",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    {
+      "__key": "NKMWarfareTile46",
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    {
+      "__key": "NKMWarfareTile47",
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    {
+      "__key": "NKMWarfareTile48",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_NKM_WARFARE_SPAWN_POINT_TYPE": "NWSPT_ASSAULT",
+      "m_BattleConditionStrID": "BC_FOG"
+    }
+  ],
+  "root": {
+    "m_MapSizeX": 7,
+    "m_MapSizeY": 7,
+    "NKMWarfareTile0": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_NKM_WARFARE_SPAWN_POINT_TYPE": "NWSPT_DIVE",
+      "m_BattleConditionStrID": "BC_FOG"
+    },
+    "NKMWarfareTile1": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile2": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile3": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_DungeonStrID": "NKM_DUNGEON_DAILY_SEARCH_WAVE_3",
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_NEAREST_ATK",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile4": {
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    "NKMWarfareTile5": {
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    "NKMWarfareTile6": {
+      "m_TileType": "NWNTT_CHEST",
+      "m_DungeonStrID": "NKM_DUNGEON_DAILY_SEARCH_WAVE_3",
+      "m_bFlagDungeon": true,
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_DEFENSE"
+    },
+    "NKMWarfareTile7": {
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    "NKMWarfareTile8": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile9": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile10": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile11": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile12": {
+      "m_TileType": "NWMTT_RESUPPLY",
+      "m_BattleConditionStrID": "BC_FOG"
+    },
+    "NKMWarfareTile13": {
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    "NKMWarfareTile14": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile15": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile16": {
+      "m_TileType": "NWMTT_RESUPPLY",
+      "m_BattleConditionStrID": "BC_FOG"
+    },
+    "NKMWarfareTile17": {
+      "m_TileType": "NWNTT_CHEST",
+      "m_BattleConditionStrID": "BC_FOG"
+    },
+    "NKMWarfareTile18": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile19": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile20": {
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    "NKMWarfareTile21": {
+      "m_TileType": "NWNTT_CHEST",
+      "m_BattleConditionStrID": "BC_FOG"
+    },
+    "NKMWarfareTile22": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile23": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile24": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_DungeonStrID": "NKM_DUNGEON_DAILY_SEARCH_WAVE_3",
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_NEAREST_ATK",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile25": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile26": {
+      "m_TileType": "NWMTT_RESUPPLY",
+      "m_BattleConditionStrID": "BC_FOG"
+    },
+    "NKMWarfareTile27": {
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    "NKMWarfareTile28": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_DungeonStrID": "NKM_DUNGEON_DAILY_SEARCH_WAVE_3",
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_NEAREST_ATK",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile29": {
+      "m_TileType": "NWMTT_RESUPPLY",
+      "m_BattleConditionStrID": "BC_FOG"
+    },
+    "NKMWarfareTile30": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile31": {
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    "NKMWarfareTile32": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile33": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile34": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile35": {
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    "NKMWarfareTile36": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile37": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile38": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile39": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile40": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile41": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile42": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_NKM_WARFARE_SPAWN_POINT_TYPE": "NWSPT_DIVE",
+      "m_BattleConditionStrID": "BC_FOG"
+    },
+    "NKMWarfareTile43": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile44": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile45": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_DungeonStrID": "NKM_DUNGEON_DAILY_SEARCH_WAVE_3",
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_NEAREST_ATK",
+      "m_BattleConditionStrID": "BC_FOG",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 25
+      }
+    },
+    "NKMWarfareTile46": {
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    "NKMWarfareTile47": {
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    "NKMWarfareTile48": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_NKM_WARFARE_SPAWN_POINT_TYPE": "NWSPT_ASSAULT",
+      "m_BattleConditionStrID": "BC_FOG"
+    }
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

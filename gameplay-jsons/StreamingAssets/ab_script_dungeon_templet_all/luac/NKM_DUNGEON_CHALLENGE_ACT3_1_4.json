@@ -1,0 +1,179 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_CHALLENGE_ACT3_1_4.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 6
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.8
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_CHALLENGE_DELTA_KYLE_AP"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 3,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.25
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.2,
+              "NST_HP": 1.4,
+              "NST_HIT": 1.1
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 6,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.2,
+              "NST_HP": 1.4,
+              "NST_HIT": 1.1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_FUTURE_BALLISTA",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 1.1,
+            "m_fEventBossHPUpper": 0.8,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_STATE_GUNSHIP",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 20,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.4
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.7,
+              "NST_DEF": 0.6
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_JOO_SHI_YOON_AP",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.51,
+            "m_fEventBossHPUpper": 0.1,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.35
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 6,
+    "m_fCostSpeedRateB": 0.8,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_CHALLENGE_DELTA_KYLE_AP",
+    "m_fBossPosZ": 0.6,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 3,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.25
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.2,
+            "NST_HP": 1.4,
+            "NST_HIT": 1.1
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 6,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.2,
+            "NST_HP": 1.4,
+            "NST_HIT": 1.1
+          }
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_FUTURE_BALLISTA",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 1.1,
+          "m_fEventBossHPUpper": 0.8,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_STATE_GUNSHIP",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 20,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.4
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.7,
+            "NST_DEF": 0.6
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_JOO_SHI_YOON_AP",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.51,
+          "m_fEventBossHPUpper": 0.1,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.35
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

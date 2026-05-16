@@ -1,0 +1,207 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_HORIZON_R_1_1_HM.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 5
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_HORIZON_POLICE_LEE_YUMI_H"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_TIDE_GRENADE_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 2,
+            "m_fEventTimeEnd": 240,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_HORIZON_POLICE_SOYEONG",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 999,
+            "m_fEventPos": 0.5
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_TIDE_GUNSHIELD_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.25
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_TIDE_VEHICLE_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.9,
+            "m_fEventBossHPUpper": 0.8,
+            "m_fEventPos": 0.35
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_TIDE_SUBMACHINEGUN_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.9,
+            "m_fEventBossHPUpper": 0.8,
+            "m_fEventPos": 0.25
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.3
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_TIDE_SUBMACHINEGUN_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.5,
+            "m_fEventBossHPUpper": 0.3,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.3
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_TIDE_GRENADE_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.5,
+            "m_fEventBossHPUpper": 0.3,
+            "m_fEventPos": 0.15
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.3
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 5,
+    "m_fCostSpeedRateB": 0.6,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_HORIZON_POLICE_LEE_YUMI_H",
+    "m_fBossPosZ": 0.6,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_TIDE_GRENADE_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 2,
+          "m_fEventTimeEnd": 240,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.3
+          }
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_HORIZON_POLICE_SOYEONG",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 999,
+          "m_fEventPos": 0.5
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_TIDE_GUNSHIELD_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.25
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_TIDE_VEHICLE_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.9,
+          "m_fEventBossHPUpper": 0.8,
+          "m_fEventPos": 0.35
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_TIDE_SUBMACHINEGUN_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.9,
+          "m_fEventBossHPUpper": 0.8,
+          "m_fEventPos": 0.25
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.3
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_TIDE_SUBMACHINEGUN_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.5,
+          "m_fEventBossHPUpper": 0.3,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.3
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_TIDE_GRENADE_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.5,
+          "m_fEventBossHPUpper": 0.3,
+          "m_fEventPos": 0.15
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.3
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

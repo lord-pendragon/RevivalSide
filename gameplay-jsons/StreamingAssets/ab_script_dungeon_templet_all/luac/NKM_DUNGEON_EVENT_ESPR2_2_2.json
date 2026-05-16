@@ -1,0 +1,584 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_EVENT_ESPR2_2_2.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 3,
+  "records": [
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_UNIT_ESPR_C_SNIPER",
+          "m_UnitLevel": 85,
+          "m_fEventDelay": 2,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SISTER",
+            "m_EventTagCount": 1,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventPos": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamB",
+      "value": [
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 3392221,
+          "m_fEventDelay": 0,
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 3.5
+          }
+        },
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 3392222,
+          "m_fEventDelay": 0,
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_EventDieUnitTag": "WAVE1",
+            "m_EventDieUnitTagCount": 17,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 3392223,
+          "m_fEventDelay": 0,
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_EventDieUnitTag": "WAVE2",
+            "m_EventDieUnitTagCount": 16,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "ADD_EVENTTAG",
+          "m_EventActionStrValue": "SISTER",
+          "m_EventActionValue": 1,
+          "m_fEventDelay": 1,
+          "m_NKMDungeonEventTiming": {
+            "m_EventDieUnitTag": "WAVE2",
+            "m_EventDieUnitTagCount": 16,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonWave",
+      "value": [
+        {
+          "m_WaveID": 1,
+          "m_NextWaveID": 2,
+          "m_fNextWavetime": 180,
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHIELD",
+              "m_EventRespawnUnitTag": "WAVE1",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 3,
+                "m_fEventPos": 0.3
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHIELD",
+              "m_EventRespawnUnitTag": "WAVE1",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 3,
+                "m_fEventPos": 0.25
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHOTGUN",
+              "m_EventRespawnUnitTag": "WAVE1",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 3,
+                "m_fEventPos": 0.22
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_RIFLE",
+              "m_EventRespawnUnitTag": "WAVE1",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 3,
+                "m_fEventPos": 0.22
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHOTGUN",
+              "m_EventRespawnUnitTag": "WAVE1",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 8,
+                "m_fEventPos": 0.25
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_RIFLE",
+              "m_EventRespawnUnitTag": "WAVE1",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 8,
+                "m_fEventPos": 0.22
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_RIFLE",
+              "m_EventRespawnUnitTag": "WAVE1",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 8,
+                "m_fEventPos": 0.22
+              }
+            }
+          ]
+        },
+        {
+          "m_WaveID": 2,
+          "m_NextWaveID": 3,
+          "m_fNextWavetime": 180,
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHIELD",
+              "m_EventRespawnUnitTag": "WAVE2",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0,
+                "m_fEventPos": 0.32
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHIELD",
+              "m_EventRespawnUnitTag": "WAVE2",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 2,
+                "m_fEventPos": 0.28
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHOTGUN",
+              "m_EventRespawnUnitTag": "WAVE2",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0,
+                "m_fEventPos": 0.24
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHOTGUN",
+              "m_EventRespawnUnitTag": "WAVE2",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0,
+                "m_fEventPos": 0.2
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHOTGUN",
+              "m_EventRespawnUnitTag": "WAVE2",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 2,
+                "m_fEventPos": 0.32
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_RIFLE",
+              "m_EventRespawnUnitTag": "WAVE2",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 2,
+                "m_fEventPos": 0.14
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_RIFLE",
+              "m_EventRespawnUnitTag": "WAVE2",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 4,
+                "m_fEventPos": 0.14
+              }
+            }
+          ]
+        },
+        {
+          "m_WaveID": 3,
+          "m_fNextWavetime": 180,
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHIELD",
+              "m_EventRespawnUnitTag": "WAVE3",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0,
+                "m_fEventPos": 0.36
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHIELD",
+              "m_EventRespawnUnitTag": "WAVE3",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0,
+                "m_fEventPos": 0.32
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHOTGUN",
+              "m_EventRespawnUnitTag": "WAVE3",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 3,
+                "m_fEventPos": 0.28
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHOTGUN",
+              "m_EventRespawnUnitTag": "WAVE3",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 3,
+                "m_fEventPos": 0.24
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHOTGUN",
+              "m_EventRespawnUnitTag": "WAVE3",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 6,
+                "m_fEventPos": 0.2
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_RIFLE",
+              "m_EventRespawnUnitTag": "WAVE3",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 6,
+                "m_fEventPos": 0.16
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_RIFLE",
+              "m_EventRespawnUnitTag": "WAVE3",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 6,
+                "m_fEventPos": 0.12
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_RIFLE",
+              "m_EventRespawnUnitTag": "WAVE3",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 10,
+                "m_fEventPos": 0.08
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_UNIT_ESPR_C_SNIPER",
+        "m_UnitLevel": 85,
+        "m_fEventDelay": 2,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SISTER",
+          "m_EventTagCount": 1,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventPos": 0.1
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamB": [
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 3392221,
+        "m_fEventDelay": 0,
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 3.5
+        }
+      },
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 3392222,
+        "m_fEventDelay": 0,
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_EventDieUnitTag": "WAVE1",
+          "m_EventDieUnitTagCount": 17,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 3392223,
+        "m_fEventDelay": 0,
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_EventDieUnitTag": "WAVE2",
+          "m_EventDieUnitTagCount": 16,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "ADD_EVENTTAG",
+        "m_EventActionStrValue": "SISTER",
+        "m_EventActionValue": 1,
+        "m_fEventDelay": 1,
+        "m_NKMDungeonEventTiming": {
+          "m_EventDieUnitTag": "WAVE2",
+          "m_EventDieUnitTagCount": 16,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      }
+    ],
+    "m_listDungeonWave": [
+      {
+        "m_WaveID": 1,
+        "m_NextWaveID": 2,
+        "m_fNextWavetime": 180,
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHIELD",
+            "m_EventRespawnUnitTag": "WAVE1",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 3,
+              "m_fEventPos": 0.3
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHIELD",
+            "m_EventRespawnUnitTag": "WAVE1",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 3,
+              "m_fEventPos": 0.25
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHOTGUN",
+            "m_EventRespawnUnitTag": "WAVE1",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 3,
+              "m_fEventPos": 0.22
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_RIFLE",
+            "m_EventRespawnUnitTag": "WAVE1",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 3,
+              "m_fEventPos": 0.22
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHOTGUN",
+            "m_EventRespawnUnitTag": "WAVE1",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 8,
+              "m_fEventPos": 0.25
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_RIFLE",
+            "m_EventRespawnUnitTag": "WAVE1",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 8,
+              "m_fEventPos": 0.22
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_RIFLE",
+            "m_EventRespawnUnitTag": "WAVE1",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 8,
+              "m_fEventPos": 0.22
+            }
+          }
+        ]
+      },
+      {
+        "m_WaveID": 2,
+        "m_NextWaveID": 3,
+        "m_fNextWavetime": 180,
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHIELD",
+            "m_EventRespawnUnitTag": "WAVE2",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0,
+              "m_fEventPos": 0.32
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHIELD",
+            "m_EventRespawnUnitTag": "WAVE2",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 2,
+              "m_fEventPos": 0.28
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHOTGUN",
+            "m_EventRespawnUnitTag": "WAVE2",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0,
+              "m_fEventPos": 0.24
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHOTGUN",
+            "m_EventRespawnUnitTag": "WAVE2",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0,
+              "m_fEventPos": 0.2
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHOTGUN",
+            "m_EventRespawnUnitTag": "WAVE2",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 2,
+              "m_fEventPos": 0.32
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_RIFLE",
+            "m_EventRespawnUnitTag": "WAVE2",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 2,
+              "m_fEventPos": 0.14
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_RIFLE",
+            "m_EventRespawnUnitTag": "WAVE2",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 4,
+              "m_fEventPos": 0.14
+            }
+          }
+        ]
+      },
+      {
+        "m_WaveID": 3,
+        "m_fNextWavetime": 180,
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHIELD",
+            "m_EventRespawnUnitTag": "WAVE3",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0,
+              "m_fEventPos": 0.36
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHIELD",
+            "m_EventRespawnUnitTag": "WAVE3",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0,
+              "m_fEventPos": 0.32
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHOTGUN",
+            "m_EventRespawnUnitTag": "WAVE3",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 3,
+              "m_fEventPos": 0.28
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHOTGUN",
+            "m_EventRespawnUnitTag": "WAVE3",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 3,
+              "m_fEventPos": 0.24
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_SHOTGUN",
+            "m_EventRespawnUnitTag": "WAVE3",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 6,
+              "m_fEventPos": 0.2
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_RIFLE",
+            "m_EventRespawnUnitTag": "WAVE3",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 6,
+              "m_fEventPos": 0.16
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_RIFLE",
+            "m_EventRespawnUnitTag": "WAVE3",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 6,
+              "m_fEventPos": 0.12
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_ESPR2_REPLACER_RIFLE",
+            "m_EventRespawnUnitTag": "WAVE3",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 10,
+              "m_fEventPos": 0.08
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

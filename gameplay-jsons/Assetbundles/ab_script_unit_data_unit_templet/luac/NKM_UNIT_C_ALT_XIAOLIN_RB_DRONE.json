@@ -1,0 +1,887 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_UNIT_C_ALT_XIAOLIN_RB_DRONE.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 24,
+  "records": [
+    {
+      "__key": "m_UnitSizeX",
+      "value": 300
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 140
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.1
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 240
+    },
+    {
+      "__key": "m_fAirHigh",
+      "value": 260
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 0
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 0
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.5
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.5
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 0
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 1600
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 1900
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 2000
+    },
+    {
+      "__key": "m_AttackedTargetTime",
+      "value": 1
+    },
+    {
+      "__key": "m_bAttackedTarget",
+      "value": false
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": true
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": false
+    },
+    {
+      "__key": "m_bNoDamageState",
+      "value": true
+    },
+    {
+      "__key": "m_fDamageUpFactor",
+      "value": 0
+    },
+    {
+      "__key": "m_bNoMove",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageBackSpeed",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageDownState",
+      "value": true
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 1.5
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.3,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_DamagedChangeState": "USN_ASTAND",
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 1.3333333333333333,
+              "m_EffectName": "AB_FX_CMN_CHARGE",
+              "m_AnimName": "BASE",
+              "m_fScaleFactor": 0.6,
+              "m_OffsetY": 190,
+              "m_OffsetX": 30,
+              "m_OffsetZ": 0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_AIR_SMALL_START"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_22"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_33"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_StateName": "USN_RUN",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": true,
+          "m_bRun": true
+        },
+        {
+          "m_StateName": "USN_ATTACK",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.1,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8333333333333334,
+              "m_DEName": "DE_UNIT_C_ALT_XIAOLIN_RB_DRONE_ATTACK1",
+              "m_OffsetX": 0,
+              "m_OffsetY": 80,
+              "m_bTargetPos": true
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_16"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_EffectName": "AB_FX_CAST_SKILL",
+              "m_AnimName": "BASE",
+              "m_BoneName": "BIP01_SPINE1",
+              "m_fScaleFactor": 30.0,
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6666666666666666,
+              "m_DEName": "DE_UNIT_C_ALT_XIAOLIN_RB_SKILL1",
+              "m_OffsetX": 0,
+              "m_OffsetY": 150,
+              "m_bTargetPos": true
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 3.0,
+              "m_fColorR": 0.5,
+              "m_fColorG": 0.5,
+              "m_fColorB": 1.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_07"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.13333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.23333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.43333333333333335,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MOVEMENT_05"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_HYPER",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "HYPER_SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.25,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_fAirHigh": 180,
+          "m_listNKMEventMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.3333333333333335,
+              "m_bTargetUnit": false,
+              "m_OffsetJumpYPos": 80.0,
+              "m_MoveTime": 2.0
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_EffectName": "AB_FX_UNIT_C_ALT_XIAOLIN_RB_DRONE_HYPER1_MARK",
+              "m_BoneName": "",
+              "m_AnimName": "BASE",
+              "m_OffsetX": 150,
+              "m_OffsetY": 0
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.966666666666667,
+              "m_DEName": "DE_UNIT_C_ALT_XIAOLIN_RB_DRONE_HYPER1_BOX",
+              "m_OffsetX": 50,
+              "m_OffsetY": 0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.1,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_21"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_22"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_24"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_DIE",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": false,
+          "m_listNKMEventDie": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_A",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": false,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_B",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": false,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_AIR_UP",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": false,
+          "m_SpeedY0NegativeChangeState": "USN_DAMAGE_AIR_DOWN"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_AIR_UP",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": false,
+          "m_SpeedY0NegativeChangeState": "USN_DAMAGE_AIR_DOWN"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_AIR_DOWN",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": false,
+          "m_SpeedYPositiveChangeState": "USN_DAMAGE_AIR_UP",
+          "m_FootOnLandChangeState": "USN_DAMAGE_LANDING"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_LANDING",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_bAnimLoop": false,
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+          "m_AnimEndChangeState": "USN_DAMAGE_STAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_STAND",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": false,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_STUN",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": true,
+          "m_bStunState": true,
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_EffectName": "AB_FX_BUFF_STUN",
+              "m_BoneName": "BIP01_HEAD",
+              "m_bStateEndStop": true,
+              "m_bHold": true,
+              "m_bStateEndStopForce": true,
+              "m_AnimName": "BASE"
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_SLEEP",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": true,
+          "m_bSleepState": true,
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN"
+        },
+        {
+          "m_StateName": "USN_DAMAGE_FREEZE",
+          "m_AnimName": "ASTAND"
+        },
+        {
+          "m_StateName": "USN_DAMAGE_HOLD",
+          "m_AnimName": "ASTAND"
+        },
+        {
+          "m_StateName": "USN_DAMAGE_FEAR",
+          "m_AnimName": "ASTAND"
+        },
+        {
+          "m_StateName": "USN_DAMAGE_FEAR_NOMOVE",
+          "m_AnimName": "ASTAND"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_bAnimLoop": false,
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+          "m_AnimEndChangeState": "USN_DAMAGE_STAND",
+          "m_FootOnLandChangeState": "USN_DAMAGE_DIE",
+          "m_FootOffLandChangeState": ""
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_bAnimLoop": false,
+          "m_fAirHigh": 260.0,
+          "m_listNKMEventDissolve": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5,
+              "m_fDissolve": 1,
+              "m_fTrackTime": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_UnitSizeX": 300,
+    "m_UnitSizeY": 140,
+    "m_SpriteScale": 1.1,
+    "m_fGageOffsetY": 240,
+    "m_fAirHigh": 260,
+    "m_fShadowScaleX": 0,
+    "m_fShadowScaleY": 0,
+    "m_fForceRespawnZposMin": 0.5,
+    "m_fForceRespawnZposMax": 0.5,
+    "m_SpeedRun": 0,
+    "m_TargetNearRange": 1600,
+    "m_SeeRange": 1900,
+    "m_SeeRangeMax": 2000,
+    "m_AttackedTargetTime": 1,
+    "m_bAttackedTarget": false,
+    "m_bUseMotionBlur": true,
+    "m_bShowGage": false,
+    "m_bNoDamageState": true,
+    "m_fDamageUpFactor": 0,
+    "m_bNoMove": true,
+    "m_bNoDamageBackSpeed": true,
+    "m_bNoDamageDownState": true,
+    "m_fDieCompleteTime": 1.5,
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.3,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_DamagedChangeState": "USN_ASTAND",
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 1.3333333333333333,
+            "m_EffectName": "AB_FX_CMN_CHARGE",
+            "m_AnimName": "BASE",
+            "m_fScaleFactor": 0.6,
+            "m_OffsetY": 190,
+            "m_OffsetX": 30,
+            "m_OffsetZ": 0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_AIR_SMALL_START"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_22"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_33"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_StateName": "USN_RUN",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": true,
+        "m_bRun": true
+      },
+      {
+        "m_StateName": "USN_ATTACK",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.1,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8333333333333334,
+            "m_DEName": "DE_UNIT_C_ALT_XIAOLIN_RB_DRONE_ATTACK1",
+            "m_OffsetX": 0,
+            "m_OffsetY": 80,
+            "m_bTargetPos": true
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_16"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_EffectName": "AB_FX_CAST_SKILL",
+            "m_AnimName": "BASE",
+            "m_BoneName": "BIP01_SPINE1",
+            "m_fScaleFactor": 30.0,
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6666666666666666,
+            "m_DEName": "DE_UNIT_C_ALT_XIAOLIN_RB_SKILL1",
+            "m_OffsetX": 0,
+            "m_OffsetY": 150,
+            "m_bTargetPos": true
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 3.0,
+            "m_fColorR": 0.5,
+            "m_fColorG": 0.5,
+            "m_fColorB": 1.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_07"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.13333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.23333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.43333333333333335,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MOVEMENT_05"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_HYPER",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "HYPER_SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.25,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_fAirHigh": 180,
+        "m_listNKMEventMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.3333333333333335,
+            "m_bTargetUnit": false,
+            "m_OffsetJumpYPos": 80.0,
+            "m_MoveTime": 2.0
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_EffectName": "AB_FX_UNIT_C_ALT_XIAOLIN_RB_DRONE_HYPER1_MARK",
+            "m_BoneName": "",
+            "m_AnimName": "BASE",
+            "m_OffsetX": 150,
+            "m_OffsetY": 0
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.966666666666667,
+            "m_DEName": "DE_UNIT_C_ALT_XIAOLIN_RB_DRONE_HYPER1_BOX",
+            "m_OffsetX": 50,
+            "m_OffsetY": 0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.1,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_21"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_22"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_24"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_DIE",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": false,
+        "m_listNKMEventDie": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_A",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": false,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_B",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": false,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_AIR_UP",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": false,
+        "m_SpeedY0NegativeChangeState": "USN_DAMAGE_AIR_DOWN"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_AIR_UP",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": false,
+        "m_SpeedY0NegativeChangeState": "USN_DAMAGE_AIR_DOWN"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_AIR_DOWN",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": false,
+        "m_SpeedYPositiveChangeState": "USN_DAMAGE_AIR_UP",
+        "m_FootOnLandChangeState": "USN_DAMAGE_LANDING"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_LANDING",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_bAnimLoop": false,
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+        "m_AnimEndChangeState": "USN_DAMAGE_STAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_STAND",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": false,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_STUN",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": true,
+        "m_bStunState": true,
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_EffectName": "AB_FX_BUFF_STUN",
+            "m_BoneName": "BIP01_HEAD",
+            "m_bStateEndStop": true,
+            "m_bHold": true,
+            "m_bStateEndStopForce": true,
+            "m_AnimName": "BASE"
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_SLEEP",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": true,
+        "m_bSleepState": true,
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN"
+      },
+      {
+        "m_StateName": "USN_DAMAGE_FREEZE",
+        "m_AnimName": "ASTAND"
+      },
+      {
+        "m_StateName": "USN_DAMAGE_HOLD",
+        "m_AnimName": "ASTAND"
+      },
+      {
+        "m_StateName": "USN_DAMAGE_FEAR",
+        "m_AnimName": "ASTAND"
+      },
+      {
+        "m_StateName": "USN_DAMAGE_FEAR_NOMOVE",
+        "m_AnimName": "ASTAND"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_bAnimLoop": false,
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+        "m_AnimEndChangeState": "USN_DAMAGE_STAND",
+        "m_FootOnLandChangeState": "USN_DAMAGE_DIE",
+        "m_FootOffLandChangeState": ""
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_bAnimLoop": false,
+        "m_fAirHigh": 260.0,
+        "m_listNKMEventDissolve": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5,
+            "m_fDissolve": 1,
+            "m_fTrackTime": 2
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

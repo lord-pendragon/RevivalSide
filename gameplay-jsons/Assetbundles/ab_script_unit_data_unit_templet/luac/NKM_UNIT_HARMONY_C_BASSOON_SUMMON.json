@@ -1,0 +1,672 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_UNIT_HARMONY_C_BASSOON_SUMMON.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 21,
+  "records": [
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.31
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.4
+    },
+    {
+      "__key": "m_UnitSizeX",
+      "value": 120
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 280
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": false
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 290
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 170
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 170
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 220
+    },
+    {
+      "__key": "m_SeeTarget",
+      "value": true
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 950
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 3000
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 3100
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 2.0
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": true
+    },
+    {
+      "__key": "m_fBuffEffectScaleFactor",
+      "value": 1.0
+    },
+    {
+      "__key": "m_bNoMove",
+      "value": true
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_BuffStrID": "BUFF_HARMONY_C_BASSOON_SUMMON_INVISIBLE"
+        },
+        {
+          "m_BuffStrID": "BUFF_HARMONY_C_BASSOON_PASSIVE2"
+        }
+      ]
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1_START",
+          "m_bNoTarget": true
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_START",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_bShowGage": false,
+          "m_DamagedChangeState": "USN_ASTAND",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_AnimName": "START",
+          "m_fAnimSpeed": 1.1,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventEffect": [
+            {
+              "m_fScaleFactor": 1.0,
+              "m_fEventTime": 1.0,
+              "m_EffectName": "AB_FX_BUFF_MAP_BLUE",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_AnimName": "BASE",
+              "m_fAddRotate": 0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_15"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_02"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1_START",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK1_START",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimEndChangeState": "USN_ATTACK1_LOOP",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.5,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_LIGHT_02"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1_LOOP",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK1_LOOP",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_StateTimeChangeStateTime": 30,
+          "m_StateTimeChangeState": "USN_ATTACK1_END",
+          "m_TargetLostOrDieStateDurationTime": 0.5,
+          "m_TargetLostOrDieState": "USN_ATTACK1_END",
+          "m_TargetDistOverChangeStateDist": 6000,
+          "m_TargetDistOverChangeState": "USN_ATTACK1_END",
+          "m_listNKMEventBuff": [
+            {
+              "m_fEventTime": 3.0,
+              "m_BuffStrID": "BUFF_HARMONY_C_BASSOON_PASSIVE1",
+              "m_bMyTeam": true,
+              "m_fRange": 6000
+            },
+            {
+              "m_Condition": {
+                "m_MasterSkillStrID": "NKM_UNIT_HARMONY_C_BASSOON_PASSIVE",
+                "m_MasterSkillLevel": [
+                  5,
+                  99
+                ]
+              },
+              "m_fEventTime": 3.0,
+              "m_BuffStrID": "BUFF_HARMONY_C_BASSOON_PASSIVE3",
+              "m_bMyTeam": true,
+              "m_fRange": 6000
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_fLocalVol": 0.4,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_SKILL_1"
+              ]
+            },
+            {
+              "m_fEventTime": 3.0,
+              "m_fLocalVol": 0.4,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1_END",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK1_END",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWING_BIG_03"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_bSkillCutIn": false,
+          "m_AnimName": "SKILL1",
+          "m_fAnimSpeed": 1.0,
+          "m_StateCoolTime": 20.0,
+          "m_listNKMEventEffect": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_EffectName": "AB_FX_CAST_SKILL",
+              "m_fScaleFactor": 30.0,
+              "m_AnimName": "BASE",
+              "m_BoneName": "BIP01_SPINE1",
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_HARMONY_C_BASSOON_SUMMON_HP_DIE1"
+            }
+          ],
+          "m_listNKMEventChangeState": [
+            {
+              "m_Condition": {
+                "m_NeedBuffStrID": "BUFF_HARMONY_C_BASSOON_SUMMON_HP_DIE2"
+              },
+              "m_bStateEndTime": true,
+              "m_ChangeState": "USN_DIE2"
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": 0.5,
+              "m_DEName": "DE_UNIT_HARMONY_C_BASSON_SUMMON_SKILL1",
+              "m_OffsetX": 200,
+              "m_OffsetY": 0,
+              "m_bHold": true,
+              "m_FollowType": "TDT_INVALID"
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 99999,
+              "m_fColorR": 0.5,
+              "m_fColorG": 0.5,
+              "m_fColorB": 1.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ]
+            },
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_BASOON_SKILL_ATTACK"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DIE1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "PASSIVE1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_listNKMEventDie": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.8333333333333334,
+              "m_bImmediateDie": true
+            }
+          ],
+          "m_listNKMEventDissolve": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_fDissolve": 1,
+              "m_fTrackTime": 1.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_15"
+              ]
+            },
+            {
+              "m_fEventTime": 0.6666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_02"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DIE2",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "PASSIVE1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_listNKMEventDie": [
+            {
+              "m_Condition": {
+                "m_NeedBuffStrID": "BUFF_HARMONY_C_BASSOON_SUMMON_HP_DIE2"
+              },
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.8333333333333334,
+              "m_bImmediateDie": true
+            }
+          ],
+          "m_listNKMEventDissolve": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_fDissolve": 1,
+              "m_fTrackTime": 1.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_15"
+              ]
+            },
+            {
+              "m_fEventTime": 0.6666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_02"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fForceRespawnZposMin": 0.31,
+    "m_fForceRespawnZposMax": 0.4,
+    "m_UnitSizeX": 120,
+    "m_UnitSizeY": 280,
+    "m_SpriteScale": 1.0,
+    "m_bShowGage": false,
+    "m_fGageOffsetY": 290,
+    "m_fShadowScaleX": 170,
+    "m_fShadowScaleY": 170,
+    "m_SpeedRun": 220,
+    "m_SeeTarget": true,
+    "m_TargetNearRange": 950,
+    "m_SeeRange": 3000,
+    "m_SeeRangeMax": 3100,
+    "m_fDieCompleteTime": 2.0,
+    "m_bUseMotionBlur": true,
+    "m_fBuffEffectScaleFactor": 1.0,
+    "m_bNoMove": true,
+    "m_listStaticBuffData": [
+      {
+        "m_BuffStrID": "BUFF_HARMONY_C_BASSOON_SUMMON_INVISIBLE"
+      },
+      {
+        "m_BuffStrID": "BUFF_HARMONY_C_BASSOON_PASSIVE2"
+      }
+    ],
+    "m_listAttackStateData": [
+      {
+        "m_StateName": "USN_ATTACK1_START",
+        "m_bNoTarget": true
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_START",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_bShowGage": false,
+        "m_DamagedChangeState": "USN_ASTAND",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_AnimName": "START",
+        "m_fAnimSpeed": 1.1,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventEffect": [
+          {
+            "m_fScaleFactor": 1.0,
+            "m_fEventTime": 1.0,
+            "m_EffectName": "AB_FX_BUFF_MAP_BLUE",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_AnimName": "BASE",
+            "m_fAddRotate": 0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_15"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_02"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1_START",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK1_START",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimEndChangeState": "USN_ATTACK1_LOOP",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.5,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_LIGHT_02"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1_LOOP",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK1_LOOP",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_StateTimeChangeStateTime": 30,
+        "m_StateTimeChangeState": "USN_ATTACK1_END",
+        "m_TargetLostOrDieStateDurationTime": 0.5,
+        "m_TargetLostOrDieState": "USN_ATTACK1_END",
+        "m_TargetDistOverChangeStateDist": 6000,
+        "m_TargetDistOverChangeState": "USN_ATTACK1_END",
+        "m_listNKMEventBuff": [
+          {
+            "m_fEventTime": 3.0,
+            "m_BuffStrID": "BUFF_HARMONY_C_BASSOON_PASSIVE1",
+            "m_bMyTeam": true,
+            "m_fRange": 6000
+          },
+          {
+            "m_Condition": {
+              "m_MasterSkillStrID": "NKM_UNIT_HARMONY_C_BASSOON_PASSIVE",
+              "m_MasterSkillLevel": [
+                5,
+                99
+              ]
+            },
+            "m_fEventTime": 3.0,
+            "m_BuffStrID": "BUFF_HARMONY_C_BASSOON_PASSIVE3",
+            "m_bMyTeam": true,
+            "m_fRange": 6000
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_fLocalVol": 0.4,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_SKILL_1"
+            ]
+          },
+          {
+            "m_fEventTime": 3.0,
+            "m_fLocalVol": 0.4,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1_END",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK1_END",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWING_BIG_03"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_bSkillCutIn": false,
+        "m_AnimName": "SKILL1",
+        "m_fAnimSpeed": 1.0,
+        "m_StateCoolTime": 20.0,
+        "m_listNKMEventEffect": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_EffectName": "AB_FX_CAST_SKILL",
+            "m_fScaleFactor": 30.0,
+            "m_AnimName": "BASE",
+            "m_BoneName": "BIP01_SPINE1",
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_HARMONY_C_BASSOON_SUMMON_HP_DIE1"
+          }
+        ],
+        "m_listNKMEventChangeState": [
+          {
+            "m_Condition": {
+              "m_NeedBuffStrID": "BUFF_HARMONY_C_BASSOON_SUMMON_HP_DIE2"
+            },
+            "m_bStateEndTime": true,
+            "m_ChangeState": "USN_DIE2"
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": 0.5,
+            "m_DEName": "DE_UNIT_HARMONY_C_BASSON_SUMMON_SKILL1",
+            "m_OffsetX": 200,
+            "m_OffsetY": 0,
+            "m_bHold": true,
+            "m_FollowType": "TDT_INVALID"
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 99999,
+            "m_fColorR": 0.5,
+            "m_fColorG": 0.5,
+            "m_fColorB": 1.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ]
+          },
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_BASOON_SKILL_ATTACK"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DIE1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "PASSIVE1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_listNKMEventDie": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.8333333333333334,
+            "m_bImmediateDie": true
+          }
+        ],
+        "m_listNKMEventDissolve": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_fDissolve": 1,
+            "m_fTrackTime": 1.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_15"
+            ]
+          },
+          {
+            "m_fEventTime": 0.6666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_02"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DIE2",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "PASSIVE1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_listNKMEventDie": [
+          {
+            "m_Condition": {
+              "m_NeedBuffStrID": "BUFF_HARMONY_C_BASSOON_SUMMON_HP_DIE2"
+            },
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.8333333333333334,
+            "m_bImmediateDie": true
+          }
+        ],
+        "m_listNKMEventDissolve": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_fDissolve": 1,
+            "m_fTrackTime": 1.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_15"
+            ]
+          },
+          {
+            "m_fEventTime": 0.6666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_02"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

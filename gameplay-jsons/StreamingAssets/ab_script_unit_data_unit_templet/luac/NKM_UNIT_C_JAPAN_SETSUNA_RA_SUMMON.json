@@ -1,0 +1,617 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_UNIT_C_JAPAN_SETSUNA_RA_SUMMON.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 18,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_UNIT_BASE_SUMMON"
+    },
+    {
+      "__key": "m_NKC_TEAM_COLOR_TYPE",
+      "value": "NTCT_ONLY_SHADOW"
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.0
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.05
+    },
+    {
+      "__key": "m_UnitSizeX",
+      "value": 100
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 100
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 0.8
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": false
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 100
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 100
+    },
+    {
+      "__key": "m_fShadowOffsetX",
+      "value": 0
+    },
+    {
+      "__key": "m_fShadowOffsetY",
+      "value": -10
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 0
+    },
+    {
+      "__key": "m_bNoMove",
+      "value": true
+    },
+    {
+      "__key": "m_SeeTarget",
+      "value": false
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 0.03333333333333333
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_BuffStrID": "BUFF_JAPAN_C_SETSUNA_RA_SUMMON_RANGE"
+        },
+        {
+          "m_Condition": {
+            "m_MasterSkillStrID": "NKM_UNIT_C_JAPAN_SETSUNA_RA_LEADER",
+            "m_MasterSkillLevel": [
+              1,
+              1
+            ],
+            "m_bLeaderUnit": true
+          },
+          "m_BuffStrID": "BUFF_JAPAN_C_SETSUNA_RA_SUMMON_DAMAGE_REDUCE",
+          "m_BuffLevel": 3
+        },
+        {
+          "m_Condition": {
+            "m_MasterSkillStrID": "NKM_UNIT_C_JAPAN_SETSUNA_RA_LEADER",
+            "m_MasterSkillLevel": [
+              2,
+              2
+            ],
+            "m_bLeaderUnit": true
+          },
+          "m_BuffStrID": "BUFF_JAPAN_C_SETSUNA_RA_SUMMON_DAMAGE_REDUCE",
+          "m_BuffLevel": 6
+        },
+        {
+          "m_Condition": {
+            "m_MasterSkillStrID": "NKM_UNIT_C_JAPAN_SETSUNA_RA_LEADER",
+            "m_MasterSkillLevel": [
+              3,
+              3
+            ],
+            "m_bLeaderUnit": true
+          },
+          "m_BuffStrID": "BUFF_JAPAN_C_SETSUNA_RA_SUMMON_DAMAGE_REDUCE",
+          "m_BuffLevel": 9
+        },
+        {
+          "m_Condition": {
+            "m_MasterSkillStrID": "NKM_UNIT_C_JAPAN_SETSUNA_RA_LEADER",
+            "m_MasterSkillLevel": [
+              4,
+              4
+            ],
+            "m_bLeaderUnit": true
+          },
+          "m_BuffStrID": "BUFF_JAPAN_C_SETSUNA_RA_SUMMON_DAMAGE_REDUCE",
+          "m_BuffLevel": 15
+        },
+        {
+          "m_Condition": {
+            "m_MasterSkillStrID": "NKM_UNIT_C_JAPAN_SETSUNA_RA_LEADER",
+            "m_MasterSkillLevel": [
+              5,
+              99
+            ],
+            "m_bLeaderUnit": true
+          },
+          "m_BuffStrID": "BUFF_JAPAN_C_SETSUNA_RA_SUMMON_DAMAGE_REDUCE",
+          "m_BuffLevel": 15
+        },
+        {
+          "m_Condition": {
+            "m_MasterSkillStrID": "NKM_UNIT_C_JAPAN_SETSUNA_RA_LEADER",
+            "m_MasterSkillLevel": [
+              5,
+              99
+            ],
+            "m_bLeaderUnit": true
+          },
+          "m_BuffStrID": "DEBUFF_JAPAN_C_SETSUNA_RA_SUMMON",
+          "m_BuffLevel": 10
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 1.0,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_LIGHT_09"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ASTAND",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_BuffStrID": "DEBUFF_JAPAN_C_SETSUNA_RA_SUMMON_TIME_REDUCE",
+              "m_BuffLevel": 50
+            }
+          ],
+          "m_listNKMEventHeal": [
+            {
+              "m_Condition": {
+                "m_bUsePVE": false
+              },
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6666666666666666,
+              "m_fHealRate": 0.0125,
+              "m_bEnableSelfHeal": false,
+              "m_fRangeMin": -400.0,
+              "m_fRangeMax": 400.0,
+              "m_MaxCount": 99
+            },
+            {
+              "m_Condition": {
+                "m_bUsePVP": false
+              },
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6666666666666666,
+              "m_fHealRate": 0.0125,
+              "m_bEnableSelfHeal": false,
+              "m_fRangeMin": -400.0,
+              "m_fRangeMax": 400.0,
+              "m_MaxCount": 99
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.6666666666666666,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_02"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_HYPER_START",
+          "m_AnimName": "HYPER_SKILL1_START",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_AnimEndChangeState": "USN_HYPER_LOOP",
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_BuffStrID": "BUFF_JAPAN_C_SETSUNA_RA_SUMMON_TIME_INCREASE"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_LIGHT_06"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_HYPER_LOOP",
+          "m_AnimName": "HYPER_SKILL1_LOOP",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 1.0,
+          "m_StateTimeChangeStateTime": 15,
+          "m_StateTimeChangeState": "USN_HYPER_END",
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_BuffStrID": "DEBUFF_JAPAN_C_SETSUNA_RA_SUMMON_TIME_REDUCE",
+              "m_BuffLevel": 50
+            }
+          ],
+          "m_listNKMEventHeal": [
+            {
+              "m_Condition": {
+                "m_bUsePVE": false
+              },
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.16666666666666666,
+              "m_fHealRate": 0.025,
+              "m_bEnableSelfHeal": false,
+              "m_fRangeMin": -400.0,
+              "m_fRangeMax": 400.0,
+              "m_MaxCount": 99
+            },
+            {
+              "m_Condition": {
+                "m_bUsePVP": false
+              },
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.16666666666666666,
+              "m_fHealRate": 0.025,
+              "m_bEnableSelfHeal": false,
+              "m_fRangeMin": -400.0,
+              "m_fRangeMax": 400.0,
+              "m_MaxCount": 99
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_PlayRate": 1.0,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_25"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_HYPER_END",
+          "m_AnimName": "HYPER_SKILL1_END",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_AnimEndChangeState": "USN_ASTAND"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_bAnimLoop": false,
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE"
+        },
+        {
+          "m_StateName": "USN_RUN",
+          "m_AnimName": "ASTAND"
+        },
+        {
+          "m_StateName": "USN_DAMAGE_STUN",
+          "m_AnimName": "ASTAND"
+        },
+        {
+          "m_StateName": "USN_DAMAGE_FEAR",
+          "m_AnimName": "ASTAND"
+        },
+        {
+          "m_StateName": "USN_DAMAGE_FEAR_NOMOVE",
+          "m_AnimName": "ASTAND"
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_UNIT_BASE_SUMMON",
+    "m_NKC_TEAM_COLOR_TYPE": "NTCT_ONLY_SHADOW",
+    "m_fForceRespawnZposMin": 0.0,
+    "m_fForceRespawnZposMax": 0.05,
+    "m_UnitSizeX": 100,
+    "m_UnitSizeY": 100,
+    "m_SpriteScale": 0.8,
+    "m_bShowGage": false,
+    "m_fShadowScaleX": 100,
+    "m_fShadowScaleY": 100,
+    "m_fShadowOffsetX": 0,
+    "m_fShadowOffsetY": -10,
+    "m_SpeedRun": 0,
+    "m_bNoMove": true,
+    "m_SeeTarget": false,
+    "m_fDieCompleteTime": 0.03333333333333333,
+    "m_listStaticBuffData": [
+      {
+        "m_BuffStrID": "BUFF_JAPAN_C_SETSUNA_RA_SUMMON_RANGE"
+      },
+      {
+        "m_Condition": {
+          "m_MasterSkillStrID": "NKM_UNIT_C_JAPAN_SETSUNA_RA_LEADER",
+          "m_MasterSkillLevel": [
+            1,
+            1
+          ],
+          "m_bLeaderUnit": true
+        },
+        "m_BuffStrID": "BUFF_JAPAN_C_SETSUNA_RA_SUMMON_DAMAGE_REDUCE",
+        "m_BuffLevel": 3
+      },
+      {
+        "m_Condition": {
+          "m_MasterSkillStrID": "NKM_UNIT_C_JAPAN_SETSUNA_RA_LEADER",
+          "m_MasterSkillLevel": [
+            2,
+            2
+          ],
+          "m_bLeaderUnit": true
+        },
+        "m_BuffStrID": "BUFF_JAPAN_C_SETSUNA_RA_SUMMON_DAMAGE_REDUCE",
+        "m_BuffLevel": 6
+      },
+      {
+        "m_Condition": {
+          "m_MasterSkillStrID": "NKM_UNIT_C_JAPAN_SETSUNA_RA_LEADER",
+          "m_MasterSkillLevel": [
+            3,
+            3
+          ],
+          "m_bLeaderUnit": true
+        },
+        "m_BuffStrID": "BUFF_JAPAN_C_SETSUNA_RA_SUMMON_DAMAGE_REDUCE",
+        "m_BuffLevel": 9
+      },
+      {
+        "m_Condition": {
+          "m_MasterSkillStrID": "NKM_UNIT_C_JAPAN_SETSUNA_RA_LEADER",
+          "m_MasterSkillLevel": [
+            4,
+            4
+          ],
+          "m_bLeaderUnit": true
+        },
+        "m_BuffStrID": "BUFF_JAPAN_C_SETSUNA_RA_SUMMON_DAMAGE_REDUCE",
+        "m_BuffLevel": 15
+      },
+      {
+        "m_Condition": {
+          "m_MasterSkillStrID": "NKM_UNIT_C_JAPAN_SETSUNA_RA_LEADER",
+          "m_MasterSkillLevel": [
+            5,
+            99
+          ],
+          "m_bLeaderUnit": true
+        },
+        "m_BuffStrID": "BUFF_JAPAN_C_SETSUNA_RA_SUMMON_DAMAGE_REDUCE",
+        "m_BuffLevel": 15
+      },
+      {
+        "m_Condition": {
+          "m_MasterSkillStrID": "NKM_UNIT_C_JAPAN_SETSUNA_RA_LEADER",
+          "m_MasterSkillLevel": [
+            5,
+            99
+          ],
+          "m_bLeaderUnit": true
+        },
+        "m_BuffStrID": "DEBUFF_JAPAN_C_SETSUNA_RA_SUMMON",
+        "m_BuffLevel": 10
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 1.0,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_LIGHT_09"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ASTAND",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_BuffStrID": "DEBUFF_JAPAN_C_SETSUNA_RA_SUMMON_TIME_REDUCE",
+            "m_BuffLevel": 50
+          }
+        ],
+        "m_listNKMEventHeal": [
+          {
+            "m_Condition": {
+              "m_bUsePVE": false
+            },
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6666666666666666,
+            "m_fHealRate": 0.0125,
+            "m_bEnableSelfHeal": false,
+            "m_fRangeMin": -400.0,
+            "m_fRangeMax": 400.0,
+            "m_MaxCount": 99
+          },
+          {
+            "m_Condition": {
+              "m_bUsePVP": false
+            },
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6666666666666666,
+            "m_fHealRate": 0.0125,
+            "m_bEnableSelfHeal": false,
+            "m_fRangeMin": -400.0,
+            "m_fRangeMax": 400.0,
+            "m_MaxCount": 99
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.6666666666666666,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_02"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_HYPER_START",
+        "m_AnimName": "HYPER_SKILL1_START",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_AnimEndChangeState": "USN_HYPER_LOOP",
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_BuffStrID": "BUFF_JAPAN_C_SETSUNA_RA_SUMMON_TIME_INCREASE"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_LIGHT_06"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_HYPER_LOOP",
+        "m_AnimName": "HYPER_SKILL1_LOOP",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 1.0,
+        "m_StateTimeChangeStateTime": 15,
+        "m_StateTimeChangeState": "USN_HYPER_END",
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_BuffStrID": "DEBUFF_JAPAN_C_SETSUNA_RA_SUMMON_TIME_REDUCE",
+            "m_BuffLevel": 50
+          }
+        ],
+        "m_listNKMEventHeal": [
+          {
+            "m_Condition": {
+              "m_bUsePVE": false
+            },
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.16666666666666666,
+            "m_fHealRate": 0.025,
+            "m_bEnableSelfHeal": false,
+            "m_fRangeMin": -400.0,
+            "m_fRangeMax": 400.0,
+            "m_MaxCount": 99
+          },
+          {
+            "m_Condition": {
+              "m_bUsePVP": false
+            },
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.16666666666666666,
+            "m_fHealRate": 0.025,
+            "m_bEnableSelfHeal": false,
+            "m_fRangeMin": -400.0,
+            "m_fRangeMax": 400.0,
+            "m_MaxCount": 99
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_PlayRate": 1.0,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_25"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_HYPER_END",
+        "m_AnimName": "HYPER_SKILL1_END",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_AnimEndChangeState": "USN_ASTAND"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_bAnimLoop": false,
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE"
+      },
+      {
+        "m_StateName": "USN_RUN",
+        "m_AnimName": "ASTAND"
+      },
+      {
+        "m_StateName": "USN_DAMAGE_STUN",
+        "m_AnimName": "ASTAND"
+      },
+      {
+        "m_StateName": "USN_DAMAGE_FEAR",
+        "m_AnimName": "ASTAND"
+      },
+      {
+        "m_StateName": "USN_DAMAGE_FEAR_NOMOVE",
+        "m_AnimName": "ASTAND"
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

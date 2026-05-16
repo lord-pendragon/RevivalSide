@@ -1,0 +1,127 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_MONSTER_BOSS_TRANS_GRAVE_N.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 2,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_MONSTER_BOSS_BASIC_GRAVE_N"
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_listNKMEventAttack": [
+            {
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_TRANS_GRAVE_ATTACK1"
+            },
+            {
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_TRANS_GRAVE_ATTACK1"
+            },
+            {
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_TRANS_GRAVE_ATTACK1"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_listNKMEventAttack": [
+            {
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_TRANS_GRAVE_SKILL1"
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": 0.9333333333333333,
+              "m_DEName": "DE_NKM_MONSTER_BOSS_TRANS_GRAVE_MIST",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0
+            },
+            {
+              "m_fEventTime": 0.9333333333333333,
+              "m_DEName": "DE_NKM_MONSTER_BOSS_TRANS_GRAVE_MIST",
+              "m_OffsetX": 600,
+              "m_OffsetY": 0
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PATTERN_1",
+          "m_listNKMEventRespawn": [
+            {
+              "m_UnitStrID": "NKM_MONSTER_BOSS_TRANS_GRAVE_OBJECT"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PATTERN_2",
+          "m_listNKMEventRespawn": [
+            {
+              "m_UnitStrID": "NKM_MONSTER_BOSS_TRANS_GRAVE_OBJECT"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_MONSTER_BOSS_BASIC_GRAVE_N",
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_listNKMEventAttack": [
+          {
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_TRANS_GRAVE_ATTACK1"
+          },
+          {
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_TRANS_GRAVE_ATTACK1"
+          },
+          {
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_TRANS_GRAVE_ATTACK1"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_listNKMEventAttack": [
+          {
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_TRANS_GRAVE_SKILL1"
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": 0.9333333333333333,
+            "m_DEName": "DE_NKM_MONSTER_BOSS_TRANS_GRAVE_MIST",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0
+          },
+          {
+            "m_fEventTime": 0.9333333333333333,
+            "m_DEName": "DE_NKM_MONSTER_BOSS_TRANS_GRAVE_MIST",
+            "m_OffsetX": 600,
+            "m_OffsetY": 0
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PATTERN_1",
+        "m_listNKMEventRespawn": [
+          {
+            "m_UnitStrID": "NKM_MONSTER_BOSS_TRANS_GRAVE_OBJECT"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PATTERN_2",
+        "m_listNKMEventRespawn": [
+          {
+            "m_UnitStrID": "NKM_MONSTER_BOSS_TRANS_GRAVE_OBJECT"
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

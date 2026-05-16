@@ -1,0 +1,119 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_CHALLENGE_HORIZON_1_3.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 10
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EQC_HORIZON_M_LOAN"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.05
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatValue": {
+          "NST_ATK": 7000,
+          "NST_HP": -100000,
+          "NST_DEF": 300,
+          "NST_EVADE": -2000,
+          "NST_HIT": -300
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_MTC_TIDE_HELI",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 5,
+            "m_fEventTimeEnd": 240,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 3.0,
+              "NST_EVADE": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_SL_AIR_HELI",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 5,
+            "m_fEventTimeEnd": 240,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 3.2
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 10,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EQC_HORIZON_M_LOAN",
+    "m_fBossPosZ": 0.05,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatValue": {
+          "NST_ATK": 7000,
+          "NST_HP": -100000,
+          "NST_DEF": 300,
+          "NST_EVADE": -2000,
+          "NST_HIT": -300
+        }
+      }
+    },
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_MTC_TIDE_HELI",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 5,
+          "m_fEventTimeEnd": 240,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 3.0,
+            "NST_EVADE": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_SL_AIR_HELI",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 5,
+          "m_fEventTimeEnd": 240,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 3.2
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

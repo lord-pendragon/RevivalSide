@@ -1,0 +1,176 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_OMEN_6_1_5.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.0
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_BASIC_MINISTRA_EVENT_ADMIN_N"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.1
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_HP": 4
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+          "m_EventConditionNumValue": 80,
+          "m_dungeonEventType": "ADD_EVENTTAG",
+          "m_EventActionStrValue": "CA_SUYEON",
+          "m_EventActionValue": 1,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.1
+          }
+        },
+        {
+          "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_BASIC_MINISTRA_EVENT_ADMIN_N",
+          "m_EventConditionNumValue": 60,
+          "m_fEventDelay": 0,
+          "m_dungeonEventType": "SET_UNIT_STATE",
+          "m_EventActionValue": 1159,
+          "m_EventActionStrValue": "USN_HYPER1",
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "FORCE_WIN",
+          "m_EventActionValue": 0,
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_UNIT_CA_ADMIN_LEE_SUYEON",
+          "m_EventConditionValue2": "USN_HYPER1",
+          "m_fEventDelay": 1.6,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_UNIT_CA_ADMIN_LEE_SUYEON",
+          "m_UnitLevel": 120,
+          "m_UnitLimitBreakLevel": 13,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeGap": 11,
+            "m_fEventTimeEnd": 240,
+            "m_fEventPos": 0.1,
+            "m_EventTag": "CA_SUYEON",
+            "m_EventTagCount": 1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 3
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 1.0,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_BASIC_MINISTRA_EVENT_ADMIN_N",
+    "m_fBossPosZ": 0.1,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_HP": 4
+        }
+      }
+    },
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+        "m_EventConditionNumValue": 80,
+        "m_dungeonEventType": "ADD_EVENTTAG",
+        "m_EventActionStrValue": "CA_SUYEON",
+        "m_EventActionValue": 1,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.1
+        }
+      },
+      {
+        "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_BASIC_MINISTRA_EVENT_ADMIN_N",
+        "m_EventConditionNumValue": 60,
+        "m_fEventDelay": 0,
+        "m_dungeonEventType": "SET_UNIT_STATE",
+        "m_EventActionValue": 1159,
+        "m_EventActionStrValue": "USN_HYPER1",
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "FORCE_WIN",
+        "m_EventActionValue": 0,
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_UNIT_CA_ADMIN_LEE_SUYEON",
+        "m_EventConditionValue2": "USN_HYPER1",
+        "m_fEventDelay": 1.6,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_UNIT_CA_ADMIN_LEE_SUYEON",
+        "m_UnitLevel": 120,
+        "m_UnitLimitBreakLevel": 13,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeGap": 11,
+          "m_fEventTimeEnd": 240,
+          "m_fEventPos": 0.1,
+          "m_EventTag": "CA_SUYEON",
+          "m_EventTagCount": 1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 3
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

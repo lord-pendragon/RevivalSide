@@ -1,0 +1,152 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_MAIN_BATTLE_EP6_4_3.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 8
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.5
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EP6_MINISTRA_TRANS_MOVE"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EP6_WRAITH_TRANS_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 3,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EP6_WRAITH_TRANS_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 8,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.15
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EP6_SNIFFER_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 999,
+            "m_fEventPos": 0.6
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamB",
+      "value": [
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 20601,
+          "m_bPause": false,
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_EP6_MINISTRA_TRANS_MOVE",
+          "m_EventConditionValue2": "USN_PHASECHANGE1_REPAIR",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1
+          }
+        },
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 20602,
+          "m_bPause": false,
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_EP6_MINISTRA_TRANS_MOVE",
+          "m_EventConditionValue2": "USN_PHASECHANGE1_START1",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 8,
+    "m_fCostSpeedRateB": 0.5,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EP6_MINISTRA_TRANS_MOVE",
+    "m_fBossPosZ": 0.6,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EP6_WRAITH_TRANS_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 3,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EP6_WRAITH_TRANS_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 8,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.15
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EP6_SNIFFER_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 999,
+          "m_fEventPos": 0.6
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamB": [
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 20601,
+        "m_bPause": false,
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_EP6_MINISTRA_TRANS_MOVE",
+        "m_EventConditionValue2": "USN_PHASECHANGE1_REPAIR",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1
+        }
+      },
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 20602,
+        "m_bPause": false,
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_EP6_MINISTRA_TRANS_MOVE",
+        "m_EventConditionValue2": "USN_PHASECHANGE1_START1",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

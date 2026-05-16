@@ -1,0 +1,524 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_NORMAL_EP_ALT_CA_SEO_YOON_SUMMON_E.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 25,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_UNIT_BASE_BOSS"
+    },
+    {
+      "__key": "m_UnitSizeX",
+      "value": 200
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 200
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 300
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 300
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.5
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.5
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": true
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 0
+    },
+    {
+      "__key": "m_bNoMove",
+      "value": true
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 100
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 200
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 100
+    },
+    {
+      "__key": "m_bTargetNoChange",
+      "value": true
+    },
+    {
+      "__key": "m_AttackedTargetTime",
+      "value": 1
+    },
+    {
+      "__key": "m_bAttackedTarget",
+      "value": false
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": false
+    },
+    {
+      "__key": "m_bNoDamageBackSpeed",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageState",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageStopTime",
+      "value": true
+    },
+    {
+      "__key": "m_fDamageUpFactor",
+      "value": 0
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 1.0
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_BuffStrID": "DEBUFF_MONSTER_BOSS_REPLACER_SEO_YOON_LANCE_PHASECHANGE1",
+          "m_BuffLevel": 1
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "ASTART",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_bNoAI": true,
+          "m_StateTimeChangeStateTime": 0.03333333333333333,
+          "m_StateTimeChangeState": "USN_ASTAND"
+        },
+        {
+          "m_StateName": "USN_ASTAND",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": false,
+          "m_bNoAI": true,
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_DEName": "DE_NKM_MONSTER_BOSS_REPLACER_SEO_YOON_LANCE_SUMMON",
+              "m_bTargetPos": false,
+              "m_bShipSkillPos": false,
+              "m_bIgnoreTarget": false,
+              "m_bIgnoreNoTargets": false,
+              "m_OffsetX": 75,
+              "m_bStateEndStop": true
+            },
+            {
+              "m_bAnimTime": false,
+              "m_bStateEndTime": true,
+              "m_DEName": "DE_NKM_MONSTER_BOSS_REPLACER_SEO_YOON_LANCE_SUMMON_END",
+              "m_bTargetPos": false,
+              "m_bShipSkillPos": false,
+              "m_bIgnoreTarget": false,
+              "m_bIgnoreNoTargets": false,
+              "m_OffsetX": 75
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTimeMin": 0.16666666666666666,
+              "m_fEventTimeMax": 0.3333333333333333,
+              "m_fRangeMin": -500.0,
+              "m_fRangeMax": 500.0,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_REPLACER_SEO_YOON_LANCE_SUMMON_ATTACK1"
+            }
+          ],
+          "m_listNKMEventDie": [
+            {
+              "m_bAnimTime": true,
+              "m_bImmediateDie": false,
+              "m_fEventTime": 15.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_59"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 9999.0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_WHOOSH_03"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 9999.0
+            },
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_74"
+              ],
+              "m_fLocalVol": 0.7,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 9999.0
+            },
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_EXPLOSION_ATTACK_BIG"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 9999.0
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashGap": 8,
+              "m_fCameraCrashTime": 0.5
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_StateName": "USN_RUN",
+          "m_AnimName": "RUN",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 1.0,
+          "m_bRun": true,
+          "m_SuperArmorLevel": "NSAL_HYPER"
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_SuperArmorLevel": "NSAL_HYPER"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK1",
+          "m_AnimName": "ATTACK1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_bAutoCoolTime": true,
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.03333333333333333,
+              "m_fEventTimeMax": 0.1,
+              "m_fRangeMin": -300.0,
+              "m_fRangeMax": 300.0,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_THROWN_ATTACK1"
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_EffectName": "AB_FX_air_explosion_fire",
+              "m_OffsetY": 200,
+              "m_bUseZScale": false,
+              "m_bStateEndStop": true,
+              "m_AnimName": "BASE",
+              "m_fScaleFactor": 2
+            }
+          ],
+          "m_listNKMEventDie": [
+            {
+              "m_bAnimTime": true,
+              "m_bImmediateDie": true,
+              "m_fEventTime": 1.0
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_STUN",
+          "m_AnimName": "DAMAGE_STUN",
+          "m_bAnimLoop": true,
+          "m_bStunState": true,
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_EffectName": "AB_FX_BUFF_STUN",
+              "m_BoneName": "BIP01_HEAD",
+              "m_bStateEndStop": true,
+              "m_bHold": true,
+              "m_bStateEndStopForce": true,
+              "m_AnimName": "BASE"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_UNIT_BASE_BOSS",
+    "m_UnitSizeX": 200,
+    "m_UnitSizeY": 200,
+    "m_SpriteScale": 1.0,
+    "m_fShadowScaleX": 300,
+    "m_fShadowScaleY": 300,
+    "m_fForceRespawnZposMin": 0.5,
+    "m_fForceRespawnZposMax": 0.5,
+    "m_bShowGage": true,
+    "m_SpeedRun": 0,
+    "m_bNoMove": true,
+    "m_SeeRange": 100,
+    "m_SeeRangeMax": 200,
+    "m_TargetNearRange": 100,
+    "m_bTargetNoChange": true,
+    "m_AttackedTargetTime": 1,
+    "m_bAttackedTarget": false,
+    "m_bUseMotionBlur": false,
+    "m_bNoDamageBackSpeed": true,
+    "m_bNoDamageState": true,
+    "m_bNoDamageStopTime": true,
+    "m_fDamageUpFactor": 0,
+    "m_fDieCompleteTime": 1.0,
+    "m_listStaticBuffData": [
+      {
+        "m_BuffStrID": "DEBUFF_MONSTER_BOSS_REPLACER_SEO_YOON_LANCE_PHASECHANGE1",
+        "m_BuffLevel": 1
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "ASTART",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_bNoAI": true,
+        "m_StateTimeChangeStateTime": 0.03333333333333333,
+        "m_StateTimeChangeState": "USN_ASTAND"
+      },
+      {
+        "m_StateName": "USN_ASTAND",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": false,
+        "m_bNoAI": true,
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_DEName": "DE_NKM_MONSTER_BOSS_REPLACER_SEO_YOON_LANCE_SUMMON",
+            "m_bTargetPos": false,
+            "m_bShipSkillPos": false,
+            "m_bIgnoreTarget": false,
+            "m_bIgnoreNoTargets": false,
+            "m_OffsetX": 75,
+            "m_bStateEndStop": true
+          },
+          {
+            "m_bAnimTime": false,
+            "m_bStateEndTime": true,
+            "m_DEName": "DE_NKM_MONSTER_BOSS_REPLACER_SEO_YOON_LANCE_SUMMON_END",
+            "m_bTargetPos": false,
+            "m_bShipSkillPos": false,
+            "m_bIgnoreTarget": false,
+            "m_bIgnoreNoTargets": false,
+            "m_OffsetX": 75
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTimeMin": 0.16666666666666666,
+            "m_fEventTimeMax": 0.3333333333333333,
+            "m_fRangeMin": -500.0,
+            "m_fRangeMax": 500.0,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_REPLACER_SEO_YOON_LANCE_SUMMON_ATTACK1"
+          }
+        ],
+        "m_listNKMEventDie": [
+          {
+            "m_bAnimTime": true,
+            "m_bImmediateDie": false,
+            "m_fEventTime": 15.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_59"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 9999.0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_WHOOSH_03"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 9999.0
+          },
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_74"
+            ],
+            "m_fLocalVol": 0.7,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 9999.0
+          },
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_EXPLOSION_ATTACK_BIG"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 9999.0
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashGap": 8,
+            "m_fCameraCrashTime": 0.5
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_StateName": "USN_RUN",
+        "m_AnimName": "RUN",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 1.0,
+        "m_bRun": true,
+        "m_SuperArmorLevel": "NSAL_HYPER"
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_SuperArmorLevel": "NSAL_HYPER"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK1",
+        "m_AnimName": "ATTACK1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_bAutoCoolTime": true,
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.03333333333333333,
+            "m_fEventTimeMax": 0.1,
+            "m_fRangeMin": -300.0,
+            "m_fRangeMax": 300.0,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_THROWN_ATTACK1"
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_EffectName": "AB_FX_air_explosion_fire",
+            "m_OffsetY": 200,
+            "m_bUseZScale": false,
+            "m_bStateEndStop": true,
+            "m_AnimName": "BASE",
+            "m_fScaleFactor": 2
+          }
+        ],
+        "m_listNKMEventDie": [
+          {
+            "m_bAnimTime": true,
+            "m_bImmediateDie": true,
+            "m_fEventTime": 1.0
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_STUN",
+        "m_AnimName": "DAMAGE_STUN",
+        "m_bAnimLoop": true,
+        "m_bStunState": true,
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_EffectName": "AB_FX_BUFF_STUN",
+            "m_BoneName": "BIP01_HEAD",
+            "m_bStateEndStop": true,
+            "m_bHold": true,
+            "m_bStateEndStopForce": true,
+            "m_AnimName": "BASE"
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

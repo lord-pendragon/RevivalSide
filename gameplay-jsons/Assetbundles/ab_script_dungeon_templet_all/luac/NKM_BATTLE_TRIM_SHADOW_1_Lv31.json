@@ -1,0 +1,248 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_BATTLE_TRIM_SHADOW_1_Lv31.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 7
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_SHADOW_X_ABRAHAM"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_fCostSpeedRateA",
+      "value": 1
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.0
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_FUTURE_HARPY",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 181,
+            "m_fEventTimeEnd": 181
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_FUTURE_SPIDER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_SL_TANK",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 5,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_TIDE_VEHICLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 10,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.25
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_TIDE_HELI",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 15,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_FUTURE_HARPY",
+          "m_EventRespawnUnitTag": "HARPY",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_TIDE_VEHICLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 35,
+            "m_fEventPos": 0.5
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_FUTURE_HARPY",
+          "m_EventRespawnUnitTag": "HARPY",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 60,
+            "m_fEventPos": 0.2,
+            "m_EventDieUnitTag": "HARPY",
+            "m_EventDieUnitTagCount": 1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_TIDE_VEHICLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 75,
+            "m_fEventPos": 0.5
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_TIDE_HELI",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 80,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_FUTURE_HARPY",
+          "m_EventRespawnUnitTag": "HARPY",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 120,
+            "m_fEventPos": 0.2,
+            "m_EventDieUnitTag": "HARPY",
+            "m_EventDieUnitTagCount": 2
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 7,
+    "m_BossUnitStrID": "NKM_SHADOW_X_ABRAHAM",
+    "m_fBossPosZ": 0.6,
+    "m_fCostSpeedRateA": 1,
+    "m_fCostSpeedRateB": 1.0,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_FUTURE_HARPY",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 181,
+          "m_fEventTimeEnd": 181
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_FUTURE_SPIDER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_SL_TANK",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 5,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_TIDE_VEHICLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 10,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.25
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_TIDE_HELI",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 15,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.1
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_FUTURE_HARPY",
+        "m_EventRespawnUnitTag": "HARPY",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_TIDE_VEHICLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 35,
+          "m_fEventPos": 0.5
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_FUTURE_HARPY",
+        "m_EventRespawnUnitTag": "HARPY",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 60,
+          "m_fEventPos": 0.2,
+          "m_EventDieUnitTag": "HARPY",
+          "m_EventDieUnitTagCount": 1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_TIDE_VEHICLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 75,
+          "m_fEventPos": 0.5
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_TIDE_HELI",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 80,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_FUTURE_HARPY",
+        "m_EventRespawnUnitTag": "HARPY",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 120,
+          "m_fEventPos": 0.2,
+          "m_EventDieUnitTag": "HARPY",
+          "m_EventDieUnitTagCount": 2
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

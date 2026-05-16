@@ -1,0 +1,168 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DIVE_BATTLE_SECTORBOSS_18.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.0
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_COMMON_BEAST_MELEE"
+    },
+    {
+      "__key": "m_BossUnitLevel",
+      "value": 30
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER",
+          "m_UnitLevel": 30,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER",
+          "m_UnitLevel": 30,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 15,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_SCOURGE",
+          "m_UnitLevel": 30,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 4,
+            "m_fEventPos": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_dungeonEventType": "ADD_TEAM_B_EXTRA_RESPAWN_COST",
+          "m_EventActionValue": -5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 20
+          }
+        },
+        {
+          "m_dungeonEventType": "ADD_TEAM_B_EXTRA_RESPAWN_COST",
+          "m_EventActionValue": -5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 40
+          }
+        },
+        {
+          "m_dungeonEventType": "ADD_TEAM_B_EXTRA_RESPAWN_COST",
+          "m_EventActionValue": -5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 60
+          }
+        },
+        {
+          "m_dungeonEventType": "ADD_TEAM_B_EXTRA_RESPAWN_COST",
+          "m_EventActionValue": -5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 80
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 1.0,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_COMMON_BEAST_MELEE",
+    "m_BossUnitLevel": 30,
+    "m_fBossPosZ": 0.6,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER",
+        "m_UnitLevel": 30,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER",
+        "m_UnitLevel": 30,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 15,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_SCOURGE",
+        "m_UnitLevel": 30,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 4,
+          "m_fEventPos": 0.0
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_dungeonEventType": "ADD_TEAM_B_EXTRA_RESPAWN_COST",
+        "m_EventActionValue": -5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 20
+        }
+      },
+      {
+        "m_dungeonEventType": "ADD_TEAM_B_EXTRA_RESPAWN_COST",
+        "m_EventActionValue": -5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 40
+        }
+      },
+      {
+        "m_dungeonEventType": "ADD_TEAM_B_EXTRA_RESPAWN_COST",
+        "m_EventActionValue": -5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 60
+        }
+      },
+      {
+        "m_dungeonEventType": "ADD_TEAM_B_EXTRA_RESPAWN_COST",
+        "m_EventActionValue": -5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 80
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

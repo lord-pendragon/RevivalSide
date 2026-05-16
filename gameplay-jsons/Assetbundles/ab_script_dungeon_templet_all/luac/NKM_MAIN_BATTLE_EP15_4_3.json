@@ -1,0 +1,377 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_MAIN_BATTLE_EP15_4_3.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 8,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.0
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_COMMON_HARMONY_SOPRANO"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.2
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_HP": 1.5
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+          "m_EventConditionNumValue": 50,
+          "m_dungeonEventType": "ADD_EVENTTAG",
+          "m_EventActionStrValue": "BOSS_HP_RATE_50",
+          "m_EventActionValue": 1,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 10174311,
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_EventTag": "BOSS_HP_RATE_50",
+            "m_EventTagCount": 1
+          }
+        },
+        {
+          "m_dungeonEventType": "FORCE_WIN",
+          "m_EventActionValue": 0,
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_NORMAL_EP15_KYLE_AP_HYPER_SPELL_BASE",
+          "m_EventConditionValue2": "USN_START",
+          "m_fEventDelay": 4,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_EventTag": "BOSS_HP_RATE_50",
+            "m_EventTagCount": 1
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EP15_KYLE_AP_HYPER_SPELL_BASE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventPos": 0.8,
+            "m_fEventTimeStart": 1,
+            "m_EventTag": "BOSS_HP_RATE_50",
+            "m_EventTagCount": 1
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_AXE_SUMMER_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.3,
+            "m_fEventTimeGap": 25,
+            "m_fEventPos": 0.45
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_AXE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1.3,
+            "m_fEventTimeGap": 25,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_RETURNER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 2.3,
+            "m_fEventTimeGap": 25,
+            "m_fEventPos": 0.15
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_RETURNER_S",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 3.3,
+            "m_fEventTimeGap": 25,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EP15_THAGIRION_DOLLS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.8,
+            "m_fEventTimeGap": 25,
+            "m_fEventPos": 0.45
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EP15_THAGIRION_DOLLS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1.8,
+            "m_fEventTimeGap": 25,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EP15_THAGIRION_DOLLS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 2.8,
+            "m_fEventTimeGap": 25,
+            "m_fEventPos": 0.35
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EP15_THAGIRION_DOLLS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 3.8,
+            "m_fEventTimeGap": 25,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EP15_THAGIRION_DOLLS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 5.8,
+            "m_fEventTimeGap": 25,
+            "m_fEventPos": 0.45
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EP15_THAGIRION_DOLLS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 6.8,
+            "m_fEventTimeGap": 25,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EP15_THAGIRION_DOLLS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 7.8,
+            "m_fEventTimeGap": 25,
+            "m_fEventPos": 0.35
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EP15_THAGIRION_DOLLS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 8.8,
+            "m_fEventTimeGap": 25,
+            "m_fEventPos": 0.3
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 1.0,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_COMMON_HARMONY_SOPRANO",
+    "m_fBossPosZ": 0.2,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_HP": 1.5
+        }
+      }
+    },
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+        "m_EventConditionNumValue": 50,
+        "m_dungeonEventType": "ADD_EVENTTAG",
+        "m_EventActionStrValue": "BOSS_HP_RATE_50",
+        "m_EventActionValue": 1,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 10174311,
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_EventTag": "BOSS_HP_RATE_50",
+          "m_EventTagCount": 1
+        }
+      },
+      {
+        "m_dungeonEventType": "FORCE_WIN",
+        "m_EventActionValue": 0,
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_NORMAL_EP15_KYLE_AP_HYPER_SPELL_BASE",
+        "m_EventConditionValue2": "USN_START",
+        "m_fEventDelay": 4,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_EventTag": "BOSS_HP_RATE_50",
+          "m_EventTagCount": 1
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EP15_KYLE_AP_HYPER_SPELL_BASE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventPos": 0.8,
+          "m_fEventTimeStart": 1,
+          "m_EventTag": "BOSS_HP_RATE_50",
+          "m_EventTagCount": 1
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_AXE_SUMMER_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.3,
+          "m_fEventTimeGap": 25,
+          "m_fEventPos": 0.45
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_AXE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1.3,
+          "m_fEventTimeGap": 25,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_RETURNER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 2.3,
+          "m_fEventTimeGap": 25,
+          "m_fEventPos": 0.15
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_RETURNER_S",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 3.3,
+          "m_fEventTimeGap": 25,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EP15_THAGIRION_DOLLS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.8,
+          "m_fEventTimeGap": 25,
+          "m_fEventPos": 0.45
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EP15_THAGIRION_DOLLS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1.8,
+          "m_fEventTimeGap": 25,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EP15_THAGIRION_DOLLS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 2.8,
+          "m_fEventTimeGap": 25,
+          "m_fEventPos": 0.35
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EP15_THAGIRION_DOLLS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 3.8,
+          "m_fEventTimeGap": 25,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EP15_THAGIRION_DOLLS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 5.8,
+          "m_fEventTimeGap": 25,
+          "m_fEventPos": 0.45
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EP15_THAGIRION_DOLLS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 6.8,
+          "m_fEventTimeGap": 25,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EP15_THAGIRION_DOLLS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 7.8,
+          "m_fEventTimeGap": 25,
+          "m_fEventPos": 0.35
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EP15_THAGIRION_DOLLS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 8.8,
+          "m_fEventTimeGap": 25,
+          "m_fEventPos": 0.3
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

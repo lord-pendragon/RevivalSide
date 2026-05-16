@@ -1,0 +1,237 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_SHIP_H_BARRICADE.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 30,
+  "records": [
+    {
+      "__key": "m_UnitSizeX",
+      "value": 300
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 300
+    },
+    {
+      "__key": "m_bDieDeActive",
+      "value": false
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_SpriteOffsetX",
+      "value": -120
+    },
+    {
+      "__key": "m_NKC_TEAM_COLOR_TYPE",
+      "value": "NTCT_ONLY_SHADOW"
+    },
+    {
+      "__key": "m_fShadowOffsetX",
+      "value": -120
+    },
+    {
+      "__key": "m_fShadowOffsetY",
+      "value": 100
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 1
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 1
+    },
+    {
+      "__key": "m_fShadowRotateX",
+      "value": 250
+    },
+    {
+      "__key": "m_fShadowRotateZ",
+      "value": -140
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": false
+    },
+    {
+      "__key": "m_fGageScaleX",
+      "value": 200
+    },
+    {
+      "__key": "m_fGageOffsetX",
+      "value": 200
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 600
+    },
+    {
+      "__key": "m_SeeTarget",
+      "value": false
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 900
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 1000
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 800
+    },
+    {
+      "__key": "m_NKM_FIND_TARGET_TYPE",
+      "value": "NFTT_NEAR_ENEMY"
+    },
+    {
+      "__key": "m_bTargetNoChange",
+      "value": true
+    },
+    {
+      "__key": "m_AttackedTargetTime",
+      "value": 1
+    },
+    {
+      "__key": "m_bAttackedTarget",
+      "value": true
+    },
+    {
+      "__key": "m_bNoMove",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageState",
+      "value": true
+    },
+    {
+      "__key": "m_fDamageUpFactor",
+      "value": 0.0
+    },
+    {
+      "__key": "m_bImmuneStun",
+      "value": true
+    },
+    {
+      "__key": "m_fBuffEffectScaleFactor",
+      "value": 2.0
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_AnimEndChangeState": "USN_ASTAND"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_bAnimLoop": false,
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+          "m_listNKMEventGameSpeed": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_fGameSpeed": 0.0,
+              "m_fTrackingTime": 3.0
+            }
+          ],
+          "m_listNKMEventCameraMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 0.5,
+              "m_bForce": true,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 200,
+              "m_fZoom": -100,
+              "m_fFocusBlur": 0.3,
+              "m_fMoveTrackingTime": 0.2,
+              "m_fZoomTrackingTime": 1.0,
+              "m_fCameraRadius": 0.0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_UnitSizeX": 300,
+    "m_UnitSizeY": 300,
+    "m_bDieDeActive": false,
+    "m_SpriteScale": 1.0,
+    "m_SpriteOffsetX": -120,
+    "m_NKC_TEAM_COLOR_TYPE": "NTCT_ONLY_SHADOW",
+    "m_fShadowOffsetX": -120,
+    "m_fShadowOffsetY": 100,
+    "m_fShadowScaleX": 1,
+    "m_fShadowScaleY": 1,
+    "m_fShadowRotateX": 250,
+    "m_fShadowRotateZ": -140,
+    "m_bShowGage": false,
+    "m_fGageScaleX": 200,
+    "m_fGageOffsetX": 200,
+    "m_fGageOffsetY": 600,
+    "m_SeeTarget": false,
+    "m_SeeRange": 900,
+    "m_SeeRangeMax": 1000,
+    "m_TargetNearRange": 800,
+    "m_NKM_FIND_TARGET_TYPE": "NFTT_NEAR_ENEMY",
+    "m_bTargetNoChange": true,
+    "m_AttackedTargetTime": 1,
+    "m_bAttackedTarget": true,
+    "m_bNoMove": true,
+    "m_bNoDamageState": true,
+    "m_fDamageUpFactor": 0.0,
+    "m_bImmuneStun": true,
+    "m_fBuffEffectScaleFactor": 2.0,
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_AnimEndChangeState": "USN_ASTAND"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_bAnimLoop": false,
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+        "m_listNKMEventGameSpeed": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_fGameSpeed": 0.0,
+            "m_fTrackingTime": 3.0
+          }
+        ],
+        "m_listNKMEventCameraMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 0.5,
+            "m_bForce": true,
+            "m_fPosXOffset": 0,
+            "m_fPosYOffset": 200,
+            "m_fZoom": -100,
+            "m_fFocusBlur": 0.3,
+            "m_fMoveTrackingTime": 0.2,
+            "m_fZoomTrackingTime": 1.0,
+            "m_fCameraRadius": 0.0
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

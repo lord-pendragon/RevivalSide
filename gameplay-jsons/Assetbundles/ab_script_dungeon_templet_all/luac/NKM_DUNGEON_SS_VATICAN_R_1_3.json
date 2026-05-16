@@ -1,0 +1,452 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_VATICAN_R_1_3.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MONSTER_BOSS_BASIC_TOMBSTONE_N"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatValue": {
+          "NST_ATK": 0,
+          "NST_DEF": -320,
+          "NST_HP": -60000
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_VATICAN_MAGE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.15
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.2,
+              "NST_DEF": 0.2,
+              "NST_HP": 0.4
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_LYCORIS_ESPR_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.4,
+              "NST_DEF": 0.2,
+              "NST_HP": 0.3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_LYCORIS_ESPR_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.4
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.4,
+              "NST_DEF": 0.2,
+              "NST_HP": 0.3
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_LYCORIS_ESPR_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.38
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.4,
+              "NST_DEF": 0.2,
+              "NST_HP": 0.3
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_LYCORIS_ESPR_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.36
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.4,
+              "NST_DEF": 0.2,
+              "NST_HP": 0.3
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_LYCORIS_ESPR_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 2,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.34
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.4,
+              "NST_DEF": 0.2,
+              "NST_HP": 0.3
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_LYCORIS_ESPR_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 2,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.32
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.4,
+              "NST_DEF": 0.2,
+              "NST_HP": 0.3
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_LYCORIS_ESPR_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 2,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.4,
+              "NST_DEF": 0.2,
+              "NST_HP": 0.3
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_VATICAN_MAGE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 3,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.6
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.2,
+              "NST_DEF": 0.4,
+              "NST_HP": 0.7
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_VATICAN_MAGE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 3,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.55
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.2,
+              "NST_DEF": 0.4,
+              "NST_HP": 0.7
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_VATICAN_MAGE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 25,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.1,
+              "NST_DEF": 0.1,
+              "NST_EVADE": 0.1,
+              "NST_HP": 0.2
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_VATICAN_MAGE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 25,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.1,
+              "NST_DEF": 0.1,
+              "NST_EVADE": 0.1,
+              "NST_HP": 0.2
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 0.6,
+    "m_BossUnitStrID": "NKM_MONSTER_BOSS_BASIC_TOMBSTONE_N",
+    "m_fBossPosZ": 0.6,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatValue": {
+          "NST_ATK": 0,
+          "NST_DEF": -320,
+          "NST_HP": -60000
+        }
+      }
+    },
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_VATICAN_MAGE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.15
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.2,
+            "NST_DEF": 0.2,
+            "NST_HP": 0.4
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_LYCORIS_ESPR_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.4,
+            "NST_DEF": 0.2,
+            "NST_HP": 0.3
+          }
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_LYCORIS_ESPR_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.4
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.4,
+            "NST_DEF": 0.2,
+            "NST_HP": 0.3
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_LYCORIS_ESPR_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.38
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.4,
+            "NST_DEF": 0.2,
+            "NST_HP": 0.3
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_LYCORIS_ESPR_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.36
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.4,
+            "NST_DEF": 0.2,
+            "NST_HP": 0.3
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_LYCORIS_ESPR_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 2,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.34
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.4,
+            "NST_DEF": 0.2,
+            "NST_HP": 0.3
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_LYCORIS_ESPR_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 2,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.32
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.4,
+            "NST_DEF": 0.2,
+            "NST_HP": 0.3
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_LYCORIS_ESPR_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 2,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.4,
+            "NST_DEF": 0.2,
+            "NST_HP": 0.3
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_VATICAN_MAGE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 3,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.6
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.2,
+            "NST_DEF": 0.4,
+            "NST_HP": 0.7
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_VATICAN_MAGE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 3,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.55
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.2,
+            "NST_DEF": 0.4,
+            "NST_HP": 0.7
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_VATICAN_MAGE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 25,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.1,
+            "NST_DEF": 0.1,
+            "NST_EVADE": 0.1,
+            "NST_HP": 0.2
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_VATICAN_MAGE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 25,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.1,
+            "NST_DEF": 0.1,
+            "NST_EVADE": 0.1,
+            "NST_HP": 0.2
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

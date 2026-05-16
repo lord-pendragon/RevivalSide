@@ -1,0 +1,2614 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 31,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_UNIT_BASE_BOSS"
+    },
+    {
+      "__key": "m_UnitSizeX",
+      "value": 200
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 520
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.1
+    },
+    {
+      "__key": "m_SpriteOffsetX",
+      "value": 0
+    },
+    {
+      "__key": "m_SpriteOffsetY",
+      "value": 0
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": false
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 800
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 1300
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.2
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.3
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 1900
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 1900
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 2000
+    },
+    {
+      "__key": "m_bTargetNoChange",
+      "value": false
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": false
+    },
+    {
+      "__key": "m_bNoMove",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageStopTime",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageState",
+      "value": true
+    },
+    {
+      "__key": "m_fDamageUpFactor",
+      "value": 0.0
+    },
+    {
+      "__key": "m_listFixedStatusEffect",
+      "value": [
+        "NUSE_IMMUNE_SKILL_COOLTIME_DAMAGE"
+      ]
+    },
+    {
+      "__key": "m_listFixedStatusImmune",
+      "value": [
+        "NUSE_STUN",
+        "NUSE_SILENCE"
+      ]
+    },
+    {
+      "__key": "m_listTriggerRepeatData",
+      "value": [
+        {
+          "m_TriggerName": "TRIGGER_COOLTIME_DECREASE",
+          "m_fRepeatTime": 0.1
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "TRIGGER_MOB_BOSS_FIERCE_HARMONY_SOPRANO_COST_BELOW_3_DETECT",
+              "m_BuffLevel": [
+                0,
+                1
+              ]
+            }
+          ],
+          "m_TriggerName": "TRIGGER_COST_BELOW_3_FALSE",
+          "m_fRepeatTime": 0.1
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "TRIGGER_MOB_BOSS_FIERCE_HARMONY_SOPRANO_COST_BELOW_3_DETECT",
+              "m_BuffLevel": [
+                2,
+                99
+              ]
+            }
+          ],
+          "m_TriggerName": "TRIGGER_COST_BELOW_3_TRUE",
+          "m_fRepeatTime": 0.1
+        }
+      ]
+    },
+    {
+      "__key": "m_dicTriggerSet",
+      "value": [
+        {
+          "m_Name": "TRIGGER_COOLTIME_DECREASE",
+          "m_listNKMEventChangeCooltime": [
+            {
+              "m_TargetStateName": "USN_SKILL1",
+              "m_eChangeType": "ADD_SECONDS",
+              "m_fChangeValue": -0.1
+            },
+            {
+              "m_TargetStateName": "USN_HYPER1",
+              "m_eChangeType": "ADD_SECONDS",
+              "m_fChangeValue": -0.1
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_HARMONY_SOPRANO_1"
+                }
+              ],
+              "m_TargetStateName": "USN_SKILL1",
+              "m_eChangeType": "ADD_SECONDS",
+              "m_fChangeValue": -0.05
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_HARMONY_SOPRANO_1"
+                }
+              ],
+              "m_TargetStateName": "USN_HYPER1",
+              "m_eChangeType": "ADD_SECONDS",
+              "m_fChangeValue": -0.05
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_HARMONY_SOPRANO_1"
+                },
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_IS_PHASE_CHANGE",
+                  "m_Value": [
+                    1,
+                    1
+                  ]
+                }
+              ],
+              "m_TargetStateName": "USN_HYPER1",
+              "m_eChangeType": "ADD_SECONDS",
+              "m_fChangeValue": -0.15
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_MACHINE_GAP_MECHANIC_DETECT_ACTIVE"
+                }
+              ],
+              "m_TargetStateName": "USN_SKILL1",
+              "m_eChangeType": "ADD_SECONDS",
+              "m_fChangeValue": -0.1
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_MACHINE_GAP_MECHANIC_DETECT_ACTIVE"
+                }
+              ],
+              "m_TargetStateName": "USN_HYPER1",
+              "m_eChangeType": "ADD_SECONDS",
+              "m_fChangeValue": -0.1
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_COOLTIME_INCREASE",
+          "m_listNKMEventChangeCooltime": [
+            {
+              "m_TargetStateName": "USN_HYPER1",
+              "m_eChangeType": "ADD_SECONDS",
+              "m_fChangeValue": 0.5
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_COST_BELOW_3_FALSE",
+          "m_listNKMEventBuff": [
+            {
+              "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_MACHINE_GAP_MECHANIC_DETECT_ACTIVE",
+              "m_BuffRemove": true
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_IS_COST_BELOW_3_DETECT",
+                  "m_Value": [
+                    1,
+                    1
+                  ]
+                }
+              ],
+              "m_EffectName": "AB_FX_DEBUFF_IN_RED",
+              "m_AnimName": "BASE",
+              "m_bLandConnect": true,
+              "m_fScaleFactor": 2.0
+            }
+          ],
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_Type": "SET",
+              "m_Name": "VAR_IS_COST_BELOW_3_DETECT",
+              "m_Value": 0
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_COST_BELOW_3_TRUE",
+          "m_listNKMEventBuff": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_IS_COST_BELOW_3_DETECT",
+                  "m_Value": [
+                    0,
+                    0
+                  ]
+                }
+              ],
+              "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_MACHINE_GAP_MECHANIC_DETECT_ACTIVE"
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_IS_COST_BELOW_3_DETECT",
+                  "m_Value": [
+                    0,
+                    0
+                  ]
+                }
+              ],
+              "m_EffectName": "AB_FX_COMMON_SCAN_BLUE",
+              "m_AnimName": "BASE"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_IS_COST_BELOW_3_DETECT",
+                  "m_Value": [
+                    0,
+                    0
+                  ]
+                }
+              ],
+              "m_EffectName": "AB_FX_BUFF_START_BLUE",
+              "m_AnimName": "BASE",
+              "m_bLandConnect": true,
+              "m_fScaleFactor": 2.0
+            }
+          ],
+          "m_listNKMEventStopTime": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_IS_COST_BELOW_3_DETECT",
+                  "m_Value": [
+                    0,
+                    0
+                  ]
+                }
+              ],
+              "m_StopTimeIndex": "NSTI_SKILL",
+              "m_fStopTime": 0.6666666666666666,
+              "m_bStopEnemyOnly": false,
+              "m_bMyStop": false,
+              "m_fRange": 3000
+            }
+          ],
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_Type": "SET",
+              "m_Name": "VAR_IS_COST_BELOW_3_DETECT",
+              "m_Value": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_listHitFeedBack",
+      "value": [
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_HARMONY_SOPRANO_1"
+            }
+          ],
+          "m_HitCount": 1,
+          "m_TargetTrigger": "TRIGGER_COOLTIME_INCREASE",
+          "m_bStartAnyTime": true
+        }
+      ]
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_MACHINE_GAP_MECHANIC_DETECT_ACTIVE",
+              "Inverse": true
+            }
+          ],
+          "m_StateName": "USN_ATTACK1",
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 800
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_MACHINE_GAP_MECHANIC_DETECT_ACTIVE",
+              "Inverse": true
+            }
+          ],
+          "m_StateName": "USN_ATTACK2",
+          "m_fRangeMin": 800,
+          "m_fRangeMax": 2000
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_MACHINE_GAP_MECHANIC_DETECT_ACTIVE"
+            }
+          ],
+          "m_StateName": "USN_ATTACK2_INSTANT",
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 2000
+        }
+      ]
+    },
+    {
+      "__key": "m_listSkillStateData",
+      "value": [
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_fStartCool": 0.0,
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 1500
+        }
+      ]
+    },
+    {
+      "__key": "m_listHyperSkillStateData",
+      "value": [
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "EventVariable",
+              "m_Name": "VAR_IS_PHASE_CHANGE",
+              "m_Value": [
+                1,
+                1
+              ]
+            }
+          ],
+          "m_StateName": "USN_HYPER1",
+          "m_fStartCool": 0.0
+        }
+      ]
+    },
+    {
+      "__key": "m_listPhaseChangeData",
+      "value": [
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_HARMONY_SOPRANO_1",
+              "Inverse": true
+            }
+          ],
+          "m_TargetPhase": 1,
+          "m_fChangeConditionHPRate": 0.6,
+          "m_ChangeStateName": "USN_SKILL1_PHASE_PRE"
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_HARMONY_SOPRANO_1"
+            },
+            {
+              "Type": "Cooltime",
+              "m_Range": [
+                1.0,
+                1.0
+              ],
+              "m_bHyper": true
+            }
+          ],
+          "m_TargetPhase": 1,
+          "m_fChangeConditionTime": 10,
+          "m_ChangeStateName": "USN_SKILL1_PHASE_PRE"
+        }
+      ]
+    },
+    {
+      "__key": "m_listAccumStateChangePack",
+      "value": [
+        {
+          "m_listAccumStateChange": [
+            {
+              "m_listAccumStateName": [
+                "USN_ATTACK1",
+                "USN_ATTACK2"
+              ],
+              "m_AccumCount": 6,
+              "m_TargetStateName": "USN_PASSIVE1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventChangeCooltime": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_HARMONY_SOPRANO_1"
+                }
+              ],
+              "m_TargetStateName": "USN_HYPER1",
+              "m_eChangeType": "SET_RATIO",
+              "m_fChangeValue": 1.0
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Level",
+                  "m_LevelRange": [
+                    150,
+                    999
+                  ]
+                }
+              ],
+              "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_REGEN_PASSIVE"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_HARMONY_SOPRANO_2"
+                }
+              ],
+              "m_BuffStrID": "TRIGGER_MOB_BOSS_FIERCE_HARMONY_SOPRANO_COST_BELOW_3_DETECT"
+            }
+          ],
+          "m_listNKMEventText": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_Text": "SI_BATTLE_MOB_BOSS_FIERCE_HARMONY_SOPRANO_ATTACK_RANGE"
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0,
+              "m_EffectName": "AB_FX_UI_WARNING",
+              "m_ParentType": "NEPT_NUF_BEFORE_HUD_EFFECT",
+              "m_bUseZScale": false,
+              "m_AnimName": "FX_UI_WARNING",
+              "m_bForceRight": true,
+              "m_bFixedPos": true
+            }
+          ],
+          "m_listNKMEventCameraMove": [
+            {
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_fEventTimeMax": 3.0,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 350,
+              "m_fZoom": -200,
+              "m_fMoveTrackingTime": 1.0,
+              "m_fZoomTrackingTime": 3.0
+            },
+            {
+              "m_fEventTimeMin": 3.0,
+              "m_fEventTimeMax": 4.0,
+              "m_fPosXOffset": -300,
+              "m_fPosYOffset": 750,
+              "m_fZoom": -200,
+              "m_fMoveTrackingTime": 0.5,
+              "m_fZoomTrackingTime": 0.5
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 0.6666666666666666,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 5.0,
+              "m_fCameraCrashTime": 0.5
+            },
+            {
+              "m_fEventTime": 3.0,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 20.0,
+              "m_fCameraCrashTime": 2.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_START_1"
+              ],
+              "m_fFocusRange": 9999.0
+            },
+            {
+              "m_fEventTime": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_START_2"
+              ],
+              "m_fFocusRange": 9999.0
+            },
+            {
+              "m_fEventTime": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_START_2"
+              ],
+              "m_fFocusRange": 9999.0
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+          "m_StateName": "USN_ASTAND",
+          "m_AnimName": "ASTAND",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_bAnimLoop": true
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK1",
+          "m_AnimName": "ATTACK1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1,
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventAttack": [
+            {
+              "m_fEventTimeMin": 0.6666666666666666,
+              "m_fEventTimeMax": 0.8333333333333334,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 820,
+              "m_AttackUnitCount": 3,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_ATTACK1"
+            },
+            {
+              "m_fEventTimeMin": 1.3333333333333333,
+              "m_fEventTimeMax": 1.5,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 820,
+              "m_AttackUnitCount": 3,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_ATTACK1"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.6666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_HIT_STING_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 0.6666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_13"
+              ]
+            },
+            {
+              "m_fEventTime": 1.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_HIT_STING_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 1.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_13"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK2_INSTANT",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimName": "ASTAND",
+          "m_listNKMEventChangeState": [
+            {
+              "m_ChangeState": "USN_ATTACK2"
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK2",
+          "m_AnimName": "ATTACK2",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventAttack": [
+            {
+              "m_fEventTimeMin": 1.3333333333333333,
+              "m_fEventTimeMax": 1.5,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 3000,
+              "m_AttackUnitCount": 10,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_ATTACK2",
+              "m_bHitBossUnit": false
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_HYPER_3"
+              ]
+            },
+            {
+              "m_fEventTime": 1.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_SLASH_BIG"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_PASSIVE1",
+          "m_AnimName": "PASSIVE",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventAnimSpeed": [
+            {
+              "m_fEventTime": 2.0,
+              "m_fAnimSpeed": 0.5
+            },
+            {
+              "m_fEventTime": 2.6666666666666665,
+              "m_fAnimSpeed": 1.0
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_fEventTimeMin": 1.6666666666666667,
+              "m_fEventTimeMax": 2.0,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 3000,
+              "m_AttackUnitCount": 3,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_PASSIVE1"
+            },
+            {
+              "m_fEventTimeMin": 2.6666666666666665,
+              "m_fEventTimeMax": 3.0,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 3000,
+              "m_AttackUnitCount": 3,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_PASSIVE1"
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_fEventTime": 1.6666666666666667,
+              "m_EffectName": "AB_FX_DE_MOB_BOSS_SOPRANO_PHASE2",
+              "m_AnimName": "BASE",
+              "m_OffsetX": 500.0,
+              "m_OffsetY": 0.0,
+              "m_fAddRotate": 0.0,
+              "m_fScaleFactor": 1.0,
+              "m_bLandConnect": true
+            },
+            {
+              "m_fEventTime": 2.6666666666666665,
+              "m_EffectName": "AB_FX_DE_MOB_BOSS_SOPRANO_PHASE2",
+              "m_AnimName": "BASE",
+              "m_OffsetX": 500.0,
+              "m_OffsetY": 0.0,
+              "m_fAddRotate": 0.0,
+              "m_fScaleFactor": 1.0,
+              "m_bLandConnect": true
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 1.5,
+              "m_fFocusRange": 9999.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_PHASE_CHANGE_1"
+              ]
+            },
+            {
+              "m_fEventTime": 1.5,
+              "m_fFocusRange": 9999.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_PHASE_CHANGE_1"
+              ]
+            },
+            {
+              "m_fEventTime": 2.5,
+              "m_fFocusRange": 9999.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_PHASE_CHANGE_2"
+              ]
+            },
+            {
+              "m_fEventTime": 2.5,
+              "m_fFocusRange": 9999.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_PHASE_CHANGE_2"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_SKILL1",
+          "m_AnimName": "SKILL1",
+          "m_bAnimLoop": false,
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_bSkillCutIn": true,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_StateCoolTime": 40,
+          "m_listNKMEventAttack": [
+            {
+              "m_fEventTimeMin": 2.6666666666666665,
+              "m_fEventTimeMax": 3.0,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 3000.0,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 99,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_SKILL1",
+              "m_bHitAir": true,
+              "m_bCleanHit": true,
+              "m_bHitBossUnit": false,
+              "m_bForceHit": true
+            },
+            {
+              "m_fEventTimeMin": 3.033333333333333,
+              "m_fEventTimeMax": 3.3666666666666667,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 3000.0,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 99,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_SKILL2",
+              "m_bHitAir": true,
+              "m_bCleanHit": true,
+              "m_bHitBossUnit": false,
+              "m_bForceHit": true
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_EffectName": "AB_FX_CAST_SKILL",
+              "m_AnimName": "BASE",
+              "m_OffsetX": 0,
+              "m_OffsetY": 350,
+              "m_fScaleFactor": 30.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ],
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_SKILL_1"
+              ],
+              "m_fFocusRange": 9999.0
+            },
+            {
+              "m_fEventTime": 2.6666666666666665,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_SKILL_2"
+              ],
+              "m_fFocusRange": 9999.0
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_SKILL1_PHASE_PRE",
+          "m_AnimName": "SKILL1",
+          "m_bAnimLoop": false,
+          "m_AnimEndChangeState": "USN_PHASE_CHANGE",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_bSkillCutIn": true,
+          "m_listNKMEventAttack": [
+            {
+              "m_fEventTimeMin": 2.6666666666666665,
+              "m_fEventTimeMax": 3.0,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 3000.0,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 99,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_SKILL1",
+              "m_bHitAir": true,
+              "m_bCleanHit": true,
+              "m_bHitBossUnit": false,
+              "m_bForceHit": true
+            },
+            {
+              "m_fEventTimeMin": 3.033333333333333,
+              "m_fEventTimeMax": 3.3666666666666667,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 3000.0,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 99,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_SKILL3",
+              "m_bHitAir": true,
+              "m_bCleanHit": true,
+              "m_bHitBossUnit": false,
+              "m_bForceHit": true
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_EffectName": "AB_FX_CAST_SKILL",
+              "m_AnimName": "BASE",
+              "m_OffsetX": 0,
+              "m_OffsetY": 220,
+              "m_fScaleFactor": 30.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_SKILL_1"
+              ],
+              "m_fFocusRange": 9999.0
+            },
+            {
+              "m_fEventTime": 2.6666666666666665,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_SKILL_2"
+              ],
+              "m_fFocusRange": 9999.0
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_PHASE_CHANGE",
+          "m_AnimName": "PHASE_CHANGE",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_StateCoolTime": 300,
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_listNKMEventVariable": [
+            {
+              "m_Type": "SET",
+              "m_Name": "VAR_IS_PHASE_CHANGE",
+              "m_Value": 1
+            }
+          ],
+          "m_listNKMEventStopTime": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L13_1 / 30"
+              },
+              "m_StopTimeIndex": "NSTI_SKILL",
+              "m_fStopTime": 3.0,
+              "m_bStopEnemyOnly": true,
+              "m_bMyStop": false,
+              "m_fRange": 3000
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_fEventTime": 3.0,
+              "m_EffectName": "AB_FX_DE_MOB_BOSS_SOPRANO_PHASE2",
+              "m_AnimName": "BASE",
+              "m_OffsetX": 200.0,
+              "m_OffsetY": 0.0,
+              "m_fAddRotate": 0.0,
+              "m_fScaleFactor": 1.0,
+              "m_bLandConnect": true
+            }
+          ],
+          "m_listNKMEventRespawn": [
+            {
+              "m_fEventTime": 5.666666666666667,
+              "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_DEMOLISHER_EVENT_H",
+              "m_bMaxCountReRespawn": true,
+              "m_MaxCount": 1,
+              "m_fOffsetX": 600
+            },
+            {
+              "m_fEventTime": 5.666666666666667,
+              "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_DEMOLISHER_EVENT_H",
+              "m_bMaxCountReRespawn": true,
+              "m_MaxCount": 1,
+              "m_fOffsetX": 650
+            },
+            {
+              "m_fEventTime": 5.666666666666667,
+              "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_DEMOLISHER_EVENT_H",
+              "m_bMaxCountReRespawn": true,
+              "m_MaxCount": 1,
+              "m_fOffsetX": 700
+            },
+            {
+              "m_fEventTime": 5.666666666666667,
+              "m_UnitStrID": "NKM_MOB_NORMAL_DIVE_SCOURGE",
+              "m_bMaxCountReRespawn": true,
+              "m_MaxCount": 1,
+              "m_fOffsetX": 200
+            },
+            {
+              "m_fEventTime": 5.666666666666667,
+              "m_UnitStrID": "NKM_MOB_NORMAL_DIVE_WRAITH",
+              "m_bMaxCountReRespawn": true,
+              "m_MaxCount": 1,
+              "m_fOffsetX": 200
+            },
+            {
+              "m_fEventTime": 5.666666666666667,
+              "m_UnitStrID": "NKM_MOB_NORMAL_DIVE_SCOURGE",
+              "m_bMaxCountReRespawn": true,
+              "m_MaxCount": 1,
+              "m_fOffsetX": 150
+            },
+            {
+              "m_fEventTime": 5.666666666666667,
+              "m_UnitStrID": "NKM_MOB_NORMAL_DIVE_WRAITH",
+              "m_bMaxCountReRespawn": true,
+              "m_MaxCount": 1,
+              "m_fOffsetX": 150
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_39"
+              ],
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 3.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_SKILL_2"
+              ],
+              "m_fFocusRange": 9999.0
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_HYPER1",
+          "m_AnimName": "HYPER_SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_StateCoolTime": 100,
+          "m_listNKMEventText": [
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_Text": "SI_BATTLE_MOB_BOSS_FIERCE_HARMONY_SOPRANO_HYPER"
+            }
+          ],
+          "m_listNKMEventAnimSpeed": [
+            {
+              "m_fEventTime": 2.0,
+              "m_fAnimSpeed": 0.5
+            },
+            {
+              "m_fEventTime": 2.6666666666666665,
+              "m_fAnimSpeed": 1.0
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_fEventTimeMin": 1.6666666666666667,
+              "m_fEventTimeMax": 1.8333333333333333,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 3000,
+              "m_AttackUnitCount": 4,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_HYPER1_CONFUSE_STACK",
+              "m_bForceHit": true
+            },
+            {
+              "m_fEventTimeMin": 3.0,
+              "m_fEventTimeMax": 3.1666666666666665,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 3000,
+              "m_AttackUnitCount": 4,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_HYPER1_CONFUSE_STACK",
+              "m_bForceHit": true
+            },
+            {
+              "m_fEventTimeMin": 5.333333333333333,
+              "m_fEventTimeMax": 5.5,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 3000,
+              "m_AttackUnitCount": 4,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_HYPER1_CONFUSE_STACK",
+              "m_bForceHit": true
+            },
+            {
+              "m_fEventTimeMin": 5.533333333333333,
+              "m_fEventTimeMax": 5.7,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 3000,
+              "m_AttackUnitCount": 4,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_HYPER1_CONFUSE_STACK",
+              "m_bForceHit": true
+            },
+            {
+              "m_fEventTimeMin": 5.733333333333333,
+              "m_fEventTimeMax": 5.9,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 3000,
+              "m_AttackUnitCount": 4,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_HYPER1_CONFUSE_STACK",
+              "m_bForceHit": true
+            },
+            {
+              "m_ConditionTarget": {
+                "m_NeedBuffStrID": "DEBUFF_BOSS_FIERCE_HARMONY_SOPRANO_CONFUSE_STACK",
+                "m_NeedBuffOverlapCount": [
+                  5,
+                  5
+                ]
+              },
+              "m_fEventTimeMin": 5.933333333333334,
+              "m_fEventTimeMax": 6.1,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 3000,
+              "m_AttackUnitCount": 4,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_HYPER3_CONFUSE",
+              "m_bForceHit": true
+            },
+            {
+              "m_fEventTimeMin": 6.133333333333334,
+              "m_fEventTimeMax": 6.166666666666667,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 3000,
+              "m_AttackUnitCount": 4,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_HYPER2_CONFUSE_STACK",
+              "m_bForceHit": true
+            }
+          ],
+          "m_listNKMEventRespawn": [
+            {
+              "m_fEventTime": 5.666666666666667,
+              "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_DEMOLISHER_EVENT_H",
+              "m_bMaxCountReRespawn": true,
+              "m_MaxCount": 1,
+              "m_fOffsetX": 600
+            },
+            {
+              "m_fEventTime": 5.666666666666667,
+              "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_DEMOLISHER_EVENT_H",
+              "m_bMaxCountReRespawn": true,
+              "m_MaxCount": 1,
+              "m_fOffsetX": 650
+            },
+            {
+              "m_fEventTime": 5.666666666666667,
+              "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_DEMOLISHER_EVENT_H",
+              "m_bMaxCountReRespawn": true,
+              "m_MaxCount": 1,
+              "m_fOffsetX": 700
+            },
+            {
+              "m_fEventTime": 5.666666666666667,
+              "m_UnitStrID": "NKM_MOB_NORMAL_DIVE_SCOURGE",
+              "m_bMaxCountReRespawn": true,
+              "m_MaxCount": 1,
+              "m_fOffsetX": 200
+            },
+            {
+              "m_fEventTime": 5.666666666666667,
+              "m_UnitStrID": "NKM_MOB_NORMAL_DIVE_WRAITH",
+              "m_bMaxCountReRespawn": true,
+              "m_MaxCount": 1,
+              "m_fOffsetX": 200
+            },
+            {
+              "m_fEventTime": 5.666666666666667,
+              "m_UnitStrID": "NKM_MOB_NORMAL_DIVE_SCOURGE",
+              "m_bMaxCountReRespawn": true,
+              "m_MaxCount": 1,
+              "m_fOffsetX": 150
+            },
+            {
+              "m_fEventTime": 5.666666666666667,
+              "m_UnitStrID": "NKM_MOB_NORMAL_DIVE_WRAITH",
+              "m_bMaxCountReRespawn": true,
+              "m_MaxCount": 1,
+              "m_fOffsetX": 150
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 1.5,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 30.0,
+              "m_fCameraCrashTime": 0.6
+            },
+            {
+              "m_fEventTime": 2.1666666666666665,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 5.0,
+              "m_fCameraCrashTime": 1.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 1.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_HYPER_1"
+              ],
+              "m_fFocusRange": 9999.0
+            },
+            {
+              "m_fEventTime": 1.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_HYPER_1"
+              ],
+              "m_fFocusRange": 9999.0
+            },
+            {
+              "m_fEventTime": 3.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_HYPER_2"
+              ],
+              "m_fFocusRange": 9999.0
+            },
+            {
+              "m_fEventTime": 3.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_HYPER_2"
+              ],
+              "m_fFocusRange": 9999.0
+            },
+            {
+              "m_fEventTime": 3.3333333333333335,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_HYPER_3"
+              ],
+              "m_fFocusRange": 9999.0
+            },
+            {
+              "m_fEventTime": 3.3333333333333335,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_HYPER_3"
+              ],
+              "m_fFocusRange": 9999.0
+            },
+            {
+              "m_fEventTime": 4.666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_HYPER_4"
+              ],
+              "m_fFocusRange": 9999.0
+            },
+            {
+              "m_fEventTime": 4.666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_HYPER_4"
+              ],
+              "m_fFocusRange": 9999.0
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_bAnimLoop": false,
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+          "m_listNKMEventGameSpeed": [
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_fGameSpeed": 0.22,
+              "m_fTrackingTime": 1.5
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L15_1 / 30"
+              },
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 5.0,
+              "m_fCameraCrashTime": 2
+            },
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 5.0,
+              "m_fCameraCrashTime": 0.3
+            }
+          ],
+          "m_listNKMEventCameraMove": [
+            {
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L15_1 / 30"
+              },
+              "m_fEventTimeMax": 5.0,
+              "m_fPosXOffset": -350,
+              "m_fPosYOffset": 200,
+              "m_fZoom": -100,
+              "m_fMoveTrackingTime": 5.0,
+              "m_fZoomTrackingTime": 2.5
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L15_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_SKILL_2"
+              ],
+              "m_fFocusRange": 9999.0
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_bAnimLoop": false
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_UNIT_BASE_BOSS",
+    "m_UnitSizeX": 200,
+    "m_UnitSizeY": 520,
+    "m_SpriteScale": 1.1,
+    "m_SpriteOffsetX": 0,
+    "m_SpriteOffsetY": 0,
+    "m_bShowGage": false,
+    "m_fShadowScaleX": 800,
+    "m_fShadowScaleY": 1300,
+    "m_fForceRespawnZposMin": 0.2,
+    "m_fForceRespawnZposMax": 0.3,
+    "m_TargetNearRange": 1900,
+    "m_SeeRange": 1900,
+    "m_SeeRangeMax": 2000,
+    "m_bTargetNoChange": false,
+    "m_bUseMotionBlur": false,
+    "m_bNoMove": true,
+    "m_bNoDamageStopTime": true,
+    "m_bNoDamageState": true,
+    "m_fDamageUpFactor": 0.0,
+    "m_listFixedStatusEffect": [
+      "NUSE_IMMUNE_SKILL_COOLTIME_DAMAGE"
+    ],
+    "m_listFixedStatusImmune": [
+      "NUSE_STUN",
+      "NUSE_SILENCE"
+    ],
+    "m_listTriggerRepeatData": [
+      {
+        "m_TriggerName": "TRIGGER_COOLTIME_DECREASE",
+        "m_fRepeatTime": 0.1
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "TRIGGER_MOB_BOSS_FIERCE_HARMONY_SOPRANO_COST_BELOW_3_DETECT",
+            "m_BuffLevel": [
+              0,
+              1
+            ]
+          }
+        ],
+        "m_TriggerName": "TRIGGER_COST_BELOW_3_FALSE",
+        "m_fRepeatTime": 0.1
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "TRIGGER_MOB_BOSS_FIERCE_HARMONY_SOPRANO_COST_BELOW_3_DETECT",
+            "m_BuffLevel": [
+              2,
+              99
+            ]
+          }
+        ],
+        "m_TriggerName": "TRIGGER_COST_BELOW_3_TRUE",
+        "m_fRepeatTime": 0.1
+      }
+    ],
+    "m_dicTriggerSet": [
+      {
+        "m_Name": "TRIGGER_COOLTIME_DECREASE",
+        "m_listNKMEventChangeCooltime": [
+          {
+            "m_TargetStateName": "USN_SKILL1",
+            "m_eChangeType": "ADD_SECONDS",
+            "m_fChangeValue": -0.1
+          },
+          {
+            "m_TargetStateName": "USN_HYPER1",
+            "m_eChangeType": "ADD_SECONDS",
+            "m_fChangeValue": -0.1
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_HARMONY_SOPRANO_1"
+              }
+            ],
+            "m_TargetStateName": "USN_SKILL1",
+            "m_eChangeType": "ADD_SECONDS",
+            "m_fChangeValue": -0.05
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_HARMONY_SOPRANO_1"
+              }
+            ],
+            "m_TargetStateName": "USN_HYPER1",
+            "m_eChangeType": "ADD_SECONDS",
+            "m_fChangeValue": -0.05
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_HARMONY_SOPRANO_1"
+              },
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_IS_PHASE_CHANGE",
+                "m_Value": [
+                  1,
+                  1
+                ]
+              }
+            ],
+            "m_TargetStateName": "USN_HYPER1",
+            "m_eChangeType": "ADD_SECONDS",
+            "m_fChangeValue": -0.15
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_MACHINE_GAP_MECHANIC_DETECT_ACTIVE"
+              }
+            ],
+            "m_TargetStateName": "USN_SKILL1",
+            "m_eChangeType": "ADD_SECONDS",
+            "m_fChangeValue": -0.1
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_MACHINE_GAP_MECHANIC_DETECT_ACTIVE"
+              }
+            ],
+            "m_TargetStateName": "USN_HYPER1",
+            "m_eChangeType": "ADD_SECONDS",
+            "m_fChangeValue": -0.1
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_COOLTIME_INCREASE",
+        "m_listNKMEventChangeCooltime": [
+          {
+            "m_TargetStateName": "USN_HYPER1",
+            "m_eChangeType": "ADD_SECONDS",
+            "m_fChangeValue": 0.5
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_COST_BELOW_3_FALSE",
+        "m_listNKMEventBuff": [
+          {
+            "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_MACHINE_GAP_MECHANIC_DETECT_ACTIVE",
+            "m_BuffRemove": true
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_IS_COST_BELOW_3_DETECT",
+                "m_Value": [
+                  1,
+                  1
+                ]
+              }
+            ],
+            "m_EffectName": "AB_FX_DEBUFF_IN_RED",
+            "m_AnimName": "BASE",
+            "m_bLandConnect": true,
+            "m_fScaleFactor": 2.0
+          }
+        ],
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_Type": "SET",
+            "m_Name": "VAR_IS_COST_BELOW_3_DETECT",
+            "m_Value": 0
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_COST_BELOW_3_TRUE",
+        "m_listNKMEventBuff": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_IS_COST_BELOW_3_DETECT",
+                "m_Value": [
+                  0,
+                  0
+                ]
+              }
+            ],
+            "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_MACHINE_GAP_MECHANIC_DETECT_ACTIVE"
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_IS_COST_BELOW_3_DETECT",
+                "m_Value": [
+                  0,
+                  0
+                ]
+              }
+            ],
+            "m_EffectName": "AB_FX_COMMON_SCAN_BLUE",
+            "m_AnimName": "BASE"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_IS_COST_BELOW_3_DETECT",
+                "m_Value": [
+                  0,
+                  0
+                ]
+              }
+            ],
+            "m_EffectName": "AB_FX_BUFF_START_BLUE",
+            "m_AnimName": "BASE",
+            "m_bLandConnect": true,
+            "m_fScaleFactor": 2.0
+          }
+        ],
+        "m_listNKMEventStopTime": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_IS_COST_BELOW_3_DETECT",
+                "m_Value": [
+                  0,
+                  0
+                ]
+              }
+            ],
+            "m_StopTimeIndex": "NSTI_SKILL",
+            "m_fStopTime": 0.6666666666666666,
+            "m_bStopEnemyOnly": false,
+            "m_bMyStop": false,
+            "m_fRange": 3000
+          }
+        ],
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_Type": "SET",
+            "m_Name": "VAR_IS_COST_BELOW_3_DETECT",
+            "m_Value": 1
+          }
+        ]
+      }
+    ],
+    "m_listHitFeedBack": [
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_HARMONY_SOPRANO_1"
+          }
+        ],
+        "m_HitCount": 1,
+        "m_TargetTrigger": "TRIGGER_COOLTIME_INCREASE",
+        "m_bStartAnyTime": true
+      }
+    ],
+    "m_listAttackStateData": [
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_MACHINE_GAP_MECHANIC_DETECT_ACTIVE",
+            "Inverse": true
+          }
+        ],
+        "m_StateName": "USN_ATTACK1",
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 800
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_MACHINE_GAP_MECHANIC_DETECT_ACTIVE",
+            "Inverse": true
+          }
+        ],
+        "m_StateName": "USN_ATTACK2",
+        "m_fRangeMin": 800,
+        "m_fRangeMax": 2000
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_MACHINE_GAP_MECHANIC_DETECT_ACTIVE"
+          }
+        ],
+        "m_StateName": "USN_ATTACK2_INSTANT",
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 2000
+      }
+    ],
+    "m_listSkillStateData": [
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_fStartCool": 0.0,
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 1500
+      }
+    ],
+    "m_listHyperSkillStateData": [
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "EventVariable",
+            "m_Name": "VAR_IS_PHASE_CHANGE",
+            "m_Value": [
+              1,
+              1
+            ]
+          }
+        ],
+        "m_StateName": "USN_HYPER1",
+        "m_fStartCool": 0.0
+      }
+    ],
+    "m_listPhaseChangeData": [
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_HARMONY_SOPRANO_1",
+            "Inverse": true
+          }
+        ],
+        "m_TargetPhase": 1,
+        "m_fChangeConditionHPRate": 0.6,
+        "m_ChangeStateName": "USN_SKILL1_PHASE_PRE"
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_HARMONY_SOPRANO_1"
+          },
+          {
+            "Type": "Cooltime",
+            "m_Range": [
+              1.0,
+              1.0
+            ],
+            "m_bHyper": true
+          }
+        ],
+        "m_TargetPhase": 1,
+        "m_fChangeConditionTime": 10,
+        "m_ChangeStateName": "USN_SKILL1_PHASE_PRE"
+      }
+    ],
+    "m_listAccumStateChangePack": [
+      {
+        "m_listAccumStateChange": [
+          {
+            "m_listAccumStateName": [
+              "USN_ATTACK1",
+              "USN_ATTACK2"
+            ],
+            "m_AccumCount": 6,
+            "m_TargetStateName": "USN_PASSIVE1"
+          }
+        ]
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventChangeCooltime": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_HARMONY_SOPRANO_1"
+              }
+            ],
+            "m_TargetStateName": "USN_HYPER1",
+            "m_eChangeType": "SET_RATIO",
+            "m_fChangeValue": 1.0
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Level",
+                "m_LevelRange": [
+                  150,
+                  999
+                ]
+              }
+            ],
+            "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_REGEN_PASSIVE"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_HARMONY_SOPRANO_2"
+              }
+            ],
+            "m_BuffStrID": "TRIGGER_MOB_BOSS_FIERCE_HARMONY_SOPRANO_COST_BELOW_3_DETECT"
+          }
+        ],
+        "m_listNKMEventText": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_Text": "SI_BATTLE_MOB_BOSS_FIERCE_HARMONY_SOPRANO_ATTACK_RANGE"
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0,
+            "m_EffectName": "AB_FX_UI_WARNING",
+            "m_ParentType": "NEPT_NUF_BEFORE_HUD_EFFECT",
+            "m_bUseZScale": false,
+            "m_AnimName": "FX_UI_WARNING",
+            "m_bForceRight": true,
+            "m_bFixedPos": true
+          }
+        ],
+        "m_listNKMEventCameraMove": [
+          {
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_fEventTimeMax": 3.0,
+            "m_fPosXOffset": 0,
+            "m_fPosYOffset": 350,
+            "m_fZoom": -200,
+            "m_fMoveTrackingTime": 1.0,
+            "m_fZoomTrackingTime": 3.0
+          },
+          {
+            "m_fEventTimeMin": 3.0,
+            "m_fEventTimeMax": 4.0,
+            "m_fPosXOffset": -300,
+            "m_fPosYOffset": 750,
+            "m_fZoom": -200,
+            "m_fMoveTrackingTime": 0.5,
+            "m_fZoomTrackingTime": 0.5
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 0.6666666666666666,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 5.0,
+            "m_fCameraCrashTime": 0.5
+          },
+          {
+            "m_fEventTime": 3.0,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 20.0,
+            "m_fCameraCrashTime": 2.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_START_1"
+            ],
+            "m_fFocusRange": 9999.0
+          },
+          {
+            "m_fEventTime": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_START_2"
+            ],
+            "m_fFocusRange": 9999.0
+          },
+          {
+            "m_fEventTime": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_START_2"
+            ],
+            "m_fFocusRange": 9999.0
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+        "m_StateName": "USN_ASTAND",
+        "m_AnimName": "ASTAND",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_bAnimLoop": true
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK1",
+        "m_AnimName": "ATTACK1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1,
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventAttack": [
+          {
+            "m_fEventTimeMin": 0.6666666666666666,
+            "m_fEventTimeMax": 0.8333333333333334,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 820,
+            "m_AttackUnitCount": 3,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_ATTACK1"
+          },
+          {
+            "m_fEventTimeMin": 1.3333333333333333,
+            "m_fEventTimeMax": 1.5,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 820,
+            "m_AttackUnitCount": 3,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_ATTACK1"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.6666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_HIT_STING_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 0.6666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_13"
+            ]
+          },
+          {
+            "m_fEventTime": 1.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_HIT_STING_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 1.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_13"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK2_INSTANT",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimName": "ASTAND",
+        "m_listNKMEventChangeState": [
+          {
+            "m_ChangeState": "USN_ATTACK2"
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK2",
+        "m_AnimName": "ATTACK2",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventAttack": [
+          {
+            "m_fEventTimeMin": 1.3333333333333333,
+            "m_fEventTimeMax": 1.5,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 3000,
+            "m_AttackUnitCount": 10,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_ATTACK2",
+            "m_bHitBossUnit": false
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_HYPER_3"
+            ]
+          },
+          {
+            "m_fEventTime": 1.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_SLASH_BIG"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_PASSIVE1",
+        "m_AnimName": "PASSIVE",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventAnimSpeed": [
+          {
+            "m_fEventTime": 2.0,
+            "m_fAnimSpeed": 0.5
+          },
+          {
+            "m_fEventTime": 2.6666666666666665,
+            "m_fAnimSpeed": 1.0
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_fEventTimeMin": 1.6666666666666667,
+            "m_fEventTimeMax": 2.0,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 3000,
+            "m_AttackUnitCount": 3,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_PASSIVE1"
+          },
+          {
+            "m_fEventTimeMin": 2.6666666666666665,
+            "m_fEventTimeMax": 3.0,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 3000,
+            "m_AttackUnitCount": 3,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_PASSIVE1"
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_fEventTime": 1.6666666666666667,
+            "m_EffectName": "AB_FX_DE_MOB_BOSS_SOPRANO_PHASE2",
+            "m_AnimName": "BASE",
+            "m_OffsetX": 500.0,
+            "m_OffsetY": 0.0,
+            "m_fAddRotate": 0.0,
+            "m_fScaleFactor": 1.0,
+            "m_bLandConnect": true
+          },
+          {
+            "m_fEventTime": 2.6666666666666665,
+            "m_EffectName": "AB_FX_DE_MOB_BOSS_SOPRANO_PHASE2",
+            "m_AnimName": "BASE",
+            "m_OffsetX": 500.0,
+            "m_OffsetY": 0.0,
+            "m_fAddRotate": 0.0,
+            "m_fScaleFactor": 1.0,
+            "m_bLandConnect": true
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 1.5,
+            "m_fFocusRange": 9999.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_PHASE_CHANGE_1"
+            ]
+          },
+          {
+            "m_fEventTime": 1.5,
+            "m_fFocusRange": 9999.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_PHASE_CHANGE_1"
+            ]
+          },
+          {
+            "m_fEventTime": 2.5,
+            "m_fFocusRange": 9999.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_PHASE_CHANGE_2"
+            ]
+          },
+          {
+            "m_fEventTime": 2.5,
+            "m_fFocusRange": 9999.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_PHASE_CHANGE_2"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_SKILL1",
+        "m_AnimName": "SKILL1",
+        "m_bAnimLoop": false,
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_bSkillCutIn": true,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_StateCoolTime": 40,
+        "m_listNKMEventAttack": [
+          {
+            "m_fEventTimeMin": 2.6666666666666665,
+            "m_fEventTimeMax": 3.0,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 3000.0,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 99,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_SKILL1",
+            "m_bHitAir": true,
+            "m_bCleanHit": true,
+            "m_bHitBossUnit": false,
+            "m_bForceHit": true
+          },
+          {
+            "m_fEventTimeMin": 3.033333333333333,
+            "m_fEventTimeMax": 3.3666666666666667,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 3000.0,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 99,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_SKILL2",
+            "m_bHitAir": true,
+            "m_bCleanHit": true,
+            "m_bHitBossUnit": false,
+            "m_bForceHit": true
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_EffectName": "AB_FX_CAST_SKILL",
+            "m_AnimName": "BASE",
+            "m_OffsetX": 0,
+            "m_OffsetY": 350,
+            "m_fScaleFactor": 30.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ],
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_SKILL_1"
+            ],
+            "m_fFocusRange": 9999.0
+          },
+          {
+            "m_fEventTime": 2.6666666666666665,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_SKILL_2"
+            ],
+            "m_fFocusRange": 9999.0
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_SKILL1_PHASE_PRE",
+        "m_AnimName": "SKILL1",
+        "m_bAnimLoop": false,
+        "m_AnimEndChangeState": "USN_PHASE_CHANGE",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_bSkillCutIn": true,
+        "m_listNKMEventAttack": [
+          {
+            "m_fEventTimeMin": 2.6666666666666665,
+            "m_fEventTimeMax": 3.0,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 3000.0,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 99,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_SKILL1",
+            "m_bHitAir": true,
+            "m_bCleanHit": true,
+            "m_bHitBossUnit": false,
+            "m_bForceHit": true
+          },
+          {
+            "m_fEventTimeMin": 3.033333333333333,
+            "m_fEventTimeMax": 3.3666666666666667,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 3000.0,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 99,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_SKILL3",
+            "m_bHitAir": true,
+            "m_bCleanHit": true,
+            "m_bHitBossUnit": false,
+            "m_bForceHit": true
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_EffectName": "AB_FX_CAST_SKILL",
+            "m_AnimName": "BASE",
+            "m_OffsetX": 0,
+            "m_OffsetY": 220,
+            "m_fScaleFactor": 30.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_SKILL_1"
+            ],
+            "m_fFocusRange": 9999.0
+          },
+          {
+            "m_fEventTime": 2.6666666666666665,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_SKILL_2"
+            ],
+            "m_fFocusRange": 9999.0
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_PHASE_CHANGE",
+        "m_AnimName": "PHASE_CHANGE",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_StateCoolTime": 300,
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_listNKMEventVariable": [
+          {
+            "m_Type": "SET",
+            "m_Name": "VAR_IS_PHASE_CHANGE",
+            "m_Value": 1
+          }
+        ],
+        "m_listNKMEventStopTime": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L13_1 / 30"
+            },
+            "m_StopTimeIndex": "NSTI_SKILL",
+            "m_fStopTime": 3.0,
+            "m_bStopEnemyOnly": true,
+            "m_bMyStop": false,
+            "m_fRange": 3000
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_fEventTime": 3.0,
+            "m_EffectName": "AB_FX_DE_MOB_BOSS_SOPRANO_PHASE2",
+            "m_AnimName": "BASE",
+            "m_OffsetX": 200.0,
+            "m_OffsetY": 0.0,
+            "m_fAddRotate": 0.0,
+            "m_fScaleFactor": 1.0,
+            "m_bLandConnect": true
+          }
+        ],
+        "m_listNKMEventRespawn": [
+          {
+            "m_fEventTime": 5.666666666666667,
+            "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_DEMOLISHER_EVENT_H",
+            "m_bMaxCountReRespawn": true,
+            "m_MaxCount": 1,
+            "m_fOffsetX": 600
+          },
+          {
+            "m_fEventTime": 5.666666666666667,
+            "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_DEMOLISHER_EVENT_H",
+            "m_bMaxCountReRespawn": true,
+            "m_MaxCount": 1,
+            "m_fOffsetX": 650
+          },
+          {
+            "m_fEventTime": 5.666666666666667,
+            "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_DEMOLISHER_EVENT_H",
+            "m_bMaxCountReRespawn": true,
+            "m_MaxCount": 1,
+            "m_fOffsetX": 700
+          },
+          {
+            "m_fEventTime": 5.666666666666667,
+            "m_UnitStrID": "NKM_MOB_NORMAL_DIVE_SCOURGE",
+            "m_bMaxCountReRespawn": true,
+            "m_MaxCount": 1,
+            "m_fOffsetX": 200
+          },
+          {
+            "m_fEventTime": 5.666666666666667,
+            "m_UnitStrID": "NKM_MOB_NORMAL_DIVE_WRAITH",
+            "m_bMaxCountReRespawn": true,
+            "m_MaxCount": 1,
+            "m_fOffsetX": 200
+          },
+          {
+            "m_fEventTime": 5.666666666666667,
+            "m_UnitStrID": "NKM_MOB_NORMAL_DIVE_SCOURGE",
+            "m_bMaxCountReRespawn": true,
+            "m_MaxCount": 1,
+            "m_fOffsetX": 150
+          },
+          {
+            "m_fEventTime": 5.666666666666667,
+            "m_UnitStrID": "NKM_MOB_NORMAL_DIVE_WRAITH",
+            "m_bMaxCountReRespawn": true,
+            "m_MaxCount": 1,
+            "m_fOffsetX": 150
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_39"
+            ],
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 3.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_SKILL_2"
+            ],
+            "m_fFocusRange": 9999.0
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_HYPER1",
+        "m_AnimName": "HYPER_SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_StateCoolTime": 100,
+        "m_listNKMEventText": [
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_Text": "SI_BATTLE_MOB_BOSS_FIERCE_HARMONY_SOPRANO_HYPER"
+          }
+        ],
+        "m_listNKMEventAnimSpeed": [
+          {
+            "m_fEventTime": 2.0,
+            "m_fAnimSpeed": 0.5
+          },
+          {
+            "m_fEventTime": 2.6666666666666665,
+            "m_fAnimSpeed": 1.0
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_fEventTimeMin": 1.6666666666666667,
+            "m_fEventTimeMax": 1.8333333333333333,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 3000,
+            "m_AttackUnitCount": 4,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_HYPER1_CONFUSE_STACK",
+            "m_bForceHit": true
+          },
+          {
+            "m_fEventTimeMin": 3.0,
+            "m_fEventTimeMax": 3.1666666666666665,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 3000,
+            "m_AttackUnitCount": 4,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_HYPER1_CONFUSE_STACK",
+            "m_bForceHit": true
+          },
+          {
+            "m_fEventTimeMin": 5.333333333333333,
+            "m_fEventTimeMax": 5.5,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 3000,
+            "m_AttackUnitCount": 4,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_HYPER1_CONFUSE_STACK",
+            "m_bForceHit": true
+          },
+          {
+            "m_fEventTimeMin": 5.533333333333333,
+            "m_fEventTimeMax": 5.7,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 3000,
+            "m_AttackUnitCount": 4,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_HYPER1_CONFUSE_STACK",
+            "m_bForceHit": true
+          },
+          {
+            "m_fEventTimeMin": 5.733333333333333,
+            "m_fEventTimeMax": 5.9,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 3000,
+            "m_AttackUnitCount": 4,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_HYPER1_CONFUSE_STACK",
+            "m_bForceHit": true
+          },
+          {
+            "m_ConditionTarget": {
+              "m_NeedBuffStrID": "DEBUFF_BOSS_FIERCE_HARMONY_SOPRANO_CONFUSE_STACK",
+              "m_NeedBuffOverlapCount": [
+                5,
+                5
+              ]
+            },
+            "m_fEventTimeMin": 5.933333333333334,
+            "m_fEventTimeMax": 6.1,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 3000,
+            "m_AttackUnitCount": 4,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_HYPER3_CONFUSE",
+            "m_bForceHit": true
+          },
+          {
+            "m_fEventTimeMin": 6.133333333333334,
+            "m_fEventTimeMax": 6.166666666666667,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 3000,
+            "m_AttackUnitCount": 4,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_HARMONY_SOPRANO_HYPER2_CONFUSE_STACK",
+            "m_bForceHit": true
+          }
+        ],
+        "m_listNKMEventRespawn": [
+          {
+            "m_fEventTime": 5.666666666666667,
+            "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_DEMOLISHER_EVENT_H",
+            "m_bMaxCountReRespawn": true,
+            "m_MaxCount": 1,
+            "m_fOffsetX": 600
+          },
+          {
+            "m_fEventTime": 5.666666666666667,
+            "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_DEMOLISHER_EVENT_H",
+            "m_bMaxCountReRespawn": true,
+            "m_MaxCount": 1,
+            "m_fOffsetX": 650
+          },
+          {
+            "m_fEventTime": 5.666666666666667,
+            "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_DEMOLISHER_EVENT_H",
+            "m_bMaxCountReRespawn": true,
+            "m_MaxCount": 1,
+            "m_fOffsetX": 700
+          },
+          {
+            "m_fEventTime": 5.666666666666667,
+            "m_UnitStrID": "NKM_MOB_NORMAL_DIVE_SCOURGE",
+            "m_bMaxCountReRespawn": true,
+            "m_MaxCount": 1,
+            "m_fOffsetX": 200
+          },
+          {
+            "m_fEventTime": 5.666666666666667,
+            "m_UnitStrID": "NKM_MOB_NORMAL_DIVE_WRAITH",
+            "m_bMaxCountReRespawn": true,
+            "m_MaxCount": 1,
+            "m_fOffsetX": 200
+          },
+          {
+            "m_fEventTime": 5.666666666666667,
+            "m_UnitStrID": "NKM_MOB_NORMAL_DIVE_SCOURGE",
+            "m_bMaxCountReRespawn": true,
+            "m_MaxCount": 1,
+            "m_fOffsetX": 150
+          },
+          {
+            "m_fEventTime": 5.666666666666667,
+            "m_UnitStrID": "NKM_MOB_NORMAL_DIVE_WRAITH",
+            "m_bMaxCountReRespawn": true,
+            "m_MaxCount": 1,
+            "m_fOffsetX": 150
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 1.5,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 30.0,
+            "m_fCameraCrashTime": 0.6
+          },
+          {
+            "m_fEventTime": 2.1666666666666665,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 5.0,
+            "m_fCameraCrashTime": 1.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 1.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_HYPER_1"
+            ],
+            "m_fFocusRange": 9999.0
+          },
+          {
+            "m_fEventTime": 1.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_HYPER_1"
+            ],
+            "m_fFocusRange": 9999.0
+          },
+          {
+            "m_fEventTime": 3.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_HYPER_2"
+            ],
+            "m_fFocusRange": 9999.0
+          },
+          {
+            "m_fEventTime": 3.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_HYPER_2"
+            ],
+            "m_fFocusRange": 9999.0
+          },
+          {
+            "m_fEventTime": 3.3333333333333335,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_HYPER_3"
+            ],
+            "m_fFocusRange": 9999.0
+          },
+          {
+            "m_fEventTime": 3.3333333333333335,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_HYPER_3"
+            ],
+            "m_fFocusRange": 9999.0
+          },
+          {
+            "m_fEventTime": 4.666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_HYPER_4"
+            ],
+            "m_fFocusRange": 9999.0
+          },
+          {
+            "m_fEventTime": 4.666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_HYPER_4"
+            ],
+            "m_fFocusRange": 9999.0
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_bAnimLoop": false,
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+        "m_listNKMEventGameSpeed": [
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_fGameSpeed": 0.22,
+            "m_fTrackingTime": 1.5
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L15_1 / 30"
+            },
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 5.0,
+            "m_fCameraCrashTime": 2
+          },
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 5.0,
+            "m_fCameraCrashTime": 0.3
+          }
+        ],
+        "m_listNKMEventCameraMove": [
+          {
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L15_1 / 30"
+            },
+            "m_fEventTimeMax": 5.0,
+            "m_fPosXOffset": -350,
+            "m_fPosYOffset": 200,
+            "m_fZoom": -100,
+            "m_fMoveTrackingTime": 5.0,
+            "m_fZoomTrackingTime": 2.5
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L15_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_FIERCE_HARMONY_SOPRANO_SKILL_2"
+            ],
+            "m_fFocusRange": 9999.0
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_bAnimLoop": false
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

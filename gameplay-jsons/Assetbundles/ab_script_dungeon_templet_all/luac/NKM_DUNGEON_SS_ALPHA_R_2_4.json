@@ -1,0 +1,183 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_ALPHA_R_2_4.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 2,
+  "records": [
+    {
+      "__key": "m_listDungeonWave",
+      "value": [
+        {
+          "m_WaveID": 1,
+          "m_fNextWavetime": 40,
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_BOSS_EVENT_ALPHA_C_JIA_CLONE",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0,
+                "m_fEventPos": 0.1
+              },
+              "m_AddStatData": {
+                "m_StatFactor": {
+                  "NST_ATK": 0.6,
+                  "NST_HP": 1.0,
+                  "NST_HIT": 0.5
+                }
+              }
+            }
+          ],
+          "m_listDungeonUnitRespawnA": [
+            {
+              "m_UnitStrID": "NKM_UNIT_C_ALPHA_JIA_DUMMY",
+              "m_UnitLevel": 80,
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 5,
+                "m_fEventPos": 0.35,
+                "m_EventTag": "JIA",
+                "m_EventTagCount": 1
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_UNIT_C_ALPHA_JIA_DUMMY",
+              "m_UnitLevel": 80,
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 5,
+                "m_fEventPos": 0.25,
+                "m_EventTag": "JIA",
+                "m_EventTagCount": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 3300181,
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_UNIT_C_ALPHA_JIA",
+          "m_EventConditionValue2": "USN_START",
+          "m_bPause": false,
+          "m_fEventDelay": 3,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_UNIT_C_ALPHA_JIA",
+          "m_EventConditionValue2": "USN_SKILL1",
+          "m_dungeonEventType": "ADD_EVENTTAG",
+          "m_EventActionStrValue": "JIA",
+          "m_EventActionValue": 1,
+          "m_fEventDelay": 1.4,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 3300182,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 20.0
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_listDungeonWave": [
+      {
+        "m_WaveID": 1,
+        "m_fNextWavetime": 40,
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_BOSS_EVENT_ALPHA_C_JIA_CLONE",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0,
+              "m_fEventPos": 0.1
+            },
+            "m_AddStatData": {
+              "m_StatFactor": {
+                "NST_ATK": 0.6,
+                "NST_HP": 1.0,
+                "NST_HIT": 0.5
+              }
+            }
+          }
+        ],
+        "m_listDungeonUnitRespawnA": [
+          {
+            "m_UnitStrID": "NKM_UNIT_C_ALPHA_JIA_DUMMY",
+            "m_UnitLevel": 80,
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 5,
+              "m_fEventPos": 0.35,
+              "m_EventTag": "JIA",
+              "m_EventTagCount": 1
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_UNIT_C_ALPHA_JIA_DUMMY",
+            "m_UnitLevel": 80,
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 5,
+              "m_fEventPos": 0.25,
+              "m_EventTag": "JIA",
+              "m_EventTagCount": 1
+            }
+          }
+        ]
+      }
+    ],
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 3300181,
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_UNIT_C_ALPHA_JIA",
+        "m_EventConditionValue2": "USN_START",
+        "m_bPause": false,
+        "m_fEventDelay": 3,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_UNIT_C_ALPHA_JIA",
+        "m_EventConditionValue2": "USN_SKILL1",
+        "m_dungeonEventType": "ADD_EVENTTAG",
+        "m_EventActionStrValue": "JIA",
+        "m_EventActionValue": 1,
+        "m_fEventDelay": 1.4,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 3300182,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 20.0
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

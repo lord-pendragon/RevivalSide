@@ -1,0 +1,3725 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_UNIT_ESPR_CA_FROZEN.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 28,
+  "records": [
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.31
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.4
+    },
+    {
+      "__key": "m_UnitSizeX",
+      "value": 140
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 320
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": true
+    },
+    {
+      "__key": "m_fGageOffsetX",
+      "value": 0
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 330
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 200
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 200
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 100
+    },
+    {
+      "__key": "m_SeeTarget",
+      "value": true
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 850
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 1500
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 1600
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 2.0
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": true
+    },
+    {
+      "__key": "m_fBuffEffectScaleFactor",
+      "value": 1.0
+    },
+    {
+      "__key": "m_listFixedStatusImmune",
+      "value": [
+        "NUSE_CHILL",
+        "NUSE_FREEZE"
+      ]
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_Condition": {
+            "m_IgnoreBuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_ATKUP_END",
+            "m_NeedBuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_HP"
+          },
+          "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_ATKUP",
+          "m_fRebuffTime": 1,
+          "m_BuffStatLevel": 3
+        },
+        {
+          "m_Condition": {
+            "m_NeedBuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_HP"
+          },
+          "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_DEGEN",
+          "m_fRebuffTime": 1,
+          "m_BuffStatLevel": 3
+        },
+        {
+          "m_BuffStrID": "BUFF_COMMON_BLOCK_DEBUFF"
+        },
+        {
+          "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_HP"
+        }
+      ]
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_Condition": {
+            "m_Phase": [
+              0,
+              0
+            ]
+          },
+          "m_StateName": "USN_ATTACK1",
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 1000
+        },
+        {
+          "m_Condition": {
+            "m_Phase": [
+              1,
+              1
+            ],
+            "m_IgnoreBuffStrID": "BUFF_ESPR_CA_FROZEN_SKILL1_TRIGGER"
+          },
+          "m_StateName": "USN_ATTACK2",
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 850
+        },
+        {
+          "m_Condition": {
+            "m_Phase": [
+              1,
+              1
+            ],
+            "m_NeedBuffStrID": "BUFF_ESPR_CA_FROZEN_SKILL1_TRIGGER"
+          },
+          "m_StateName": "USN_SKILL1_INSTANT",
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 900
+        }
+      ]
+    },
+    {
+      "__key": "m_listSkillStateData",
+      "value": [
+        {
+          "m_Condition": {
+            "m_NeedBuffStrID": "BUFF_ESPR_CA_FROZEN_PHASE2_TRIGGER"
+          },
+          "m_StateName": "USN_SKILL1",
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 900
+        }
+      ]
+    },
+    {
+      "__key": "m_listHyperSkillStateData",
+      "value": [
+        {
+          "m_Condition": {
+            "m_NeedBuffStrID": "BUFF_ESPR_CA_FROZEN_PHASE2_TRIGGER"
+          },
+          "m_StateName": "USN_HYPER1",
+          "m_fStartCool": 0.7,
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 1500
+        }
+      ]
+    },
+    {
+      "__key": "m_listPhaseChangeData",
+      "value": [
+        {
+          "m_TargetPhase": 1,
+          "m_fChangeConditionHPRate": 0.5,
+          "m_ChangeStateName": "USN_PHASECHANGE"
+        }
+      ]
+    },
+    {
+      "__key": "m_listStandStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ASTAND2",
+          "m_PhaseOver": 1
+        }
+      ]
+    },
+    {
+      "__key": "m_listRunStateData",
+      "value": [
+        {
+          "m_StateName": "USN_RUN2",
+          "m_PhaseOver": 1
+        }
+      ]
+    },
+    {
+      "__key": "m_listHitFeedBack",
+      "value": [
+        {
+          "m_Condition": {
+            "m_NeedBuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_SHIELD"
+          },
+          "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_DAMAGE",
+          "m_bStartAnyTime": true,
+          "m_HitCount": 1
+        },
+        {
+          "m_Condition": {
+            "m_SkillStrID": "NKM_UNIT_ESPR_CA_FROZEN_PASSIVE",
+            "m_SkillLevel": [
+              5,
+              99
+            ],
+            "m_NeedBuffStrID": "BUFF_ESPR_CA_FROZEN_PHASE2_TRIGGER",
+            "m_IgnoreBuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_COUNT_END_LV5"
+          },
+          "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_COUNT_LV5",
+          "m_bStartAnyTime": true,
+          "m_HitCount": 1
+        },
+        {
+          "m_Condition": {
+            "m_NeedBuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_COUNT_END_LV5",
+            "m_IgnoreBuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_END_LV5"
+          },
+          "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_LV5",
+          "m_bStartAnyTime": true,
+          "m_HitCount": 1,
+          "m_BuffStatLevel": 2
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_START",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_bShowGage": false,
+          "m_bInvincibleState": true,
+          "m_fGageOffsetY": -25,
+          "m_listFixedStatusEffect": [
+            "NUSE_BLOCK_DEBUFF"
+          ],
+          "m_listFixedStatusImmune": [
+            "NUSE_STUN",
+            "NUSE_SLEEP"
+          ],
+          "m_AnimName": "START",
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventBuff": [
+            {
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_SHIELD"
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_BuffRemove": true,
+              "m_BuffStrID": "BUFF_COMMON_BLOCK_DEBUFF"
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_DEName": "DE_ESPR_CA_FROZEN_START",
+              "m_OffsetZ": 1
+            },
+            {
+              "m_fEventTime": 3.3333333333333335,
+              "m_DEName": "DE_ESPR_CA_FROZEN_PASSIVE1_SHIELD",
+              "m_OffsetX": 10,
+              "m_OffsetY": 170,
+              "m_OffsetZ": -1,
+              "m_bHold": true,
+              "m_FollowType": "TDT_NORMAL"
+            }
+          ],
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_DamageEffectID": "DE_ESPR_CA_FROZEN_PASSIVE1_LV5",
+              "m_ChangeState": "DES_END"
+            },
+            {
+              "m_DamageEffectID": "DE_ESPR_CA_FROZEN_PASSIVE1_SHIELD",
+              "m_ChangeState": "DES_LOOP"
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_DamageEffectID": "DE_ESPR_CA_FROZEN_PASSIVE1_SHIELD",
+              "m_ChangeState": "DES_LOOP"
+            },
+            {
+              "m_DamageEffectID": "DE_ESPR_CA_FROZEN_SKILL1_LV5",
+              "m_ChangeState": "DES_END"
+            }
+          ],
+          "m_listNKMEventStopTime": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_StopTimeIndex": "NSTI_SKILL",
+              "m_fStopTime": 4.5,
+              "m_bStopEnemyOnly": false,
+              "m_bMyStop": false,
+              "m_fRange": 3000
+            }
+          ],
+          "m_listNKMEventFadeWorld": [
+            {
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_fEventTimeMax": 4.833333333333333,
+              "m_fColorR": 0.03,
+              "m_fColorG": 0.03,
+              "m_fColorB": 0.03,
+              "m_fMapColorKeepTime": 0.16666666666666666,
+              "m_fMapColorReturnTime": 1.0
+            }
+          ],
+          "m_listNKMEventCameraMove": [
+            {
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_fEventTimeMax": 0.3333333333333333,
+              "m_bForce": true,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 225,
+              "m_fZoom": -100,
+              "m_fMoveTrackingTime": 0.03333333333333333,
+              "m_fZoomTrackingTime": 0.03333333333333333
+            },
+            {
+              "m_fEventTimeMin": 0.3333333333333333,
+              "m_fEventTimeMax": 3.2666666666666666,
+              "m_bForce": true,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 225,
+              "m_fZoom": 0,
+              "m_fMoveTrackingTime": 10.0,
+              "m_fZoomTrackingTime": 10.0
+            },
+            {
+              "m_fEventTimeMin": 3.2666666666666666,
+              "m_fEventTimeMax": 3.3333333333333335,
+              "m_bForce": true,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 200,
+              "m_fZoom": -200,
+              "m_fMoveTrackingTime": 0.03333333333333333,
+              "m_fZoomTrackingTime": 0.03333333333333333
+            },
+            {
+              "m_fEventTimeMin": 3.3333333333333335,
+              "m_fEventTimeMax": 5.0,
+              "m_bForce": true,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 200,
+              "m_fZoom": 0,
+              "m_fMoveTrackingTime": 0.03333333333333333,
+              "m_fZoomTrackingTime": 0.03333333333333333
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 3.2666666666666666,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashGap": 8,
+              "m_fCameraCrashTime": 0.4
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_fEventTime": 0.43333333333333335,
+              "m_EffectName": "AB_FX_AWAKEN_SPAWN_HUD",
+              "m_OffsetX": 0,
+              "m_OffsetY": 225,
+              "m_AnimName": "BASE",
+              "m_fScaleFactor": 1.0,
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_WIND_02"
+              ]
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_WIND_07"
+              ]
+            },
+            {
+              "m_fEventTime": 0.43333333333333335,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_AWAKEN_HUD"
+              ]
+            },
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG_09"
+              ]
+            },
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+              ]
+            },
+            {
+              "m_fEventTime": 0.5,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+              ]
+            },
+            {
+              "m_fEventTime": 0.6666666666666666,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+              ]
+            },
+            {
+              "m_fEventTime": 0.8333333333333334,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+              ]
+            },
+            {
+              "m_fEventTime": 1.0,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+              ]
+            },
+            {
+              "m_fEventTime": 1.1666666666666667,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+              ]
+            },
+            {
+              "m_fEventTime": 1.3333333333333333,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_07"
+              ]
+            },
+            {
+              "m_fEventTime": 2.0,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_05"
+              ]
+            },
+            {
+              "m_fEventTime": 3.0,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_WHOOSH_04"
+              ]
+            },
+            {
+              "m_fEventTime": 3.2666666666666666,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_ICE"
+              ]
+            },
+            {
+              "m_fEventTime": 3.2666666666666666,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_IMPACT"
+              ]
+            },
+            {
+              "m_fEventTime": 3.2666666666666666,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_WHOOSH_05"
+              ]
+            },
+            {
+              "m_fEventTime": 3.2666666666666666,
+              "m_listSoundName": [
+                "FX_CUTSCEN_CLOCK_05"
+              ]
+            },
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_listSoundName": [
+                "FX_CUTSCEN_CLOCK_04"
+              ]
+            },
+            {
+              "m_fEventTime": 1.3333333333333333,
+              "m_listSoundName": [
+                "FX_CUTSCEN_CLOCK_04"
+              ]
+            },
+            {
+              "m_fEventTime": 2.3333333333333335,
+              "m_listSoundName": [
+                "FX_CUTSCEN_CLOCK_04"
+              ]
+            },
+            {
+              "m_fEventTime": 3.3333333333333335,
+              "m_listSoundName": [
+                "FX_CUTSCEN_CLOCK_04"
+              ]
+            },
+            {
+              "m_fEventTime": 2.8333333333333335,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_BONE_CRACK_02"
+              ]
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L27_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_START_1",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_START_2",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_START_3",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_START_4",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_START_5",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_START_6"
+              ],
+              "m_dicSkinSound": [
+                [
+                  123529,
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_START_1",
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_START_2-2",
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_START_3"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ASTAND",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+          "m_AnimName": "ASTAND",
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_fGageOffsetY": -25,
+          "m_bAnimLoop": true,
+          "m_listFixedStatusImmune": [
+            "NUSE_STUN",
+            "NUSE_SLEEP"
+          ]
+        },
+        {
+          "m_StateName": "USN_ASTAND2",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+          "m_AnimName": "ASTAND2",
+          "m_bAnimLoop": true
+        },
+        {
+          "m_StateName": "USN_RUN",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_AnimName": "RUN",
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_fGageOffsetY": -25,
+          "m_bAnimLoop": true,
+          "m_listFixedStatusImmune": [
+            "NUSE_STUN",
+            "NUSE_SLEEP"
+          ],
+          "m_bRun": true
+        },
+        {
+          "m_StateName": "USN_RUN2",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_AnimName": "RUN2",
+          "m_bAnimLoop": true,
+          "m_bRun": true
+        },
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_fGageOffsetY": -25,
+          "m_AnimName": "ATTACK1_START",
+          "m_fAnimSpeed": 1.0,
+          "m_AnimEndChangeState": "USN_ATTACK1_LOOP",
+          "m_listFixedStatusImmune": [
+            "NUSE_STUN",
+            "NUSE_SLEEP"
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_10",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_11",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_12",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_13",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_14"
+              ],
+              "m_dicSkinSound": [
+                [
+                  123529,
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_ATTACK_1",
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_ATTACK_2",
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_ATTACK_3",
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_ATTACK_4",
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_ATTACK_5-2"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1_LOOP",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_fGageOffsetY": -25,
+          "m_listFixedStatusImmune": [
+            "NUSE_STUN",
+            "NUSE_SLEEP"
+          ],
+          "m_AnimName": "ATTACK1_LOOP",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 1.0,
+          "m_TargetLostOrDieStateDurationTime": 0.03333333333333333,
+          "m_TargetLostOrDieState": "USN_ATTACK1_END",
+          "m_StateTimeChangeStateTime": 30.0,
+          "m_StateTimeChangeState": "USN_ATTACK1_END",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_DEName": "DE_ESPR_CA_FROZEN_ATTACK1_A",
+              "m_bIgnoreTarget": false,
+              "m_bIgnoreNoTarget": true,
+              "m_bTargetPos": true,
+              "m_OffsetZ": -1,
+              "m_bHold": true,
+              "m_FollowType": "TDT_INVALID"
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 5.0,
+              "m_DEName": "DE_ESPR_CA_FROZEN_ATTACK1_B",
+              "m_bIgnoreTarget": false,
+              "m_bIgnoreNoTarget": true,
+              "m_bTargetPos": true,
+              "m_OffsetZ": -1,
+              "m_bHold": true,
+              "m_FollowType": "TDT_INVALID"
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 10.0,
+              "m_DEName": "DE_ESPR_CA_FROZEN_ATTACK1_C",
+              "m_bIgnoreTarget": false,
+              "m_bIgnoreNoTarget": true,
+              "m_bTargetPos": true,
+              "m_OffsetZ": -1,
+              "m_bHold": true,
+              "m_FollowType": "TDT_INVALID"
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 15.0,
+              "m_DEName": "DE_ESPR_CA_FROZEN_ATTACK1_D",
+              "m_bIgnoreTarget": false,
+              "m_bIgnoreNoTarget": true,
+              "m_bTargetPos": true,
+              "m_OffsetZ": -1,
+              "m_bHold": true,
+              "m_FollowType": "TDT_INVALID"
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 20.0,
+              "m_DEName": "DE_ESPR_CA_FROZEN_ATTACK1_E",
+              "m_bIgnoreTarget": false,
+              "m_bIgnoreNoTarget": true,
+              "m_bTargetPos": true,
+              "m_OffsetZ": -1,
+              "m_bHold": true,
+              "m_FollowType": "TDT_INVALID"
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 25.0,
+              "m_DEName": "DE_ESPR_CA_FROZEN_ATTACK1_F",
+              "m_bIgnoreTarget": false,
+              "m_bIgnoreNoTarget": true,
+              "m_bTargetPos": true,
+              "m_OffsetZ": -1,
+              "m_bHold": true,
+              "m_FollowType": "TDT_INVALID"
+            }
+          ],
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 5.333333333333333,
+              "m_DamageEffectID": "DE_ESPR_CA_FROZEN_ATTACK1_A",
+              "m_ChangeState": "DES_END"
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 10.333333333333334,
+              "m_DamageEffectID": "DE_ESPR_CA_FROZEN_ATTACK1_B",
+              "m_ChangeState": "DES_END"
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 15.333333333333334,
+              "m_DamageEffectID": "DE_ESPR_CA_FROZEN_ATTACK1_C",
+              "m_ChangeState": "DES_END"
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 20.333333333333332,
+              "m_DamageEffectID": "DE_ESPR_CA_FROZEN_ATTACK1_D",
+              "m_ChangeState": "DES_END"
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 25.333333333333332,
+              "m_DamageEffectID": "DE_ESPR_CA_FROZEN_ATTACK1_E",
+              "m_ChangeState": "DES_END"
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_DamageEffectID": "DE_ESPR_CA_FROZEN_ATTACK1_A",
+              "m_ChangeState": "DES_END"
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_DamageEffectID": "DE_ESPR_CA_FROZEN_ATTACK1_B",
+              "m_ChangeState": "DES_END"
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_DamageEffectID": "DE_ESPR_CA_FROZEN_ATTACK1_C",
+              "m_ChangeState": "DES_END"
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_DamageEffectID": "DE_ESPR_CA_FROZEN_ATTACK1_D",
+              "m_ChangeState": "DES_END"
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_DamageEffectID": "DE_ESPR_CA_FROZEN_ATTACK1_E",
+              "m_ChangeState": "DES_END"
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_DamageEffectID": "DE_ESPR_CA_FROZEN_ATTACK1_F",
+              "m_ChangeState": "DES_END"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_fLocalVol": 0.2,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_21"
+              ]
+            },
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_fLocalVol": 0.05,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_LIGHT_15"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 10.0,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_1",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_2",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_3"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 20.0,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_1",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_2",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_3"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1_END",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_fGageOffsetY": -25,
+          "m_listFixedStatusImmune": [
+            "NUSE_STUN",
+            "NUSE_SLEEP"
+          ],
+          "m_AnimName": "ATTACK1_END",
+          "m_fAnimSpeed": 1.0
+        },
+        {
+          "m_StateName": "USN_PHASECHANGE",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_INVALID",
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_bShowGage": false,
+          "m_bInvincibleState": true,
+          "m_AnimName": "PHASECHANGE",
+          "m_fAnimSpeed": 1.0,
+          "m_listFixedStatusImmune": [
+            "NUSE_STUN",
+            "NUSE_SLEEP"
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_ESPR_CA_FROZEN_ATTACK",
+                "m_SkillLevel": [
+                  5,
+                  99
+                ]
+              },
+              "m_fEventTime": 2.0,
+              "m_DEName": "DE_ESPR_CA_FROZEN_PASSIVE1_LV5",
+              "m_OffsetX": 650,
+              "m_bHold": true,
+              "m_FollowType": "TDT_SLOWER",
+              "m_FollowTime": 4.0
+            },
+            {
+              "m_fEventTime": 2.0,
+              "m_DEName": "DE_ESPR_CA_FROZEN_SKILL1_LV5",
+              "m_OffsetX": 600,
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_fEventTime": 2.0,
+              "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PHASE2_TRIGGER"
+            },
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_ESPR_CA_FROZEN_PASSIVE",
+                "m_SkillLevel": [
+                  5,
+                  99
+                ]
+              },
+              "m_fEventTime": 2.0,
+              "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_LV5"
+            },
+            {
+              "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_DEGEN",
+              "m_BuffRemove": true
+            },
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_SHIELD",
+              "m_BuffRemove": true
+            },
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_HP",
+              "m_BuffRemove": true
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_DEGEN",
+              "m_BuffRemove": true
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_SHIELD",
+              "m_BuffRemove": true
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_HP",
+              "m_BuffRemove": true
+            }
+          ],
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_DamageEffectID": "DE_ESPR_CA_FROZEN_PASSIVE1_SHIELD",
+              "m_ChangeState": "DES_END"
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_fEventTimeMin": 2.0,
+              "m_fEventTimeMax": 2.5,
+              "m_fRangeMin": -1000,
+              "m_fRangeMax": 1000,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_UNIT_ESPR_CA_FROZEN_PASSIVE1"
+            }
+          ],
+          "m_listNKMEventStopTime": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L13_1 / 30"
+              },
+              "m_StopTimeIndex": "NSTI_SKILL",
+              "m_fStopTime": 1.5,
+              "m_bStopEnemyOnly": false,
+              "m_bMyStop": false,
+              "m_fRange": 1200
+            }
+          ],
+          "m_listNKMEventFadeWorld": [
+            {
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L13_1 / 30"
+              },
+              "m_fEventTimeMax": 1.0,
+              "m_fColorR": 0.0,
+              "m_fColorG": 0.0,
+              "m_fColorB": 0.5,
+              "m_fMapColorKeepTime": {
+                "__unparsed_expr": "L13_1 / 30"
+              },
+              "m_fMapColorReturnTime": 1.0
+            }
+          ],
+          "m_listNKMEventCameraMove": [
+            {
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L13_1 / 30"
+              },
+              "m_fEventTimeMax": 0.3333333333333333,
+              "m_bForce": true,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 150,
+              "m_fZoom": -100,
+              "m_fMoveTrackingTime": 0.1,
+              "m_fZoomTrackingTime": 0.1
+            },
+            {
+              "m_fEventTimeMin": 0.3333333333333333,
+              "m_fEventTimeMax": 1.0666666666666667,
+              "m_bForce": true,
+              "m_fPosXOffset": -125,
+              "m_fPosYOffset": 150,
+              "m_fZoom": -200,
+              "m_fMoveTrackingTime": 1.0,
+              "m_fZoomTrackingTime": 1.0
+            },
+            {
+              "m_fEventTimeMin": 1.0666666666666667,
+              "m_fEventTimeMax": 2.0,
+              "m_bForce": true,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 250,
+              "m_fZoom": -150,
+              "m_fMoveTrackingTime": 1.0,
+              "m_fZoomTrackingTime": 1.0
+            },
+            {
+              "m_fEventTimeMin": 2.0,
+              "m_fEventTimeMax": 2.6666666666666665,
+              "m_bForce": true,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 0,
+              "m_fZoom": 0,
+              "m_fMoveTrackingTime": 0.1,
+              "m_fZoomTrackingTime": 0.1
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 1.9333333333333333,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashGap": 8,
+              "m_fCameraCrashTime": 0.4
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L13_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_CUTSCEN_CLOCK_04"
+              ]
+            },
+            {
+              "m_fEventTime": 1.0,
+              "m_listSoundName": [
+                "FX_CUTSCEN_CLOCK_04"
+              ]
+            },
+            {
+              "m_fEventTime": 1.8333333333333333,
+              "m_listSoundName": [
+                "FX_CUTSCEN_CLOCK_05"
+              ]
+            },
+            {
+              "m_fEventTime": 0.26666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_07"
+              ]
+            },
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_06"
+              ]
+            },
+            {
+              "m_fEventTime": 0.43333333333333335,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_WIND_02"
+              ]
+            },
+            {
+              "m_fEventTime": 0.9,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_WIND_02"
+              ]
+            },
+            {
+              "m_fEventTime": 1.1666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_IMPACT_ICE"
+              ]
+            },
+            {
+              "m_fEventTime": 1.1666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_33"
+              ]
+            },
+            {
+              "m_fEventTime": 1.9333333333333333,
+              "m_fLocalVol": 0.6,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_ROCK_BIG_02"
+              ]
+            },
+            {
+              "m_fEventTime": 2.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_ICE"
+              ]
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L24_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_PASSIVE_2",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_PASSIVE_4",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_PASSIVE_6",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_PASSIVE_7",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_PASSIVE_8",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_PASSIVE_9"
+              ],
+              "m_dicSkinSound": [
+                [
+                  123529,
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_PASSIVE_3",
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_PASSIVE_4",
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_PASSIVE_5-2"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK2",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_bSeeTarget": true,
+          "m_AnimName": "ATTACK2",
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": 0.5,
+              "m_DEName": "DE_ESPR_CA_FROZEN_ATTACK2",
+              "m_bTargetPos": true
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.43333333333333335,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWING_SMALL_18"
+              ]
+            },
+            {
+              "m_fEventTime": 0.7666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWING_SMALL_18"
+              ]
+            },
+            {
+              "m_fEventTime": 0.4,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_7",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_8",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_16",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_17"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK2_AIR",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimName": "ATTACK2_AIR",
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": 0.5,
+              "m_DEName": "DE_ESPR_CA_FROZEN_ATTACK2",
+              "m_bTargetPos": true
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.43333333333333335,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWING_SMALL_18"
+              ]
+            },
+            {
+              "m_fEventTime": 0.7666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWING_SMALL_18"
+              ]
+            },
+            {
+              "m_fEventTime": 0.4,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_7",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_8",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_16",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_17"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL1_INSTANT",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_AnimName": "ASTAND",
+          "m_listNKMEventChangeState": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L17_1 / 30"
+              },
+              "m_ChangeState": "USN_SKILL1"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_SKILL",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_bSkillCutIn": true,
+          "m_AnimName": "SKILL1",
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventBuff": [
+            {
+              "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_SKILL1_TRIGGER",
+              "m_BuffRemove": true
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": 0.43333333333333335,
+              "m_DEName": "DE_ESPR_CA_FROZEN_SKILL1_DUMMY",
+              "m_OffsetX": 600,
+              "m_OffsetZ": -1
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_DEName": "DE_ESPR_CA_FROZEN_SKILL1_LV5",
+              "m_OffsetX": 600,
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_DamageEffectID": "DE_ESPR_CA_FROZEN_SKILL1_LV5",
+              "m_ChangeState": "DES_END"
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L17_1 / 30"
+              },
+              "m_EffectName": "AB_FX_CAST_SKILL",
+              "m_AnimName": "BASE",
+              "m_OffsetX": -10.0,
+              "m_OffsetY": 225,
+              "m_fScaleFactor": 30.0
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 99,
+              "m_fColorR": 0.5,
+              "m_fColorG": 0.5,
+              "m_fColorB": 1.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L17_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ]
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L18_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ACTIVE_2",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ACTIVE_3",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ACTIVE_4",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ACTIVE_5",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ACTIVE_6",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ACTIVE_8",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_23",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_25"
+              ],
+              "m_dicSkinSound": [
+                [
+                  123529,
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_ACTIVE_1",
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_ACTIVE_2",
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_ACTIVE_3",
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_ACTIVE_4-2"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_HYPER1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_HYPER",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_bShowGage": false,
+          "m_AnimName": "HYPER_SKILL1",
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventHyperSkillCutIn": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L19_1 / 30"
+              },
+              "m_fDurationTime": 1.8333333333333333,
+              "m_BGEffectName": "AB_FX_SKILL_CUTIN_COMMON_A",
+              "m_CutInEffectName": "AB_FX_SKILL_CUTIN_NKM_UNIT_ESPR_CA_FROZEN",
+              "m_CutInEffectAnimName": "BASE"
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_DEName": "DE_ESPR_CA_FROZEN_HYPER1_CHILL",
+              "m_bHold": true
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_DEName": "DE_ESPR_CA_FROZEN_SKILL1_LV5",
+              "m_OffsetX": 600,
+              "m_bHold": true
+            },
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_ESPR_CA_FROZEN_ATTACK",
+                "m_SkillLevel": [
+                  5,
+                  99
+                ]
+              },
+              "m_fEventTime": 4.333333333333333,
+              "m_DEName": "DE_ESPR_CA_FROZEN_PASSIVE1_LV5",
+              "m_OffsetX": 650,
+              "m_bHold": true,
+              "m_FollowType": "TDT_SLOWER",
+              "m_FollowTime": 4.0
+            }
+          ],
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_DamageEffectID": "DE_ESPR_CA_FROZEN_SKILL1_LV5",
+              "m_ChangeState": "DES_END"
+            },
+            {
+              "m_DamageEffectID": "DE_ESPR_CA_FROZEN_PASSIVE1_LV5",
+              "m_ChangeState": "DES_END"
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_DamageEffectID": "DE_ESPR_CA_FROZEN_HYPER1_CHILL",
+              "m_ChangeState": "DES_END"
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_fEventTimeMin": 0.6666666666666666,
+              "m_fEventTimeMax": 1.1666666666666667,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1500,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_UNIT_ESPR_CA_FROZEN_HYPER1"
+            },
+            {
+              "m_fEventTimeMin": 1.1666666666666667,
+              "m_fEventTimeMax": 1.6666666666666667,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1500,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_UNIT_ESPR_CA_FROZEN_HYPER1"
+            },
+            {
+              "m_fEventTimeMin": 1.6666666666666667,
+              "m_fEventTimeMax": 2.1666666666666665,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1500,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_UNIT_ESPR_CA_FROZEN_HYPER1"
+            },
+            {
+              "m_fEventTimeMin": 2.1666666666666665,
+              "m_fEventTimeMax": 2.6666666666666665,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1500,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_UNIT_ESPR_CA_FROZEN_HYPER1"
+            },
+            {
+              "m_fEventTimeMin": 2.6666666666666665,
+              "m_fEventTimeMax": 3.1666666666666665,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1500,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_UNIT_ESPR_CA_FROZEN_HYPER1"
+            },
+            {
+              "m_fEventTimeMin": 4.333333333333333,
+              "m_fEventTimeMax": 4.666666666666667,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1500,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 4,
+              "m_bTrueDamage": true,
+              "m_DamageTempletName": "DT_UNIT_ESPR_CA_FROZEN_HYPER1_END"
+            },
+            {
+              "m_fEventTimeMin": 4.666666666666667,
+              "m_fEventTimeMax": 5.0,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1500,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 4,
+              "m_bTrueDamage": true,
+              "m_DamageTempletName": "DT_UNIT_ESPR_CA_FROZEN_HYPER1_END"
+            },
+            {
+              "m_fEventTimeMin": 5.0,
+              "m_fEventTimeMax": 5.333333333333333,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1500,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 4,
+              "m_bTrueDamage": true,
+              "m_DamageTempletName": "DT_UNIT_ESPR_CA_FROZEN_HYPER1_END"
+            },
+            {
+              "m_ConditionTarget": {
+                "m_NeedStatusEffect": "NUSE_FREEZE"
+              },
+              "m_fEventTimeMin": 4.333333333333333,
+              "m_fEventTimeMax": 4.666666666666667,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1500,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_UNIT_ESPR_CA_FROZEN_HYPER1_FREEZE_EXTRA"
+            },
+            {
+              "m_ConditionTarget": {
+                "m_NeedStatusEffect": "NUSE_FREEZE"
+              },
+              "m_fEventTimeMin": 4.666666666666667,
+              "m_fEventTimeMax": 5.0,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1500,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_UNIT_ESPR_CA_FROZEN_HYPER1_FREEZE_EXTRA"
+            },
+            {
+              "m_ConditionTarget": {
+                "m_NeedStatusEffect": "NUSE_FREEZE"
+              },
+              "m_fEventTimeMin": 5.0,
+              "m_fEventTimeMax": 5.333333333333333,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1500,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_UNIT_ESPR_CA_FROZEN_HYPER1_FREEZE_EXTRA"
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_LV5",
+              "m_BuffRemove": true
+            },
+            {
+              "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_END_LV5",
+              "m_BuffRemove": true
+            },
+            {
+              "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_COUNT_LV5",
+              "m_BuffRemove": true
+            },
+            {
+              "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_COUNT_END_LV5",
+              "m_BuffRemove": true
+            },
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_ESPR_CA_FROZEN_PASSIVE",
+                "m_SkillLevel": [
+                  5,
+                  99
+                ]
+              },
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_LV5"
+            }
+          ],
+          "m_listNKMEventInvincible": [
+            {
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L19_1 / 30"
+              },
+              "m_fEventTimeMax": 5.5
+            }
+          ],
+          "m_listNKMEventStopTime": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L18_1 / 30"
+              },
+              "m_StopTimeIndex": "NSTI_SKILL",
+              "m_fStopTime": 1.1666666666666667,
+              "m_bStopEnemyOnly": false,
+              "m_bMyStop": false,
+              "m_fRange": 800
+            }
+          ],
+          "m_listNKMEventFadeWorld": [
+            {
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L18_1 / 30"
+              },
+              "m_fEventTimeMax": 5.0,
+              "m_fColorR": 0.0,
+              "m_fColorG": 0.0,
+              "m_fColorB": 0.0,
+              "m_fMapColorKeepTime": 0.3,
+              "m_fMapColorReturnTime": 1
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 99,
+              "m_fColorR": 1.0,
+              "m_fColorG": 0.5,
+              "m_fColorB": 0.5
+            }
+          ],
+          "m_listNKMEventCameraMove": [
+            {
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L18_1 / 30"
+              },
+              "m_fEventTimeMax": 0.6666666666666666,
+              "m_fPosXOffset": -250,
+              "m_fPosYOffset": 250,
+              "m_fZoom": -150,
+              "m_fMoveTrackingTime": 0.03333333333333333,
+              "m_fZoomTrackingTime": 0.03333333333333333
+            },
+            {
+              "m_fEventTimeMin": 0.6666666666666666,
+              "m_fEventTimeMax": 3.0,
+              "m_fPosXOffset": -100,
+              "m_fPosYOffset": 250,
+              "m_fZoom": -100,
+              "m_fMoveTrackingTime": 3.3333333333333335,
+              "m_fZoomTrackingTime": 3.3333333333333335
+            },
+            {
+              "m_fEventTimeMin": 3.0,
+              "m_fEventTimeMax": 4.333333333333333,
+              "m_fPosXOffset": 50,
+              "m_fPosYOffset": 400,
+              "m_fZoom": -150,
+              "m_fMoveTrackingTime": 1.0,
+              "m_fZoomTrackingTime": 1.0
+            },
+            {
+              "m_fEventTimeMin": 4.333333333333333,
+              "m_fEventTimeMax": 5.333333333333333,
+              "m_fPosXOffset": 300,
+              "m_fPosYOffset": -300,
+              "m_fZoom": 0,
+              "m_fMoveTrackingTime": 0.1,
+              "m_fZoomTrackingTime": 0.1
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L18_1 / 30"
+              },
+              "m_EffectName": "AB_FX_CAST_HYPER",
+              "m_AnimName": "BASE",
+              "m_fScaleFactor": 30.0,
+              "m_BoneName": "BIP01_SPINE1",
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L18_1 / 30"
+              },
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HYPER_ATTACK_START"
+              ]
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L19_1 / 30"
+              },
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_CUTSCEN_WIND"
+              ]
+            },
+            {
+              "m_fEventTime": 2.0,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_CUTSCEN_WIND"
+              ]
+            },
+            {
+              "m_fEventTime": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_START_BIG"
+              ]
+            },
+            {
+              "m_fEventTime": 1.6666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_33"
+              ]
+            },
+            {
+              "m_fEventTime": 2.8666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+              ]
+            },
+            {
+              "m_fEventTime": 2.966666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+              ]
+            },
+            {
+              "m_fEventTime": 3.066666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+              ]
+            },
+            {
+              "m_fEventTime": 3.1666666666666665,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+              ]
+            },
+            {
+              "m_fEventTime": 3.1666666666666665,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_IMPACT_ICE"
+              ]
+            },
+            {
+              "m_fEventTime": 4.4,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_ICE"
+              ]
+            },
+            {
+              "m_fEventTime": 4.333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_ROCK_BIG_02"
+              ]
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L30_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_HYPER_1",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_HYPER_2",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_HYPER_3",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_HYPER_4",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_HYPER_5",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_HYPER_6"
+              ],
+              "m_dicSkinSound": [
+                [
+                  123529,
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_HYPER_1",
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_HYPER_2",
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_HYPER_3-2",
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_HYPER_4",
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_HYPER_5"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_A",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_AnimName": "DAMAGE_A",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L19_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_5",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_6",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_8"
+              ],
+              "m_dicSkinSound": [
+                [
+                  123529,
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_DAMAGE_1",
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_DAMAGE_2"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_B",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_AnimName": "DAMAGE_B",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L20_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_5",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_6",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_8"
+              ],
+              "m_dicSkinSound": [
+                [
+                  123529,
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_DAMAGE_1",
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_DAMAGE_2"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_AIR_UP",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_AnimName": "DAMAGE_AIR_UP",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L21_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_5",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_6",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_8"
+              ],
+              "m_dicSkinSound": [
+                [
+                  123529,
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_DAMAGE_3",
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_DAMAGE_4"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L22_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_7",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_9",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_10"
+              ],
+              "m_dicSkinSound": [
+                [
+                  123529,
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_DAMAGE_3",
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_DAMAGE_4"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_fAnimSpeed": 1.4,
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L23_1 / 30"
+              },
+              "m_DamageEffectID": "DE_ESPR_CA_FROZEN_START",
+              "m_ChangeState": "DES_END"
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L24_1 / 30"
+              },
+              "m_DamageEffectID": "DE_ESPR_CA_FROZEN_SKILL1_LV5",
+              "m_ChangeState": "DES_END"
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L25_1 / 30"
+              },
+              "m_DamageEffectID": "DE_ESPR_CA_FROZEN_PASSIVE1_LV5",
+              "m_ChangeState": "DES_END"
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L26_1 / 30"
+              },
+              "m_DamageEffectID": "DE_ESPR_CA_FROZEN_PASSIVE1_SHIELD",
+              "m_ChangeState": "DES_END"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L23_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DEATH_2",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DEATH_3",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DEATH_4",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DEATH_7",
+                "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DEATH_9"
+              ],
+              "m_dicSkinSound": [
+                [
+                  123529,
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_DEATH_1",
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_DEATH_2",
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_DEATH_3",
+                  "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_DEATH_4"
+                ]
+              ]
+            }
+          ],
+          "m_listNKMEventDissolve": [
+            {
+              "m_fEventTime": 0.6666666666666666,
+              "m_fDissolve": 1,
+              "m_fTrackTime": 1.6666666666666667
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fForceRespawnZposMin": 0.31,
+    "m_fForceRespawnZposMax": 0.4,
+    "m_UnitSizeX": 140,
+    "m_UnitSizeY": 320,
+    "m_SpriteScale": 1.0,
+    "m_bShowGage": true,
+    "m_fGageOffsetX": 0,
+    "m_fGageOffsetY": 330,
+    "m_fShadowScaleX": 200,
+    "m_fShadowScaleY": 200,
+    "m_SpeedRun": 100,
+    "m_SeeTarget": true,
+    "m_TargetNearRange": 850,
+    "m_SeeRange": 1500,
+    "m_SeeRangeMax": 1600,
+    "m_fDieCompleteTime": 2.0,
+    "m_bUseMotionBlur": true,
+    "m_fBuffEffectScaleFactor": 1.0,
+    "m_listFixedStatusImmune": [
+      "NUSE_CHILL",
+      "NUSE_FREEZE"
+    ],
+    "m_listStaticBuffData": [
+      {
+        "m_Condition": {
+          "m_IgnoreBuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_ATKUP_END",
+          "m_NeedBuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_HP"
+        },
+        "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_ATKUP",
+        "m_fRebuffTime": 1,
+        "m_BuffStatLevel": 3
+      },
+      {
+        "m_Condition": {
+          "m_NeedBuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_HP"
+        },
+        "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_DEGEN",
+        "m_fRebuffTime": 1,
+        "m_BuffStatLevel": 3
+      },
+      {
+        "m_BuffStrID": "BUFF_COMMON_BLOCK_DEBUFF"
+      },
+      {
+        "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_HP"
+      }
+    ],
+    "m_listAttackStateData": [
+      {
+        "m_Condition": {
+          "m_Phase": [
+            0,
+            0
+          ]
+        },
+        "m_StateName": "USN_ATTACK1",
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 1000
+      },
+      {
+        "m_Condition": {
+          "m_Phase": [
+            1,
+            1
+          ],
+          "m_IgnoreBuffStrID": "BUFF_ESPR_CA_FROZEN_SKILL1_TRIGGER"
+        },
+        "m_StateName": "USN_ATTACK2",
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 850
+      },
+      {
+        "m_Condition": {
+          "m_Phase": [
+            1,
+            1
+          ],
+          "m_NeedBuffStrID": "BUFF_ESPR_CA_FROZEN_SKILL1_TRIGGER"
+        },
+        "m_StateName": "USN_SKILL1_INSTANT",
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 900
+      }
+    ],
+    "m_listSkillStateData": [
+      {
+        "m_Condition": {
+          "m_NeedBuffStrID": "BUFF_ESPR_CA_FROZEN_PHASE2_TRIGGER"
+        },
+        "m_StateName": "USN_SKILL1",
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 900
+      }
+    ],
+    "m_listHyperSkillStateData": [
+      {
+        "m_Condition": {
+          "m_NeedBuffStrID": "BUFF_ESPR_CA_FROZEN_PHASE2_TRIGGER"
+        },
+        "m_StateName": "USN_HYPER1",
+        "m_fStartCool": 0.7,
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 1500
+      }
+    ],
+    "m_listPhaseChangeData": [
+      {
+        "m_TargetPhase": 1,
+        "m_fChangeConditionHPRate": 0.5,
+        "m_ChangeStateName": "USN_PHASECHANGE"
+      }
+    ],
+    "m_listStandStateData": [
+      {
+        "m_StateName": "USN_ASTAND2",
+        "m_PhaseOver": 1
+      }
+    ],
+    "m_listRunStateData": [
+      {
+        "m_StateName": "USN_RUN2",
+        "m_PhaseOver": 1
+      }
+    ],
+    "m_listHitFeedBack": [
+      {
+        "m_Condition": {
+          "m_NeedBuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_SHIELD"
+        },
+        "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_DAMAGE",
+        "m_bStartAnyTime": true,
+        "m_HitCount": 1
+      },
+      {
+        "m_Condition": {
+          "m_SkillStrID": "NKM_UNIT_ESPR_CA_FROZEN_PASSIVE",
+          "m_SkillLevel": [
+            5,
+            99
+          ],
+          "m_NeedBuffStrID": "BUFF_ESPR_CA_FROZEN_PHASE2_TRIGGER",
+          "m_IgnoreBuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_COUNT_END_LV5"
+        },
+        "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_COUNT_LV5",
+        "m_bStartAnyTime": true,
+        "m_HitCount": 1
+      },
+      {
+        "m_Condition": {
+          "m_NeedBuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_COUNT_END_LV5",
+          "m_IgnoreBuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_END_LV5"
+        },
+        "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_LV5",
+        "m_bStartAnyTime": true,
+        "m_HitCount": 1,
+        "m_BuffStatLevel": 2
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_START",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_bShowGage": false,
+        "m_bInvincibleState": true,
+        "m_fGageOffsetY": -25,
+        "m_listFixedStatusEffect": [
+          "NUSE_BLOCK_DEBUFF"
+        ],
+        "m_listFixedStatusImmune": [
+          "NUSE_STUN",
+          "NUSE_SLEEP"
+        ],
+        "m_AnimName": "START",
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventBuff": [
+          {
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_SHIELD"
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_BuffRemove": true,
+            "m_BuffStrID": "BUFF_COMMON_BLOCK_DEBUFF"
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_DEName": "DE_ESPR_CA_FROZEN_START",
+            "m_OffsetZ": 1
+          },
+          {
+            "m_fEventTime": 3.3333333333333335,
+            "m_DEName": "DE_ESPR_CA_FROZEN_PASSIVE1_SHIELD",
+            "m_OffsetX": 10,
+            "m_OffsetY": 170,
+            "m_OffsetZ": -1,
+            "m_bHold": true,
+            "m_FollowType": "TDT_NORMAL"
+          }
+        ],
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_DamageEffectID": "DE_ESPR_CA_FROZEN_PASSIVE1_LV5",
+            "m_ChangeState": "DES_END"
+          },
+          {
+            "m_DamageEffectID": "DE_ESPR_CA_FROZEN_PASSIVE1_SHIELD",
+            "m_ChangeState": "DES_LOOP"
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_DamageEffectID": "DE_ESPR_CA_FROZEN_PASSIVE1_SHIELD",
+            "m_ChangeState": "DES_LOOP"
+          },
+          {
+            "m_DamageEffectID": "DE_ESPR_CA_FROZEN_SKILL1_LV5",
+            "m_ChangeState": "DES_END"
+          }
+        ],
+        "m_listNKMEventStopTime": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_StopTimeIndex": "NSTI_SKILL",
+            "m_fStopTime": 4.5,
+            "m_bStopEnemyOnly": false,
+            "m_bMyStop": false,
+            "m_fRange": 3000
+          }
+        ],
+        "m_listNKMEventFadeWorld": [
+          {
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_fEventTimeMax": 4.833333333333333,
+            "m_fColorR": 0.03,
+            "m_fColorG": 0.03,
+            "m_fColorB": 0.03,
+            "m_fMapColorKeepTime": 0.16666666666666666,
+            "m_fMapColorReturnTime": 1.0
+          }
+        ],
+        "m_listNKMEventCameraMove": [
+          {
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_fEventTimeMax": 0.3333333333333333,
+            "m_bForce": true,
+            "m_fPosXOffset": 0,
+            "m_fPosYOffset": 225,
+            "m_fZoom": -100,
+            "m_fMoveTrackingTime": 0.03333333333333333,
+            "m_fZoomTrackingTime": 0.03333333333333333
+          },
+          {
+            "m_fEventTimeMin": 0.3333333333333333,
+            "m_fEventTimeMax": 3.2666666666666666,
+            "m_bForce": true,
+            "m_fPosXOffset": 0,
+            "m_fPosYOffset": 225,
+            "m_fZoom": 0,
+            "m_fMoveTrackingTime": 10.0,
+            "m_fZoomTrackingTime": 10.0
+          },
+          {
+            "m_fEventTimeMin": 3.2666666666666666,
+            "m_fEventTimeMax": 3.3333333333333335,
+            "m_bForce": true,
+            "m_fPosXOffset": 0,
+            "m_fPosYOffset": 200,
+            "m_fZoom": -200,
+            "m_fMoveTrackingTime": 0.03333333333333333,
+            "m_fZoomTrackingTime": 0.03333333333333333
+          },
+          {
+            "m_fEventTimeMin": 3.3333333333333335,
+            "m_fEventTimeMax": 5.0,
+            "m_bForce": true,
+            "m_fPosXOffset": 0,
+            "m_fPosYOffset": 200,
+            "m_fZoom": 0,
+            "m_fMoveTrackingTime": 0.03333333333333333,
+            "m_fZoomTrackingTime": 0.03333333333333333
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 3.2666666666666666,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashGap": 8,
+            "m_fCameraCrashTime": 0.4
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_fEventTime": 0.43333333333333335,
+            "m_EffectName": "AB_FX_AWAKEN_SPAWN_HUD",
+            "m_OffsetX": 0,
+            "m_OffsetY": 225,
+            "m_AnimName": "BASE",
+            "m_fScaleFactor": 1.0,
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_WIND_02"
+            ]
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_WIND_07"
+            ]
+          },
+          {
+            "m_fEventTime": 0.43333333333333335,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_AWAKEN_HUD"
+            ]
+          },
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG_09"
+            ]
+          },
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+            ]
+          },
+          {
+            "m_fEventTime": 0.5,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+            ]
+          },
+          {
+            "m_fEventTime": 0.6666666666666666,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+            ]
+          },
+          {
+            "m_fEventTime": 0.8333333333333334,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+            ]
+          },
+          {
+            "m_fEventTime": 1.0,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+            ]
+          },
+          {
+            "m_fEventTime": 1.1666666666666667,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+            ]
+          },
+          {
+            "m_fEventTime": 1.3333333333333333,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_07"
+            ]
+          },
+          {
+            "m_fEventTime": 2.0,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_05"
+            ]
+          },
+          {
+            "m_fEventTime": 3.0,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_WHOOSH_04"
+            ]
+          },
+          {
+            "m_fEventTime": 3.2666666666666666,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_ICE"
+            ]
+          },
+          {
+            "m_fEventTime": 3.2666666666666666,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_IMPACT"
+            ]
+          },
+          {
+            "m_fEventTime": 3.2666666666666666,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_WHOOSH_05"
+            ]
+          },
+          {
+            "m_fEventTime": 3.2666666666666666,
+            "m_listSoundName": [
+              "FX_CUTSCEN_CLOCK_05"
+            ]
+          },
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_listSoundName": [
+              "FX_CUTSCEN_CLOCK_04"
+            ]
+          },
+          {
+            "m_fEventTime": 1.3333333333333333,
+            "m_listSoundName": [
+              "FX_CUTSCEN_CLOCK_04"
+            ]
+          },
+          {
+            "m_fEventTime": 2.3333333333333335,
+            "m_listSoundName": [
+              "FX_CUTSCEN_CLOCK_04"
+            ]
+          },
+          {
+            "m_fEventTime": 3.3333333333333335,
+            "m_listSoundName": [
+              "FX_CUTSCEN_CLOCK_04"
+            ]
+          },
+          {
+            "m_fEventTime": 2.8333333333333335,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_BONE_CRACK_02"
+            ]
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L27_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_START_1",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_START_2",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_START_3",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_START_4",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_START_5",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_START_6"
+            ],
+            "m_dicSkinSound": [
+              [
+                123529,
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_START_1",
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_START_2-2",
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_START_3"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ASTAND",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+        "m_AnimName": "ASTAND",
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_fGageOffsetY": -25,
+        "m_bAnimLoop": true,
+        "m_listFixedStatusImmune": [
+          "NUSE_STUN",
+          "NUSE_SLEEP"
+        ]
+      },
+      {
+        "m_StateName": "USN_ASTAND2",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+        "m_AnimName": "ASTAND2",
+        "m_bAnimLoop": true
+      },
+      {
+        "m_StateName": "USN_RUN",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_AnimName": "RUN",
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_fGageOffsetY": -25,
+        "m_bAnimLoop": true,
+        "m_listFixedStatusImmune": [
+          "NUSE_STUN",
+          "NUSE_SLEEP"
+        ],
+        "m_bRun": true
+      },
+      {
+        "m_StateName": "USN_RUN2",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_AnimName": "RUN2",
+        "m_bAnimLoop": true,
+        "m_bRun": true
+      },
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_fGageOffsetY": -25,
+        "m_AnimName": "ATTACK1_START",
+        "m_fAnimSpeed": 1.0,
+        "m_AnimEndChangeState": "USN_ATTACK1_LOOP",
+        "m_listFixedStatusImmune": [
+          "NUSE_STUN",
+          "NUSE_SLEEP"
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_10",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_11",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_12",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_13",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_14"
+            ],
+            "m_dicSkinSound": [
+              [
+                123529,
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_ATTACK_1",
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_ATTACK_2",
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_ATTACK_3",
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_ATTACK_4",
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_ATTACK_5-2"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1_LOOP",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_fGageOffsetY": -25,
+        "m_listFixedStatusImmune": [
+          "NUSE_STUN",
+          "NUSE_SLEEP"
+        ],
+        "m_AnimName": "ATTACK1_LOOP",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 1.0,
+        "m_TargetLostOrDieStateDurationTime": 0.03333333333333333,
+        "m_TargetLostOrDieState": "USN_ATTACK1_END",
+        "m_StateTimeChangeStateTime": 30.0,
+        "m_StateTimeChangeState": "USN_ATTACK1_END",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_DEName": "DE_ESPR_CA_FROZEN_ATTACK1_A",
+            "m_bIgnoreTarget": false,
+            "m_bIgnoreNoTarget": true,
+            "m_bTargetPos": true,
+            "m_OffsetZ": -1,
+            "m_bHold": true,
+            "m_FollowType": "TDT_INVALID"
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 5.0,
+            "m_DEName": "DE_ESPR_CA_FROZEN_ATTACK1_B",
+            "m_bIgnoreTarget": false,
+            "m_bIgnoreNoTarget": true,
+            "m_bTargetPos": true,
+            "m_OffsetZ": -1,
+            "m_bHold": true,
+            "m_FollowType": "TDT_INVALID"
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 10.0,
+            "m_DEName": "DE_ESPR_CA_FROZEN_ATTACK1_C",
+            "m_bIgnoreTarget": false,
+            "m_bIgnoreNoTarget": true,
+            "m_bTargetPos": true,
+            "m_OffsetZ": -1,
+            "m_bHold": true,
+            "m_FollowType": "TDT_INVALID"
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 15.0,
+            "m_DEName": "DE_ESPR_CA_FROZEN_ATTACK1_D",
+            "m_bIgnoreTarget": false,
+            "m_bIgnoreNoTarget": true,
+            "m_bTargetPos": true,
+            "m_OffsetZ": -1,
+            "m_bHold": true,
+            "m_FollowType": "TDT_INVALID"
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 20.0,
+            "m_DEName": "DE_ESPR_CA_FROZEN_ATTACK1_E",
+            "m_bIgnoreTarget": false,
+            "m_bIgnoreNoTarget": true,
+            "m_bTargetPos": true,
+            "m_OffsetZ": -1,
+            "m_bHold": true,
+            "m_FollowType": "TDT_INVALID"
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 25.0,
+            "m_DEName": "DE_ESPR_CA_FROZEN_ATTACK1_F",
+            "m_bIgnoreTarget": false,
+            "m_bIgnoreNoTarget": true,
+            "m_bTargetPos": true,
+            "m_OffsetZ": -1,
+            "m_bHold": true,
+            "m_FollowType": "TDT_INVALID"
+          }
+        ],
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 5.333333333333333,
+            "m_DamageEffectID": "DE_ESPR_CA_FROZEN_ATTACK1_A",
+            "m_ChangeState": "DES_END"
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 10.333333333333334,
+            "m_DamageEffectID": "DE_ESPR_CA_FROZEN_ATTACK1_B",
+            "m_ChangeState": "DES_END"
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 15.333333333333334,
+            "m_DamageEffectID": "DE_ESPR_CA_FROZEN_ATTACK1_C",
+            "m_ChangeState": "DES_END"
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 20.333333333333332,
+            "m_DamageEffectID": "DE_ESPR_CA_FROZEN_ATTACK1_D",
+            "m_ChangeState": "DES_END"
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 25.333333333333332,
+            "m_DamageEffectID": "DE_ESPR_CA_FROZEN_ATTACK1_E",
+            "m_ChangeState": "DES_END"
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_DamageEffectID": "DE_ESPR_CA_FROZEN_ATTACK1_A",
+            "m_ChangeState": "DES_END"
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_DamageEffectID": "DE_ESPR_CA_FROZEN_ATTACK1_B",
+            "m_ChangeState": "DES_END"
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_DamageEffectID": "DE_ESPR_CA_FROZEN_ATTACK1_C",
+            "m_ChangeState": "DES_END"
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_DamageEffectID": "DE_ESPR_CA_FROZEN_ATTACK1_D",
+            "m_ChangeState": "DES_END"
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_DamageEffectID": "DE_ESPR_CA_FROZEN_ATTACK1_E",
+            "m_ChangeState": "DES_END"
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_DamageEffectID": "DE_ESPR_CA_FROZEN_ATTACK1_F",
+            "m_ChangeState": "DES_END"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_fLocalVol": 0.2,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_21"
+            ]
+          },
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_fLocalVol": 0.05,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_LIGHT_15"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 10.0,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_1",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_2",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_3"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 20.0,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_1",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_2",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_3"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1_END",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_fGageOffsetY": -25,
+        "m_listFixedStatusImmune": [
+          "NUSE_STUN",
+          "NUSE_SLEEP"
+        ],
+        "m_AnimName": "ATTACK1_END",
+        "m_fAnimSpeed": 1.0
+      },
+      {
+        "m_StateName": "USN_PHASECHANGE",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_INVALID",
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_bShowGage": false,
+        "m_bInvincibleState": true,
+        "m_AnimName": "PHASECHANGE",
+        "m_fAnimSpeed": 1.0,
+        "m_listFixedStatusImmune": [
+          "NUSE_STUN",
+          "NUSE_SLEEP"
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_ESPR_CA_FROZEN_ATTACK",
+              "m_SkillLevel": [
+                5,
+                99
+              ]
+            },
+            "m_fEventTime": 2.0,
+            "m_DEName": "DE_ESPR_CA_FROZEN_PASSIVE1_LV5",
+            "m_OffsetX": 650,
+            "m_bHold": true,
+            "m_FollowType": "TDT_SLOWER",
+            "m_FollowTime": 4.0
+          },
+          {
+            "m_fEventTime": 2.0,
+            "m_DEName": "DE_ESPR_CA_FROZEN_SKILL1_LV5",
+            "m_OffsetX": 600,
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_fEventTime": 2.0,
+            "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PHASE2_TRIGGER"
+          },
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_ESPR_CA_FROZEN_PASSIVE",
+              "m_SkillLevel": [
+                5,
+                99
+              ]
+            },
+            "m_fEventTime": 2.0,
+            "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_LV5"
+          },
+          {
+            "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_DEGEN",
+            "m_BuffRemove": true
+          },
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_SHIELD",
+            "m_BuffRemove": true
+          },
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_HP",
+            "m_BuffRemove": true
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_DEGEN",
+            "m_BuffRemove": true
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_SHIELD",
+            "m_BuffRemove": true
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_HP",
+            "m_BuffRemove": true
+          }
+        ],
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_DamageEffectID": "DE_ESPR_CA_FROZEN_PASSIVE1_SHIELD",
+            "m_ChangeState": "DES_END"
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_fEventTimeMin": 2.0,
+            "m_fEventTimeMax": 2.5,
+            "m_fRangeMin": -1000,
+            "m_fRangeMax": 1000,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_UNIT_ESPR_CA_FROZEN_PASSIVE1"
+          }
+        ],
+        "m_listNKMEventStopTime": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L13_1 / 30"
+            },
+            "m_StopTimeIndex": "NSTI_SKILL",
+            "m_fStopTime": 1.5,
+            "m_bStopEnemyOnly": false,
+            "m_bMyStop": false,
+            "m_fRange": 1200
+          }
+        ],
+        "m_listNKMEventFadeWorld": [
+          {
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L13_1 / 30"
+            },
+            "m_fEventTimeMax": 1.0,
+            "m_fColorR": 0.0,
+            "m_fColorG": 0.0,
+            "m_fColorB": 0.5,
+            "m_fMapColorKeepTime": {
+              "__unparsed_expr": "L13_1 / 30"
+            },
+            "m_fMapColorReturnTime": 1.0
+          }
+        ],
+        "m_listNKMEventCameraMove": [
+          {
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L13_1 / 30"
+            },
+            "m_fEventTimeMax": 0.3333333333333333,
+            "m_bForce": true,
+            "m_fPosXOffset": 0,
+            "m_fPosYOffset": 150,
+            "m_fZoom": -100,
+            "m_fMoveTrackingTime": 0.1,
+            "m_fZoomTrackingTime": 0.1
+          },
+          {
+            "m_fEventTimeMin": 0.3333333333333333,
+            "m_fEventTimeMax": 1.0666666666666667,
+            "m_bForce": true,
+            "m_fPosXOffset": -125,
+            "m_fPosYOffset": 150,
+            "m_fZoom": -200,
+            "m_fMoveTrackingTime": 1.0,
+            "m_fZoomTrackingTime": 1.0
+          },
+          {
+            "m_fEventTimeMin": 1.0666666666666667,
+            "m_fEventTimeMax": 2.0,
+            "m_bForce": true,
+            "m_fPosXOffset": 0,
+            "m_fPosYOffset": 250,
+            "m_fZoom": -150,
+            "m_fMoveTrackingTime": 1.0,
+            "m_fZoomTrackingTime": 1.0
+          },
+          {
+            "m_fEventTimeMin": 2.0,
+            "m_fEventTimeMax": 2.6666666666666665,
+            "m_bForce": true,
+            "m_fPosXOffset": 0,
+            "m_fPosYOffset": 0,
+            "m_fZoom": 0,
+            "m_fMoveTrackingTime": 0.1,
+            "m_fZoomTrackingTime": 0.1
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 1.9333333333333333,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashGap": 8,
+            "m_fCameraCrashTime": 0.4
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L13_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_CUTSCEN_CLOCK_04"
+            ]
+          },
+          {
+            "m_fEventTime": 1.0,
+            "m_listSoundName": [
+              "FX_CUTSCEN_CLOCK_04"
+            ]
+          },
+          {
+            "m_fEventTime": 1.8333333333333333,
+            "m_listSoundName": [
+              "FX_CUTSCEN_CLOCK_05"
+            ]
+          },
+          {
+            "m_fEventTime": 0.26666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_07"
+            ]
+          },
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_06"
+            ]
+          },
+          {
+            "m_fEventTime": 0.43333333333333335,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_WIND_02"
+            ]
+          },
+          {
+            "m_fEventTime": 0.9,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_WIND_02"
+            ]
+          },
+          {
+            "m_fEventTime": 1.1666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_IMPACT_ICE"
+            ]
+          },
+          {
+            "m_fEventTime": 1.1666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_33"
+            ]
+          },
+          {
+            "m_fEventTime": 1.9333333333333333,
+            "m_fLocalVol": 0.6,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_ROCK_BIG_02"
+            ]
+          },
+          {
+            "m_fEventTime": 2.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_ICE"
+            ]
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L24_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_PASSIVE_2",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_PASSIVE_4",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_PASSIVE_6",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_PASSIVE_7",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_PASSIVE_8",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_PASSIVE_9"
+            ],
+            "m_dicSkinSound": [
+              [
+                123529,
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_PASSIVE_3",
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_PASSIVE_4",
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_PASSIVE_5-2"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK2",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_bSeeTarget": true,
+        "m_AnimName": "ATTACK2",
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": 0.5,
+            "m_DEName": "DE_ESPR_CA_FROZEN_ATTACK2",
+            "m_bTargetPos": true
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.43333333333333335,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWING_SMALL_18"
+            ]
+          },
+          {
+            "m_fEventTime": 0.7666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWING_SMALL_18"
+            ]
+          },
+          {
+            "m_fEventTime": 0.4,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_7",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_8",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_16",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_17"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK2_AIR",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimName": "ATTACK2_AIR",
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": 0.5,
+            "m_DEName": "DE_ESPR_CA_FROZEN_ATTACK2",
+            "m_bTargetPos": true
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.43333333333333335,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWING_SMALL_18"
+            ]
+          },
+          {
+            "m_fEventTime": 0.7666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWING_SMALL_18"
+            ]
+          },
+          {
+            "m_fEventTime": 0.4,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_7",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_8",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_16",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_17"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL1_INSTANT",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_AnimName": "ASTAND",
+        "m_listNKMEventChangeState": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L17_1 / 30"
+            },
+            "m_ChangeState": "USN_SKILL1"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_SKILL",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_bSkillCutIn": true,
+        "m_AnimName": "SKILL1",
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventBuff": [
+          {
+            "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_SKILL1_TRIGGER",
+            "m_BuffRemove": true
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": 0.43333333333333335,
+            "m_DEName": "DE_ESPR_CA_FROZEN_SKILL1_DUMMY",
+            "m_OffsetX": 600,
+            "m_OffsetZ": -1
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_DEName": "DE_ESPR_CA_FROZEN_SKILL1_LV5",
+            "m_OffsetX": 600,
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_DamageEffectID": "DE_ESPR_CA_FROZEN_SKILL1_LV5",
+            "m_ChangeState": "DES_END"
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L17_1 / 30"
+            },
+            "m_EffectName": "AB_FX_CAST_SKILL",
+            "m_AnimName": "BASE",
+            "m_OffsetX": -10.0,
+            "m_OffsetY": 225,
+            "m_fScaleFactor": 30.0
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 99,
+            "m_fColorR": 0.5,
+            "m_fColorG": 0.5,
+            "m_fColorB": 1.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L17_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ]
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L18_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ACTIVE_2",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ACTIVE_3",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ACTIVE_4",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ACTIVE_5",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ACTIVE_6",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ACTIVE_8",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_23",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_ATTACK_25"
+            ],
+            "m_dicSkinSound": [
+              [
+                123529,
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_ACTIVE_1",
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_ACTIVE_2",
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_ACTIVE_3",
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_ACTIVE_4-2"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_HYPER1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_HYPER",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_bShowGage": false,
+        "m_AnimName": "HYPER_SKILL1",
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventHyperSkillCutIn": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L19_1 / 30"
+            },
+            "m_fDurationTime": 1.8333333333333333,
+            "m_BGEffectName": "AB_FX_SKILL_CUTIN_COMMON_A",
+            "m_CutInEffectName": "AB_FX_SKILL_CUTIN_NKM_UNIT_ESPR_CA_FROZEN",
+            "m_CutInEffectAnimName": "BASE"
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_DEName": "DE_ESPR_CA_FROZEN_HYPER1_CHILL",
+            "m_bHold": true
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_DEName": "DE_ESPR_CA_FROZEN_SKILL1_LV5",
+            "m_OffsetX": 600,
+            "m_bHold": true
+          },
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_ESPR_CA_FROZEN_ATTACK",
+              "m_SkillLevel": [
+                5,
+                99
+              ]
+            },
+            "m_fEventTime": 4.333333333333333,
+            "m_DEName": "DE_ESPR_CA_FROZEN_PASSIVE1_LV5",
+            "m_OffsetX": 650,
+            "m_bHold": true,
+            "m_FollowType": "TDT_SLOWER",
+            "m_FollowTime": 4.0
+          }
+        ],
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_DamageEffectID": "DE_ESPR_CA_FROZEN_SKILL1_LV5",
+            "m_ChangeState": "DES_END"
+          },
+          {
+            "m_DamageEffectID": "DE_ESPR_CA_FROZEN_PASSIVE1_LV5",
+            "m_ChangeState": "DES_END"
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_DamageEffectID": "DE_ESPR_CA_FROZEN_HYPER1_CHILL",
+            "m_ChangeState": "DES_END"
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_fEventTimeMin": 0.6666666666666666,
+            "m_fEventTimeMax": 1.1666666666666667,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1500,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_UNIT_ESPR_CA_FROZEN_HYPER1"
+          },
+          {
+            "m_fEventTimeMin": 1.1666666666666667,
+            "m_fEventTimeMax": 1.6666666666666667,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1500,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_UNIT_ESPR_CA_FROZEN_HYPER1"
+          },
+          {
+            "m_fEventTimeMin": 1.6666666666666667,
+            "m_fEventTimeMax": 2.1666666666666665,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1500,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_UNIT_ESPR_CA_FROZEN_HYPER1"
+          },
+          {
+            "m_fEventTimeMin": 2.1666666666666665,
+            "m_fEventTimeMax": 2.6666666666666665,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1500,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_UNIT_ESPR_CA_FROZEN_HYPER1"
+          },
+          {
+            "m_fEventTimeMin": 2.6666666666666665,
+            "m_fEventTimeMax": 3.1666666666666665,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1500,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_UNIT_ESPR_CA_FROZEN_HYPER1"
+          },
+          {
+            "m_fEventTimeMin": 4.333333333333333,
+            "m_fEventTimeMax": 4.666666666666667,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1500,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 4,
+            "m_bTrueDamage": true,
+            "m_DamageTempletName": "DT_UNIT_ESPR_CA_FROZEN_HYPER1_END"
+          },
+          {
+            "m_fEventTimeMin": 4.666666666666667,
+            "m_fEventTimeMax": 5.0,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1500,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 4,
+            "m_bTrueDamage": true,
+            "m_DamageTempletName": "DT_UNIT_ESPR_CA_FROZEN_HYPER1_END"
+          },
+          {
+            "m_fEventTimeMin": 5.0,
+            "m_fEventTimeMax": 5.333333333333333,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1500,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 4,
+            "m_bTrueDamage": true,
+            "m_DamageTempletName": "DT_UNIT_ESPR_CA_FROZEN_HYPER1_END"
+          },
+          {
+            "m_ConditionTarget": {
+              "m_NeedStatusEffect": "NUSE_FREEZE"
+            },
+            "m_fEventTimeMin": 4.333333333333333,
+            "m_fEventTimeMax": 4.666666666666667,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1500,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_UNIT_ESPR_CA_FROZEN_HYPER1_FREEZE_EXTRA"
+          },
+          {
+            "m_ConditionTarget": {
+              "m_NeedStatusEffect": "NUSE_FREEZE"
+            },
+            "m_fEventTimeMin": 4.666666666666667,
+            "m_fEventTimeMax": 5.0,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1500,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_UNIT_ESPR_CA_FROZEN_HYPER1_FREEZE_EXTRA"
+          },
+          {
+            "m_ConditionTarget": {
+              "m_NeedStatusEffect": "NUSE_FREEZE"
+            },
+            "m_fEventTimeMin": 5.0,
+            "m_fEventTimeMax": 5.333333333333333,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1500,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_UNIT_ESPR_CA_FROZEN_HYPER1_FREEZE_EXTRA"
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_LV5",
+            "m_BuffRemove": true
+          },
+          {
+            "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_END_LV5",
+            "m_BuffRemove": true
+          },
+          {
+            "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_COUNT_LV5",
+            "m_BuffRemove": true
+          },
+          {
+            "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_COUNT_END_LV5",
+            "m_BuffRemove": true
+          },
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_ESPR_CA_FROZEN_PASSIVE",
+              "m_SkillLevel": [
+                5,
+                99
+              ]
+            },
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_ESPR_CA_FROZEN_PASSIVE1_LV5"
+          }
+        ],
+        "m_listNKMEventInvincible": [
+          {
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L19_1 / 30"
+            },
+            "m_fEventTimeMax": 5.5
+          }
+        ],
+        "m_listNKMEventStopTime": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L18_1 / 30"
+            },
+            "m_StopTimeIndex": "NSTI_SKILL",
+            "m_fStopTime": 1.1666666666666667,
+            "m_bStopEnemyOnly": false,
+            "m_bMyStop": false,
+            "m_fRange": 800
+          }
+        ],
+        "m_listNKMEventFadeWorld": [
+          {
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L18_1 / 30"
+            },
+            "m_fEventTimeMax": 5.0,
+            "m_fColorR": 0.0,
+            "m_fColorG": 0.0,
+            "m_fColorB": 0.0,
+            "m_fMapColorKeepTime": 0.3,
+            "m_fMapColorReturnTime": 1
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 99,
+            "m_fColorR": 1.0,
+            "m_fColorG": 0.5,
+            "m_fColorB": 0.5
+          }
+        ],
+        "m_listNKMEventCameraMove": [
+          {
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L18_1 / 30"
+            },
+            "m_fEventTimeMax": 0.6666666666666666,
+            "m_fPosXOffset": -250,
+            "m_fPosYOffset": 250,
+            "m_fZoom": -150,
+            "m_fMoveTrackingTime": 0.03333333333333333,
+            "m_fZoomTrackingTime": 0.03333333333333333
+          },
+          {
+            "m_fEventTimeMin": 0.6666666666666666,
+            "m_fEventTimeMax": 3.0,
+            "m_fPosXOffset": -100,
+            "m_fPosYOffset": 250,
+            "m_fZoom": -100,
+            "m_fMoveTrackingTime": 3.3333333333333335,
+            "m_fZoomTrackingTime": 3.3333333333333335
+          },
+          {
+            "m_fEventTimeMin": 3.0,
+            "m_fEventTimeMax": 4.333333333333333,
+            "m_fPosXOffset": 50,
+            "m_fPosYOffset": 400,
+            "m_fZoom": -150,
+            "m_fMoveTrackingTime": 1.0,
+            "m_fZoomTrackingTime": 1.0
+          },
+          {
+            "m_fEventTimeMin": 4.333333333333333,
+            "m_fEventTimeMax": 5.333333333333333,
+            "m_fPosXOffset": 300,
+            "m_fPosYOffset": -300,
+            "m_fZoom": 0,
+            "m_fMoveTrackingTime": 0.1,
+            "m_fZoomTrackingTime": 0.1
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L18_1 / 30"
+            },
+            "m_EffectName": "AB_FX_CAST_HYPER",
+            "m_AnimName": "BASE",
+            "m_fScaleFactor": 30.0,
+            "m_BoneName": "BIP01_SPINE1",
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L18_1 / 30"
+            },
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HYPER_ATTACK_START"
+            ]
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L19_1 / 30"
+            },
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_CUTSCEN_WIND"
+            ]
+          },
+          {
+            "m_fEventTime": 2.0,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_CUTSCEN_WIND"
+            ]
+          },
+          {
+            "m_fEventTime": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_START_BIG"
+            ]
+          },
+          {
+            "m_fEventTime": 1.6666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_33"
+            ]
+          },
+          {
+            "m_fEventTime": 2.8666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+            ]
+          },
+          {
+            "m_fEventTime": 2.966666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+            ]
+          },
+          {
+            "m_fEventTime": 3.066666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+            ]
+          },
+          {
+            "m_fEventTime": 3.1666666666666665,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+            ]
+          },
+          {
+            "m_fEventTime": 3.1666666666666665,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_IMPACT_ICE"
+            ]
+          },
+          {
+            "m_fEventTime": 4.4,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_ICE"
+            ]
+          },
+          {
+            "m_fEventTime": 4.333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_ROCK_BIG_02"
+            ]
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L30_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_HYPER_1",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_HYPER_2",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_HYPER_3",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_HYPER_4",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_HYPER_5",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_HYPER_6"
+            ],
+            "m_dicSkinSound": [
+              [
+                123529,
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_HYPER_1",
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_HYPER_2",
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_HYPER_3-2",
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_HYPER_4",
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_HYPER_5"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_A",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_AnimName": "DAMAGE_A",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L19_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_5",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_6",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_8"
+            ],
+            "m_dicSkinSound": [
+              [
+                123529,
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_DAMAGE_2"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_B",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_AnimName": "DAMAGE_B",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L20_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_5",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_6",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_8"
+            ],
+            "m_dicSkinSound": [
+              [
+                123529,
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_DAMAGE_2"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_AIR_UP",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_AnimName": "DAMAGE_AIR_UP",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L21_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_5",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_6",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_8"
+            ],
+            "m_dicSkinSound": [
+              [
+                123529,
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_DAMAGE_4"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L22_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_7",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_9",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DAMAGE_10"
+            ],
+            "m_dicSkinSound": [
+              [
+                123529,
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_DAMAGE_4"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_fAnimSpeed": 1.4,
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L23_1 / 30"
+            },
+            "m_DamageEffectID": "DE_ESPR_CA_FROZEN_START",
+            "m_ChangeState": "DES_END"
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L24_1 / 30"
+            },
+            "m_DamageEffectID": "DE_ESPR_CA_FROZEN_SKILL1_LV5",
+            "m_ChangeState": "DES_END"
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L25_1 / 30"
+            },
+            "m_DamageEffectID": "DE_ESPR_CA_FROZEN_PASSIVE1_LV5",
+            "m_ChangeState": "DES_END"
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L26_1 / 30"
+            },
+            "m_DamageEffectID": "DE_ESPR_CA_FROZEN_PASSIVE1_SHIELD",
+            "m_ChangeState": "DES_END"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L23_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DEATH_2",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DEATH_3",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DEATH_4",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DEATH_7",
+              "VOICE_UNIT_ESPR_CA_FROZEN_BATTLE_DEATH_9"
+            ],
+            "m_dicSkinSound": [
+              [
+                123529,
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_DEATH_1",
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_DEATH_2",
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_DEATH_3",
+                "VOICE_UNIT_ESPR_CA_FROZEN_SPECIAL_BATTLE_DEATH_4"
+              ]
+            ]
+          }
+        ],
+        "m_listNKMEventDissolve": [
+          {
+            "m_fEventTime": 0.6666666666666666,
+            "m_fDissolve": 1,
+            "m_fTrackTime": 1.6666666666666667
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

@@ -7,6 +7,7 @@ const SOURCE_ROOTS = [
   path.join(ROOT_DIR, "gameplay-tables-json", "StreamingAssets"),
 ];
 const OUTPUT_ROOT = path.join(ROOT_DIR, "gameplay-jsons", "Assetbundles");
+const OUTPUT_BASE = path.join(ROOT_DIR, "gameplay-jsons");
 
 const UNIT_KEYS = [
   "m_UnitID",
@@ -790,27 +791,45 @@ function main() {
     throw new Error(`Missing source gameplay JSON root: ${SOURCE_ROOTS.join(" or ")}`);
   }
 
-  let totalRecords = 0;
-  for (const table of TABLES) {
-    const source = readTable(table.directory, table.fileName);
-    const records = (source.records || []).map((record) => transformRecord(record, table));
-    const output = {
-      source: source.source || sourcePath(table.directory, table.fileName),
-      rootName: source.rootName || "",
-      recordCount: records.length,
-      records,
-    };
-    if (table.includeRoot && source.root && typeof source.root === "object") {
-      output.root = Array.isArray(table.rootKeys) ? pick(source.root, table.rootKeys) : { ...source.root };
-    }
-    writeTable(table.directory, table.fileName, {
-      ...output,
-    });
-    totalRecords += records.length;
-  }
+  const copied = copyCompleteTableTree();
 
   writeNewAccountDefaults();
-  console.log(`[gameplay-jsons] wrote ${TABLES.length} tables (${totalRecords} records) to ${OUTPUT_ROOT}`);
+  console.log(`[gameplay-jsons] copied ${copied} JSON tables to ${OUTPUT_BASE}`);
+}
+
+function copyCompleteTableTree() {
+  let copied = 0;
+  for (const sourceRoot of SOURCE_ROOTS) {
+    if (!fs.existsSync(sourceRoot)) continue;
+    const rootName = path.basename(sourceRoot);
+    const targetRoot = path.join(OUTPUT_BASE, rootName);
+    fs.rmSync(targetRoot, { recursive: true, force: true });
+    for (const sourcePath of findJsonFiles(sourceRoot)) {
+      const relativePath = path.relative(sourceRoot, sourcePath);
+      const targetPath = path.join(targetRoot, relativePath);
+      fs.mkdirSync(path.dirname(targetPath), { recursive: true });
+      fs.copyFileSync(sourcePath, targetPath);
+      copied += 1;
+    }
+  }
+  return copied;
+}
+
+function findJsonFiles(root) {
+  const result = [];
+  const stack = [root];
+  while (stack.length) {
+    const current = stack.pop();
+    for (const entry of fs.readdirSync(current, { withFileTypes: true })) {
+      const fullPath = path.join(current, entry.name);
+      if (entry.isDirectory()) {
+        stack.push(fullPath);
+      } else if (entry.isFile() && /\.json$/i.test(entry.name)) {
+        result.push(fullPath);
+      }
+    }
+  }
+  return result.sort();
 }
 
 function readTable(directory, fileName) {

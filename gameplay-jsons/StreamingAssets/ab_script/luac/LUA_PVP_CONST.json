@@ -1,0 +1,329 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script\\luac\\LUA_PVP_CONST.lua",
+  "rootName": "PVP_CONST",
+  "recordCount": 44,
+  "records": [
+    {
+      "__key": "DemotionScore",
+      "value": 100
+    },
+    {
+      "__key": "LeagueDemotionScore",
+      "value": 1
+    },
+    {
+      "__key": "AsyncResetScore",
+      "value": 1000
+    },
+    {
+      "__key": "RankResetScore",
+      "value": 3000
+    },
+    {
+      "__key": "LeagueResetScore",
+      "value": 0
+    },
+    {
+      "__key": "RankLosePenaltyScore",
+      "value": 3000
+    },
+    {
+      "__key": "ScoreMinIntervalUnit",
+      "value": 25
+    },
+    {
+      "__key": "DefaultRankListMaxCount",
+      "value": 200
+    },
+    {
+      "__key": "LeagueRankListMaxCount",
+      "value": 100
+    },
+    {
+      "__key": "RankSimpleCount",
+      "value": 10
+    },
+    {
+      "__key": "UnitBanExceptionScore",
+      "value": 1000
+    },
+    {
+      "__key": "RotationUnitExceptionScore",
+      "value": 3000
+    },
+    {
+      "__key": "AsyncTicketChargeInterval",
+      "value": 7200
+    },
+    {
+      "__key": "AsyncTicketMaxCount",
+      "value": 6
+    },
+    {
+      "__key": "AsyncTicketChargeCount",
+      "value": 1
+    },
+    {
+      "__key": "MaxHistoryCount",
+      "value": 30
+    },
+    {
+      "__key": "ChargePointRefreshIntervalTicks",
+      "value": 216000000000
+    },
+    {
+      "__key": "ChargePointMaxCountForPractice",
+      "value": 100
+    },
+    {
+      "__key": "ChargePointMax",
+      "value": 900
+    },
+    {
+      "__key": "ChargePointCount",
+      "value": 225
+    },
+    {
+      "__key": "AsyncPvpWinPoint",
+      "value": 75
+    },
+    {
+      "__key": "AsyncPvpLosePoint",
+      "value": 50
+    },
+    {
+      "__key": "RankPvpWinPoint",
+      "value": 150
+    },
+    {
+      "__key": "RankPvpLosePoint",
+      "value": 90
+    },
+    {
+      "__key": "LeaguePvpWinPoint",
+      "value": 250
+    },
+    {
+      "__key": "LeaguePvpLosePoint",
+      "value": 120
+    },
+    {
+      "__key": "UnlimitedPvpWinPoint",
+      "value": 150
+    },
+    {
+      "__key": "UnlimitedPvpLosePoint",
+      "value": 90
+    },
+    {
+      "__key": "RankPvpOpenPoint",
+      "value": 25
+    },
+    {
+      "__key": "LeaguePvpOpenPoint",
+      "value": 0
+    },
+    {
+      "__key": "AsyncTargetCountStandardTime",
+      "value": 15
+    },
+    {
+      "__key": "UseDoubleCostTimeRank",
+      "value": false
+    },
+    {
+      "__key": "UseDoubleCostTimeArcade",
+      "value": false
+    },
+    {
+      "__key": "PvpRoomMaxPlayerCount",
+      "value": 30
+    },
+    {
+      "__key": "PvpAsyncSurrenderPossibilityTime",
+      "value": 20
+    },
+    {
+      "__key": "PvpRankSurrenderPossibilityTime",
+      "value": 20
+    },
+    {
+      "__key": "PvpFriendlySurrenderPossibilityTime",
+      "value": 20
+    },
+    {
+      "__key": "PvpEventSurrenderPossibilityTime",
+      "value": 20
+    },
+    {
+      "__key": "PvpLeagueSurrenderPossibilityTime",
+      "value": 20
+    },
+    {
+      "__key": "PvpUnlimitedSurrenderPossibilityTime",
+      "value": 20
+    },
+    {
+      "__key": "RankUnlockInfo",
+      "m_UnlockReqType": "SURT_PVP_ASYNC_SCORE_RECORD",
+      "m_UnlockReqValue": 25,
+      "m_strPopupTitle": "SI_CONTENTS_UNLOCK_PVP_RANK_POPUP_TITLE",
+      "m_strPopupDesc": "SI_CONTENTS_UNLOCK_PVP_RANK_POPUP_DESC",
+      "m_strPopupImageName": "NKM_UI_CONTENTS_UNLOCK_RANKINGMATCH"
+    },
+    {
+      "__key": "LeagueUnlockInfo",
+      "m_UnlockReqType": "SURT_PVP_RANK_SCORE_RECORD",
+      "m_UnlockReqValue": 0,
+      "m_strPopupTitle": "SI_CONTENTS_UNLOCK_PVP_LEAGUE_POPUP_TITLE",
+      "m_strPopupDesc": "SI_CONTENTS_UNLOCK_PVP_LEAGUE_POPUP_DESC",
+      "m_strPopupImageName": "NKM_UI_CONTENTS_UNLOCK_LEAGUEMATCH"
+    },
+    {
+      "__key": "DraftBan",
+      "MinUnitCount": 30,
+      "MinShipCount": 3
+    },
+    {
+      "__key": "LeaguePvp",
+      "OpenDaysOfWeek": [
+        "WEEK_MON",
+        "WEEK_TUE",
+        "WEEK_WED",
+        "WEEK_THU",
+        "WEEK_FRI",
+        "WEEK_SAT",
+        "WEEK_SUN"
+      ],
+      "OpenTimeStart": "06:00",
+      "OpenTimeEnd": "23:59",
+      "CalculateTimeStart": "04:00",
+      "CalculateTimeInterval": 1,
+      "ShipHpMultiply": 1.0,
+      "ShipAttackPowerMultiply": 1.0,
+      "TotalGameTimeSec": 180,
+      "UseRageBuff": false,
+      "UseDeadlineBuff": false,
+      "RageBuff_ShipHpRate": 0.6,
+      "RageBuff_Id": "GAUNLET_BUFF_RAGE_MODE",
+      "UiRageBuff_Id": "GAUNLET_BUFF_RAGE_MODE_DUMMY",
+      "DeadlineBuff_Id": "GAUNLET_DEBUFF_DEADLINE_MODE",
+      "UiDeadlineBuff_Id": "GAUNLET_DEBUFF_DEADLINE_MODE_DUMMY",
+      "DeadlineBuff_Condition": [
+        {
+          "RemainTimeSec": 120,
+          "BuffLevel": 1
+        },
+        {
+          "RemainTimeSec": 60,
+          "BuffLevel": 2
+        },
+        {
+          "RemainTimeSec": 30,
+          "BuffLevel": 3
+        }
+      ]
+    }
+  ],
+  "root": {
+    "DemotionScore": 100,
+    "LeagueDemotionScore": 1,
+    "AsyncResetScore": 1000,
+    "RankResetScore": 3000,
+    "LeagueResetScore": 0,
+    "RankLosePenaltyScore": 3000,
+    "ScoreMinIntervalUnit": 25,
+    "DefaultRankListMaxCount": 200,
+    "LeagueRankListMaxCount": 100,
+    "RankSimpleCount": 10,
+    "UnitBanExceptionScore": 1000,
+    "RotationUnitExceptionScore": 3000,
+    "AsyncTicketChargeInterval": 7200,
+    "AsyncTicketMaxCount": 6,
+    "AsyncTicketChargeCount": 1,
+    "MaxHistoryCount": 30,
+    "ChargePointRefreshIntervalTicks": 216000000000,
+    "ChargePointMaxCountForPractice": 100,
+    "ChargePointMax": 900,
+    "ChargePointCount": 225,
+    "AsyncPvpWinPoint": 75,
+    "AsyncPvpLosePoint": 50,
+    "RankPvpWinPoint": 150,
+    "RankPvpLosePoint": 90,
+    "LeaguePvpWinPoint": 250,
+    "LeaguePvpLosePoint": 120,
+    "UnlimitedPvpWinPoint": 150,
+    "UnlimitedPvpLosePoint": 90,
+    "RankPvpOpenPoint": 25,
+    "LeaguePvpOpenPoint": 0,
+    "AsyncTargetCountStandardTime": 15,
+    "UseDoubleCostTimeRank": false,
+    "UseDoubleCostTimeArcade": false,
+    "PvpRoomMaxPlayerCount": 30,
+    "PvpAsyncSurrenderPossibilityTime": 20,
+    "PvpRankSurrenderPossibilityTime": 20,
+    "PvpFriendlySurrenderPossibilityTime": 20,
+    "PvpEventSurrenderPossibilityTime": 20,
+    "PvpLeagueSurrenderPossibilityTime": 20,
+    "PvpUnlimitedSurrenderPossibilityTime": 20,
+    "RankUnlockInfo": {
+      "m_UnlockReqType": "SURT_PVP_ASYNC_SCORE_RECORD",
+      "m_UnlockReqValue": 25,
+      "m_strPopupTitle": "SI_CONTENTS_UNLOCK_PVP_RANK_POPUP_TITLE",
+      "m_strPopupDesc": "SI_CONTENTS_UNLOCK_PVP_RANK_POPUP_DESC",
+      "m_strPopupImageName": "NKM_UI_CONTENTS_UNLOCK_RANKINGMATCH"
+    },
+    "LeagueUnlockInfo": {
+      "m_UnlockReqType": "SURT_PVP_RANK_SCORE_RECORD",
+      "m_UnlockReqValue": 0,
+      "m_strPopupTitle": "SI_CONTENTS_UNLOCK_PVP_LEAGUE_POPUP_TITLE",
+      "m_strPopupDesc": "SI_CONTENTS_UNLOCK_PVP_LEAGUE_POPUP_DESC",
+      "m_strPopupImageName": "NKM_UI_CONTENTS_UNLOCK_LEAGUEMATCH"
+    },
+    "DraftBan": {
+      "MinUnitCount": 30,
+      "MinShipCount": 3
+    },
+    "LeaguePvp": {
+      "OpenDaysOfWeek": [
+        "WEEK_MON",
+        "WEEK_TUE",
+        "WEEK_WED",
+        "WEEK_THU",
+        "WEEK_FRI",
+        "WEEK_SAT",
+        "WEEK_SUN"
+      ],
+      "OpenTimeStart": "06:00",
+      "OpenTimeEnd": "23:59",
+      "CalculateTimeStart": "04:00",
+      "CalculateTimeInterval": 1,
+      "ShipHpMultiply": 1.0,
+      "ShipAttackPowerMultiply": 1.0,
+      "TotalGameTimeSec": 180,
+      "UseRageBuff": false,
+      "UseDeadlineBuff": false,
+      "RageBuff_ShipHpRate": 0.6,
+      "RageBuff_Id": "GAUNLET_BUFF_RAGE_MODE",
+      "UiRageBuff_Id": "GAUNLET_BUFF_RAGE_MODE_DUMMY",
+      "DeadlineBuff_Id": "GAUNLET_DEBUFF_DEADLINE_MODE",
+      "UiDeadlineBuff_Id": "GAUNLET_DEBUFF_DEADLINE_MODE_DUMMY",
+      "DeadlineBuff_Condition": [
+        {
+          "RemainTimeSec": 120,
+          "BuffLevel": 1
+        },
+        {
+          "RemainTimeSec": 60,
+          "BuffLevel": 2
+        },
+        {
+          "RemainTimeSec": 30,
+          "BuffLevel": 3
+        }
+      ]
+    }
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

@@ -1,0 +1,370 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_ELITE_CHALLENGE_TRIM_BOMB_JUNGLE.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 25,
+  "records": [
+    {
+      "__key": "m_UnitSizeX",
+      "value": 100
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 200
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.5
+    },
+    {
+      "__key": "m_SpriteOffsetY",
+      "value": -70
+    },
+    {
+      "__key": "m_fGageOffsetX",
+      "value": 20
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 330
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 120
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 130
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.5
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.6
+    },
+    {
+      "__key": "m_fAirHigh",
+      "value": 200
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 0
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 700
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 800
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 50
+    },
+    {
+      "__key": "m_NKM_FIND_TARGET_TYPE",
+      "value": "NFTT_NEAR_ENEMY_LAND"
+    },
+    {
+      "__key": "m_bTargetNoChange",
+      "value": true
+    },
+    {
+      "__key": "m_fRespawnCoolTime",
+      "value": 1.0
+    },
+    {
+      "__key": "m_AttackedTargetTime",
+      "value": 1
+    },
+    {
+      "__key": "m_bAttackedTarget",
+      "value": false
+    },
+    {
+      "__key": "m_bNoDamageState",
+      "value": true
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": false
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 1.0
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_BuffStrID": "BUFF_MOB_NORMAL_CHALLENGE_TRIM_FLOATER_MAD_PASSIVE"
+        },
+        {
+          "m_BuffStrID": "BUFF_NORMAL_DAMAGE_LIMIT_RATE_BY_HP",
+          "m_BuffLevel": 2
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.8,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_listSoundName": [
+                [
+                  "AB_SOUND",
+                  "FX_COMBAT_MONSTER_BOMB_START"
+                ]
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            }
+          ],
+          "m_listNKMEventText": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_Text": "SI_BATTLE_MOB_ELITE_CHALLENGE_TRIM_BOMB_JUNGLE",
+              "m_fTime": 10.0
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_StateName": "USN_RUN",
+          "m_AnimName": "RUN",
+          "m_bAnimLoop": true,
+          "m_bRun": true
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_STAND",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": false,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_bAnimLoop": false,
+          "m_listNKMEventDissolve": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.0,
+              "m_fDissolve": 1,
+              "m_fTrackTime": 2
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_AnimName": "SKILL1",
+          "m_bForceLeft": true,
+          "m_bAnimLoop": false,
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_BOMB_DAMAGE_DOWN"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            }
+          ],
+          "m_listNKMEventDie": [
+            {
+              "m_bAnimTime": true,
+              "m_bImmediateDie": true,
+              "m_fEventTime": 3.0
+            }
+          ],
+          "m_listNKMEventChangeState": [
+            {
+              "m_fEventTime": 1.5,
+              "m_TargetUnitID": 220245,
+              "m_ChangeState": "USN_STUN"
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_AnimName": "SKILL1",
+          "m_bAnimLoop": false,
+          "m_listNKMEventDissolve": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.0,
+              "m_fDissolve": 1,
+              "m_fTrackTime": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_UnitSizeX": 100,
+    "m_UnitSizeY": 200,
+    "m_SpriteScale": 1.5,
+    "m_SpriteOffsetY": -70,
+    "m_fGageOffsetX": 20,
+    "m_fGageOffsetY": 330,
+    "m_fShadowScaleX": 120,
+    "m_fShadowScaleY": 130,
+    "m_fForceRespawnZposMin": 0.5,
+    "m_fForceRespawnZposMax": 0.6,
+    "m_fAirHigh": 200,
+    "m_SpeedRun": 0,
+    "m_SeeRange": 700,
+    "m_SeeRangeMax": 800,
+    "m_TargetNearRange": 50,
+    "m_NKM_FIND_TARGET_TYPE": "NFTT_NEAR_ENEMY_LAND",
+    "m_bTargetNoChange": true,
+    "m_fRespawnCoolTime": 1.0,
+    "m_AttackedTargetTime": 1,
+    "m_bAttackedTarget": false,
+    "m_bNoDamageState": true,
+    "m_bUseMotionBlur": false,
+    "m_fDieCompleteTime": 1.0,
+    "m_listStaticBuffData": [
+      {
+        "m_BuffStrID": "BUFF_MOB_NORMAL_CHALLENGE_TRIM_FLOATER_MAD_PASSIVE"
+      },
+      {
+        "m_BuffStrID": "BUFF_NORMAL_DAMAGE_LIMIT_RATE_BY_HP",
+        "m_BuffLevel": 2
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.8,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_listSoundName": [
+              [
+                "AB_SOUND",
+                "FX_COMBAT_MONSTER_BOMB_START"
+              ]
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          }
+        ],
+        "m_listNKMEventText": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_Text": "SI_BATTLE_MOB_ELITE_CHALLENGE_TRIM_BOMB_JUNGLE",
+            "m_fTime": 10.0
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_StateName": "USN_RUN",
+        "m_AnimName": "RUN",
+        "m_bAnimLoop": true,
+        "m_bRun": true
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_STAND",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": false,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_bAnimLoop": false,
+        "m_listNKMEventDissolve": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.0,
+            "m_fDissolve": 1,
+            "m_fTrackTime": 2
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_AnimName": "SKILL1",
+        "m_bForceLeft": true,
+        "m_bAnimLoop": false,
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_BOMB_DAMAGE_DOWN"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          }
+        ],
+        "m_listNKMEventDie": [
+          {
+            "m_bAnimTime": true,
+            "m_bImmediateDie": true,
+            "m_fEventTime": 3.0
+          }
+        ],
+        "m_listNKMEventChangeState": [
+          {
+            "m_fEventTime": 1.5,
+            "m_TargetUnitID": 220245,
+            "m_ChangeState": "USN_STUN"
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_AnimName": "SKILL1",
+        "m_bAnimLoop": false,
+        "m_listNKMEventDissolve": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.0,
+            "m_fDissolve": 1,
+            "m_fTrackTime": 1
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

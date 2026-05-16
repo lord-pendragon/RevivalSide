@@ -1,0 +1,349 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_DOLL_4_3.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 8,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.0
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_REAPER_M_CYBORG_H"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.05
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 1.2,
+          "NST_DEF": 3.2,
+          "NST_HP": 1.0
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_RAS_TOWER_WALL_EVENT_SIGMA_E",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 1.5,
+            "m_fEventPos": 0.5
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.2,
+              "NST_DEF": 5.2,
+              "NST_HP": 5.2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_EVENT_NANAHARA2_REAPER_RAILGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.3,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.2,
+              "NST_DEF": 0.2,
+              "NST_HP": 0.2
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_REAPER_M_SIEGE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.2,
+              "NST_DEF": 0.2,
+              "NST_HP": 0.2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHIELD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.2,
+              "NST_DEF": 0.2,
+              "NST_HP": 0.15
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHIELD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.2,
+              "NST_DEF": 0.2,
+              "NST_HP": 0.15
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.2,
+              "NST_DEF": 0.2,
+              "NST_HP": 0.2
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.2,
+              "NST_DEF": 0.2,
+              "NST_HP": 0.2
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.2,
+              "NST_DEF": 0.2,
+              "NST_HP": 0.2
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.2,
+              "NST_DEF": 0.2,
+              "NST_HP": 0.2
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 1.0,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_REAPER_M_CYBORG_H",
+    "m_fBossPosZ": 0.05,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 1.2,
+          "NST_DEF": 3.2,
+          "NST_HP": 1.0
+        }
+      }
+    },
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_RAS_TOWER_WALL_EVENT_SIGMA_E",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 1.5,
+          "m_fEventPos": 0.5
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.2,
+            "NST_DEF": 5.2,
+            "NST_HP": 5.2
+          }
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_EVENT_NANAHARA2_REAPER_RAILGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.3,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.2,
+            "NST_DEF": 0.2,
+            "NST_HP": 0.2
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_REAPER_M_SIEGE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.2,
+            "NST_DEF": 0.2,
+            "NST_HP": 0.2
+          }
+        }
+      }
+    ],
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHIELD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.2,
+            "NST_DEF": 0.2,
+            "NST_HP": 0.15
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHIELD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.2,
+            "NST_DEF": 0.2,
+            "NST_HP": 0.15
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.2,
+            "NST_DEF": 0.2,
+            "NST_HP": 0.2
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.2,
+            "NST_DEF": 0.2,
+            "NST_HP": 0.2
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.2,
+            "NST_DEF": 0.2,
+            "NST_HP": 0.2
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.2,
+            "NST_DEF": 0.2,
+            "NST_HP": 0.2
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

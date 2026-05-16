@@ -1,0 +1,262 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_MOONLIGHT_2_2.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 3,
+  "records": [
+    {
+      "__key": "m_fCostSpeedRateA",
+      "value": 1.5
+    },
+    {
+      "__key": "m_bRespawnFreePos",
+      "value": true
+    },
+    {
+      "__key": "m_listDungeonWave",
+      "value": [
+        {
+          "m_WaveID": 1,
+          "m_NextWaveID": 2,
+          "m_fNextWavetime": 30,
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0.3,
+                "m_fEventPos": 0.3
+              },
+              "m_AddStatData": {
+                "m_StatFactor": {
+                  "NST_ATK": 5.0
+                }
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 6.3,
+                "m_fEventPos": 0.3
+              },
+              "m_AddStatData": {
+                "m_StatFactor": {
+                  "NST_ATK": 5.0
+                }
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 6.3,
+                "m_fEventPos": 0.4
+              },
+              "m_AddStatData": {
+                "m_StatFactor": {
+                  "NST_ATK": 5.0
+                }
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_ELITE_COMMON_RANGER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 6.3,
+                "m_fEventPos": 0.15
+              },
+              "m_AddStatData": {
+                "m_StatFactor": {
+                  "NST_ATK": 5.0
+                }
+              }
+            }
+          ]
+        },
+        {
+          "m_WaveID": 2,
+          "m_fNextWavetime": 180,
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0.3,
+                "m_fEventPos": 0.3
+              },
+              "m_AddStatData": {
+                "m_StatFactor": {
+                  "NST_ATK": 5.0
+                }
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 5.3,
+                "m_fEventPos": 0.3
+              },
+              "m_AddStatData": {
+                "m_StatFactor": {
+                  "NST_ATK": 5.0
+                }
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 10.3,
+                "m_fEventPos": 0.4
+              },
+              "m_AddStatData": {
+                "m_StatFactor": {
+                  "NST_ATK": 5.0
+                }
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_ELITE_COMMON_RANGER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 10.6,
+                "m_fEventPos": 0.15
+              },
+              "m_AddStatData": {
+                "m_StatFactor": {
+                  "NST_ATK": 5.0
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fCostSpeedRateA": 1.5,
+    "m_bRespawnFreePos": true,
+    "m_listDungeonWave": [
+      {
+        "m_WaveID": 1,
+        "m_NextWaveID": 2,
+        "m_fNextWavetime": 30,
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0.3,
+              "m_fEventPos": 0.3
+            },
+            "m_AddStatData": {
+              "m_StatFactor": {
+                "NST_ATK": 5.0
+              }
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 6.3,
+              "m_fEventPos": 0.3
+            },
+            "m_AddStatData": {
+              "m_StatFactor": {
+                "NST_ATK": 5.0
+              }
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 6.3,
+              "m_fEventPos": 0.4
+            },
+            "m_AddStatData": {
+              "m_StatFactor": {
+                "NST_ATK": 5.0
+              }
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_ELITE_COMMON_RANGER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 6.3,
+              "m_fEventPos": 0.15
+            },
+            "m_AddStatData": {
+              "m_StatFactor": {
+                "NST_ATK": 5.0
+              }
+            }
+          }
+        ]
+      },
+      {
+        "m_WaveID": 2,
+        "m_fNextWavetime": 180,
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0.3,
+              "m_fEventPos": 0.3
+            },
+            "m_AddStatData": {
+              "m_StatFactor": {
+                "NST_ATK": 5.0
+              }
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 5.3,
+              "m_fEventPos": 0.3
+            },
+            "m_AddStatData": {
+              "m_StatFactor": {
+                "NST_ATK": 5.0
+              }
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 10.3,
+              "m_fEventPos": 0.4
+            },
+            "m_AddStatData": {
+              "m_StatFactor": {
+                "NST_ATK": 5.0
+              }
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_ELITE_COMMON_RANGER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 10.6,
+              "m_fEventPos": 0.15
+            },
+            "m_AddStatData": {
+              "m_StatFactor": {
+                "NST_ATK": 5.0
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

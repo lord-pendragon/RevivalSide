@@ -1,0 +1,91 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_EVENT_NIGHTMARE_2_2.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 3
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MONSTER_BOSS_SHIP_VEHCLE_N"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 0.5,
+          "NST_DEF": 1,
+          "NST_HP": 1
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_EVENT_HAVEN_TIDE_GUNSHIELD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 999,
+            "m_fEventTimeGap": 1,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1,
+              "NST_DEF": 1,
+              "NST_HP": 1
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 3,
+    "m_BossUnitStrID": "NKM_MONSTER_BOSS_SHIP_VEHCLE_N",
+    "m_fBossPosZ": 0.6,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 0.5,
+          "NST_DEF": 1,
+          "NST_HP": 1
+        }
+      }
+    },
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_EVENT_HAVEN_TIDE_GUNSHIELD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 999,
+          "m_fEventTimeGap": 1,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1,
+            "NST_DEF": 1,
+            "NST_HP": 1
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

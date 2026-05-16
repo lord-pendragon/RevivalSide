@@ -1,0 +1,108 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_NORMAL_CHALLENGE_TRIM_TOTEM_JUNGLE.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_MONSTER_NORMAL_BASIC_TOTEM_N"
+    },
+    {
+      "__key": "m_SuperArmorLevel",
+      "value": "NSAL_HYPER"
+    },
+    {
+      "__key": "m_bImmuneSilence",
+      "value": true
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 0
+    },
+    {
+      "__key": "m_listSkillStateData",
+      "value": [
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_bNoTarget": true
+        }
+      ]
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_BuffStrID": "BUFF_MOB_NORMAL_CHALLENGE_TRIM_TOTEM_PASSIVE",
+          "m_BuffLevel": 1
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_SKILL1",
+          "m_bAnimLoop": false,
+          "m_AnimName": "ASTAND",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_fAnimSpeed": 1.0,
+          "m_StateCoolTime": 12,
+          "m_listNKMEventHeal": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6666666666666666,
+              "m_fHealRate": 0.5,
+              "m_fRangeMin": -3000.0,
+              "m_fRangeMax": 3000.0,
+              "m_bEnableSelfHeal": false,
+              "m_MaxCount": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_MONSTER_NORMAL_BASIC_TOTEM_N",
+    "m_SuperArmorLevel": "NSAL_HYPER",
+    "m_bImmuneSilence": true,
+    "m_SpeedRun": 0,
+    "m_listSkillStateData": [
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_bNoTarget": true
+      }
+    ],
+    "m_listStaticBuffData": [
+      {
+        "m_BuffStrID": "BUFF_MOB_NORMAL_CHALLENGE_TRIM_TOTEM_PASSIVE",
+        "m_BuffLevel": 1
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_SKILL1",
+        "m_bAnimLoop": false,
+        "m_AnimName": "ASTAND",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_fAnimSpeed": 1.0,
+        "m_StateCoolTime": 12,
+        "m_listNKMEventHeal": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6666666666666666,
+            "m_fHealRate": 0.5,
+            "m_fRangeMin": -3000.0,
+            "m_fRangeMax": 3000.0,
+            "m_bEnableSelfHeal": false,
+            "m_MaxCount": 1
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

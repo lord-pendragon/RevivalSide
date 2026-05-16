@@ -1,0 +1,206 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_EVENT_FRONTBAY_1_5.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 5
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.5
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EVENT_FRONTBAY_BITER_SUMMER"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.5
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 2364011,
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_EventDieUnitTag": "ALLY",
+            "m_EventDieUnitTagCount": 1
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_NEEDLER_SUMMER_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_NEEDLER_SUMMER_N",
+          "m_EventRespawnUnitTag": "ALLY",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 5,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_SCOURGE_SUMMER_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_NEEDLER_SUMMER_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 12,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_SCOURGE_SUMMER_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 12,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_UNIT_SHARKS_C_CLAW",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_EventDieUnitTag": "ALLY",
+            "m_EventDieUnitTagCount": 1,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_SHARKS_C_CANNON",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_EventDieUnitTag": "ALLY",
+            "m_EventDieUnitTagCount": 1,
+            "m_fEventPos": 0.1
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 5,
+    "m_fCostSpeedRateB": 0.5,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EVENT_FRONTBAY_BITER_SUMMER",
+    "m_fBossPosZ": 0.5,
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 2364011,
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_EventDieUnitTag": "ALLY",
+          "m_EventDieUnitTagCount": 1
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_NEEDLER_SUMMER_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_NEEDLER_SUMMER_N",
+        "m_EventRespawnUnitTag": "ALLY",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 5,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_SCOURGE_SUMMER_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_NEEDLER_SUMMER_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 12,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_SCOURGE_SUMMER_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 12,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.1
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_UNIT_SHARKS_C_CLAW",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_EventDieUnitTag": "ALLY",
+          "m_EventDieUnitTagCount": 1,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_SHARKS_C_CANNON",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_EventDieUnitTag": "ALLY",
+          "m_EventDieUnitTagCount": 1,
+          "m_fEventPos": 0.1
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

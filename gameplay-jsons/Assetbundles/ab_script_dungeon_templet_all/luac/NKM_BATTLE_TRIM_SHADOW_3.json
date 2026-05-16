@@ -1,0 +1,340 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_BATTLE_TRIM_SHADOW_3.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 7
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_SHADOW_C_BALISADA"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_fCostSpeedRateA",
+      "value": 1
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.3
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_SHADOW_C_JAPAN_ZENJIROU",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 181,
+            "m_fEventTimeEnd": 181
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_S_SL_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 5,
+            "m_fEventTimeEnd": 180
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_S_SL_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 8,
+            "m_fEventTimeEnd": 180
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_S_SL_SNIPER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 10,
+            "m_fEventTimeEnd": 180
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_SL_TANK",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 25,
+            "m_fEventTimeEnd": 180
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_SHADOW_C_JAPAN_ZENJIROU",
+          "m_EventRespawnUnitTag": "BOSS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 3,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_S_SL_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 6,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_SL_TANK",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 30,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_S_SL_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 30,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_SL_TANK",
+          "m_EventRespawnUnitTag": "ZAKO",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 60,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_S_SL_SHOTGUN",
+          "m_EventRespawnUnitTag": "ZAKO",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 61,
+            "m_fEventPos": 0.15
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_S_SL_RIFLE",
+          "m_EventRespawnUnitTag": "ZAKO",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 62,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_C_JAPAN_ZENJIROU",
+          "m_EventRespawnUnitTag": "BOSS",
+          "m_NKMDungeonEventTiming": {
+            "m_EventDieUnitTag": "BOSS",
+            "m_EventDieUnitTagCount": 1,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 60
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_C_JAPAN_ZENJIROU",
+          "m_EventRespawnUnitTag": "BOSS",
+          "m_NKMDungeonEventTiming": {
+            "m_EventDieUnitTag": "BOSS",
+            "m_EventDieUnitTagCount": 2,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.33,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_S_SL_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.33,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_S_SL_SNIPER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.33,
+            "m_fEventPos": 0.05
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_S_SL_SNIPER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.33,
+            "m_fEventPos": 0.1
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 7,
+    "m_BossUnitStrID": "NKM_SHADOW_C_BALISADA",
+    "m_fBossPosZ": 0.6,
+    "m_fCostSpeedRateA": 1,
+    "m_fCostSpeedRateB": 1.3,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_SHADOW_C_JAPAN_ZENJIROU",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 181,
+          "m_fEventTimeEnd": 181
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_S_SL_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 5,
+          "m_fEventTimeEnd": 180
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_S_SL_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 8,
+          "m_fEventTimeEnd": 180
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_S_SL_SNIPER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 10,
+          "m_fEventTimeEnd": 180
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_SL_TANK",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 25,
+          "m_fEventTimeEnd": 180
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_SHADOW_C_JAPAN_ZENJIROU",
+        "m_EventRespawnUnitTag": "BOSS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 3,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_S_SL_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 6,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_SL_TANK",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 30,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_S_SL_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 30,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_SL_TANK",
+        "m_EventRespawnUnitTag": "ZAKO",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 60,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_S_SL_SHOTGUN",
+        "m_EventRespawnUnitTag": "ZAKO",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 61,
+          "m_fEventPos": 0.15
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_S_SL_RIFLE",
+        "m_EventRespawnUnitTag": "ZAKO",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 62,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_C_JAPAN_ZENJIROU",
+        "m_EventRespawnUnitTag": "BOSS",
+        "m_NKMDungeonEventTiming": {
+          "m_EventDieUnitTag": "BOSS",
+          "m_EventDieUnitTagCount": 1,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 60
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_C_JAPAN_ZENJIROU",
+        "m_EventRespawnUnitTag": "BOSS",
+        "m_NKMDungeonEventTiming": {
+          "m_EventDieUnitTag": "BOSS",
+          "m_EventDieUnitTagCount": 2,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.33,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_S_SL_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.33,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_S_SL_SNIPER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.33,
+          "m_fEventPos": 0.05
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_S_SL_SNIPER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.33,
+          "m_fEventPos": 0.1
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

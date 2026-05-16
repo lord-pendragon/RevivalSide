@@ -1,0 +1,118 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_SWANSONG_4_1_1.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 8
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EP9_CA_YOO_MI_NA"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 0.8,
+          "NST_DEF": 1.0,
+          "NST_HP": 1.0
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonWave",
+      "value": [
+        {
+          "m_WaveID": 1,
+          "m_fNextWavetime": 180,
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_BOSS_EVENT_FENRIR_C_INTERN",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 2,
+                "m_fEventPos": 0.2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+          "m_EventConditionNumValue": 10,
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": "2434021",
+          "m_bPause": true,
+          "m_EventActionValue": 0,
+          "m_fEventDelay": 1,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 8,
+    "m_fCostSpeedRateB": 1,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EP9_CA_YOO_MI_NA",
+    "m_fBossPosZ": 0.6,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 0.8,
+          "NST_DEF": 1.0,
+          "NST_HP": 1.0
+        }
+      }
+    },
+    "m_listDungeonWave": [
+      {
+        "m_WaveID": 1,
+        "m_fNextWavetime": 180,
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_BOSS_EVENT_FENRIR_C_INTERN",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 2,
+              "m_fEventPos": 0.2
+            }
+          }
+        ]
+      }
+    ],
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+        "m_EventConditionNumValue": 10,
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": "2434021",
+        "m_bPause": true,
+        "m_EventActionValue": 0,
+        "m_fEventDelay": 1,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

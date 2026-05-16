@@ -1,0 +1,471 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_NORMAL_SUMMER2024_PG_TONFA.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 18,
+  "records": [
+    {
+      "__key": "m_UnitSizeX",
+      "value": 150
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 180
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 0.85
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 200
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 200
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.1
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.4
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 340
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 300
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 400
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 50
+    },
+    {
+      "__key": "m_AttackedTargetTime",
+      "value": 1
+    },
+    {
+      "__key": "m_bAttackedTarget",
+      "value": false
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": true
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 2.0
+    },
+    {
+      "__key": "m_listFixedStatusImmune",
+      "value": [
+        "NUSE_CONFUSE"
+      ]
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1"
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.16666666666666666,
+              "m_PlayRate": 0.5,
+              "m_fLocalVol": 0.7,
+              "m_bVoice": true,
+              "m_listSoundName": [
+                "FX_COMBAT_MOB_PG_TONFA_START_1",
+                "FX_COMBAT_MOB_PG_TONFA_START_2"
+              ]
+            }
+          ],
+          "m_AnimEndChangeState": "USN_ASTAND"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+          "m_StateName": "USN_ASTAND",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": true
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK1",
+          "m_AnimName": "ATTACK1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.36666666666666664,
+              "m_fEventTimeMax": 0.4666666666666667,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 100.0,
+              "m_bHitAir": false,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_NKM_MOB_NORMAL_SUMMER2021_PG_TONFA_ATTACK1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.7666666666666667,
+              "m_fEventTimeMax": 0.8666666666666667,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 100.0,
+              "m_bHitAir": false,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_NKM_MOB_NORMAL_SUMMER2021_PG_TONFA_ATTACK1"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.2,
+              "m_listSoundName": [
+                "FX_COMBAT_MOB_PG_TONFA_ATTACK_1",
+                "FX_COMBAT_MOB_PG_TONFA_ATTACK_2"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_A",
+          "m_AnimName": "DAMAGE_A",
+          "m_bAnimLoop": false,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.15,
+              "m_listSoundName": [
+                "FX_COMBAT_MOB_PG_TONFA_DAMAGE_1",
+                "FX_COMBAT_MOB_PG_TONFA_DAMAGE_2"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_B",
+          "m_AnimName": "DAMAGE_B",
+          "m_bAnimLoop": false,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.15,
+              "m_listSoundName": [
+                "FX_COMBAT_MOB_PG_TONFA_DAMAGE_1",
+                "FX_COMBAT_MOB_PG_TONFA_DAMAGE_2"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_AIR_UP",
+          "m_AnimName": "DAMAGE_AIR_UP",
+          "m_bAnimLoop": false,
+          "m_SpeedY0NegativeChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.15,
+              "m_listSoundName": [
+                "FX_COMBAT_MOB_PG_TONFA_DAMAGE_1",
+                "FX_COMBAT_MOB_PG_TONFA_DAMAGE_2"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_bAnimLoop": false,
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+          "m_AnimEndChangeState": "USN_DAMAGE_STAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.15,
+              "m_listSoundName": [
+                "FX_COMBAT_MOB_PG_TONFA_DAMAGE_1",
+                "FX_COMBAT_MOB_PG_TONFA_DAMAGE_2"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_bAnimLoop": false,
+          "m_bShowGage": false,
+          "m_listNKMEventDissolve": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.0,
+              "m_fDissolve": 1,
+              "m_fTrackTime": 1.8
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.33,
+              "m_listSoundName": [
+                "FX_COMBAT_MOB_PG_TONFA_DEATH_1",
+                "FX_COMBAT_MOB_PG_TONFA_DEATH_2"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_UnitSizeX": 150,
+    "m_UnitSizeY": 180,
+    "m_SpriteScale": 0.85,
+    "m_fShadowScaleX": 200,
+    "m_fShadowScaleY": 200,
+    "m_fForceRespawnZposMin": 0.1,
+    "m_fForceRespawnZposMax": 0.4,
+    "m_SpeedRun": 340,
+    "m_SeeRange": 300,
+    "m_SeeRangeMax": 400,
+    "m_TargetNearRange": 50,
+    "m_AttackedTargetTime": 1,
+    "m_bAttackedTarget": false,
+    "m_bUseMotionBlur": true,
+    "m_fDieCompleteTime": 2.0,
+    "m_listFixedStatusImmune": [
+      "NUSE_CONFUSE"
+    ],
+    "m_listAttackStateData": [
+      {
+        "m_StateName": "USN_ATTACK1"
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.16666666666666666,
+            "m_PlayRate": 0.5,
+            "m_fLocalVol": 0.7,
+            "m_bVoice": true,
+            "m_listSoundName": [
+              "FX_COMBAT_MOB_PG_TONFA_START_1",
+              "FX_COMBAT_MOB_PG_TONFA_START_2"
+            ]
+          }
+        ],
+        "m_AnimEndChangeState": "USN_ASTAND"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+        "m_StateName": "USN_ASTAND",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": true
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK1",
+        "m_AnimName": "ATTACK1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.36666666666666664,
+            "m_fEventTimeMax": 0.4666666666666667,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 100.0,
+            "m_bHitAir": false,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_NKM_MOB_NORMAL_SUMMER2021_PG_TONFA_ATTACK1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.7666666666666667,
+            "m_fEventTimeMax": 0.8666666666666667,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 100.0,
+            "m_bHitAir": false,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_NKM_MOB_NORMAL_SUMMER2021_PG_TONFA_ATTACK1"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.2,
+            "m_listSoundName": [
+              "FX_COMBAT_MOB_PG_TONFA_ATTACK_1",
+              "FX_COMBAT_MOB_PG_TONFA_ATTACK_2"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_A",
+        "m_AnimName": "DAMAGE_A",
+        "m_bAnimLoop": false,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.15,
+            "m_listSoundName": [
+              "FX_COMBAT_MOB_PG_TONFA_DAMAGE_1",
+              "FX_COMBAT_MOB_PG_TONFA_DAMAGE_2"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_B",
+        "m_AnimName": "DAMAGE_B",
+        "m_bAnimLoop": false,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.15,
+            "m_listSoundName": [
+              "FX_COMBAT_MOB_PG_TONFA_DAMAGE_1",
+              "FX_COMBAT_MOB_PG_TONFA_DAMAGE_2"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_AIR_UP",
+        "m_AnimName": "DAMAGE_AIR_UP",
+        "m_bAnimLoop": false,
+        "m_SpeedY0NegativeChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.15,
+            "m_listSoundName": [
+              "FX_COMBAT_MOB_PG_TONFA_DAMAGE_1",
+              "FX_COMBAT_MOB_PG_TONFA_DAMAGE_2"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_bAnimLoop": false,
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+        "m_AnimEndChangeState": "USN_DAMAGE_STAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.15,
+            "m_listSoundName": [
+              "FX_COMBAT_MOB_PG_TONFA_DAMAGE_1",
+              "FX_COMBAT_MOB_PG_TONFA_DAMAGE_2"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_bAnimLoop": false,
+        "m_bShowGage": false,
+        "m_listNKMEventDissolve": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.0,
+            "m_fDissolve": 1,
+            "m_fTrackTime": 1.8
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.33,
+            "m_listSoundName": [
+              "FX_COMBAT_MOB_PG_TONFA_DEATH_1",
+              "FX_COMBAT_MOB_PG_TONFA_DEATH_2"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

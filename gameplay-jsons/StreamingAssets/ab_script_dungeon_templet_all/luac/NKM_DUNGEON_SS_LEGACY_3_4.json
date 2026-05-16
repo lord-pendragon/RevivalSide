@@ -1,0 +1,139 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_LEGACY_3_4.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fCostSpeedRateA",
+      "value": 1.5
+    },
+    {
+      "__key": "m_bRespawnFreePos",
+      "value": true
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EVENT_GAMECIRCLE_EATER"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 1.0
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 1.0,
+          "NST_HP": 0.15
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EP6_BLASTER_MAD_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.3,
+            "m_fEventPos": 0.05
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.0,
+              "NST_HP": 1.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_BOSS_EVENT_GAMECIRCLE_BEAST_BASIC_MOVE_MAD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.3,
+            "m_fEventPos": 0.5
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.0,
+              "NST_HP": 0.2
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_BOSS_EVENT_GAMECIRCLE_TYRANT_STRIKER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 10.6,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.0,
+              "NST_HP": 0.2
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fCostSpeedRateA": 1.5,
+    "m_bRespawnFreePos": true,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EVENT_GAMECIRCLE_EATER",
+    "m_fBossPosZ": 1.0,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 1.0,
+          "NST_HP": 0.15
+        }
+      }
+    },
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EP6_BLASTER_MAD_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.3,
+          "m_fEventPos": 0.05
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.0,
+            "NST_HP": 1.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_BOSS_EVENT_GAMECIRCLE_BEAST_BASIC_MOVE_MAD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.3,
+          "m_fEventPos": 0.5
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.0,
+            "NST_HP": 0.2
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_BOSS_EVENT_GAMECIRCLE_TYRANT_STRIKER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 10.6,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.0,
+            "NST_HP": 0.2
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

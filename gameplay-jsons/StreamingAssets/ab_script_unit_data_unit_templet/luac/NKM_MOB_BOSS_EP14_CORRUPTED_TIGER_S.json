@@ -1,0 +1,1554 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_BOSS_EP14_CORRUPTED_TIGER_S.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 5,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_MOB_BOSS_EP14_CORRUPTED_TIGER_N"
+    },
+    {
+      "__key": "m_dicTriggerSet",
+      "value": [
+        {
+          "m_Name": "TRIGGER_TEXT_START",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "RESTART",
+          "m_listNKMEventText": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_Text": "SI_BATTLE_MOB_BOSS_EP14_CORRUPTED_TIGER_START"
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_TEXT_PHASECHANGE",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "RESTART",
+          "m_listNKMEventText": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_Text": "SI_BATTLE_MOB_BOSS_EP14_CORRUPTED_TIGER_PHASECHANGE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_listHyperSkillStateData",
+      "value": [
+        {
+          "m_StateName": "USN_HYPER1",
+          "m_bNoTarget": true,
+          "m_fStartCool": 1.0
+        }
+      ]
+    },
+    {
+      "__key": "m_listPhaseChangeData",
+      "value": [
+        {
+          "m_TargetPhase": 1,
+          "m_fChangeConditionHPRate": 0.4,
+          "m_ChangeStateName": "USN_PHASECHANGE1"
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "EventVariable",
+              "m_Name": "VAR_HYPER_SKILL1_COUNT",
+              "m_Value": [
+                3,
+                99
+              ]
+            }
+          ],
+          "m_TargetPhase": 2,
+          "m_ChangeStateName": "USN_PHASECHANGE2"
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_HYPER1",
+          "m_AnimName": "HYPER_SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_StateCoolTime": 52,
+          "m_listNKMEventVariable": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_Name": "VAR_HYPER_SKILL1_COUNT",
+              "m_Type": "ADD",
+              "m_Value": 1
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8333333333333334,
+              "m_DEName": "DE_MOB_BOSS_CORRUPTED_TIGER_HYPER_SKILL1_START"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.1666666666666667,
+              "m_DEName": "DE_MOB_BOSS_CORRUPTED_TIGER_HYPER_SKILL1_ING"
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.8333333333333334,
+              "m_fEventTimeMax": 1.1666666666666667,
+              "m_fRangeMin": -100.0,
+              "m_fRangeMax": 1000.0,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 99,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_MOB_BOSS_EP14_CORRUPTED_TIGER_HYPER_SKILL1_START",
+              "m_bHitBossUnit": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.3333333333333333,
+              "m_fEventTimeMax": 1.6666666666666667,
+              "m_fRangeMin": -100.0,
+              "m_fRangeMax": 1000.0,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 99,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_MOB_BOSS_EP14_CORRUPTED_TIGER_HYPER_SKILL1_START",
+              "m_bHitBossUnit": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.8333333333333333,
+              "m_fEventTimeMax": 2.1666666666666665,
+              "m_fRangeMin": -100.0,
+              "m_fRangeMax": 1000.0,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 99,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_MOB_BOSS_EP14_CORRUPTED_TIGER_HYPER_SKILL1_START",
+              "m_bHitBossUnit": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 3.5,
+              "m_fEventTimeMax": 3.8333333333333335,
+              "m_fRangeMin": -100.0,
+              "m_fRangeMax": 3000.0,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 6,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_MOB_BOSS_EP14_CORRUPTED_TIGER_HYPER_SKILL1_END",
+              "m_bHitBossUnit": false
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8333333333333334,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 8.0,
+              "m_fCameraCrashTime": 0.3333333333333333
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.3333333333333333,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 3.0,
+              "m_fCameraCrashTime": 0.6666666666666666
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.0,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 5.0,
+              "m_fCameraCrashTime": 0.6666666666666666
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.3333333333333335,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 8.0,
+              "m_fCameraCrashTime": 0.6666666666666666
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HYPER_ATTACK_START"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.16666666666666666,
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_74"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_HIT_BIG"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.1666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_WIND_07"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.0,
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG_06"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.1,
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWING_BIG"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.2666666666666666,
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_HIT_BIG"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.3333333333333335,
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_IMPACT"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_PHASECHANGE1",
+          "m_AnimName": "PHASECHANGE",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_AnimEndChangeState": "USN_PHASECHANGE1_END",
+          "m_listNKMEventAnimSpeed": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_fAnimSpeed": 0.5
+            }
+          ],
+          "m_listNKMEventTrigger": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_TargetTrigger": "TRIGGER_TEXT_PHASECHANGE"
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_BuffStrID": "BUFF_MOB_BOSS_EP14_CORRUPTED_TIGER_PHASECHANGE1"
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.7666666666666667,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 3.0,
+              "m_fCameraCrashTime": 0.3333333333333333
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.1666666666666667,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 3.0,
+              "m_fCameraCrashTime": 0.6666666666666666
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.8333333333333333,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 5.0,
+              "m_fCameraCrashTime": 0.6666666666666666
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.5,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 8.0,
+              "m_fCameraCrashTime": 0.6666666666666666
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.16666666666666666,
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_WIND"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.7666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_06"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8333333333333334,
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_WHOOSH_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.1666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_WIND"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.8333333333333333,
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.5,
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_03"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_PHASECHANGE1_END",
+          "m_AnimName": "PHASECHANGE_END",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8333333333333334,
+              "m_DEName": "DE_MOB_BOSS_CORRUPTED_TIGER_HYPER_SKILL1_START"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.1666666666666667,
+              "m_DEName": "DE_MOB_BOSS_CORRUPTED_TIGER_HYPER_SKILL1_ING"
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.8333333333333334,
+              "m_fEventTimeMax": 1.1666666666666667,
+              "m_fRangeMin": -100.0,
+              "m_fRangeMax": 1000.0,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 99,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_MOB_BOSS_EP14_CORRUPTED_TIGER_HYPER_SKILL1_START",
+              "m_bHitBossUnit": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.3333333333333333,
+              "m_fEventTimeMax": 1.6666666666666667,
+              "m_fRangeMin": -100.0,
+              "m_fRangeMax": 1000.0,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 99,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_MOB_BOSS_EP14_CORRUPTED_TIGER_HYPER_SKILL1_START",
+              "m_bHitBossUnit": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.8333333333333333,
+              "m_fEventTimeMax": 2.1666666666666665,
+              "m_fRangeMin": -100.0,
+              "m_fRangeMax": 1000.0,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 99,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_MOB_BOSS_EP14_CORRUPTED_TIGER_HYPER_SKILL1_START",
+              "m_bHitBossUnit": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 3.5,
+              "m_fEventTimeMax": 3.8333333333333335,
+              "m_fRangeMin": -100.0,
+              "m_fRangeMax": 3000.0,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 10,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_MOB_BOSS_EP14_CORRUPTED_TIGER_HYPER_SKILL1_END",
+              "m_bHitBossUnit": false
+            }
+          ],
+          "m_listNKMEventVariable": {},
+          "m_listNKMEventBuff": {},
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.5,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 8.0,
+              "m_fCameraCrashTime": 0.5
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.16666666666666666,
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_74"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_HIT_BIG"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.1666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_WIND_07"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.066666666666667,
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_HIT_BIG"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.1666666666666665,
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_IMPACT"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_PHASECHANGE2",
+          "m_AnimName": "PHASECHANGE",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_AnimEndChangeState": "USN_PHASECHANGE2_END",
+          "m_listNKMEventAnimSpeed": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_fAnimSpeed": 0.5
+            }
+          ],
+          "m_listNKMEventTrigger": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_TargetTrigger": "TRIGGER_TEXT_PHASECHANGE"
+            }
+          ],
+          "m_listNKMEventAttack": {},
+          "m_listNKMEventVariable": {},
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_BuffStrID": "BUFF_MOB_BOSS_EP14_CORRUPTED_TIGER_PHASECHANGE1"
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.0,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 8.0,
+              "m_fCameraCrashTime": 1.0
+            }
+          ],
+          "m_listNKMEventSound": {}
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_PHASECHANGE2_END",
+          "m_AnimName": "PHASECHANGE_END",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8333333333333334,
+              "m_DEName": "DE_MOB_BOSS_CORRUPTED_TIGER_PHASECHANGE2_START"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.1666666666666667,
+              "m_DEName": "DE_MOB_BOSS_CORRUPTED_TIGER_PHASECHANGE2_ING"
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.8333333333333334,
+              "m_fEventTimeMax": 1.1666666666666667,
+              "m_fRangeMin": -100.0,
+              "m_fRangeMax": 1000.0,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 99,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_MOB_BOSS_EP14_CORRUPTED_TIGER_PHASECHANGE2_START",
+              "m_bCleanHit": true,
+              "m_bHitBossUnit": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.3333333333333333,
+              "m_fEventTimeMax": 1.6666666666666667,
+              "m_fRangeMin": -100.0,
+              "m_fRangeMax": 1000.0,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 99,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_MOB_BOSS_EP14_CORRUPTED_TIGER_PHASECHANGE2_START",
+              "m_bCleanHit": true,
+              "m_bHitBossUnit": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.8333333333333333,
+              "m_fEventTimeMax": 2.1666666666666665,
+              "m_fRangeMin": -100.0,
+              "m_fRangeMax": 1000.0,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 99,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_MOB_BOSS_EP14_CORRUPTED_TIGER_PHASECHANGE2_START",
+              "m_bCleanHit": true,
+              "m_bHitBossUnit": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 3.5,
+              "m_fEventTimeMax": 3.8333333333333335,
+              "m_fRangeMin": -100.0,
+              "m_fRangeMax": 3000.0,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 10,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_MOB_BOSS_EP14_CORRUPTED_TIGER_PHASECHANGE2_END",
+              "m_bTrueDamage": true,
+              "m_bCleanHit": true,
+              "m_bHitBossUnit": false
+            }
+          ],
+          "m_listNKMEventVariable": {},
+          "m_listNKMEventBuff": {},
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.5,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 8.0,
+              "m_fCameraCrashTime": 0.5
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.16666666666666666,
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_74"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_HIT_BIG"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.1666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_WIND_07"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.066666666666667,
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_HIT_BIG"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.1666666666666665,
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_IMPACT"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_PHASECHANGE_FAIL",
+          "m_AnimName": "PHASECHANGE_FAIL",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_BuffStrID": "DEBUFF_MOB_BOSS_EP14_CORRUPTED_TIGER_PHASECHANGE_FAIL",
+              "m_BuffStatLevel": 70
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 8.0,
+              "m_fCameraCrashTime": 0.3333333333333333
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.16666666666666666,
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_EARTHQUAKE_05"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_MOB_BOSS_EP14_CORRUPTED_TIGER_N",
+    "m_dicTriggerSet": [
+      {
+        "m_Name": "TRIGGER_TEXT_START",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "RESTART",
+        "m_listNKMEventText": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_Text": "SI_BATTLE_MOB_BOSS_EP14_CORRUPTED_TIGER_START"
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_TEXT_PHASECHANGE",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "RESTART",
+        "m_listNKMEventText": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_Text": "SI_BATTLE_MOB_BOSS_EP14_CORRUPTED_TIGER_PHASECHANGE"
+          }
+        ]
+      }
+    ],
+    "m_listHyperSkillStateData": [
+      {
+        "m_StateName": "USN_HYPER1",
+        "m_bNoTarget": true,
+        "m_fStartCool": 1.0
+      }
+    ],
+    "m_listPhaseChangeData": [
+      {
+        "m_TargetPhase": 1,
+        "m_fChangeConditionHPRate": 0.4,
+        "m_ChangeStateName": "USN_PHASECHANGE1"
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "EventVariable",
+            "m_Name": "VAR_HYPER_SKILL1_COUNT",
+            "m_Value": [
+              3,
+              99
+            ]
+          }
+        ],
+        "m_TargetPhase": 2,
+        "m_ChangeStateName": "USN_PHASECHANGE2"
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_HYPER1",
+        "m_AnimName": "HYPER_SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_StateCoolTime": 52,
+        "m_listNKMEventVariable": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_Name": "VAR_HYPER_SKILL1_COUNT",
+            "m_Type": "ADD",
+            "m_Value": 1
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8333333333333334,
+            "m_DEName": "DE_MOB_BOSS_CORRUPTED_TIGER_HYPER_SKILL1_START"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.1666666666666667,
+            "m_DEName": "DE_MOB_BOSS_CORRUPTED_TIGER_HYPER_SKILL1_ING"
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.8333333333333334,
+            "m_fEventTimeMax": 1.1666666666666667,
+            "m_fRangeMin": -100.0,
+            "m_fRangeMax": 1000.0,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 99,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_MOB_BOSS_EP14_CORRUPTED_TIGER_HYPER_SKILL1_START",
+            "m_bHitBossUnit": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.3333333333333333,
+            "m_fEventTimeMax": 1.6666666666666667,
+            "m_fRangeMin": -100.0,
+            "m_fRangeMax": 1000.0,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 99,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_MOB_BOSS_EP14_CORRUPTED_TIGER_HYPER_SKILL1_START",
+            "m_bHitBossUnit": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.8333333333333333,
+            "m_fEventTimeMax": 2.1666666666666665,
+            "m_fRangeMin": -100.0,
+            "m_fRangeMax": 1000.0,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 99,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_MOB_BOSS_EP14_CORRUPTED_TIGER_HYPER_SKILL1_START",
+            "m_bHitBossUnit": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 3.5,
+            "m_fEventTimeMax": 3.8333333333333335,
+            "m_fRangeMin": -100.0,
+            "m_fRangeMax": 3000.0,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 6,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_MOB_BOSS_EP14_CORRUPTED_TIGER_HYPER_SKILL1_END",
+            "m_bHitBossUnit": false
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8333333333333334,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 8.0,
+            "m_fCameraCrashTime": 0.3333333333333333
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.3333333333333333,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 3.0,
+            "m_fCameraCrashTime": 0.6666666666666666
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.0,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 5.0,
+            "m_fCameraCrashTime": 0.6666666666666666
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.3333333333333335,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 8.0,
+            "m_fCameraCrashTime": 0.6666666666666666
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HYPER_ATTACK_START"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.16666666666666666,
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_74"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_HIT_BIG"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.1666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_WIND_07"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.0,
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG_06"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.1,
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWING_BIG"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.2666666666666666,
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_HIT_BIG"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.3333333333333335,
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_IMPACT"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_PHASECHANGE1",
+        "m_AnimName": "PHASECHANGE",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_AnimEndChangeState": "USN_PHASECHANGE1_END",
+        "m_listNKMEventAnimSpeed": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_fAnimSpeed": 0.5
+          }
+        ],
+        "m_listNKMEventTrigger": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_TargetTrigger": "TRIGGER_TEXT_PHASECHANGE"
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_BuffStrID": "BUFF_MOB_BOSS_EP14_CORRUPTED_TIGER_PHASECHANGE1"
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.7666666666666667,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 3.0,
+            "m_fCameraCrashTime": 0.3333333333333333
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.1666666666666667,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 3.0,
+            "m_fCameraCrashTime": 0.6666666666666666
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.8333333333333333,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 5.0,
+            "m_fCameraCrashTime": 0.6666666666666666
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.5,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 8.0,
+            "m_fCameraCrashTime": 0.6666666666666666
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.16666666666666666,
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_WIND"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.7666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_06"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8333333333333334,
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_WHOOSH_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.1666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_WIND"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.8333333333333333,
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.5,
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_03"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_PHASECHANGE1_END",
+        "m_AnimName": "PHASECHANGE_END",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8333333333333334,
+            "m_DEName": "DE_MOB_BOSS_CORRUPTED_TIGER_HYPER_SKILL1_START"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.1666666666666667,
+            "m_DEName": "DE_MOB_BOSS_CORRUPTED_TIGER_HYPER_SKILL1_ING"
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.8333333333333334,
+            "m_fEventTimeMax": 1.1666666666666667,
+            "m_fRangeMin": -100.0,
+            "m_fRangeMax": 1000.0,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 99,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_MOB_BOSS_EP14_CORRUPTED_TIGER_HYPER_SKILL1_START",
+            "m_bHitBossUnit": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.3333333333333333,
+            "m_fEventTimeMax": 1.6666666666666667,
+            "m_fRangeMin": -100.0,
+            "m_fRangeMax": 1000.0,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 99,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_MOB_BOSS_EP14_CORRUPTED_TIGER_HYPER_SKILL1_START",
+            "m_bHitBossUnit": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.8333333333333333,
+            "m_fEventTimeMax": 2.1666666666666665,
+            "m_fRangeMin": -100.0,
+            "m_fRangeMax": 1000.0,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 99,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_MOB_BOSS_EP14_CORRUPTED_TIGER_HYPER_SKILL1_START",
+            "m_bHitBossUnit": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 3.5,
+            "m_fEventTimeMax": 3.8333333333333335,
+            "m_fRangeMin": -100.0,
+            "m_fRangeMax": 3000.0,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 10,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_MOB_BOSS_EP14_CORRUPTED_TIGER_HYPER_SKILL1_END",
+            "m_bHitBossUnit": false
+          }
+        ],
+        "m_listNKMEventVariable": {},
+        "m_listNKMEventBuff": {},
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.5,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 8.0,
+            "m_fCameraCrashTime": 0.5
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.16666666666666666,
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_74"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_HIT_BIG"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.1666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_WIND_07"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.066666666666667,
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_HIT_BIG"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.1666666666666665,
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_IMPACT"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_PHASECHANGE2",
+        "m_AnimName": "PHASECHANGE",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_AnimEndChangeState": "USN_PHASECHANGE2_END",
+        "m_listNKMEventAnimSpeed": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_fAnimSpeed": 0.5
+          }
+        ],
+        "m_listNKMEventTrigger": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_TargetTrigger": "TRIGGER_TEXT_PHASECHANGE"
+          }
+        ],
+        "m_listNKMEventAttack": {},
+        "m_listNKMEventVariable": {},
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_BuffStrID": "BUFF_MOB_BOSS_EP14_CORRUPTED_TIGER_PHASECHANGE1"
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.0,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 8.0,
+            "m_fCameraCrashTime": 1.0
+          }
+        ],
+        "m_listNKMEventSound": {}
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_PHASECHANGE2_END",
+        "m_AnimName": "PHASECHANGE_END",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8333333333333334,
+            "m_DEName": "DE_MOB_BOSS_CORRUPTED_TIGER_PHASECHANGE2_START"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.1666666666666667,
+            "m_DEName": "DE_MOB_BOSS_CORRUPTED_TIGER_PHASECHANGE2_ING"
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.8333333333333334,
+            "m_fEventTimeMax": 1.1666666666666667,
+            "m_fRangeMin": -100.0,
+            "m_fRangeMax": 1000.0,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 99,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_MOB_BOSS_EP14_CORRUPTED_TIGER_PHASECHANGE2_START",
+            "m_bCleanHit": true,
+            "m_bHitBossUnit": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.3333333333333333,
+            "m_fEventTimeMax": 1.6666666666666667,
+            "m_fRangeMin": -100.0,
+            "m_fRangeMax": 1000.0,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 99,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_MOB_BOSS_EP14_CORRUPTED_TIGER_PHASECHANGE2_START",
+            "m_bCleanHit": true,
+            "m_bHitBossUnit": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.8333333333333333,
+            "m_fEventTimeMax": 2.1666666666666665,
+            "m_fRangeMin": -100.0,
+            "m_fRangeMax": 1000.0,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 99,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_MOB_BOSS_EP14_CORRUPTED_TIGER_PHASECHANGE2_START",
+            "m_bCleanHit": true,
+            "m_bHitBossUnit": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 3.5,
+            "m_fEventTimeMax": 3.8333333333333335,
+            "m_fRangeMin": -100.0,
+            "m_fRangeMax": 3000.0,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 10,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_MOB_BOSS_EP14_CORRUPTED_TIGER_PHASECHANGE2_END",
+            "m_bTrueDamage": true,
+            "m_bCleanHit": true,
+            "m_bHitBossUnit": false
+          }
+        ],
+        "m_listNKMEventVariable": {},
+        "m_listNKMEventBuff": {},
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.5,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 8.0,
+            "m_fCameraCrashTime": 0.5
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.16666666666666666,
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_74"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_HIT_BIG"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.1666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_WIND_07"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.066666666666667,
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_HIT_BIG"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.1666666666666665,
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_IMPACT"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_PHASECHANGE_FAIL",
+        "m_AnimName": "PHASECHANGE_FAIL",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_BuffStrID": "DEBUFF_MOB_BOSS_EP14_CORRUPTED_TIGER_PHASECHANGE_FAIL",
+            "m_BuffStatLevel": 70
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 8.0,
+            "m_fCameraCrashTime": 0.3333333333333333
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.16666666666666666,
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_EARTHQUAKE_05"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

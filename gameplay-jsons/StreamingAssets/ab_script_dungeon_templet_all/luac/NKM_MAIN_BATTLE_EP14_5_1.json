@@ -1,0 +1,742 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_MAIN_BATTLE_EP14_5_1.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 5,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_COMMON_BEAST_SUMMON_TRANS"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 2.5,
+          "NST_DEF": 1.5,
+          "NST_HP": 1.0,
+          "NST_EVADE": 1.0,
+          "NST_HIT": 1.0
+        },
+        "m_StatValue": {
+          "NST_MAIN_STAT_RATE": 1.0
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.4,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5,
+              "NST_DEF": 1.0,
+              "NST_HP": 1.0,
+              "NST_EVADE": 1.0,
+              "NST_HIT": 1.0
+            },
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": 1.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_DEMOLISHER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.3,
+            "m_fEventPos": 0.4
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5,
+              "NST_DEF": 1.0,
+              "NST_HP": 1.0,
+              "NST_EVADE": 1.0,
+              "NST_HIT": 1.0
+            },
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": 1.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_WRAITH",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.8,
+            "m_fEventPos": 0.05
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5,
+              "NST_DEF": 1.0,
+              "NST_HP": 1.0,
+              "NST_EVADE": 1.0,
+              "NST_HIT": 1.0
+            },
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": 1.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_SCOURGE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1.6,
+            "m_fEventPos": 0.15
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5,
+              "NST_DEF": 1.0,
+              "NST_HP": 1.0,
+              "NST_EVADE": 1.0,
+              "NST_HIT": 1.0
+            },
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": 1.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER_TRANS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 6.0,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5,
+              "NST_DEF": 1.0,
+              "NST_HP": 1.0,
+              "NST_EVADE": 1.0,
+              "NST_HIT": 1.0
+            },
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": 1.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER_TRANS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 6.3,
+            "m_fEventPos": 0.35
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5,
+              "NST_DEF": 1.0,
+              "NST_HP": 1.0,
+              "NST_EVADE": 1.0,
+              "NST_HIT": 1.0
+            },
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": 1.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER_TRANS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 6.6,
+            "m_fEventPos": 0.4
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5,
+              "NST_DEF": 1.0,
+              "NST_HP": 1.0,
+              "NST_EVADE": 1.0,
+              "NST_HIT": 1.0
+            },
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": 1.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EP10_TRANS_BLASTER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 8.7,
+            "m_fEventPos": 0.15
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5,
+              "NST_DEF": 1.0,
+              "NST_HP": 1.0,
+              "NST_EVADE": 1.0,
+              "NST_HIT": 1.0
+            },
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": 1.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_WRAITH",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 12.6,
+            "m_fEventPos": 0.15
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5,
+              "NST_DEF": 1.0,
+              "NST_HP": 1.0,
+              "NST_EVADE": 1.0,
+              "NST_HIT": 1.0
+            },
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": 1.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_WRAITH",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 17.6,
+            "m_fEventPos": 0.05
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5,
+              "NST_DEF": 1.0,
+              "NST_HP": 1.0,
+              "NST_EVADE": 1.0,
+              "NST_HIT": 1.0
+            },
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": 1.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 20.3,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5,
+              "NST_DEF": 1.0,
+              "NST_HP": 1.0,
+              "NST_EVADE": 1.0,
+              "NST_HIT": 1.0
+            },
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": 1.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_SCOURGE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 23.6,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5,
+              "NST_DEF": 1.0,
+              "NST_HP": 1.0,
+              "NST_EVADE": 1.0,
+              "NST_HIT": 1.0
+            },
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": 1.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_WRAITH",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 24.8,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5,
+              "NST_DEF": 1.0,
+              "NST_HP": 1.0,
+              "NST_EVADE": 1.0,
+              "NST_HIT": 1.0
+            },
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": 1.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER_TRANS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 18.0,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5,
+              "NST_DEF": 1.0,
+              "NST_HP": 1.0,
+              "NST_EVADE": 1.0,
+              "NST_HIT": 1.0
+            },
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": 1.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER_TRANS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 18.3,
+            "m_fEventPos": 0.35
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5,
+              "NST_DEF": 1.0,
+              "NST_HP": 1.0,
+              "NST_EVADE": 1.0,
+              "NST_HIT": 1.0
+            },
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": 1.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER_TRANS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 18.6,
+            "m_fEventPos": 0.4
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5,
+              "NST_DEF": 1.0,
+              "NST_HP": 1.0,
+              "NST_EVADE": 1.0,
+              "NST_HIT": 1.0
+            },
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": 1.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EP10_TRANS_BLASTER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 20.7,
+            "m_fEventPos": 0.15
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5,
+              "NST_DEF": 1.0,
+              "NST_HP": 1.0,
+              "NST_EVADE": 1.0,
+              "NST_HIT": 1.0
+            },
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": 1.0
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_COMMON_BEAST_SUMMON_TRANS",
+    "m_fBossPosZ": 0.6,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 2.5,
+          "NST_DEF": 1.5,
+          "NST_HP": 1.0,
+          "NST_EVADE": 1.0,
+          "NST_HIT": 1.0
+        },
+        "m_StatValue": {
+          "NST_MAIN_STAT_RATE": 1.0
+        }
+      }
+    },
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.4,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5,
+            "NST_DEF": 1.0,
+            "NST_HP": 1.0,
+            "NST_EVADE": 1.0,
+            "NST_HIT": 1.0
+          },
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_DEMOLISHER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.3,
+          "m_fEventPos": 0.4
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5,
+            "NST_DEF": 1.0,
+            "NST_HP": 1.0,
+            "NST_EVADE": 1.0,
+            "NST_HIT": 1.0
+          },
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_WRAITH",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.8,
+          "m_fEventPos": 0.05
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5,
+            "NST_DEF": 1.0,
+            "NST_HP": 1.0,
+            "NST_EVADE": 1.0,
+            "NST_HIT": 1.0
+          },
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_SCOURGE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1.6,
+          "m_fEventPos": 0.15
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5,
+            "NST_DEF": 1.0,
+            "NST_HP": 1.0,
+            "NST_EVADE": 1.0,
+            "NST_HIT": 1.0
+          },
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER_TRANS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 6.0,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5,
+            "NST_DEF": 1.0,
+            "NST_HP": 1.0,
+            "NST_EVADE": 1.0,
+            "NST_HIT": 1.0
+          },
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER_TRANS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 6.3,
+          "m_fEventPos": 0.35
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5,
+            "NST_DEF": 1.0,
+            "NST_HP": 1.0,
+            "NST_EVADE": 1.0,
+            "NST_HIT": 1.0
+          },
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER_TRANS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 6.6,
+          "m_fEventPos": 0.4
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5,
+            "NST_DEF": 1.0,
+            "NST_HP": 1.0,
+            "NST_EVADE": 1.0,
+            "NST_HIT": 1.0
+          },
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EP10_TRANS_BLASTER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 8.7,
+          "m_fEventPos": 0.15
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5,
+            "NST_DEF": 1.0,
+            "NST_HP": 1.0,
+            "NST_EVADE": 1.0,
+            "NST_HIT": 1.0
+          },
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_WRAITH",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 12.6,
+          "m_fEventPos": 0.15
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5,
+            "NST_DEF": 1.0,
+            "NST_HP": 1.0,
+            "NST_EVADE": 1.0,
+            "NST_HIT": 1.0
+          },
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_WRAITH",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 17.6,
+          "m_fEventPos": 0.05
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5,
+            "NST_DEF": 1.0,
+            "NST_HP": 1.0,
+            "NST_EVADE": 1.0,
+            "NST_HIT": 1.0
+          },
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 20.3,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5,
+            "NST_DEF": 1.0,
+            "NST_HP": 1.0,
+            "NST_EVADE": 1.0,
+            "NST_HIT": 1.0
+          },
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_SCOURGE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 23.6,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5,
+            "NST_DEF": 1.0,
+            "NST_HP": 1.0,
+            "NST_EVADE": 1.0,
+            "NST_HIT": 1.0
+          },
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_WRAITH",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 24.8,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5,
+            "NST_DEF": 1.0,
+            "NST_HP": 1.0,
+            "NST_EVADE": 1.0,
+            "NST_HIT": 1.0
+          },
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER_TRANS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 18.0,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5,
+            "NST_DEF": 1.0,
+            "NST_HP": 1.0,
+            "NST_EVADE": 1.0,
+            "NST_HIT": 1.0
+          },
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER_TRANS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 18.3,
+          "m_fEventPos": 0.35
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5,
+            "NST_DEF": 1.0,
+            "NST_HP": 1.0,
+            "NST_EVADE": 1.0,
+            "NST_HIT": 1.0
+          },
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER_TRANS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 18.6,
+          "m_fEventPos": 0.4
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5,
+            "NST_DEF": 1.0,
+            "NST_HP": 1.0,
+            "NST_EVADE": 1.0,
+            "NST_HIT": 1.0
+          },
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EP10_TRANS_BLASTER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 20.7,
+          "m_fEventPos": 0.15
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5,
+            "NST_DEF": 1.0,
+            "NST_HP": 1.0,
+            "NST_EVADE": 1.0,
+            "NST_HIT": 1.0
+          },
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.0
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

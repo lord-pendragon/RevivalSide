@@ -1,0 +1,95 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_ACADEMY_2_1.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 8,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.0
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_SCHOOL_C_STAFF"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.8
+    },
+    {
+      "__key": "m_listDungeonDeck"
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB"
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamB",
+      "value": [
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 2352011,
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.5,
+            "m_fEventIgnoreBossInitHPLess": false
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_dungeonEventType": "FORCE_WIN",
+          "m_EventActionValue": 0,
+          "m_bPause": false,
+          "m_fEventDelay": 1,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.5,
+            "m_fEventIgnoreBossInitHPLess": false
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 1.0,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_SCHOOL_C_STAFF",
+    "m_fBossPosZ": 0.8,
+    "m_listDungeonDeck": {},
+    "m_listDungeonUnitRespawnB": {},
+    "m_listDungeonEventTempletTeamB": [
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 2352011,
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.5,
+          "m_fEventIgnoreBossInitHPLess": false
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_dungeonEventType": "FORCE_WIN",
+        "m_EventActionValue": 0,
+        "m_bPause": false,
+        "m_fEventDelay": 1,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.5,
+          "m_fEventIgnoreBossInitHPLess": false
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

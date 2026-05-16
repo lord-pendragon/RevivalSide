@@ -1,0 +1,99 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_MONSTER_BOSS_TRANS_TOMBSTONE_N.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 2,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_MONSTER_BOSS_BASIC_TOMBSTONE_N"
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_listNKMEventAttack": [
+            {
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_TRANS_TOMBSTONE_ATTACK1"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PATTERN",
+          "m_listNKMEventRespawn": [
+            {
+              "m_UnitStrID": "NKM_MONSTER_BOSS_TRANS_THROWN"
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_EffectName": "AB_FX_MONSTER_BOSS_BASIC_GRAVE_OBJECT_ATTACK1_PURPLE"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": 1.1666666666666667,
+              "m_DEName": "DE_NKM_MONSTER_BOSS_TRANS_TOMBSTONE_SKILL1",
+              "m_bTargetPos": false,
+              "m_bShipSkillPos": false,
+              "m_bIgnoreTarget": true,
+              "m_bIgnoreNoTarget": false,
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_OffsetZ": 0,
+              "m_fAddRotate": 0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_MONSTER_BOSS_BASIC_TOMBSTONE_N",
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_listNKMEventAttack": [
+          {
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_TRANS_TOMBSTONE_ATTACK1"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PATTERN",
+        "m_listNKMEventRespawn": [
+          {
+            "m_UnitStrID": "NKM_MONSTER_BOSS_TRANS_THROWN"
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_EffectName": "AB_FX_MONSTER_BOSS_BASIC_GRAVE_OBJECT_ATTACK1_PURPLE"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": 1.1666666666666667,
+            "m_DEName": "DE_NKM_MONSTER_BOSS_TRANS_TOMBSTONE_SKILL1",
+            "m_bTargetPos": false,
+            "m_bShipSkillPos": false,
+            "m_bIgnoreTarget": true,
+            "m_bIgnoreNoTarget": false,
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_OffsetZ": 0,
+            "m_fAddRotate": 0
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

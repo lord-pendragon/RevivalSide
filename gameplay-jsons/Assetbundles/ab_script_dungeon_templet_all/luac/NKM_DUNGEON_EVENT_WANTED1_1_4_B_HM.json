@@ -1,0 +1,213 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_EVENT_WANTED1_1_4_B_HM.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.0
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MONSTER_BOSS_BASIC_VEHCLE_WANTED_01_H"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_BITER_WANTED_01_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 3,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.7
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_CULT_RPG_WANTED_01_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 5,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_CULT_RPG_WANTED_01_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 10,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_FAIL_WANTED_01_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 60,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_BITER_WANTED_01_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 5,
+            "m_fEventPos": 0.5
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_CULT_RPG_WANTED_01_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 10,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_BITER_WANTED_01_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 35,
+            "m_fEventPos": 0.5
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_CULT_RPG_WANTED_01_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 40,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_CULT_RPG_WANTED_01_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 60,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_CULT_RPG_WANTED_01_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 90,
+            "m_fEventPos": 0.1
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 1.0,
+    "m_BossUnitStrID": "NKM_MONSTER_BOSS_BASIC_VEHCLE_WANTED_01_H",
+    "m_fBossPosZ": 0.6,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_BITER_WANTED_01_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 3,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.7
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_CULT_RPG_WANTED_01_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 5,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_CULT_RPG_WANTED_01_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 10,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_FAIL_WANTED_01_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 60,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.1
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_BITER_WANTED_01_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 5,
+          "m_fEventPos": 0.5
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_CULT_RPG_WANTED_01_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 10,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_BITER_WANTED_01_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 35,
+          "m_fEventPos": 0.5
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_CULT_RPG_WANTED_01_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 40,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_CULT_RPG_WANTED_01_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 60,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_CULT_RPG_WANTED_01_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 90,
+          "m_fEventPos": 0.1
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

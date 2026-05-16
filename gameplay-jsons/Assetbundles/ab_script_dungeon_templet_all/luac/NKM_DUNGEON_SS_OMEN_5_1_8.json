@@ -1,0 +1,432 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_OMEN_5_1_8.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 2
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_RAID_COMMON_RAID_BOSS_4"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.4
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_HP": 0.0075,
+          "NST_ATK": 0.02,
+          "NST_DEF": 0.1,
+          "NST_CRITICAL": 0.1,
+          "NST_HIT": 0.1,
+          "NST_EVADE": 0.0
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+          "m_EventConditionNumValue": 20,
+          "m_dungeonEventType": "FORCE_WIN",
+          "m_EventActionValue": 1,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 2531081,
+          "m_bPause": true,
+          "m_fEventDelay": 2.5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_UNIT_ZODIAC_C_HAMMER",
+          "m_EventConditionValue2": "USN_START",
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 2531082,
+          "m_bPause": true,
+          "m_fEventDelay": 2.5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_UNIT_FUTURE_M_TITAN_PR",
+          "m_EventConditionValue2": "USN_START",
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 2531083,
+          "m_bPause": true,
+          "m_fEventDelay": 2.5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_UNIT_CANARY_S_ASSAULT_PR",
+          "m_EventConditionValue2": "USN_START",
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 2531084,
+          "m_bPause": true,
+          "m_fEventDelay": 2.5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_UNIT_ESPR_C_SWORD",
+          "m_EventConditionValue2": "USN_START",
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 2531085,
+          "m_bPause": true,
+          "m_fEventDelay": 2.5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_UNIT_ESPR_C_GOETIA",
+          "m_EventConditionValue2": "USN_START",
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 2531086,
+          "m_bPause": true,
+          "m_fEventDelay": 2.5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_UNIT_CHARADE_C_CRIMSON",
+          "m_UnitLevel": 120,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_UnitLimitBreakLevel": 13,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 4,
+            "m_fEventPos": 0.15
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_ZODIAC_C_HAMMER",
+          "m_UnitLevel": 120,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_UnitLimitBreakLevel": 13,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 6,
+            "m_fEventPos": 0.05
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_FUTURE_M_TITAN_PR",
+          "m_UnitLevel": 120,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_UnitLimitBreakLevel": 13,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 10,
+            "m_fEventPos": 0.05
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_CANARY_S_SHIELD_PR",
+          "m_UnitLevel": 120,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_UnitLimitBreakLevel": 13,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 15,
+            "m_fEventPos": 0.15
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_CANARY_S_ASSAULT_PR",
+          "m_UnitLevel": 120,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_UnitLimitBreakLevel": 13,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 17,
+            "m_fEventPos": 0.05
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_ESPR_C_SWORD",
+          "m_UnitLevel": 120,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_UnitLimitBreakLevel": 13,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 21,
+            "m_fEventPos": 0.05
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_ESPR_CA_BLUE",
+          "m_UnitLevel": 120,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_UnitLimitBreakLevel": 13,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 26,
+            "m_fEventPos": 0.15
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_ESPR_C_GOETIA",
+          "m_UnitLevel": 120,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_UnitLimitBreakLevel": 13,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 28,
+            "m_fEventPos": 0.05
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 2,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_RAID_COMMON_RAID_BOSS_4",
+    "m_fBossPosZ": 0.4,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_HP": 0.0075,
+          "NST_ATK": 0.02,
+          "NST_DEF": 0.1,
+          "NST_CRITICAL": 0.1,
+          "NST_HIT": 0.1,
+          "NST_EVADE": 0.0
+        }
+      }
+    },
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+        "m_EventConditionNumValue": 20,
+        "m_dungeonEventType": "FORCE_WIN",
+        "m_EventActionValue": 1,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 2531081,
+        "m_bPause": true,
+        "m_fEventDelay": 2.5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_UNIT_ZODIAC_C_HAMMER",
+        "m_EventConditionValue2": "USN_START",
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 2531082,
+        "m_bPause": true,
+        "m_fEventDelay": 2.5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_UNIT_FUTURE_M_TITAN_PR",
+        "m_EventConditionValue2": "USN_START",
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 2531083,
+        "m_bPause": true,
+        "m_fEventDelay": 2.5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_UNIT_CANARY_S_ASSAULT_PR",
+        "m_EventConditionValue2": "USN_START",
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 2531084,
+        "m_bPause": true,
+        "m_fEventDelay": 2.5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_UNIT_ESPR_C_SWORD",
+        "m_EventConditionValue2": "USN_START",
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 2531085,
+        "m_bPause": true,
+        "m_fEventDelay": 2.5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_UNIT_ESPR_C_GOETIA",
+        "m_EventConditionValue2": "USN_START",
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 2531086,
+        "m_bPause": true,
+        "m_fEventDelay": 2.5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_UNIT_CHARADE_C_CRIMSON",
+        "m_UnitLevel": 120,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_UnitLimitBreakLevel": 13,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 4,
+          "m_fEventPos": 0.15
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_ZODIAC_C_HAMMER",
+        "m_UnitLevel": 120,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_UnitLimitBreakLevel": 13,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 6,
+          "m_fEventPos": 0.05
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_FUTURE_M_TITAN_PR",
+        "m_UnitLevel": 120,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_UnitLimitBreakLevel": 13,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 10,
+          "m_fEventPos": 0.05
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_CANARY_S_SHIELD_PR",
+        "m_UnitLevel": 120,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_UnitLimitBreakLevel": 13,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 15,
+          "m_fEventPos": 0.15
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_CANARY_S_ASSAULT_PR",
+        "m_UnitLevel": 120,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_UnitLimitBreakLevel": 13,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 17,
+          "m_fEventPos": 0.05
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_ESPR_C_SWORD",
+        "m_UnitLevel": 120,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_UnitLimitBreakLevel": 13,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 21,
+          "m_fEventPos": 0.05
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_ESPR_CA_BLUE",
+        "m_UnitLevel": 120,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_UnitLimitBreakLevel": 13,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 26,
+          "m_fEventPos": 0.15
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_ESPR_C_GOETIA",
+        "m_UnitLevel": 120,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_UnitLimitBreakLevel": 13,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 28,
+          "m_fEventPos": 0.05
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

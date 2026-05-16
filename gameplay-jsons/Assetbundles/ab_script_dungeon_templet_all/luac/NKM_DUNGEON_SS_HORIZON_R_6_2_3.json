@@ -1,0 +1,318 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_HORIZON_R_6_2_3.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 9,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 5
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.0
+    },
+    {
+      "__key": "m_fCostSpeedRateA",
+      "value": 0.5
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_HORIZON_ADMIN_GREATSWORD"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_RIFLE_ADMIN_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 240,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_RIFLE_ADMIN_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 240,
+            "m_fEventPos": 0.15
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_BOSS_HORIZON_M_LOAN_E",
+          "m_EventRespawnUnitTag": "HORIZON",
+          "m_UnitLevel": 100,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 2,
+            "m_fEventPos": 0.15
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 4.0,
+              "NST_HP": 1.5,
+              "NST_DEF": 2.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_HORIZON_ADMIN_GREATSWORD",
+          "m_EventRespawnUnitTag": "ALEX",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 5.0,
+            "m_fEventPos": 0.6
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_HORIZON_ADMIN_GREATSWORD",
+          "m_EventRespawnUnitTag": "ALEX",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 5.0,
+            "m_fEventPos": 0.5
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_RIFLE_ADMIN_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 5.0,
+            "m_fEventPos": 0.4
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_HORIZON_ADMIN_GREATSWORD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_EventDieUnitTag": "ALEX",
+            "m_EventDieUnitTagCount": 1,
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_HORIZON_ADMIN_GREATSWORD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_EventDieUnitTag": "ALEX",
+            "m_EventDieUnitTagCount": 2,
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_RIFLE_ADMIN_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_EventDieUnitTag": "ALEX",
+            "m_EventDieUnitTagCount": 2,
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 3236321,
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_HORIZON_M_LOAN_E",
+          "m_EventConditionValue2": "USN_START",
+          "m_fEventDelay": 2.25,
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1.0
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 5,
+    "m_fCostSpeedRateB": 1.0,
+    "m_fCostSpeedRateA": 0.5,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_HORIZON_ADMIN_GREATSWORD",
+    "m_fBossPosZ": 0.6,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_RIFLE_ADMIN_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 240,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_RIFLE_ADMIN_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 240,
+          "m_fEventPos": 0.15
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5
+          }
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_MOB_BOSS_HORIZON_M_LOAN_E",
+        "m_EventRespawnUnitTag": "HORIZON",
+        "m_UnitLevel": 100,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 2,
+          "m_fEventPos": 0.15
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 4.0,
+            "NST_HP": 1.5,
+            "NST_DEF": 2.0
+          }
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_HORIZON_ADMIN_GREATSWORD",
+        "m_EventRespawnUnitTag": "ALEX",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 5.0,
+          "m_fEventPos": 0.6
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_HORIZON_ADMIN_GREATSWORD",
+        "m_EventRespawnUnitTag": "ALEX",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 5.0,
+          "m_fEventPos": 0.5
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_RIFLE_ADMIN_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 5.0,
+          "m_fEventPos": 0.4
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_HORIZON_ADMIN_GREATSWORD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_EventDieUnitTag": "ALEX",
+          "m_EventDieUnitTagCount": 1,
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_HORIZON_ADMIN_GREATSWORD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_EventDieUnitTag": "ALEX",
+          "m_EventDieUnitTagCount": 2,
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_RIFLE_ADMIN_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_EventDieUnitTag": "ALEX",
+          "m_EventDieUnitTagCount": 2,
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5
+          }
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 3236321,
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_HORIZON_M_LOAN_E",
+        "m_EventConditionValue2": "USN_START",
+        "m_fEventDelay": 2.25,
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1.0
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

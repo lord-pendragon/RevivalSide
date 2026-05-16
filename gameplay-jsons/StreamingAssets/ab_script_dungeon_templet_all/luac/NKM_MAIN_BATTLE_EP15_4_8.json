@@ -1,0 +1,284 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_MAIN_BATTLE_EP15_4_8.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 1,
+  "records": [
+    {
+      "__key": "m_listDungeonWave",
+      "value": [
+        {
+          "m_WaveID": 1,
+          "m_NextWaveID": 2,
+          "m_fNextWavetime": 30,
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER_SUMMER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0.3,
+                "m_fEventPos": 0.3
+              },
+              "m_AddStatData": {
+                "m_StatFactor": {
+                  "NST_HP": 0.8,
+                  "NST_ATK": 0.8,
+                  "NST_DEF": 0.8
+                }
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER_SUMMER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 3.3,
+                "m_fEventPos": 0.3
+              },
+              "m_AddStatData": {
+                "m_StatFactor": {
+                  "NST_HP": 0.8,
+                  "NST_ATK": 0.8,
+                  "NST_DEF": 0.8
+                }
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_ELITE_COMMON_RANGER_SUMMER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 6.3,
+                "m_fEventPos": 0.05
+              },
+              "m_AddStatData": {
+                "m_StatFactor": {
+                  "NST_HP": 0.8,
+                  "NST_ATK": 0.8,
+                  "NST_DEF": 0.8
+                }
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_ELITE_COMMON_NEEDLER_SUMMER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 10.3,
+                "m_fEventPos": 0.3
+              },
+              "m_AddStatData": {
+                "m_StatFactor": {
+                  "NST_HP": 0.8,
+                  "NST_ATK": 0.8,
+                  "NST_DEF": 0.8
+                }
+              }
+            }
+          ]
+        },
+        {
+          "m_WaveID": 2,
+          "m_fNextWavetime": 180,
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER_SUMMER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0.3,
+                "m_fEventPos": 0.3
+              },
+              "m_AddStatData": {
+                "m_StatFactor": {
+                  "NST_HP": 0.8,
+                  "NST_ATK": 0.8,
+                  "NST_DEF": 0.8
+                }
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER_SUMMER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 5.3,
+                "m_fEventPos": 0.3
+              },
+              "m_AddStatData": {
+                "m_StatFactor": {
+                  "NST_HP": 0.8,
+                  "NST_ATK": 0.8,
+                  "NST_DEF": 0.8
+                }
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_ELITE_COMMON_NEEDLER_SUMMER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 10.3,
+                "m_fEventPos": 0.4
+              },
+              "m_AddStatData": {
+                "m_StatFactor": {
+                  "NST_HP": 0.8,
+                  "NST_ATK": 0.8,
+                  "NST_DEF": 0.8
+                }
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_ELITE_COMMON_RANGER_SUMMER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 10.6,
+                "m_fEventPos": 0.05
+              },
+              "m_AddStatData": {
+                "m_StatFactor": {
+                  "NST_HP": 0.8,
+                  "NST_ATK": 0.8,
+                  "NST_DEF": 0.8
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_listDungeonWave": [
+      {
+        "m_WaveID": 1,
+        "m_NextWaveID": 2,
+        "m_fNextWavetime": 30,
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER_SUMMER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0.3,
+              "m_fEventPos": 0.3
+            },
+            "m_AddStatData": {
+              "m_StatFactor": {
+                "NST_HP": 0.8,
+                "NST_ATK": 0.8,
+                "NST_DEF": 0.8
+              }
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER_SUMMER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 3.3,
+              "m_fEventPos": 0.3
+            },
+            "m_AddStatData": {
+              "m_StatFactor": {
+                "NST_HP": 0.8,
+                "NST_ATK": 0.8,
+                "NST_DEF": 0.8
+              }
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_ELITE_COMMON_RANGER_SUMMER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 6.3,
+              "m_fEventPos": 0.05
+            },
+            "m_AddStatData": {
+              "m_StatFactor": {
+                "NST_HP": 0.8,
+                "NST_ATK": 0.8,
+                "NST_DEF": 0.8
+              }
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_ELITE_COMMON_NEEDLER_SUMMER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 10.3,
+              "m_fEventPos": 0.3
+            },
+            "m_AddStatData": {
+              "m_StatFactor": {
+                "NST_HP": 0.8,
+                "NST_ATK": 0.8,
+                "NST_DEF": 0.8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "m_WaveID": 2,
+        "m_fNextWavetime": 180,
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER_SUMMER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0.3,
+              "m_fEventPos": 0.3
+            },
+            "m_AddStatData": {
+              "m_StatFactor": {
+                "NST_HP": 0.8,
+                "NST_ATK": 0.8,
+                "NST_DEF": 0.8
+              }
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER_SUMMER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 5.3,
+              "m_fEventPos": 0.3
+            },
+            "m_AddStatData": {
+              "m_StatFactor": {
+                "NST_HP": 0.8,
+                "NST_ATK": 0.8,
+                "NST_DEF": 0.8
+              }
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_ELITE_COMMON_NEEDLER_SUMMER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 10.3,
+              "m_fEventPos": 0.4
+            },
+            "m_AddStatData": {
+              "m_StatFactor": {
+                "NST_HP": 0.8,
+                "NST_ATK": 0.8,
+                "NST_DEF": 0.8
+              }
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_ELITE_COMMON_RANGER_SUMMER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 10.6,
+              "m_fEventPos": 0.05
+            },
+            "m_AddStatData": {
+              "m_StatFactor": {
+                "NST_HP": 0.8,
+                "NST_ATK": 0.8,
+                "NST_DEF": 0.8
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

@@ -1,0 +1,136 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_PROMISE_1_1.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.2
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EVENT_GAMECIRCLE_AXE"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatValue": {
+          "NST_ATK": -4000,
+          "NST_DEF": -500,
+          "NST_HP": -250000
+        },
+        "m_StatFactor": {
+          "NST_EVADE": 0
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_SCOURGE_SUMMER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.12
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.3,
+              "NST_DEF": 0.3,
+              "NST_HP": 0.2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_NEEDLER_SUMMER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 4,
+            "m_fEventTimeEnd": 20,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.1,
+              "NST_DEF": 0.1,
+              "NST_EVADE": 0,
+              "NST_HP": 0.15
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 1.2,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EVENT_GAMECIRCLE_AXE",
+    "m_fBossPosZ": 0.6,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatValue": {
+          "NST_ATK": -4000,
+          "NST_DEF": -500,
+          "NST_HP": -250000
+        },
+        "m_StatFactor": {
+          "NST_EVADE": 0
+        }
+      }
+    },
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_SCOURGE_SUMMER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.12
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.3,
+            "NST_DEF": 0.3,
+            "NST_HP": 0.2
+          }
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_NEEDLER_SUMMER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 4,
+          "m_fEventTimeEnd": 20,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.1,
+            "NST_DEF": 0.1,
+            "NST_EVADE": 0,
+            "NST_HP": 0.15
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

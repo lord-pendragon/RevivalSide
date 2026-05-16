@@ -1,0 +1,790 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_BOSS_EP15_CORRUPTED_THAGIRION.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 31,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_UNIT_BASE_BOSS"
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.6
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.6
+    },
+    {
+      "__key": "m_UnitSizeX",
+      "value": 500
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 300
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": false
+    },
+    {
+      "__key": "m_fShadowOffsetX",
+      "value": 0
+    },
+    {
+      "__key": "m_fShadowOffsetY",
+      "value": 0
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 1300
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 1500
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 0
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 2500
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 2400
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 2400
+    },
+    {
+      "__key": "m_bDieDeActive",
+      "value": false
+    },
+    {
+      "__key": "m_bNoRun",
+      "value": true
+    },
+    {
+      "__key": "m_bNoMove",
+      "value": true
+    },
+    {
+      "__key": "m_bImmuneStun",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageStopTime",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageState",
+      "value": true
+    },
+    {
+      "__key": "m_listFixedStatusEffect",
+      "value": [
+        "NUSE_IMMUNE_CC",
+        "NUSE_IMMUNE_SKILL_COOLTIME_DAMAGE",
+        "NUSE_IMMUNE_ATTACK_SLOW",
+        "NUSE_BLOCK_DEBUFF"
+      ]
+    },
+    {
+      "__key": "m_SubTargetFindData",
+      "m_FindTargetType": "NFTT_FAR_ENEMY_BOSS_LAST",
+      "m_fSeeRange": 3000,
+      "m_bNoBackTarget": true
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_BuffStrID": "BUFF_MOB_FIERCE_CORRUPTED_THAGIRION_TRIGGER",
+          "m_fRebuffTime": 1,
+          "m_fRange": 6000,
+          "m_bEnemy": true
+        }
+      ]
+    },
+    {
+      "__key": "m_listBuffUnitDieEvent",
+      "value": [
+        {
+          "m_BuffStrID": "BUFF_MOB_FIERCE_CORRUPTED_THAGIRION_TRIGGER",
+          "m_OutBuffStrID": "BUFF_MOB_FIERCE_CORRUPTED_THAGIRION_ATK_SPEED",
+          "m_Overlap": 1
+        }
+      ]
+    },
+    {
+      "__key": "m_listAccumStateChangePack",
+      "value": [
+        {
+          "m_listAccumStateChange": [
+            {
+              "m_listAccumStateName": [
+                "USN_ATTACK1",
+                "USN_ATTACK2"
+              ],
+              "m_AccumCount": 9,
+              "m_TargetStateName": "USN_PASSIVE1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 799
+        },
+        {
+          "m_StateName": "USN_ATTACK2",
+          "m_fRangeMin": 800,
+          "m_fRangeMax": 2500
+        }
+      ]
+    },
+    {
+      "__key": "m_listSkillStateData",
+      "value": [
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_fStartCool": 1.0
+        }
+      ]
+    },
+    {
+      "__key": "m_listHyperSkillStateData",
+      "value": [
+        {
+          "m_StateName": "USN_HYPER1",
+          "m_fStartCool": 0.8,
+          "m_bNoTarget": true
+        }
+      ]
+    },
+    {
+      "__key": "m_dicTriggerSet",
+      "value": [
+        {
+          "m_Name": "THAGIRION_PASSIVE",
+          "m_listNKMEventChangeState": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 9.0,
+              "m_TargetUnitID": 220485,
+              "m_ChangeState": "USN_DAMAGE_DIE2"
+            }
+          ]
+        },
+        {
+          "m_Name": "SUMMON_SPAWN",
+          "m_listNKMEventRespawn": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_UnitStrID": "NKM_MOB_ELITE_EP15_CORRUPTED_THAGIRION_SUMMON",
+              "m_MoveBase": "TRIGGER_TARGET_UNIT",
+              "m_fOffsetX": -20,
+              "m_MaxCount": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_StateName": "USN_RUN",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": true,
+          "m_bRun": true
+        },
+        {
+          "m_StateName": "USN_START",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_bForceLeft": true,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventBuff": [
+            {
+              "m_BuffStrID": "TRIGGER_MOB_BOSS_FIERCE_CORRUPTED_THAGIRION_DEFENDER_DETECT"
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK1",
+          "m_AnimName": "ATTACK1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_bForceLeft": true,
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.0,
+              "m_fEventTimeMax": 1.1666666666666667,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 800,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_CORRUPTED_THAGIRION_ATTACK1"
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK2",
+          "m_AnimName": "ATTACK2",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_bForceLeft": true,
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5,
+              "m_DEName": "DE_NKM_MOB_BOSS_FIERCE_CORRUPTED_THAGIRION_ATTACK2",
+              "m_bTargetPos": true
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_PASSIVE1",
+          "m_AnimName": "PASSIVE1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_bForceLeft": true,
+          "m_listNKMEventTrigger": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 1.0,
+              "m_TargetTrigger": "THAGIRION_PASSIVE"
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_DEName": "DE_NKM_MOB_BOSS_FIERCE_CORRUPTED_THAGIRION_SUMMON_DUMMY",
+              "m_OffsetX": 0,
+              "m_OffsetY": -150,
+              "m_OffsetZ": 0
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_SKILL1",
+          "m_AnimName": "SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_bForceLeft": true,
+          "m_StateCoolTime": 26,
+          "m_listNKMEventFindTarget": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_fDuration": 2.3333333333333335,
+              "m_FindTargetType": "NFTT_FAR_ENEMY_BOSS_LAST",
+              "m_fSeeRange": 3000,
+              "m_bSubTarget": true,
+              "m_bNoBackTarget": true
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.0,
+              "m_fEventTimeMax": 1.3333333333333333,
+              "m_fRangeMin": 650,
+              "m_fRangeMax": 3000,
+              "m_bHitBossUnit": false,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCountOnly": true,
+              "m_AttackUnitCount": 2,
+              "m_bDamageSpeedDependRight": true,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_CORRUPTED_THAGIRION_SKILL1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.1666666666666665,
+              "m_fEventTimeMax": 2.5,
+              "m_fRangeMin": 650,
+              "m_fRangeMax": 3000,
+              "m_bHitBossUnit": false,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCountOnly": true,
+              "m_AttackUnitCount": 2,
+              "m_bDamageSpeedDependRight": true,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_CORRUPTED_THAGIRION_SKILL1_END"
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_HYPER1",
+          "m_AnimName": "HYPER_SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_StateCoolTime": 120,
+          "m_bForceLeft": true,
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 3.0,
+              "m_fEventTimeMax": 3.1666666666666665,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 3000,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 5,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_CORRUPTED_THAGIRION_HYPER1"
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_AIR_UP",
+          "m_AnimName": "DAMAGE_A",
+          "m_bAnimLoop": false,
+          "m_SpeedY0NegativeChangeState": "USN_DAMAGE_AIR_DOWN"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_AIR_DOWN",
+          "m_AnimName": "DAMAGE_A",
+          "m_bAnimLoop": false,
+          "m_SpeedYPositiveChangeState": "USN_DAMAGE_AIR_UP",
+          "m_FootOnLandChangeState": "USN_DAMAGE_LANDING"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_LANDING",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_bAnimLoop": false,
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+          "m_AnimEndChangeState": "USN_DAMAGE_STAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_STAND",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": false,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_bAnimLoop": false,
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+          "m_AnimEndChangeState": "USN_DAMAGE_STAND"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_FEAR",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": true,
+          "m_StatusEffectType": "NUSE_FEAR",
+          "m_bRun": true,
+          "m_fRunSpeedRate": 0.5,
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_FEAR_NOMOVE",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": true,
+          "m_StatusEffectType": "NUSE_FEAR",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_bAnimLoop": false,
+          "m_fAirHigh": 0.0,
+          "m_listNKMEventDissolve": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.0,
+              "m_fDissolve": 0,
+              "m_fTrackTime": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_UNIT_BASE_BOSS",
+    "m_fForceRespawnZposMin": 0.6,
+    "m_fForceRespawnZposMax": 0.6,
+    "m_UnitSizeX": 500,
+    "m_UnitSizeY": 300,
+    "m_SpriteScale": 1.0,
+    "m_bShowGage": false,
+    "m_fShadowOffsetX": 0,
+    "m_fShadowOffsetY": 0,
+    "m_fShadowScaleX": 1300,
+    "m_fShadowScaleY": 1500,
+    "m_SpeedRun": 0,
+    "m_SeeRange": 2500,
+    "m_SeeRangeMax": 2400,
+    "m_TargetNearRange": 2400,
+    "m_bDieDeActive": false,
+    "m_bNoRun": true,
+    "m_bNoMove": true,
+    "m_bImmuneStun": true,
+    "m_bNoDamageStopTime": true,
+    "m_bNoDamageState": true,
+    "m_listFixedStatusEffect": [
+      "NUSE_IMMUNE_CC",
+      "NUSE_IMMUNE_SKILL_COOLTIME_DAMAGE",
+      "NUSE_IMMUNE_ATTACK_SLOW",
+      "NUSE_BLOCK_DEBUFF"
+    ],
+    "m_SubTargetFindData": {
+      "m_FindTargetType": "NFTT_FAR_ENEMY_BOSS_LAST",
+      "m_fSeeRange": 3000,
+      "m_bNoBackTarget": true
+    },
+    "m_listStaticBuffData": [
+      {
+        "m_BuffStrID": "BUFF_MOB_FIERCE_CORRUPTED_THAGIRION_TRIGGER",
+        "m_fRebuffTime": 1,
+        "m_fRange": 6000,
+        "m_bEnemy": true
+      }
+    ],
+    "m_listBuffUnitDieEvent": [
+      {
+        "m_BuffStrID": "BUFF_MOB_FIERCE_CORRUPTED_THAGIRION_TRIGGER",
+        "m_OutBuffStrID": "BUFF_MOB_FIERCE_CORRUPTED_THAGIRION_ATK_SPEED",
+        "m_Overlap": 1
+      }
+    ],
+    "m_listAccumStateChangePack": [
+      {
+        "m_listAccumStateChange": [
+          {
+            "m_listAccumStateName": [
+              "USN_ATTACK1",
+              "USN_ATTACK2"
+            ],
+            "m_AccumCount": 9,
+            "m_TargetStateName": "USN_PASSIVE1"
+          }
+        ]
+      }
+    ],
+    "m_listAttackStateData": [
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 799
+      },
+      {
+        "m_StateName": "USN_ATTACK2",
+        "m_fRangeMin": 800,
+        "m_fRangeMax": 2500
+      }
+    ],
+    "m_listSkillStateData": [
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_fStartCool": 1.0
+      }
+    ],
+    "m_listHyperSkillStateData": [
+      {
+        "m_StateName": "USN_HYPER1",
+        "m_fStartCool": 0.8,
+        "m_bNoTarget": true
+      }
+    ],
+    "m_dicTriggerSet": [
+      {
+        "m_Name": "THAGIRION_PASSIVE",
+        "m_listNKMEventChangeState": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 9.0,
+            "m_TargetUnitID": 220485,
+            "m_ChangeState": "USN_DAMAGE_DIE2"
+          }
+        ]
+      },
+      {
+        "m_Name": "SUMMON_SPAWN",
+        "m_listNKMEventRespawn": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_UnitStrID": "NKM_MOB_ELITE_EP15_CORRUPTED_THAGIRION_SUMMON",
+            "m_MoveBase": "TRIGGER_TARGET_UNIT",
+            "m_fOffsetX": -20,
+            "m_MaxCount": 4
+          }
+        ]
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_StateName": "USN_RUN",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": true,
+        "m_bRun": true
+      },
+      {
+        "m_StateName": "USN_START",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_bForceLeft": true,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventBuff": [
+          {
+            "m_BuffStrID": "TRIGGER_MOB_BOSS_FIERCE_CORRUPTED_THAGIRION_DEFENDER_DETECT"
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK1",
+        "m_AnimName": "ATTACK1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_bForceLeft": true,
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.0,
+            "m_fEventTimeMax": 1.1666666666666667,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 800,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_CORRUPTED_THAGIRION_ATTACK1"
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK2",
+        "m_AnimName": "ATTACK2",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_bForceLeft": true,
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5,
+            "m_DEName": "DE_NKM_MOB_BOSS_FIERCE_CORRUPTED_THAGIRION_ATTACK2",
+            "m_bTargetPos": true
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_PASSIVE1",
+        "m_AnimName": "PASSIVE1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_bForceLeft": true,
+        "m_listNKMEventTrigger": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 1.0,
+            "m_TargetTrigger": "THAGIRION_PASSIVE"
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_DEName": "DE_NKM_MOB_BOSS_FIERCE_CORRUPTED_THAGIRION_SUMMON_DUMMY",
+            "m_OffsetX": 0,
+            "m_OffsetY": -150,
+            "m_OffsetZ": 0
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_SKILL1",
+        "m_AnimName": "SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_bForceLeft": true,
+        "m_StateCoolTime": 26,
+        "m_listNKMEventFindTarget": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_fDuration": 2.3333333333333335,
+            "m_FindTargetType": "NFTT_FAR_ENEMY_BOSS_LAST",
+            "m_fSeeRange": 3000,
+            "m_bSubTarget": true,
+            "m_bNoBackTarget": true
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.0,
+            "m_fEventTimeMax": 1.3333333333333333,
+            "m_fRangeMin": 650,
+            "m_fRangeMax": 3000,
+            "m_bHitBossUnit": false,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCountOnly": true,
+            "m_AttackUnitCount": 2,
+            "m_bDamageSpeedDependRight": true,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_CORRUPTED_THAGIRION_SKILL1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.1666666666666665,
+            "m_fEventTimeMax": 2.5,
+            "m_fRangeMin": 650,
+            "m_fRangeMax": 3000,
+            "m_bHitBossUnit": false,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCountOnly": true,
+            "m_AttackUnitCount": 2,
+            "m_bDamageSpeedDependRight": true,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_CORRUPTED_THAGIRION_SKILL1_END"
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_HYPER1",
+        "m_AnimName": "HYPER_SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_StateCoolTime": 120,
+        "m_bForceLeft": true,
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 3.0,
+            "m_fEventTimeMax": 3.1666666666666665,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 3000,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 5,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_CORRUPTED_THAGIRION_HYPER1"
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_AIR_UP",
+        "m_AnimName": "DAMAGE_A",
+        "m_bAnimLoop": false,
+        "m_SpeedY0NegativeChangeState": "USN_DAMAGE_AIR_DOWN"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_AIR_DOWN",
+        "m_AnimName": "DAMAGE_A",
+        "m_bAnimLoop": false,
+        "m_SpeedYPositiveChangeState": "USN_DAMAGE_AIR_UP",
+        "m_FootOnLandChangeState": "USN_DAMAGE_LANDING"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_LANDING",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_bAnimLoop": false,
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+        "m_AnimEndChangeState": "USN_DAMAGE_STAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_STAND",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": false,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_bAnimLoop": false,
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+        "m_AnimEndChangeState": "USN_DAMAGE_STAND"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_FEAR",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": true,
+        "m_StatusEffectType": "NUSE_FEAR",
+        "m_bRun": true,
+        "m_fRunSpeedRate": 0.5,
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_FEAR_NOMOVE",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": true,
+        "m_StatusEffectType": "NUSE_FEAR",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_bAnimLoop": false,
+        "m_fAirHigh": 0.0,
+        "m_listNKMEventDissolve": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.0,
+            "m_fDissolve": 0,
+            "m_fTrackTime": 2
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

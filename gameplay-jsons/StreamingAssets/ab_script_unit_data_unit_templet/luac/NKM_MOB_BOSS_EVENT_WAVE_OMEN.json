@@ -1,0 +1,117 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_BOSS_EVENT_WAVE_OMEN.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 14,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_UNIT_BASE_BOSS"
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": false
+    },
+    {
+      "__key": "m_NKC_TEAM_COLOR_TYPE",
+      "value": "NTCT_NO"
+    },
+    {
+      "__key": "m_SeeTarget",
+      "value": false
+    },
+    {
+      "__key": "m_bNoMove",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageStopTime",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageState",
+      "value": true
+    },
+    {
+      "__key": "m_fDamageUpFactor",
+      "value": 0.0
+    },
+    {
+      "__key": "m_bImmuneStun",
+      "value": true
+    },
+    {
+      "__key": "m_bImmuneSleep",
+      "value": true
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "__unparsed_expr": "L1_1 / 30"
+    },
+    {
+      "__key": "m_fForceRespawnXpos",
+      "value": 0.3
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_BuffStrID": "NKM_MOB_BOSS_EVENT_WAVE_OMEN_STACK_UP",
+          "m_BuffLevel": 1,
+          "m_fRebuffTime": 10
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "ASTART"
+        },
+        {
+          "m_StateName": "USN_ASTAND",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+          "m_AnimName": "ASTAND"
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_UNIT_BASE_BOSS",
+    "m_bShowGage": false,
+    "m_NKC_TEAM_COLOR_TYPE": "NTCT_NO",
+    "m_SeeTarget": false,
+    "m_bNoMove": true,
+    "m_bNoDamageStopTime": true,
+    "m_bNoDamageState": true,
+    "m_fDamageUpFactor": 0.0,
+    "m_bImmuneStun": true,
+    "m_bImmuneSleep": true,
+    "m_fDieCompleteTime": {
+      "__unparsed_expr": "L1_1 / 30"
+    },
+    "m_fForceRespawnXpos": 0.3,
+    "m_listStaticBuffData": [
+      {
+        "m_BuffStrID": "NKM_MOB_BOSS_EVENT_WAVE_OMEN_STACK_UP",
+        "m_BuffLevel": 1,
+        "m_fRebuffTime": 10
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "ASTART"
+      },
+      {
+        "m_StateName": "USN_ASTAND",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+        "m_AnimName": "ASTAND"
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

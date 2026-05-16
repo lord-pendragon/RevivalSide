@@ -1,0 +1,512 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_UNIT_C_HB_BOMI_DUMMY.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 17,
+  "records": [
+    {
+      "__key": "m_UnitSizeX",
+      "value": 120
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 250
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 200
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 200
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.11
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.2
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 380
+    },
+    {
+      "__key": "m_SeeTarget",
+      "value": false
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 500
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 600
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 500
+    },
+    {
+      "__key": "m_AttackedTargetTime",
+      "value": 1
+    },
+    {
+      "__key": "m_bAttackedTarget",
+      "value": true
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": true
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 1.0
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_START",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_AnimName": "START2",
+          "m_DamagedChangeState": "USN_ASTAND",
+          "m_AnimEndChangeState": "USN_ASTAND"
+        },
+        {
+          "m_StateName": "USN_RUN",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_AnimName": "RUN",
+          "m_fAnimSpeed": 1.0,
+          "m_bAnimLoop": true,
+          "m_bRun": true,
+          "m_listNKMEventAgro": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_bGetAgro": true,
+              "m_fRange": 400,
+              "m_fDurationTime": 3,
+              "m_MaxCount": 3
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 1.0,
+              "m_bGetAgro": true,
+              "m_fRange": 400,
+              "m_fDurationTime": 3,
+              "m_MaxCount": 3
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 2.0,
+              "m_bGetAgro": true,
+              "m_fRange": 400,
+              "m_fDurationTime": 3,
+              "m_MaxCount": 3
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 3.0,
+              "m_bGetAgro": true,
+              "m_fRange": 400,
+              "m_fDurationTime": 3,
+              "m_MaxCount": 3
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 4.0,
+              "m_bGetAgro": true,
+              "m_fRange": 400,
+              "m_fDurationTime": 3,
+              "m_MaxCount": 3
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 5.0,
+              "m_bGetAgro": true,
+              "m_fRange": 400,
+              "m_fDurationTime": 3,
+              "m_MaxCount": 3
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 6.0,
+              "m_bGetAgro": true,
+              "m_fRange": 400,
+              "m_fDurationTime": 3,
+              "m_MaxCount": 3
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 7.0,
+              "m_bGetAgro": true,
+              "m_fRange": 400,
+              "m_fDurationTime": 3,
+              "m_MaxCount": 3
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 8.0,
+              "m_bGetAgro": true,
+              "m_fRange": 400,
+              "m_fDurationTime": 3,
+              "m_MaxCount": 3
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 9.0,
+              "m_bGetAgro": true,
+              "m_fRange": 400,
+              "m_fDurationTime": 3,
+              "m_MaxCount": 3
+            }
+          ],
+          "m_MapPosOverStatePos": 0.95,
+          "m_MapPosOverState": "USN_ESCAPE"
+        },
+        {
+          "m_StateName": "USN_ESCAPE",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ESCAPE",
+          "m_fAnimSpeed": 1,
+          "m_bShowGage": false,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_listNKMEventInvincible": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_fEventTimeMax": 3.0
+            }
+          ],
+          "m_listNKMEventDissolve": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6666666666666666,
+              "m_fDissolve": 1,
+              "m_fTrackTime": 0.5
+            }
+          ],
+          "m_listNKMEventDie": [
+            {
+              "m_bAnimTime": true,
+              "m_bImmediateDie": true,
+              "m_fEventTime": 2.0
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.1666666666666667,
+              "m_EffectName": "AB_FX_C_HB_BOMI_SKILL1",
+              "m_OffsetX": 0,
+              "m_OffsetZ": 0,
+              "m_AnimName": "BASE",
+              "m_fScaleFactor": 1.0
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_Condition": {
+                "m_MasterSkillStrID": "NKM_UNIT_C_HB_BOMI_SKILL",
+                "m_MasterSkillLevel": [
+                  1,
+                  4
+                ]
+              },
+              "m_fEventTimeMin": 1.1666666666666667,
+              "m_fEventTimeMax": 1.5,
+              "m_fRangeMin": -200,
+              "m_fRangeMax": 200,
+              "m_bHitAir": false,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 2,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_UNIT_C_HB_BOMI_SKILL1"
+            },
+            {
+              "m_Condition": {
+                "m_MasterSkillStrID": "NKM_UNIT_C_HB_BOMI_SKILL",
+                "m_MasterSkillLevel": [
+                  5,
+                  99
+                ]
+              },
+              "m_fEventTimeMin": 1.1666666666666667,
+              "m_fEventTimeMax": 1.5,
+              "m_fRangeMin": -200,
+              "m_fRangeMax": 200,
+              "m_bHitAir": false,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 2,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_UNIT_C_HB_BOMI_SKILL1_LV5"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_BOMI_SKILL_ATTACK"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_bAnimLoop": false,
+          "m_listNKMEventDissolve": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.0,
+              "m_fDissolve": 1,
+              "m_fTrackTime": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_UnitSizeX": 120,
+    "m_UnitSizeY": 250,
+    "m_SpriteScale": 1.0,
+    "m_fShadowScaleX": 200,
+    "m_fShadowScaleY": 200,
+    "m_fForceRespawnZposMin": 0.11,
+    "m_fForceRespawnZposMax": 0.2,
+    "m_SpeedRun": 380,
+    "m_SeeTarget": false,
+    "m_SeeRange": 500,
+    "m_SeeRangeMax": 600,
+    "m_TargetNearRange": 500,
+    "m_AttackedTargetTime": 1,
+    "m_bAttackedTarget": true,
+    "m_bUseMotionBlur": true,
+    "m_fDieCompleteTime": 1.0,
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_START",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_AnimName": "START2",
+        "m_DamagedChangeState": "USN_ASTAND",
+        "m_AnimEndChangeState": "USN_ASTAND"
+      },
+      {
+        "m_StateName": "USN_RUN",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_AnimName": "RUN",
+        "m_fAnimSpeed": 1.0,
+        "m_bAnimLoop": true,
+        "m_bRun": true,
+        "m_listNKMEventAgro": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_bGetAgro": true,
+            "m_fRange": 400,
+            "m_fDurationTime": 3,
+            "m_MaxCount": 3
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 1.0,
+            "m_bGetAgro": true,
+            "m_fRange": 400,
+            "m_fDurationTime": 3,
+            "m_MaxCount": 3
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 2.0,
+            "m_bGetAgro": true,
+            "m_fRange": 400,
+            "m_fDurationTime": 3,
+            "m_MaxCount": 3
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 3.0,
+            "m_bGetAgro": true,
+            "m_fRange": 400,
+            "m_fDurationTime": 3,
+            "m_MaxCount": 3
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 4.0,
+            "m_bGetAgro": true,
+            "m_fRange": 400,
+            "m_fDurationTime": 3,
+            "m_MaxCount": 3
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 5.0,
+            "m_bGetAgro": true,
+            "m_fRange": 400,
+            "m_fDurationTime": 3,
+            "m_MaxCount": 3
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 6.0,
+            "m_bGetAgro": true,
+            "m_fRange": 400,
+            "m_fDurationTime": 3,
+            "m_MaxCount": 3
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 7.0,
+            "m_bGetAgro": true,
+            "m_fRange": 400,
+            "m_fDurationTime": 3,
+            "m_MaxCount": 3
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 8.0,
+            "m_bGetAgro": true,
+            "m_fRange": 400,
+            "m_fDurationTime": 3,
+            "m_MaxCount": 3
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 9.0,
+            "m_bGetAgro": true,
+            "m_fRange": 400,
+            "m_fDurationTime": 3,
+            "m_MaxCount": 3
+          }
+        ],
+        "m_MapPosOverStatePos": 0.95,
+        "m_MapPosOverState": "USN_ESCAPE"
+      },
+      {
+        "m_StateName": "USN_ESCAPE",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ESCAPE",
+        "m_fAnimSpeed": 1,
+        "m_bShowGage": false,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_listNKMEventInvincible": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_fEventTimeMax": 3.0
+          }
+        ],
+        "m_listNKMEventDissolve": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6666666666666666,
+            "m_fDissolve": 1,
+            "m_fTrackTime": 0.5
+          }
+        ],
+        "m_listNKMEventDie": [
+          {
+            "m_bAnimTime": true,
+            "m_bImmediateDie": true,
+            "m_fEventTime": 2.0
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.1666666666666667,
+            "m_EffectName": "AB_FX_C_HB_BOMI_SKILL1",
+            "m_OffsetX": 0,
+            "m_OffsetZ": 0,
+            "m_AnimName": "BASE",
+            "m_fScaleFactor": 1.0
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_Condition": {
+              "m_MasterSkillStrID": "NKM_UNIT_C_HB_BOMI_SKILL",
+              "m_MasterSkillLevel": [
+                1,
+                4
+              ]
+            },
+            "m_fEventTimeMin": 1.1666666666666667,
+            "m_fEventTimeMax": 1.5,
+            "m_fRangeMin": -200,
+            "m_fRangeMax": 200,
+            "m_bHitAir": false,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 2,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_UNIT_C_HB_BOMI_SKILL1"
+          },
+          {
+            "m_Condition": {
+              "m_MasterSkillStrID": "NKM_UNIT_C_HB_BOMI_SKILL",
+              "m_MasterSkillLevel": [
+                5,
+                99
+              ]
+            },
+            "m_fEventTimeMin": 1.1666666666666667,
+            "m_fEventTimeMax": 1.5,
+            "m_fRangeMin": -200,
+            "m_fRangeMax": 200,
+            "m_bHitAir": false,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 2,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_UNIT_C_HB_BOMI_SKILL1_LV5"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_BOMI_SKILL_ATTACK"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_bAnimLoop": false,
+        "m_listNKMEventDissolve": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.0,
+            "m_fDissolve": 1,
+            "m_fTrackTime": 1
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

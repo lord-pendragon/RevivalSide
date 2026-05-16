@@ -1,0 +1,510 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_BOSS_FIERCE_TYRANT_DEFFENDER_S.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 5,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_MOB_BOSS_FIERCE_TYRANT_DEFFENDER_N"
+    },
+    {
+      "__key": "m_listTriggerRepeatData",
+      "value": [
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_TYRANT_DEFFENDER_2"
+            }
+          ],
+          "m_TriggerName": "DEFFENDER_2",
+          "m_fRepeatTime": 10
+        }
+      ]
+    },
+    {
+      "__key": "m_dicTriggerSet",
+      "value": [
+        {
+          "m_Name": "DEFFENDER_2",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_DEName": "DE_FIERCE_PENALTY_BOSS_TYRANT_DEFFENDER_2",
+              "m_OffsetX": 400,
+              "m_OffsetY": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_listPhaseChangeData",
+      "value": [
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_TYRANT_DEFFENDER_1",
+              "Inverse": true
+            }
+          ],
+          "m_TargetPhase": 1,
+          "m_fChangeConditionHPRate": 0.7,
+          "m_ChangeStateName": "USN_PATTERN1"
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_TYRANT_DEFFENDER_1",
+              "Inverse": true
+            }
+          ],
+          "m_TargetPhase": 2,
+          "m_fChangeConditionHPRate": 0.3,
+          "m_ChangeStateName": "USN_PATTERN1"
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_TYRANT_DEFFENDER_1"
+            }
+          ],
+          "m_TargetPhase": 1,
+          "m_fChangeConditionHPRate": 0.7,
+          "m_ChangeStateName": "USN_PATTERN1_EX"
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_TYRANT_DEFFENDER_1"
+            }
+          ],
+          "m_TargetPhase": 2,
+          "m_fChangeConditionHPRate": 0.3,
+          "m_ChangeStateName": "USN_PATTERN1_EX"
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.8,
+              "m_fEventTimeMax": 1.1333333333333333,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 310,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_TYRANT_DEFFENDER_ATTACK1_S"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.5,
+              "m_fEventTimeMax": 1.8,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 310,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_TYRANT_DEFFENDER_ATTACK1_S"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PATTERN1",
+          "m_listNKMEventBuff": [
+            {
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_DEFFENDER_PATTERN_S"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PATTERN1_LOOP",
+          "m_DangerCharge": {
+            "m_fChargeTime": 8,
+            "m_CancelHitCount": 80,
+            "m_SuccessState": "USN_PATTERN1_SUCCESS",
+            "m_CancelState": "USN_PATTERN1_CANCEL"
+          }
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_PATTERN1_EX",
+          "m_AnimName": "PATTERN1",
+          "m_AnimEndChangeState": "USN_PATTERN1_LOOP_EX",
+          "m_bForceLeft": true,
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_bNoAI": true,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_listNKMEventCameraMove": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_fEventTimeMax": 3.3,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 0,
+              "m_fZoom": 0,
+              "m_fMoveTrackingTime": 0.03333333333333333,
+              "m_fZoomTrackingTime": 0.03333333333333333
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ELECTRIC_ATTACK_BIG_03"
+              ]
+            }
+          ],
+          "m_listNKMEventText": [
+            {
+              "m_bStateEndTime": true,
+              "m_Text": "SI_BATTLE_MOB_BOSS_FIERCE_TYRANT_DEFFENDER_PATTERN"
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_DEFFENDER_PATTERN_S"
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_PATTERN1_LOOP_EX",
+          "m_AnimName": "PATTERN1_LOOP",
+          "m_bForceLeft": true,
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 0.5,
+          "m_bNoAI": true,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_listNKMEventFadeWorld": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.03333333333333333,
+              "m_fEventTimeMax": 1.0,
+              "m_fColorR": 0.3,
+              "m_fColorG": 0.3,
+              "m_fColorB": 0.5,
+              "m_fMapColorKeepTime": 0.2,
+              "m_fMapColorReturnTime": 1
+            }
+          ],
+          "m_listNKMEventDefence": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_fEventTimeMax": 33.3,
+              "m_fDamageReduceRate": 0.8
+            }
+          ],
+          "m_DangerCharge": {
+            "m_fChargeTime": 8,
+            "m_CancelHitCount": 160,
+            "m_SuccessState": "USN_PATTERN1_SUCCESS",
+            "m_CancelState": "USN_PATTERN1_CANCEL"
+          },
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bStopSound": true,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_65"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PATTERN1_SUCCESS",
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_DEFFENDER_PATTERN_S",
+              "m_BuffRemove": true
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_FIERCE_TYRANT_DEFFENDER_DAMAGE_REDUCE"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PATTERN1_CANCEL",
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_DEFFENDER_PATTERN_S",
+              "m_BuffRemove": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_MOB_BOSS_FIERCE_TYRANT_DEFFENDER_N",
+    "m_listTriggerRepeatData": [
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_TYRANT_DEFFENDER_2"
+          }
+        ],
+        "m_TriggerName": "DEFFENDER_2",
+        "m_fRepeatTime": 10
+      }
+    ],
+    "m_dicTriggerSet": [
+      {
+        "m_Name": "DEFFENDER_2",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_DEName": "DE_FIERCE_PENALTY_BOSS_TYRANT_DEFFENDER_2",
+            "m_OffsetX": 400,
+            "m_OffsetY": 0
+          }
+        ]
+      }
+    ],
+    "m_listPhaseChangeData": [
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_TYRANT_DEFFENDER_1",
+            "Inverse": true
+          }
+        ],
+        "m_TargetPhase": 1,
+        "m_fChangeConditionHPRate": 0.7,
+        "m_ChangeStateName": "USN_PATTERN1"
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_TYRANT_DEFFENDER_1",
+            "Inverse": true
+          }
+        ],
+        "m_TargetPhase": 2,
+        "m_fChangeConditionHPRate": 0.3,
+        "m_ChangeStateName": "USN_PATTERN1"
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_TYRANT_DEFFENDER_1"
+          }
+        ],
+        "m_TargetPhase": 1,
+        "m_fChangeConditionHPRate": 0.7,
+        "m_ChangeStateName": "USN_PATTERN1_EX"
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_TYRANT_DEFFENDER_1"
+          }
+        ],
+        "m_TargetPhase": 2,
+        "m_fChangeConditionHPRate": 0.3,
+        "m_ChangeStateName": "USN_PATTERN1_EX"
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.8,
+            "m_fEventTimeMax": 1.1333333333333333,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 310,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_TYRANT_DEFFENDER_ATTACK1_S"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.5,
+            "m_fEventTimeMax": 1.8,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 310,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_TYRANT_DEFFENDER_ATTACK1_S"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PATTERN1",
+        "m_listNKMEventBuff": [
+          {
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_DEFFENDER_PATTERN_S"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PATTERN1_LOOP",
+        "m_DangerCharge": {
+          "m_fChargeTime": 8,
+          "m_CancelHitCount": 80,
+          "m_SuccessState": "USN_PATTERN1_SUCCESS",
+          "m_CancelState": "USN_PATTERN1_CANCEL"
+        }
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_PATTERN1_EX",
+        "m_AnimName": "PATTERN1",
+        "m_AnimEndChangeState": "USN_PATTERN1_LOOP_EX",
+        "m_bForceLeft": true,
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_bNoAI": true,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_listNKMEventCameraMove": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_fEventTimeMax": 3.3,
+            "m_fPosXOffset": 0,
+            "m_fPosYOffset": 0,
+            "m_fZoom": 0,
+            "m_fMoveTrackingTime": 0.03333333333333333,
+            "m_fZoomTrackingTime": 0.03333333333333333
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ELECTRIC_ATTACK_BIG_03"
+            ]
+          }
+        ],
+        "m_listNKMEventText": [
+          {
+            "m_bStateEndTime": true,
+            "m_Text": "SI_BATTLE_MOB_BOSS_FIERCE_TYRANT_DEFFENDER_PATTERN"
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_DEFFENDER_PATTERN_S"
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_PATTERN1_LOOP_EX",
+        "m_AnimName": "PATTERN1_LOOP",
+        "m_bForceLeft": true,
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 0.5,
+        "m_bNoAI": true,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_listNKMEventFadeWorld": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.03333333333333333,
+            "m_fEventTimeMax": 1.0,
+            "m_fColorR": 0.3,
+            "m_fColorG": 0.3,
+            "m_fColorB": 0.5,
+            "m_fMapColorKeepTime": 0.2,
+            "m_fMapColorReturnTime": 1
+          }
+        ],
+        "m_listNKMEventDefence": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_fEventTimeMax": 33.3,
+            "m_fDamageReduceRate": 0.8
+          }
+        ],
+        "m_DangerCharge": {
+          "m_fChargeTime": 8,
+          "m_CancelHitCount": 160,
+          "m_SuccessState": "USN_PATTERN1_SUCCESS",
+          "m_CancelState": "USN_PATTERN1_CANCEL"
+        },
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bStopSound": true,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_65"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PATTERN1_SUCCESS",
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_DEFFENDER_PATTERN_S",
+            "m_BuffRemove": true
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_FIERCE_TYRANT_DEFFENDER_DAMAGE_REDUCE"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PATTERN1_CANCEL",
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_DEFFENDER_PATTERN_S",
+            "m_BuffRemove": true
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

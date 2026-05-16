@@ -1,0 +1,220 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_CHALLENGE_LIMITBREAK_AWAKEN_1_1.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 2.0
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_SHIP_A_COFFIN_6"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 2.7,
+          "NST_HP": 2.0,
+          "NST_DEF": 1.0
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_UNIT_FENRIR_C_INTERN",
+          "m_bForceMonster": true,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 3.0,
+              "NST_ATK": 4.5,
+              "NST_HIT": 2.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_UNIT_CA_HILDE",
+          "m_bForceMonster": true,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 2,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 5.0,
+              "NST_DEF": 3.0,
+              "NST_ATK": 4.0,
+              "NST_HIT": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_CA_YOO_MI_NA",
+          "m_bForceMonster": true,
+          "m_bReactor": true,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 25,
+            "m_fEventPos": 0.5
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 5.0,
+              "NST_DEF": 2.0,
+              "NST_ATK": 3.0,
+              "NST_HIT": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_CA_JOO_SHI_YOON",
+          "m_bForceMonster": true,
+          "m_bReactor": true,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 12,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 5.0,
+              "NST_DEF": 2.0,
+              "NST_ATK": 3.0,
+              "NST_HIT": 2.0
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 2.0,
+    "m_BossUnitStrID": "NKM_SHIP_A_COFFIN_6",
+    "m_fBossPosZ": 0.6,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 2.7,
+          "NST_HP": 2.0,
+          "NST_DEF": 1.0
+        }
+      }
+    },
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_UNIT_FENRIR_C_INTERN",
+        "m_bForceMonster": true,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 3.0,
+            "NST_ATK": 4.5,
+            "NST_HIT": 2.0
+          }
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_UNIT_CA_HILDE",
+        "m_bForceMonster": true,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 2,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 5.0,
+            "NST_DEF": 3.0,
+            "NST_ATK": 4.0,
+            "NST_HIT": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_CA_YOO_MI_NA",
+        "m_bForceMonster": true,
+        "m_bReactor": true,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 25,
+          "m_fEventPos": 0.5
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 5.0,
+            "NST_DEF": 2.0,
+            "NST_ATK": 3.0,
+            "NST_HIT": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_CA_JOO_SHI_YOON",
+        "m_bForceMonster": true,
+        "m_bReactor": true,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 12,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 5.0,
+            "NST_DEF": 2.0,
+            "NST_ATK": 3.0,
+            "NST_HIT": 2.0
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

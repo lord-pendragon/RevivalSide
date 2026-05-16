@@ -1,0 +1,269 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_NORMAL_CHALLENGE_TRIM_BITER_VOLCANO.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 20,
+  "records": [
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.4
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.5
+    },
+    {
+      "__key": "m_fRespawnCoolTime",
+      "value": 1
+    },
+    {
+      "__key": "m_UnitSizeX",
+      "value": 150
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 100
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.1
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": true
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 320
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 200
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 200
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 380
+    },
+    {
+      "__key": "m_SeeTarget",
+      "value": true
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 125
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 700
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 800
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 2.0
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": false
+    },
+    {
+      "__key": "m_fBuffEffectScaleFactor",
+      "value": 1.0
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1"
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_START",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_AnimName": "START",
+          "m_fAnimSpeed": 1.5,
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.8333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_BITER_START"
+              ]
+            }
+          ],
+          "m_listNKMEventInvincible": [
+            {
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_fEventTimeMax": 1.0
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_RUN",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_AnimName": "RUN",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 1.0,
+          "m_bRun": true
+        },
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimName": "ATTACK1",
+          "m_fAnimSpeed": 1.3,
+          "m_listNKMEventAttack": [
+            {
+              "m_fEventTimeMin": 0.5666666666666667,
+              "m_fEventTimeMax": 0.6666666666666666,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 200.0,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_NKM_MONSTER_NORMAL_BASIC_BITER_ATTACK1"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_BITER_ATTACK"
+              ],
+              "m_PlayRate": 0.7
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_BEAST_VOICE_09"
+              ],
+              "m_PlayRate": 0.3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fForceRespawnZposMin": 0.4,
+    "m_fForceRespawnZposMax": 0.5,
+    "m_fRespawnCoolTime": 1,
+    "m_UnitSizeX": 150,
+    "m_UnitSizeY": 100,
+    "m_SpriteScale": 1.1,
+    "m_bShowGage": true,
+    "m_fGageOffsetY": 320,
+    "m_fShadowScaleX": 200,
+    "m_fShadowScaleY": 200,
+    "m_SpeedRun": 380,
+    "m_SeeTarget": true,
+    "m_TargetNearRange": 125,
+    "m_SeeRange": 700,
+    "m_SeeRangeMax": 800,
+    "m_fDieCompleteTime": 2.0,
+    "m_bUseMotionBlur": false,
+    "m_fBuffEffectScaleFactor": 1.0,
+    "m_listAttackStateData": [
+      {
+        "m_StateName": "USN_ATTACK1"
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_START",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_AnimName": "START",
+        "m_fAnimSpeed": 1.5,
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.8333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_BITER_START"
+            ]
+          }
+        ],
+        "m_listNKMEventInvincible": [
+          {
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_fEventTimeMax": 1.0
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_RUN",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_AnimName": "RUN",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 1.0,
+        "m_bRun": true
+      },
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimName": "ATTACK1",
+        "m_fAnimSpeed": 1.3,
+        "m_listNKMEventAttack": [
+          {
+            "m_fEventTimeMin": 0.5666666666666667,
+            "m_fEventTimeMax": 0.6666666666666666,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 200.0,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_NKM_MONSTER_NORMAL_BASIC_BITER_ATTACK1"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_BITER_ATTACK"
+            ],
+            "m_PlayRate": 0.7
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_BEAST_VOICE_09"
+            ],
+            "m_PlayRate": 0.3
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

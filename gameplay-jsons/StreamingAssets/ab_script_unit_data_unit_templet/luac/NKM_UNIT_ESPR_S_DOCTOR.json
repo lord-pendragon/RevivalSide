@@ -1,0 +1,1415 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_UNIT_ESPR_S_DOCTOR.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 20,
+  "records": [
+    {
+      "__key": "m_UnitSizeX",
+      "value": 120
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 280
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 0.9
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 320
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 200
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 200
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.61
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.7
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 150
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 1300
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 1400
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 1200
+    },
+    {
+      "__key": "m_AttackedTargetTime",
+      "value": 1
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": true
+    },
+    {
+      "__key": "m_bNoHeal",
+      "value": true
+    },
+    {
+      "__key": "m_listAccumStateChangePack",
+      "value": [
+        {
+          "m_listAccumStateChange": [
+            {
+              "m_listAccumStateName": [
+                "USN_ATTACK1"
+              ],
+              "m_AccumCount": 2,
+              "m_TargetStateName": "USN_PASSIVE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1"
+        }
+      ]
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_Condition": {
+            "m_SkillStrID": "NKM_UNIT_ESPR_S_DOCTOR_PASSIVE",
+            "m_SkillLevel": [
+              5,
+              99
+            ],
+            "m_NeedBuffStrID": "DEBUFF_ESPR_DOCTOR_PASSIVE1_LV5",
+            "m_IgnoreBuffStrID": "BUFF_ESPR_DOCTOR_PASSIVE3_LV5_2",
+            "m_IgnoreBuffOverlapCount": [
+              10,
+              99
+            ]
+          },
+          "m_BuffStrID": "BUFF_ESPR_DOCTOR_PASSIVE3_LV5_2",
+          "m_fRebuffTime": 3
+        },
+        {
+          "m_Condition": {
+            "m_SkillStrID": "NKM_UNIT_ESPR_S_DOCTOR_PASSIVE",
+            "m_SkillLevel": [
+              5,
+              99
+            ]
+          },
+          "m_BuffStrID": "DEBUFF_ESPR_DOCTOR_PASSIVE1_LV5"
+        }
+      ]
+    },
+    {
+      "__key": "m_listPhaseChangeData",
+      "value": [
+        {
+          "m_Condition": {
+            "m_SkillStrID": "NKM_UNIT_ESPR_S_DOCTOR_PASSIVE3",
+            "m_SkillLevel": [
+              5,
+              99
+            ]
+          },
+          "m_TargetPhase": 1,
+          "m_fChangeConditionHPRate": 0.5,
+          "m_ChangeStateName": "USN_PHASECHANGE"
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_DamagedChangeState": "USN_ASTAND",
+          "m_fAnimSpeed": 1.5,
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.13333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_FOOT_STEP_LANDING_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.33,
+              "m_listSoundName": [
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_START_1",
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_START_2"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_StateName": "USN_RUN",
+          "m_AnimName": "RUN",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 0.8,
+          "m_bRun": true
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK1",
+          "m_AnimName": "ATTACK1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 0.85,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_listNKMEventAnimSpeed": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_fAnimSpeed": 0.5
+            },
+            {
+              "m_fEventTime": 0.6333333333333333,
+              "m_fAnimSpeed": 1.0
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_ESPR_S_DOCTOR_PASSIVE"
+              },
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.7333333333333333,
+              "m_EffectName": "AB_FX_ESPR_DOCTOR_HEAL",
+              "m_AnimName": "BASE",
+              "m_OffsetX": 400.0,
+              "m_OffsetY": 0,
+              "m_fAddRotate": 0.0,
+              "m_fScaleFactor": 1.2,
+              "m_bLandConnect": true
+            },
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_ESPR_S_DOCTOR_PASSIVE"
+              },
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8666666666666667,
+              "m_EffectName": "AB_FX_ESPR_DOCTOR_HEAL",
+              "m_AnimName": "BASE",
+              "m_OffsetX": 1000.0,
+              "m_OffsetY": 0,
+              "m_fAddRotate": 0.0,
+              "m_fScaleFactor": 1.2,
+              "m_bLandConnect": true
+            }
+          ],
+          "m_listNKMEventHeal": [
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_ESPR_S_DOCTOR_PASSIVE"
+              },
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6666666666666666,
+              "m_fHealRate": 0.02,
+              "m_bEnableSelfHeal": false,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1300.0,
+              "m_MaxCount": 99
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6666666666666666,
+              "m_DEName": "DE_NKM_UNIT_ESPR_S_DOCTOR_ATTACK1",
+              "m_OffsetX": 130,
+              "m_OffsetY": 195
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SNIPER_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_GUN_RELOAD_SMALL_02"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6666666666666666,
+              "m_bVoice": true,
+              "m_PlayRate": 0.3,
+              "m_listSoundName": [
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_ATTACK_1",
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_ATTACK_2",
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_ATTACK_7",
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_ATTACK_9"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_PASSIVE",
+          "m_AnimName": "PASSIVE",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 0.8,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_listNKMEventAnimSpeed": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_fAnimSpeed": 0.7
+            },
+            {
+              "m_fEventTime": 1.5333333333333334,
+              "m_fAnimSpeed": 1.0
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_ESPR_S_DOCTOR_PASSIVE2"
+              },
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.6,
+              "m_EffectName": "AB_FX_ESPR_DOCTOR_HEAL",
+              "m_AnimName": "BASE",
+              "m_OffsetX": 400.0,
+              "m_OffsetY": 0,
+              "m_fAddRotate": 0.0,
+              "m_fScaleFactor": 1.2,
+              "m_bLandConnect": true
+            },
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_ESPR_S_DOCTOR_PASSIVE2"
+              },
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.7333333333333334,
+              "m_EffectName": "AB_FX_ESPR_DOCTOR_HEAL",
+              "m_AnimName": "BASE",
+              "m_OffsetX": 1000.0,
+              "m_OffsetY": 0,
+              "m_fAddRotate": 0.0,
+              "m_fScaleFactor": 1.2,
+              "m_bLandConnect": true
+            }
+          ],
+          "m_listNKMEventConsume": [
+            {
+              "m_fEventTime": 1.5333333333333334,
+              "m_eConsumeType": "MAX_HP_RATE",
+              "m_fValue": 0.1
+            }
+          ],
+          "m_listNKMEventHeal": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5333333333333334,
+              "m_fHealRate": 0.1,
+              "m_bEnableSelfHeal": false,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1300.0,
+              "m_MaxCount": 99
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_ESPR_S_DOCTOR_PASSIVE2"
+              },
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.5333333333333334,
+              "m_fEventTimeMax": 1.6666666666666667,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1300.0,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_NKM_UNIT_ESPR_S_DOCTOR_PASSIVE2"
+            },
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_ESPR_S_DOCTOR_PASSIVE2",
+                "m_SkillLevel": [
+                  5,
+                  99
+                ]
+              },
+              "m_ConditionTarget": {
+                "m_fHPRate": [
+                  0.8,
+                  1.0
+                ]
+              },
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.5333333333333334,
+              "m_fEventTimeMax": 1.6666666666666667,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1300.0,
+              "m_bHitAir": true,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_MY_TEAM_NOT_SELF",
+              "m_AttackUnitCount": 99,
+              "m_DamageTempletName": "DT_NKM_UNIT_ESPR_S_DOCTOR_PASSIVE2_LV5"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SNIPER_FIRE_MIDDLE"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_WHOOSH_05"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_15"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.3666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_GUN_RELOAD_SMALL_02"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5333333333333334,
+              "m_bVoice": true,
+              "m_PlayRate": 0.5,
+              "m_listSoundName": [
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_ATTACK_16",
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_ATTACK_20",
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_PASSIVE_2",
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_PASSIVE_5"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PHASECHANGE",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "PASSIVE2",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_bInvincibleState": true,
+          "m_StateCoolTime": 0,
+          "m_listNKMEventBuff": [
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_ESPR_S_DOCTOR_PASSIVE3",
+                "m_SkillLevel": [
+                  5,
+                  99
+                ]
+              },
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_BuffStrID": "DEBUFF_ESPR_DOCTOR_PASSIVE3_LV5",
+              "m_fRange": 6000,
+              "m_bEnemy": true
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fScaleFactor": 1.0,
+              "m_fEventTime": 1.0,
+              "m_EffectName": "AB_FX_BUFF_MAP_RED",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_AnimName": "BASE",
+              "m_fAddRotate": 0
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fScaleFactor": 1.0,
+              "m_fEventTime": 1.0,
+              "m_EffectName": "AB_FX_BUFF_START_RED",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_AnimName": "BASE",
+              "m_fAddRotate": 0
+            }
+          ],
+          "m_listNKMEventInvincible": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_fEventTimeMax": 33.3
+            }
+          ],
+          "m_listNKMEventAnimSpeed": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5,
+              "m_fAnimSpeed": 2.2
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 99999,
+              "m_fColorR": 1.0,
+              "m_fColorG": 0.5,
+              "m_fColorB": 0.5
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 5.0,
+              "m_fCameraCrashTime": 0.75
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_27"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_67"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5,
+              "m_bVoice": true,
+              "m_PlayRate": 0.5,
+              "m_listSoundName": [
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_ACTIVE_1",
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_ACTIVE_3"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_A",
+          "m_AnimName": "DAMAGE_A",
+          "m_bAnimLoop": false,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_FALL_DAMAGE_DIE"
+              ],
+              "m_fLocalVol": 0.25,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DAMAGE_9"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_B",
+          "m_AnimName": "DAMAGE_B",
+          "m_bAnimLoop": false,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_FALL_DAMAGE_DIE"
+              ],
+              "m_fLocalVol": 0.25,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DAMAGE_9"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_AIR_UP",
+          "m_AnimName": "DAMAGE_AIR_UP",
+          "m_bAnimLoop": false,
+          "m_SpeedY0NegativeChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_FALL_DAMAGE_DIE"
+              ],
+              "m_fLocalVol": 0.6,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L13_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DAMAGE_9"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_bAnimLoop": false,
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+          "m_AnimEndChangeState": "USN_DAMAGE_STAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_FALL_DAMAGE_DIE"
+              ],
+              "m_fLocalVol": 0.6,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L14_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DAMAGE_9"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_bAnimLoop": false,
+          "m_bShowGage": false,
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_DEName": "DE_NKM_UNIT_ESPR_S_DOCTOR_PASSIVE3_DUMMY",
+              "m_OffsetX": 0,
+              "m_bIgnoreTarget": true
+            }
+          ],
+          "m_listNKMEventDissolve": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.0,
+              "m_fDissolve": 1,
+              "m_fTrackTime": 1.8
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L14_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_BEAST_VOICE_38"
+              ],
+              "m_fLocalVol": 0.7,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 0.6666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_FALL_DAMAGE_DIE"
+              ],
+              "m_fLocalVol": 0.7,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L16_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 0.5,
+              "m_listSoundName": [
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DEATH_1",
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DEATH_2"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6666666666666666,
+              "m_bVoice": true,
+              "m_PlayRate": 0.5,
+              "m_listSoundName": [
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DEATH_3",
+                "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DEATH_5"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_UnitSizeX": 120,
+    "m_UnitSizeY": 280,
+    "m_SpriteScale": 0.9,
+    "m_fGageOffsetY": 320,
+    "m_fShadowScaleX": 200,
+    "m_fShadowScaleY": 200,
+    "m_fForceRespawnZposMin": 0.61,
+    "m_fForceRespawnZposMax": 0.7,
+    "m_SpeedRun": 150,
+    "m_SeeRange": 1300,
+    "m_SeeRangeMax": 1400,
+    "m_TargetNearRange": 1200,
+    "m_AttackedTargetTime": 1,
+    "m_bUseMotionBlur": true,
+    "m_bNoHeal": true,
+    "m_listAccumStateChangePack": [
+      {
+        "m_listAccumStateChange": [
+          {
+            "m_listAccumStateName": [
+              "USN_ATTACK1"
+            ],
+            "m_AccumCount": 2,
+            "m_TargetStateName": "USN_PASSIVE"
+          }
+        ]
+      }
+    ],
+    "m_listAttackStateData": [
+      {
+        "m_StateName": "USN_ATTACK1"
+      }
+    ],
+    "m_listStaticBuffData": [
+      {
+        "m_Condition": {
+          "m_SkillStrID": "NKM_UNIT_ESPR_S_DOCTOR_PASSIVE",
+          "m_SkillLevel": [
+            5,
+            99
+          ],
+          "m_NeedBuffStrID": "DEBUFF_ESPR_DOCTOR_PASSIVE1_LV5",
+          "m_IgnoreBuffStrID": "BUFF_ESPR_DOCTOR_PASSIVE3_LV5_2",
+          "m_IgnoreBuffOverlapCount": [
+            10,
+            99
+          ]
+        },
+        "m_BuffStrID": "BUFF_ESPR_DOCTOR_PASSIVE3_LV5_2",
+        "m_fRebuffTime": 3
+      },
+      {
+        "m_Condition": {
+          "m_SkillStrID": "NKM_UNIT_ESPR_S_DOCTOR_PASSIVE",
+          "m_SkillLevel": [
+            5,
+            99
+          ]
+        },
+        "m_BuffStrID": "DEBUFF_ESPR_DOCTOR_PASSIVE1_LV5"
+      }
+    ],
+    "m_listPhaseChangeData": [
+      {
+        "m_Condition": {
+          "m_SkillStrID": "NKM_UNIT_ESPR_S_DOCTOR_PASSIVE3",
+          "m_SkillLevel": [
+            5,
+            99
+          ]
+        },
+        "m_TargetPhase": 1,
+        "m_fChangeConditionHPRate": 0.5,
+        "m_ChangeStateName": "USN_PHASECHANGE"
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_DamagedChangeState": "USN_ASTAND",
+        "m_fAnimSpeed": 1.5,
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.13333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_FOOT_STEP_LANDING_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.33,
+            "m_listSoundName": [
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_START_1",
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_START_2"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_StateName": "USN_RUN",
+        "m_AnimName": "RUN",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 0.8,
+        "m_bRun": true
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK1",
+        "m_AnimName": "ATTACK1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 0.85,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_listNKMEventAnimSpeed": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_fAnimSpeed": 0.5
+          },
+          {
+            "m_fEventTime": 0.6333333333333333,
+            "m_fAnimSpeed": 1.0
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_ESPR_S_DOCTOR_PASSIVE"
+            },
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.7333333333333333,
+            "m_EffectName": "AB_FX_ESPR_DOCTOR_HEAL",
+            "m_AnimName": "BASE",
+            "m_OffsetX": 400.0,
+            "m_OffsetY": 0,
+            "m_fAddRotate": 0.0,
+            "m_fScaleFactor": 1.2,
+            "m_bLandConnect": true
+          },
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_ESPR_S_DOCTOR_PASSIVE"
+            },
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8666666666666667,
+            "m_EffectName": "AB_FX_ESPR_DOCTOR_HEAL",
+            "m_AnimName": "BASE",
+            "m_OffsetX": 1000.0,
+            "m_OffsetY": 0,
+            "m_fAddRotate": 0.0,
+            "m_fScaleFactor": 1.2,
+            "m_bLandConnect": true
+          }
+        ],
+        "m_listNKMEventHeal": [
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_ESPR_S_DOCTOR_PASSIVE"
+            },
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6666666666666666,
+            "m_fHealRate": 0.02,
+            "m_bEnableSelfHeal": false,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1300.0,
+            "m_MaxCount": 99
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6666666666666666,
+            "m_DEName": "DE_NKM_UNIT_ESPR_S_DOCTOR_ATTACK1",
+            "m_OffsetX": 130,
+            "m_OffsetY": 195
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SNIPER_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_GUN_RELOAD_SMALL_02"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6666666666666666,
+            "m_bVoice": true,
+            "m_PlayRate": 0.3,
+            "m_listSoundName": [
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_ATTACK_1",
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_ATTACK_2",
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_ATTACK_7",
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_ATTACK_9"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_PASSIVE",
+        "m_AnimName": "PASSIVE",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 0.8,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_listNKMEventAnimSpeed": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_fAnimSpeed": 0.7
+          },
+          {
+            "m_fEventTime": 1.5333333333333334,
+            "m_fAnimSpeed": 1.0
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_ESPR_S_DOCTOR_PASSIVE2"
+            },
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.6,
+            "m_EffectName": "AB_FX_ESPR_DOCTOR_HEAL",
+            "m_AnimName": "BASE",
+            "m_OffsetX": 400.0,
+            "m_OffsetY": 0,
+            "m_fAddRotate": 0.0,
+            "m_fScaleFactor": 1.2,
+            "m_bLandConnect": true
+          },
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_ESPR_S_DOCTOR_PASSIVE2"
+            },
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.7333333333333334,
+            "m_EffectName": "AB_FX_ESPR_DOCTOR_HEAL",
+            "m_AnimName": "BASE",
+            "m_OffsetX": 1000.0,
+            "m_OffsetY": 0,
+            "m_fAddRotate": 0.0,
+            "m_fScaleFactor": 1.2,
+            "m_bLandConnect": true
+          }
+        ],
+        "m_listNKMEventConsume": [
+          {
+            "m_fEventTime": 1.5333333333333334,
+            "m_eConsumeType": "MAX_HP_RATE",
+            "m_fValue": 0.1
+          }
+        ],
+        "m_listNKMEventHeal": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5333333333333334,
+            "m_fHealRate": 0.1,
+            "m_bEnableSelfHeal": false,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1300.0,
+            "m_MaxCount": 99
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_ESPR_S_DOCTOR_PASSIVE2"
+            },
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.5333333333333334,
+            "m_fEventTimeMax": 1.6666666666666667,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1300.0,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_NKM_UNIT_ESPR_S_DOCTOR_PASSIVE2"
+          },
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_ESPR_S_DOCTOR_PASSIVE2",
+              "m_SkillLevel": [
+                5,
+                99
+              ]
+            },
+            "m_ConditionTarget": {
+              "m_fHPRate": [
+                0.8,
+                1.0
+              ]
+            },
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.5333333333333334,
+            "m_fEventTimeMax": 1.6666666666666667,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1300.0,
+            "m_bHitAir": true,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_MY_TEAM_NOT_SELF",
+            "m_AttackUnitCount": 99,
+            "m_DamageTempletName": "DT_NKM_UNIT_ESPR_S_DOCTOR_PASSIVE2_LV5"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SNIPER_FIRE_MIDDLE"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_WHOOSH_05"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_15"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.3666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_GUN_RELOAD_SMALL_02"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5333333333333334,
+            "m_bVoice": true,
+            "m_PlayRate": 0.5,
+            "m_listSoundName": [
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_ATTACK_16",
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_ATTACK_20",
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_PASSIVE_2",
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_PASSIVE_5"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PHASECHANGE",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "PASSIVE2",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_bInvincibleState": true,
+        "m_StateCoolTime": 0,
+        "m_listNKMEventBuff": [
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_ESPR_S_DOCTOR_PASSIVE3",
+              "m_SkillLevel": [
+                5,
+                99
+              ]
+            },
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_BuffStrID": "DEBUFF_ESPR_DOCTOR_PASSIVE3_LV5",
+            "m_fRange": 6000,
+            "m_bEnemy": true
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fScaleFactor": 1.0,
+            "m_fEventTime": 1.0,
+            "m_EffectName": "AB_FX_BUFF_MAP_RED",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_AnimName": "BASE",
+            "m_fAddRotate": 0
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fScaleFactor": 1.0,
+            "m_fEventTime": 1.0,
+            "m_EffectName": "AB_FX_BUFF_START_RED",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_AnimName": "BASE",
+            "m_fAddRotate": 0
+          }
+        ],
+        "m_listNKMEventInvincible": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_fEventTimeMax": 33.3
+          }
+        ],
+        "m_listNKMEventAnimSpeed": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5,
+            "m_fAnimSpeed": 2.2
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 99999,
+            "m_fColorR": 1.0,
+            "m_fColorG": 0.5,
+            "m_fColorB": 0.5
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 5.0,
+            "m_fCameraCrashTime": 0.75
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_27"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_67"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5,
+            "m_bVoice": true,
+            "m_PlayRate": 0.5,
+            "m_listSoundName": [
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_ACTIVE_1",
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_ACTIVE_3"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_A",
+        "m_AnimName": "DAMAGE_A",
+        "m_bAnimLoop": false,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_FALL_DAMAGE_DIE"
+            ],
+            "m_fLocalVol": 0.25,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DAMAGE_9"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_B",
+        "m_AnimName": "DAMAGE_B",
+        "m_bAnimLoop": false,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_FALL_DAMAGE_DIE"
+            ],
+            "m_fLocalVol": 0.25,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DAMAGE_9"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_AIR_UP",
+        "m_AnimName": "DAMAGE_AIR_UP",
+        "m_bAnimLoop": false,
+        "m_SpeedY0NegativeChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_FALL_DAMAGE_DIE"
+            ],
+            "m_fLocalVol": 0.6,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L13_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DAMAGE_9"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_bAnimLoop": false,
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+        "m_AnimEndChangeState": "USN_DAMAGE_STAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_FALL_DAMAGE_DIE"
+            ],
+            "m_fLocalVol": 0.6,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L14_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DAMAGE_9"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_bAnimLoop": false,
+        "m_bShowGage": false,
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_DEName": "DE_NKM_UNIT_ESPR_S_DOCTOR_PASSIVE3_DUMMY",
+            "m_OffsetX": 0,
+            "m_bIgnoreTarget": true
+          }
+        ],
+        "m_listNKMEventDissolve": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.0,
+            "m_fDissolve": 1,
+            "m_fTrackTime": 1.8
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L14_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_BEAST_VOICE_38"
+            ],
+            "m_fLocalVol": 0.7,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 0.6666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_FALL_DAMAGE_DIE"
+            ],
+            "m_fLocalVol": 0.7,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L16_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 0.5,
+            "m_listSoundName": [
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DEATH_1",
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DEATH_2"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6666666666666666,
+            "m_bVoice": true,
+            "m_PlayRate": 0.5,
+            "m_listSoundName": [
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DEATH_3",
+              "VOICE_UNIT_ESPR_S_DOCTOR_BATTLE_DEATH_5"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

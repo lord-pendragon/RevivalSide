@@ -1,0 +1,223 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_UNIT_DREAM_C_WRITER_SUMMON.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 16,
+  "records": [
+    {
+      "__key": "m_UnitSizeX",
+      "value": 120
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 120
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_NKC_TEAM_COLOR_TYPE",
+      "value": "NTCT_NO"
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.21
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.21
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": false
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 0
+    },
+    {
+      "__key": "m_bNoMove",
+      "value": true
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 500
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 600
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 50
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 1.5
+    },
+    {
+      "__key": "m_listFixedStatusEffect",
+      "value": [
+        "NUSE_STABLE_HP",
+        "NUSE_CLOCKING",
+        "NUSE_BLOCK_BUFF",
+        "NUSE_BLOCK_DEBUFF",
+        "NUSE_NO_DAMAGE_BACK_SPEED",
+        "NUSE_IMMUNE_CC",
+        "NUSE_IMMUNE_NEGATIVE_STATUS",
+        "NUSE_IMMUNE_SKILL_COOLTIME_DAMAGE"
+      ]
+    },
+    {
+      "__key": "m_listFixedStatusImmune",
+      "value": [
+        "NUSE_STUN",
+        "NUSE_NOHEAL"
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "ASTART",
+          "m_fAnimSpeed": 0.3,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 2.3333333333333335,
+              "m_DEName": "DE_UNIT_DREAM_C_WRITER_START",
+              "m_bHold": true,
+              "m_FollowType": "TDT_INVALID"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ASTAND",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": true,
+          "m_listNKMEventChangeState": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "UnitExist",
+                  "m_listReqUnit": [
+                    1302
+                  ],
+                  "m_ReqUnitCond": "NOT_ALL"
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_ChangeState": "USN_DAMAGE_DIE"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+          "m_AnimName": "ASTAND",
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_DamageEffectID": "DE_UNIT_DREAM_C_WRITER_START",
+              "m_ChangeState": "DES_DIE"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_UnitSizeX": 120,
+    "m_UnitSizeY": 120,
+    "m_SpriteScale": 1.0,
+    "m_NKC_TEAM_COLOR_TYPE": "NTCT_NO",
+    "m_fForceRespawnZposMin": 0.21,
+    "m_fForceRespawnZposMax": 0.21,
+    "m_bShowGage": false,
+    "m_SpeedRun": 0,
+    "m_bNoMove": true,
+    "m_SeeRange": 500,
+    "m_SeeRangeMax": 600,
+    "m_TargetNearRange": 50,
+    "m_fDieCompleteTime": 1.5,
+    "m_listFixedStatusEffect": [
+      "NUSE_STABLE_HP",
+      "NUSE_CLOCKING",
+      "NUSE_BLOCK_BUFF",
+      "NUSE_BLOCK_DEBUFF",
+      "NUSE_NO_DAMAGE_BACK_SPEED",
+      "NUSE_IMMUNE_CC",
+      "NUSE_IMMUNE_NEGATIVE_STATUS",
+      "NUSE_IMMUNE_SKILL_COOLTIME_DAMAGE"
+    ],
+    "m_listFixedStatusImmune": [
+      "NUSE_STUN",
+      "NUSE_NOHEAL"
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "ASTART",
+        "m_fAnimSpeed": 0.3,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 2.3333333333333335,
+            "m_DEName": "DE_UNIT_DREAM_C_WRITER_START",
+            "m_bHold": true,
+            "m_FollowType": "TDT_INVALID"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ASTAND",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": true,
+        "m_listNKMEventChangeState": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "UnitExist",
+                "m_listReqUnit": [
+                  1302
+                ],
+                "m_ReqUnitCond": "NOT_ALL"
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_ChangeState": "USN_DAMAGE_DIE"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+        "m_AnimName": "ASTAND",
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_DamageEffectID": "DE_UNIT_DREAM_C_WRITER_START",
+            "m_ChangeState": "DES_DIE"
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

@@ -1,0 +1,562 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_MAIN_BATTLE_EP7_1_2.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 5
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.0
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EP6_ALTER_N"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.8
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EP6_STUNNER_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EP6_FLOATER_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 5,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.0
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_UNIT_C_YOO_MI_NA",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventPos": 0.15
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_C_ALT_SEO_YOON",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_C_SCHOOL_PRESIDENT",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_BOSS_EP6_GRAVE_OBJECT_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 10,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 1.5,
+              "NST_DEF": 1.5
+            }
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "BUFF_EP7_TOWER_BUFF",
+              "m_BuffLevel": 1
+            }
+          ]
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_BOSS_EP6_GRAVE_OBJECT_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 10,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 1.5,
+              "NST_DEF": 1.5
+            }
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "BUFF_EP7_TOWER_BUFF",
+              "m_BuffLevel": 1
+            }
+          ]
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_BOSS_EP6_GRAVE_OBJECT_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventPos": 0.5
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 1.5,
+              "NST_DEF": 1.5
+            }
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "BUFF_EP7_TOWER_BUFF",
+              "m_BuffLevel": 1
+            }
+          ]
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_BOSS_EP6_GRAVE_OBJECT_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 3,
+            "m_fEventPos": 0.6
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 1.5,
+              "NST_DEF": 1.5
+            }
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "BUFF_EP7_TOWER_BUFF",
+              "m_BuffLevel": 1
+            }
+          ]
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EP6_STUNNER_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 3.0,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EP6_FLOATER_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 5.0,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_EP6_FLOATER_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 15.0,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EP6_STUNNER_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 53.0,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EP6_FLOATER_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 55.0,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_EP6_FLOATER_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 65.0,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EP6_STUNNER_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 103.0,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EP6_FLOATER_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 105.0,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_EP6_FLOATER_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 115.0,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EP6_FLOATER_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 163.0,
+            "m_fEventPos": 0.0
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_EP6_FLOATER_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 165.0,
+            "m_fEventPos": 0.0
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 5,
+    "m_fCostSpeedRateB": 1.0,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EP6_ALTER_N",
+    "m_fBossPosZ": 0.8,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EP6_STUNNER_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EP6_FLOATER_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 5,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.0
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5
+          }
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_UNIT_C_YOO_MI_NA",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventPos": 0.15
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_C_ALT_SEO_YOON",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_C_SCHOOL_PRESIDENT",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.1
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_BOSS_EP6_GRAVE_OBJECT_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 10,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 1.5,
+            "NST_DEF": 1.5
+          }
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "BUFF_EP7_TOWER_BUFF",
+            "m_BuffLevel": 1
+          }
+        ]
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_BOSS_EP6_GRAVE_OBJECT_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 10,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 1.5,
+            "NST_DEF": 1.5
+          }
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "BUFF_EP7_TOWER_BUFF",
+            "m_BuffLevel": 1
+          }
+        ]
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_BOSS_EP6_GRAVE_OBJECT_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventPos": 0.5
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 1.5,
+            "NST_DEF": 1.5
+          }
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "BUFF_EP7_TOWER_BUFF",
+            "m_BuffLevel": 1
+          }
+        ]
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_BOSS_EP6_GRAVE_OBJECT_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 3,
+          "m_fEventPos": 0.6
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 1.5,
+            "NST_DEF": 1.5
+          }
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "BUFF_EP7_TOWER_BUFF",
+            "m_BuffLevel": 1
+          }
+        ]
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EP6_STUNNER_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 3.0,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EP6_FLOATER_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 5.0,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_EP6_FLOATER_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 15.0,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EP6_STUNNER_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 53.0,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EP6_FLOATER_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 55.0,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_EP6_FLOATER_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 65.0,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EP6_STUNNER_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 103.0,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EP6_FLOATER_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 105.0,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_EP6_FLOATER_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 115.0,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EP6_FLOATER_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 163.0,
+          "m_fEventPos": 0.0
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_EP6_FLOATER_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 165.0,
+          "m_fEventPos": 0.0
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

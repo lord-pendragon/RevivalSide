@@ -1,0 +1,179 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DIVE_BATTLE_8_HB01.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.0
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EQC_C_HB_MIYA"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 1.0
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_UnitEffect": "SHADOW",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 1.5
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_EQC_C_HB_BOMI",
+          "m_UnitEffect": "SHADOW",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeGap": 10,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 8
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_EQC_S_HB_CHOIENA",
+          "m_UnitEffect": "SHADOW",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeGap": 10,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_BOSS_DAILY_MACHINE_GAP_MK3_MINI_N",
+          "m_bShowGage": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeGap": 10,
+            "m_fEventTimeStart": 2,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.4
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 1.2,
+              "NST_DEF": 1.2,
+              "NST_ATK": 8.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_SL_DRONE_FIGHTER_S",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeGap": 5,
+            "m_fEventTimeStart": 2,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.15
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 8,
+              "NST_HP": 2.0,
+              "NST_DEF": 2.0
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 1.0,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EQC_C_HB_MIYA",
+    "m_fBossPosZ": 1.0,
+    "m_BossRespawnUnitTemplet": {
+      "m_UnitEffect": "SHADOW",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 1.5
+        }
+      }
+    },
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_EQC_C_HB_BOMI",
+        "m_UnitEffect": "SHADOW",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeGap": 10,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 8
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_EQC_S_HB_CHOIENA",
+        "m_UnitEffect": "SHADOW",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeGap": 10,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_BOSS_DAILY_MACHINE_GAP_MK3_MINI_N",
+        "m_bShowGage": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeGap": 10,
+          "m_fEventTimeStart": 2,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.4
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 1.2,
+            "NST_DEF": 1.2,
+            "NST_ATK": 8.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_SL_DRONE_FIGHTER_S",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeGap": 5,
+          "m_fEventTimeStart": 2,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.15
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 8,
+            "NST_HP": 2.0,
+            "NST_DEF": 2.0
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

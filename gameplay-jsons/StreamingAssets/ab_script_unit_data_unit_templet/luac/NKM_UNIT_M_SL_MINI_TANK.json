@@ -1,0 +1,85 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_UNIT_M_SL_MINI_TANK.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_UNIT_M_SL_AIR_FIGHTER"
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 360
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 190
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 20
+    },
+    {
+      "__key": "m_NKM_FIND_TARGET_TYPE",
+      "value": "NFTT_NEAR_ENEMY_LAND"
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK1",
+          "m_AnimName": "ATTACK1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1,
+          "m_StateCoolTime": [
+            2.5,
+            2.5
+          ],
+          "m_listNKMEventAttack": {},
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_DEName": "DE_NKM_UNIT_M_SL_AIR_BOMBER_ATTACK1",
+              "m_OffsetX": -4,
+              "m_OffsetY": 48
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_UNIT_M_SL_AIR_FIGHTER",
+    "m_SpeedRun": 360,
+    "m_fGageOffsetY": 190,
+    "m_TargetNearRange": 20,
+    "m_NKM_FIND_TARGET_TYPE": "NFTT_NEAR_ENEMY_LAND",
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK1",
+        "m_AnimName": "ATTACK1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1,
+        "m_StateCoolTime": [
+          2.5,
+          2.5
+        ],
+        "m_listNKMEventAttack": {},
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_DEName": "DE_NKM_UNIT_M_SL_AIR_BOMBER_ATTACK1",
+            "m_OffsetX": -4,
+            "m_OffsetY": 48
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

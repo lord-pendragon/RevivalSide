@@ -1,0 +1,2227 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_UNIT_M_FUTURE_TITAN_RA.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 26,
+  "records": [
+    {
+      "__key": "m_UnitSizeX",
+      "value": 290
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 290
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 0.95
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 500
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 500
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 340
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.95
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.98
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 150
+    },
+    {
+      "__key": "m_fDamageUpFactor",
+      "value": 0
+    },
+    {
+      "__key": "m_bNoDamageDownState",
+      "value": true
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 750
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 950
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 1150
+    },
+    {
+      "__key": "m_AttackedTargetTime",
+      "value": 1
+    },
+    {
+      "__key": "m_bAttackedTarget",
+      "value": false
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": false
+    },
+    {
+      "__key": "m_fBuffEffectScaleFactor",
+      "value": 2
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_BuffStrID": "BUFF_COMMON_SUPERARMOR_LV2",
+          "m_BuffLevel": 1
+        },
+        {
+          "m_BuffStrID": "BUFF_FURTURE_TITAN_PASSIVE_RA_RANGE"
+        }
+      ]
+    },
+    {
+      "__key": "m_listBuffUnitDieEvent",
+      "value": [
+        {
+          "m_BuffStrID": "BUFF_FURTURE_TITAN_PASSIVE_RA_RANGE",
+          "m_OutBuffStrID": "BUFF_FURTURE_TITAN_PASSIVE_RA"
+        }
+      ]
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_Condition": {
+            "m_IgnoreBuffStrID": "BUFF_FURTURE_TITAN_PASSIVE3_RA"
+          },
+          "m_StateName": "USN_PASSIVE1",
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 300
+        },
+        {
+          "m_Condition": {
+            "m_NeedBuffStrID": "BUFF_FURTURE_TITAN_PASSIVE3_RA"
+          },
+          "m_StateName": "USN_ATTACK1_SHORT",
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 300
+        },
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_fRangeMin": 300
+        }
+      ]
+    },
+    {
+      "__key": "m_listAirAttackStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1_AIR"
+        }
+      ]
+    },
+    {
+      "__key": "m_listSkillStateData",
+      "value": [
+        {
+          "m_StateName": "USN_SKILL1"
+        }
+      ]
+    },
+    {
+      "__key": "m_listAccumStateChangePack",
+      "value": [
+        {
+          "m_Condition": {
+            "m_SkillStrID": "NKM_UNIT_M_FUTURE_TITAN_RA_SKILL",
+            "m_SkillLevel": [
+              10,
+              99
+            ]
+          },
+          "m_listAccumStateChange": [
+            {
+              "m_listAccumStateName": [
+                "USN_ATTACK1",
+                "USN_ATTACK1_AIR",
+                "USN_ATTACK1_SHORT",
+                "USN_PASSIVE1",
+                "USN_SKILL1"
+              ],
+              "m_AccumCount": 3,
+              "m_TargetStateName": "USN_PASSIVE2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_listPhaseChangeData",
+      "value": [
+        {
+          "m_Condition": {
+            "m_SkillStrID": "NKM_UNIT_M_FUTURE_TITAN_RA_LEADER",
+            "m_SkillLevel": [
+              5,
+              99
+            ],
+            "m_bLeaderUnit": true
+          },
+          "m_TargetPhase": 1,
+          "m_fChangeConditionHPRate": 0.01,
+          "m_ChangeStateName": "USN_LEADER"
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.2,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_DamagedChangeState": "USN_ASTAND",
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 40.0,
+              "m_fCameraCrashTime": 0.6
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.8333333333333333,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 10.0,
+              "m_fCameraCrashTime": 0.3
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_M_FUTURE_TITAN_RA_PASSIVE",
+                "m_SkillLevel": [
+                  5,
+                  99
+                ]
+              },
+              "m_bAnimTime": false,
+              "m_fScaleFactor": 1.0,
+              "m_fEventTime": 0.5,
+              "m_EffectName": "AB_FX_COMMON_SCAN_BLUE",
+              "m_AnimName": "BASE"
+            }
+          ],
+          "m_listNKMEventCost": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.26666666666666666,
+              "m_AddCost": 1
+            },
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_M_FUTURE_TITAN_RA_LEADER",
+                "m_SkillLevel": [
+                  1,
+                  99
+                ],
+                "m_bLeaderUnit": true
+              },
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.4,
+              "m_AddCost": 1
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_M_FUTURE_TITAN_RA_PASSIVE",
+                "m_SkillLevel": [
+                  5,
+                  99
+                ]
+              },
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.5,
+              "m_fEventTimeMax": 0.6666666666666666,
+              "m_fRangeMin": -6000.0,
+              "m_fRangeMax": 6000.0,
+              "m_bHitBossUnit": false,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ALL_NOT_SELF",
+              "m_AttackUnitCount": 99,
+              "m_DamageTempletName": "DT_NKM_UNIT_M_FUTURE_TITAN_PASSIVE1_LV5_RA"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWING_BIG"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_TANK_START_BIG"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.6666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_TANK_START_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_START_1",
+                "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_START_2"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_StateName": "USN_PASSIVE1",
+          "m_AnimName": "RA_PASSIVE1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.433333333333333,
+              "m_BuffStrID": "BUFF_FURTURE_TITAN_PASSIVE3_RA"
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_M_FUTURE_TITAN_RA_PASSIVE3",
+                "m_SkillLevel": [
+                  1,
+                  4
+                ]
+              },
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.2333333333333334,
+              "m_fEventTimeMax": 2.4,
+              "m_fRangeMin": -100,
+              "m_fRangeMax": 500,
+              "m_bHitAir": false,
+              "m_AttackTargetUnit": true,
+              "m_AttackUnitCount": 1,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_UNIT_M_FUTURE_TITAN_PASSIVE2_RA"
+            },
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_M_FUTURE_TITAN_RA_PASSIVE3",
+                "m_SkillLevel": [
+                  1,
+                  4
+                ]
+              },
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.6,
+              "m_fEventTimeMax": 2.6666666666666665,
+              "m_fRangeMin": -100,
+              "m_fRangeMax": 500,
+              "m_bHitAir": false,
+              "m_AttackTargetUnit": true,
+              "m_AttackUnitCount": 3,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_UNIT_M_FUTURE_TITAN_PASSIVE2_PUSH_RA"
+            },
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_M_FUTURE_TITAN_RA_PASSIVE3",
+                "m_SkillLevel": [
+                  5,
+                  99
+                ]
+              },
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.2333333333333334,
+              "m_fEventTimeMax": 2.4,
+              "m_fRangeMin": -100,
+              "m_fRangeMax": 500,
+              "m_bHitAir": false,
+              "m_AttackTargetUnit": true,
+              "m_bCleanHit": true,
+              "m_AttackUnitCount": 1,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_UNIT_M_FUTURE_TITAN_PASSIVE2_RA"
+            },
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_M_FUTURE_TITAN_RA_PASSIVE3",
+                "m_SkillLevel": [
+                  5,
+                  99
+                ]
+              },
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.6,
+              "m_fEventTimeMax": 2.6666666666666665,
+              "m_fRangeMin": -100,
+              "m_fRangeMax": 500,
+              "m_bHitAir": false,
+              "m_AttackTargetUnit": true,
+              "m_bCleanHit": true,
+              "m_AttackUnitCount": 3,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_UNIT_M_FUTURE_TITAN_PASSIVE2_PUSH_RA"
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.7666666666666667,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 10,
+              "m_fCameraCrashTime": 1.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.6,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 15,
+              "m_fCameraCrashTime": 0.5
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_MECHANIC_RAZANGRIFF_SKILL_START"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.7666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ELECTRIC_03"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_21"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.2,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_TANK_SMALL_START"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.7333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_EXPLOSION_ATTACK_BIG_02"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.7333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_22"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 4.066666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_GUN_RELOAD_SMALL_04"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_StateName": "USN_PASSIVE2",
+          "m_AnimName": "RA_PASSIVE2",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 0.7,
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.7333333333333333,
+              "m_DEName": "DE_NKM_UNIT_M_FUTURE_TITAN_PASSIVE2_SHOT_RA",
+              "m_OffsetX": -165,
+              "m_OffsetY": 480
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8333333333333334,
+              "m_DEName": "DE_NKM_UNIT_M_FUTURE_TITAN_PASSIVE2_BASE_RA",
+              "m_OffsetX": -105,
+              "m_OffsetY": 480
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.9,
+              "m_DEName": "DE_NKM_UNIT_M_FUTURE_TITAN_PASSIVE2_BASE_RA",
+              "m_OffsetX": -165,
+              "m_OffsetY": 480
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_DEName": "DE_NKM_UNIT_M_FUTURE_TITAN_PASSIVE2_BASE_RA",
+              "m_OffsetX": -105,
+              "m_OffsetY": 480
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.7333333333333333,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 5.0,
+              "m_fCameraCrashTime": 0.5
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_27"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MISSILE_FIRE_05"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MISSILE_FIRE_05"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MISSILE_FIRE_05"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.9666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MISSILE_FIRE_05"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.6,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_30"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_LEADER",
+          "m_AnimName": "RA_PASSIVE3",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1,
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_StateCoolTime": 5,
+          "m_listNKMEventAnimSpeed": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_fAnimSpeed": 0.6
+            },
+            {
+              "m_fEventTime": 0.6,
+              "m_fAnimSpeed": 0.3
+            },
+            {
+              "m_fEventTime": 0.9333333333333333,
+              "m_fAnimSpeed": 1
+            }
+          ],
+          "m_listNKMEventInvincible": [
+            {
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_fEventTimeMax": 1.0
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.9333333333333333,
+              "m_BuffStrID": "BUFF_FURTURE_TITAN_READER_LV1_RA"
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.06666666666666667,
+              "m_EffectName": "AB_FX_air_explosion_fire",
+              "m_OffsetX": 120,
+              "m_OffsetY": 400,
+              "m_fScaleFactor": 0.7,
+              "m_AnimName": "BASE"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.26666666666666666,
+              "m_EffectName": "AB_FX_air_explosion_fire",
+              "m_OffsetX": 200,
+              "m_OffsetY": 140,
+              "m_fScaleFactor": 1.2,
+              "m_AnimName": "BASE"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5666666666666667,
+              "m_EffectName": "AB_FX_air_explosion_fire",
+              "m_OffsetX": -200,
+              "m_OffsetY": 220,
+              "m_fScaleFactor": 1,
+              "m_AnimName": "BASE"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8333333333333334,
+              "m_EffectName": "AB_FX_CA_HILDE_START_EXPLOSION_02",
+              "m_OffsetX": 0,
+              "m_OffsetY": 160,
+              "m_fScaleFactor": 0.5,
+              "m_AnimName": "BASE"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_08"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 0.06666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_EXPLOSION_FIRE_BIG"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 0.26666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_EXPLOSION_FIRE_BIG"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 0.5666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_EXPLOSION_FIRE_BIG_02"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 0.8333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_MECHANIC_BAYREN_SKILL_END"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_fFocusRange": 1200.0
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_StateName": "USN_RUN",
+          "m_AnimName": "RUN",
+          "m_bAnimLoop": true,
+          "m_bRun": true,
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.2,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 3.0,
+              "m_fCameraCrashTime": 0.2
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0333333333333334,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 3.0,
+              "m_fCameraCrashTime": 0.2
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK1",
+          "m_AnimName": "ATTACK1_START",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 2.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimTimeChangeStateTime": 1.3,
+          "m_AnimTimeChangeState": "USN_ATTACK1_LOOP",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_TANK_START_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_2",
+                "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_3",
+                "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_6"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK1_SHORT",
+          "m_AnimName": "ATTACK1_START",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 2.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimTimeChangeStateTime": 1.3,
+          "m_AnimTimeChangeState": "USN_ATTACK1_LOOP",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_TANK_START_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_2",
+                "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_3",
+                "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_6"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK1_LOOP",
+          "m_AnimName": "ATTACK1_LOOP",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 0.7,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_StateTimeChangeStateTime": 10,
+          "m_StateTimeChangeState": "USN_ATTACK1_END",
+          "m_TargetLostOrDieStateDurationTime": 0.5,
+          "m_TargetLostOrDieState": "USN_ATTACK1_END",
+          "m_TargetDistOverChangeStateDist": 1150.0,
+          "m_TargetDistOverChangeState": "USN_ATTACK1_END",
+          "m_AirTargetLoopChangeState": "USN_ATTACK1_LOOP_AIR",
+          "m_listNKMEventFindTarget": [
+            {
+              "m_fEventTime": 0.03333333333333333
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.1,
+              "m_DEName": "DE_NKM_UNIT_M_FUTRUE_TITAN_ATTACK_RA",
+              "m_bTargetPos": true
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 5.0,
+              "m_fCameraCrashTime": 0.2
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_EXPLOSION_ENERGY_BIG_02"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_bVoice": true,
+              "m_PlayRate": 0.2,
+              "m_listSoundName": [
+                "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_4",
+                "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_5"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK1_END",
+          "m_AnimName": "ATTACK1_END",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 0.75,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_TANK_START_SMALL"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK1_AIR",
+          "m_AnimName": "RA_ATTACK1_START",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 2.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimTimeChangeStateTime": 1.3,
+          "m_AnimTimeChangeState": "USN_ATTACK1_LOOP_AIR",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_TANK_START_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_2",
+                "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_3",
+                "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_6"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK1_LOOP_AIR",
+          "m_AnimName": "RA_ATTACK1_LOOP",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 0.7,
+          "m_bTargetNoChange": true,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_StateTimeChangeStateTime": 10,
+          "m_StateTimeChangeState": "USN_ATTACK1_AIR_END",
+          "m_TargetLostOrDieStateDurationTime": 0.5,
+          "m_TargetLostOrDieState": "USN_ATTACK1_AIR_END",
+          "m_TargetDistOverChangeStateDist": 1150.0,
+          "m_TargetDistOverChangeState": "USN_ATTACK1_AIR_END",
+          "m_LandTargetLoopChangeState": "USN_ATTACK1_LOOP",
+          "m_listNKMEventFindTarget": [
+            {
+              "m_fEventTime": 0.03333333333333333
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.1,
+              "m_DEName": "DE_NKM_UNIT_M_FUTRUE_TITAN_ATTACK_AIR_RA",
+              "m_OffsetX": 0,
+              "m_OffsetY": 100,
+              "m_bTargetPos": true
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 5.0,
+              "m_fCameraCrashTime": 0.2
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_EXPLOSION_ENERGY_BIG_02"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_bVoice": true,
+              "m_PlayRate": 0.2,
+              "m_listSoundName": [
+                "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_4",
+                "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_5"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK1_AIR_END",
+          "m_AnimName": "RA_ATTACK1_END",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 0.75,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_TANK_START_SMALL"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_SKILL1",
+          "m_AnimName": "SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_SKILL",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_bSkillCutIn": true,
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.2333333333333334,
+              "m_EffectName": "AB_FX_COMMON_MISSILE_START",
+              "m_OffsetX": -80,
+              "m_OffsetY": 150,
+              "m_OffsetZ": 0,
+              "m_fScaleFactor": 1.0,
+              "m_AnimName": "BASE"
+            }
+          ],
+          "m_listNKMEventAnimSpeed": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L17_1 / 30"
+              },
+              "m_fAnimSpeed": 1.5
+            },
+            {
+              "m_fEventTime": 1.6666666666666667,
+              "m_fAnimSpeed": 1.0
+            },
+            {
+              "m_fEventTime": 3.3333333333333335,
+              "m_fAnimSpeed": 1.5
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.8333333333333333,
+              "m_DEName": "DE_NKM_UNIT_M_FUTRUE_TITAN_SKILL1_RA",
+              "m_OffsetX": 0,
+              "m_OffsetY": 150,
+              "m_bTargetPos": true
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.025,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_30"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.775,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_07"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.2333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MISSILE_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MISSILE_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.4333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MISSILE_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MISSILE_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.6333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MISSILE_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.875,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_07"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ACTIVE_1",
+                "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ACTIVE_2",
+                "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_1"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_bAnimLoop": false,
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_FootOffLandChangeState": "USN_ASTAND",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.025,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_TANK_DAMAGE_DOWN"
+              ],
+              "m_bStopSound": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ELECTRIC_ATTACK_SMALL"
+              ],
+              "m_bStopSound": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_EXPLOSION_ATTACK_BIG_02"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_DEATH_1",
+                "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_DEATH_2"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_STAND",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": false,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_FootOffLandChangeState": "USN_ASTAND"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_bAnimLoop": false,
+          "m_listNKMEventDissolve": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_fDissolve": 1,
+              "m_fTrackTime": 1.5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_UnitSizeX": 290,
+    "m_UnitSizeY": 290,
+    "m_SpriteScale": 0.95,
+    "m_fShadowScaleX": 500,
+    "m_fShadowScaleY": 500,
+    "m_fGageOffsetY": 340,
+    "m_fForceRespawnZposMin": 0.95,
+    "m_fForceRespawnZposMax": 0.98,
+    "m_SpeedRun": 150,
+    "m_fDamageUpFactor": 0,
+    "m_bNoDamageDownState": true,
+    "m_TargetNearRange": 750,
+    "m_SeeRange": 950,
+    "m_SeeRangeMax": 1150,
+    "m_AttackedTargetTime": 1,
+    "m_bAttackedTarget": false,
+    "m_bUseMotionBlur": false,
+    "m_fBuffEffectScaleFactor": 2,
+    "m_listStaticBuffData": [
+      {
+        "m_BuffStrID": "BUFF_COMMON_SUPERARMOR_LV2",
+        "m_BuffLevel": 1
+      },
+      {
+        "m_BuffStrID": "BUFF_FURTURE_TITAN_PASSIVE_RA_RANGE"
+      }
+    ],
+    "m_listBuffUnitDieEvent": [
+      {
+        "m_BuffStrID": "BUFF_FURTURE_TITAN_PASSIVE_RA_RANGE",
+        "m_OutBuffStrID": "BUFF_FURTURE_TITAN_PASSIVE_RA"
+      }
+    ],
+    "m_listAttackStateData": [
+      {
+        "m_Condition": {
+          "m_IgnoreBuffStrID": "BUFF_FURTURE_TITAN_PASSIVE3_RA"
+        },
+        "m_StateName": "USN_PASSIVE1",
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 300
+      },
+      {
+        "m_Condition": {
+          "m_NeedBuffStrID": "BUFF_FURTURE_TITAN_PASSIVE3_RA"
+        },
+        "m_StateName": "USN_ATTACK1_SHORT",
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 300
+      },
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_fRangeMin": 300
+      }
+    ],
+    "m_listAirAttackStateData": [
+      {
+        "m_StateName": "USN_ATTACK1_AIR"
+      }
+    ],
+    "m_listSkillStateData": [
+      {
+        "m_StateName": "USN_SKILL1"
+      }
+    ],
+    "m_listAccumStateChangePack": [
+      {
+        "m_Condition": {
+          "m_SkillStrID": "NKM_UNIT_M_FUTURE_TITAN_RA_SKILL",
+          "m_SkillLevel": [
+            10,
+            99
+          ]
+        },
+        "m_listAccumStateChange": [
+          {
+            "m_listAccumStateName": [
+              "USN_ATTACK1",
+              "USN_ATTACK1_AIR",
+              "USN_ATTACK1_SHORT",
+              "USN_PASSIVE1",
+              "USN_SKILL1"
+            ],
+            "m_AccumCount": 3,
+            "m_TargetStateName": "USN_PASSIVE2"
+          }
+        ]
+      }
+    ],
+    "m_listPhaseChangeData": [
+      {
+        "m_Condition": {
+          "m_SkillStrID": "NKM_UNIT_M_FUTURE_TITAN_RA_LEADER",
+          "m_SkillLevel": [
+            5,
+            99
+          ],
+          "m_bLeaderUnit": true
+        },
+        "m_TargetPhase": 1,
+        "m_fChangeConditionHPRate": 0.01,
+        "m_ChangeStateName": "USN_LEADER"
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.2,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_DamagedChangeState": "USN_ASTAND",
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 40.0,
+            "m_fCameraCrashTime": 0.6
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.8333333333333333,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 10.0,
+            "m_fCameraCrashTime": 0.3
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_M_FUTURE_TITAN_RA_PASSIVE",
+              "m_SkillLevel": [
+                5,
+                99
+              ]
+            },
+            "m_bAnimTime": false,
+            "m_fScaleFactor": 1.0,
+            "m_fEventTime": 0.5,
+            "m_EffectName": "AB_FX_COMMON_SCAN_BLUE",
+            "m_AnimName": "BASE"
+          }
+        ],
+        "m_listNKMEventCost": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.26666666666666666,
+            "m_AddCost": 1
+          },
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_M_FUTURE_TITAN_RA_LEADER",
+              "m_SkillLevel": [
+                1,
+                99
+              ],
+              "m_bLeaderUnit": true
+            },
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.4,
+            "m_AddCost": 1
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_M_FUTURE_TITAN_RA_PASSIVE",
+              "m_SkillLevel": [
+                5,
+                99
+              ]
+            },
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.5,
+            "m_fEventTimeMax": 0.6666666666666666,
+            "m_fRangeMin": -6000.0,
+            "m_fRangeMax": 6000.0,
+            "m_bHitBossUnit": false,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ALL_NOT_SELF",
+            "m_AttackUnitCount": 99,
+            "m_DamageTempletName": "DT_NKM_UNIT_M_FUTURE_TITAN_PASSIVE1_LV5_RA"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWING_BIG"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_TANK_START_BIG"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.6666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_TANK_START_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_START_1",
+              "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_START_2"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_StateName": "USN_PASSIVE1",
+        "m_AnimName": "RA_PASSIVE1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.433333333333333,
+            "m_BuffStrID": "BUFF_FURTURE_TITAN_PASSIVE3_RA"
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_M_FUTURE_TITAN_RA_PASSIVE3",
+              "m_SkillLevel": [
+                1,
+                4
+              ]
+            },
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.2333333333333334,
+            "m_fEventTimeMax": 2.4,
+            "m_fRangeMin": -100,
+            "m_fRangeMax": 500,
+            "m_bHitAir": false,
+            "m_AttackTargetUnit": true,
+            "m_AttackUnitCount": 1,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_UNIT_M_FUTURE_TITAN_PASSIVE2_RA"
+          },
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_M_FUTURE_TITAN_RA_PASSIVE3",
+              "m_SkillLevel": [
+                1,
+                4
+              ]
+            },
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.6,
+            "m_fEventTimeMax": 2.6666666666666665,
+            "m_fRangeMin": -100,
+            "m_fRangeMax": 500,
+            "m_bHitAir": false,
+            "m_AttackTargetUnit": true,
+            "m_AttackUnitCount": 3,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_UNIT_M_FUTURE_TITAN_PASSIVE2_PUSH_RA"
+          },
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_M_FUTURE_TITAN_RA_PASSIVE3",
+              "m_SkillLevel": [
+                5,
+                99
+              ]
+            },
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.2333333333333334,
+            "m_fEventTimeMax": 2.4,
+            "m_fRangeMin": -100,
+            "m_fRangeMax": 500,
+            "m_bHitAir": false,
+            "m_AttackTargetUnit": true,
+            "m_bCleanHit": true,
+            "m_AttackUnitCount": 1,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_UNIT_M_FUTURE_TITAN_PASSIVE2_RA"
+          },
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_M_FUTURE_TITAN_RA_PASSIVE3",
+              "m_SkillLevel": [
+                5,
+                99
+              ]
+            },
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.6,
+            "m_fEventTimeMax": 2.6666666666666665,
+            "m_fRangeMin": -100,
+            "m_fRangeMax": 500,
+            "m_bHitAir": false,
+            "m_AttackTargetUnit": true,
+            "m_bCleanHit": true,
+            "m_AttackUnitCount": 3,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_UNIT_M_FUTURE_TITAN_PASSIVE2_PUSH_RA"
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.7666666666666667,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 10,
+            "m_fCameraCrashTime": 1.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.6,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 15,
+            "m_fCameraCrashTime": 0.5
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_MECHANIC_RAZANGRIFF_SKILL_START"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.7666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ELECTRIC_03"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_21"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.2,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_TANK_SMALL_START"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.7333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_EXPLOSION_ATTACK_BIG_02"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.7333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_22"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 4.066666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_GUN_RELOAD_SMALL_04"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_StateName": "USN_PASSIVE2",
+        "m_AnimName": "RA_PASSIVE2",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 0.7,
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.7333333333333333,
+            "m_DEName": "DE_NKM_UNIT_M_FUTURE_TITAN_PASSIVE2_SHOT_RA",
+            "m_OffsetX": -165,
+            "m_OffsetY": 480
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8333333333333334,
+            "m_DEName": "DE_NKM_UNIT_M_FUTURE_TITAN_PASSIVE2_BASE_RA",
+            "m_OffsetX": -105,
+            "m_OffsetY": 480
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.9,
+            "m_DEName": "DE_NKM_UNIT_M_FUTURE_TITAN_PASSIVE2_BASE_RA",
+            "m_OffsetX": -165,
+            "m_OffsetY": 480
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_DEName": "DE_NKM_UNIT_M_FUTURE_TITAN_PASSIVE2_BASE_RA",
+            "m_OffsetX": -105,
+            "m_OffsetY": 480
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.7333333333333333,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 5.0,
+            "m_fCameraCrashTime": 0.5
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_27"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MISSILE_FIRE_05"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MISSILE_FIRE_05"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MISSILE_FIRE_05"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.9666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MISSILE_FIRE_05"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.6,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_30"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_LEADER",
+        "m_AnimName": "RA_PASSIVE3",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1,
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_StateCoolTime": 5,
+        "m_listNKMEventAnimSpeed": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_fAnimSpeed": 0.6
+          },
+          {
+            "m_fEventTime": 0.6,
+            "m_fAnimSpeed": 0.3
+          },
+          {
+            "m_fEventTime": 0.9333333333333333,
+            "m_fAnimSpeed": 1
+          }
+        ],
+        "m_listNKMEventInvincible": [
+          {
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_fEventTimeMax": 1.0
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.9333333333333333,
+            "m_BuffStrID": "BUFF_FURTURE_TITAN_READER_LV1_RA"
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.06666666666666667,
+            "m_EffectName": "AB_FX_air_explosion_fire",
+            "m_OffsetX": 120,
+            "m_OffsetY": 400,
+            "m_fScaleFactor": 0.7,
+            "m_AnimName": "BASE"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.26666666666666666,
+            "m_EffectName": "AB_FX_air_explosion_fire",
+            "m_OffsetX": 200,
+            "m_OffsetY": 140,
+            "m_fScaleFactor": 1.2,
+            "m_AnimName": "BASE"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5666666666666667,
+            "m_EffectName": "AB_FX_air_explosion_fire",
+            "m_OffsetX": -200,
+            "m_OffsetY": 220,
+            "m_fScaleFactor": 1,
+            "m_AnimName": "BASE"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8333333333333334,
+            "m_EffectName": "AB_FX_CA_HILDE_START_EXPLOSION_02",
+            "m_OffsetX": 0,
+            "m_OffsetY": 160,
+            "m_fScaleFactor": 0.5,
+            "m_AnimName": "BASE"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_08"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 0.06666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_EXPLOSION_FIRE_BIG"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 0.26666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_EXPLOSION_FIRE_BIG"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 0.5666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_EXPLOSION_FIRE_BIG_02"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 0.8333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_MECHANIC_BAYREN_SKILL_END"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_fFocusRange": 1200.0
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_StateName": "USN_RUN",
+        "m_AnimName": "RUN",
+        "m_bAnimLoop": true,
+        "m_bRun": true,
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.2,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 3.0,
+            "m_fCameraCrashTime": 0.2
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0333333333333334,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 3.0,
+            "m_fCameraCrashTime": 0.2
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK1",
+        "m_AnimName": "ATTACK1_START",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 2.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimTimeChangeStateTime": 1.3,
+        "m_AnimTimeChangeState": "USN_ATTACK1_LOOP",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_TANK_START_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_2",
+              "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_3",
+              "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_6"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK1_SHORT",
+        "m_AnimName": "ATTACK1_START",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 2.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimTimeChangeStateTime": 1.3,
+        "m_AnimTimeChangeState": "USN_ATTACK1_LOOP",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_TANK_START_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_2",
+              "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_3",
+              "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_6"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK1_LOOP",
+        "m_AnimName": "ATTACK1_LOOP",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 0.7,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_StateTimeChangeStateTime": 10,
+        "m_StateTimeChangeState": "USN_ATTACK1_END",
+        "m_TargetLostOrDieStateDurationTime": 0.5,
+        "m_TargetLostOrDieState": "USN_ATTACK1_END",
+        "m_TargetDistOverChangeStateDist": 1150.0,
+        "m_TargetDistOverChangeState": "USN_ATTACK1_END",
+        "m_AirTargetLoopChangeState": "USN_ATTACK1_LOOP_AIR",
+        "m_listNKMEventFindTarget": [
+          {
+            "m_fEventTime": 0.03333333333333333
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.1,
+            "m_DEName": "DE_NKM_UNIT_M_FUTRUE_TITAN_ATTACK_RA",
+            "m_bTargetPos": true
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 5.0,
+            "m_fCameraCrashTime": 0.2
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_EXPLOSION_ENERGY_BIG_02"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_bVoice": true,
+            "m_PlayRate": 0.2,
+            "m_listSoundName": [
+              "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_4",
+              "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_5"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK1_END",
+        "m_AnimName": "ATTACK1_END",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 0.75,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_TANK_START_SMALL"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK1_AIR",
+        "m_AnimName": "RA_ATTACK1_START",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 2.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimTimeChangeStateTime": 1.3,
+        "m_AnimTimeChangeState": "USN_ATTACK1_LOOP_AIR",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_TANK_START_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_2",
+              "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_3",
+              "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_6"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK1_LOOP_AIR",
+        "m_AnimName": "RA_ATTACK1_LOOP",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 0.7,
+        "m_bTargetNoChange": true,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_StateTimeChangeStateTime": 10,
+        "m_StateTimeChangeState": "USN_ATTACK1_AIR_END",
+        "m_TargetLostOrDieStateDurationTime": 0.5,
+        "m_TargetLostOrDieState": "USN_ATTACK1_AIR_END",
+        "m_TargetDistOverChangeStateDist": 1150.0,
+        "m_TargetDistOverChangeState": "USN_ATTACK1_AIR_END",
+        "m_LandTargetLoopChangeState": "USN_ATTACK1_LOOP",
+        "m_listNKMEventFindTarget": [
+          {
+            "m_fEventTime": 0.03333333333333333
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.1,
+            "m_DEName": "DE_NKM_UNIT_M_FUTRUE_TITAN_ATTACK_AIR_RA",
+            "m_OffsetX": 0,
+            "m_OffsetY": 100,
+            "m_bTargetPos": true
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 5.0,
+            "m_fCameraCrashTime": 0.2
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_EXPLOSION_ENERGY_BIG_02"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_bVoice": true,
+            "m_PlayRate": 0.2,
+            "m_listSoundName": [
+              "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_4",
+              "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_5"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK1_AIR_END",
+        "m_AnimName": "RA_ATTACK1_END",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 0.75,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_TANK_START_SMALL"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_SKILL1",
+        "m_AnimName": "SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_SKILL",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_bSkillCutIn": true,
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.2333333333333334,
+            "m_EffectName": "AB_FX_COMMON_MISSILE_START",
+            "m_OffsetX": -80,
+            "m_OffsetY": 150,
+            "m_OffsetZ": 0,
+            "m_fScaleFactor": 1.0,
+            "m_AnimName": "BASE"
+          }
+        ],
+        "m_listNKMEventAnimSpeed": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L17_1 / 30"
+            },
+            "m_fAnimSpeed": 1.5
+          },
+          {
+            "m_fEventTime": 1.6666666666666667,
+            "m_fAnimSpeed": 1.0
+          },
+          {
+            "m_fEventTime": 3.3333333333333335,
+            "m_fAnimSpeed": 1.5
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.8333333333333333,
+            "m_DEName": "DE_NKM_UNIT_M_FUTRUE_TITAN_SKILL1_RA",
+            "m_OffsetX": 0,
+            "m_OffsetY": 150,
+            "m_bTargetPos": true
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.025,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_30"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.775,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_07"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.2333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MISSILE_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MISSILE_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.4333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MISSILE_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MISSILE_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.6333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MISSILE_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.875,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_07"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ACTIVE_1",
+              "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ACTIVE_2",
+              "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_ATTACK_1"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_bAnimLoop": false,
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_FootOffLandChangeState": "USN_ASTAND",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.025,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_TANK_DAMAGE_DOWN"
+            ],
+            "m_bStopSound": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ELECTRIC_ATTACK_SMALL"
+            ],
+            "m_bStopSound": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_EXPLOSION_ATTACK_BIG_02"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_DEATH_1",
+              "VOICE_UNIT_M_FUTURE_TITAN_BATTLE_DEATH_2"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_STAND",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": false,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_FootOffLandChangeState": "USN_ASTAND"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_bAnimLoop": false,
+        "m_listNKMEventDissolve": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_fDissolve": 1,
+            "m_fTrackTime": 1.5
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

@@ -1,0 +1,233 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_CHALLENGE_SOF_1_2.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 2
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_SHIP_ETC_BARRICADE_6"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.05
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatValue": {
+          "NST_HP": 200000,
+          "NST_DEF": 2000
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_BOSS_EQC_C_SOF_JANE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 180,
+            "m_fEventTimeGap": 60,
+            "m_fEventPos": 0.0
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_BASIC_WALL",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 180,
+            "m_fEventTimeGap": 30,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_MTC_TIDE_HELI",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeEnd": 180,
+            "m_fEventTimeGap": 10,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.4,
+              "NST_DEF": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_SHIELD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeEnd": 180,
+            "m_fEventTimeGap": 10,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.4,
+              "NST_DEF": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeEnd": 180,
+            "m_fEventTimeGap": 10,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0,
+              "NST_DEF": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_SNIPER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeEnd": 180,
+            "m_fEventTimeGap": 10,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0,
+              "NST_DEF": 1.5
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 2,
+    "m_BossUnitStrID": "NKM_SHIP_ETC_BARRICADE_6",
+    "m_fBossPosZ": 0.05,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatValue": {
+          "NST_HP": 200000,
+          "NST_DEF": 2000
+        }
+      }
+    },
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_BOSS_EQC_C_SOF_JANE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 180,
+          "m_fEventTimeGap": 60,
+          "m_fEventPos": 0.0
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_BASIC_WALL",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 180,
+          "m_fEventTimeGap": 30,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_MTC_TIDE_HELI",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeEnd": 180,
+          "m_fEventTimeGap": 10,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.4,
+            "NST_DEF": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_SHIELD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeEnd": 180,
+          "m_fEventTimeGap": 10,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.4,
+            "NST_DEF": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeEnd": 180,
+          "m_fEventTimeGap": 10,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0,
+            "NST_DEF": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_SNIPER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeEnd": 180,
+          "m_fEventTimeGap": 10,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0,
+            "NST_DEF": 1.5
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

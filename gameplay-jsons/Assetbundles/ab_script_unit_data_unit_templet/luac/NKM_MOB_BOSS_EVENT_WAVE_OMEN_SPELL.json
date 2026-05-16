@@ -1,0 +1,1127 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_BOSS_EVENT_WAVE_OMEN_SPELL.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 18,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_UNIT_BASE_BOSS"
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": true
+    },
+    {
+      "__key": "m_NKC_TEAM_COLOR_TYPE",
+      "value": "NTCT_NO"
+    },
+    {
+      "__key": "m_SeeTarget",
+      "value": false
+    },
+    {
+      "__key": "m_bNoMove",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageStopTime",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageState",
+      "value": true
+    },
+    {
+      "__key": "m_fDamageUpFactor",
+      "value": 0.0
+    },
+    {
+      "__key": "m_bImmuneStun",
+      "value": true
+    },
+    {
+      "__key": "m_bImmuneSleep",
+      "value": true
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "__unparsed_expr": "L1_1 / 30"
+    },
+    {
+      "__key": "m_fForceRespawnXpos",
+      "value": 0.1
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 450
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_BuffStrID": "NKM_MOB_BOSS_EVENT_WAVE_OMEN_STACK_UP",
+          "m_BuffLevel": 1,
+          "m_fRebuffTime": 10
+        }
+      ]
+    },
+    {
+      "__key": "m_listTriggerRepeatData",
+      "value": [
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "EventVariable",
+              "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+              "m_Value": 0,
+              "Inverse": true
+            }
+          ],
+          "m_TriggerName": "TRIGGER_DISTURB_SPAWN_COUNT",
+          "m_fRepeatTime": 0.16666666666666666
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "EventVariable",
+              "m_Name": "VAR_RESPAWN_DISTURB_COUNT",
+              "m_Value": [
+                5,
+                99
+              ]
+            }
+          ],
+          "m_TriggerName": "TRIGGER_RESPAWN_DISTURB_IF_5",
+          "m_fRepeatTime": 0.16666666666666666
+        }
+      ]
+    },
+    {
+      "__key": "m_dicReaction",
+      "value": [
+        {
+          "m_Name": "REACTION_CHECK_SPELL_DISTURB_KILL",
+          "m_EventType": "RESPAWN",
+          "m_RequireCount": 1,
+          "m_bImmediate": true,
+          "m_ReactionCondition": [
+            {
+              "Type": "UnitID",
+              "m_UnitID": [
+                "NKM_MOB_ELITE_DEFENCE_SPELL_DISTURB_KILL"
+              ]
+            }
+          ],
+          "m_Trigger": "TRIGGER_SPELL_DISTURB_KILL",
+          "m_TriggerTarget": "MASTER"
+        }
+      ]
+    },
+    {
+      "__key": "m_dicTriggerSet",
+      "value": [
+        {
+          "m_Name": "TRIGGER_DISTURB_SPAWN_COUNT",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "RESTART",
+          "m_listNKMEventChangeState": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+                  "m_Value": 1
+                }
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_ChangeState": "USN_COUNT_1"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+                  "m_Value": 2
+                }
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_ChangeState": "USN_COUNT_2"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+                  "m_Value": 3
+                }
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_ChangeState": "USN_COUNT_3"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+                  "m_Value": 4
+                }
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_ChangeState": "USN_COUNT_4"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+                  "m_Value": 5
+                }
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_ChangeState": "USN_COUNT_5"
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_RESPAWN_DISTURB_TIMING",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "RESTART",
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": 8,
+              "m_Type": "SET",
+              "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+              "m_Value": 1
+            },
+            {
+              "m_fEventTime": 16,
+              "m_Type": "SET",
+              "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+              "m_Value": 2
+            },
+            {
+              "m_fEventTime": 24,
+              "m_Type": "SET",
+              "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+              "m_Value": 3
+            },
+            {
+              "m_fEventTime": 32,
+              "m_Type": "SET",
+              "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+              "m_Value": 4
+            },
+            {
+              "m_fEventTime": 40,
+              "m_Type": "SET",
+              "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+              "m_Value": 5
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_CHECK_RESPAWN_DISTURB_RESPAWN",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "PARALLEL",
+          "m_listNKMEventVariable": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_DISTURB_TEXT_ONCE",
+                  "m_Value": [
+                    1,
+                    1
+                  ],
+                  "Inverse": true
+                }
+              ],
+              "m_fEventTime": 3.1666666666666665,
+              "m_Type": "SET",
+              "m_Name": "VAR_DISTURB_TEXT_ONCE",
+              "m_Value": 1
+            }
+          ],
+          "m_listNKMEventText": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_DISTURB_TEXT_ONCE",
+                  "m_Value": [
+                    1,
+                    1
+                  ],
+                  "Inverse": true
+                }
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_Text": "SI_BATTLE_MOB_ELITE_DEFENCE_SPELL_MOB_SPAWN_1"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_DISTURB_TEXT_ONCE",
+                  "m_Value": [
+                    1,
+                    1
+                  ],
+                  "Inverse": true
+                }
+              ],
+              "m_fEventTime": 3.0,
+              "m_Text": "SI_BATTLE_MOB_ELITE_DEFENCE_SPELL_MOB_SPAWN_2"
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_RESPAWN_DISTURB_IF_5",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "IGNORE",
+          "m_listNKMEventChangeState": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_ChangeState": "USN_COUNT_0"
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_TargetUnitID": 220446,
+              "m_ChangeState": "USN_DAMAGE_DIE2"
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_TargetUnitID": 220459,
+              "m_ChangeState": "USN_SKILL1_END"
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_BuffStrID": "BUFF_MOB_EVENT_WAVE_OMEN_SPELL"
+            },
+            {
+              "m_BuffStrID": "NKM_MOB_BOSS_EVENT_WAVE_OMEN_STACK_UP",
+              "m_Overlap": 2
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_SPELL_DISTURB_KILL",
+          "m_bAnimTime": false,
+          "m_listNKMEventChangeState": [
+            {
+              "m_TargetUnitID": 220446,
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_ChangeState": "USN_DAMAGE_DIE"
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_ChangeState": "USN_COUNT_0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "ASTART",
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_RESPAWN_DISTURB_COUNT",
+              "m_Value": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+              "m_Value": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_DISTURB_TEXT_ONCE",
+              "m_Value": 0
+            }
+          ],
+          "m_listNKMEventTrigger": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_TargetTrigger": "TRIGGER_RESPAWN_DISTURB_TIMING"
+            }
+          ],
+          "m_listNKMEventReaction": [
+            {
+              "m_Reaction": "REACTION_CHECK_SPELL_DISTURB_KILL"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ASTAND",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND"
+        },
+        {
+          "m_StateName": "USN_COUNT_0",
+          "m_AnimName": "ASTAND",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_listNKMEventTrigger": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_TargetTrigger": "TRIGGER_RESPAWN_DISTURB_TIMING"
+            }
+          ],
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+              "m_Value": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_RESPAWN_DISTURB_COUNT",
+              "m_Value": 0
+            }
+          ],
+          "m_listNKMEventChangeState": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_ChangeState": "USN_ASTAND"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_COUNT_1",
+          "m_AnimName": "ASTAND",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_listNKMEventTrigger": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_TargetTrigger": "TRIGGER_CHECK_RESPAWN_DISTURB_RESPAWN"
+            }
+          ],
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+              "m_Type": "SET",
+              "m_Value": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_Name": "VAR_RESPAWN_DISTURB_COUNT",
+              "m_Type": "SET",
+              "m_Value": 1
+            }
+          ],
+          "m_listNKMEventChangeState": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_ChangeState": "USN_ASTAND"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_COUNT_2",
+          "m_AnimName": "ASTAND",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+              "m_Value": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_RESPAWN_DISTURB_COUNT",
+              "m_Value": 2
+            }
+          ],
+          "m_listNKMEventChangeState": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_ChangeState": "USN_ASTAND"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_COUNT_3",
+          "m_AnimName": "ASTAND",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+              "m_Value": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_RESPAWN_DISTURB_COUNT",
+              "m_Value": 3
+            }
+          ],
+          "m_listNKMEventChangeState": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_ChangeState": "USN_ASTAND"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_COUNT_4",
+          "m_AnimName": "ASTAND",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+              "m_Value": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_RESPAWN_DISTURB_COUNT",
+              "m_Value": 4
+            }
+          ],
+          "m_listNKMEventChangeState": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_ChangeState": "USN_ASTAND"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_COUNT_5",
+          "m_AnimName": "ASTAND",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+              "m_Value": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L13_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_RESPAWN_DISTURB_COUNT",
+              "m_Value": 5
+            }
+          ],
+          "m_listNKMEventChangeState": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_ChangeState": "USN_ASTAND"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_UNIT_BASE_BOSS",
+    "m_bShowGage": true,
+    "m_NKC_TEAM_COLOR_TYPE": "NTCT_NO",
+    "m_SeeTarget": false,
+    "m_bNoMove": true,
+    "m_bNoDamageStopTime": true,
+    "m_bNoDamageState": true,
+    "m_fDamageUpFactor": 0.0,
+    "m_bImmuneStun": true,
+    "m_bImmuneSleep": true,
+    "m_fDieCompleteTime": {
+      "__unparsed_expr": "L1_1 / 30"
+    },
+    "m_fForceRespawnXpos": 0.1,
+    "m_fGageOffsetY": 450,
+    "m_listStaticBuffData": [
+      {
+        "m_BuffStrID": "NKM_MOB_BOSS_EVENT_WAVE_OMEN_STACK_UP",
+        "m_BuffLevel": 1,
+        "m_fRebuffTime": 10
+      }
+    ],
+    "m_listTriggerRepeatData": [
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "EventVariable",
+            "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+            "m_Value": 0,
+            "Inverse": true
+          }
+        ],
+        "m_TriggerName": "TRIGGER_DISTURB_SPAWN_COUNT",
+        "m_fRepeatTime": 0.16666666666666666
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "EventVariable",
+            "m_Name": "VAR_RESPAWN_DISTURB_COUNT",
+            "m_Value": [
+              5,
+              99
+            ]
+          }
+        ],
+        "m_TriggerName": "TRIGGER_RESPAWN_DISTURB_IF_5",
+        "m_fRepeatTime": 0.16666666666666666
+      }
+    ],
+    "m_dicReaction": [
+      {
+        "m_Name": "REACTION_CHECK_SPELL_DISTURB_KILL",
+        "m_EventType": "RESPAWN",
+        "m_RequireCount": 1,
+        "m_bImmediate": true,
+        "m_ReactionCondition": [
+          {
+            "Type": "UnitID",
+            "m_UnitID": [
+              "NKM_MOB_ELITE_DEFENCE_SPELL_DISTURB_KILL"
+            ]
+          }
+        ],
+        "m_Trigger": "TRIGGER_SPELL_DISTURB_KILL",
+        "m_TriggerTarget": "MASTER"
+      }
+    ],
+    "m_dicTriggerSet": [
+      {
+        "m_Name": "TRIGGER_DISTURB_SPAWN_COUNT",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "RESTART",
+        "m_listNKMEventChangeState": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+                "m_Value": 1
+              }
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_ChangeState": "USN_COUNT_1"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+                "m_Value": 2
+              }
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_ChangeState": "USN_COUNT_2"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+                "m_Value": 3
+              }
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_ChangeState": "USN_COUNT_3"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+                "m_Value": 4
+              }
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_ChangeState": "USN_COUNT_4"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+                "m_Value": 5
+              }
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_ChangeState": "USN_COUNT_5"
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_RESPAWN_DISTURB_TIMING",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "RESTART",
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": 8,
+            "m_Type": "SET",
+            "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+            "m_Value": 1
+          },
+          {
+            "m_fEventTime": 16,
+            "m_Type": "SET",
+            "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+            "m_Value": 2
+          },
+          {
+            "m_fEventTime": 24,
+            "m_Type": "SET",
+            "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+            "m_Value": 3
+          },
+          {
+            "m_fEventTime": 32,
+            "m_Type": "SET",
+            "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+            "m_Value": 4
+          },
+          {
+            "m_fEventTime": 40,
+            "m_Type": "SET",
+            "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+            "m_Value": 5
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_CHECK_RESPAWN_DISTURB_RESPAWN",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "PARALLEL",
+        "m_listNKMEventVariable": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_DISTURB_TEXT_ONCE",
+                "m_Value": [
+                  1,
+                  1
+                ],
+                "Inverse": true
+              }
+            ],
+            "m_fEventTime": 3.1666666666666665,
+            "m_Type": "SET",
+            "m_Name": "VAR_DISTURB_TEXT_ONCE",
+            "m_Value": 1
+          }
+        ],
+        "m_listNKMEventText": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_DISTURB_TEXT_ONCE",
+                "m_Value": [
+                  1,
+                  1
+                ],
+                "Inverse": true
+              }
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_Text": "SI_BATTLE_MOB_ELITE_DEFENCE_SPELL_MOB_SPAWN_1"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_DISTURB_TEXT_ONCE",
+                "m_Value": [
+                  1,
+                  1
+                ],
+                "Inverse": true
+              }
+            ],
+            "m_fEventTime": 3.0,
+            "m_Text": "SI_BATTLE_MOB_ELITE_DEFENCE_SPELL_MOB_SPAWN_2"
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_RESPAWN_DISTURB_IF_5",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "IGNORE",
+        "m_listNKMEventChangeState": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_ChangeState": "USN_COUNT_0"
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_TargetUnitID": 220446,
+            "m_ChangeState": "USN_DAMAGE_DIE2"
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_TargetUnitID": 220459,
+            "m_ChangeState": "USN_SKILL1_END"
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_BuffStrID": "BUFF_MOB_EVENT_WAVE_OMEN_SPELL"
+          },
+          {
+            "m_BuffStrID": "NKM_MOB_BOSS_EVENT_WAVE_OMEN_STACK_UP",
+            "m_Overlap": 2
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_SPELL_DISTURB_KILL",
+        "m_bAnimTime": false,
+        "m_listNKMEventChangeState": [
+          {
+            "m_TargetUnitID": 220446,
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_ChangeState": "USN_DAMAGE_DIE"
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_ChangeState": "USN_COUNT_0"
+          }
+        ]
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "ASTART",
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_RESPAWN_DISTURB_COUNT",
+            "m_Value": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+            "m_Value": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_DISTURB_TEXT_ONCE",
+            "m_Value": 0
+          }
+        ],
+        "m_listNKMEventTrigger": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_TargetTrigger": "TRIGGER_RESPAWN_DISTURB_TIMING"
+          }
+        ],
+        "m_listNKMEventReaction": [
+          {
+            "m_Reaction": "REACTION_CHECK_SPELL_DISTURB_KILL"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ASTAND",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND"
+      },
+      {
+        "m_StateName": "USN_COUNT_0",
+        "m_AnimName": "ASTAND",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_listNKMEventTrigger": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_TargetTrigger": "TRIGGER_RESPAWN_DISTURB_TIMING"
+          }
+        ],
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+            "m_Value": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_RESPAWN_DISTURB_COUNT",
+            "m_Value": 0
+          }
+        ],
+        "m_listNKMEventChangeState": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_ChangeState": "USN_ASTAND"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_COUNT_1",
+        "m_AnimName": "ASTAND",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_listNKMEventTrigger": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_TargetTrigger": "TRIGGER_CHECK_RESPAWN_DISTURB_RESPAWN"
+          }
+        ],
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+            "m_Type": "SET",
+            "m_Value": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_Name": "VAR_RESPAWN_DISTURB_COUNT",
+            "m_Type": "SET",
+            "m_Value": 1
+          }
+        ],
+        "m_listNKMEventChangeState": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_ChangeState": "USN_ASTAND"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_COUNT_2",
+        "m_AnimName": "ASTAND",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+            "m_Value": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_RESPAWN_DISTURB_COUNT",
+            "m_Value": 2
+          }
+        ],
+        "m_listNKMEventChangeState": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_ChangeState": "USN_ASTAND"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_COUNT_3",
+        "m_AnimName": "ASTAND",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+            "m_Value": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_RESPAWN_DISTURB_COUNT",
+            "m_Value": 3
+          }
+        ],
+        "m_listNKMEventChangeState": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_ChangeState": "USN_ASTAND"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_COUNT_4",
+        "m_AnimName": "ASTAND",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+            "m_Value": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_RESPAWN_DISTURB_COUNT",
+            "m_Value": 4
+          }
+        ],
+        "m_listNKMEventChangeState": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_ChangeState": "USN_ASTAND"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_COUNT_5",
+        "m_AnimName": "ASTAND",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_RESPAWN_DISTURB_TIMING",
+            "m_Value": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L13_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_RESPAWN_DISTURB_COUNT",
+            "m_Value": 5
+          }
+        ],
+        "m_listNKMEventChangeState": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_ChangeState": "USN_ASTAND"
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

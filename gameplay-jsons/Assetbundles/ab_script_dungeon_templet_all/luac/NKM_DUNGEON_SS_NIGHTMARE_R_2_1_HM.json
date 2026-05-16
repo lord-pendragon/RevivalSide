@@ -1,0 +1,194 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_NIGHTMARE_R_2_1_HM.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 12
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 2.5
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MONSTER_BOSS_SHIP_VEHCLE_N"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 1.0,
+          "NST_DEF": 1.3,
+          "NST_HP": 1.4
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_EVENT_HAVEN_SL_SNIPER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.15
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0,
+              "NST_DEF": 2.0,
+              "NST_HP": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_EVENT_HAVEN_SL_SHIELD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0.2,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.15
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0,
+              "NST_DEF": 3.0,
+              "NST_HP": 3.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_EVENT_HAVEN_SL_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0.4,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.15
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0,
+              "NST_DEF": 2.3,
+              "NST_HP": 2.3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_EVENT_HAVEN_TIDE_GUNSHIELD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 999,
+            "m_fEventTimeGap": 0.7,
+            "m_fEventPos": 0.15
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5,
+              "NST_DEF": 2.6,
+              "NST_HP": 2.6
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 12,
+    "m_fCostSpeedRateB": 2.5,
+    "m_BossUnitStrID": "NKM_MONSTER_BOSS_SHIP_VEHCLE_N",
+    "m_fBossPosZ": 0.6,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 1.0,
+          "NST_DEF": 1.3,
+          "NST_HP": 1.4
+        }
+      }
+    },
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_EVENT_HAVEN_SL_SNIPER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.15
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0,
+            "NST_DEF": 2.0,
+            "NST_HP": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_EVENT_HAVEN_SL_SHIELD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0.2,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.15
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0,
+            "NST_DEF": 3.0,
+            "NST_HP": 3.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_EVENT_HAVEN_SL_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0.4,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.15
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0,
+            "NST_DEF": 2.3,
+            "NST_HP": 2.3
+          }
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_EVENT_HAVEN_TIDE_GUNSHIELD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 999,
+          "m_fEventTimeGap": 0.7,
+          "m_fEventPos": 0.15
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5,
+            "NST_DEF": 2.6,
+            "NST_HP": 2.6
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

@@ -1,0 +1,1267 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_UNIT_S_POLICE_SOYEONG_RA.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 32,
+  "records": [
+    {
+      "__key": "m_UnitSizeX",
+      "value": 120
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 270
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 280
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 200
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 200
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.21
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.3
+    },
+    {
+      "__key": "m_bRespawnFreePos",
+      "value": true
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 280
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 900
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 1000
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 660
+    },
+    {
+      "__key": "m_NKM_FIND_TARGET_TYPE",
+      "value": "NFTT_NEAR_ENEMY"
+    },
+    {
+      "__key": "m_AttackedTargetTime",
+      "value": 1
+    },
+    {
+      "__key": "m_bAttackedTarget",
+      "value": false
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": true
+    },
+    {
+      "__key": "m_RespawnEffectRange",
+      "value": [
+        -210,
+        870
+      ]
+    },
+    {
+      "__key": "m_RespawnEffectColorR",
+      "value": 0.5
+    },
+    {
+      "__key": "m_RespawnEffectColorG",
+      "value": 0.0
+    },
+    {
+      "__key": "m_RespawnEffectColorB",
+      "value": 0.0
+    },
+    {
+      "__key": "m_RespawnEffectUseUnitSize",
+      "value": false
+    },
+    {
+      "__key": "m_RespawnEffectFullMap",
+      "value": false
+    },
+    {
+      "__key": "m_RespawnEffectCondition",
+      "ConditionType": "ALL",
+      "1": {
+        "Type": "Enemy"
+      },
+      "2": {
+        "Type": "Land"
+      }
+    },
+    {
+      "__key": "m_RespawnAffectColorR",
+      "value": 1.0
+    },
+    {
+      "__key": "m_RespawnAffectColorG",
+      "value": 0.2
+    },
+    {
+      "__key": "m_RespawnAffectColorB",
+      "value": 0.2
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1"
+        }
+      ]
+    },
+    {
+      "__key": "m_listAirAttackStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1_AIR"
+        }
+      ]
+    },
+    {
+      "__key": "m_listSkillStateData",
+      "value": [
+        {
+          "m_StateName": "USN_SKILL1"
+        }
+      ]
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_BuffStrID": "BUFF_KEI_PASSIVE_LV5",
+          "m_BuffLevel": 1
+        },
+        {
+          "m_Condition": {
+            "m_SkillStrID": "NKM_UNIT_S_POLICE_SOYEONG_RA_PASSIVE",
+            "m_SkillLevel": [
+              10,
+              99
+            ]
+          },
+          "m_BuffStrID": "BUFF_POLICE_SOYEONG_RA_PASSVIE1_LV10",
+          "m_BuffLevel": 1
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "START",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_DEName": "DE_NKM_UNIT_S_POLICE_SOYEONG_RA_START",
+              "m_OffsetX": -200,
+              "m_OffsetY": 0,
+              "m_OffsetZ": 0
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_Condition": {
+                "m_bLeaderUnit": true
+              },
+              "m_bStateEndTime": true,
+              "m_EffectName": "AB_FX_BUFF_LEADER_BLUE",
+              "m_AnimName": "BASE",
+              "m_OffsetX": 0,
+              "m_OffsetY": 400,
+              "m_fScaleFactor": 1.25,
+              "m_bHold": true
+            },
+            {
+              "m_Condition": {
+                "m_bLeaderUnit": true
+              },
+              "m_bStateEndTime": true,
+              "m_EffectName": "AB_FX_BUFF_START_BLUE",
+              "m_AnimName": "BASE",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_fScaleFactor": 1.0
+            },
+            {
+              "m_Condition": {
+                "m_bLeaderUnit": true
+              },
+              "m_bStateEndTime": true,
+              "m_EffectName": "AB_FX_BUFF_MAP_BLUE",
+              "m_AnimName": "BASE",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_fScaleFactor": 1.0
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_Condition": {
+                "m_bLeaderUnit": true,
+                "m_SkillStrID": "NKM_UNIT_S_POLICE_SOYEONG_RA_LEADER",
+                "m_SkillLevel": [
+                  1,
+                  2
+                ]
+              },
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_POLICE_SOYEONG_RA_LEADER",
+              "m_BuffLevel": 8,
+              "m_fRange": 6000,
+              "m_bMyTeam": true
+            },
+            {
+              "m_Condition": {
+                "m_bLeaderUnit": true,
+                "m_SkillStrID": "NKM_UNIT_S_POLICE_SOYEONG_RA_LEADER",
+                "m_SkillLevel": [
+                  3,
+                  4
+                ]
+              },
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_POLICE_SOYEONG_RA_LEADER",
+              "m_BuffLevel": 10,
+              "m_fRange": 6000,
+              "m_bMyTeam": true
+            },
+            {
+              "m_Condition": {
+                "m_bLeaderUnit": true,
+                "m_SkillStrID": "NKM_UNIT_S_POLICE_SOYEONG_RA_LEADER",
+                "m_SkillLevel": [
+                  5,
+                  99
+                ]
+              },
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_POLICE_SOYEONG_RA_LEADER",
+              "m_BuffLevel": 12,
+              "m_fRange": 6000,
+              "m_bMyTeam": true
+            }
+          ],
+          "m_listNKMEventRespawn": [
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_S_POLICE_SOYEONG_RA_PASSIVE",
+                "m_SkillLevel": [
+                  1,
+                  4
+                ]
+              },
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_UnitStrID": "NKM_UNIT_S_POLICE_SOYEONG_SHIELD",
+              "m_MaxCount": 1,
+              "m_bUsePerSkillLevel": 0,
+              "m_fOffsetX": 900
+            },
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_S_POLICE_SOYEONG_RA_PASSIVE",
+                "m_SkillLevel": [
+                  5,
+                  99
+                ]
+              },
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_UnitStrID": "NKM_UNIT_S_POLICE_SOYEONG_RA_GUNSHIELD",
+              "m_MaxCount": 1,
+              "m_bUsePerSkillLevel": 0,
+              "m_fOffsetX": 900
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_KEI_START"
+              ],
+              "m_dicSkinSound": [
+                [
+                  109809
+                ]
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_dicSkinSound": [
+                [
+                  109809,
+                  "FX_COMBAT_ALL_MAGIC_SPELL_WATER_06"
+                ]
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_dicSkinSound": [
+                [
+                  109809,
+                  "FX_COMBAT_ALL_MAGIC_SPELL_WATER_06"
+                ]
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8333333333333334,
+              "m_dicSkinSound": [
+                [
+                  109809,
+                  "FX_COMBAT_ALL_MAGIC_SPELL_WATER_03"
+                ]
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8333333333333334,
+              "m_dicSkinSound": [
+                [
+                  109809,
+                  "FX_COMBAT_ALL_MAGIC_SPELL_WATER_03"
+                ]
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8333333333333334,
+              "m_dicSkinSound": [
+                [
+                  109809,
+                  "FX_COMBAT_ALL_MAGIC_SPELL_WATER_03"
+                ]
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_START_1",
+                "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_START_2",
+                "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_START_3",
+                "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_START_4"
+              ],
+              "m_dicSkinSound": [
+                [
+                  109809,
+                  "VOICE_UNIT_S_POLICE_SOYEONG_SUMMER_BATTLE_START_1",
+                  "VOICE_UNIT_S_POLICE_SOYEONG_SUMMER_BATTLE_START_3",
+                  "VOICE_UNIT_S_POLICE_SOYEONG_SUMMER_BATTLE_START_5"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_StateName": "USN_RUN",
+          "m_AnimName": "RUN",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 1,
+          "m_bRun": true
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK1",
+          "m_AnimName": "ATTACK1",
+          "m_bAnimLoop": false,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_listNKMEventChangeCooltime": [
+            {
+              "m_fEventAnimTime": 0.03333333333333333,
+              "m_TargetStateName": "USN_SKILL1",
+              "m_eChangeType": "ADD_SECONDS",
+              "m_fChangeValue": -1
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.5,
+              "m_fEventTimeMax": 0.5333333333333333,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 900.0,
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_UNIT_S_POLICE_SOYEONG_RA_ATTACK1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.0,
+              "m_fEventTimeMax": 1.0333333333333334,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 900.0,
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_UNIT_S_POLICE_SOYEONG_RA_ATTACK1"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_GUN_FIRE_SMALL_04"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.7333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_GUN_FIRE_SMALL_04"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_GUN_FIRE_SMALL_04"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_GUN_FIRE_SMALL_04"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.33,
+              "m_listSoundName": [
+                "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_ATTACK_1",
+                "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_ATTACK_2",
+                "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_ATTACK_3",
+                "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_ATTACK_4"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK1_AIR",
+          "m_AnimName": "ATTACK1_AIR",
+          "m_bAnimLoop": false,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_listNKMEventChangeCooltime": [
+            {
+              "m_fEventAnimTime": 0.03333333333333333,
+              "m_TargetStateName": "USN_SKILL1",
+              "m_eChangeType": "ADD_SECONDS",
+              "m_fChangeValue": -1
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.5,
+              "m_fEventTimeMax": 0.5333333333333333,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 900.0,
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_UNIT_S_POLICE_SOYEONG_RA_ATTACK1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.0,
+              "m_fEventTimeMax": 1.0333333333333334,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 900.0,
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_UNIT_S_POLICE_SOYEONG_RA_ATTACK1"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_GUN_FIRE_SMALL_04"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.7333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_GUN_FIRE_SMALL_04"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_GUN_FIRE_SMALL_04"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_GUN_FIRE_SMALL_04"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.33,
+              "m_listSoundName": [
+                "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_ATTACK_1",
+                "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_ATTACK_2",
+                "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_ATTACK_3",
+                "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_ATTACK_4"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_SKILL1",
+          "m_AnimName": "RA_SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_SKILL",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_bSkillCutIn": true,
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_DEName": "DE_UNIT_S_POLICE_SOYEONG_RA_SKILL1_LIGHT",
+              "m_OffsetX": -200,
+              "m_OffsetY": 0,
+              "m_OffsetZ": 0,
+              "m_bTargetPos": true
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_EffectName": "AB_FX_CAST_SKILL",
+              "m_fScaleFactor": 30.0,
+              "m_OffsetX": 50,
+              "m_OffsetY": 220,
+              "m_AnimName": "BASE"
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 99999,
+              "m_fColorR": 0.5,
+              "m_fColorG": 0.5,
+              "m_fColorB": 1.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_A",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DAMAGE_3"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_B",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DAMAGE_3"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_AIR_UP",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DAMAGE_3"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DAMAGE_3"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DEATH_1",
+                "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DEATH_2"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_UnitSizeX": 120,
+    "m_UnitSizeY": 270,
+    "m_SpriteScale": 1.0,
+    "m_fGageOffsetY": 280,
+    "m_fShadowScaleX": 200,
+    "m_fShadowScaleY": 200,
+    "m_fForceRespawnZposMin": 0.21,
+    "m_fForceRespawnZposMax": 0.3,
+    "m_bRespawnFreePos": true,
+    "m_SpeedRun": 280,
+    "m_SeeRange": 900,
+    "m_SeeRangeMax": 1000,
+    "m_TargetNearRange": 660,
+    "m_NKM_FIND_TARGET_TYPE": "NFTT_NEAR_ENEMY",
+    "m_AttackedTargetTime": 1,
+    "m_bAttackedTarget": false,
+    "m_bUseMotionBlur": true,
+    "m_RespawnEffectRange": [
+      -210,
+      870
+    ],
+    "m_RespawnEffectColorR": 0.5,
+    "m_RespawnEffectColorG": 0.0,
+    "m_RespawnEffectColorB": 0.0,
+    "m_RespawnEffectUseUnitSize": false,
+    "m_RespawnEffectFullMap": false,
+    "m_RespawnEffectCondition": {
+      "ConditionType": "ALL",
+      "1": {
+        "Type": "Enemy"
+      },
+      "2": {
+        "Type": "Land"
+      }
+    },
+    "m_RespawnAffectColorR": 1.0,
+    "m_RespawnAffectColorG": 0.2,
+    "m_RespawnAffectColorB": 0.2,
+    "m_listAttackStateData": [
+      {
+        "m_StateName": "USN_ATTACK1"
+      }
+    ],
+    "m_listAirAttackStateData": [
+      {
+        "m_StateName": "USN_ATTACK1_AIR"
+      }
+    ],
+    "m_listSkillStateData": [
+      {
+        "m_StateName": "USN_SKILL1"
+      }
+    ],
+    "m_listStaticBuffData": [
+      {
+        "m_BuffStrID": "BUFF_KEI_PASSIVE_LV5",
+        "m_BuffLevel": 1
+      },
+      {
+        "m_Condition": {
+          "m_SkillStrID": "NKM_UNIT_S_POLICE_SOYEONG_RA_PASSIVE",
+          "m_SkillLevel": [
+            10,
+            99
+          ]
+        },
+        "m_BuffStrID": "BUFF_POLICE_SOYEONG_RA_PASSVIE1_LV10",
+        "m_BuffLevel": 1
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "START",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_DEName": "DE_NKM_UNIT_S_POLICE_SOYEONG_RA_START",
+            "m_OffsetX": -200,
+            "m_OffsetY": 0,
+            "m_OffsetZ": 0
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_Condition": {
+              "m_bLeaderUnit": true
+            },
+            "m_bStateEndTime": true,
+            "m_EffectName": "AB_FX_BUFF_LEADER_BLUE",
+            "m_AnimName": "BASE",
+            "m_OffsetX": 0,
+            "m_OffsetY": 400,
+            "m_fScaleFactor": 1.25,
+            "m_bHold": true
+          },
+          {
+            "m_Condition": {
+              "m_bLeaderUnit": true
+            },
+            "m_bStateEndTime": true,
+            "m_EffectName": "AB_FX_BUFF_START_BLUE",
+            "m_AnimName": "BASE",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_fScaleFactor": 1.0
+          },
+          {
+            "m_Condition": {
+              "m_bLeaderUnit": true
+            },
+            "m_bStateEndTime": true,
+            "m_EffectName": "AB_FX_BUFF_MAP_BLUE",
+            "m_AnimName": "BASE",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_fScaleFactor": 1.0
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_Condition": {
+              "m_bLeaderUnit": true,
+              "m_SkillStrID": "NKM_UNIT_S_POLICE_SOYEONG_RA_LEADER",
+              "m_SkillLevel": [
+                1,
+                2
+              ]
+            },
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_POLICE_SOYEONG_RA_LEADER",
+            "m_BuffLevel": 8,
+            "m_fRange": 6000,
+            "m_bMyTeam": true
+          },
+          {
+            "m_Condition": {
+              "m_bLeaderUnit": true,
+              "m_SkillStrID": "NKM_UNIT_S_POLICE_SOYEONG_RA_LEADER",
+              "m_SkillLevel": [
+                3,
+                4
+              ]
+            },
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_POLICE_SOYEONG_RA_LEADER",
+            "m_BuffLevel": 10,
+            "m_fRange": 6000,
+            "m_bMyTeam": true
+          },
+          {
+            "m_Condition": {
+              "m_bLeaderUnit": true,
+              "m_SkillStrID": "NKM_UNIT_S_POLICE_SOYEONG_RA_LEADER",
+              "m_SkillLevel": [
+                5,
+                99
+              ]
+            },
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_POLICE_SOYEONG_RA_LEADER",
+            "m_BuffLevel": 12,
+            "m_fRange": 6000,
+            "m_bMyTeam": true
+          }
+        ],
+        "m_listNKMEventRespawn": [
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_S_POLICE_SOYEONG_RA_PASSIVE",
+              "m_SkillLevel": [
+                1,
+                4
+              ]
+            },
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_UnitStrID": "NKM_UNIT_S_POLICE_SOYEONG_SHIELD",
+            "m_MaxCount": 1,
+            "m_bUsePerSkillLevel": 0,
+            "m_fOffsetX": 900
+          },
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_S_POLICE_SOYEONG_RA_PASSIVE",
+              "m_SkillLevel": [
+                5,
+                99
+              ]
+            },
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_UnitStrID": "NKM_UNIT_S_POLICE_SOYEONG_RA_GUNSHIELD",
+            "m_MaxCount": 1,
+            "m_bUsePerSkillLevel": 0,
+            "m_fOffsetX": 900
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_KEI_START"
+            ],
+            "m_dicSkinSound": [
+              [
+                109809
+              ]
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_dicSkinSound": [
+              [
+                109809,
+                "FX_COMBAT_ALL_MAGIC_SPELL_WATER_06"
+              ]
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_dicSkinSound": [
+              [
+                109809,
+                "FX_COMBAT_ALL_MAGIC_SPELL_WATER_06"
+              ]
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8333333333333334,
+            "m_dicSkinSound": [
+              [
+                109809,
+                "FX_COMBAT_ALL_MAGIC_SPELL_WATER_03"
+              ]
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8333333333333334,
+            "m_dicSkinSound": [
+              [
+                109809,
+                "FX_COMBAT_ALL_MAGIC_SPELL_WATER_03"
+              ]
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8333333333333334,
+            "m_dicSkinSound": [
+              [
+                109809,
+                "FX_COMBAT_ALL_MAGIC_SPELL_WATER_03"
+              ]
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_START_1",
+              "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_START_2",
+              "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_START_3",
+              "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_START_4"
+            ],
+            "m_dicSkinSound": [
+              [
+                109809,
+                "VOICE_UNIT_S_POLICE_SOYEONG_SUMMER_BATTLE_START_1",
+                "VOICE_UNIT_S_POLICE_SOYEONG_SUMMER_BATTLE_START_3",
+                "VOICE_UNIT_S_POLICE_SOYEONG_SUMMER_BATTLE_START_5"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_StateName": "USN_RUN",
+        "m_AnimName": "RUN",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 1,
+        "m_bRun": true
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK1",
+        "m_AnimName": "ATTACK1",
+        "m_bAnimLoop": false,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_listNKMEventChangeCooltime": [
+          {
+            "m_fEventAnimTime": 0.03333333333333333,
+            "m_TargetStateName": "USN_SKILL1",
+            "m_eChangeType": "ADD_SECONDS",
+            "m_fChangeValue": -1
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.5,
+            "m_fEventTimeMax": 0.5333333333333333,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 900.0,
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_UNIT_S_POLICE_SOYEONG_RA_ATTACK1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.0,
+            "m_fEventTimeMax": 1.0333333333333334,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 900.0,
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_UNIT_S_POLICE_SOYEONG_RA_ATTACK1"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_GUN_FIRE_SMALL_04"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.7333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_GUN_FIRE_SMALL_04"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_GUN_FIRE_SMALL_04"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_GUN_FIRE_SMALL_04"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.33,
+            "m_listSoundName": [
+              "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_ATTACK_1",
+              "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_ATTACK_2",
+              "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_ATTACK_3",
+              "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_ATTACK_4"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK1_AIR",
+        "m_AnimName": "ATTACK1_AIR",
+        "m_bAnimLoop": false,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_listNKMEventChangeCooltime": [
+          {
+            "m_fEventAnimTime": 0.03333333333333333,
+            "m_TargetStateName": "USN_SKILL1",
+            "m_eChangeType": "ADD_SECONDS",
+            "m_fChangeValue": -1
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.5,
+            "m_fEventTimeMax": 0.5333333333333333,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 900.0,
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_UNIT_S_POLICE_SOYEONG_RA_ATTACK1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.0,
+            "m_fEventTimeMax": 1.0333333333333334,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 900.0,
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_UNIT_S_POLICE_SOYEONG_RA_ATTACK1"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_GUN_FIRE_SMALL_04"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.7333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_GUN_FIRE_SMALL_04"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_GUN_FIRE_SMALL_04"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_GUN_FIRE_SMALL_04"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.33,
+            "m_listSoundName": [
+              "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_ATTACK_1",
+              "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_ATTACK_2",
+              "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_ATTACK_3",
+              "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_ATTACK_4"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_SKILL1",
+        "m_AnimName": "RA_SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_SKILL",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_bSkillCutIn": true,
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_DEName": "DE_UNIT_S_POLICE_SOYEONG_RA_SKILL1_LIGHT",
+            "m_OffsetX": -200,
+            "m_OffsetY": 0,
+            "m_OffsetZ": 0,
+            "m_bTargetPos": true
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_EffectName": "AB_FX_CAST_SKILL",
+            "m_fScaleFactor": 30.0,
+            "m_OffsetX": 50,
+            "m_OffsetY": 220,
+            "m_AnimName": "BASE"
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 99999,
+            "m_fColorR": 0.5,
+            "m_fColorG": 0.5,
+            "m_fColorB": 1.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_A",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DAMAGE_3"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_B",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DAMAGE_3"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_AIR_UP",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DAMAGE_3"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DAMAGE_3"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DEATH_1",
+              "VOICE_UNIT_S_POLICE_SOYEONG_BATTLE_DEATH_2"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

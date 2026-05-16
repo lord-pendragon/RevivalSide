@@ -1,0 +1,79 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_MONSTER_NORMAL_TRANS_SPHERE.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 2,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_MONSTER_NORMAL_BASIC_SPHERE_N"
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_listNKMEventRespawn": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_BITER_N",
+              "m_MaxCount": 3,
+              "m_bUsePerSkillLevel": 0,
+              "m_fOffsetX": -50
+            },
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_BITER_N",
+              "m_MaxCount": 3,
+              "m_bUsePerSkillLevel": 0,
+              "m_fOffsetX": 50
+            },
+            {
+              "m_fEventTime": 0.6666666666666666,
+              "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_BITER_N",
+              "m_MaxCount": 3,
+              "m_bUsePerSkillLevel": 0,
+              "m_fOffsetX": 0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_MONSTER_NORMAL_BASIC_SPHERE_N",
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_listNKMEventRespawn": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_BITER_N",
+            "m_MaxCount": 3,
+            "m_bUsePerSkillLevel": 0,
+            "m_fOffsetX": -50
+          },
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_BITER_N",
+            "m_MaxCount": 3,
+            "m_bUsePerSkillLevel": 0,
+            "m_fOffsetX": 50
+          },
+          {
+            "m_fEventTime": 0.6666666666666666,
+            "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_BITER_N",
+            "m_MaxCount": 3,
+            "m_bUsePerSkillLevel": 0,
+            "m_fOffsetX": 0
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

@@ -1,0 +1,149 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_EVENT_NEVERLAND_2_2.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 8,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateA",
+      "value": 0.3
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.2
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EVENT_MA_SIGMA_DRINK"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.5
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 1,
+          "NST_DEF": 0.9,
+          "NST_HP": 0.7
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_MA_SIGMA_DRUNKEN",
+          "m_UnitLevel": 55,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 3372221,
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 3
+          }
+        },
+        {
+          "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+          "m_EventConditionNumValue": 50,
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 3372222,
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1
+          }
+        },
+        {
+          "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+          "m_EventConditionNumValue": 30,
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 3372223,
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateA": 0.3,
+    "m_fCostSpeedRateB": 0.2,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EVENT_MA_SIGMA_DRINK",
+    "m_fBossPosZ": 0.5,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 1,
+          "NST_DEF": 0.9,
+          "NST_HP": 0.7
+        }
+      }
+    },
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_MA_SIGMA_DRUNKEN",
+        "m_UnitLevel": 55,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.5
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 3372221,
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 3
+        }
+      },
+      {
+        "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+        "m_EventConditionNumValue": 50,
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 3372222,
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1
+        }
+      },
+      {
+        "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+        "m_EventConditionNumValue": 30,
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 3372223,
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

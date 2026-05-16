@@ -1,0 +1,325 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_item_templet\\luac\\LUA_ITEM_MOLD_TAB.lua",
+  "rootName": "ITEM_MOLD_TAB",
+  "recordCount": 9,
+  "records": [
+    {
+      "IDX": 1,
+      "m_TabOrder": 10,
+      "m_MoldTabID": "MT_EQUIP",
+      "m_MoldTabName": "SI_PF_FACTORY_CRAFT_EQUIP",
+      "m_MoldTabIconName": "AB_UI_NKM_UI_FACTORY_MENU_CRAFT_ICON",
+      "m_MoldTab_Filter": [
+        "FT_EquipPosition",
+        "FT_Tier",
+        "FT_ContentType",
+        "FT_Makeable"
+      ],
+      "m_MoldTab_Sort": [
+        "ST_Makeable",
+        "ST_Tier",
+        "ST_Grade"
+      ]
+    },
+    {
+      "IDX": 2,
+      "m_TabOrder": 20,
+      "m_MoldTabID": "MT_LIMITBREAK",
+      "m_MoldTabName": "SI_PF_FACTORY_CRAFT_LIMITBREAK",
+      "m_MoldTabIconName": "AB_UI_NKM_UI_FACTORY_MENU_LIMITBREAK_ICON",
+      "m_MoldTab_Filter": [
+        "FT_UnitType",
+        "FT_Grade",
+        "FT_Makeable"
+      ],
+      "m_MoldTab_Sort": [
+        "ST_Makeable",
+        "ST_Grade"
+      ]
+    },
+    {
+      "IDX": 3,
+      "m_TabOrder": 30,
+      "m_MoldTabID": "MT_MISC_1",
+      "m_MoldTabName": "SI_PF_FACTORY_CRAFT_MISC_1",
+      "m_MoldTabIconName": "AB_UI_NKM_UI_FACTORY_MENU_MISC_1_ICON",
+      "m_MoldTab_Filter": [
+        "FT_Grade",
+        "FT_Makeable"
+      ],
+      "m_MoldTab_Sort": [
+        "ST_Makeable",
+        "ST_Grade"
+      ]
+    },
+    {
+      "IDX": 4,
+      "m_TabOrder": 40,
+      "m_MoldTabID": "MT_MISC_EVENT_1",
+      "m_MoldTabName": "SI_PF_FACTORY_CRAFT_EVENT",
+      "m_MoldTabIconName": "AB_UI_NKM_UI_FACTORY_MENU_EVENT_ICON",
+      "m_MoldTab_Filter": [
+        "FT_Grade",
+        "FT_Makeable"
+      ],
+      "m_MoldTab_Sort": [
+        "ST_Makeable",
+        "ST_Grade"
+      ],
+      "m_OpenTag": "LOW_TIER_EQUIP_MOLD"
+    },
+    {
+      "IDX": 5,
+      "m_TabOrder": 15,
+      "m_MoldTabID": "MT_EQUIP_PRIVATE",
+      "m_MoldTabName": "SI_PF_FACTORY_CRAFT_EQUIP_PRIVATE",
+      "m_MoldTabIconName": "AB_UI_NKM_UI_FACTORY_MENU_CRAFT_ICON",
+      "m_MoldTab_Filter": [
+        "FT_EquipPosition",
+        "FT_Tier",
+        "FT_ContentType",
+        "FT_Makeable"
+      ],
+      "m_MoldTab_Sort": [
+        "ST_Makeable",
+        "ST_Tier",
+        "ST_Grade"
+      ],
+      "m_OpenTag": "PRIVATE_EQUIP_MOLD"
+    },
+    {
+      "IDX": 6,
+      "m_TabOrder": 12,
+      "m_MoldTabID": "MT_EQUIP_RELIC",
+      "m_MoldTabName": "SI_PF_FACTORY_CRAFT_EQUIP_RELIC",
+      "m_MoldTabIconName": "AB_UI_NKM_UI_FACTORY_MENU_CRAFT_ICON",
+      "m_MoldTab_Filter": [
+        "FT_EquipPosition",
+        "FT_Tier",
+        "FT_ContentType",
+        "FT_Makeable"
+      ],
+      "m_MoldTab_Sort": [
+        "ST_Makeable",
+        "ST_Tier",
+        "ST_Grade"
+      ],
+      "m_OpenTag": "RELIC_MOLD"
+    },
+    {
+      "IDX": 7,
+      "m_TabOrder": 13,
+      "m_MoldTabID": "MT_EQUIP_RAID",
+      "m_MoldTabName": "SI_PF_FACTORY_CRAFT_EQUIP_RAID",
+      "m_MoldTabIconName": "AB_UI_NKM_UI_FACTORY_MENU_CRAFT_ICON",
+      "m_MoldTab_Filter": [
+        "FT_EquipPosition",
+        "FT_Tier",
+        "FT_ContentType",
+        "FT_Makeable"
+      ],
+      "m_MoldTab_Sort": [
+        "ST_Makeable",
+        "ST_Tier",
+        "ST_Grade"
+      ],
+      "m_OpenTag": "RAID_EQUIP_MOLD"
+    },
+    {
+      "IDX": 8,
+      "m_TabOrder": 25,
+      "m_MoldTabID": "MT_SHIP",
+      "m_MoldTabName": "SI_PF_FACTORY_CRAFT_SHIP",
+      "m_MoldTabIconName": "AB_UI_NKM_UI_FACTORY_MENU_SHIP_ICON",
+      "m_MoldTab_Filter": [
+        "FT_Grade",
+        "FT_Makeable"
+      ],
+      "m_MoldTab_Sort": [
+        "ST_Makeable",
+        "ST_Grade"
+      ],
+      "m_OpenTag": "SHIP_LIMITBREAK"
+    },
+    {
+      "IDX": 9,
+      "m_TabOrder": 14,
+      "m_MoldTabID": "MT_EQUIP_RAID_2",
+      "m_MoldTabName": "SI_PF_FACTORY_CRAFT_EQUIP_RAID_S",
+      "m_MoldTabIconName": "AB_UI_NKM_UI_FACTORY_MENU_CRAFT_ICON",
+      "m_MoldTab_Filter": [
+        "FT_EquipPosition",
+        "FT_Tier",
+        "FT_ContentType",
+        "FT_Makeable"
+      ],
+      "m_MoldTab_Sort": [
+        "ST_Makeable",
+        "ST_Tier",
+        "ST_Grade"
+      ],
+      "m_OpenTag": "RAID_EQUIP_MOLD_2"
+    }
+  ],
+  "root": [
+    {
+      "IDX": 1,
+      "m_TabOrder": 10,
+      "m_MoldTabID": "MT_EQUIP",
+      "m_MoldTabName": "SI_PF_FACTORY_CRAFT_EQUIP",
+      "m_MoldTabIconName": "AB_UI_NKM_UI_FACTORY_MENU_CRAFT_ICON",
+      "m_MoldTab_Filter": [
+        "FT_EquipPosition",
+        "FT_Tier",
+        "FT_ContentType",
+        "FT_Makeable"
+      ],
+      "m_MoldTab_Sort": [
+        "ST_Makeable",
+        "ST_Tier",
+        "ST_Grade"
+      ]
+    },
+    {
+      "IDX": 2,
+      "m_TabOrder": 20,
+      "m_MoldTabID": "MT_LIMITBREAK",
+      "m_MoldTabName": "SI_PF_FACTORY_CRAFT_LIMITBREAK",
+      "m_MoldTabIconName": "AB_UI_NKM_UI_FACTORY_MENU_LIMITBREAK_ICON",
+      "m_MoldTab_Filter": [
+        "FT_UnitType",
+        "FT_Grade",
+        "FT_Makeable"
+      ],
+      "m_MoldTab_Sort": [
+        "ST_Makeable",
+        "ST_Grade"
+      ]
+    },
+    {
+      "IDX": 3,
+      "m_TabOrder": 30,
+      "m_MoldTabID": "MT_MISC_1",
+      "m_MoldTabName": "SI_PF_FACTORY_CRAFT_MISC_1",
+      "m_MoldTabIconName": "AB_UI_NKM_UI_FACTORY_MENU_MISC_1_ICON",
+      "m_MoldTab_Filter": [
+        "FT_Grade",
+        "FT_Makeable"
+      ],
+      "m_MoldTab_Sort": [
+        "ST_Makeable",
+        "ST_Grade"
+      ]
+    },
+    {
+      "IDX": 4,
+      "m_TabOrder": 40,
+      "m_MoldTabID": "MT_MISC_EVENT_1",
+      "m_MoldTabName": "SI_PF_FACTORY_CRAFT_EVENT",
+      "m_MoldTabIconName": "AB_UI_NKM_UI_FACTORY_MENU_EVENT_ICON",
+      "m_MoldTab_Filter": [
+        "FT_Grade",
+        "FT_Makeable"
+      ],
+      "m_MoldTab_Sort": [
+        "ST_Makeable",
+        "ST_Grade"
+      ],
+      "m_OpenTag": "LOW_TIER_EQUIP_MOLD"
+    },
+    {
+      "IDX": 5,
+      "m_TabOrder": 15,
+      "m_MoldTabID": "MT_EQUIP_PRIVATE",
+      "m_MoldTabName": "SI_PF_FACTORY_CRAFT_EQUIP_PRIVATE",
+      "m_MoldTabIconName": "AB_UI_NKM_UI_FACTORY_MENU_CRAFT_ICON",
+      "m_MoldTab_Filter": [
+        "FT_EquipPosition",
+        "FT_Tier",
+        "FT_ContentType",
+        "FT_Makeable"
+      ],
+      "m_MoldTab_Sort": [
+        "ST_Makeable",
+        "ST_Tier",
+        "ST_Grade"
+      ],
+      "m_OpenTag": "PRIVATE_EQUIP_MOLD"
+    },
+    {
+      "IDX": 6,
+      "m_TabOrder": 12,
+      "m_MoldTabID": "MT_EQUIP_RELIC",
+      "m_MoldTabName": "SI_PF_FACTORY_CRAFT_EQUIP_RELIC",
+      "m_MoldTabIconName": "AB_UI_NKM_UI_FACTORY_MENU_CRAFT_ICON",
+      "m_MoldTab_Filter": [
+        "FT_EquipPosition",
+        "FT_Tier",
+        "FT_ContentType",
+        "FT_Makeable"
+      ],
+      "m_MoldTab_Sort": [
+        "ST_Makeable",
+        "ST_Tier",
+        "ST_Grade"
+      ],
+      "m_OpenTag": "RELIC_MOLD"
+    },
+    {
+      "IDX": 7,
+      "m_TabOrder": 13,
+      "m_MoldTabID": "MT_EQUIP_RAID",
+      "m_MoldTabName": "SI_PF_FACTORY_CRAFT_EQUIP_RAID",
+      "m_MoldTabIconName": "AB_UI_NKM_UI_FACTORY_MENU_CRAFT_ICON",
+      "m_MoldTab_Filter": [
+        "FT_EquipPosition",
+        "FT_Tier",
+        "FT_ContentType",
+        "FT_Makeable"
+      ],
+      "m_MoldTab_Sort": [
+        "ST_Makeable",
+        "ST_Tier",
+        "ST_Grade"
+      ],
+      "m_OpenTag": "RAID_EQUIP_MOLD"
+    },
+    {
+      "IDX": 8,
+      "m_TabOrder": 25,
+      "m_MoldTabID": "MT_SHIP",
+      "m_MoldTabName": "SI_PF_FACTORY_CRAFT_SHIP",
+      "m_MoldTabIconName": "AB_UI_NKM_UI_FACTORY_MENU_SHIP_ICON",
+      "m_MoldTab_Filter": [
+        "FT_Grade",
+        "FT_Makeable"
+      ],
+      "m_MoldTab_Sort": [
+        "ST_Makeable",
+        "ST_Grade"
+      ],
+      "m_OpenTag": "SHIP_LIMITBREAK"
+    },
+    {
+      "IDX": 9,
+      "m_TabOrder": 14,
+      "m_MoldTabID": "MT_EQUIP_RAID_2",
+      "m_MoldTabName": "SI_PF_FACTORY_CRAFT_EQUIP_RAID_S",
+      "m_MoldTabIconName": "AB_UI_NKM_UI_FACTORY_MENU_CRAFT_ICON",
+      "m_MoldTab_Filter": [
+        "FT_EquipPosition",
+        "FT_Tier",
+        "FT_ContentType",
+        "FT_Makeable"
+      ],
+      "m_MoldTab_Sort": [
+        "ST_Makeable",
+        "ST_Tier",
+        "ST_Grade"
+      ],
+      "m_OpenTag": "RAID_EQUIP_MOLD_2"
+    }
+  ],
+  "unsupportedCount": 0,
+  "unsupported": []
+}

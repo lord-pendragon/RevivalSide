@@ -1,0 +1,1488 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_SPORTS_JUNIOR_C_SPEAKER.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 23,
+  "records": [
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.4
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.5
+    },
+    {
+      "__key": "m_UnitSizeX",
+      "value": 120
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 250
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": true
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 250
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 140
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 140
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 150
+    },
+    {
+      "__key": "m_SeeTarget",
+      "value": true
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 1000
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 1400
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 1500
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 2.0
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": true
+    },
+    {
+      "__key": "m_fBuffEffectScaleFactor",
+      "value": 1.0
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1"
+        }
+      ]
+    },
+    {
+      "__key": "m_listAirAttackStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1_AIR"
+        }
+      ]
+    },
+    {
+      "__key": "m_listSkillStateData",
+      "value": [
+        {
+          "m_StateName": "USN_SKILL1"
+        }
+      ]
+    },
+    {
+      "__key": "m_listHyperSkillStateData",
+      "value": [
+        {
+          "m_StateName": "USN_HYPER1",
+          "m_fStartCool": 0.7
+        }
+      ]
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_BuffStrID": "BUFF_JUNIOR_C_SPEAKER_PASSIVE_SELF_LV5"
+        },
+        {
+          "m_BuffStrID": "BUFF_JUNIOR_C_SPEAKER_PASSIVE_TEAM_LV5"
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_START",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_DamagedChangeState": "USN_ASTAND",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_02"
+              ]
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_START_1",
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_START_2"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_INVALID",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimName": "ATTACK1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.1,
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8333333333333334,
+              "m_DEName": "DE_UNIT_JUNIOR_C_SPEAKER_ATTACK1",
+              "m_bTargetPos": true,
+              "m_OffsetY": 150
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_TECH_10"
+              ]
+            },
+            {
+              "m_fEventTime": 0.6666666666666666,
+              "m_fLocalVol": 0.3,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_06"
+              ]
+            },
+            {
+              "m_fEventTime": 0.8333333333333334,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_GUN_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 0.8333333333333334,
+              "m_bVoice": true,
+              "m_PlayRate": 0.3,
+              "m_listSoundName": [
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_ATTACK_1",
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_ATTACK_2",
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_ATTACK_3",
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_ATTACK_4"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1_AIR",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_INVALID",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimName": "ATTACK1_AIR",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.1,
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8333333333333334,
+              "m_DEName": "DE_UNIT_JUNIOR_C_SPEAKER_ATTACK1_AIR",
+              "m_bTargetPos": true,
+              "m_OffsetY": 150
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_TECH_10"
+              ]
+            },
+            {
+              "m_fEventTime": 0.6666666666666666,
+              "m_fLocalVol": 0.3,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_06"
+              ]
+            },
+            {
+              "m_fEventTime": 0.8333333333333334,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 0.8333333333333334,
+              "m_bVoice": true,
+              "m_PlayRate": 0.3,
+              "m_listSoundName": [
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_ATTACK_1",
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_ATTACK_2",
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_ATTACK_3",
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_ATTACK_4"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_StateCoolTime": 20,
+          "m_AnimName": "SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_EffectName": "AB_FX_CAST_SKILL",
+              "m_AnimName": "BASE",
+              "m_BoneName": "BIP01_SPINE1",
+              "m_fScaleFactor": 20.0,
+              "m_bHold": false
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_DEName": "DE_UNIT_JUNIOR_C_SPEAKER_SKILL1_START",
+              "m_bTargetPos": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_DEName": "DE_UNIT_JUNIOR_C_SPEAKER_SKILL1",
+              "m_bTargetPos": true
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ]
+            },
+            {
+              "m_fEventTime": 0.3,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_76"
+              ]
+            },
+            {
+              "m_fEventTime": 0.6666666666666666,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_TECH_10"
+              ]
+            },
+            {
+              "m_fEventTime": 1.1666666666666667,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_06"
+              ]
+            },
+            {
+              "m_fEventTime": 1.3333333333333333,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L13_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 1.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_ACTIVE_1",
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_ACTIVE_2",
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_PASSIVE_1"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_HYPER1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_StateCoolTime": 40,
+          "m_AnimName": "HYPER_SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventInvincible": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_fEventTimeMax": 1.0
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8333333333333334,
+              "m_DEName": "DE_UNIT_JUNIOR_C_SPEAKER_HYPER1",
+              "m_bTargetPos": true,
+              "m_OffsetX": 85,
+              "m_OffsetY": 129,
+              "m_fAddRotate": 0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.1666666666666667,
+              "m_DEName": "DE_UNIT_JUNIOR_C_SPEAKER_HYPER1",
+              "m_bTargetPos": true,
+              "m_OffsetX": -51,
+              "m_OffsetY": 245,
+              "m_fAddRotate": 0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5,
+              "m_DEName": "DE_UNIT_JUNIOR_C_SPEAKER_HYPER1",
+              "m_bTargetPos": true,
+              "m_OffsetX": 67,
+              "m_OffsetY": 75,
+              "m_fAddRotate": 0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.8333333333333333,
+              "m_DEName": "DE_UNIT_JUNIOR_C_SPEAKER_HYPER1",
+              "m_bTargetPos": true,
+              "m_OffsetX": -46,
+              "m_OffsetY": 126,
+              "m_fAddRotate": 0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.1666666666666665,
+              "m_DEName": "DE_UNIT_JUNIOR_C_SPEAKER_HYPER1",
+              "m_bTargetPos": true,
+              "m_OffsetX": -122,
+              "m_OffsetY": 178,
+              "m_fAddRotate": 0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.5,
+              "m_DEName": "DE_UNIT_JUNIOR_C_SPEAKER_HYPER1",
+              "m_bTargetPos": true,
+              "m_OffsetX": -150,
+              "m_OffsetY": 129,
+              "m_fAddRotate": 0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.5,
+              "m_DEName": "DE_UNIT_JUNIOR_C_SPEAKER_SKILL1_START",
+              "m_bTargetPos": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.8333333333333335,
+              "m_DEName": "DE_UNIT_JUNIOR_C_SPEAKER_HYPER1_END",
+              "m_bTargetPos": true
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_EffectName": "AB_FX_CAST_HYPER",
+              "m_AnimName": "BASE",
+              "m_BoneName": "BIP01_SPINE1",
+              "m_fScaleFactor": 20.0,
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_fEventTimeMax": 4.666666666666667,
+              "m_fColorR": 1.0,
+              "m_fColorG": 0.5,
+              "m_fColorB": 0.5
+            }
+          ],
+          "m_listNKMEventFadeWorld": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_fEventTimeMax": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_fColorR": 0.0,
+              "m_fColorG": 0.0,
+              "m_fColorB": 0.0,
+              "m_fMapColorKeepTime": 2.5,
+              "m_fMapColorReturnTime": 0.1
+            }
+          ],
+          "m_listNKMEventStopTime": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_StopTimeIndex": "NSTI_SKILL",
+              "m_fStopTime": 0.8333333333333334,
+              "m_bStopEnemyOnly": false,
+              "m_bMyStop": false,
+              "m_fRange": 1200
+            }
+          ],
+          "m_listNKMEventCameraMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_fEventTimeMax": 1.0,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 150,
+              "m_fZoom": -200,
+              "m_fMoveTrackingTime": 0.1,
+              "m_fZoomTrackingTime": 0.1
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.0,
+              "m_fEventTimeMax": 3.3333333333333335,
+              "m_fPosXOffset": 400,
+              "m_fPosYOffset": 150,
+              "m_fZoom": -100,
+              "m_fMoveTrackingTime": 2.3333333333333335,
+              "m_fZoomTrackingTime": 2.3333333333333335
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 3.3333333333333335,
+              "m_fEventTimeMax": 3.6666666666666665,
+              "m_fPosXOffset": 400,
+              "m_fPosYOffset": 150,
+              "m_fZoom": 0,
+              "m_fMoveTrackingTime": 0.3333333333333333,
+              "m_fZoomTrackingTime": 0.1
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HYPER_ATTACK_START"
+              ]
+            },
+            {
+              "m_fEventTime": 0.06666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_55"
+              ]
+            },
+            {
+              "m_fEventTime": 0.5,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_TECH_10"
+              ]
+            },
+            {
+              "m_fEventTime": 1.0,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL",
+                "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 1.1666666666666667,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL",
+                "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 1.3333333333333333,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL",
+                "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 1.5,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL",
+                "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 1.6666666666666667,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL",
+                "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 1.8333333333333333,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL",
+                "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 2.0,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL",
+                "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 2.1666666666666665,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL",
+                "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 2.3333333333333335,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL",
+                "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 2.5,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL",
+                "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 2.6666666666666665,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL",
+                "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 2.8333333333333335,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL",
+                "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 3.0,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_06"
+              ]
+            },
+            {
+              "m_fEventTime": 3.1666666666666665,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MOVEMENT_07"
+              ]
+            },
+            {
+              "m_fEventTime": 3.1666666666666665,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L27_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_HYPER_1",
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_HYPER_2",
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_ATTACK_10"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_A",
+          "m_AnimName": "DAMAGE_A",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DAMAGE_3"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_B",
+          "m_AnimName": "DAMAGE_B",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DAMAGE_3"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_AIR_UP",
+          "m_AnimName": "DAMAGE_AIR_UP",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DAMAGE_3"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+          "m_AnimEndChangeState": "USN_DAMAGE_STAND",
+          "m_FootOnLandChangeState": "",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DAMAGE_3"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.8333333333333334,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_02"
+              ]
+            },
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DEATH_1",
+                "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DEATH_2"
+              ]
+            }
+          ],
+          "m_listNKMEventDissolve": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.0,
+              "m_fDissolve": 1,
+              "m_fTrackTime": 5.0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fForceRespawnZposMin": 0.4,
+    "m_fForceRespawnZposMax": 0.5,
+    "m_UnitSizeX": 120,
+    "m_UnitSizeY": 250,
+    "m_SpriteScale": 1.0,
+    "m_bShowGage": true,
+    "m_fGageOffsetY": 250,
+    "m_fShadowScaleX": 140,
+    "m_fShadowScaleY": 140,
+    "m_SpeedRun": 150,
+    "m_SeeTarget": true,
+    "m_TargetNearRange": 1000,
+    "m_SeeRange": 1400,
+    "m_SeeRangeMax": 1500,
+    "m_fDieCompleteTime": 2.0,
+    "m_bUseMotionBlur": true,
+    "m_fBuffEffectScaleFactor": 1.0,
+    "m_listAttackStateData": [
+      {
+        "m_StateName": "USN_ATTACK1"
+      }
+    ],
+    "m_listAirAttackStateData": [
+      {
+        "m_StateName": "USN_ATTACK1_AIR"
+      }
+    ],
+    "m_listSkillStateData": [
+      {
+        "m_StateName": "USN_SKILL1"
+      }
+    ],
+    "m_listHyperSkillStateData": [
+      {
+        "m_StateName": "USN_HYPER1",
+        "m_fStartCool": 0.7
+      }
+    ],
+    "m_listStaticBuffData": [
+      {
+        "m_BuffStrID": "BUFF_JUNIOR_C_SPEAKER_PASSIVE_SELF_LV5"
+      },
+      {
+        "m_BuffStrID": "BUFF_JUNIOR_C_SPEAKER_PASSIVE_TEAM_LV5"
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_START",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_DamagedChangeState": "USN_ASTAND",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_02"
+            ]
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_START_1",
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_START_2"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_INVALID",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimName": "ATTACK1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.1,
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8333333333333334,
+            "m_DEName": "DE_UNIT_JUNIOR_C_SPEAKER_ATTACK1",
+            "m_bTargetPos": true,
+            "m_OffsetY": 150
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_TECH_10"
+            ]
+          },
+          {
+            "m_fEventTime": 0.6666666666666666,
+            "m_fLocalVol": 0.3,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_06"
+            ]
+          },
+          {
+            "m_fEventTime": 0.8333333333333334,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_GUN_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 0.8333333333333334,
+            "m_bVoice": true,
+            "m_PlayRate": 0.3,
+            "m_listSoundName": [
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_ATTACK_1",
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_ATTACK_2",
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_ATTACK_3",
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_ATTACK_4"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1_AIR",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_INVALID",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimName": "ATTACK1_AIR",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.1,
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8333333333333334,
+            "m_DEName": "DE_UNIT_JUNIOR_C_SPEAKER_ATTACK1_AIR",
+            "m_bTargetPos": true,
+            "m_OffsetY": 150
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_TECH_10"
+            ]
+          },
+          {
+            "m_fEventTime": 0.6666666666666666,
+            "m_fLocalVol": 0.3,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_06"
+            ]
+          },
+          {
+            "m_fEventTime": 0.8333333333333334,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 0.8333333333333334,
+            "m_bVoice": true,
+            "m_PlayRate": 0.3,
+            "m_listSoundName": [
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_ATTACK_1",
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_ATTACK_2",
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_ATTACK_3",
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_ATTACK_4"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_StateCoolTime": 20,
+        "m_AnimName": "SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_EffectName": "AB_FX_CAST_SKILL",
+            "m_AnimName": "BASE",
+            "m_BoneName": "BIP01_SPINE1",
+            "m_fScaleFactor": 20.0,
+            "m_bHold": false
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_DEName": "DE_UNIT_JUNIOR_C_SPEAKER_SKILL1_START",
+            "m_bTargetPos": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_DEName": "DE_UNIT_JUNIOR_C_SPEAKER_SKILL1",
+            "m_bTargetPos": true
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ]
+          },
+          {
+            "m_fEventTime": 0.3,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_76"
+            ]
+          },
+          {
+            "m_fEventTime": 0.6666666666666666,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_TECH_10"
+            ]
+          },
+          {
+            "m_fEventTime": 1.1666666666666667,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_06"
+            ]
+          },
+          {
+            "m_fEventTime": 1.3333333333333333,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L13_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 1.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_ACTIVE_1",
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_ACTIVE_2",
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_PASSIVE_1"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_HYPER1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_StateCoolTime": 40,
+        "m_AnimName": "HYPER_SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventInvincible": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_fEventTimeMax": 1.0
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8333333333333334,
+            "m_DEName": "DE_UNIT_JUNIOR_C_SPEAKER_HYPER1",
+            "m_bTargetPos": true,
+            "m_OffsetX": 85,
+            "m_OffsetY": 129,
+            "m_fAddRotate": 0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.1666666666666667,
+            "m_DEName": "DE_UNIT_JUNIOR_C_SPEAKER_HYPER1",
+            "m_bTargetPos": true,
+            "m_OffsetX": -51,
+            "m_OffsetY": 245,
+            "m_fAddRotate": 0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5,
+            "m_DEName": "DE_UNIT_JUNIOR_C_SPEAKER_HYPER1",
+            "m_bTargetPos": true,
+            "m_OffsetX": 67,
+            "m_OffsetY": 75,
+            "m_fAddRotate": 0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.8333333333333333,
+            "m_DEName": "DE_UNIT_JUNIOR_C_SPEAKER_HYPER1",
+            "m_bTargetPos": true,
+            "m_OffsetX": -46,
+            "m_OffsetY": 126,
+            "m_fAddRotate": 0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.1666666666666665,
+            "m_DEName": "DE_UNIT_JUNIOR_C_SPEAKER_HYPER1",
+            "m_bTargetPos": true,
+            "m_OffsetX": -122,
+            "m_OffsetY": 178,
+            "m_fAddRotate": 0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.5,
+            "m_DEName": "DE_UNIT_JUNIOR_C_SPEAKER_HYPER1",
+            "m_bTargetPos": true,
+            "m_OffsetX": -150,
+            "m_OffsetY": 129,
+            "m_fAddRotate": 0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.5,
+            "m_DEName": "DE_UNIT_JUNIOR_C_SPEAKER_SKILL1_START",
+            "m_bTargetPos": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.8333333333333335,
+            "m_DEName": "DE_UNIT_JUNIOR_C_SPEAKER_HYPER1_END",
+            "m_bTargetPos": true
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_EffectName": "AB_FX_CAST_HYPER",
+            "m_AnimName": "BASE",
+            "m_BoneName": "BIP01_SPINE1",
+            "m_fScaleFactor": 20.0,
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_fEventTimeMax": 4.666666666666667,
+            "m_fColorR": 1.0,
+            "m_fColorG": 0.5,
+            "m_fColorB": 0.5
+          }
+        ],
+        "m_listNKMEventFadeWorld": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_fEventTimeMax": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_fColorR": 0.0,
+            "m_fColorG": 0.0,
+            "m_fColorB": 0.0,
+            "m_fMapColorKeepTime": 2.5,
+            "m_fMapColorReturnTime": 0.1
+          }
+        ],
+        "m_listNKMEventStopTime": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_StopTimeIndex": "NSTI_SKILL",
+            "m_fStopTime": 0.8333333333333334,
+            "m_bStopEnemyOnly": false,
+            "m_bMyStop": false,
+            "m_fRange": 1200
+          }
+        ],
+        "m_listNKMEventCameraMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_fEventTimeMax": 1.0,
+            "m_fPosXOffset": 0,
+            "m_fPosYOffset": 150,
+            "m_fZoom": -200,
+            "m_fMoveTrackingTime": 0.1,
+            "m_fZoomTrackingTime": 0.1
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.0,
+            "m_fEventTimeMax": 3.3333333333333335,
+            "m_fPosXOffset": 400,
+            "m_fPosYOffset": 150,
+            "m_fZoom": -100,
+            "m_fMoveTrackingTime": 2.3333333333333335,
+            "m_fZoomTrackingTime": 2.3333333333333335
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 3.3333333333333335,
+            "m_fEventTimeMax": 3.6666666666666665,
+            "m_fPosXOffset": 400,
+            "m_fPosYOffset": 150,
+            "m_fZoom": 0,
+            "m_fMoveTrackingTime": 0.3333333333333333,
+            "m_fZoomTrackingTime": 0.1
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HYPER_ATTACK_START"
+            ]
+          },
+          {
+            "m_fEventTime": 0.06666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_55"
+            ]
+          },
+          {
+            "m_fEventTime": 0.5,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_TECH_10"
+            ]
+          },
+          {
+            "m_fEventTime": 1.0,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL",
+              "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 1.1666666666666667,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL",
+              "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 1.3333333333333333,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL",
+              "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 1.5,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL",
+              "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 1.6666666666666667,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL",
+              "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 1.8333333333333333,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL",
+              "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 2.0,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL",
+              "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 2.1666666666666665,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL",
+              "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 2.3333333333333335,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL",
+              "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 2.5,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL",
+              "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 2.6666666666666665,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL",
+              "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 2.8333333333333335,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL",
+              "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 3.0,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_06"
+            ]
+          },
+          {
+            "m_fEventTime": 3.1666666666666665,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MOVEMENT_07"
+            ]
+          },
+          {
+            "m_fEventTime": 3.1666666666666665,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L27_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_HYPER_1",
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_HYPER_2",
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_ATTACK_10"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_A",
+        "m_AnimName": "DAMAGE_A",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DAMAGE_3"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_B",
+        "m_AnimName": "DAMAGE_B",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DAMAGE_3"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_AIR_UP",
+        "m_AnimName": "DAMAGE_AIR_UP",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DAMAGE_3"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+        "m_AnimEndChangeState": "USN_DAMAGE_STAND",
+        "m_FootOnLandChangeState": "",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DAMAGE_3"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.8333333333333334,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_02"
+            ]
+          },
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DEATH_1",
+              "VOICE_UNIT_JUNIOR_C_SPEAKER_BATTLE_DEATH_2"
+            ]
+          }
+        ],
+        "m_listNKMEventDissolve": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.0,
+            "m_fDissolve": 1,
+            "m_fTrackTime": 5.0
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

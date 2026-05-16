@@ -1,18 +1,7 @@
-const fs = require("fs");
 const path = require("path");
+const { readGameplayTableRecords } = require("../gameplay-jsons");
 
 const ROOT_DIR = path.resolve(__dirname, "..", "..");
-const EXTRACTED_TABLE_ROOTS = [
-  path.join(ROOT_DIR, "gameplay-tables-json", "Assetbundles"),
-  path.join(ROOT_DIR, "gameplay-tables-json", "StreamingAssets"),
-];
-const PREPACKAGED_TABLE_ROOTS = [
-  path.join(ROOT_DIR, "gameplay-jsons", "Assetbundles"),
-  path.join(ROOT_DIR, "gameplay-jsons", "StreamingAssets"),
-];
-const TABLE_ROOTS = [...EXTRACTED_TABLE_ROOTS, ...PREPACKAGED_TABLE_ROOTS];
-const ENABLE_EXTRACTED_MISSION_TABLES = process.env.CS_ENABLE_EXTRACTED_MISSION_TABLES === "1";
-const MISSION_TABLE_ROOTS = ENABLE_EXTRACTED_MISSION_TABLES ? TABLE_ROOTS : PREPACKAGED_TABLE_ROOTS;
 const DEFAULT_COUNTER_PASS_UNLOCK_DUNGEON_IDS = Object.freeze([1001421]);
 
 let cachedData = null;
@@ -879,25 +868,11 @@ function groupByNumber(records, key) {
 }
 
 function readRecords(directory, fileName) {
-  return readRecordsFromRoots(TABLE_ROOTS, directory, fileName);
+  return readGameplayTableRecords(directory, fileName, { rootDir: ROOT_DIR, logLabel: "game-data" });
 }
 
 function readMissionRecords(directory, fileName) {
-  return readRecordsFromRoots(MISSION_TABLE_ROOTS, directory, fileName);
-}
-
-function readRecordsFromRoots(roots, directory, fileName) {
-  for (const root of roots) {
-    const filePath = path.join(root, directory, "luac", fileName);
-    if (!fs.existsSync(filePath)) continue;
-    try {
-      const parsed = JSON.parse(fs.readFileSync(filePath, "utf8"));
-      if (Array.isArray(parsed.records)) return parsed.records;
-    } catch (err) {
-      console.log(`[game-data] failed to load ${filePath}: ${err.message}`);
-    }
-  }
-  return [];
+  return readGameplayTableRecords(directory, fileName, { rootDir: ROOT_DIR, logLabel: "game-data" });
 }
 
 module.exports = {

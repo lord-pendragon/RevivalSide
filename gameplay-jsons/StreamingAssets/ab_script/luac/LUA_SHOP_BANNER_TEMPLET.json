@@ -1,0 +1,2827 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script\\luac\\LUA_SHOP_BANNER_TEMPLET.lua",
+  "rootName": "SHOP_BANNER_TEMPLET",
+  "recordCount": 102,
+  "records": [
+    {
+      "IDX": 1,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SERVICE_TRANSFER",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SERVICE_TRANSFER",
+      "m_DateStrID": "DATE_COMMON_MISSION_EVENT_SERVICE_TRANSFER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_SERVICE_TRANSFER"
+      ],
+      "m_TabID": "TAB_MAIN",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 2,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160545",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160545",
+      "m_DateStrID": "SHOP_CASH_UNLIMITED_BASIC",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_NEWBIE_ONLY_VOL1"
+      ],
+      "m_TabID": "TAB_PACKAGE_NEWBIE",
+      "m_TabSubIndex": 1,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160547,160548,160549,160550"
+    },
+    {
+      "IDX": 3,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160577",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160577",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_LAUNCHING_GLOBAL_PC",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_GLOBAL_PC"
+      ],
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_GLOBAL_PC",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160577,160578,160579,160580,160590"
+    },
+    {
+      "IDX": 4,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_170045",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_170045",
+      "m_DateStrID": "SHOP_CASH_UNLIMITED_BASIC",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_COMEBACK_V2_KOR"
+      ],
+      "listContentsTagIgnore": [
+        "GLOBAL"
+      ],
+      "m_TabID": "TAB_PACKAGE_LIMITED",
+      "m_TabSubIndex": 6,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "170045,170046,170047,170048"
+    },
+    {
+      "IDX": 5,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_170045",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_170045",
+      "m_DateStrID": "SHOP_CASH_UNLIMITED_BASIC",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_COMEBACK_V2_GLOBAL"
+      ],
+      "listContentsTagIgnore": [
+        "KOR",
+        "TWN",
+        "SEA",
+        "CHN",
+        "JPN"
+      ],
+      "m_TabID": "TAB_PACKAGE_LIMITED",
+      "m_TabSubIndex": 6,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "180045,180046,180047,180048"
+    },
+    {
+      "IDX": 6,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_1_5YEAR_C",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_1_5YEAR_C",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_LAUNCHING_1_5YEAR_CLASSIFIED",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_1_5YEAR_CLASSIFIED_KOR"
+      ],
+      "m_TabID": "TAB_PACKAGE_LIMITED",
+      "m_TabSubIndex": 4,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160356,160357"
+    },
+    {
+      "IDX": 7,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160326",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160326",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_KOR_33F_A",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_GGST_UNIT_CHOICE_MNM"
+      ],
+      "m_TabID": "TAB_PACKAGE_GGST_UNIT_CHOICE_MNM",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160326"
+    },
+    {
+      "IDX": 8,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160334",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160334",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_GGST_UNIT_CHOICE_RNI",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_GGST_UNIT_CHOICE_RNI"
+      ],
+      "m_TabID": "TAB_PACKAGE_GGST_UNIT_CHOICE_RNI",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160334"
+    },
+    {
+      "IDX": 9,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160369",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160369",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_LAUNCHING_NEW_OFFICE",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_GGST_UNIT_CHOICE_RNI"
+      ],
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_NEW_OFFICE",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160369"
+    },
+    {
+      "IDX": 10,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_170049",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_170049",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_001_INAPP",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_001"
+      ],
+      "listContentsTagIgnore": [
+        "GLOBAL"
+      ],
+      "m_TabID": "TAB_PACKAGE_CLB_001",
+      "m_TabSubIndex": 1,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "170049"
+    },
+    {
+      "IDX": 11,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_170049",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_170049",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_001_INAPP",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_001"
+      ],
+      "listContentsTagIgnore": [
+        "KOR",
+        "TWN",
+        "SEA",
+        "CHN",
+        "JPN"
+      ],
+      "m_TabID": "TAB_PACKAGE_CLB_001",
+      "m_TabSubIndex": 1,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "180009"
+    },
+    {
+      "IDX": 12,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160592",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160592",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_002",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_002"
+      ],
+      "m_TabID": "TAB_PACKAGE_CLB_002",
+      "m_TabSubIndex": 2,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160592,160593,160594"
+    },
+    {
+      "IDX": 13,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_170288",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_170288",
+      "m_DateStrID": "SHOP_CASH_UNLIMITED_BASIC",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_COMEBACK_V3_KOR"
+      ],
+      "listContentsTagIgnore": [
+        "GLOBAL"
+      ],
+      "m_TabID": "TAB_PACKAGE_LIMITED",
+      "m_TabSubIndex": 14,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "170288,170289,170290,170291"
+    },
+    {
+      "IDX": 14,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_170288",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_170288",
+      "m_DateStrID": "SHOP_CASH_UNLIMITED_BASIC",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_COMEBACK_V3_GLOBAL"
+      ],
+      "listContentsTagIgnore": [
+        "KOR",
+        "TWN",
+        "SEA",
+        "CHN",
+        "JPN"
+      ],
+      "m_TabID": "TAB_PACKAGE_LIMITED",
+      "m_TabSubIndex": 14,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "180288,180289,170290,170291"
+    },
+    {
+      "IDX": 500,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_VALEN",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_VALEN",
+      "m_DateStrID": "SHOP_SKIN_VALEN_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_VALEN_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 80,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5005,5006,5007,5008,5009,5010,5011,5024"
+    },
+    {
+      "IDX": 501,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_SPORTS",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_SPORTS",
+      "m_DateStrID": "SHOP_SKIN_SPORT_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_SPORT_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 71,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5064,5065,5066"
+    },
+    {
+      "IDX": 502,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_LAUNCHING",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_LAUNCHING",
+      "m_DateStrID": "SHOP_SKIN_VACENCE_LAUNCHING_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_VACANCE_LAUNCHING_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 77,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5030,5031"
+    },
+    {
+      "IDX": 503,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_RACING",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_RACING",
+      "m_DateStrID": "SHOP_SKIN_RACING_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_RACING_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 79,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5019,5020,5021,5022,5023"
+    },
+    {
+      "IDX": 504,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_CHILD",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_CHILD",
+      "m_DateStrID": "SHOP_SKIN_CHILD_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_CHILD_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 78,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5025,5026,5027,5028"
+    },
+    {
+      "IDX": 505,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_HALLOWEEN_V2",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_HALLOWEEN_V2",
+      "m_DateStrID": "SHOP_SKIN_HALLOWEEN_V2_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_HALLOWEEN_V2_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 75,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5078,5079,5080"
+    },
+    {
+      "IDX": 506,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_HALLOWEEN",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_HALLOWEEN",
+      "m_DateStrID": "SHOP_SKIN_HALLOWEEN_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_HALLOWEEN_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 75,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5046,5047,5048"
+    },
+    {
+      "IDX": 507,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_1ST_ANNIVERSARY",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_1ST_ANNIVERSARY",
+      "m_DateStrID": "SHOP_SKIN_1ST_ANNIVERSARY_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_1ST_ANNIVERSARY_ALWAYS"
+      ],
+      "listContentsTagIgnore": [
+        "GLOBAL"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 73,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5056,5057,5058,5059,5060,5061"
+    },
+    {
+      "IDX": 508,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_1ST_ANNIVERSARY_G",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_1ST_ANNIVERSARY_G",
+      "m_DateStrID": "SHOP_SKIN_1ST_ANNIVERSARY_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_1ST_ANNIVERSARY_ALWAYS"
+      ],
+      "listContentsTagIgnore": [
+        "KOR",
+        "TWN",
+        "SEA",
+        "CHN",
+        "JPN"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 73,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5056,5057,5058,5059,5060,5061"
+    },
+    {
+      "IDX": 509,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_WEDDING_V2",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_WEDDING_V2",
+      "m_DateStrID": "SHOP_SKIN_WEDDING_V2_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_WEDDING_V2_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 76,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5069,5070"
+    },
+    {
+      "IDX": 510,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_WEDDING",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_WEDDING",
+      "m_DateStrID": "SHOP_SKIN_WEDDING_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_WEDDING_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 76,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5042,5043,5044,5045"
+    },
+    {
+      "IDX": 511,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_CHRISTMAS",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_CHRISTMAS",
+      "m_DateStrID": "SHOP_SKIN_SPECIAL_CHRISTMAS_LAUNCHING_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_CHRISTMAS_LAUNCHING_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 74,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5012,5049,5050,5051,5053,5054,5055"
+    },
+    {
+      "IDX": 512,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_NEW_YEAR",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_NEW_YEAR",
+      "m_DateStrID": "SHOP_SKIN_NEWYEAR_2021_BANNER",
+      "listContentsTagAllow": [
+        "SEA"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 72,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5062,5063"
+    },
+    {
+      "IDX": 513,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2021",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2021",
+      "m_DateStrID": "SHOP_SKIN_VACENCE_V2_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_VACANCE_V2_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 77,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5071,5072,5073,5074"
+    },
+    {
+      "IDX": 514,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_RECITAL",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_RECITAL",
+      "m_DateStrID": "SHOP_SKIN_2ND_ANNIVERSARY_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_2ND_ANNIVERSARY_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 70,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5085,5086,5087,5088"
+    },
+    {
+      "IDX": 515,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_BUNNY",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_BUNNY",
+      "m_DateStrID": "SHOP_SKIN_BUNNY_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_BUNNY_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 69,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5099,5100,5101"
+    },
+    {
+      "IDX": 516,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_ALL_SKIN_RESALE",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_ALL_SKIN_RESALE",
+      "m_DateStrID": "SHOP_SKIN_ALL_SKIN_RESALE_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_EVENT_TAB_SKIN_ALL_SKIN_RESALE"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 99
+    },
+    {
+      "IDX": 517,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_FOOLSDAY",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_FOOLSDAY",
+      "m_DateStrID": "SHOP_SKIN_FOOLSDAY_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_FOOLSDAY_V2"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 98,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5102,5103,5104"
+    },
+    {
+      "IDX": 518,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2022",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2022",
+      "m_DateStrID": "SHOP_SKIN_VACENCE_V3_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_VACANCE_V3_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 77,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5105"
+    },
+    {
+      "IDX": 519,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_CHANGE",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_CHANGE",
+      "m_DateStrID": "SHOP_SKIN_CHANGE_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_CHANGE_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 68,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5106,5107,5108,5109"
+    },
+    {
+      "IDX": 520,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_SCHOOL",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_SCHOOL",
+      "m_DateStrID": "SHOP_SKIN_SCHOOL_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_SCHOOL_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 67,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5110,5111"
+    },
+    {
+      "IDX": 521,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2022_V2",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2022_V2",
+      "m_DateStrID": "SHOP_SKIN_VACANCE_V4_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_VACANCE_V4_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 77,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5112,5113,5114"
+    },
+    {
+      "IDX": 522,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_CHUSEOK",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_CHUSEOK",
+      "m_DateStrID": "SHOP_SKIN_CHUSEOK_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_CHUSEOK_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 66,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5115,5116"
+    },
+    {
+      "IDX": 523,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_PAJAMAS",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_PAJAMAS",
+      "m_DateStrID": "SHOP_SKIN_PAJAMAS_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_PAJAMAS_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 65,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5119,5120"
+    },
+    {
+      "IDX": 524,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_WEDDING_V3",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_WEDDING_V3",
+      "m_DateStrID": "SHOP_SKIN_WEDDING_V3_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_WEDDING_V3_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 76,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5121,5122,5123"
+    },
+    {
+      "IDX": 525,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_FOOLSDAY_V2",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_FOOLSDAY_V2",
+      "m_DateStrID": "SHOP_SKIN_FOOLSDAY_V3_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_FOOLSDAY_V3"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 98,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5124,5125,5126"
+    },
+    {
+      "IDX": 526,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_SPRING_BUNNY",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_SPRING_BUNNY",
+      "m_DateStrID": "SHOP_SKIN_SPRING_BUNNY_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_SPRING_BUNNY_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 64,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5127,5128,5129"
+    },
+    {
+      "IDX": 527,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_SPRING_BUNNY_V2",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_SPRING_BUNNY_V2",
+      "m_DateStrID": "SHOP_SKIN_SPRING_BUNNY_V2_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_SPRING_BUNNY_V2_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 64,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5130,5131"
+    },
+    {
+      "IDX": 528,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2023",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2023",
+      "m_DateStrID": "SHOP_SKIN_VACENCE_V5_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_VACANCE_V5_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 77,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5132,5133"
+    },
+    {
+      "IDX": 529,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2023_V2",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2023_V2",
+      "m_DateStrID": "SHOP_SKIN_VACENCE_V6_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_VACANCE_V6_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 77,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5134,5135,5136"
+    },
+    {
+      "IDX": 530,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_MAID",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_MAID",
+      "m_DateStrID": "SHOP_SKIN_MAID_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_MAID_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 63,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5137,5138"
+    },
+    {
+      "IDX": 531,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_HALLOWEEN_V3",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_HALLOWEEN_V3",
+      "m_DateStrID": "SHOP_SKIN_HALLOWEEN_V3_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_HALLOWEEN_V3_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 75,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5140,5141"
+    },
+    {
+      "IDX": 532,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_XMAS_V2",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_XMAS_V2",
+      "m_DateStrID": "SHOP_SKIN_XMAS_V2_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_CHRISTMAS_ALWAYS_V3"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 74,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5142,5143"
+    },
+    {
+      "IDX": 533,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_CLB_003",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_CLB_003",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_003_LIMIT",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_003"
+      ],
+      "m_TabID": "TAB_PACKAGE_CLB_003",
+      "m_TabSubIndex": 4,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "170095,170096"
+    },
+    {
+      "IDX": 534,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_FOOLSDAY_V3",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_FOOLSDAY_V3",
+      "m_DateStrID": "SHOP_SKIN_FOOLSDAY_V4_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_FOOLSDAY_V4"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 98,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5146,5147"
+    },
+    {
+      "IDX": 535,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2024",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2024",
+      "m_DateStrID": "SHOP_SKIN_VACENCE_V7_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_VACANCE_V7_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 77,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5150,5151,5152"
+    },
+    {
+      "IDX": 536,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_CHANGE_V2",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_CHANGE_V2",
+      "m_DateStrID": "SHOP_SKIN_CHANGE_V2_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_CHANGE_ALWAYS_V2"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 68,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5153,5154"
+    },
+    {
+      "IDX": 537,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_PARTY",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_PARTY",
+      "m_DateStrID": "SHOP_SKIN_PARTY_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_PARTY_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 61,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5155,5156"
+    },
+    {
+      "IDX": 538,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_NEW_YEAR_V2",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_NEW_YEAR_V2",
+      "m_DateStrID": "SHOP_SKIN_NEW_YEAR_V2_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_NEW_YEAR_ALWAYS_V2"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 81,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5157"
+    },
+    {
+      "IDX": 539,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_FOOLSDAY_V4",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_FOOLSDAY_V4",
+      "m_DateStrID": "SHOP_SKIN_FOOLSDAY_V5_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_FOOLSDAY_V5"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 98,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5158,5159"
+    },
+    {
+      "IDX": 540,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2025",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2025",
+      "m_DateStrID": "SHOP_SKIN_VACENCE_V8_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_VACANCE_V8_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 77,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5160,6161"
+    },
+    {
+      "IDX": 541,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_XMAS_V3",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_XMAS_V3",
+      "m_DateStrID": "SHOP_SKIN_XMAS_V3_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_CHRISTMAS_ALWAYS_V4"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 74,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5163,5164"
+    },
+    {
+      "IDX": 990,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160552",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160552",
+      "m_DateStrID": "SHOP_CASH_UNLIMITED_BASIC",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_NEWBIE_STARTER_VOL1_V2"
+      ],
+      "m_TabID": "TAB_PACKAGE_NEWBIE",
+      "m_TabSubIndex": 2,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160552,160553"
+    },
+    {
+      "IDX": 1000,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_DEFAULT",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_DEFAULT",
+      "m_DateStrID": "SHOP_CASH_UNLIMITED_BASIC",
+      "m_TabID": "TAB_MAIN",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1001,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_EVENT_FIRST_PURCHASE",
+      "m_ShopHome_BannerPrefab": "SHOP_BANNER_HOME_SAMPLE",
+      "m_DateStrID": "SHOP_BANNER_FIRST_PURCHASE",
+      "listContentsTagAllow": [
+        "TWN"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1002,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SELL_PACKAGE_2021021",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_KOR_30A_A",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1003,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SKIN_FEATURED_NEW_YEAR",
+      "m_DateStrID": "SHOP_SKIN_NEWYEAR_2021",
+      "m_ContentsVersionStart": "3.0.b",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1004,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SKIN_FEATURED_NEW_YEAR",
+      "m_DateStrID": "SHOP_SKIN_NEWYEAR_2021",
+      "listContentsTagAllow": [
+        "TWN"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1005,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SELL_PACKAGE_2020112",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1006,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SKIN_FEATURED_XMAS",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1007,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_EVENT_SALE_SKIN_ALL",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1008,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SELL_PACKAGE_202005",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1009,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_EVENT_SHOP_RENEWAL",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1010,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_EVENT_SHOP_202005_HEADHUNTING",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1011,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SELL_PACKAGE_202006",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1012,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SALE_SKIN_202006_SUMMER",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1013,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SELL_PACKAGE_2020071",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1014,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SELL_PACKAGE_2020081",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1015,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SALE_SKIN_202007_SUMMER",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1016,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SALE_SKIN_202008_SUMMER",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1017,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SKIN_FEATURED_WEDDING",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1018,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SKIN_FEATURED_HALLOWEEN",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1019,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_PACKAGE_202104",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_PACKAGE_202104",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_KOR_32A_A",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_REMODELING"
+      ],
+      "m_TabID": "TAB_PACKAGE_REMODELING",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160264,160265,160266"
+    },
+    {
+      "IDX": 1020,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_MAY_DAY_2021_INAPP",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_MAY_DAY_2021_INAPP",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_KOR_33A_A",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_MAY_DAY_2021"
+      ],
+      "m_TabID": "TAB_PACKAGE_MAY_DAY_2021",
+      "m_TabSubIndex": 0,
+      "m_ProductID": 160286,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160285,160286"
+    },
+    {
+      "IDX": 1021,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160567",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160567",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_RECRUITMENT_HOME",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_RECRUITMENT_BANNER"
+      ],
+      "m_TabID": "TAB_PACKAGE_RECRUITMENT",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160567,160568"
+    },
+    {
+      "IDX": 1022,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_PACKAGE_NEWBIE_STARTER",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_PACKAGE_NEWBIE_STARTER",
+      "m_DateStrID": "SHOP_CASH_UNLIMITED_BASIC",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_NEWBIE_STARTER_VOL3"
+      ],
+      "m_TabID": "TAB_PACKAGE_TIME_DEAL",
+      "m_TabSubIndex": 2,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160247,160248,160249"
+    },
+    {
+      "IDX": 1023,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_PACKAGE_NEWBIE_SPECIAL_PRICE_VOL1",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_PACKAGE_NEWBIE_SPECIAL_PRICE_VOL1",
+      "m_DateStrID": "SHOP_CASH_UNLIMITED_BASIC",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_NEWBIE_SPECIAL_PRICE_VOL1"
+      ],
+      "m_TabID": "TAB_PACKAGE_TIME_DEAL",
+      "m_TabSubIndex": 1,
+      "m_ProductID": 160310,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160310"
+    },
+    {
+      "IDX": 1024,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_PACKAGE_NEWBIE_SPECIAL_PRICE",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_PACKAGE_NEWBIE_SPECIAL_PRICE",
+      "m_DateStrID": "SHOP_CASH_UNLIMITED_BASIC",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_NEWBIE_SPECIAL_PRICE"
+      ],
+      "m_TabID": "TAB_PACKAGE_TIME_DEAL",
+      "m_TabSubIndex": 1,
+      "m_ProductID": 160246,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160246"
+    },
+    {
+      "IDX": 1025,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_1_5YEAR_P",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_1_5YEAR_P",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_LAUNCHING_1_5YEAR_STEP_UP",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_1_5YEAR_CLASSIFIED_KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1026,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160339",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160339",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_REPLACER_CA_V2",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_REPLACER_CA_V2"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_REPLACER_CA_V2",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160464,460465,160392"
+    },
+    {
+      "IDX": 1027,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160414",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160414",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_FUTURE_MA_LOAN_V2",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_FUTURE_MA_LOAN_V2"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_FUTURE_MA_LOAN_V2",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160414,160415,160416"
+    },
+    {
+      "IDX": 1028,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160373",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160373",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_CA_JOO_SHI_YOON_V2",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CA_JOO_SHI_YOON_V2"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_CA_JOO_SHI_YOON_V2",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160509,160510,160393"
+    },
+    {
+      "IDX": 1029,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160336",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160336",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_SCAVENGER_MA_EVOLVE_V2",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_SCAVENGER_MA_EVOLVE_V2"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_SCAVENGER_MA_EVOLVE_V2",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160432,160433,160391"
+    },
+    {
+      "IDX": 1030,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160329",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160329",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_CA_SEO_YOON_V2",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CA_SEO_YOON_V2"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_CA_SEO_YOON_V2",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160511,160512,160390"
+    },
+    {
+      "IDX": 1031,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160318",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160318",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_SIXWING_AMY_V2",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_SIXWING_AMY_V2"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_SIXWING_AMY_V2",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160405,160406,160389"
+    },
+    {
+      "IDX": 1032,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160315",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160315",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_CA_YOO_MI_NA_V2",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CA_YOO_MI_NA_V2"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_CA_YOO_MI_NA_V2",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160442,160443,160388"
+    },
+    {
+      "IDX": 1033,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160394",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160394",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_CA_ADMIN_LEE_SUYEON",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CA_ADMIN_LEE_SUYEON"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_CA_ADMIN_LEE_SUYEON",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160394,160395,160396"
+    },
+    {
+      "IDX": 1034,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_UNIT_CORRUPTED_CA_MINISTRA",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_UNIT_CORRUPTED_CA_MINISTRA",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_CORRUPTED_CA_MINISTRA_V2",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CORRUPTED_CA_MINISTRA_V2"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_CORRUPTED_CA_MINISTRA_V2",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160507,160508,160385"
+    },
+    {
+      "IDX": 1035,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160302",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160302",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_CA_STREGA_YOO_NA_V2",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CA_STREGA_YOO_NA_V2"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_CA_STREGA_YOO_NA_V2",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160462,160463,160387"
+    },
+    {
+      "IDX": 1036,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_PACKAGE_CLASSIFIED_202105",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_PACKAGE_CLASSIFIED_202105",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_SIXWING_NA_YUBIN",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_SIXWING_NA_YUBIN"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_SIXWING_NA_YUBIN",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160531,160532,160386"
+    },
+    {
+      "IDX": 1037,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160501",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160501",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_DELTA_CA_JAKE_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_DELTA_CA_JAKE"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_DELTA_CA_JAKE",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160501,160502,160503"
+    },
+    {
+      "IDX": 1038,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160514",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160514",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_ALPHA_CA_JIA",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_ALPHA_CA_JIA"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_ALPHA_CA_JIA",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160514,160515,160516"
+    },
+    {
+      "IDX": 1039,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160533",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160533",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_HARMONY_CA_CONDUCT",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CA_CONDUCT"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_HARMONY_CA_CONDUCT",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160533,160534,160535"
+    },
+    {
+      "IDX": 1040,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160558",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160558",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_DELTA_CA_MARIA",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_DELTA_CA_MARIA"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_DELTA_CA_MARIA",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160558,160559,160560"
+    },
+    {
+      "IDX": 1041,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160563",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160563",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_BORDER_SA_HORSE",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_BORDER_SA_HORSE"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_BORDER_SA_HORSE",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160563,160564,160565"
+    },
+    {
+      "IDX": 1042,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160584",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160584",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_RAS_MA_TOWER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_RAS_MA_TOWER"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_RAS_MA_TOWER",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160584,160585,160586"
+    },
+    {
+      "IDX": 1043,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160600",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160600",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_ESPR_CA_FROZEN",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_ESPR_CA_FROZEN"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_ESPR_CA_FROZEN",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160600,160601,160602"
+    },
+    {
+      "IDX": 1044,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160624",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160624",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_JAPAN_CA_SENHIME",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_JAPAN_CA_SENHIME"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_JAPAN_CA_SENHIME",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160624,160625,160626"
+    }
+  ],
+  "root": [
+    {
+      "IDX": 1,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SERVICE_TRANSFER",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SERVICE_TRANSFER",
+      "m_DateStrID": "DATE_COMMON_MISSION_EVENT_SERVICE_TRANSFER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_SERVICE_TRANSFER"
+      ],
+      "m_TabID": "TAB_MAIN",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 2,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160545",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160545",
+      "m_DateStrID": "SHOP_CASH_UNLIMITED_BASIC",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_NEWBIE_ONLY_VOL1"
+      ],
+      "m_TabID": "TAB_PACKAGE_NEWBIE",
+      "m_TabSubIndex": 1,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160547,160548,160549,160550"
+    },
+    {
+      "IDX": 3,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160577",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160577",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_LAUNCHING_GLOBAL_PC",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_GLOBAL_PC"
+      ],
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_GLOBAL_PC",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160577,160578,160579,160580,160590"
+    },
+    {
+      "IDX": 4,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_170045",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_170045",
+      "m_DateStrID": "SHOP_CASH_UNLIMITED_BASIC",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_COMEBACK_V2_KOR"
+      ],
+      "listContentsTagIgnore": [
+        "GLOBAL"
+      ],
+      "m_TabID": "TAB_PACKAGE_LIMITED",
+      "m_TabSubIndex": 6,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "170045,170046,170047,170048"
+    },
+    {
+      "IDX": 5,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_170045",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_170045",
+      "m_DateStrID": "SHOP_CASH_UNLIMITED_BASIC",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_COMEBACK_V2_GLOBAL"
+      ],
+      "listContentsTagIgnore": [
+        "KOR",
+        "TWN",
+        "SEA",
+        "CHN",
+        "JPN"
+      ],
+      "m_TabID": "TAB_PACKAGE_LIMITED",
+      "m_TabSubIndex": 6,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "180045,180046,180047,180048"
+    },
+    {
+      "IDX": 6,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_1_5YEAR_C",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_1_5YEAR_C",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_LAUNCHING_1_5YEAR_CLASSIFIED",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_1_5YEAR_CLASSIFIED_KOR"
+      ],
+      "m_TabID": "TAB_PACKAGE_LIMITED",
+      "m_TabSubIndex": 4,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160356,160357"
+    },
+    {
+      "IDX": 7,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160326",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160326",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_KOR_33F_A",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_GGST_UNIT_CHOICE_MNM"
+      ],
+      "m_TabID": "TAB_PACKAGE_GGST_UNIT_CHOICE_MNM",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160326"
+    },
+    {
+      "IDX": 8,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160334",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160334",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_GGST_UNIT_CHOICE_RNI",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_GGST_UNIT_CHOICE_RNI"
+      ],
+      "m_TabID": "TAB_PACKAGE_GGST_UNIT_CHOICE_RNI",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160334"
+    },
+    {
+      "IDX": 9,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160369",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160369",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_LAUNCHING_NEW_OFFICE",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_GGST_UNIT_CHOICE_RNI"
+      ],
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_NEW_OFFICE",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160369"
+    },
+    {
+      "IDX": 10,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_170049",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_170049",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_001_INAPP",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_001"
+      ],
+      "listContentsTagIgnore": [
+        "GLOBAL"
+      ],
+      "m_TabID": "TAB_PACKAGE_CLB_001",
+      "m_TabSubIndex": 1,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "170049"
+    },
+    {
+      "IDX": 11,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_170049",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_170049",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_001_INAPP",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_001"
+      ],
+      "listContentsTagIgnore": [
+        "KOR",
+        "TWN",
+        "SEA",
+        "CHN",
+        "JPN"
+      ],
+      "m_TabID": "TAB_PACKAGE_CLB_001",
+      "m_TabSubIndex": 1,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "180009"
+    },
+    {
+      "IDX": 12,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160592",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160592",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_002",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_002"
+      ],
+      "m_TabID": "TAB_PACKAGE_CLB_002",
+      "m_TabSubIndex": 2,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160592,160593,160594"
+    },
+    {
+      "IDX": 13,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_170288",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_170288",
+      "m_DateStrID": "SHOP_CASH_UNLIMITED_BASIC",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_COMEBACK_V3_KOR"
+      ],
+      "listContentsTagIgnore": [
+        "GLOBAL"
+      ],
+      "m_TabID": "TAB_PACKAGE_LIMITED",
+      "m_TabSubIndex": 14,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "170288,170289,170290,170291"
+    },
+    {
+      "IDX": 14,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_170288",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_170288",
+      "m_DateStrID": "SHOP_CASH_UNLIMITED_BASIC",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_COMEBACK_V3_GLOBAL"
+      ],
+      "listContentsTagIgnore": [
+        "KOR",
+        "TWN",
+        "SEA",
+        "CHN",
+        "JPN"
+      ],
+      "m_TabID": "TAB_PACKAGE_LIMITED",
+      "m_TabSubIndex": 14,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "180288,180289,170290,170291"
+    },
+    {
+      "IDX": 500,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_VALEN",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_VALEN",
+      "m_DateStrID": "SHOP_SKIN_VALEN_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_VALEN_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 80,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5005,5006,5007,5008,5009,5010,5011,5024"
+    },
+    {
+      "IDX": 501,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_SPORTS",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_SPORTS",
+      "m_DateStrID": "SHOP_SKIN_SPORT_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_SPORT_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 71,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5064,5065,5066"
+    },
+    {
+      "IDX": 502,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_LAUNCHING",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_LAUNCHING",
+      "m_DateStrID": "SHOP_SKIN_VACENCE_LAUNCHING_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_VACANCE_LAUNCHING_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 77,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5030,5031"
+    },
+    {
+      "IDX": 503,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_RACING",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_RACING",
+      "m_DateStrID": "SHOP_SKIN_RACING_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_RACING_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 79,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5019,5020,5021,5022,5023"
+    },
+    {
+      "IDX": 504,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_CHILD",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_CHILD",
+      "m_DateStrID": "SHOP_SKIN_CHILD_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_CHILD_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 78,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5025,5026,5027,5028"
+    },
+    {
+      "IDX": 505,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_HALLOWEEN_V2",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_HALLOWEEN_V2",
+      "m_DateStrID": "SHOP_SKIN_HALLOWEEN_V2_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_HALLOWEEN_V2_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 75,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5078,5079,5080"
+    },
+    {
+      "IDX": 506,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_HALLOWEEN",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_HALLOWEEN",
+      "m_DateStrID": "SHOP_SKIN_HALLOWEEN_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_HALLOWEEN_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 75,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5046,5047,5048"
+    },
+    {
+      "IDX": 507,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_1ST_ANNIVERSARY",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_1ST_ANNIVERSARY",
+      "m_DateStrID": "SHOP_SKIN_1ST_ANNIVERSARY_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_1ST_ANNIVERSARY_ALWAYS"
+      ],
+      "listContentsTagIgnore": [
+        "GLOBAL"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 73,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5056,5057,5058,5059,5060,5061"
+    },
+    {
+      "IDX": 508,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_1ST_ANNIVERSARY_G",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_1ST_ANNIVERSARY_G",
+      "m_DateStrID": "SHOP_SKIN_1ST_ANNIVERSARY_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_1ST_ANNIVERSARY_ALWAYS"
+      ],
+      "listContentsTagIgnore": [
+        "KOR",
+        "TWN",
+        "SEA",
+        "CHN",
+        "JPN"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 73,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5056,5057,5058,5059,5060,5061"
+    },
+    {
+      "IDX": 509,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_WEDDING_V2",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_WEDDING_V2",
+      "m_DateStrID": "SHOP_SKIN_WEDDING_V2_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_WEDDING_V2_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 76,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5069,5070"
+    },
+    {
+      "IDX": 510,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_WEDDING",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_WEDDING",
+      "m_DateStrID": "SHOP_SKIN_WEDDING_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_WEDDING_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 76,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5042,5043,5044,5045"
+    },
+    {
+      "IDX": 511,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_CHRISTMAS",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_CHRISTMAS",
+      "m_DateStrID": "SHOP_SKIN_SPECIAL_CHRISTMAS_LAUNCHING_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_CHRISTMAS_LAUNCHING_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 74,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5012,5049,5050,5051,5053,5054,5055"
+    },
+    {
+      "IDX": 512,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_NEW_YEAR",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_NEW_YEAR",
+      "m_DateStrID": "SHOP_SKIN_NEWYEAR_2021_BANNER",
+      "listContentsTagAllow": [
+        "SEA"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 72,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5062,5063"
+    },
+    {
+      "IDX": 513,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2021",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2021",
+      "m_DateStrID": "SHOP_SKIN_VACENCE_V2_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_VACANCE_V2_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 77,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5071,5072,5073,5074"
+    },
+    {
+      "IDX": 514,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_RECITAL",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_RECITAL",
+      "m_DateStrID": "SHOP_SKIN_2ND_ANNIVERSARY_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_2ND_ANNIVERSARY_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 70,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5085,5086,5087,5088"
+    },
+    {
+      "IDX": 515,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_BUNNY",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_BUNNY",
+      "m_DateStrID": "SHOP_SKIN_BUNNY_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_BUNNY_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 69,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5099,5100,5101"
+    },
+    {
+      "IDX": 516,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_ALL_SKIN_RESALE",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_ALL_SKIN_RESALE",
+      "m_DateStrID": "SHOP_SKIN_ALL_SKIN_RESALE_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_EVENT_TAB_SKIN_ALL_SKIN_RESALE"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 99
+    },
+    {
+      "IDX": 517,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_FOOLSDAY",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_FOOLSDAY",
+      "m_DateStrID": "SHOP_SKIN_FOOLSDAY_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_FOOLSDAY_V2"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 98,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5102,5103,5104"
+    },
+    {
+      "IDX": 518,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2022",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2022",
+      "m_DateStrID": "SHOP_SKIN_VACENCE_V3_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_VACANCE_V3_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 77,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5105"
+    },
+    {
+      "IDX": 519,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_CHANGE",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_CHANGE",
+      "m_DateStrID": "SHOP_SKIN_CHANGE_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_CHANGE_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 68,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5106,5107,5108,5109"
+    },
+    {
+      "IDX": 520,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_SCHOOL",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_SCHOOL",
+      "m_DateStrID": "SHOP_SKIN_SCHOOL_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_SCHOOL_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 67,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5110,5111"
+    },
+    {
+      "IDX": 521,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2022_V2",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2022_V2",
+      "m_DateStrID": "SHOP_SKIN_VACANCE_V4_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_VACANCE_V4_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 77,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5112,5113,5114"
+    },
+    {
+      "IDX": 522,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_CHUSEOK",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_CHUSEOK",
+      "m_DateStrID": "SHOP_SKIN_CHUSEOK_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_CHUSEOK_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 66,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5115,5116"
+    },
+    {
+      "IDX": 523,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_PAJAMAS",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_PAJAMAS",
+      "m_DateStrID": "SHOP_SKIN_PAJAMAS_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_PAJAMAS_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 65,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5119,5120"
+    },
+    {
+      "IDX": 524,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_WEDDING_V3",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_WEDDING_V3",
+      "m_DateStrID": "SHOP_SKIN_WEDDING_V3_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_WEDDING_V3_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 76,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5121,5122,5123"
+    },
+    {
+      "IDX": 525,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_FOOLSDAY_V2",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_FOOLSDAY_V2",
+      "m_DateStrID": "SHOP_SKIN_FOOLSDAY_V3_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_FOOLSDAY_V3"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 98,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5124,5125,5126"
+    },
+    {
+      "IDX": 526,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_SPRING_BUNNY",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_SPRING_BUNNY",
+      "m_DateStrID": "SHOP_SKIN_SPRING_BUNNY_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_SPRING_BUNNY_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 64,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5127,5128,5129"
+    },
+    {
+      "IDX": 527,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_SPRING_BUNNY_V2",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_SPRING_BUNNY_V2",
+      "m_DateStrID": "SHOP_SKIN_SPRING_BUNNY_V2_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_SPRING_BUNNY_V2_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 64,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5130,5131"
+    },
+    {
+      "IDX": 528,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2023",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2023",
+      "m_DateStrID": "SHOP_SKIN_VACENCE_V5_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_VACANCE_V5_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 77,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5132,5133"
+    },
+    {
+      "IDX": 529,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2023_V2",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2023_V2",
+      "m_DateStrID": "SHOP_SKIN_VACENCE_V6_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_VACANCE_V6_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 77,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5134,5135,5136"
+    },
+    {
+      "IDX": 530,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_MAID",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_MAID",
+      "m_DateStrID": "SHOP_SKIN_MAID_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_MAID_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 63,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5137,5138"
+    },
+    {
+      "IDX": 531,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_HALLOWEEN_V3",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_HALLOWEEN_V3",
+      "m_DateStrID": "SHOP_SKIN_HALLOWEEN_V3_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_HALLOWEEN_V3_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 75,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5140,5141"
+    },
+    {
+      "IDX": 532,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_XMAS_V2",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_XMAS_V2",
+      "m_DateStrID": "SHOP_SKIN_XMAS_V2_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_CHRISTMAS_ALWAYS_V3"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 74,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5142,5143"
+    },
+    {
+      "IDX": 533,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_CLB_003",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_CLB_003",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_003_LIMIT",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_003"
+      ],
+      "m_TabID": "TAB_PACKAGE_CLB_003",
+      "m_TabSubIndex": 4,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "170095,170096"
+    },
+    {
+      "IDX": 534,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_FOOLSDAY_V3",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_FOOLSDAY_V3",
+      "m_DateStrID": "SHOP_SKIN_FOOLSDAY_V4_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_FOOLSDAY_V4"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 98,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5146,5147"
+    },
+    {
+      "IDX": 535,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2024",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2024",
+      "m_DateStrID": "SHOP_SKIN_VACENCE_V7_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_VACANCE_V7_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 77,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5150,5151,5152"
+    },
+    {
+      "IDX": 536,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_CHANGE_V2",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_CHANGE_V2",
+      "m_DateStrID": "SHOP_SKIN_CHANGE_V2_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_CHANGE_ALWAYS_V2"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 68,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5153,5154"
+    },
+    {
+      "IDX": 537,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_PARTY",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_PARTY",
+      "m_DateStrID": "SHOP_SKIN_PARTY_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_PARTY_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 61,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5155,5156"
+    },
+    {
+      "IDX": 538,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_NEW_YEAR_V2",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_NEW_YEAR_V2",
+      "m_DateStrID": "SHOP_SKIN_NEW_YEAR_V2_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_NEW_YEAR_ALWAYS_V2"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 81,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5157"
+    },
+    {
+      "IDX": 539,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_FOOLSDAY_V4",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_FOOLSDAY_V4",
+      "m_DateStrID": "SHOP_SKIN_FOOLSDAY_V5_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_FOOLSDAY_V5"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 98,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5158,5159"
+    },
+    {
+      "IDX": 540,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2025",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_VACANCE_2025",
+      "m_DateStrID": "SHOP_SKIN_VACENCE_V8_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_VACANCE_V8_ALWAYS"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 77,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5160,6161"
+    },
+    {
+      "IDX": 541,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_SKIN_XMAS_V3",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_SKIN_XMAS_V3",
+      "m_DateStrID": "SHOP_SKIN_XMAS_V3_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_CHRISTMAS_ALWAYS_V4"
+      ],
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 74,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "5163,5164"
+    },
+    {
+      "IDX": 990,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160552",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160552",
+      "m_DateStrID": "SHOP_CASH_UNLIMITED_BASIC",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_NEWBIE_STARTER_VOL1_V2"
+      ],
+      "m_TabID": "TAB_PACKAGE_NEWBIE",
+      "m_TabSubIndex": 2,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160552,160553"
+    },
+    {
+      "IDX": 1000,
+      "m_Enable": true,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_DEFAULT",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_DEFAULT",
+      "m_DateStrID": "SHOP_CASH_UNLIMITED_BASIC",
+      "m_TabID": "TAB_MAIN",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1001,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_EVENT_FIRST_PURCHASE",
+      "m_ShopHome_BannerPrefab": "SHOP_BANNER_HOME_SAMPLE",
+      "m_DateStrID": "SHOP_BANNER_FIRST_PURCHASE",
+      "listContentsTagAllow": [
+        "TWN"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1002,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SELL_PACKAGE_2021021",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_KOR_30A_A",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1003,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SKIN_FEATURED_NEW_YEAR",
+      "m_DateStrID": "SHOP_SKIN_NEWYEAR_2021",
+      "m_ContentsVersionStart": "3.0.b",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1004,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SKIN_FEATURED_NEW_YEAR",
+      "m_DateStrID": "SHOP_SKIN_NEWYEAR_2021",
+      "listContentsTagAllow": [
+        "TWN"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1005,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SELL_PACKAGE_2020112",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1006,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SKIN_FEATURED_XMAS",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1007,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_EVENT_SALE_SKIN_ALL",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1008,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SELL_PACKAGE_202005",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1009,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_EVENT_SHOP_RENEWAL",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1010,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_EVENT_SHOP_202005_HEADHUNTING",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1011,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SELL_PACKAGE_202006",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1012,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SALE_SKIN_202006_SUMMER",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1013,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SELL_PACKAGE_2020071",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1014,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SELL_PACKAGE_2020081",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1015,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SALE_SKIN_202007_SUMMER",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1016,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SALE_SKIN_202008_SUMMER",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1017,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SKIN_FEATURED_WEDDING",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1018,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_NKM_UI_SHOP_BANNER_SKIN_FEATURED_HALLOWEEN",
+      "m_DateStrID": "SHOP_RECOMMEND_ARCHIEVE",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1019,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_PACKAGE_202104",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_PACKAGE_202104",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_KOR_32A_A",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_REMODELING"
+      ],
+      "m_TabID": "TAB_PACKAGE_REMODELING",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160264,160265,160266"
+    },
+    {
+      "IDX": 1020,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_MAY_DAY_2021_INAPP",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_MAY_DAY_2021_INAPP",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_KOR_33A_A",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_MAY_DAY_2021"
+      ],
+      "m_TabID": "TAB_PACKAGE_MAY_DAY_2021",
+      "m_TabSubIndex": 0,
+      "m_ProductID": 160286,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160285,160286"
+    },
+    {
+      "IDX": 1021,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160567",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160567",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_RECRUITMENT_HOME",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_RECRUITMENT_BANNER"
+      ],
+      "m_TabID": "TAB_PACKAGE_RECRUITMENT",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160567,160568"
+    },
+    {
+      "IDX": 1022,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_PACKAGE_NEWBIE_STARTER",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_PACKAGE_NEWBIE_STARTER",
+      "m_DateStrID": "SHOP_CASH_UNLIMITED_BASIC",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_NEWBIE_STARTER_VOL3"
+      ],
+      "m_TabID": "TAB_PACKAGE_TIME_DEAL",
+      "m_TabSubIndex": 2,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160247,160248,160249"
+    },
+    {
+      "IDX": 1023,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_PACKAGE_NEWBIE_SPECIAL_PRICE_VOL1",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_PACKAGE_NEWBIE_SPECIAL_PRICE_VOL1",
+      "m_DateStrID": "SHOP_CASH_UNLIMITED_BASIC",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_NEWBIE_SPECIAL_PRICE_VOL1"
+      ],
+      "m_TabID": "TAB_PACKAGE_TIME_DEAL",
+      "m_TabSubIndex": 1,
+      "m_ProductID": 160310,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160310"
+    },
+    {
+      "IDX": 1024,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_PACKAGE_NEWBIE_SPECIAL_PRICE",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_PACKAGE_NEWBIE_SPECIAL_PRICE",
+      "m_DateStrID": "SHOP_CASH_UNLIMITED_BASIC",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_NEWBIE_SPECIAL_PRICE"
+      ],
+      "m_TabID": "TAB_PACKAGE_TIME_DEAL",
+      "m_TabSubIndex": 1,
+      "m_ProductID": 160246,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160246"
+    },
+    {
+      "IDX": 1025,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_1_5YEAR_P",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_1_5YEAR_P",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_LAUNCHING_1_5YEAR_STEP_UP",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_1_5YEAR_CLASSIFIED_KOR"
+      ],
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0
+    },
+    {
+      "IDX": 1026,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160339",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160339",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_REPLACER_CA_V2",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_REPLACER_CA_V2"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_REPLACER_CA_V2",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160464,460465,160392"
+    },
+    {
+      "IDX": 1027,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160414",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160414",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_FUTURE_MA_LOAN_V2",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_FUTURE_MA_LOAN_V2"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_FUTURE_MA_LOAN_V2",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160414,160415,160416"
+    },
+    {
+      "IDX": 1028,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160373",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160373",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_CA_JOO_SHI_YOON_V2",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CA_JOO_SHI_YOON_V2"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_CA_JOO_SHI_YOON_V2",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160509,160510,160393"
+    },
+    {
+      "IDX": 1029,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160336",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160336",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_SCAVENGER_MA_EVOLVE_V2",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_SCAVENGER_MA_EVOLVE_V2"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_SCAVENGER_MA_EVOLVE_V2",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160432,160433,160391"
+    },
+    {
+      "IDX": 1030,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160329",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160329",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_CA_SEO_YOON_V2",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CA_SEO_YOON_V2"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_CA_SEO_YOON_V2",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160511,160512,160390"
+    },
+    {
+      "IDX": 1031,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160318",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160318",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_SIXWING_AMY_V2",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_SIXWING_AMY_V2"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_SIXWING_AMY_V2",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160405,160406,160389"
+    },
+    {
+      "IDX": 1032,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160315",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160315",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_CA_YOO_MI_NA_V2",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CA_YOO_MI_NA_V2"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_CA_YOO_MI_NA_V2",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160442,160443,160388"
+    },
+    {
+      "IDX": 1033,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160394",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160394",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_CA_ADMIN_LEE_SUYEON",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CA_ADMIN_LEE_SUYEON"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_CA_ADMIN_LEE_SUYEON",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160394,160395,160396"
+    },
+    {
+      "IDX": 1034,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_UNIT_CORRUPTED_CA_MINISTRA",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_UNIT_CORRUPTED_CA_MINISTRA",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_CORRUPTED_CA_MINISTRA_V2",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CORRUPTED_CA_MINISTRA_V2"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_CORRUPTED_CA_MINISTRA_V2",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160507,160508,160385"
+    },
+    {
+      "IDX": 1035,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160302",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160302",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_CA_STREGA_YOO_NA_V2",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CA_STREGA_YOO_NA_V2"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_CA_STREGA_YOO_NA_V2",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160462,160463,160387"
+    },
+    {
+      "IDX": 1036,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_PACKAGE_CLASSIFIED_202105",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_PACKAGE_CLASSIFIED_202105",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_SIXWING_NA_YUBIN",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_SIXWING_NA_YUBIN"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_SIXWING_NA_YUBIN",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160531,160532,160386"
+    },
+    {
+      "IDX": 1037,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160501",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160501",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_DELTA_CA_JAKE_BANNER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_DELTA_CA_JAKE"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_DELTA_CA_JAKE",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160501,160502,160503"
+    },
+    {
+      "IDX": 1038,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160514",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160514",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_ALPHA_CA_JIA",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_ALPHA_CA_JIA"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_ALPHA_CA_JIA",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160514,160515,160516"
+    },
+    {
+      "IDX": 1039,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160533",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160533",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_HARMONY_CA_CONDUCT",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CA_CONDUCT"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_HARMONY_CA_CONDUCT",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160533,160534,160535"
+    },
+    {
+      "IDX": 1040,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160558",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160558",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_DELTA_CA_MARIA",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_DELTA_CA_MARIA"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_DELTA_CA_MARIA",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160558,160559,160560"
+    },
+    {
+      "IDX": 1041,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160563",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160563",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_BORDER_SA_HORSE",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_BORDER_SA_HORSE"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_BORDER_SA_HORSE",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160563,160564,160565"
+    },
+    {
+      "IDX": 1042,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160584",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160584",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_RAS_MA_TOWER",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_RAS_MA_TOWER"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_RAS_MA_TOWER",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160584,160585,160586"
+    },
+    {
+      "IDX": 1043,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160600",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160600",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_ESPR_CA_FROZEN",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_ESPR_CA_FROZEN"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_ESPR_CA_FROZEN",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160600,160601,160602"
+    },
+    {
+      "IDX": 1044,
+      "m_Enable": false,
+      "m_ShopHome_BannerImage": "AB_UI_SHOP_BANNER_HOME_160624",
+      "m_ShopHome_BannerPrefab": "AB_UI_SHOP_BANNER_HOME_160624",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_JAPAN_CA_SENHIME",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_JAPAN_CA_SENHIME"
+      ],
+      "m_TabID": "TAB_PACKAGE_UNIT_JAPAN_CA_SENHIME",
+      "m_TabSubIndex": 0,
+      "m_DisplayCond": "PURCHASE_ABLE",
+      "m_DisplayCondValue": "160624,160625,160626"
+    }
+  ],
+  "unsupportedCount": 0,
+  "unsupported": []
+}

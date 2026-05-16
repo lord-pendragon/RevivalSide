@@ -1,0 +1,756 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_ELITE_FIERCE_ORB_N_ALLY.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 25,
+  "records": [
+    {
+      "__key": "m_UnitSizeX",
+      "value": 120
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 120
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 200
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 200
+    },
+    {
+      "__key": "m_fForceRespawnXpos",
+      "value": 0.5
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.5
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.5
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": true
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 150
+    },
+    {
+      "__key": "m_fAirHigh",
+      "value": 280
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 2000
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 2200
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 100
+    },
+    {
+      "__key": "m_NKM_FIND_TARGET_TYPE",
+      "value": "NFTT_NEAR_ENEMY"
+    },
+    {
+      "__key": "m_bTargetNoChange",
+      "value": true
+    },
+    {
+      "__key": "m_AttackedTargetTime",
+      "value": 1
+    },
+    {
+      "__key": "m_bAttackedTarget",
+      "value": false
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": false
+    },
+    {
+      "__key": "m_bNoDamageBackSpeed",
+      "value": true
+    },
+    {
+      "__key": "m_bImmuneStun",
+      "value": true
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 3
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_ORB_ALLY_DUMMY"
+        }
+      ]
+    },
+    {
+      "__key": "m_listPhaseChangeData",
+      "value": [
+        {
+          "m_TargetPhase": 1,
+          "m_fChangeConditionTime": 60,
+          "m_ChangeStateName": "USN_PHASE1"
+        },
+        {
+          "m_TargetPhase": 2,
+          "m_fChangeConditionTime": 120,
+          "m_ChangeStateName": "USN_PHASE2"
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "ASTART",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_DamagedChangeState": "USN_ASTAND",
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_fScaleFactor": 0.75,
+              "m_EffectName": "AB_FX_DE_NKM_MONSTER_NORMAL_BASIC_WIZARD_ATTACK1_GREEN",
+              "m_OffsetY": 200,
+              "m_bUseZScale": false,
+              "m_bHold": true,
+              "m_AnimName": "BASE",
+              "m_bStateEndStop": true
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "DEBUFF_MOB_ELITE_FIERCE_ORB_N_DEGEN1"
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_StateName": "USN_ASTAND",
+          "m_AnimName": "RUN",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 0.5,
+          "m_bRun": false,
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_fScaleFactor": 0.75,
+              "m_EffectName": "AB_FX_DE_NKM_MONSTER_NORMAL_BASIC_WIZARD_ATTACK1_GREEN",
+              "m_OffsetY": 200,
+              "m_bUseZScale": false,
+              "m_bHold": true,
+              "m_AnimName": "BASE",
+              "m_bStateEndStop": true
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_fScaleFactor": 1.5,
+              "m_EffectName": "AB_FX_DE_COMMON_MIST_GREEN",
+              "m_OffsetY": 0,
+              "m_bUseZScale": false,
+              "m_bHold": true,
+              "m_AnimName": "BASE",
+              "m_bStateEndStop": true
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_StateName": "USN_PHASE1",
+          "m_AnimName": "RUN",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 0.5,
+          "m_bRun": false,
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_fScaleFactor": 0.75,
+              "m_EffectName": "AB_FX_DE_NKM_MONSTER_NORMAL_BASIC_WIZARD_ATTACK1_GREEN",
+              "m_OffsetY": 200,
+              "m_bUseZScale": false,
+              "m_bHold": true,
+              "m_AnimName": "BASE",
+              "m_bStateEndStop": true
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_fScaleFactor": 1.5,
+              "m_EffectName": "AB_FX_DE_COMMON_MIST_GREEN",
+              "m_OffsetY": 0,
+              "m_bUseZScale": false,
+              "m_bHold": true,
+              "m_AnimName": "BASE",
+              "m_bStateEndStop": true
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_Condition": {
+                "m_fHPRate": [
+                  0.7,
+                  1.0
+                ]
+              },
+              "m_BuffStrID": "BUFF_MOB_ELITE_FIERCE_ORB_PASSIVE1",
+              "m_bMyTeam": true,
+              "m_fRange": 6000
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_StateName": "USN_PHASE2",
+          "m_AnimName": "RUN",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 0.5,
+          "m_bRun": false,
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_fScaleFactor": 0.75,
+              "m_EffectName": "AB_FX_DE_NKM_MONSTER_NORMAL_BASIC_WIZARD_ATTACK1_GREEN",
+              "m_OffsetY": 200,
+              "m_bUseZScale": false,
+              "m_bHold": true,
+              "m_AnimName": "BASE",
+              "m_bStateEndStop": true
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_fScaleFactor": 1.5,
+              "m_EffectName": "AB_FX_DE_COMMON_MIST_GREEN",
+              "m_OffsetY": 0,
+              "m_bUseZScale": false,
+              "m_bHold": true,
+              "m_AnimName": "BASE",
+              "m_bStateEndStop": true
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_Condition": {
+                "m_fHPRate": [
+                  0.7,
+                  1.0
+                ]
+              },
+              "m_BuffStrID": "BUFF_MOB_ELITE_FIERCE_ORB_PASSIVE1",
+              "m_bMyTeam": true,
+              "m_fRange": 6000
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_Condition": {
+                "m_fHPRate": [
+                  0.7,
+                  1.0
+                ]
+              },
+              "m_BuffStrID": "BUFF_MOB_ELITE_FIERCE_ORB_PASSIVE2",
+              "m_bMyTeam": true,
+              "m_fRange": 6000
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_STUN",
+          "m_AnimName": "DAMAGE_STUN",
+          "m_bAnimLoop": true,
+          "m_bStunState": true,
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_EffectName": "AB_FX_BUFF_STUN",
+              "m_BoneName": "BIP01_HEAD",
+              "m_bStateEndStop": true,
+              "m_bHold": true,
+              "m_bStateEndStopForce": true,
+              "m_AnimName": "BASE"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_bAnimLoop": false,
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE"
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_bAnimLoop": false,
+          "m_bShowGage": false,
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.1,
+              "m_DEName": "DE_MOB_ELITE_FIERCE_ORB_DIE_ATTACK",
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.05
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.2,
+              "m_DEName": "DE_MOB_ELITE_FIERCE_ORB_DIE_ATTACK",
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.25
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3,
+              "m_DEName": "DE_MOB_ELITE_FIERCE_ORB_DIE_ATTACK",
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.45
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.4,
+              "m_DEName": "DE_MOB_ELITE_FIERCE_ORB_DIE_ATTACK",
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.65
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_DEName": "DE_MOB_ELITE_FIERCE_ORB_DIE_ATTACK",
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.85
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6,
+              "m_DEName": "DE_MOB_ELITE_FIERCE_ORB_DIE_ATTACK",
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.05
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.7,
+              "m_DEName": "DE_MOB_ELITE_FIERCE_ORB_DIE_ATTACK",
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.25
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8,
+              "m_DEName": "DE_MOB_ELITE_FIERCE_ORB_DIE_ATTACK",
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.45
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.9,
+              "m_DEName": "DE_MOB_ELITE_FIERCE_ORB_DIE_ATTACK",
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.65
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_DEName": "DE_MOB_ELITE_FIERCE_ORB_DIE_ATTACK",
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.85
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTimeMin": 0.7,
+              "m_fEventTimeMax": 1.0,
+              "m_fRangeMin": -3000.0,
+              "m_fRangeMax": 3000.0,
+              "m_bForceHit": true,
+              "m_bCleanHit": true,
+              "m_bHitAir": true,
+              "m_bHitLand": true,
+              "m_bHitBossUnit": true,
+              "m_AttackUnitCount": 99,
+              "m_DamageTempletName": "DT_MOB_ELITE_FIERCE_ORB_ALLY_DIE_ATTACK2",
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_UnitSizeX": 120,
+    "m_UnitSizeY": 120,
+    "m_SpriteScale": 1.0,
+    "m_fShadowScaleX": 200,
+    "m_fShadowScaleY": 200,
+    "m_fForceRespawnXpos": 0.5,
+    "m_fForceRespawnZposMin": 0.5,
+    "m_fForceRespawnZposMax": 0.5,
+    "m_bShowGage": true,
+    "m_SpeedRun": 150,
+    "m_fAirHigh": 280,
+    "m_SeeRange": 2000,
+    "m_SeeRangeMax": 2200,
+    "m_TargetNearRange": 100,
+    "m_NKM_FIND_TARGET_TYPE": "NFTT_NEAR_ENEMY",
+    "m_bTargetNoChange": true,
+    "m_AttackedTargetTime": 1,
+    "m_bAttackedTarget": false,
+    "m_bUseMotionBlur": false,
+    "m_bNoDamageBackSpeed": true,
+    "m_bImmuneStun": true,
+    "m_fDieCompleteTime": 3,
+    "m_listStaticBuffData": [
+      {
+        "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_ORB_ALLY_DUMMY"
+      }
+    ],
+    "m_listPhaseChangeData": [
+      {
+        "m_TargetPhase": 1,
+        "m_fChangeConditionTime": 60,
+        "m_ChangeStateName": "USN_PHASE1"
+      },
+      {
+        "m_TargetPhase": 2,
+        "m_fChangeConditionTime": 120,
+        "m_ChangeStateName": "USN_PHASE2"
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "ASTART",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_DamagedChangeState": "USN_ASTAND",
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_fScaleFactor": 0.75,
+            "m_EffectName": "AB_FX_DE_NKM_MONSTER_NORMAL_BASIC_WIZARD_ATTACK1_GREEN",
+            "m_OffsetY": 200,
+            "m_bUseZScale": false,
+            "m_bHold": true,
+            "m_AnimName": "BASE",
+            "m_bStateEndStop": true
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "DEBUFF_MOB_ELITE_FIERCE_ORB_N_DEGEN1"
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_StateName": "USN_ASTAND",
+        "m_AnimName": "RUN",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 0.5,
+        "m_bRun": false,
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_fScaleFactor": 0.75,
+            "m_EffectName": "AB_FX_DE_NKM_MONSTER_NORMAL_BASIC_WIZARD_ATTACK1_GREEN",
+            "m_OffsetY": 200,
+            "m_bUseZScale": false,
+            "m_bHold": true,
+            "m_AnimName": "BASE",
+            "m_bStateEndStop": true
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_fScaleFactor": 1.5,
+            "m_EffectName": "AB_FX_DE_COMMON_MIST_GREEN",
+            "m_OffsetY": 0,
+            "m_bUseZScale": false,
+            "m_bHold": true,
+            "m_AnimName": "BASE",
+            "m_bStateEndStop": true
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_StateName": "USN_PHASE1",
+        "m_AnimName": "RUN",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 0.5,
+        "m_bRun": false,
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_fScaleFactor": 0.75,
+            "m_EffectName": "AB_FX_DE_NKM_MONSTER_NORMAL_BASIC_WIZARD_ATTACK1_GREEN",
+            "m_OffsetY": 200,
+            "m_bUseZScale": false,
+            "m_bHold": true,
+            "m_AnimName": "BASE",
+            "m_bStateEndStop": true
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_fScaleFactor": 1.5,
+            "m_EffectName": "AB_FX_DE_COMMON_MIST_GREEN",
+            "m_OffsetY": 0,
+            "m_bUseZScale": false,
+            "m_bHold": true,
+            "m_AnimName": "BASE",
+            "m_bStateEndStop": true
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_Condition": {
+              "m_fHPRate": [
+                0.7,
+                1.0
+              ]
+            },
+            "m_BuffStrID": "BUFF_MOB_ELITE_FIERCE_ORB_PASSIVE1",
+            "m_bMyTeam": true,
+            "m_fRange": 6000
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_StateName": "USN_PHASE2",
+        "m_AnimName": "RUN",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 0.5,
+        "m_bRun": false,
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_fScaleFactor": 0.75,
+            "m_EffectName": "AB_FX_DE_NKM_MONSTER_NORMAL_BASIC_WIZARD_ATTACK1_GREEN",
+            "m_OffsetY": 200,
+            "m_bUseZScale": false,
+            "m_bHold": true,
+            "m_AnimName": "BASE",
+            "m_bStateEndStop": true
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_fScaleFactor": 1.5,
+            "m_EffectName": "AB_FX_DE_COMMON_MIST_GREEN",
+            "m_OffsetY": 0,
+            "m_bUseZScale": false,
+            "m_bHold": true,
+            "m_AnimName": "BASE",
+            "m_bStateEndStop": true
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_Condition": {
+              "m_fHPRate": [
+                0.7,
+                1.0
+              ]
+            },
+            "m_BuffStrID": "BUFF_MOB_ELITE_FIERCE_ORB_PASSIVE1",
+            "m_bMyTeam": true,
+            "m_fRange": 6000
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_Condition": {
+              "m_fHPRate": [
+                0.7,
+                1.0
+              ]
+            },
+            "m_BuffStrID": "BUFF_MOB_ELITE_FIERCE_ORB_PASSIVE2",
+            "m_bMyTeam": true,
+            "m_fRange": 6000
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_STUN",
+        "m_AnimName": "DAMAGE_STUN",
+        "m_bAnimLoop": true,
+        "m_bStunState": true,
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_EffectName": "AB_FX_BUFF_STUN",
+            "m_BoneName": "BIP01_HEAD",
+            "m_bStateEndStop": true,
+            "m_bHold": true,
+            "m_bStateEndStopForce": true,
+            "m_AnimName": "BASE"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_bAnimLoop": false,
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE"
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_bAnimLoop": false,
+        "m_bShowGage": false,
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.1,
+            "m_DEName": "DE_MOB_ELITE_FIERCE_ORB_DIE_ATTACK",
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.05
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.2,
+            "m_DEName": "DE_MOB_ELITE_FIERCE_ORB_DIE_ATTACK",
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.25
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3,
+            "m_DEName": "DE_MOB_ELITE_FIERCE_ORB_DIE_ATTACK",
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.45
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.4,
+            "m_DEName": "DE_MOB_ELITE_FIERCE_ORB_DIE_ATTACK",
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.65
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_DEName": "DE_MOB_ELITE_FIERCE_ORB_DIE_ATTACK",
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.85
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6,
+            "m_DEName": "DE_MOB_ELITE_FIERCE_ORB_DIE_ATTACK",
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.05
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.7,
+            "m_DEName": "DE_MOB_ELITE_FIERCE_ORB_DIE_ATTACK",
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.25
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8,
+            "m_DEName": "DE_MOB_ELITE_FIERCE_ORB_DIE_ATTACK",
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.45
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.9,
+            "m_DEName": "DE_MOB_ELITE_FIERCE_ORB_DIE_ATTACK",
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.65
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_DEName": "DE_MOB_ELITE_FIERCE_ORB_DIE_ATTACK",
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.85
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTimeMin": 0.7,
+            "m_fEventTimeMax": 1.0,
+            "m_fRangeMin": -3000.0,
+            "m_fRangeMax": 3000.0,
+            "m_bForceHit": true,
+            "m_bCleanHit": true,
+            "m_bHitAir": true,
+            "m_bHitLand": true,
+            "m_bHitBossUnit": true,
+            "m_AttackUnitCount": 99,
+            "m_DamageTempletName": "DT_MOB_ELITE_FIERCE_ORB_ALLY_DIE_ATTACK2",
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY"
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

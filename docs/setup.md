@@ -15,10 +15,10 @@ The setup has four big parts:
 
 1. Install the basic tools: Node.js, .NET, Python, and Java.
 2. Download or open the repo.
-3. Build the local game data that cannot be stored in git.
+3. Optionally refresh local game data if you are updating tables/assets.
 4. Start the wiki and the listener.
 
-Fresh clones include a checked-in `gameplay-jsons` fallback with enough official table data for local account defaults, profile exp normalization, tutorial/main-story flow, safe debug roster seeding, shop purchases, attendance, contracts, gear, rewards, and collection payloads. If someone gave you a prepared copy of the repo that already has `server-data`, `gameplay-tables-json`, and `extracted-assets`, you can skip most of part 3.
+Fresh clones include checked-in complete parsed gameplay tables in `gameplay-jsons`. The listener, event manager, shop, contract, mission, collection, stamina, and account-default systems read from that one folder. You only need part 3 when refreshing tables from a newer CounterSide install or extracting images for the wiki.
 
 ## Before You Start
 
@@ -186,9 +186,9 @@ CS_COUNTERSIDE_MANAGED_DIR=C:\Program Files (x86)\Steam\steamapps\common\Counter
 
 Change it to your real `Data\Managed` folder. The folder must contain `Assembly-CSharp.dll`.
 
-## Build Local Game Data
+## Refresh Local Game Data
 
-The repo does not store raw game assets, raw DLLs, your account data, or full generated table dumps. It does store the smaller `gameplay-jsons` fallback used by fresh local accounts and core local systems. Everyone still builds the full local data from their own CounterSide install when they want the wiki, images, or raw table coverage.
+The repo does not store raw game assets, raw DLLs, your account data, decrypted Lua bytecode, or decompiled Lua intermediates. It does store complete parsed gameplay JSON in `gameplay-jsons`. Run this section only when you are rebuilding `gameplay-jsons` from your own CounterSide install or extracting images.
 
 Set a short variable for your CounterSide folder:
 
@@ -240,7 +240,17 @@ Run:
 py .\tools\cs_lua_table_pipeline.py parse --lua-root .\gameplay-tables-decompiled --out-dir .\gameplay-tables-json --overwrite
 ```
 
-This creates JSON files in `gameplay-tables-json`. The wiki and many server systems read these.
+This creates a temporary full parsed JSON dump in `gameplay-tables-json`.
+
+### Rebuild The Checked-In Gameplay JSON Source
+
+Run:
+
+```powershell
+npm run build:gameplay-jsons
+```
+
+This copies the full parsed table dump into `gameplay-jsons`, which is the one runtime table source used by the listener and wiki table reads.
 
 ### Build The Server Data Indexes
 
@@ -450,7 +460,7 @@ npm run wiki:serve
 
 ### The wiki command says no table files exist
 
-Run the "Build Local Game Data" section first. The wiki needs `gameplay-tables-json` and `server-data`.
+Run `npm run build:gameplay-jsons` if you are refreshing tables. The wiki reads table data from `gameplay-jsons`; images still require the optional asset extraction step.
 
 ### The listener starts, but the game does not connect
 
@@ -494,7 +504,7 @@ again from the repo folder.
 
 ## What Not To Commit
 
-Do not commit local generated data from your own client unless the project owner specifically asks for a sanitized fixture update.
+Do not commit local generated data from your own client unless the project owner specifically asks for a sanitized fixture update. The exception is `gameplay-jsons`, which is the tracked parsed gameplay table source.
 
 Keep these local:
 

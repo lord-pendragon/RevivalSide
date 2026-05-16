@@ -1,0 +1,151 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_BATTLE_EVENT_VALENTINE_ACT_4_2_BOSS_B.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MONSTER_BOSS_BASIC_FAIL_VALENTINE_N"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.0
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_FAIL_VALENTINE_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 240,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_FAIL_VALENTINE_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 2,
+            "m_fEventTimeEnd": 240,
+            "m_fEventPos": 0.15
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_FAIL_VALENTINE_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 4,
+            "m_fEventTimeEnd": 240,
+            "m_fEventPos": 0.2
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_UNIT_C_HB_GAEUN",
+          "m_UnitLevel": 50,
+          "m_UnitLimitBreakLevel": 2,
+          "m_SkinID": 104203,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 2,
+            "m_fEventTimeGap": 15,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_C_HB_MIYA",
+          "m_UnitLevel": 50,
+          "m_UnitLimitBreakLevel": 2,
+          "m_SkinID": 104403,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 4,
+            "m_fEventTimeGap": 15,
+            "m_fEventPos": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB"
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 1,
+    "m_BossUnitStrID": "NKM_MONSTER_BOSS_BASIC_FAIL_VALENTINE_N",
+    "m_fBossPosZ": 0.0,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_FAIL_VALENTINE_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 240,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_FAIL_VALENTINE_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 2,
+          "m_fEventTimeEnd": 240,
+          "m_fEventPos": 0.15
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_FAIL_VALENTINE_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 4,
+          "m_fEventTimeEnd": 240,
+          "m_fEventPos": 0.2
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_UNIT_C_HB_GAEUN",
+        "m_UnitLevel": 50,
+        "m_UnitLimitBreakLevel": 2,
+        "m_SkinID": 104203,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 2,
+          "m_fEventTimeGap": 15,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_C_HB_MIYA",
+        "m_UnitLevel": 50,
+        "m_UnitLimitBreakLevel": 2,
+        "m_SkinID": 104403,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 4,
+          "m_fEventTimeGap": 15,
+          "m_fEventPos": 0.1
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": {}
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

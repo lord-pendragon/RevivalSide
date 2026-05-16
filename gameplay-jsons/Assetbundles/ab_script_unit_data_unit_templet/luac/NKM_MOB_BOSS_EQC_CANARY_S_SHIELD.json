@@ -1,0 +1,2957 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_BOSS_EQC_CANARY_S_SHIELD.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 24,
+  "records": [
+    {
+      "__key": "m_UnitSizeX",
+      "value": 140
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 240
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 230
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 200
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 200
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.0
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.1
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 280
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 1000
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 1100
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 500
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 2.0
+    },
+    {
+      "__key": "m_AttackedTargetTime",
+      "value": 1
+    },
+    {
+      "__key": "m_bAttackedTarget",
+      "value": false
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": true
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": true
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_BuffStrID": "BUFF_MOB_EQC_CANARY_PASSIVE4",
+          "m_BuffLevel": 10
+        }
+      ]
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_Condition": {
+            "m_LevelRange": [
+              1,
+              100
+            ]
+          },
+          "m_StateName": "USN_ATTACK2"
+        },
+        {
+          "m_Condition": {
+            "m_IgnoreBuffStrID": "BUFF_CANARY_S_SHIELD_PASSIVE_COOL",
+            "m_LevelRange": [
+              101,
+              999
+            ]
+          },
+          "m_StateName": "USN_PASSIVE1"
+        },
+        {
+          "m_Condition": {
+            "m_NeedBuffStrID": "BUFF_CANARY_S_SHIELD_PASSIVE_COOL",
+            "m_LevelRange": [
+              101,
+              999
+            ]
+          },
+          "m_StateName": "USN_ATTACK1"
+        }
+      ]
+    },
+    {
+      "__key": "m_listSkillStateData",
+      "value": [
+        {
+          "m_Condition": {
+            "m_Phase": [
+              0,
+              1
+            ],
+            "m_LevelRange": [
+              101,
+              999
+            ]
+          },
+          "m_bTargetLandOnly": true,
+          "m_StateName": "USN_SKILL1"
+        },
+        {
+          "m_Condition": {
+            "m_Phase": [
+              2,
+              99
+            ],
+            "m_LevelRange": [
+              101,
+              999
+            ]
+          },
+          "m_StateName": "USN_SKILL2"
+        }
+      ]
+    },
+    {
+      "__key": "m_listHitFeedBack",
+      "value": [
+        {
+          "m_Condition": {
+            "m_IgnoreBuffStrID": "BUFF_MOB_EQC_CANARY_S_SHIELD_PASSIVE",
+            "m_IgnoreBuffOverlapCount": [
+              25,
+              99
+            ]
+          },
+          "m_HitCount": 5,
+          "m_BuffStrID": "BUFF_MOB_EQC_CANARY_S_SHIELD_PASSIVE",
+          "m_BuffLevel": 1
+        }
+      ]
+    },
+    {
+      "__key": "m_listAccumStateChangePack",
+      "value": [
+        {
+          "m_Condition": {
+            "m_LevelRange": [
+              101,
+              999
+            ]
+          },
+          "m_listAccumStateChange": [
+            {
+              "m_listAccumStateName": [
+                "USN_ATTACK1",
+                "USN_PASSIVE1"
+              ],
+              "m_TargetStateName": "USN_PASSIVE2",
+              "m_fAccumCountCoolTime": 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_listPhaseChangeData",
+      "value": [
+        {
+          "m_TargetPhase": 1,
+          "m_fChangeConditionHPRate": 0.8,
+          "m_ChangeStateName": "USN_PHASECHANGE_REMOVE",
+          "m_bCutHpDamage": true
+        },
+        {
+          "m_TargetPhase": 2,
+          "m_fChangeConditionHPRate": 0.5,
+          "m_ChangeStateName": "USN_PHASECHANGE_BUFF",
+          "m_bCutHpDamage": true
+        },
+        {
+          "m_TargetPhase": 3,
+          "m_fChangeConditionHPRate": 0.3,
+          "m_ChangeStateName": "USN_PHASECHANGE_REMOVE",
+          "m_bCutHpDamage": true
+        },
+        {
+          "m_TargetPhase": 4,
+          "m_fChangeConditionHPRate": 0.1,
+          "m_ChangeStateName": "USN_PHASECHANGE_GROGGY_START",
+          "m_bCutHpDamage": true
+        },
+        {
+          "m_Condition": {
+            "m_NeedBuffStrID": "BUFF_MOB_EQC_CANARY_GROGGY_END",
+            "m_NeedBuffOverlapCount": [
+              2,
+              99
+            ]
+          },
+          "m_TargetPhase": 5,
+          "m_fChangeConditionTime": 1,
+          "m_ChangeStateName": "USN_PHASECHANGE_GROGGY_END"
+        },
+        {
+          "m_Condition": {
+            "m_NeedBuffStrID": "BUFF_MOB_EQC_CANARY_GROGGY_START2"
+          },
+          "m_TargetPhase": 5,
+          "m_fChangeConditionTime": 1,
+          "m_ChangeStateName": "USN_PHASECHANGE_GROGGY_FAIL"
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_DamagedChangeState": "USN_ASTAND",
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_fEventTimeMax": 0.7666666666666667,
+              "m_fRangeMin": -100.0,
+              "m_fRangeMax": 100.0,
+              "m_bHitAir": false,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_START1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.9666666666666667,
+              "m_fEventTimeMax": 1.0333333333333334,
+              "m_fRangeMin": -100.0,
+              "m_fRangeMax": 100.0,
+              "m_bHitAir": false,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_START2"
+            }
+          ],
+          "m_listNKMEventMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_OffsetX": 450,
+              "m_bLandMove": true,
+              "m_MoveTime": 0.5,
+              "m_MoveTrackingType": "TDT_NORMAL"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_OffsetX": 50,
+              "m_bLandMove": true,
+              "m_MoveTime": 0.5,
+              "m_MoveTrackingType": "TDT_NORMAL"
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_OffsetX": 0,
+              "m_bLandMove": true,
+              "m_MoveTime": 0.03333333333333333,
+              "m_MoveTrackingType": "TDT_NORMAL"
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_MOB_EQC_CANARY_PASSIVE"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_MOB_EQC_CANARY_PASSIVE3"
+            },
+            {
+              "m_Condition": {
+                "m_listReqUnit": [
+                  220325
+                ],
+                "m_ReqUnitCond": "ANY"
+              },
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_MOB_EQC_CANARY_COMMON_EFFECT"
+            },
+            {
+              "m_Condition": {
+                "m_listReqUnit": [
+                  220325
+                ],
+                "m_ReqUnitCond": "ANY"
+              },
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_MOB_EQC_CANARY_COMMON_EFFECT",
+              "m_fRange": 6000,
+              "m_bMyTeam": true
+            }
+          ],
+          "m_listNKMEventText": [
+            {
+              "m_bStateEndTime": true,
+              "m_Text": "SI_BATTLE_MOB_BOSS_EQC_CANARY",
+              "m_fTime": 15.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.13333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_FOOT_STEP"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.4,
+              "m_listSoundName": [
+                "FX_COMBAT_FOOT_STEP"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_FOOT_STEP"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.9666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_METAL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_START_3",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_START_4",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_START_5",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_START_6"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_12",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_33"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_WAITING",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": true,
+          "m_bNoMove": true,
+          "m_bForceLeft": true,
+          "m_fAnimSpeed": 1.0,
+          "m_StateTimeChangeStateTime": 10,
+          "m_StateTimeChangeState": "USN_ASTAND",
+          "m_TargetDistLessChangeStateDist": 900,
+          "m_TargetDistLessChangeState": "USN_ASTAND"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_StateName": "USN_RUN",
+          "m_AnimName": "RUN",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 1.0,
+          "m_bRun": true
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK1",
+          "m_AnimName": "ATTACK1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1,
+          "m_StateCoolTime": 0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_listNKMEventAttack": [
+            {
+              "m_Condition": {
+                "m_Phase": [
+                  0,
+                  1
+                ]
+              },
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.4666666666666667,
+              "m_fEventTimeMax": 0.6,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 500.0,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_ATTACK1"
+            },
+            {
+              "m_Condition": {
+                "m_Phase": [
+                  0,
+                  1
+                ]
+              },
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.7,
+              "m_fEventTimeMax": 0.8666666666666667,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 500.0,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_ATTACK1"
+            },
+            {
+              "m_Condition": {
+                "m_Phase": [
+                  2,
+                  99
+                ]
+              },
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.4666666666666667,
+              "m_fEventTimeMax": 0.6,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 500.0,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_ATTACK1"
+            },
+            {
+              "m_Condition": {
+                "m_Phase": [
+                  2,
+                  99
+                ]
+              },
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.7,
+              "m_fEventTimeMax": 0.8666666666666667,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 500.0,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_ATTACK1"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.43333333333333335,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MINIGUN_FIRE"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.5,
+              "m_listSoundName": [
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_3",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_11",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_22"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK2",
+          "m_AnimName": "ATTACK1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1,
+          "m_StateCoolTime": 0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_listNKMEventAttack": [
+            {
+              "m_Condition": {
+                "m_Phase": [
+                  0,
+                  1
+                ]
+              },
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.4666666666666667,
+              "m_fEventTimeMax": 0.6,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 500.0,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_ATTACK1"
+            },
+            {
+              "m_Condition": {
+                "m_Phase": [
+                  0,
+                  1
+                ]
+              },
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.7,
+              "m_fEventTimeMax": 0.8666666666666667,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 500.0,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_ATTACK1"
+            },
+            {
+              "m_Condition": {
+                "m_Phase": [
+                  2,
+                  99
+                ]
+              },
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.4666666666666667,
+              "m_fEventTimeMax": 0.6,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 500.0,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_ATTACK1"
+            },
+            {
+              "m_Condition": {
+                "m_Phase": [
+                  2,
+                  99
+                ]
+              },
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.7,
+              "m_fEventTimeMax": 0.8666666666666667,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 500.0,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_ATTACK1"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.43333333333333335,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MINIGUN_FIRE"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.5,
+              "m_listSoundName": [
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_3",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_11",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_22"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_PASSIVE1",
+          "m_AnimName": "PASSIVE1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.9666666666666667,
+              "m_DEName": "DE_MOB_BOSS_EQC_CANARY_S_SHIELD_PASSIVE1",
+              "m_OffsetX": 100,
+              "m_OffsetY": 80
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_CANARY_S_SHIELD_PASSIVE_COOL",
+              "m_BuffLevel": 10
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MOVEMENT_02"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.9,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MOVEMENT_06"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_PASSIVE_2",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_PASSIVE_6",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_PASSIVE_7",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_PASSIVE_10"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_PASSIVE2",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1,
+          "m_StateCoolTime": 0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.4666666666666667,
+              "m_fEventTimeMax": 0.6,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 200.0,
+              "m_bHitAir": false,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_START1",
+              "m_AttackUnitCountOnly": true,
+              "m_bDamageSpeedDependRight": true,
+              "m_bForceHit": true,
+              "m_bCleanHit": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.6333333333333333,
+              "m_fEventTimeMax": 0.9666666666666667,
+              "m_fRangeMin": -100.0,
+              "m_fRangeMax": 100.0,
+              "m_bHitAir": false,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_START2",
+              "m_AttackUnitCountOnly": true,
+              "m_bDamageSpeedDependRight": true,
+              "m_bForceHit": true,
+              "m_bCleanHit": true
+            }
+          ],
+          "m_listNKMEventMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_OffsetX": 150,
+              "m_bLandMove": true,
+              "m_MoveTime": 0.5,
+              "m_MoveTrackingType": "TDT_NORMAL"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_OffsetX": 50,
+              "m_bLandMove": true,
+              "m_MoveTime": 0.5,
+              "m_MoveTrackingType": "TDT_NORMAL"
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_OffsetX": 0,
+              "m_bLandMove": true,
+              "m_MoveTime": 0.03333333333333333,
+              "m_MoveTrackingType": "TDT_NORMAL"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.43333333333333335,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MINIGUN_FIRE"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.5,
+              "m_listSoundName": [
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_3",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_11",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_22"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_PASSIVE3",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1,
+          "m_StateCoolTime": 0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_bForceRight": true,
+          "m_bNoTarget": true,
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.4666666666666667,
+              "m_fEventTimeMax": 0.6,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 200.0,
+              "m_bHitAir": false,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_START1",
+              "m_AttackUnitCountOnly": true,
+              "m_bDamageSpeedDependRight": true,
+              "m_bForceHit": true,
+              "m_bCleanHit": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.6333333333333333,
+              "m_fEventTimeMax": 0.9666666666666667,
+              "m_fRangeMin": -100.0,
+              "m_fRangeMax": 100.0,
+              "m_bHitAir": false,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_START2",
+              "m_AttackUnitCountOnly": true,
+              "m_bDamageSpeedDependRight": true,
+              "m_bForceHit": true,
+              "m_bCleanHit": true
+            }
+          ],
+          "m_listNKMEventMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_OffsetX": 150,
+              "m_bLandMove": true,
+              "m_MoveTime": 0.5,
+              "m_MoveTrackingType": "TDT_NORMAL"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_OffsetX": 50,
+              "m_bLandMove": true,
+              "m_MoveTime": 0.5,
+              "m_MoveTrackingType": "TDT_NORMAL"
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_OffsetX": 0,
+              "m_bLandMove": true,
+              "m_MoveTime": 0.03333333333333333,
+              "m_MoveTrackingType": "TDT_NORMAL"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.43333333333333335,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MINIGUN_FIRE"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.5,
+              "m_listSoundName": [
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_3",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_11",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_22"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_PASSIVE4",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1,
+          "m_StateCoolTime": 0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_bForceRight": true,
+          "m_bNoTarget": true,
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.4666666666666667,
+              "m_fEventTimeMax": 0.6,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 200.0,
+              "m_bHitAir": false,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_START1",
+              "m_AttackUnitCountOnly": true,
+              "m_bDamageSpeedDependRight": true,
+              "m_bForceHit": true,
+              "m_bCleanHit": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.6333333333333333,
+              "m_fEventTimeMax": 0.9666666666666667,
+              "m_fRangeMin": -100.0,
+              "m_fRangeMax": 100.0,
+              "m_bHitAir": false,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_START2",
+              "m_AttackUnitCountOnly": true,
+              "m_bDamageSpeedDependRight": true,
+              "m_bForceHit": true,
+              "m_bCleanHit": true
+            }
+          ],
+          "m_listNKMEventMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L13_1 / 30"
+              },
+              "m_OffsetX": 150,
+              "m_bLandMove": true,
+              "m_MoveTime": 0.5,
+              "m_MoveTrackingType": "TDT_NORMAL"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_OffsetX": 50,
+              "m_bLandMove": true,
+              "m_MoveTime": 0.5,
+              "m_MoveTrackingType": "TDT_NORMAL"
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_OffsetX": 0,
+              "m_bLandMove": true,
+              "m_MoveTime": 0.03333333333333333,
+              "m_MoveTrackingType": "TDT_NORMAL"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.43333333333333335,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MINIGUN_FIRE"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.5,
+              "m_listSoundName": [
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_3",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_11",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_22"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_SKILL1",
+          "m_AnimName": "SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_bSkillCutIn": true,
+          "m_StateCoolTime": 16.0,
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 99999,
+              "m_fColorR": 0.5,
+              "m_fColorG": 0.5,
+              "m_fColorB": 1.0
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_CANARY_S_SHIELD_SKILL1"
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_CANARY_S_SHIELD_SKILL1",
+              "m_BuffRemove": true
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.6666666666666665,
+              "m_DEName": "DE_MOB_BOSS_EQC_CANARY_S_SHIELD_SKILL1_DUMMY",
+              "m_bIgnoreTarget": true
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.1666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_SHIELD_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MOVEMENT_02"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.1333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_31"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.6,
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_HIT_ENERGY_BIG"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ACTIVE_2",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ACTIVE_5",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ACTIVE_8"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_SKILL2",
+          "m_AnimName": "SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_bSkillCutIn": true,
+          "m_StateCoolTime": 24.0,
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 99999,
+              "m_fColorR": 0.5,
+              "m_fColorG": 0.5,
+              "m_fColorB": 1.0
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_CANARY_S_SHIELD_SKILL1"
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_CANARY_S_SHIELD_SKILL1",
+              "m_BuffRemove": true
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.6666666666666665,
+              "m_DEName": "DE_MOB_BOSS_EQC_CANARY_S_SHIELD_SKILL1",
+              "m_OffsetX": 200,
+              "m_fScaleFactor": 1.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.8333333333333335,
+              "m_DEName": "DE_MOB_BOSS_EQC_CANARY_S_SHIELD_SKILL1",
+              "m_OffsetX": 500,
+              "m_fScaleFactor": 1.2
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.0,
+              "m_DEName": "DE_MOB_BOSS_EQC_CANARY_S_SHIELD_SKILL1",
+              "m_OffsetX": 800,
+              "m_fScaleFactor": 1.4
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.1666666666666665,
+              "m_DEName": "DE_MOB_BOSS_EQC_CANARY_S_SHIELD_SKILL1",
+              "m_OffsetX": 1100,
+              "m_fScaleFactor": 1.6
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.3333333333333335,
+              "m_DEName": "DE_MOB_BOSS_EQC_CANARY_S_SHIELD_SKILL1",
+              "m_OffsetX": 1400,
+              "m_fScaleFactor": 1.8
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.1666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_SHIELD_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MOVEMENT_02"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.1333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_31"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.6,
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_HIT_ENERGY_BIG"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ACTIVE_2",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ACTIVE_5",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ACTIVE_8"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PHASECHANGE_BUFF",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "DAMAGE_A",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_bForceRightLeftDependTeam": true,
+          "m_bInvincibleState": true,
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_MOB_EQC_CANARY_PASSIVE"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_MOB_EQC_CANARY_PASSIVE2",
+              "m_BuffLevel": 2
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_MOB_EQC_CANARY_COMMON_EFFECT"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "DEBUFF_MOB_EQC_CANARY_PASSIVE1",
+              "m_BuffRemove": true
+            }
+          ],
+          "m_listNKMEventChangeState": [
+            {
+              "m_fEventTime": 0.06666666666666667,
+              "m_ChangeState": "USN_PASSIVE1"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PHASECHANGE_REMOVE",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "DAMAGE_A",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_bForceRightLeftDependTeam": true,
+          "m_bInvincibleState": true,
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_MOB_EQC_CANARY_PASSIVE",
+              "m_BuffRemove": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "DEBUFF_MOB_EQC_CANARY_PASSIVE1",
+              "m_BuffLevel": 5
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_fEventTime": 0,
+              "m_EffectName": "AB_FX_EXCLAMATION_MARK",
+              "m_AnimName": "BASE",
+              "m_fScaleFactor": 1.0,
+              "m_OffsetX": 0,
+              "m_OffsetY": 400,
+              "m_bHold": true
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PHASECHANGE_GROGGY_START",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_bForceRightLeftDependTeam": true,
+          "m_bInvincibleState": true,
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_listNKMEventChangeState": [
+            {
+              "m_fEventTime": 0.1,
+              "m_ChangeState": "USN_PHASECHANGE_GROGGY"
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "DEBUFF_MOB_EQC_CANARY_PASSIVE1",
+              "m_BuffRemove": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.06666666666666667,
+              "m_BuffStrID": "BUFF_MOB_EQC_CANARY_GROGGY_START1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.06666666666666667,
+              "m_BuffStrID": "BUFF_MOB_EQC_CANARY_GROGGY_END"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.06666666666666667,
+              "m_BuffStrID": "BUFF_MOB_EQC_CANARY_GROGGY_END",
+              "m_fRange": 6000,
+              "m_bMyTeam": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_MOB_EQC_CANARY_PASSIVE"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PHASECHANGE_GROGGY",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "DAMAGE_STUN",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 1.0,
+          "m_bForceRightLeftDependTeam": true,
+          "m_bInvincibleState": false,
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_DangerCharge": {
+            "m_fChargeTime": 15,
+            "m_fCancelDamageRate": 0.1
+          }
+        },
+        {
+          "m_StateName": "USN_PHASECHANGE_GROGGY_END",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "DAMAGE_A",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_bForceRightLeftDependTeam": true,
+          "m_bInvincibleState": true,
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_MOB_EQC_CANARY_GROGGY_START1",
+              "m_BuffRemove": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_MOB_EQC_CANARY_GROGGY_END",
+              "m_BuffRemove": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_MOB_EQC_CANARY_PASSIVE3",
+              "m_BuffRemove": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_MOB_EQC_CANARY_PASSIVE",
+              "m_BuffRemove": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "DEBUFF_MOB_EQC_CANARY_PASSIVE1",
+              "m_BuffLevel": 8
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PHASECHANGE_GROGGY_FAIL",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "DAMAGE_A",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_bForceRightLeftDependTeam": true,
+          "m_bInvincibleState": true,
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_MOB_EQC_CANARY_GROGGY_END",
+              "m_BuffRemove": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_MOB_EQC_CANARY_GROGGY_END",
+              "m_fRange": 6000,
+              "m_bMyTeam": true,
+              "m_BuffRemove": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_MOB_EQC_CANARY_PASSIVE"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_MOB_EQC_CANARY_PASSIVE2",
+              "m_BuffLevel": 5
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_MOB_EQC_CANARY_PASSIVE3"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_MOB_EQC_CANARY_COMMON_EFFECT"
+            }
+          ],
+          "m_listNKMEventChangeState": [
+            {
+              "m_fEventTime": 0.06666666666666667,
+              "m_ChangeState": "USN_PASSIVE1"
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_A",
+          "m_AnimName": "DAMAGE_A",
+          "m_bAnimLoop": false,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_4",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_5",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_10"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_B",
+          "m_AnimName": "DAMAGE_B",
+          "m_bAnimLoop": false,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_4",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_5",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_10"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_AIR_UP",
+          "m_AnimName": "DAMAGE_AIR_UP",
+          "m_bAnimLoop": false,
+          "m_SpeedY0NegativeChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_MOB_EQC_CANARY_S_SHIELD_PASSIVE",
+              "m_BuffRemove": true
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_11",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_15",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_16",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_17"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_bAnimLoop": false,
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+          "m_AnimEndChangeState": "USN_DAMAGE_STAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.8333333333333334,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_SHIELD_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_11",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_15",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_16",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_17"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_bAnimLoop": false,
+          "m_bShowGage": false,
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_MOB_EQC_CANARY_PASSIVE_BOSS_TRIGGER",
+              "m_fRange": 6000,
+              "m_bMyTeam": true
+            }
+          ],
+          "m_listNKMEventDissolve": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.6666666666666667,
+              "m_fDissolve": 1,
+              "m_fTrackTime": 0.5
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.5,
+              "m_fLocalVol": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_SMASH_SMALL_05"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DEATH_1",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DEATH_2",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DEATH_5",
+                "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DEATH_7"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_UnitSizeX": 140,
+    "m_UnitSizeY": 240,
+    "m_SpriteScale": 1.0,
+    "m_fGageOffsetY": 230,
+    "m_fShadowScaleX": 200,
+    "m_fShadowScaleY": 200,
+    "m_fForceRespawnZposMin": 0.0,
+    "m_fForceRespawnZposMax": 0.1,
+    "m_SpeedRun": 280,
+    "m_SeeRange": 1000,
+    "m_SeeRangeMax": 1100,
+    "m_TargetNearRange": 500,
+    "m_fDieCompleteTime": 2.0,
+    "m_AttackedTargetTime": 1,
+    "m_bAttackedTarget": false,
+    "m_bUseMotionBlur": true,
+    "m_bShowGage": true,
+    "m_listStaticBuffData": [
+      {
+        "m_BuffStrID": "BUFF_MOB_EQC_CANARY_PASSIVE4",
+        "m_BuffLevel": 10
+      }
+    ],
+    "m_listAttackStateData": [
+      {
+        "m_Condition": {
+          "m_LevelRange": [
+            1,
+            100
+          ]
+        },
+        "m_StateName": "USN_ATTACK2"
+      },
+      {
+        "m_Condition": {
+          "m_IgnoreBuffStrID": "BUFF_CANARY_S_SHIELD_PASSIVE_COOL",
+          "m_LevelRange": [
+            101,
+            999
+          ]
+        },
+        "m_StateName": "USN_PASSIVE1"
+      },
+      {
+        "m_Condition": {
+          "m_NeedBuffStrID": "BUFF_CANARY_S_SHIELD_PASSIVE_COOL",
+          "m_LevelRange": [
+            101,
+            999
+          ]
+        },
+        "m_StateName": "USN_ATTACK1"
+      }
+    ],
+    "m_listSkillStateData": [
+      {
+        "m_Condition": {
+          "m_Phase": [
+            0,
+            1
+          ],
+          "m_LevelRange": [
+            101,
+            999
+          ]
+        },
+        "m_bTargetLandOnly": true,
+        "m_StateName": "USN_SKILL1"
+      },
+      {
+        "m_Condition": {
+          "m_Phase": [
+            2,
+            99
+          ],
+          "m_LevelRange": [
+            101,
+            999
+          ]
+        },
+        "m_StateName": "USN_SKILL2"
+      }
+    ],
+    "m_listHitFeedBack": [
+      {
+        "m_Condition": {
+          "m_IgnoreBuffStrID": "BUFF_MOB_EQC_CANARY_S_SHIELD_PASSIVE",
+          "m_IgnoreBuffOverlapCount": [
+            25,
+            99
+          ]
+        },
+        "m_HitCount": 5,
+        "m_BuffStrID": "BUFF_MOB_EQC_CANARY_S_SHIELD_PASSIVE",
+        "m_BuffLevel": 1
+      }
+    ],
+    "m_listAccumStateChangePack": [
+      {
+        "m_Condition": {
+          "m_LevelRange": [
+            101,
+            999
+          ]
+        },
+        "m_listAccumStateChange": [
+          {
+            "m_listAccumStateName": [
+              "USN_ATTACK1",
+              "USN_PASSIVE1"
+            ],
+            "m_TargetStateName": "USN_PASSIVE2",
+            "m_fAccumCountCoolTime": 12
+          }
+        ]
+      }
+    ],
+    "m_listPhaseChangeData": [
+      {
+        "m_TargetPhase": 1,
+        "m_fChangeConditionHPRate": 0.8,
+        "m_ChangeStateName": "USN_PHASECHANGE_REMOVE",
+        "m_bCutHpDamage": true
+      },
+      {
+        "m_TargetPhase": 2,
+        "m_fChangeConditionHPRate": 0.5,
+        "m_ChangeStateName": "USN_PHASECHANGE_BUFF",
+        "m_bCutHpDamage": true
+      },
+      {
+        "m_TargetPhase": 3,
+        "m_fChangeConditionHPRate": 0.3,
+        "m_ChangeStateName": "USN_PHASECHANGE_REMOVE",
+        "m_bCutHpDamage": true
+      },
+      {
+        "m_TargetPhase": 4,
+        "m_fChangeConditionHPRate": 0.1,
+        "m_ChangeStateName": "USN_PHASECHANGE_GROGGY_START",
+        "m_bCutHpDamage": true
+      },
+      {
+        "m_Condition": {
+          "m_NeedBuffStrID": "BUFF_MOB_EQC_CANARY_GROGGY_END",
+          "m_NeedBuffOverlapCount": [
+            2,
+            99
+          ]
+        },
+        "m_TargetPhase": 5,
+        "m_fChangeConditionTime": 1,
+        "m_ChangeStateName": "USN_PHASECHANGE_GROGGY_END"
+      },
+      {
+        "m_Condition": {
+          "m_NeedBuffStrID": "BUFF_MOB_EQC_CANARY_GROGGY_START2"
+        },
+        "m_TargetPhase": 5,
+        "m_fChangeConditionTime": 1,
+        "m_ChangeStateName": "USN_PHASECHANGE_GROGGY_FAIL"
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_DamagedChangeState": "USN_ASTAND",
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_fEventTimeMax": 0.7666666666666667,
+            "m_fRangeMin": -100.0,
+            "m_fRangeMax": 100.0,
+            "m_bHitAir": false,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_START1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.9666666666666667,
+            "m_fEventTimeMax": 1.0333333333333334,
+            "m_fRangeMin": -100.0,
+            "m_fRangeMax": 100.0,
+            "m_bHitAir": false,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_START2"
+          }
+        ],
+        "m_listNKMEventMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_OffsetX": 450,
+            "m_bLandMove": true,
+            "m_MoveTime": 0.5,
+            "m_MoveTrackingType": "TDT_NORMAL"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_OffsetX": 50,
+            "m_bLandMove": true,
+            "m_MoveTime": 0.5,
+            "m_MoveTrackingType": "TDT_NORMAL"
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_OffsetX": 0,
+            "m_bLandMove": true,
+            "m_MoveTime": 0.03333333333333333,
+            "m_MoveTrackingType": "TDT_NORMAL"
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_MOB_EQC_CANARY_PASSIVE"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_MOB_EQC_CANARY_PASSIVE3"
+          },
+          {
+            "m_Condition": {
+              "m_listReqUnit": [
+                220325
+              ],
+              "m_ReqUnitCond": "ANY"
+            },
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_MOB_EQC_CANARY_COMMON_EFFECT"
+          },
+          {
+            "m_Condition": {
+              "m_listReqUnit": [
+                220325
+              ],
+              "m_ReqUnitCond": "ANY"
+            },
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_MOB_EQC_CANARY_COMMON_EFFECT",
+            "m_fRange": 6000,
+            "m_bMyTeam": true
+          }
+        ],
+        "m_listNKMEventText": [
+          {
+            "m_bStateEndTime": true,
+            "m_Text": "SI_BATTLE_MOB_BOSS_EQC_CANARY",
+            "m_fTime": 15.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.13333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_FOOT_STEP"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.4,
+            "m_listSoundName": [
+              "FX_COMBAT_FOOT_STEP"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_FOOT_STEP"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.9666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_METAL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_START_3",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_START_4",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_START_5",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_START_6"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_12",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_33"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_WAITING",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": true,
+        "m_bNoMove": true,
+        "m_bForceLeft": true,
+        "m_fAnimSpeed": 1.0,
+        "m_StateTimeChangeStateTime": 10,
+        "m_StateTimeChangeState": "USN_ASTAND",
+        "m_TargetDistLessChangeStateDist": 900,
+        "m_TargetDistLessChangeState": "USN_ASTAND"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_StateName": "USN_RUN",
+        "m_AnimName": "RUN",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 1.0,
+        "m_bRun": true
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK1",
+        "m_AnimName": "ATTACK1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1,
+        "m_StateCoolTime": 0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_listNKMEventAttack": [
+          {
+            "m_Condition": {
+              "m_Phase": [
+                0,
+                1
+              ]
+            },
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.4666666666666667,
+            "m_fEventTimeMax": 0.6,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 500.0,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_ATTACK1"
+          },
+          {
+            "m_Condition": {
+              "m_Phase": [
+                0,
+                1
+              ]
+            },
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.7,
+            "m_fEventTimeMax": 0.8666666666666667,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 500.0,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_ATTACK1"
+          },
+          {
+            "m_Condition": {
+              "m_Phase": [
+                2,
+                99
+              ]
+            },
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.4666666666666667,
+            "m_fEventTimeMax": 0.6,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 500.0,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_ATTACK1"
+          },
+          {
+            "m_Condition": {
+              "m_Phase": [
+                2,
+                99
+              ]
+            },
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.7,
+            "m_fEventTimeMax": 0.8666666666666667,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 500.0,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_ATTACK1"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.43333333333333335,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MINIGUN_FIRE"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.5,
+            "m_listSoundName": [
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_3",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_11",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_22"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK2",
+        "m_AnimName": "ATTACK1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1,
+        "m_StateCoolTime": 0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_listNKMEventAttack": [
+          {
+            "m_Condition": {
+              "m_Phase": [
+                0,
+                1
+              ]
+            },
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.4666666666666667,
+            "m_fEventTimeMax": 0.6,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 500.0,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_ATTACK1"
+          },
+          {
+            "m_Condition": {
+              "m_Phase": [
+                0,
+                1
+              ]
+            },
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.7,
+            "m_fEventTimeMax": 0.8666666666666667,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 500.0,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_ATTACK1"
+          },
+          {
+            "m_Condition": {
+              "m_Phase": [
+                2,
+                99
+              ]
+            },
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.4666666666666667,
+            "m_fEventTimeMax": 0.6,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 500.0,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_ATTACK1"
+          },
+          {
+            "m_Condition": {
+              "m_Phase": [
+                2,
+                99
+              ]
+            },
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.7,
+            "m_fEventTimeMax": 0.8666666666666667,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 500.0,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_ATTACK1"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.43333333333333335,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MINIGUN_FIRE"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.5,
+            "m_listSoundName": [
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_3",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_11",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_22"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_PASSIVE1",
+        "m_AnimName": "PASSIVE1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.9666666666666667,
+            "m_DEName": "DE_MOB_BOSS_EQC_CANARY_S_SHIELD_PASSIVE1",
+            "m_OffsetX": 100,
+            "m_OffsetY": 80
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_CANARY_S_SHIELD_PASSIVE_COOL",
+            "m_BuffLevel": 10
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MOVEMENT_02"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.9,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MOVEMENT_06"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_PASSIVE_2",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_PASSIVE_6",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_PASSIVE_7",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_PASSIVE_10"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_PASSIVE2",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1,
+        "m_StateCoolTime": 0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.4666666666666667,
+            "m_fEventTimeMax": 0.6,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 200.0,
+            "m_bHitAir": false,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_START1",
+            "m_AttackUnitCountOnly": true,
+            "m_bDamageSpeedDependRight": true,
+            "m_bForceHit": true,
+            "m_bCleanHit": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.6333333333333333,
+            "m_fEventTimeMax": 0.9666666666666667,
+            "m_fRangeMin": -100.0,
+            "m_fRangeMax": 100.0,
+            "m_bHitAir": false,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_START2",
+            "m_AttackUnitCountOnly": true,
+            "m_bDamageSpeedDependRight": true,
+            "m_bForceHit": true,
+            "m_bCleanHit": true
+          }
+        ],
+        "m_listNKMEventMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_OffsetX": 150,
+            "m_bLandMove": true,
+            "m_MoveTime": 0.5,
+            "m_MoveTrackingType": "TDT_NORMAL"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_OffsetX": 50,
+            "m_bLandMove": true,
+            "m_MoveTime": 0.5,
+            "m_MoveTrackingType": "TDT_NORMAL"
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_OffsetX": 0,
+            "m_bLandMove": true,
+            "m_MoveTime": 0.03333333333333333,
+            "m_MoveTrackingType": "TDT_NORMAL"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.43333333333333335,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MINIGUN_FIRE"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.5,
+            "m_listSoundName": [
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_3",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_11",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_22"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_PASSIVE3",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1,
+        "m_StateCoolTime": 0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_bForceRight": true,
+        "m_bNoTarget": true,
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.4666666666666667,
+            "m_fEventTimeMax": 0.6,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 200.0,
+            "m_bHitAir": false,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_START1",
+            "m_AttackUnitCountOnly": true,
+            "m_bDamageSpeedDependRight": true,
+            "m_bForceHit": true,
+            "m_bCleanHit": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.6333333333333333,
+            "m_fEventTimeMax": 0.9666666666666667,
+            "m_fRangeMin": -100.0,
+            "m_fRangeMax": 100.0,
+            "m_bHitAir": false,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_START2",
+            "m_AttackUnitCountOnly": true,
+            "m_bDamageSpeedDependRight": true,
+            "m_bForceHit": true,
+            "m_bCleanHit": true
+          }
+        ],
+        "m_listNKMEventMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_OffsetX": 150,
+            "m_bLandMove": true,
+            "m_MoveTime": 0.5,
+            "m_MoveTrackingType": "TDT_NORMAL"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_OffsetX": 50,
+            "m_bLandMove": true,
+            "m_MoveTime": 0.5,
+            "m_MoveTrackingType": "TDT_NORMAL"
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_OffsetX": 0,
+            "m_bLandMove": true,
+            "m_MoveTime": 0.03333333333333333,
+            "m_MoveTrackingType": "TDT_NORMAL"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.43333333333333335,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MINIGUN_FIRE"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.5,
+            "m_listSoundName": [
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_3",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_11",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_22"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_PASSIVE4",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1,
+        "m_StateCoolTime": 0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_bForceRight": true,
+        "m_bNoTarget": true,
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.4666666666666667,
+            "m_fEventTimeMax": 0.6,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 200.0,
+            "m_bHitAir": false,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_START1",
+            "m_AttackUnitCountOnly": true,
+            "m_bDamageSpeedDependRight": true,
+            "m_bForceHit": true,
+            "m_bCleanHit": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.6333333333333333,
+            "m_fEventTimeMax": 0.9666666666666667,
+            "m_fRangeMin": -100.0,
+            "m_fRangeMax": 100.0,
+            "m_bHitAir": false,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_EQC_CANARY_S_SHIELD_START2",
+            "m_AttackUnitCountOnly": true,
+            "m_bDamageSpeedDependRight": true,
+            "m_bForceHit": true,
+            "m_bCleanHit": true
+          }
+        ],
+        "m_listNKMEventMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L13_1 / 30"
+            },
+            "m_OffsetX": 150,
+            "m_bLandMove": true,
+            "m_MoveTime": 0.5,
+            "m_MoveTrackingType": "TDT_NORMAL"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_OffsetX": 50,
+            "m_bLandMove": true,
+            "m_MoveTime": 0.5,
+            "m_MoveTrackingType": "TDT_NORMAL"
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_OffsetX": 0,
+            "m_bLandMove": true,
+            "m_MoveTime": 0.03333333333333333,
+            "m_MoveTrackingType": "TDT_NORMAL"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.43333333333333335,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MINIGUN_FIRE"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.5,
+            "m_listSoundName": [
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_3",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_11",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ATTACK_22"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_SKILL1",
+        "m_AnimName": "SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_bSkillCutIn": true,
+        "m_StateCoolTime": 16.0,
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 99999,
+            "m_fColorR": 0.5,
+            "m_fColorG": 0.5,
+            "m_fColorB": 1.0
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_CANARY_S_SHIELD_SKILL1"
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_CANARY_S_SHIELD_SKILL1",
+            "m_BuffRemove": true
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.6666666666666665,
+            "m_DEName": "DE_MOB_BOSS_EQC_CANARY_S_SHIELD_SKILL1_DUMMY",
+            "m_bIgnoreTarget": true
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.1666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_SHIELD_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MOVEMENT_02"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.1333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_31"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.6,
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_HIT_ENERGY_BIG"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ACTIVE_2",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ACTIVE_5",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ACTIVE_8"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_SKILL2",
+        "m_AnimName": "SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_bSkillCutIn": true,
+        "m_StateCoolTime": 24.0,
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 99999,
+            "m_fColorR": 0.5,
+            "m_fColorG": 0.5,
+            "m_fColorB": 1.0
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_CANARY_S_SHIELD_SKILL1"
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_CANARY_S_SHIELD_SKILL1",
+            "m_BuffRemove": true
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.6666666666666665,
+            "m_DEName": "DE_MOB_BOSS_EQC_CANARY_S_SHIELD_SKILL1",
+            "m_OffsetX": 200,
+            "m_fScaleFactor": 1.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.8333333333333335,
+            "m_DEName": "DE_MOB_BOSS_EQC_CANARY_S_SHIELD_SKILL1",
+            "m_OffsetX": 500,
+            "m_fScaleFactor": 1.2
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.0,
+            "m_DEName": "DE_MOB_BOSS_EQC_CANARY_S_SHIELD_SKILL1",
+            "m_OffsetX": 800,
+            "m_fScaleFactor": 1.4
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.1666666666666665,
+            "m_DEName": "DE_MOB_BOSS_EQC_CANARY_S_SHIELD_SKILL1",
+            "m_OffsetX": 1100,
+            "m_fScaleFactor": 1.6
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.3333333333333335,
+            "m_DEName": "DE_MOB_BOSS_EQC_CANARY_S_SHIELD_SKILL1",
+            "m_OffsetX": 1400,
+            "m_fScaleFactor": 1.8
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.1666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_SHIELD_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MOVEMENT_02"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.1333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_31"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.6,
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_HIT_ENERGY_BIG"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ACTIVE_2",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ACTIVE_5",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_ACTIVE_8"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PHASECHANGE_BUFF",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "DAMAGE_A",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_bForceRightLeftDependTeam": true,
+        "m_bInvincibleState": true,
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_MOB_EQC_CANARY_PASSIVE"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_MOB_EQC_CANARY_PASSIVE2",
+            "m_BuffLevel": 2
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_MOB_EQC_CANARY_COMMON_EFFECT"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "DEBUFF_MOB_EQC_CANARY_PASSIVE1",
+            "m_BuffRemove": true
+          }
+        ],
+        "m_listNKMEventChangeState": [
+          {
+            "m_fEventTime": 0.06666666666666667,
+            "m_ChangeState": "USN_PASSIVE1"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PHASECHANGE_REMOVE",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "DAMAGE_A",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_bForceRightLeftDependTeam": true,
+        "m_bInvincibleState": true,
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_MOB_EQC_CANARY_PASSIVE",
+            "m_BuffRemove": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "DEBUFF_MOB_EQC_CANARY_PASSIVE1",
+            "m_BuffLevel": 5
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_fEventTime": 0,
+            "m_EffectName": "AB_FX_EXCLAMATION_MARK",
+            "m_AnimName": "BASE",
+            "m_fScaleFactor": 1.0,
+            "m_OffsetX": 0,
+            "m_OffsetY": 400,
+            "m_bHold": true
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PHASECHANGE_GROGGY_START",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_bForceRightLeftDependTeam": true,
+        "m_bInvincibleState": true,
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_listNKMEventChangeState": [
+          {
+            "m_fEventTime": 0.1,
+            "m_ChangeState": "USN_PHASECHANGE_GROGGY"
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "DEBUFF_MOB_EQC_CANARY_PASSIVE1",
+            "m_BuffRemove": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.06666666666666667,
+            "m_BuffStrID": "BUFF_MOB_EQC_CANARY_GROGGY_START1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.06666666666666667,
+            "m_BuffStrID": "BUFF_MOB_EQC_CANARY_GROGGY_END"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.06666666666666667,
+            "m_BuffStrID": "BUFF_MOB_EQC_CANARY_GROGGY_END",
+            "m_fRange": 6000,
+            "m_bMyTeam": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_MOB_EQC_CANARY_PASSIVE"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PHASECHANGE_GROGGY",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "DAMAGE_STUN",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 1.0,
+        "m_bForceRightLeftDependTeam": true,
+        "m_bInvincibleState": false,
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_DangerCharge": {
+          "m_fChargeTime": 15,
+          "m_fCancelDamageRate": 0.1
+        }
+      },
+      {
+        "m_StateName": "USN_PHASECHANGE_GROGGY_END",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "DAMAGE_A",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_bForceRightLeftDependTeam": true,
+        "m_bInvincibleState": true,
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_MOB_EQC_CANARY_GROGGY_START1",
+            "m_BuffRemove": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_MOB_EQC_CANARY_GROGGY_END",
+            "m_BuffRemove": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_MOB_EQC_CANARY_PASSIVE3",
+            "m_BuffRemove": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_MOB_EQC_CANARY_PASSIVE",
+            "m_BuffRemove": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "DEBUFF_MOB_EQC_CANARY_PASSIVE1",
+            "m_BuffLevel": 8
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PHASECHANGE_GROGGY_FAIL",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "DAMAGE_A",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_bForceRightLeftDependTeam": true,
+        "m_bInvincibleState": true,
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_MOB_EQC_CANARY_GROGGY_END",
+            "m_BuffRemove": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_MOB_EQC_CANARY_GROGGY_END",
+            "m_fRange": 6000,
+            "m_bMyTeam": true,
+            "m_BuffRemove": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_MOB_EQC_CANARY_PASSIVE"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_MOB_EQC_CANARY_PASSIVE2",
+            "m_BuffLevel": 5
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_MOB_EQC_CANARY_PASSIVE3"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_MOB_EQC_CANARY_COMMON_EFFECT"
+          }
+        ],
+        "m_listNKMEventChangeState": [
+          {
+            "m_fEventTime": 0.06666666666666667,
+            "m_ChangeState": "USN_PASSIVE1"
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_A",
+        "m_AnimName": "DAMAGE_A",
+        "m_bAnimLoop": false,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_3",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_4",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_5",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_10"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_B",
+        "m_AnimName": "DAMAGE_B",
+        "m_bAnimLoop": false,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_3",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_4",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_5",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_10"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_AIR_UP",
+        "m_AnimName": "DAMAGE_AIR_UP",
+        "m_bAnimLoop": false,
+        "m_SpeedY0NegativeChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_MOB_EQC_CANARY_S_SHIELD_PASSIVE",
+            "m_BuffRemove": true
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_11",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_15",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_16",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_17"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_bAnimLoop": false,
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+        "m_AnimEndChangeState": "USN_DAMAGE_STAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.8333333333333334,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_SHIELD_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_11",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_15",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_16",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DAMAGE_17"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_bAnimLoop": false,
+        "m_bShowGage": false,
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_MOB_EQC_CANARY_PASSIVE_BOSS_TRIGGER",
+            "m_fRange": 6000,
+            "m_bMyTeam": true
+          }
+        ],
+        "m_listNKMEventDissolve": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.6666666666666667,
+            "m_fDissolve": 1,
+            "m_fTrackTime": 0.5
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.5,
+            "m_fLocalVol": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_SMASH_SMALL_05"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DEATH_1",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DEATH_2",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DEATH_5",
+              "VOICE_UNIT_CANARY_S_SHIELD_BATTLE_DEATH_7"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

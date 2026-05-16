@@ -1,0 +1,519 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_EX.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_N"
+    },
+    {
+      "__key": "m_listAccumStateChangePack",
+      "value": [
+        {
+          "m_listAccumStateChange": [
+            {
+              "m_listAccumStateName": [
+                "USN_ATTACK1"
+              ],
+              "m_AccumCount": 4,
+              "m_TargetStateName": "USN_PASSIVE1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_dicReaction",
+      "value": [
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "BUFF_MOB_ELITE_FIERCE_KNIGHT_HOLY_MINION_SKILL1"
+            }
+          ],
+          "m_Name": "RECOVER_HIT",
+          "m_EventType": "HIT",
+          "m_RequireCount": 1,
+          "m_bImmediate": true,
+          "m_Trigger": "RECOVER"
+        }
+      ]
+    },
+    {
+      "__key": "m_listTriggerRepeatData",
+      "value": [
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "EventVariable",
+              "m_Name": "PASSIVE_TRIGGER",
+              "m_Value": [
+                1,
+                99
+              ]
+            }
+          ],
+          "m_TriggerName": "PASSIVE",
+          "m_fRepeatTime": 10.0
+        }
+      ]
+    },
+    {
+      "__key": "m_dicTriggerSet",
+      "value": [
+        {
+          "m_Name": "PASSIVE",
+          "m_listNKMEventBuff": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_KNIGHT_CA_SAVIOR_1",
+                  "Inverse": true
+                }
+              ],
+              "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_STAT",
+              "m_BuffStatLevel": 10,
+              "m_Overlap": 1
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_KNIGHT_CA_SAVIOR_1"
+                }
+              ],
+              "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_STAT",
+              "m_BuffStatLevel": 20,
+              "m_Overlap": 1
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_KNIGHT_CA_SAVIOR_1",
+                  "Inverse": true
+                },
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_KNIGHT_CA_SAVIOR_2",
+                  "Inverse": true
+                }
+              ],
+              "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_SPEED",
+              "m_BuffStatLevel": 5,
+              "m_Overlap": 1
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_KNIGHT_CA_SAVIOR_1"
+                },
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_KNIGHT_CA_SAVIOR_2",
+                  "Inverse": true
+                }
+              ],
+              "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_SPEED",
+              "m_BuffStatLevel": 10,
+              "m_Overlap": 1
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_KNIGHT_CA_SAVIOR_1",
+                  "Inverse": true
+                },
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_KNIGHT_CA_SAVIOR_2"
+                }
+              ],
+              "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_SPEED_PATTERN",
+              "m_BuffStatLevel": 5,
+              "m_Overlap": 1
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_KNIGHT_CA_SAVIOR_1"
+                },
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_KNIGHT_CA_SAVIOR_2"
+                }
+              ],
+              "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_SPEED_PATTERN",
+              "m_BuffStatLevel": 10,
+              "m_Overlap": 1
+            }
+          ]
+        },
+        {
+          "m_Name": "RECOVER",
+          "m_listNKMEventHeal": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_MOB_ELITE_FIERCE_KNIGHT_HOLY_MINION_SKILL1"
+                }
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_fHeal": 5000,
+              "m_bEnableSelfHeal": true,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 0.0,
+              "m_MaxCount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_START",
+          "m_listNKMEventReaction": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_Reaction": "RECOVER_HIT"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PASSIVE1",
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.7,
+              "m_fEventTimeMax": 0.8666666666666667,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1800.0,
+              "m_AttackUnitCount": 99,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_ATTACK2",
+              "m_bDamageSpeedDependRight": true,
+              "m_bCleanHit": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.9,
+              "m_fEventTimeMax": 1.0333333333333334,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1800.0,
+              "m_AttackUnitCount": 99,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_ATTACK2",
+              "m_bDamageSpeedDependRight": true,
+              "m_bCleanHit": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.0666666666666667,
+              "m_fEventTimeMax": 1.2,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1800.0,
+              "m_AttackUnitCount": 99,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_ATTACK2",
+              "m_bDamageSpeedDependRight": true,
+              "m_bCleanHit": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.2333333333333334,
+              "m_fEventTimeMax": 1.3666666666666667,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1800.0,
+              "m_AttackUnitCount": 99,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_ATTACK2",
+              "m_bDamageSpeedDependRight": true,
+              "m_bCleanHit": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.4,
+              "m_fEventTimeMax": 1.5,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1800.0,
+              "m_AttackUnitCount": 99,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_ATTACK2",
+              "m_bDamageSpeedDependRight": true,
+              "m_bCleanHit": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.4,
+              "m_fEventTimeMax": 1.5,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1800.0,
+              "m_bHitLand": false,
+              "m_AttackUnitCount": 99,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_ATTACK2_STUN",
+              "m_bDamageSpeedDependRight": true,
+              "m_bForceHit": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_N",
+    "m_listAccumStateChangePack": [
+      {
+        "m_listAccumStateChange": [
+          {
+            "m_listAccumStateName": [
+              "USN_ATTACK1"
+            ],
+            "m_AccumCount": 4,
+            "m_TargetStateName": "USN_PASSIVE1"
+          }
+        ]
+      }
+    ],
+    "m_dicReaction": [
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_MOB_ELITE_FIERCE_KNIGHT_HOLY_MINION_SKILL1"
+          }
+        ],
+        "m_Name": "RECOVER_HIT",
+        "m_EventType": "HIT",
+        "m_RequireCount": 1,
+        "m_bImmediate": true,
+        "m_Trigger": "RECOVER"
+      }
+    ],
+    "m_listTriggerRepeatData": [
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "EventVariable",
+            "m_Name": "PASSIVE_TRIGGER",
+            "m_Value": [
+              1,
+              99
+            ]
+          }
+        ],
+        "m_TriggerName": "PASSIVE",
+        "m_fRepeatTime": 10.0
+      }
+    ],
+    "m_dicTriggerSet": [
+      {
+        "m_Name": "PASSIVE",
+        "m_listNKMEventBuff": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_KNIGHT_CA_SAVIOR_1",
+                "Inverse": true
+              }
+            ],
+            "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_STAT",
+            "m_BuffStatLevel": 10,
+            "m_Overlap": 1
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_KNIGHT_CA_SAVIOR_1"
+              }
+            ],
+            "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_STAT",
+            "m_BuffStatLevel": 20,
+            "m_Overlap": 1
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_KNIGHT_CA_SAVIOR_1",
+                "Inverse": true
+              },
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_KNIGHT_CA_SAVIOR_2",
+                "Inverse": true
+              }
+            ],
+            "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_SPEED",
+            "m_BuffStatLevel": 5,
+            "m_Overlap": 1
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_KNIGHT_CA_SAVIOR_1"
+              },
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_KNIGHT_CA_SAVIOR_2",
+                "Inverse": true
+              }
+            ],
+            "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_SPEED",
+            "m_BuffStatLevel": 10,
+            "m_Overlap": 1
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_KNIGHT_CA_SAVIOR_1",
+                "Inverse": true
+              },
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_KNIGHT_CA_SAVIOR_2"
+              }
+            ],
+            "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_SPEED_PATTERN",
+            "m_BuffStatLevel": 5,
+            "m_Overlap": 1
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_KNIGHT_CA_SAVIOR_1"
+              },
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_KNIGHT_CA_SAVIOR_2"
+              }
+            ],
+            "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_SPEED_PATTERN",
+            "m_BuffStatLevel": 10,
+            "m_Overlap": 1
+          }
+        ]
+      },
+      {
+        "m_Name": "RECOVER",
+        "m_listNKMEventHeal": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_MOB_ELITE_FIERCE_KNIGHT_HOLY_MINION_SKILL1"
+              }
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_fHeal": 5000,
+            "m_bEnableSelfHeal": true,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 0.0,
+            "m_MaxCount": 1
+          }
+        ]
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_START",
+        "m_listNKMEventReaction": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_Reaction": "RECOVER_HIT"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PASSIVE1",
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.7,
+            "m_fEventTimeMax": 0.8666666666666667,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1800.0,
+            "m_AttackUnitCount": 99,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_ATTACK2",
+            "m_bDamageSpeedDependRight": true,
+            "m_bCleanHit": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.9,
+            "m_fEventTimeMax": 1.0333333333333334,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1800.0,
+            "m_AttackUnitCount": 99,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_ATTACK2",
+            "m_bDamageSpeedDependRight": true,
+            "m_bCleanHit": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.0666666666666667,
+            "m_fEventTimeMax": 1.2,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1800.0,
+            "m_AttackUnitCount": 99,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_ATTACK2",
+            "m_bDamageSpeedDependRight": true,
+            "m_bCleanHit": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.2333333333333334,
+            "m_fEventTimeMax": 1.3666666666666667,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1800.0,
+            "m_AttackUnitCount": 99,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_ATTACK2",
+            "m_bDamageSpeedDependRight": true,
+            "m_bCleanHit": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.4,
+            "m_fEventTimeMax": 1.5,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1800.0,
+            "m_AttackUnitCount": 99,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_ATTACK2",
+            "m_bDamageSpeedDependRight": true,
+            "m_bCleanHit": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.4,
+            "m_fEventTimeMax": 1.5,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1800.0,
+            "m_bHitLand": false,
+            "m_AttackUnitCount": 99,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_ATTACK2_STUN",
+            "m_bDamageSpeedDependRight": true,
+            "m_bForceHit": true
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

@@ -1,0 +1,111 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_BATTLE_FIERCE_S2_003_CHALLENGE.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 5,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 5
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_FIERCE_ESPR_KNIGHT_S"
+    },
+    {
+      "__key": "m_listDungeonDeck"
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamB",
+      "value": [
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 33011,
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_ESPR_KNIGHT_S",
+          "m_EventConditionValue2": "USN_START",
+          "m_fEventDelay": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 33012,
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_ESPR_KNIGHT_S",
+          "m_EventConditionValue2": "USN_PHASE_CHANGE1",
+          "m_fEventDelay": 0,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_ESPR_KNIGHT_S",
+          "m_EventConditionValue2": "USN_PHASE_CHANGE1",
+          "m_dungeonEventType": "CHANGE_BGM",
+          "m_EventID": 1,
+          "m_bPause": false,
+          "m_EventActionStrValue": "UI_FIERCE_ESPR_KNIGHT",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1.0
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 5,
+    "m_fCostSpeedRateB": 1,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_FIERCE_ESPR_KNIGHT_S",
+    "m_listDungeonDeck": {},
+    "m_listDungeonEventTempletTeamB": [
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 33011,
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_ESPR_KNIGHT_S",
+        "m_EventConditionValue2": "USN_START",
+        "m_fEventDelay": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 33012,
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_ESPR_KNIGHT_S",
+        "m_EventConditionValue2": "USN_PHASE_CHANGE1",
+        "m_fEventDelay": 0,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_ESPR_KNIGHT_S",
+        "m_EventConditionValue2": "USN_PHASE_CHANGE1",
+        "m_dungeonEventType": "CHANGE_BGM",
+        "m_EventID": 1,
+        "m_bPause": false,
+        "m_EventActionStrValue": "UI_FIERCE_ESPR_KNIGHT",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1.0
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

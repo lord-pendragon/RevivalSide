@@ -1,0 +1,490 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_BATTLE_TRIM_RELIC_3_Lv31.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.5
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_RELIC_ESPR_PILE"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatValue": {
+          "NST_ATK": 500,
+          "NST_HIT": 2500,
+          "NST_HP": -100000
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_RELIC_ESPR_HYDRA",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 3,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.25
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.8,
+              "NST_ATK": 1.5,
+              "NST_HIT": 0.5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_RELIC_ESPR_TOTEM_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 180,
+            "m_fEventTimeGap": 60,
+            "m_fEventPos": 0.13
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_RELIC_ESPR_TOTEM_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 180,
+            "m_fEventTimeGap": 60,
+            "m_fEventPos": 0.43
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_RELIC_ESPR_HYDRA",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeEnd": 180,
+            "m_fEventTimeGap": 15,
+            "m_fEventPos": 0.45
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.8,
+              "NST_ATK": 1.5,
+              "NST_HIT": 0.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_RELIC_ESPR_HYDRA",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeEnd": 180,
+            "m_fEventTimeGap": 15,
+            "m_fEventPos": 0.45
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.8,
+              "NST_ATK": 1.5,
+              "NST_HIT": 0.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_RELIC_ESPR_HYDRA",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeEnd": 180,
+            "m_fEventTimeGap": 15,
+            "m_fEventPos": 0.45
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.8,
+              "NST_ATK": 1.5,
+              "NST_HIT": 0.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_RELIC_ESPR_HYDRA",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 120,
+            "m_fEventTimeEnd": 180,
+            "m_fEventTimeGap": 15,
+            "m_fEventPos": 0.45
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.8,
+              "NST_ATK": 1.5,
+              "NST_HIT": 0.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_RELIC_ESPR_HYDRA",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 180,
+            "m_fEventTimeGap": 17,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.8,
+              "NST_ATK": 1.5,
+              "NST_HIT": 0.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_RELIC_ESPR_HYDRA",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 70,
+            "m_fEventTimeEnd": 180,
+            "m_fEventTimeGap": 17,
+            "m_fEventPos": 0.15
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.7,
+              "NST_HIT": 0.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_RELIC_ESPR_HYDRA",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 70,
+            "m_fEventTimeEnd": 180,
+            "m_fEventTimeGap": 17,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.7,
+              "NST_HIT": 0.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_RELIC_ESPR_HYDRA",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 70,
+            "m_fEventTimeEnd": 180,
+            "m_fEventTimeGap": 17,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.7,
+              "NST_HIT": 0.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_RELIC_ESPR_LYCORIS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 180,
+            "m_fEventTimeGap": 17,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.8,
+              "NST_ATK": 1.5,
+              "NST_HIT": 0.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_RELIC_ESPR_LYCORIS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 2,
+            "m_fEventTimeEnd": 180,
+            "m_fEventTimeGap": 17,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.8,
+              "NST_ATK": 1.5,
+              "NST_HIT": 0.5
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 0.5,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_RELIC_ESPR_PILE",
+    "m_fBossPosZ": 0.6,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatValue": {
+          "NST_ATK": 500,
+          "NST_HIT": 2500,
+          "NST_HP": -100000
+        }
+      }
+    },
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_RELIC_ESPR_HYDRA",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 3,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.25
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.8,
+            "NST_ATK": 1.5,
+            "NST_HIT": 0.5
+          }
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_RELIC_ESPR_TOTEM_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 180,
+          "m_fEventTimeGap": 60,
+          "m_fEventPos": 0.13
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_RELIC_ESPR_TOTEM_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 180,
+          "m_fEventTimeGap": 60,
+          "m_fEventPos": 0.43
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_RELIC_ESPR_HYDRA",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeEnd": 180,
+          "m_fEventTimeGap": 15,
+          "m_fEventPos": 0.45
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.8,
+            "NST_ATK": 1.5,
+            "NST_HIT": 0.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_RELIC_ESPR_HYDRA",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeEnd": 180,
+          "m_fEventTimeGap": 15,
+          "m_fEventPos": 0.45
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.8,
+            "NST_ATK": 1.5,
+            "NST_HIT": 0.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_RELIC_ESPR_HYDRA",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeEnd": 180,
+          "m_fEventTimeGap": 15,
+          "m_fEventPos": 0.45
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.8,
+            "NST_ATK": 1.5,
+            "NST_HIT": 0.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_RELIC_ESPR_HYDRA",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 120,
+          "m_fEventTimeEnd": 180,
+          "m_fEventTimeGap": 15,
+          "m_fEventPos": 0.45
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.8,
+            "NST_ATK": 1.5,
+            "NST_HIT": 0.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_RELIC_ESPR_HYDRA",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 180,
+          "m_fEventTimeGap": 17,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.8,
+            "NST_ATK": 1.5,
+            "NST_HIT": 0.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_RELIC_ESPR_HYDRA",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 70,
+          "m_fEventTimeEnd": 180,
+          "m_fEventTimeGap": 17,
+          "m_fEventPos": 0.15
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.7,
+            "NST_HIT": 0.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_RELIC_ESPR_HYDRA",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 70,
+          "m_fEventTimeEnd": 180,
+          "m_fEventTimeGap": 17,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.7,
+            "NST_HIT": 0.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_RELIC_ESPR_HYDRA",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 70,
+          "m_fEventTimeEnd": 180,
+          "m_fEventTimeGap": 17,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.7,
+            "NST_HIT": 0.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_RELIC_ESPR_LYCORIS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 180,
+          "m_fEventTimeGap": 17,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.8,
+            "NST_ATK": 1.5,
+            "NST_HIT": 0.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_RELIC_ESPR_LYCORIS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 2,
+          "m_fEventTimeEnd": 180,
+          "m_fEventTimeGap": 17,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.8,
+            "NST_ATK": 1.5,
+            "NST_HIT": 0.5
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

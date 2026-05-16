@@ -1,0 +1,283 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_BOSS_FIERCE_TYRANT_STRIKER_S.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_MOB_BOSS_FIERCE_TYRANT_STRIKER_N"
+    },
+    {
+      "__key": "m_dicTriggerSet",
+      "value": [
+        {
+          "m_Name": "TRIGGER_STACK_ASPD_ACTIVE",
+          "m_listNKMEventBuff": [
+            {
+              "m_BuffStrID": "BUFF_FIERCE_TYRANT_STRIKER_EX_STACK_SPD"
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_STACK_ASPD_DEACTIVE",
+          "m_listNKMEventBuff": [
+            {
+              "m_BuffStrID": "BUFF_FIERCE_TYRANT_STRIKER_EX_STACK_SPD",
+              "m_BuffRemove": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_listTriggerRepeatData",
+      "value": [
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_STRIKER_EX_ENEMY_DIE_DETECT"
+            },
+            {
+              "Type": "Buff",
+              "Inverse": true,
+              "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_STRIKER_EX_ENEMY_DIE_RESERVE"
+            }
+          ],
+          "m_TriggerName": "TRIGGER_STACK_ASPD_ACTIVE",
+          "m_fRepeatTime": 3
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_STRIKER_EX_ENEMY_DIE_RESERVE"
+            }
+          ],
+          "m_TriggerName": "TRIGGER_STACK_ASPD_DEACTIVE",
+          "m_fRepeatTime": 1
+        }
+      ]
+    },
+    {
+      "__key": "m_listBuffUnitDieEvent",
+      "value": [
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "Inverse": true,
+              "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_STRIKER_EX_ENEMY_DIE_RESERVE"
+            }
+          ],
+          "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_STRIKER_EX_ENEMY_DIE_DETECT",
+          "m_OutBuffStrID": "DEBUFF_FIERCE_TYRANT_STRIKER_EX_ENEMY_DIE_RESERVE",
+          "m_OutBuffTimeLevel": 6
+        }
+      ]
+    },
+    {
+      "__key": "m_listPhaseChangeData",
+      "value": [
+        {
+          "m_TargetPhase": 1,
+          "m_fChangeConditionHPRate": 0.75,
+          "m_ChangeStateName": "USN_PATTERN1"
+        },
+        {
+          "m_TargetPhase": 2,
+          "m_fChangeConditionHPRate": 0.5,
+          "m_ChangeStateName": "USN_PATTERN1"
+        },
+        {
+          "m_TargetPhase": 3,
+          "m_fChangeConditionHPRate": 0.25,
+          "m_ChangeStateName": "USN_PATTERN1"
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_START",
+          "m_listNKMEventBuff": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_TYRANT_STRIKER_1"
+                }
+              ],
+              "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_STRIKER_EX_ENEMY_DIE_DETECT"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_TYRANT_STRIKER_2"
+                }
+              ],
+              "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_STRIKER_EX_ALLY_EXILE",
+              "m_BuffLevel": 99
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.8,
+              "m_fEventTimeMax": 1.1333333333333333,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 500,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_TYRANT_STRIKER_ATTACK1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.4666666666666666,
+              "m_fEventTimeMax": 1.8,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 500,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_TYRANT_STRIKER_ATTACK1_END_S"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_MOB_BOSS_FIERCE_TYRANT_STRIKER_N",
+    "m_dicTriggerSet": [
+      {
+        "m_Name": "TRIGGER_STACK_ASPD_ACTIVE",
+        "m_listNKMEventBuff": [
+          {
+            "m_BuffStrID": "BUFF_FIERCE_TYRANT_STRIKER_EX_STACK_SPD"
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_STACK_ASPD_DEACTIVE",
+        "m_listNKMEventBuff": [
+          {
+            "m_BuffStrID": "BUFF_FIERCE_TYRANT_STRIKER_EX_STACK_SPD",
+            "m_BuffRemove": true
+          }
+        ]
+      }
+    ],
+    "m_listTriggerRepeatData": [
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_STRIKER_EX_ENEMY_DIE_DETECT"
+          },
+          {
+            "Type": "Buff",
+            "Inverse": true,
+            "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_STRIKER_EX_ENEMY_DIE_RESERVE"
+          }
+        ],
+        "m_TriggerName": "TRIGGER_STACK_ASPD_ACTIVE",
+        "m_fRepeatTime": 3
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_STRIKER_EX_ENEMY_DIE_RESERVE"
+          }
+        ],
+        "m_TriggerName": "TRIGGER_STACK_ASPD_DEACTIVE",
+        "m_fRepeatTime": 1
+      }
+    ],
+    "m_listBuffUnitDieEvent": [
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "Inverse": true,
+            "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_STRIKER_EX_ENEMY_DIE_RESERVE"
+          }
+        ],
+        "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_STRIKER_EX_ENEMY_DIE_DETECT",
+        "m_OutBuffStrID": "DEBUFF_FIERCE_TYRANT_STRIKER_EX_ENEMY_DIE_RESERVE",
+        "m_OutBuffTimeLevel": 6
+      }
+    ],
+    "m_listPhaseChangeData": [
+      {
+        "m_TargetPhase": 1,
+        "m_fChangeConditionHPRate": 0.75,
+        "m_ChangeStateName": "USN_PATTERN1"
+      },
+      {
+        "m_TargetPhase": 2,
+        "m_fChangeConditionHPRate": 0.5,
+        "m_ChangeStateName": "USN_PATTERN1"
+      },
+      {
+        "m_TargetPhase": 3,
+        "m_fChangeConditionHPRate": 0.25,
+        "m_ChangeStateName": "USN_PATTERN1"
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_START",
+        "m_listNKMEventBuff": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_TYRANT_STRIKER_1"
+              }
+            ],
+            "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_STRIKER_EX_ENEMY_DIE_DETECT"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_TYRANT_STRIKER_2"
+              }
+            ],
+            "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_STRIKER_EX_ALLY_EXILE",
+            "m_BuffLevel": 99
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.8,
+            "m_fEventTimeMax": 1.1333333333333333,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 500,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_TYRANT_STRIKER_ATTACK1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.4666666666666666,
+            "m_fEventTimeMax": 1.8,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 500,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_TYRANT_STRIKER_ATTACK1_END_S"
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

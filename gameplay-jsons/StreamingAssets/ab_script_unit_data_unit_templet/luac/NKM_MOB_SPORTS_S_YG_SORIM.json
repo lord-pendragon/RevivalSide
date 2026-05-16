@@ -1,0 +1,1040 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_SPORTS_S_YG_SORIM.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 21,
+  "records": [
+    {
+      "__key": "m_UnitSizeX",
+      "value": 120
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 240
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 230
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 200
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 200
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.2
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.4
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 280
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 900
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 1000
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 700
+    },
+    {
+      "__key": "m_bTargetNoChange",
+      "value": false
+    },
+    {
+      "__key": "m_AttackedTargetTime",
+      "value": 1
+    },
+    {
+      "__key": "m_bAttackedTarget",
+      "value": false
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": true
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1"
+        }
+      ]
+    },
+    {
+      "__key": "m_listAirAttackStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1_AIR"
+        }
+      ]
+    },
+    {
+      "__key": "m_listSkillStateData",
+      "value": [
+        {
+          "m_bTargetLandOnly": true,
+          "m_StateName": "USN_SKILL1"
+        }
+      ]
+    },
+    {
+      "__key": "m_listAccumStateChangePack",
+      "value": [
+        {
+          "m_listAccumStateChange": [
+            {
+              "m_listAccumStateName": [
+                "USN_ATTACK1",
+                "USN_SKILL1"
+              ],
+              "m_AccumCount": 4,
+              "m_TargetStateName": "USN_PASSIVE2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.3,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_DamagedChangeState": "USN_ASTAND",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_FOOT_STEP"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_FOOT_STEP"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MOVEMENT_01"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_S_YG_SORIM_BATTLE_START_1",
+                "VOICE_UNIT_S_YG_SORIM_BATTLE_START_2"
+              ],
+              "m_dicSkinSound": [
+                [
+                  113604,
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_START_1",
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_START_2"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_StateName": "USN_RUN",
+          "m_AnimName": "RUN",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 0.8,
+          "m_bRun": true
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK1",
+          "m_AnimName": "ATTACK1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1,
+          "m_StateCoolTime": 0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.4,
+              "m_fEventTimeMax": 0.7333333333333333,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 700.0,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_NKM_UNIT_S_YG_SORIM_ATTACK1"
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_YG_SORIM_PASSIVE_LV5"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.5,
+              "m_listSoundName": [
+                "VOICE_UNIT_S_YG_SORIM_BATTLE_ATTACK_1",
+                "VOICE_UNIT_S_YG_SORIM_BATTLE_ATTACK_2"
+              ],
+              "m_dicSkinSound": [
+                [
+                  113604,
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_ATTACK_1",
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_ATTACK_2",
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_ATTACK_3",
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_ATTACK_4"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK1_AIR",
+          "m_AnimName": "ATTACK1_AIR",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.4,
+              "m_fEventTimeMax": 0.7333333333333333,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 700.0,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_NKM_UNIT_S_YG_SORIM_ATTACK1"
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_YG_SORIM_PASSIVE_LV5"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.5,
+              "m_listSoundName": [
+                "VOICE_UNIT_S_YG_SORIM_BATTLE_ATTACK_1",
+                "VOICE_UNIT_S_YG_SORIM_BATTLE_ATTACK_2"
+              ],
+              "m_dicSkinSound": [
+                [
+                  113604,
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_ATTACK_1",
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_ATTACK_2",
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_ATTACK_3",
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_ATTACK_4"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_StateCoolTime": 15.0,
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_DEName": "DE_NKM_MOB_SPORTS_S_YG_SORIM_SKILL1",
+              "m_OffsetX": 130,
+              "m_OffsetY": 170
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 99999,
+              "m_fColorR": 0.5,
+              "m_fColorG": 0.5,
+              "m_fColorB": 1.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_S_YG_SORIM_BATTLE_ACTIVE_1",
+                "VOICE_UNIT_S_YG_SORIM_BATTLE_ACTIVE_2",
+                "VOICE_UNIT_S_YG_SORIM_BATTLE_ATTACK_5"
+              ],
+              "m_dicSkinSound": [
+                [
+                  113604,
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_ACTIVE_1",
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_ACTIVE_2",
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_ATTACK_5",
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_ATTACK_6"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_PASSIVE2",
+          "m_AnimName": "PASSIVE2",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_StateCoolTime": 15.0,
+          "m_listNKMEventAnimSpeed": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_fAnimSpeed": 2.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.6333333333333333,
+              "m_fAnimSpeed": 1
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.6,
+              "m_DEName": "DE_NKM_UNIT_S_YG_SORIM_PASSIVE2_LV5",
+              "m_OffsetX": 180,
+              "m_OffsetY": 140
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.6,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 6.0,
+              "m_fCameraCrashTime": 0.4
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SHOTGUN_RELOAD_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_15"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SNIPER_FIRE_BIG"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_S_YG_SORIM_BATTLE_ATTACK_3",
+                "VOICE_UNIT_S_YG_SORIM_BATTLE_ATTACK_6",
+                "VOICE_UNIT_S_YG_SORIM_BATTLE_ATTACK_8"
+              ],
+              "m_dicSkinSound": [
+                [
+                  113604,
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_PASSIVE_1",
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_PASSIVE_2",
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_PASSIVE_3"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_A",
+          "m_AnimName": "DAMAGE_A",
+          "m_bAnimLoop": false,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_S_YG_SORIM_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_S_YG_SORIM_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_S_YG_SORIM_BATTLE_DAMAGE_3"
+              ],
+              "m_dicSkinSound": [
+                [
+                  113604,
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DAMAGE_1",
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DAMAGE_2",
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DAMAGE_3"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_B",
+          "m_AnimName": "DAMAGE_B",
+          "m_bAnimLoop": false,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_S_YG_SORIM_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_S_YG_SORIM_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_S_YG_SORIM_BATTLE_DAMAGE_3"
+              ],
+              "m_dicSkinSound": [
+                [
+                  113604,
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DAMAGE_1",
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DAMAGE_2",
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DAMAGE_3"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_AIR_UP",
+          "m_AnimName": "DAMAGE_AIR_UP",
+          "m_bAnimLoop": false,
+          "m_SpeedY0NegativeChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_S_YG_SORIM_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_S_YG_SORIM_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_S_YG_SORIM_BATTLE_DAMAGE_3"
+              ],
+              "m_dicSkinSound": [
+                [
+                  113604,
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DAMAGE_1",
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DAMAGE_2",
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DAMAGE_3"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_bAnimLoop": false,
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+          "m_AnimEndChangeState": "USN_DAMAGE_STAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_S_YG_SORIM_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_S_YG_SORIM_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_S_YG_SORIM_BATTLE_DAMAGE_3"
+              ],
+              "m_dicSkinSound": [
+                [
+                  113604,
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DAMAGE_1",
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DAMAGE_2",
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DAMAGE_3"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_bAnimLoop": false,
+          "m_bShowGage": false,
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_S_YG_SORIM_BATTLE_DEATH_1",
+                "VOICE_UNIT_S_YG_SORIM_BATTLE_DEATH_2"
+              ],
+              "m_dicSkinSound": [
+                [
+                  113604,
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DEATH_1",
+                  "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DEATH_2"
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_UnitSizeX": 120,
+    "m_UnitSizeY": 240,
+    "m_SpriteScale": 1.0,
+    "m_fGageOffsetY": 230,
+    "m_fShadowScaleX": 200,
+    "m_fShadowScaleY": 200,
+    "m_fForceRespawnZposMin": 0.2,
+    "m_fForceRespawnZposMax": 0.4,
+    "m_SpeedRun": 280,
+    "m_SeeRange": 900,
+    "m_SeeRangeMax": 1000,
+    "m_TargetNearRange": 700,
+    "m_bTargetNoChange": false,
+    "m_AttackedTargetTime": 1,
+    "m_bAttackedTarget": false,
+    "m_bUseMotionBlur": true,
+    "m_listAttackStateData": [
+      {
+        "m_StateName": "USN_ATTACK1"
+      }
+    ],
+    "m_listAirAttackStateData": [
+      {
+        "m_StateName": "USN_ATTACK1_AIR"
+      }
+    ],
+    "m_listSkillStateData": [
+      {
+        "m_bTargetLandOnly": true,
+        "m_StateName": "USN_SKILL1"
+      }
+    ],
+    "m_listAccumStateChangePack": [
+      {
+        "m_listAccumStateChange": [
+          {
+            "m_listAccumStateName": [
+              "USN_ATTACK1",
+              "USN_SKILL1"
+            ],
+            "m_AccumCount": 4,
+            "m_TargetStateName": "USN_PASSIVE2"
+          }
+        ]
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.3,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_DamagedChangeState": "USN_ASTAND",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_FOOT_STEP"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_FOOT_STEP"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MOVEMENT_01"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_S_YG_SORIM_BATTLE_START_1",
+              "VOICE_UNIT_S_YG_SORIM_BATTLE_START_2"
+            ],
+            "m_dicSkinSound": [
+              [
+                113604,
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_START_1",
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_START_2"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_StateName": "USN_RUN",
+        "m_AnimName": "RUN",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 0.8,
+        "m_bRun": true
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK1",
+        "m_AnimName": "ATTACK1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1,
+        "m_StateCoolTime": 0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.4,
+            "m_fEventTimeMax": 0.7333333333333333,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 700.0,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_NKM_UNIT_S_YG_SORIM_ATTACK1"
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_YG_SORIM_PASSIVE_LV5"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.5,
+            "m_listSoundName": [
+              "VOICE_UNIT_S_YG_SORIM_BATTLE_ATTACK_1",
+              "VOICE_UNIT_S_YG_SORIM_BATTLE_ATTACK_2"
+            ],
+            "m_dicSkinSound": [
+              [
+                113604,
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_ATTACK_1",
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_ATTACK_2",
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_ATTACK_3",
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_ATTACK_4"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK1_AIR",
+        "m_AnimName": "ATTACK1_AIR",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.4,
+            "m_fEventTimeMax": 0.7333333333333333,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 700.0,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_NKM_UNIT_S_YG_SORIM_ATTACK1"
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_YG_SORIM_PASSIVE_LV5"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.5,
+            "m_listSoundName": [
+              "VOICE_UNIT_S_YG_SORIM_BATTLE_ATTACK_1",
+              "VOICE_UNIT_S_YG_SORIM_BATTLE_ATTACK_2"
+            ],
+            "m_dicSkinSound": [
+              [
+                113604,
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_ATTACK_1",
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_ATTACK_2",
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_ATTACK_3",
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_ATTACK_4"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_StateCoolTime": 15.0,
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_DEName": "DE_NKM_MOB_SPORTS_S_YG_SORIM_SKILL1",
+            "m_OffsetX": 130,
+            "m_OffsetY": 170
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 99999,
+            "m_fColorR": 0.5,
+            "m_fColorG": 0.5,
+            "m_fColorB": 1.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_S_YG_SORIM_BATTLE_ACTIVE_1",
+              "VOICE_UNIT_S_YG_SORIM_BATTLE_ACTIVE_2",
+              "VOICE_UNIT_S_YG_SORIM_BATTLE_ATTACK_5"
+            ],
+            "m_dicSkinSound": [
+              [
+                113604,
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_ACTIVE_1",
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_ACTIVE_2",
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_ATTACK_5",
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_ATTACK_6"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_PASSIVE2",
+        "m_AnimName": "PASSIVE2",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_StateCoolTime": 15.0,
+        "m_listNKMEventAnimSpeed": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_fAnimSpeed": 2.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.6333333333333333,
+            "m_fAnimSpeed": 1
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.6,
+            "m_DEName": "DE_NKM_UNIT_S_YG_SORIM_PASSIVE2_LV5",
+            "m_OffsetX": 180,
+            "m_OffsetY": 140
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.6,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 6.0,
+            "m_fCameraCrashTime": 0.4
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SHOTGUN_RELOAD_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_15"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SNIPER_FIRE_BIG"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_S_YG_SORIM_BATTLE_ATTACK_3",
+              "VOICE_UNIT_S_YG_SORIM_BATTLE_ATTACK_6",
+              "VOICE_UNIT_S_YG_SORIM_BATTLE_ATTACK_8"
+            ],
+            "m_dicSkinSound": [
+              [
+                113604,
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_PASSIVE_1",
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_PASSIVE_2",
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_PASSIVE_3"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_A",
+        "m_AnimName": "DAMAGE_A",
+        "m_bAnimLoop": false,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_S_YG_SORIM_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_S_YG_SORIM_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_S_YG_SORIM_BATTLE_DAMAGE_3"
+            ],
+            "m_dicSkinSound": [
+              [
+                113604,
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DAMAGE_3"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_B",
+        "m_AnimName": "DAMAGE_B",
+        "m_bAnimLoop": false,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_S_YG_SORIM_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_S_YG_SORIM_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_S_YG_SORIM_BATTLE_DAMAGE_3"
+            ],
+            "m_dicSkinSound": [
+              [
+                113604,
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DAMAGE_3"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_AIR_UP",
+        "m_AnimName": "DAMAGE_AIR_UP",
+        "m_bAnimLoop": false,
+        "m_SpeedY0NegativeChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_S_YG_SORIM_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_S_YG_SORIM_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_S_YG_SORIM_BATTLE_DAMAGE_3"
+            ],
+            "m_dicSkinSound": [
+              [
+                113604,
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DAMAGE_3"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_bAnimLoop": false,
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+        "m_AnimEndChangeState": "USN_DAMAGE_STAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_S_YG_SORIM_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_S_YG_SORIM_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_S_YG_SORIM_BATTLE_DAMAGE_3"
+            ],
+            "m_dicSkinSound": [
+              [
+                113604,
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DAMAGE_3"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_bAnimLoop": false,
+        "m_bShowGage": false,
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_S_YG_SORIM_BATTLE_DEATH_1",
+              "VOICE_UNIT_S_YG_SORIM_BATTLE_DEATH_2"
+            ],
+            "m_dicSkinSound": [
+              [
+                113604,
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DEATH_1",
+                "VOICE_UNIT_S_YG_SORIM_X_MAS_BATTLE_DEATH_2"
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

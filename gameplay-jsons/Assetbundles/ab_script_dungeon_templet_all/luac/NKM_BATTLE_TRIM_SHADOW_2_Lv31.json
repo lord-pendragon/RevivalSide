@@ -1,0 +1,293 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_BATTLE_TRIM_SHADOW_2_Lv31.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 8,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 7
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_SHADOW_X_ABRAHAM"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_fCostSpeedRateA",
+      "value": 1
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.2
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_SHADOW_C_BD_RYAN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 181,
+            "m_fEventTimeEnd": 181
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_S_TIDE_SUBMACHINEGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 181,
+            "m_fEventTimeEnd": 181
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_S_TIDE_GRENADE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 5,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.15
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_TIDE_VEHICLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 10,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.25
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_TIDE_HELI",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 15,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamB",
+      "value": [
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_SHADOW_C_BD_RYAN",
+          "m_EventConditionValue2": "USN_START",
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 101119,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 90
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_SHADOW_C_BD_RYAN",
+          "m_EventRespawnUnitTag": "RYAN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_TIDE_VEHICLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 40,
+            "m_fEventPos": 0.5
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_TIDE_HELI",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 45,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_C_BD_RYAN",
+          "m_EventRespawnUnitTag": "RYAN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 65,
+            "m_fEventPos": 0.2,
+            "m_EventDieUnitTag": "RYAN",
+            "m_EventDieUnitTagCount": 1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_TIDE_VEHICLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 80,
+            "m_fEventPos": 0.5
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_TIDE_HELI",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 85,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_C_BD_RYAN",
+          "m_EventRespawnUnitTag": "RYAN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 120,
+            "m_fEventPos": 0.2,
+            "m_EventDieUnitTag": "RYAN",
+            "m_EventDieUnitTagCount": 2
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 7,
+    "m_BossUnitStrID": "NKM_SHADOW_X_ABRAHAM",
+    "m_fBossPosZ": 0.6,
+    "m_fCostSpeedRateA": 1,
+    "m_fCostSpeedRateB": 1.2,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_SHADOW_C_BD_RYAN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 181,
+          "m_fEventTimeEnd": 181
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_S_TIDE_SUBMACHINEGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 181,
+          "m_fEventTimeEnd": 181
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_S_TIDE_GRENADE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 5,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.15
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_TIDE_VEHICLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 10,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.25
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_TIDE_HELI",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 15,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.1
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamB": [
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_SHADOW_C_BD_RYAN",
+        "m_EventConditionValue2": "USN_START",
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 101119,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 90
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_SHADOW_C_BD_RYAN",
+        "m_EventRespawnUnitTag": "RYAN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_TIDE_VEHICLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 40,
+          "m_fEventPos": 0.5
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_TIDE_HELI",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 45,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_C_BD_RYAN",
+        "m_EventRespawnUnitTag": "RYAN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 65,
+          "m_fEventPos": 0.2,
+          "m_EventDieUnitTag": "RYAN",
+          "m_EventDieUnitTagCount": 1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_TIDE_VEHICLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 80,
+          "m_fEventPos": 0.5
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_TIDE_HELI",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 85,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_C_BD_RYAN",
+        "m_EventRespawnUnitTag": "RYAN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 120,
+          "m_fEventPos": 0.2,
+          "m_EventDieUnitTag": "RYAN",
+          "m_EventDieUnitTagCount": 2
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

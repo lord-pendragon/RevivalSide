@@ -1,0 +1,249 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_EVENT_OZ_1_1.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.2
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EVENT_MERCENARY_SL_SNIPER"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatValue": {
+          "NST_ATK": -6500,
+          "NST_DEF": -450,
+          "NST_HP": -150000
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_EVENT_MERCENARY_SL_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.4
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.3,
+              "NST_EVADE": 0.8,
+              "NST_HP": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_EVENT_MERCENARY_SL_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0.2,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.4
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.3,
+              "NST_EVADE": 0.8,
+              "NST_HP": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_EVENT_MERCENARY_SL_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0.4,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.4
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.3,
+              "NST_EVADE": 0.8,
+              "NST_HP": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_EVENT_MERCENARY_SL_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0.6,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.3,
+              "NST_EVADE": 0.8,
+              "NST_HP": 0.2
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_EVENT_MERCENARY_SL_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0.8,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.3,
+              "NST_EVADE": 0.8,
+              "NST_HP": 0.2
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_EVENT_MERCENARY_SL_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.3,
+              "NST_EVADE": 0.8,
+              "NST_HP": 0.2
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 0.2,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EVENT_MERCENARY_SL_SNIPER",
+    "m_fBossPosZ": 0.6,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatValue": {
+          "NST_ATK": -6500,
+          "NST_DEF": -450,
+          "NST_HP": -150000
+        }
+      }
+    },
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_EVENT_MERCENARY_SL_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.4
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.3,
+            "NST_EVADE": 0.8,
+            "NST_HP": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_EVENT_MERCENARY_SL_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0.2,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.4
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.3,
+            "NST_EVADE": 0.8,
+            "NST_HP": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_EVENT_MERCENARY_SL_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0.4,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.4
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.3,
+            "NST_EVADE": 0.8,
+            "NST_HP": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_EVENT_MERCENARY_SL_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0.6,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.3,
+            "NST_EVADE": 0.8,
+            "NST_HP": 0.2
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_EVENT_MERCENARY_SL_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0.8,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.3,
+            "NST_EVADE": 0.8,
+            "NST_HP": 0.2
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_EVENT_MERCENARY_SL_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.3,
+            "NST_EVADE": 0.8,
+            "NST_HP": 0.2
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

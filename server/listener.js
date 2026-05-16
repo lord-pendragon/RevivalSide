@@ -7,6 +7,7 @@ const { URL } = require("url");
 const { loadPacketHandlers } = require("./packetHandlerLoader");
 const { createUserManager } = require("./userManager");
 const ROOT_DIR = path.resolve(__dirname, "..");
+const { findGameplayTableFile } = require("../modules/gameplay-jsons");
 const {
   createCombatHandler,
   buildCapturedRespawnUnitPools: buildCombatCapturedRespawnUnitPools,
@@ -174,10 +175,6 @@ function uniqueMissionTabs(tabIds) {
   );
 }
 
-function firstExistingPath(paths) {
-  return paths.find((candidate) => fs.existsSync(candidate)) || paths[0];
-}
-
 const PORT = Number(process.env.CS_PORT || 22000);
 const HTTP_MIRROR_PORT = Number(process.env.CS_HTTP_MIRROR_PORT || 8088);
 const DEBUG_HEX = process.env.CS_DEBUG_HEX === "1";
@@ -252,20 +249,10 @@ const UNIT_TABLE_PATH = process.env.CS_UNIT_TABLE_PATH || path.join(ROOT_DIR, "s
 const DUNGEON_TABLE_PATH = process.env.CS_DUNGEON_TABLE_PATH || path.join(ROOT_DIR, "server-data", "dungeons.json");
 const STAGE_TABLE_PATH =
   process.env.CS_STAGE_TABLE_PATH ||
-  firstExistingPath([
-    path.join(ROOT_DIR, "gameplay-tables-json", "Assetbundles", "ab_script", "luac", "LUA_STAGE_TEMPLET.json"),
-    path.join(ROOT_DIR, "gameplay-tables-json", "StreamingAssets", "ab_script", "luac", "LUA_STAGE_TEMPLET.json"),
-    path.join(ROOT_DIR, "gameplay-jsons", "Assetbundles", "ab_script", "luac", "LUA_STAGE_TEMPLET.json"),
-    path.join(ROOT_DIR, "gameplay-jsons", "StreamingAssets", "ab_script", "luac", "LUA_STAGE_TEMPLET.json"),
-  ]);
+  findGameplayTableFile("ab_script", "LUA_STAGE_TEMPLET.json", { rootDir: ROOT_DIR });
 const MAP_TABLE_PATH =
   process.env.CS_MAP_TABLE_PATH ||
-  firstExistingPath([
-    path.join(ROOT_DIR, "gameplay-tables-json", "Assetbundles", "ab_script", "luac", "LUA_MAP_TEMPLET.json"),
-    path.join(ROOT_DIR, "gameplay-tables-json", "StreamingAssets", "ab_script", "luac", "LUA_MAP_TEMPLET.json"),
-    path.join(ROOT_DIR, "gameplay-jsons", "Assetbundles", "ab_script", "luac", "LUA_MAP_TEMPLET.json"),
-    path.join(ROOT_DIR, "gameplay-jsons", "StreamingAssets", "ab_script", "luac", "LUA_MAP_TEMPLET.json"),
-  ]);
+  findGameplayTableFile("ab_script", "LUA_MAP_TEMPLET.json", { rootDir: ROOT_DIR });
 const USE_LOCAL_USER_DB = process.env.CS_USE_LOCAL_USER_DB !== "0";
 const REPLAY_CAPTURED_CONTENTS_VERSION = process.env.CS_REPLAY_CAPTURED_CONTENTS_VERSION !== "0";
 const REPLAY_CAPTURED_LOGIN_ACK = process.env.CS_REPLAY_CAPTURED_LOGIN_ACK !== "0";
@@ -285,7 +272,7 @@ const CSHARP_COMBAT_HOST_DLL = process.env.CS_CSHARP_COMBAT_HOST_DLL || "";
 const CSHARP_COMBAT_HOST_TIMEOUT_MS = Number(process.env.CS_CSHARP_COMBAT_HOST_TIMEOUT_MS || 20000);
 const CSHARP_COMBAT_HOST_DOTNET = process.env.CS_DOTNET_PATH || findDefaultDotnetRuntime();
 const COUNTERSIDE_MANAGED_DIR = process.env.CS_COUNTERSIDE_MANAGED_DIR || findDefaultCounterSideManagedDir();
-const GAMEPLAY_TABLES_DIR = process.env.CS_GAMEPLAY_TABLES_DIR || findDefaultGameplayTablesDir();
+const GAMEPLAY_TABLES_DIR = process.env.CS_GAMEPLAY_TABLES_DIR || "";
 const OFFICIAL_COMBAT_REPLAY = process.env.CS_OFFICIAL_COMBAT_REPLAY === "1";
 const OFFICIAL_COMBAT_REPLAY_START_INDEX = Number(process.env.CS_OFFICIAL_COMBAT_REPLAY_START_INDEX || 64);
 const OFFICIAL_COMBAT_REPLAY_INTERVAL_MS = Number(process.env.CS_OFFICIAL_COMBAT_REPLAY_INTERVAL_MS || 33);
@@ -322,7 +309,6 @@ const FAST_LOBBY_MISSION_TABS = uniqueMissionTabs([1, 2, 3, ...SIMULATION_MISSIO
 const POST_TUTORIAL_MIN_USER_LEVEL = Math.max(2, Number(process.env.CS_POST_TUTORIAL_MIN_USER_LEVEL || 2) || 2);
 const NEW_ACCOUNT_ROSTER_MODE = resolveNewAccountRosterMode();
 const SEED_NEW_ACCOUNT_TROPHIES = process.env.CS_SEED_NEW_ACCOUNT_TROPHIES === "1";
-const ENABLE_EXTRACTED_MISSION_TABLES = process.env.CS_ENABLE_EXTRACTED_MISSION_TABLES === "1";
 const USE_STEAM_TOKEN_AS_ACCESS_TOKEN = process.env.CS_USE_STEAM_TOKEN_AS_ACCESS_TOKEN === "1";
 const REWRITE_CAPTURED_SERVER_INFO = process.env.CS_REWRITE_CAPTURED_SERVER_INFO !== "0";
 const MIRROR_PUBLIC_HOST = process.env.CS_HTTP_MIRROR_HOST || "127.0.0.1";
@@ -599,7 +585,6 @@ function logRuntimeConfig() {
       SEED_NEW_ACCOUNT_TROPHIES ? "on" : "off"
     }`
   );
-  console.log(`[cfg] extractedMissionTables=${ENABLE_EXTRACTED_MISSION_TABLES ? "on" : "off"}`);
   console.log(`[cfg] skipTutorialCutscene=${SKIP_TUTORIAL_CUTSCENE ? "on" : "off"}`);
   console.log(`[cfg] skipTutorialToWin=${SKIP_TUTORIAL_TO_WIN ? "on" : "off"}`);
   console.log(`[cfg] resetLocalProgressOnLogin=${RESET_LOCAL_PROGRESS_ON_LOGIN ? "on" : "off"}`);
@@ -6291,7 +6276,7 @@ function loadGameplayUnitStats(filePath) {
     }
     result.loaded = result.byId.size > 0 || result.byStrId.size > 0;
   } catch (err) {
-    console.log(`[gameplay-tables] unit stats load failed: ${err.message}`);
+    console.log(`[gameplay-jsons] unit stats load failed: ${err.message}`);
   }
   return result;
 }
@@ -7101,18 +7086,6 @@ function findDefaultDotnetRuntime() {
     if (fs.existsSync(x64Dotnet)) return x64Dotnet;
   }
   return "dotnet";
-}
-
-function findDefaultGameplayTablesDir() {
-  const candidates = [
-    path.join(ROOT_DIR, "gameplay-tables"),
-    path.join(ROOT_DIR, "gameplay-tables-decompiled"),
-    path.join(ROOT_DIR, "gameplay-tables-json"),
-  ];
-  for (const candidate of candidates) {
-    if (fs.existsSync(path.join(candidate, "StreamingAssets"))) return candidate;
-  }
-  return "";
 }
 
 function nonEmpty(value) {

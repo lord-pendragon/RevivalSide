@@ -1,0 +1,918 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_BATTLE_FIERCE_S4_002_CHALLENGE.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 5,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 5
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_S"
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamB",
+      "value": [
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_S",
+          "m_EventConditionValue2": "USN_START2",
+          "m_dungeonEventType": "CHANGE_BGM_TRACK",
+          "m_EventID": 1,
+          "m_bPause": false,
+          "m_EventActionStrValue": "THEMA_SEASON2_VOCAL",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1.0
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_S",
+          "m_EventConditionValue2": "USN_START",
+          "m_dungeonEventType": "SET_EVENTTAG",
+          "m_EventActionStrValue": "KNIGHT_C_DIE",
+          "m_EventActionValue": 1,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_S",
+          "m_EventConditionValue2": "USN_START2",
+          "m_dungeonEventType": "SET_EVENTTAG",
+          "m_EventActionStrValue": "KNIGHT_C_DIE",
+          "m_EventActionValue": 0,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_S",
+          "m_EventConditionValue2": "USN_START2",
+          "m_dungeonEventType": "KILL_ALL_TAGGED_UNIT",
+          "m_EventActionStrValue": "KNIGHT_C_EMPEROR_DIE",
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 5.666666666666667
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_S",
+          "m_EventConditionValue2": "USN_START2",
+          "m_dungeonEventType": "KILL_ALL_TAGGED_UNIT",
+          "m_EventActionStrValue": "KNIGHT_C_HOLY_DIE",
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 5.666666666666667
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_S",
+          "m_EventConditionValue2": "USN_START2",
+          "m_dungeonEventType": "KILL_ALL_TAGGED_UNIT",
+          "m_EventActionStrValue": "KNIGHT_C_FLAG_DIE",
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 5.666666666666667
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_S",
+          "m_EventConditionValue2": "USN_START2",
+          "m_dungeonEventType": "KILL_ALL_TAGGED_UNIT",
+          "m_EventActionStrValue": "KNIGHT_C_STRATEGY_DIE",
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 5.666666666666667
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_S",
+          "m_EventConditionValue2": "USN_START2",
+          "m_dungeonEventType": "KILL_ALL_TAGGED_UNIT",
+          "m_EventActionStrValue": "KNIGHT_C_PALADIN_MACE_DIE",
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 5.666666666666667
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_S",
+          "m_EventConditionValue2": "USN_START2",
+          "m_dungeonEventType": "KILL_ALL_TAGGED_UNIT",
+          "m_EventActionStrValue": "KNIGHT_C_PALADIN_DIE",
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 5.666666666666667
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_S",
+          "m_EventConditionValue2": "USN_START2",
+          "m_dungeonEventType": "KILL_ALL_TAGGED_UNIT",
+          "m_EventActionStrValue": "KNIGHT_C_PALADIN_MAGE_DIE1",
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 5.666666666666667
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_S",
+          "m_EventConditionValue2": "USN_START2",
+          "m_dungeonEventType": "KILL_ALL_TAGGED_UNIT",
+          "m_EventActionStrValue": "KNIGHT_C_PALADIN_MAGE_DIE2",
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 5.666666666666667
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_SAVIOR_WALL",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventPos": 0.07
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_EMPEROR",
+          "m_EventRespawnUnitTag": "KNIGHT_C_EMPEROR_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_HOLY",
+          "m_EventRespawnUnitTag": "KNIGHT_C_HOLY_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.15
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_FLAG",
+          "m_EventRespawnUnitTag": "KNIGHT_C_FLAG_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 2,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_STRATEGY",
+          "m_EventRespawnUnitTag": "KNIGHT_C_STRATEGY_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 3,
+            "m_fEventPos": 0.09
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_KNIGHT_PALADIN_MACE",
+          "m_EventRespawnUnitTag": "KNIGHT_C_PALADIN_MACE_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.5,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_KNIGHT_PALADIN",
+          "m_EventRespawnUnitTag": "KNIGHT_C_PALADIN_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 2,
+            "m_fEventPos": 0.35
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_KNIGHT_PALADIN_MAGE",
+          "m_EventRespawnUnitTag": "KNIGHT_C_PALADIN_MAGE_DIE1",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 4,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_KNIGHT_PALADIN_MAGE",
+          "m_EventRespawnUnitTag": "KNIGHT_C_PALADIN_MAGE_DIE2",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 4,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_EMPEROR",
+          "m_EventRespawnUnitTag": "KNIGHT_C_EMPEROR_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 31,
+            "m_EventDieUnitTag": "KNIGHT_C_EMPEROR_DIE",
+            "m_EventDieUnitTagCount": 1,
+            "m_EventTag": "KNIGHT_C_DIE",
+            "m_EventTagCount": 1,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_HOLY",
+          "m_EventRespawnUnitTag": "KNIGHT_C_HOLY_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 31,
+            "m_EventDieUnitTag": "KNIGHT_C_HOLY_DIE",
+            "m_EventDieUnitTagCount": 1,
+            "m_EventTag": "KNIGHT_C_DIE",
+            "m_EventTagCount": 1,
+            "m_fEventPos": 0.15
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_FLAG",
+          "m_EventRespawnUnitTag": "KNIGHT_C_FLAG_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 32,
+            "m_EventDieUnitTag": "KNIGHT_C_FLAG_DIE",
+            "m_EventDieUnitTagCount": 1,
+            "m_EventTag": "KNIGHT_C_DIE",
+            "m_EventTagCount": 1,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_STRATEGY",
+          "m_EventRespawnUnitTag": "KNIGHT_C_STRATEGY_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 33,
+            "m_EventDieUnitTag": "KNIGHT_C_STRATEGY_DIE",
+            "m_EventDieUnitTagCount": 1,
+            "m_EventTag": "KNIGHT_C_DIE",
+            "m_EventTagCount": 1,
+            "m_fEventPos": 0.09
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_KNIGHT_PALADIN_MACE",
+          "m_EventRespawnUnitTag": "KNIGHT_C_PALADIN_MACE_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 30.5,
+            "m_EventDieUnitTag": "KNIGHT_C_PALADIN_MACE_DIE",
+            "m_EventDieUnitTagCount": 1,
+            "m_EventTag": "KNIGHT_C_DIE",
+            "m_EventTagCount": 1,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_KNIGHT_PALADIN",
+          "m_EventRespawnUnitTag": "KNIGHT_C_PALADIN_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 32,
+            "m_EventDieUnitTag": "KNIGHT_C_PALADIN_DIE",
+            "m_EventDieUnitTagCount": 1,
+            "m_EventTag": "KNIGHT_C_DIE",
+            "m_EventTagCount": 1,
+            "m_fEventPos": 0.35
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_KNIGHT_PALADIN_MAGE",
+          "m_EventRespawnUnitTag": "KNIGHT_C_PALADIN_MAGE_DIE1",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 34,
+            "m_EventDieUnitTag": "KNIGHT_C_PALADIN_MAGE_DIE1",
+            "m_EventDieUnitTagCount": 1,
+            "m_EventTag": "KNIGHT_C_DIE",
+            "m_EventTagCount": 1,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_KNIGHT_PALADIN_MAGE",
+          "m_EventRespawnUnitTag": "KNIGHT_C_PALADIN_MAGE_DIE2",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 34,
+            "m_EventDieUnitTag": "KNIGHT_C_PALADIN_MAGE_DIE2",
+            "m_EventDieUnitTagCount": 1,
+            "m_EventTag": "KNIGHT_C_DIE",
+            "m_EventTagCount": 1,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_EMPEROR",
+          "m_EventRespawnUnitTag": "KNIGHT_C_EMPEROR_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 61,
+            "m_EventDieUnitTag": "KNIGHT_C_EMPEROR_DIE",
+            "m_EventDieUnitTagCount": 2,
+            "m_EventTag": "KNIGHT_C_DIE",
+            "m_EventTagCount": 1,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_HOLY",
+          "m_EventRespawnUnitTag": "KNIGHT_C_HOLY_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 61,
+            "m_EventDieUnitTag": "KNIGHT_C_HOLY_DIE",
+            "m_EventDieUnitTagCount": 2,
+            "m_EventTag": "KNIGHT_C_DIE",
+            "m_EventTagCount": 1,
+            "m_fEventPos": 0.15
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_FLAG",
+          "m_EventRespawnUnitTag": "KNIGHT_C_FLAG_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 62,
+            "m_EventDieUnitTag": "KNIGHT_C_FLAG_DIE",
+            "m_EventDieUnitTagCount": 2,
+            "m_EventTag": "KNIGHT_C_DIE",
+            "m_EventTagCount": 1,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_STRATEGY",
+          "m_EventRespawnUnitTag": "KNIGHT_C_STRATEGY_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 63,
+            "m_EventDieUnitTag": "KNIGHT_C_STRATEGY_DIE",
+            "m_EventDieUnitTagCount": 2,
+            "m_EventTag": "KNIGHT_C_DIE",
+            "m_EventTagCount": 1,
+            "m_fEventPos": 0.09
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_KNIGHT_PALADIN_MACE",
+          "m_EventRespawnUnitTag": "KNIGHT_C_PALADIN_MACE_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 60.5,
+            "m_EventDieUnitTag": "KNIGHT_C_PALADIN_MACE_DIE",
+            "m_EventDieUnitTagCount": 2,
+            "m_EventTag": "KNIGHT_C_DIE",
+            "m_EventTagCount": 1,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_KNIGHT_PALADIN",
+          "m_EventRespawnUnitTag": "KNIGHT_C_PALADIN_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 62,
+            "m_EventDieUnitTag": "KNIGHT_C_PALADIN_DIE",
+            "m_EventDieUnitTagCount": 2,
+            "m_EventTag": "KNIGHT_C_DIE",
+            "m_EventTagCount": 1,
+            "m_fEventPos": 0.35
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_KNIGHT_PALADIN_MAGE",
+          "m_EventRespawnUnitTag": "KNIGHT_C_PALADIN_MAGE_DIE1",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 64,
+            "m_EventDieUnitTag": "KNIGHT_C_PALADIN_MAGE_DIE1",
+            "m_EventDieUnitTagCount": 2,
+            "m_EventTag": "KNIGHT_C_DIE",
+            "m_EventTagCount": 1,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_KNIGHT_PALADIN_MAGE",
+          "m_EventRespawnUnitTag": "KNIGHT_C_PALADIN_MAGE_DIE2",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 64,
+            "m_EventDieUnitTag": "KNIGHT_C_PALADIN_MAGE_DIE2",
+            "m_EventDieUnitTagCount": 2,
+            "m_EventTag": "KNIGHT_C_DIE",
+            "m_EventTagCount": 1,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_FLAG_SUMMON",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 999,
+            "m_fEventPos": 0.6
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 5,
+    "m_fCostSpeedRateB": 1,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_S",
+    "m_listDungeonEventTempletTeamB": [
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_S",
+        "m_EventConditionValue2": "USN_START2",
+        "m_dungeonEventType": "CHANGE_BGM_TRACK",
+        "m_EventID": 1,
+        "m_bPause": false,
+        "m_EventActionStrValue": "THEMA_SEASON2_VOCAL",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1.0
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_S",
+        "m_EventConditionValue2": "USN_START",
+        "m_dungeonEventType": "SET_EVENTTAG",
+        "m_EventActionStrValue": "KNIGHT_C_DIE",
+        "m_EventActionValue": 1,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_S",
+        "m_EventConditionValue2": "USN_START2",
+        "m_dungeonEventType": "SET_EVENTTAG",
+        "m_EventActionStrValue": "KNIGHT_C_DIE",
+        "m_EventActionValue": 0,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_S",
+        "m_EventConditionValue2": "USN_START2",
+        "m_dungeonEventType": "KILL_ALL_TAGGED_UNIT",
+        "m_EventActionStrValue": "KNIGHT_C_EMPEROR_DIE",
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 5.666666666666667
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_S",
+        "m_EventConditionValue2": "USN_START2",
+        "m_dungeonEventType": "KILL_ALL_TAGGED_UNIT",
+        "m_EventActionStrValue": "KNIGHT_C_HOLY_DIE",
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 5.666666666666667
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_S",
+        "m_EventConditionValue2": "USN_START2",
+        "m_dungeonEventType": "KILL_ALL_TAGGED_UNIT",
+        "m_EventActionStrValue": "KNIGHT_C_FLAG_DIE",
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 5.666666666666667
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_S",
+        "m_EventConditionValue2": "USN_START2",
+        "m_dungeonEventType": "KILL_ALL_TAGGED_UNIT",
+        "m_EventActionStrValue": "KNIGHT_C_STRATEGY_DIE",
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 5.666666666666667
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_S",
+        "m_EventConditionValue2": "USN_START2",
+        "m_dungeonEventType": "KILL_ALL_TAGGED_UNIT",
+        "m_EventActionStrValue": "KNIGHT_C_PALADIN_MACE_DIE",
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 5.666666666666667
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_S",
+        "m_EventConditionValue2": "USN_START2",
+        "m_dungeonEventType": "KILL_ALL_TAGGED_UNIT",
+        "m_EventActionStrValue": "KNIGHT_C_PALADIN_DIE",
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 5.666666666666667
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_S",
+        "m_EventConditionValue2": "USN_START2",
+        "m_dungeonEventType": "KILL_ALL_TAGGED_UNIT",
+        "m_EventActionStrValue": "KNIGHT_C_PALADIN_MAGE_DIE1",
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 5.666666666666667
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_FIERCE_KNIGHT_SAVIOR_S",
+        "m_EventConditionValue2": "USN_START2",
+        "m_dungeonEventType": "KILL_ALL_TAGGED_UNIT",
+        "m_EventActionStrValue": "KNIGHT_C_PALADIN_MAGE_DIE2",
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 5.666666666666667
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_SAVIOR_WALL",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventPos": 0.07
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_EMPEROR",
+        "m_EventRespawnUnitTag": "KNIGHT_C_EMPEROR_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_HOLY",
+        "m_EventRespawnUnitTag": "KNIGHT_C_HOLY_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.15
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_FLAG",
+        "m_EventRespawnUnitTag": "KNIGHT_C_FLAG_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 2,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_STRATEGY",
+        "m_EventRespawnUnitTag": "KNIGHT_C_STRATEGY_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 3,
+          "m_fEventPos": 0.09
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_KNIGHT_PALADIN_MACE",
+        "m_EventRespawnUnitTag": "KNIGHT_C_PALADIN_MACE_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.5,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_KNIGHT_PALADIN",
+        "m_EventRespawnUnitTag": "KNIGHT_C_PALADIN_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 2,
+          "m_fEventPos": 0.35
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_KNIGHT_PALADIN_MAGE",
+        "m_EventRespawnUnitTag": "KNIGHT_C_PALADIN_MAGE_DIE1",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 4,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_KNIGHT_PALADIN_MAGE",
+        "m_EventRespawnUnitTag": "KNIGHT_C_PALADIN_MAGE_DIE2",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 4,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_EMPEROR",
+        "m_EventRespawnUnitTag": "KNIGHT_C_EMPEROR_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 31,
+          "m_EventDieUnitTag": "KNIGHT_C_EMPEROR_DIE",
+          "m_EventDieUnitTagCount": 1,
+          "m_EventTag": "KNIGHT_C_DIE",
+          "m_EventTagCount": 1,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_HOLY",
+        "m_EventRespawnUnitTag": "KNIGHT_C_HOLY_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 31,
+          "m_EventDieUnitTag": "KNIGHT_C_HOLY_DIE",
+          "m_EventDieUnitTagCount": 1,
+          "m_EventTag": "KNIGHT_C_DIE",
+          "m_EventTagCount": 1,
+          "m_fEventPos": 0.15
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_FLAG",
+        "m_EventRespawnUnitTag": "KNIGHT_C_FLAG_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 32,
+          "m_EventDieUnitTag": "KNIGHT_C_FLAG_DIE",
+          "m_EventDieUnitTagCount": 1,
+          "m_EventTag": "KNIGHT_C_DIE",
+          "m_EventTagCount": 1,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_STRATEGY",
+        "m_EventRespawnUnitTag": "KNIGHT_C_STRATEGY_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 33,
+          "m_EventDieUnitTag": "KNIGHT_C_STRATEGY_DIE",
+          "m_EventDieUnitTagCount": 1,
+          "m_EventTag": "KNIGHT_C_DIE",
+          "m_EventTagCount": 1,
+          "m_fEventPos": 0.09
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_KNIGHT_PALADIN_MACE",
+        "m_EventRespawnUnitTag": "KNIGHT_C_PALADIN_MACE_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 30.5,
+          "m_EventDieUnitTag": "KNIGHT_C_PALADIN_MACE_DIE",
+          "m_EventDieUnitTagCount": 1,
+          "m_EventTag": "KNIGHT_C_DIE",
+          "m_EventTagCount": 1,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_KNIGHT_PALADIN",
+        "m_EventRespawnUnitTag": "KNIGHT_C_PALADIN_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 32,
+          "m_EventDieUnitTag": "KNIGHT_C_PALADIN_DIE",
+          "m_EventDieUnitTagCount": 1,
+          "m_EventTag": "KNIGHT_C_DIE",
+          "m_EventTagCount": 1,
+          "m_fEventPos": 0.35
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_KNIGHT_PALADIN_MAGE",
+        "m_EventRespawnUnitTag": "KNIGHT_C_PALADIN_MAGE_DIE1",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 34,
+          "m_EventDieUnitTag": "KNIGHT_C_PALADIN_MAGE_DIE1",
+          "m_EventDieUnitTagCount": 1,
+          "m_EventTag": "KNIGHT_C_DIE",
+          "m_EventTagCount": 1,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_KNIGHT_PALADIN_MAGE",
+        "m_EventRespawnUnitTag": "KNIGHT_C_PALADIN_MAGE_DIE2",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 34,
+          "m_EventDieUnitTag": "KNIGHT_C_PALADIN_MAGE_DIE2",
+          "m_EventDieUnitTagCount": 1,
+          "m_EventTag": "KNIGHT_C_DIE",
+          "m_EventTagCount": 1,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_EMPEROR",
+        "m_EventRespawnUnitTag": "KNIGHT_C_EMPEROR_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 61,
+          "m_EventDieUnitTag": "KNIGHT_C_EMPEROR_DIE",
+          "m_EventDieUnitTagCount": 2,
+          "m_EventTag": "KNIGHT_C_DIE",
+          "m_EventTagCount": 1,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_HOLY",
+        "m_EventRespawnUnitTag": "KNIGHT_C_HOLY_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 61,
+          "m_EventDieUnitTag": "KNIGHT_C_HOLY_DIE",
+          "m_EventDieUnitTagCount": 2,
+          "m_EventTag": "KNIGHT_C_DIE",
+          "m_EventTagCount": 1,
+          "m_fEventPos": 0.15
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_FLAG",
+        "m_EventRespawnUnitTag": "KNIGHT_C_FLAG_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 62,
+          "m_EventDieUnitTag": "KNIGHT_C_FLAG_DIE",
+          "m_EventDieUnitTagCount": 2,
+          "m_EventTag": "KNIGHT_C_DIE",
+          "m_EventTagCount": 1,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_STRATEGY",
+        "m_EventRespawnUnitTag": "KNIGHT_C_STRATEGY_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 63,
+          "m_EventDieUnitTag": "KNIGHT_C_STRATEGY_DIE",
+          "m_EventDieUnitTagCount": 2,
+          "m_EventTag": "KNIGHT_C_DIE",
+          "m_EventTagCount": 1,
+          "m_fEventPos": 0.09
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_KNIGHT_PALADIN_MACE",
+        "m_EventRespawnUnitTag": "KNIGHT_C_PALADIN_MACE_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 60.5,
+          "m_EventDieUnitTag": "KNIGHT_C_PALADIN_MACE_DIE",
+          "m_EventDieUnitTagCount": 2,
+          "m_EventTag": "KNIGHT_C_DIE",
+          "m_EventTagCount": 1,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_KNIGHT_PALADIN",
+        "m_EventRespawnUnitTag": "KNIGHT_C_PALADIN_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 62,
+          "m_EventDieUnitTag": "KNIGHT_C_PALADIN_DIE",
+          "m_EventDieUnitTagCount": 2,
+          "m_EventTag": "KNIGHT_C_DIE",
+          "m_EventTagCount": 1,
+          "m_fEventPos": 0.35
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_KNIGHT_PALADIN_MAGE",
+        "m_EventRespawnUnitTag": "KNIGHT_C_PALADIN_MAGE_DIE1",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 64,
+          "m_EventDieUnitTag": "KNIGHT_C_PALADIN_MAGE_DIE1",
+          "m_EventDieUnitTagCount": 2,
+          "m_EventTag": "KNIGHT_C_DIE",
+          "m_EventTagCount": 1,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_KNIGHT_PALADIN_MAGE",
+        "m_EventRespawnUnitTag": "KNIGHT_C_PALADIN_MAGE_DIE2",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 64,
+          "m_EventDieUnitTag": "KNIGHT_C_PALADIN_MAGE_DIE2",
+          "m_EventDieUnitTagCount": 2,
+          "m_EventTag": "KNIGHT_C_DIE",
+          "m_EventTagCount": 1,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_KNIGHT_FLAG_SUMMON",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 999,
+          "m_fEventPos": 0.6
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

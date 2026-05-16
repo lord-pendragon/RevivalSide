@@ -1,0 +1,3959 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script\\luac\\LUA_EPISODE_SUB_TEMPLET.lua",
+  "rootName": "EPISODE_SUB_TEMPLET",
+  "recordCount": 133,
+  "records": [
+    {
+      "m_EpisodeID": 1,
+      "m_EpisodeStrID": "ESI_TUTORIAL",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_TUTORIAL",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 2,
+      "m_EpisodeStrID": "ESI_MAINSTREAM_EP_1",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP1",
+      "m_Scroll_Type": "HORIZONTAL",
+      "m_DifficultyOpenTag": "TAG_COMMON_EPISODE_MAIN_EP1_HARD"
+    },
+    {
+      "m_EpisodeID": 3,
+      "m_EpisodeStrID": "ESI_MAINSTREAM_EP_2",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP2",
+      "m_Scroll_Type": "HORIZONTAL",
+      "m_DifficultyOpenTag": "TAG_COMMON_EPISODE_MAIN_EP2_HARD"
+    },
+    {
+      "m_EpisodeID": 4,
+      "m_EpisodeStrID": "ESI_MAINSTREAM_EP_3",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP3",
+      "m_Scroll_Type": "HORIZONTAL",
+      "m_DifficultyOpenTag": "TAG_COMMON_EPISODE_MAIN_EP3_HARD"
+    },
+    {
+      "m_EpisodeID": 5,
+      "m_EpisodeStrID": "ESI_MAINSTREAM_EP_4",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP4",
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_MAIN_EP4_NORMAL",
+      "m_Scroll_Type": "HORIZONTAL",
+      "m_DifficultyOpenTag": "TAG_COMMON_EPISODE_MAIN_EP4_HARD"
+    },
+    {
+      "m_EpisodeID": 6,
+      "m_EpisodeStrID": "ESI_MAINSTREAM_EP_5",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP5_NORMAL",
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_MAIN_EP5_NORMAL",
+      "m_Scroll_Type": "HORIZONTAL",
+      "m_DifficultyOpenTag": "TAG_COMMON_EPISODE_MAIN_EP5_HARD"
+    },
+    {
+      "m_EpisodeID": 7,
+      "m_EpisodeStrID": "ESI_MAINSTREAM_EP_6",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP6_NORMAL",
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_MAIN_EP6_NORMAL",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 8,
+      "m_EpisodeStrID": "ESI_MAINSTREAM_EP_7",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP7_NORMAL",
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_MAIN_EP7_NORMAL",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 9,
+      "m_EpisodeStrID": "ESI_MAINSTREAM_EP_8",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP8_NORMAL",
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_MAIN_EP8_NORMAL",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 10,
+      "m_EpisodeStrID": "ESI_MAINSTREAM_EP_9",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP9_NORMAL_1",
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_MAIN_EP9_NORMAL",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 11,
+      "m_EpisodeStrID": "ESI_MAINSTREAM_EP_9_5",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP9_5_NORMAL",
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_MAIN_EP9_5_NORMAL",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 100,
+      "m_EpisodeStrID": "ESI_TEST",
+      "m_DateStrID": "DATE_COMMON_EPISODE_TEST",
+      "m_OpenTag": "TAG_COMMON_EPISODE_TEST",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 101,
+      "m_SortIndex": 1,
+      "m_EpisodeStrID": "ESI_DAILYMISSION_ATTACK",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_DAILYMISSION",
+      "m_OpenTag": "TAG_COMMON_EPISODE_DAILY_ATTACK",
+      "m_ResourceTypeID": [
+        15,
+        3
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 102,
+      "m_SortIndex": 3,
+      "m_EpisodeStrID": "ESI_DAILYMISSION_SEARCH",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_DAILYMISSION",
+      "m_OpenTag": "TAG_COMMON_EPISODE_DAILY_SEARCH",
+      "m_ResourceTypeID": [
+        17,
+        3
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 103,
+      "m_SortIndex": 2,
+      "m_EpisodeStrID": "ESI_DAILYMISSION_DEFENCE",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_DAILYMISSION",
+      "m_OpenTag": "TAG_COMMON_EPISODE_DAILY_DEFENCE",
+      "m_ResourceTypeID": [
+        16,
+        3
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 104,
+      "m_EpisodeStrID": "ESI_DAILYMISSION_TACTICAL",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_DAILYMISSION",
+      "m_OpenTag": "TAG_COMMON_EPISODE_TEST",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 201,
+      "m_EpisodeStrID": "ESI_SS_ORCA",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SS_ORCA",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SS_ORCA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_ORCA",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 202,
+      "m_EpisodeStrID": "ESI_SS_SOF",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SS_SOF",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SS_SOF",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_SOF",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 204,
+      "m_EpisodeStrID": "ESI_SS_DELTA",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SS_DELTA",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SS_DELTA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_DELTA",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 50,
+      "m_EpisodeStrID": "NKM_DUNGEON_CC_NORMAL",
+      "m_OpenTag": "TAG_COMMON_EPISODE_COUNTERCASE_NORMAL",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 51,
+      "m_EpisodeStrID": "NKM_DUNGEON_CC_SECRET",
+      "m_OpenTag": "TAG_COMMON_EPISODE_COUNTERCASE_SECRET",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 301,
+      "m_EpisodeStrID": "ESI_FIELD_WAR1",
+      "m_OpenTag": "TAG_COMMON_EPISODE_FIELD_WAR_1",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 302,
+      "m_EpisodeStrID": "ESI_FIELD_WAR2",
+      "m_OpenTag": "TAG_COMMON_EPISODE_FIELD_WAR_2",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 303,
+      "m_EpisodeStrID": "ESI_FIELD_WAR3",
+      "m_OpenTag": "TAG_COMMON_EPISODE_FIELD_WAR_3",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 306,
+      "m_EpisodeStrID": "ESI_FIELD_WAR6",
+      "m_OpenTag": "TAG_COMMON_EPISODE_FIELD_WAR_6",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 401,
+      "m_EpisodeStrID": "ESI_PV_CA_HILDE",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_CA_HILDE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CA_HILDE",
+      "m_DateStrID": "DATE_COMMON_EPISODE_PV_CA_HILDE",
+      "m_OpenTag": "TAG_COMMON_EPISODE_PV_CA_HILDE",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 402,
+      "m_EpisodeStrID": "ESI_PV_CA_YOO_MI_NA",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_CA_YOO_MI_NA",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CA_YOO_MI_NA",
+      "m_DateStrID": "DATE_COMMON_EPISODE_PV_CA_YOO_MI_NA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_PV_CA_YOO_MI_NA",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 403,
+      "m_EpisodeStrID": "ESI_PV_SIXWING_LEE_JISOO",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_SIXWING_LEE_JISOO",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SIXWING_LEE_JISOO",
+      "m_DateStrID": "DATE_COMMON_EPISODE_PV_SIXWING_LEE_JISOO",
+      "m_OpenTag": "TAG_COMMON_EPISODE_PV_SIXWING_LEE_JISOO",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 404,
+      "m_EpisodeStrID": "ESI_PV_SIXWING_NA_YUBIN",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_SIXWING_NA_YUBIN",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SIXWING_NA_YUBIN",
+      "m_DateStrID": "DATE_COMMON_EPISODE_PV_SIXWING_NA_YUBIN",
+      "m_OpenTag": "TAG_COMMON_EPISODE_PV_SIXWING_NA_YUBIN",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 405,
+      "m_EpisodeStrID": "ESI_PV_ADMIN_LEE_SUYEON",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_ADMIN_LEE_SUYEON",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_ADMIN_LEE_SUYEON",
+      "m_DateStrID": "DATE_COMMON_EPISODE_PV_ADMIN_LEE_SUYEON",
+      "m_OpenTag": "TAG_COMMON_EPISODE_PV_ADMIN_LEE_SUYEON",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 406,
+      "m_EpisodeStrID": "ESI_PV_CA_STREGA_YOO_NA",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_CA_STREGA_YOO_NA",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CA_STREGA_YOO_NA",
+      "m_DateStrID": "DATE_COMMON_EPISODE_PV_CA_STREGA_YOO_NA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_PV_CA_STREGA_YOO_NA",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 407,
+      "m_EpisodeStrID": "ESI_PV_CA_SEO_YOON",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_CA_SEO_YOON",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CA_SEO_YOON",
+      "m_DateStrID": "DATE_COMMON_EPISODE_PV_CA_SEO_YOON",
+      "m_OpenTag": "TAG_COMMON_EPISODE_PV_CA_SEO_YOON",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 408,
+      "m_EpisodeStrID": "ESI_PV_SIXWING_AMY",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_SIXWING_AMY",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SIXWING_AMY",
+      "m_DateStrID": "DATE_COMMON_EPISODE_PV_SIXWING_AMY",
+      "m_OpenTag": "TAG_COMMON_EPISODE_PV_SIXWING_AMY",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 601,
+      "m_EpisodeStrID": "ESI_EVENT_VALENTINE",
+      "m_ShopShortcut": "TAB_EVENT",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_MISSION",
+      "m_ButtonShortCut": "11",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_EVENT_VALENTINE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_VALENTINE",
+      "m_DateStrID": "DATE_COMMON_EPISODE_TEST",
+      "m_OpenTag": "TAG_COMMON_EPISODE_TEST",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        603
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 602,
+      "m_EpisodeStrID": "ESI_EVENT_SPRING",
+      "m_ShopShortcut": "TAB_EVENT",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_MISSION",
+      "m_ButtonShortCut": "11",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_SPRING",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_EVENT_SPRING",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SPRING",
+      "m_DateStrID": "DATE_COMMON_EPISODE_TEST",
+      "m_OpenTag": "TAG_COMMON_EPISODE_TEST",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        605
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 203,
+      "m_EpisodeStrID": "ESI_SS_CROSSROAD",
+      "m_ShopShortcut": "TAB_EVENT",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_MISSION",
+      "m_ButtonShortCut": "10",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_CROSSROAD",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SS_CROSSROAD",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SS_CROSSROAD",
+      "m_DateStrID": "DATE_COMMON_EPISODE_TEST",
+      "m_OpenTag": "TAG_COMMON_EPISODE_TEST",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        606
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 205,
+      "m_EpisodeStrID": "ESI_SS_ESPR",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_ESPR",
+      "m_ShopShortcut": "TAB_EVENT",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50005",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_ESPR",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SS_ESPR",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_ESPR_01",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_ESPR_01",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        608
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_ESPR_01",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 206,
+      "m_EpisodeStrID": "ESI_EVENT_WANTED1",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_WANTED_01",
+      "m_ShopShortcut": "TAB_EVENT,20",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_WANTED_01",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_WANTED_1",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_WANTED_1",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        609
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_WANTED_1",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 207,
+      "m_EpisodeStrID": "ESI_SS_POLICE",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SS_POLICE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SS_POLICE",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_POLICE",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 208,
+      "m_EpisodeStrID": "ESI_EVENT_SUMMER",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_SUMMER",
+      "m_ShopShortcut": "TAB_EVENT,22",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50006",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_SUMMER",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SUMMER_2",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_SUMMER_01",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_SUMMER_01",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        610,
+        611,
+        612
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_SUMMER_01",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 209,
+      "m_EpisodeStrID": "ESI_EVENT_ADMIN",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_ADMIN",
+      "m_ShopShortcut": "TAB_EVENT,25",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50007",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_ADMIN",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_ADMIN",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_ADMIN",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_ADMIN",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        613
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_ADMIN",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 210,
+      "m_EpisodeStrID": "ESI_EVENT_SIGMA",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_SIGMA",
+      "m_ShopShortcut": "TAB_EVENT,26",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50008",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_SIGMA",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SIGMA",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_SIGMA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_SIGMA",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        614
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_SIGMA",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 211,
+      "m_EpisodeStrID": "ESI_EVENT_CROSSROAD_R",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_CROSSROAD",
+      "m_ShopShortcut": "TAB_EVENT,19",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50003",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_CROSSROAD",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SS_CROSSROAD",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_CROSSROAD",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_CROSSROAD",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        606
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_CROSSROAD",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 212,
+      "m_EpisodeStrID": "ESI_EVENT_STREGA",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_STREGA",
+      "m_ShopShortcut": "TAB_EVENT,27",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50009",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_STREGA",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_STREGA",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_STREGA_01",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_STREGA",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        616
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_STREGA",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "listContentsTagAllow": [
+        "TAG_COMMON_EPISODE_SUPPLY_CREDIT"
+      ],
+      "m_EpisodeID": 150,
+      "m_SortIndex": 1,
+      "m_EpisodeStrID": "ESI_SUPPLY_CREDIT",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_SUPPLY_CREDIT",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_SUPPLY_CREDIT",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SUPPLYMISSION",
+      "m_DefaultSubTabIcon": "NKM_UI_OPERATION_SUPPLYMISSION_EMBLEM_00",
+      "m_SelectSubTabIcon": "NKM_UI_OPERATION_SUPPLYMISSION_EMBLEM_00_SELECT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLY_CREDIT",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 151,
+      "m_SortIndex": 2,
+      "m_EpisodeStrID": "ESI_SUPPLY_RESOURCE_1",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_SUPPLY_RESOURCE_1",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_SUPPLY_RESOURCE_1",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SUPPLYMISSION",
+      "m_DefaultSubTabIcon": "NKM_UI_OPERATION_SUPPLYMISSION_EMBLEM_01",
+      "m_SelectSubTabIcon": "NKM_UI_OPERATION_SUPPLYMISSION_EMBLEM_01_SELECT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLY_RESOURCE_1",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 152,
+      "m_SortIndex": 4,
+      "m_EpisodeStrID": "ESI_SUPPLY_RESOURCE_2",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_SUPPLY_RESOURCE_2",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_SUPPLY_RESOURCE_2",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SUPPLYMISSION",
+      "m_DefaultSubTabIcon": "NKM_UI_OPERATION_SUPPLYMISSION_EMBLEM_03",
+      "m_SelectSubTabIcon": "NKM_UI_OPERATION_SUPPLYMISSION_EMBLEM_03_SELECT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLY_RESOURCE_2",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 153,
+      "m_SortIndex": 5,
+      "m_EpisodeStrID": "ESI_SUPPLY_UNIT",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_SUPPLY_UNIT",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_SUPPLY_UNIT",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SUPPLYMISSION",
+      "m_DefaultSubTabIcon": "NKM_UI_OPERATION_SUPPLYMISSION_EMBLEM_04",
+      "m_SelectSubTabIcon": "NKM_UI_OPERATION_SUPPLYMISSION_EMBLEM_04_SELECT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLY_UNIT",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 154,
+      "m_SortIndex": 3,
+      "m_EpisodeStrID": "ESI_SUPPLY_EQUIP",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_SUPPLY_EQUIP",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_SUPPLY_EQUIP",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SUPPLYMISSION",
+      "m_DefaultSubTabIcon": "NKM_UI_OPERATION_SUPPLYMISSION_EMBLEM_02",
+      "m_SelectSubTabIcon": "NKM_UI_OPERATION_SUPPLYMISSION_EMBLEM_02_SELECT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLY_EQUIP",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 155,
+      "m_SortIndex": 6,
+      "m_EpisodeStrID": "ESI_SUPPLY_RESOURCE_3",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_SUPPLY_RESOURCE_3",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_SUPPLY_RESOURCE_3",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SUPPLYMISSION",
+      "m_DefaultSubTabIcon": "NKM_UI_OPERATION_SUPPLYMISSION_EMBLEM_05",
+      "m_SelectSubTabIcon": "NKM_UI_OPERATION_SUPPLYMISSION_EMBLEM_05_SELECT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLY_RESOURCE_3",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 160,
+      "m_SortIndex": 1,
+      "m_EpisodeStrID": "ESI_CHALLENGE_NORMAL",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_01",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_01",
+      "m_Stage_Viewer_Prefab": "UI_C_DUNGEON",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_1",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        26,
+        27
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 161,
+      "m_SortIndex": 2,
+      "m_EpisodeStrID": "ESI_CHALLENGE_ALPHA",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_ALPHA",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_ALPHA",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_ALPHA",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_ALPHA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_ALPHA",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        29
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 162,
+      "m_SortIndex": 3,
+      "m_EpisodeStrID": "ESI_CHALLENGE_SCHOOL",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_SCHOOL",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_SCHOOL",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_SCHOOL",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_SCHOOL",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_SCHOOL",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        30
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 163,
+      "m_SortIndex": 4,
+      "m_EpisodeStrID": "ESI_CHALLENGE_ALT",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_ALT",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_ALT",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_ALT",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_ALT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_ALT",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        31
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 164,
+      "m_SortIndex": 5,
+      "m_EpisodeStrID": "ESI_CHALLENGE_JAPAN",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_JAPAN",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_JAPAN",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_JAPAN",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_JAPAN",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_JAPAN",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        33
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 165,
+      "m_SortIndex": 6,
+      "m_EpisodeStrID": "ESI_CHALLENGE_YG",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_YG",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_YG",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_YG",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_YG",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_YG",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        34
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 166,
+      "m_SortIndex": 7,
+      "m_EpisodeStrID": "ESI_CHALLENGE_ADMIN_C",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_ADMIN_C",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_ADMIN_C",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_ADMIN_C",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_ADMIN_C",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_ADMIN_C",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        35
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 167,
+      "m_SortIndex": 8,
+      "m_EpisodeStrID": "ESI_CHALLENGE_SOF",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_SOF",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_SOF",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_SOF",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_SOF",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_SOF",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        36
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 168,
+      "m_SortIndex": 9,
+      "m_EpisodeStrID": "ESI_CHALLENGE_HORIZON",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_HORIZON",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_HORIZON",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_HORIZON",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_HORIZON",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_HORIZON",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        39
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 169,
+      "m_SortIndex": 10,
+      "m_EpisodeStrID": "ESI_CHALLENGE_FALLEN",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_FALLEN",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_FALLEN",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_FALLENHAWK",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_FALLEN",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_FALLEN",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        40
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 170,
+      "m_SortIndex": 11,
+      "m_EpisodeStrID": "ESI_CHALLENGE_VATICAN",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_VATICAN",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_VATICAN",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_VATICAN",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_VATICAN",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_VATICAN",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        41
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 254,
+      "m_SortIndex": 12,
+      "m_EpisodeStrID": "ESI_CHALLENGE_BAR",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_BAR",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_BAR",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_BAR",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_BAR",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_BAR",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        42
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 171,
+      "m_SortIndex": 1100,
+      "m_EpisodeStrID": "ESI_CHALLENGE_CREDIT",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_CREDIT",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_CREDIT",
+      "m_Stage_Viewer_Prefab": "UI_C_RESOURCE_CREDIT",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_CREDIT",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 172,
+      "m_SortIndex": 1200,
+      "m_EpisodeStrID": "ESI_CHALLENGE_MAKE_MATERIAL",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_MAKE_MATERIAL",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_MAKE_MATERIAL",
+      "m_Stage_Viewer_Prefab": "UI_C_RESOURCE_MAKE_MATERIAL",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_MAKE_MATERIAL",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 173,
+      "m_SortIndex": 1900,
+      "m_EpisodeStrID": "ESI_CHALLENGE_INFORMATION",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_INFORMATION",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_INFORMATION",
+      "m_Stage_Viewer_Prefab": "UI_C_RESOURCE_INFORMATION",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_INFORMATION",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 174,
+      "m_SortIndex": 1400,
+      "m_EpisodeStrID": "ESI_CHALLENGE_ENCHANT_MODULE",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_ENCHANT_MODULE",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_ENCHANT_MODULE",
+      "m_Stage_Viewer_Prefab": "UI_C_RESOURCE_ENCHANT_MODULE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_ENCHANT_MODULE",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 175,
+      "m_SortIndex": 1300,
+      "m_EpisodeStrID": "ESI_CHALLENGE_NEGOTIATE_DOC",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_NEGOTIATE_DOC",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_NEGOTIATE_DOC",
+      "m_Stage_Viewer_Prefab": "UI_C_RESOURCE_NEGOTIATE_DOC",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_NEGOTIATE_DOC",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 176,
+      "m_SortIndex": 2001,
+      "m_EpisodeStrID": "ESI_CHALLENGE_RELIC_WEAPON",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_RELIC_WEAPON",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_RELIC_WEAPON",
+      "m_Stage_Viewer_Prefab": "UI_C_EQUIP_RELIC_01",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_RELIC_WEAPON_1",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 177,
+      "m_SortIndex": 2002,
+      "m_EpisodeStrID": "ESI_CHALLENGE_RELIC_DEFENCE",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_RELIC_DEFENCE",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_RELIC_DEFENCE",
+      "m_Stage_Viewer_Prefab": "UI_C_EQUIP_RELIC_02",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_RELIC_DEFENCE_1",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 178,
+      "m_SortIndex": 2003,
+      "m_EpisodeStrID": "ESI_CHALLENGE_RELIC_ACC",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_RELIC_ACC",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_RELIC_ACC",
+      "m_Stage_Viewer_Prefab": "UI_C_EQUIP_RELIC_03",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_RELIC_ACC_1",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 179,
+      "m_SortIndex": 1950,
+      "m_EpisodeStrID": "ESI_CHALLENGE_TUNING_MATERIAL",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_TUNING_MATERIAL",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_TUNING_MATERIAL",
+      "m_Stage_Viewer_Prefab": "UI_C_RESOURCE_TUNING_MATERIAL",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_TUNING_MATERIAL",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 181,
+      "m_SortIndex": 1500,
+      "m_EpisodeStrID": "ESI_CHALLENGE_SHIP_MATERIAL",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_SHIP_MATERIAL",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_SHIP_MATERIAL",
+      "m_Stage_Viewer_Prefab": "UI_C_RESOURCE_SHIP",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_SHIP_MATERIAL",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 1101,
+      "m_SortIndex": 13,
+      "m_EpisodeStrID": "ESI_CHALLENGE_MAID",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_MAID",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_BAR",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_MAID",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_MAID",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_MAID",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        43
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 1102,
+      "m_SortIndex": 14,
+      "m_EpisodeStrID": "ESI_CHALLENGE_ESPR",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_ESPR",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_BAR",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_ESPR",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_ESPR",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_ESPR",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        44
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 1103,
+      "m_SortIndex": 15,
+      "m_EpisodeStrID": "ESI_CHALLENGE_KNIGHT",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_KNIGHT",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_BAR",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_KNIGHT",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_KNIGHT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_KNIGHT",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        45
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 213,
+      "m_EpisodeStrID": "ESI_EVENT_MAID",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_MAID",
+      "m_ShopShortcut": "TAB_EVENT,28",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50010",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_MAID",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_MAID",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_MAID",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_MAID",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        617,
+        618
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_MAID",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 214,
+      "m_EpisodeStrID": "ESI_EVENT_MAID_CM",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_MAID_CM",
+      "m_ShopShortcut": "TAB_EVENT,28",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50010",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_MAID",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_MAID",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_MAID_CM",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_MAID_CM",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        617,
+        618
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 215,
+      "m_EpisodeStrID": "ESI_EVENT_XMAS",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_XMAS",
+      "m_ShopShortcut": "TAB_EVENT,29",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50011",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_KILLER",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_XMAS",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_XMAS",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_XMAS",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        619
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_XMAS",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 216,
+      "m_EpisodeStrID": "ESI_EVENT_ADMIN_CM",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_ADMIN_CM",
+      "m_ShopShortcut": "TAB_EVENT,25",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50007",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_ADMIN",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_ADMIN",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_ADMIN",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_ADMIN_CM",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        613
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 217,
+      "m_EpisodeStrID": "ESI_EVENT_MILITIA",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_MILITIA",
+      "m_ShopShortcut": "TAB_EVENT,30",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50012",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_MILITIA",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_MILITIA",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_MILITIA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_MILITIA",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        620
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_MILITIA",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 218,
+      "m_EpisodeStrID": "ESI_EVENT_MILITIA_CM",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_MILITIA_CM",
+      "m_ShopShortcut": "TAB_EVENT,30",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50012",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_MILITIA",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_MILITIA",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_MILITIA_CM",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_MILITIA_CM",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        620
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 219,
+      "m_SortIndex": 8005,
+      "m_EpisodeStrID": "ESI_EVENT_BARCODE",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_BARCODE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_COMMON",
+      "m_DateStrID": "DATE_COMMON_EPISODE_SUPPLEMENT_BARCODE_C_CHILDREN",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLEMENT_BARCODE_C_CHILDREN",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 220,
+      "m_EpisodeStrID": "ESI_EVENT_VALENTINE_R",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_VALENTINE",
+      "m_ShopShortcut": "TAB_EVENT,17",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50001",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_VALENTINE_R",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_VALENTINE",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_VALENTINE",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_VALENTINE",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        603
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_VALENTINE",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 221,
+      "m_EpisodeStrID": "ESI_EVENT_VALENTINE_CM",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_VALENTINE_CM",
+      "m_ShopShortcut": "TAB_EVENT,17",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50001",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_VALENTINE_R",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_VALENTINE",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_VALENTINE_CM",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_VALENTINE_CM",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        603
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 222,
+      "m_SortIndex": 8004,
+      "m_EpisodeStrID": "ESI_EVENT_REPLACER",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_REPLACER",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_COMMON",
+      "m_DateStrID": "DATE_COMMON_EPISODE_SUPPLEMENT_REPLACER_CA_KING",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLEMENT_REPLACER_CA_KING",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 223,
+      "m_EpisodeStrID": "ESI_EVENT_SPRING_R",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_SPRING",
+      "m_ShopShortcut": "TAB_EVENT,18",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50002",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_SPRING",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SPRING",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_SPRING",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_SPRING",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        605
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_SPRING",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 224,
+      "m_EpisodeStrID": "ESI_EVENT_SPRING_CM",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_SPRING_CM",
+      "m_ShopShortcut": "TAB_EVENT,18",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50002",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_SPRING",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SPRING",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_SPRING_CM",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_SPRING_CM",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        605
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 225,
+      "m_EpisodeStrID": "ESI_EVENT_FOOLSDAY",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_FOOLSDAY",
+      "m_ShopShortcut": "TAB_EVENT,31",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50013",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_2021_FOOLS",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_FOOLSDAY",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_FOOLSDAY",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_FOOLSDAY",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        622,
+        623,
+        624
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_FOOLSDAY",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 226,
+      "m_EpisodeStrID": "ESI_EVENT_SHADE",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_SHADE",
+      "m_ShopShortcut": "TAB_EVENT,36",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50014",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_SHADE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SHADE",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_SHADE_01",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_SHADE",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        625,
+        626
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_SHADE",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 227,
+      "m_EpisodeStrID": "ESI_EVENT_SHADE_CM",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_SHADE_CM",
+      "m_ShopShortcut": "TAB_EVENT,36",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50014",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_SHADE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SHADE",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_SHADE_01",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_SHADE",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        625,
+        626
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 228,
+      "m_EpisodeStrID": "ESI_EVENT_SPORTS",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_SPORTS",
+      "m_ShopShortcut": "TAB_EVENT,37",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50015",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_SPORTS",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SPORTS",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_SPORTS_01",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_SPORTS",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        628
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_SPORTS",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 229,
+      "m_EpisodeStrID": "ESI_EVENT_SPORTS_CM",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_SPORTS_CM",
+      "m_ShopShortcut": "TAB_EVENT,37",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50015",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_SPORTS",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SPORTS",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_SPORTS_01",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_SPORTS",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        628
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 230,
+      "m_EpisodeStrID": "ESI_EVENT_CLB001",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_CLB_001",
+      "m_ShopShortcut": "TAB_EVENT,39",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50016",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_CLB001",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_CLB_001",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_CLB001_01",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_CLB001",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        629,
+        630
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_CLB001",
+      "m_Scroll_Type": "VERTICAL"
+    },
+    {
+      "m_EpisodeID": 231,
+      "m_EpisodeStrID": "ESI_EVENT_CLB001_CM",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_CLB_001_CM",
+      "m_ShopShortcut": "TAB_EVENT,39",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50016",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_CLB001",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_CLB_001",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_CLB001_01",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_CLB001",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        629,
+        630
+      ],
+      "m_Scroll_Type": "VERTICAL"
+    },
+    {
+      "m_EpisodeID": 232,
+      "m_EpisodeStrID": "ESI_EVENT_SUMMER2021",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_SUMMER2021",
+      "m_ShopShortcut": "TAB_EVENT,41",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50017",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_SUMMER2021",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SUMMER2021",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_SUMMER2021_01",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_SUMMER2021",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        631,
+        632
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_SUMMER2021",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 233,
+      "m_EpisodeStrID": "ESI_EVENT_SUMMER2021_CM",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_SUMMER2021_CM",
+      "m_ShopShortcut": "TAB_EVENT,41",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50017",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_SUMMER2021",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SUMMER2021",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_SUMMER2021_02",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_SUMMER2021_CM",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        631,
+        632
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_SUMMER2021_CM",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 234,
+      "m_SortIndex": 8003,
+      "m_EpisodeStrID": "ESI_EVENT_DJEHUTY",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_DJEHUTY",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_COMMON",
+      "m_DateStrID": "DATE_COMMON_EPISODE_SUPPLEMENT_DJEHUTY",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLEMENT_DJEHUTY",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 235,
+      "m_SortIndex": 2,
+      "m_EpisodeStrID": "ESI_EVENT_HORIZON",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_HORIZON",
+      "m_ShopShortcut": "TAB_EVENT,46",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50018",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_HORIZON",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_HORIZON",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_HORIZON_01",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_HORIZON",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        634,
+        635
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_HORIZON",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 236,
+      "m_SortIndex": 3,
+      "m_EpisodeStrID": "ESI_EVENT_HORIZON_CM",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_HORIZON_CM",
+      "m_ShopShortcut": "TAB_EVENT,48",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "5001",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_HORIZON_CM",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_HORIZON_03",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_HORIZON_CM",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        636
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_HORIZON_CM",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 237,
+      "m_SortIndex": 20,
+      "m_EpisodeStrID": "ESI_SS_ORCA_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SS_ORCA",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SS_ORCA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_ORCA_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_ORCA",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 238,
+      "m_SortIndex": 30,
+      "m_EpisodeStrID": "ESI_SS_SOF_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SS_SOF",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SS_SOF",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_SOF_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_SOF",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 239,
+      "m_SortIndex": 50,
+      "m_EpisodeStrID": "ESI_SS_POLICE_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SS_POLICE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SS_POLICE",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_POLICE_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_POLICE",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 240,
+      "m_SortIndex": 120,
+      "m_EpisodeStrID": "ESI_SS_DELTA_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SS_DELTA",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SS_DELTA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_DELTA_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_DELTA",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 241,
+      "m_SortIndex": 10,
+      "m_EpisodeStrID": "ESI_SS_FAILURE ",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_COMMON",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_FAILURE_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_FAILURE",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 242,
+      "m_SortIndex": 40,
+      "m_EpisodeStrID": "ESI_SS_CROSSROAD_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SS_CROSSROAD",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SS_CROSSROAD",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_CROSSROAD_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_CROSSROAD_R",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 243,
+      "m_SortIndex": 8002,
+      "m_EpisodeStrID": "ESI_EVENT_WHITERABBIT",
+      "m_Stage_Viewer_Prefab": "UI_S_WHITERABBIT",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_COMMON",
+      "m_DateStrID": "DATE_COMMON_EPISODE_SUPPLEMENT_WHITERABBIT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLEMENT_WHITERABBIT",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 244,
+      "m_EpisodeStrID": "ESI_EVENT_NANAHARA",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_NANAHARA",
+      "m_ShopShortcut": "TAB_EVENT,50",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50019",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_NANAHARA",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_NANAHARA",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_NANAHARA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_NANAHARA",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        637
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_NANAHARA",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 245,
+      "m_SortIndex": 8001,
+      "m_EpisodeStrID": "ESI_EVENT_SOF",
+      "m_Stage_Viewer_Prefab": "UI_S_SOF",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_COMMON",
+      "m_DateStrID": "DATE_COMMON_EPISODE_SUPPLEMENT_SOF",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLEMENT_SOF",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 246,
+      "m_EpisodeStrID": "ESI_EVENT_GREMORY",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_GREMORY",
+      "m_ShopShortcut": "TAB_EVENT,56",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50020",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_GREMORY",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_GREMORY",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_GREMORY",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_GREMORY",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        640
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_GREMORY",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 247,
+      "m_EpisodeStrID": "ESI_EVENT_ALPHA",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_ALPHA",
+      "m_ShopShortcut": "TAB_EVENT,58",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50021",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_ALPHA",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_ALPHA",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_ALPHA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_ALPHA",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        644
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_ALPHA",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 248,
+      "m_SortIndex": 2,
+      "m_EpisodeStrID": "ESI_EVENT_OZ",
+      "m_Stage_Viewer_Prefab": "UI_S_OZ",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_COMMON",
+      "m_DateStrID": "DATE_COMMON_EPISODE_SUPPLEMENT_OZ",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLEMENT_OZ",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 249,
+      "m_SortIndex": 1,
+      "m_EpisodeStrID": "ESI_EVENT_CARNIVAL",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_CARNIVAL",
+      "m_ShopShortcut": "TAB_EVENT,58",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50022",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EPISODE_EVENT_CARNIVAL",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_CARNIVAL",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_CARNIVAL",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_CARNIVAL",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        645,
+        646
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_CARNIVAL",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 250,
+      "m_SortIndex": 2,
+      "m_EpisodeStrID": "ESI_EVENT_FALLEN",
+      "m_Stage_Viewer_Prefab": "UI_S_FALLEN",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_COMMON",
+      "m_DateStrID": "DATE_COMMON_EPISODE_SUPPLEMENT_FALLEN",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLEMENT_FALLEN",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 251,
+      "m_SortIndex": 1,
+      "m_EpisodeStrID": "ESI_EVENT_NIGHTMARE",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_NIGHTMARE",
+      "m_ShopShortcut": "TAB_EVENT,62",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50023",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EPISODE_EVENT_NIGHTMARE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_NIGHTMARE",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_NIGHTMARE",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_NIGHTMARE",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        648
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_NIGHTMARE",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 252,
+      "m_SortIndex": 1,
+      "m_EpisodeStrID": "ESI_EVENT_KINGDOM",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_KINGDOM",
+      "m_ShopShortcut": "TAB_EVENT,63",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50024",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EPISODE_EVENT_KINGDOM",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_KINGDOM",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_KINGDOM",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_KINGDOM",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        649
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_KINGDOM",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 253,
+      "m_SortIndex": 1,
+      "m_EpisodeStrID": "ESI_EVENT_VATICAN",
+      "m_Stage_Viewer_Prefab": "UI_S_VATICAN",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_COMMON",
+      "m_DateStrID": "DATE_COMMON_EPISODE_SUPPLEMENT_VATICAN",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLEMENT_VATICAN",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 255,
+      "m_SortIndex": 1,
+      "m_EpisodeStrID": "ESI_EVENT_NEVERLAND",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_NEVERLAND",
+      "m_ShopShortcut": "TAB_EVENT,63",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50025",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EPISODE_EVENT_NEVERLAND",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_NEVERLAND",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_NEVERLAND",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_NEVERLAND",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        652
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_NEVERLAND",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 256,
+      "m_SortIndex": 1,
+      "m_EpisodeStrID": "ESI_EVENT_CLB_002",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_CLB_002",
+      "m_ShopShortcut": "TAB_EVENT,65",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50026",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EPISODE_EVENT_CLB_002",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_CLB_002",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_CLB_002",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_CLB_002",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        654
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_CLB_002",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 257,
+      "m_SortIndex": 1,
+      "m_EpisodeStrID": "ESI_EVENT_ESPR2",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_ESPR2",
+      "m_ShopShortcut": "TAB_EVENT,67",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50027",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EPISODE_EVENT_ESPR2",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_ESPR2",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_ESPR2",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_ESPR2",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        657,
+        658
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_ESPR2",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 258,
+      "m_SortIndex": 1,
+      "m_EpisodeStrID": "ESI_EVENT_GAMECIRCLE",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_GAMECIRCLE",
+      "m_ShopShortcut": "TAB_EVENT,69",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50028",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EPISODE_EVENT_GAMECIRCLE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_GAMECIRCLE",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_GAMECIRCLE",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_GAMECIRCLE",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        660
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_GAMECIRCLE",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 259,
+      "m_SortIndex": 1,
+      "m_EpisodeStrID": "ESI_EVENT_NANAHARA2",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_NANAHARA2",
+      "m_ShopShortcut": "TAB_EVENT,70",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50029",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EPISODE_EVENT_NANAHARA2",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_NANAHARA2",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_NANAHARA2",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_NANAHARA2",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        661
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_NANAHARA2",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 800,
+      "m_SortIndex": 9001,
+      "m_EpisodeStrID": "ESI_EVENT_TIME_ATTACK",
+      "m_Stage_Viewer_Prefab": "UI_MODE_TIMEATTACK",
+      "m_ButtonShortCutType": "SHORTCUT_RANKING_POPUP",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_TIMEATTACK",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_TIMEATTACK",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_TIME_ATTACK",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_Scroll_Type": "HORIZONTAL",
+      "m_bHideActTab": true,
+      "m_bSpecialShortCut": true
+    },
+    {
+      "m_EpisodeID": 1001,
+      "m_SortIndex": 90,
+      "m_EpisodeStrID": "ESI_SS_ESPR_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_NONE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SS_ESPR",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_ESPR_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_ESPR_R",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 1002,
+      "m_SortIndex": 130,
+      "m_EpisodeStrID": "ESI_SS_ADMIN_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_NONE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_ADMIN",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_ADMIN_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_ADMIN_R",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 1003,
+      "m_SortIndex": 60,
+      "m_EpisodeStrID": "ESI_SS_SIGMA_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_NONE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SIGMA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_SIGMA_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_SIGMA_R",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 1004,
+      "m_SortIndex": 100,
+      "m_EpisodeStrID": "ESI_SS_STREGA_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_NONE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_STREGA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_STREGA_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_STREGA_R",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 1005,
+      "m_SortIndex": 70,
+      "m_EpisodeStrID": "ESI_SS_SPRING_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_NONE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SPRING",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_SPRING_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_SPRING_R",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 1006,
+      "m_SortIndex": 110,
+      "m_EpisodeStrID": "ESI_SS_SHADE_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_NONE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SHADE",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_SHADE_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_SHADE_R",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 1007,
+      "m_SortIndex": 80,
+      "m_EpisodeStrID": "ESI_SS_WANTED_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_NONE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_WANTED_01",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_WANTED_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_WANTED_R",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 1008,
+      "m_SortIndex": 140,
+      "m_EpisodeStrID": "ESI_SS_MILITIA_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_NONE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_MILITIA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_MILITIA_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_MILITIA_R",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 1009,
+      "m_SortIndex": 150,
+      "m_EpisodeStrID": "ESI_SS_MAID_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_NONE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_MAID",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_MAID_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_MAID_R",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 1010,
+      "m_SortIndex": 160,
+      "m_EpisodeStrID": "ESI_SS_HORIZON_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_NONE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_HORIZON",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_HORIZON_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_HORIZON_R",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 1011,
+      "m_SortIndex": 170,
+      "m_EpisodeStrID": "ESI_SS_NANAHARA_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_NONE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_NANAHARA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_NANAHARA_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_NANAHARA_R",
+      "m_Scroll_Type": "HORIZONTAL"
+    }
+  ],
+  "root": [
+    {
+      "m_EpisodeID": 1,
+      "m_EpisodeStrID": "ESI_TUTORIAL",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_TUTORIAL",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 2,
+      "m_EpisodeStrID": "ESI_MAINSTREAM_EP_1",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP1",
+      "m_Scroll_Type": "HORIZONTAL",
+      "m_DifficultyOpenTag": "TAG_COMMON_EPISODE_MAIN_EP1_HARD"
+    },
+    {
+      "m_EpisodeID": 3,
+      "m_EpisodeStrID": "ESI_MAINSTREAM_EP_2",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP2",
+      "m_Scroll_Type": "HORIZONTAL",
+      "m_DifficultyOpenTag": "TAG_COMMON_EPISODE_MAIN_EP2_HARD"
+    },
+    {
+      "m_EpisodeID": 4,
+      "m_EpisodeStrID": "ESI_MAINSTREAM_EP_3",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP3",
+      "m_Scroll_Type": "HORIZONTAL",
+      "m_DifficultyOpenTag": "TAG_COMMON_EPISODE_MAIN_EP3_HARD"
+    },
+    {
+      "m_EpisodeID": 5,
+      "m_EpisodeStrID": "ESI_MAINSTREAM_EP_4",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP4",
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_MAIN_EP4_NORMAL",
+      "m_Scroll_Type": "HORIZONTAL",
+      "m_DifficultyOpenTag": "TAG_COMMON_EPISODE_MAIN_EP4_HARD"
+    },
+    {
+      "m_EpisodeID": 6,
+      "m_EpisodeStrID": "ESI_MAINSTREAM_EP_5",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP5_NORMAL",
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_MAIN_EP5_NORMAL",
+      "m_Scroll_Type": "HORIZONTAL",
+      "m_DifficultyOpenTag": "TAG_COMMON_EPISODE_MAIN_EP5_HARD"
+    },
+    {
+      "m_EpisodeID": 7,
+      "m_EpisodeStrID": "ESI_MAINSTREAM_EP_6",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP6_NORMAL",
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_MAIN_EP6_NORMAL",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 8,
+      "m_EpisodeStrID": "ESI_MAINSTREAM_EP_7",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP7_NORMAL",
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_MAIN_EP7_NORMAL",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 9,
+      "m_EpisodeStrID": "ESI_MAINSTREAM_EP_8",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP8_NORMAL",
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_MAIN_EP8_NORMAL",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 10,
+      "m_EpisodeStrID": "ESI_MAINSTREAM_EP_9",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP9_NORMAL_1",
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_MAIN_EP9_NORMAL",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 11,
+      "m_EpisodeStrID": "ESI_MAINSTREAM_EP_9_5",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP9_5_NORMAL",
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_MAIN_EP9_5_NORMAL",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 100,
+      "m_EpisodeStrID": "ESI_TEST",
+      "m_DateStrID": "DATE_COMMON_EPISODE_TEST",
+      "m_OpenTag": "TAG_COMMON_EPISODE_TEST",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 101,
+      "m_SortIndex": 1,
+      "m_EpisodeStrID": "ESI_DAILYMISSION_ATTACK",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_DAILYMISSION",
+      "m_OpenTag": "TAG_COMMON_EPISODE_DAILY_ATTACK",
+      "m_ResourceTypeID": [
+        15,
+        3
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 102,
+      "m_SortIndex": 3,
+      "m_EpisodeStrID": "ESI_DAILYMISSION_SEARCH",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_DAILYMISSION",
+      "m_OpenTag": "TAG_COMMON_EPISODE_DAILY_SEARCH",
+      "m_ResourceTypeID": [
+        17,
+        3
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 103,
+      "m_SortIndex": 2,
+      "m_EpisodeStrID": "ESI_DAILYMISSION_DEFENCE",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_DAILYMISSION",
+      "m_OpenTag": "TAG_COMMON_EPISODE_DAILY_DEFENCE",
+      "m_ResourceTypeID": [
+        16,
+        3
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 104,
+      "m_EpisodeStrID": "ESI_DAILYMISSION_TACTICAL",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_DAILYMISSION",
+      "m_OpenTag": "TAG_COMMON_EPISODE_TEST",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 201,
+      "m_EpisodeStrID": "ESI_SS_ORCA",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SS_ORCA",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SS_ORCA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_ORCA",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 202,
+      "m_EpisodeStrID": "ESI_SS_SOF",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SS_SOF",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SS_SOF",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_SOF",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 204,
+      "m_EpisodeStrID": "ESI_SS_DELTA",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SS_DELTA",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SS_DELTA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_DELTA",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 50,
+      "m_EpisodeStrID": "NKM_DUNGEON_CC_NORMAL",
+      "m_OpenTag": "TAG_COMMON_EPISODE_COUNTERCASE_NORMAL",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 51,
+      "m_EpisodeStrID": "NKM_DUNGEON_CC_SECRET",
+      "m_OpenTag": "TAG_COMMON_EPISODE_COUNTERCASE_SECRET",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 301,
+      "m_EpisodeStrID": "ESI_FIELD_WAR1",
+      "m_OpenTag": "TAG_COMMON_EPISODE_FIELD_WAR_1",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 302,
+      "m_EpisodeStrID": "ESI_FIELD_WAR2",
+      "m_OpenTag": "TAG_COMMON_EPISODE_FIELD_WAR_2",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 303,
+      "m_EpisodeStrID": "ESI_FIELD_WAR3",
+      "m_OpenTag": "TAG_COMMON_EPISODE_FIELD_WAR_3",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 306,
+      "m_EpisodeStrID": "ESI_FIELD_WAR6",
+      "m_OpenTag": "TAG_COMMON_EPISODE_FIELD_WAR_6",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 401,
+      "m_EpisodeStrID": "ESI_PV_CA_HILDE",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_CA_HILDE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CA_HILDE",
+      "m_DateStrID": "DATE_COMMON_EPISODE_PV_CA_HILDE",
+      "m_OpenTag": "TAG_COMMON_EPISODE_PV_CA_HILDE",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 402,
+      "m_EpisodeStrID": "ESI_PV_CA_YOO_MI_NA",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_CA_YOO_MI_NA",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CA_YOO_MI_NA",
+      "m_DateStrID": "DATE_COMMON_EPISODE_PV_CA_YOO_MI_NA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_PV_CA_YOO_MI_NA",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 403,
+      "m_EpisodeStrID": "ESI_PV_SIXWING_LEE_JISOO",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_SIXWING_LEE_JISOO",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SIXWING_LEE_JISOO",
+      "m_DateStrID": "DATE_COMMON_EPISODE_PV_SIXWING_LEE_JISOO",
+      "m_OpenTag": "TAG_COMMON_EPISODE_PV_SIXWING_LEE_JISOO",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 404,
+      "m_EpisodeStrID": "ESI_PV_SIXWING_NA_YUBIN",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_SIXWING_NA_YUBIN",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SIXWING_NA_YUBIN",
+      "m_DateStrID": "DATE_COMMON_EPISODE_PV_SIXWING_NA_YUBIN",
+      "m_OpenTag": "TAG_COMMON_EPISODE_PV_SIXWING_NA_YUBIN",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 405,
+      "m_EpisodeStrID": "ESI_PV_ADMIN_LEE_SUYEON",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_ADMIN_LEE_SUYEON",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_ADMIN_LEE_SUYEON",
+      "m_DateStrID": "DATE_COMMON_EPISODE_PV_ADMIN_LEE_SUYEON",
+      "m_OpenTag": "TAG_COMMON_EPISODE_PV_ADMIN_LEE_SUYEON",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 406,
+      "m_EpisodeStrID": "ESI_PV_CA_STREGA_YOO_NA",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_CA_STREGA_YOO_NA",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CA_STREGA_YOO_NA",
+      "m_DateStrID": "DATE_COMMON_EPISODE_PV_CA_STREGA_YOO_NA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_PV_CA_STREGA_YOO_NA",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 407,
+      "m_EpisodeStrID": "ESI_PV_CA_SEO_YOON",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_CA_SEO_YOON",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CA_SEO_YOON",
+      "m_DateStrID": "DATE_COMMON_EPISODE_PV_CA_SEO_YOON",
+      "m_OpenTag": "TAG_COMMON_EPISODE_PV_CA_SEO_YOON",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 408,
+      "m_EpisodeStrID": "ESI_PV_SIXWING_AMY",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_SIXWING_AMY",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SIXWING_AMY",
+      "m_DateStrID": "DATE_COMMON_EPISODE_PV_SIXWING_AMY",
+      "m_OpenTag": "TAG_COMMON_EPISODE_PV_SIXWING_AMY",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 601,
+      "m_EpisodeStrID": "ESI_EVENT_VALENTINE",
+      "m_ShopShortcut": "TAB_EVENT",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_MISSION",
+      "m_ButtonShortCut": "11",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_EVENT_VALENTINE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_VALENTINE",
+      "m_DateStrID": "DATE_COMMON_EPISODE_TEST",
+      "m_OpenTag": "TAG_COMMON_EPISODE_TEST",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        603
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 602,
+      "m_EpisodeStrID": "ESI_EVENT_SPRING",
+      "m_ShopShortcut": "TAB_EVENT",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_MISSION",
+      "m_ButtonShortCut": "11",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_SPRING",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_EVENT_SPRING",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SPRING",
+      "m_DateStrID": "DATE_COMMON_EPISODE_TEST",
+      "m_OpenTag": "TAG_COMMON_EPISODE_TEST",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        605
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 203,
+      "m_EpisodeStrID": "ESI_SS_CROSSROAD",
+      "m_ShopShortcut": "TAB_EVENT",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_MISSION",
+      "m_ButtonShortCut": "10",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_CROSSROAD",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SS_CROSSROAD",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SS_CROSSROAD",
+      "m_DateStrID": "DATE_COMMON_EPISODE_TEST",
+      "m_OpenTag": "TAG_COMMON_EPISODE_TEST",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        606
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 205,
+      "m_EpisodeStrID": "ESI_SS_ESPR",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_ESPR",
+      "m_ShopShortcut": "TAB_EVENT",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50005",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_ESPR",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SS_ESPR",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_ESPR_01",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_ESPR_01",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        608
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_ESPR_01",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 206,
+      "m_EpisodeStrID": "ESI_EVENT_WANTED1",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_WANTED_01",
+      "m_ShopShortcut": "TAB_EVENT,20",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_WANTED_01",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_WANTED_1",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_WANTED_1",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        609
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_WANTED_1",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 207,
+      "m_EpisodeStrID": "ESI_SS_POLICE",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SS_POLICE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SS_POLICE",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_POLICE",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 208,
+      "m_EpisodeStrID": "ESI_EVENT_SUMMER",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_SUMMER",
+      "m_ShopShortcut": "TAB_EVENT,22",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50006",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_SUMMER",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SUMMER_2",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_SUMMER_01",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_SUMMER_01",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        610,
+        611,
+        612
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_SUMMER_01",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 209,
+      "m_EpisodeStrID": "ESI_EVENT_ADMIN",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_ADMIN",
+      "m_ShopShortcut": "TAB_EVENT,25",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50007",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_ADMIN",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_ADMIN",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_ADMIN",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_ADMIN",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        613
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_ADMIN",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 210,
+      "m_EpisodeStrID": "ESI_EVENT_SIGMA",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_SIGMA",
+      "m_ShopShortcut": "TAB_EVENT,26",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50008",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_SIGMA",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SIGMA",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_SIGMA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_SIGMA",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        614
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_SIGMA",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 211,
+      "m_EpisodeStrID": "ESI_EVENT_CROSSROAD_R",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_CROSSROAD",
+      "m_ShopShortcut": "TAB_EVENT,19",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50003",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_CROSSROAD",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SS_CROSSROAD",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_CROSSROAD",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_CROSSROAD",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        606
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_CROSSROAD",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 212,
+      "m_EpisodeStrID": "ESI_EVENT_STREGA",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_STREGA",
+      "m_ShopShortcut": "TAB_EVENT,27",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50009",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_STREGA",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_STREGA",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_STREGA_01",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_STREGA",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        616
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_STREGA",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "listContentsTagAllow": [
+        "TAG_COMMON_EPISODE_SUPPLY_CREDIT"
+      ],
+      "m_EpisodeID": 150,
+      "m_SortIndex": 1,
+      "m_EpisodeStrID": "ESI_SUPPLY_CREDIT",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_SUPPLY_CREDIT",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_SUPPLY_CREDIT",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SUPPLYMISSION",
+      "m_DefaultSubTabIcon": "NKM_UI_OPERATION_SUPPLYMISSION_EMBLEM_00",
+      "m_SelectSubTabIcon": "NKM_UI_OPERATION_SUPPLYMISSION_EMBLEM_00_SELECT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLY_CREDIT",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 151,
+      "m_SortIndex": 2,
+      "m_EpisodeStrID": "ESI_SUPPLY_RESOURCE_1",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_SUPPLY_RESOURCE_1",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_SUPPLY_RESOURCE_1",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SUPPLYMISSION",
+      "m_DefaultSubTabIcon": "NKM_UI_OPERATION_SUPPLYMISSION_EMBLEM_01",
+      "m_SelectSubTabIcon": "NKM_UI_OPERATION_SUPPLYMISSION_EMBLEM_01_SELECT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLY_RESOURCE_1",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 152,
+      "m_SortIndex": 4,
+      "m_EpisodeStrID": "ESI_SUPPLY_RESOURCE_2",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_SUPPLY_RESOURCE_2",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_SUPPLY_RESOURCE_2",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SUPPLYMISSION",
+      "m_DefaultSubTabIcon": "NKM_UI_OPERATION_SUPPLYMISSION_EMBLEM_03",
+      "m_SelectSubTabIcon": "NKM_UI_OPERATION_SUPPLYMISSION_EMBLEM_03_SELECT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLY_RESOURCE_2",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 153,
+      "m_SortIndex": 5,
+      "m_EpisodeStrID": "ESI_SUPPLY_UNIT",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_SUPPLY_UNIT",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_SUPPLY_UNIT",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SUPPLYMISSION",
+      "m_DefaultSubTabIcon": "NKM_UI_OPERATION_SUPPLYMISSION_EMBLEM_04",
+      "m_SelectSubTabIcon": "NKM_UI_OPERATION_SUPPLYMISSION_EMBLEM_04_SELECT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLY_UNIT",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 154,
+      "m_SortIndex": 3,
+      "m_EpisodeStrID": "ESI_SUPPLY_EQUIP",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_SUPPLY_EQUIP",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_SUPPLY_EQUIP",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SUPPLYMISSION",
+      "m_DefaultSubTabIcon": "NKM_UI_OPERATION_SUPPLYMISSION_EMBLEM_02",
+      "m_SelectSubTabIcon": "NKM_UI_OPERATION_SUPPLYMISSION_EMBLEM_02_SELECT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLY_EQUIP",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 155,
+      "m_SortIndex": 6,
+      "m_EpisodeStrID": "ESI_SUPPLY_RESOURCE_3",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_SUPPLY_RESOURCE_3",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_SUPPLY_RESOURCE_3",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SUPPLYMISSION",
+      "m_DefaultSubTabIcon": "NKM_UI_OPERATION_SUPPLYMISSION_EMBLEM_05",
+      "m_SelectSubTabIcon": "NKM_UI_OPERATION_SUPPLYMISSION_EMBLEM_05_SELECT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLY_RESOURCE_3",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 160,
+      "m_SortIndex": 1,
+      "m_EpisodeStrID": "ESI_CHALLENGE_NORMAL",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_01",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_01",
+      "m_Stage_Viewer_Prefab": "UI_C_DUNGEON",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_1",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        26,
+        27
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 161,
+      "m_SortIndex": 2,
+      "m_EpisodeStrID": "ESI_CHALLENGE_ALPHA",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_ALPHA",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_ALPHA",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_ALPHA",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_ALPHA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_ALPHA",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        29
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 162,
+      "m_SortIndex": 3,
+      "m_EpisodeStrID": "ESI_CHALLENGE_SCHOOL",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_SCHOOL",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_SCHOOL",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_SCHOOL",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_SCHOOL",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_SCHOOL",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        30
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 163,
+      "m_SortIndex": 4,
+      "m_EpisodeStrID": "ESI_CHALLENGE_ALT",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_ALT",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_ALT",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_ALT",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_ALT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_ALT",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        31
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 164,
+      "m_SortIndex": 5,
+      "m_EpisodeStrID": "ESI_CHALLENGE_JAPAN",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_JAPAN",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_JAPAN",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_JAPAN",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_JAPAN",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_JAPAN",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        33
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 165,
+      "m_SortIndex": 6,
+      "m_EpisodeStrID": "ESI_CHALLENGE_YG",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_YG",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_YG",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_YG",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_YG",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_YG",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        34
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 166,
+      "m_SortIndex": 7,
+      "m_EpisodeStrID": "ESI_CHALLENGE_ADMIN_C",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_ADMIN_C",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_ADMIN_C",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_ADMIN_C",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_ADMIN_C",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_ADMIN_C",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        35
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 167,
+      "m_SortIndex": 8,
+      "m_EpisodeStrID": "ESI_CHALLENGE_SOF",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_SOF",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_SOF",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_SOF",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_SOF",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_SOF",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        36
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 168,
+      "m_SortIndex": 9,
+      "m_EpisodeStrID": "ESI_CHALLENGE_HORIZON",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_HORIZON",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_HORIZON",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_HORIZON",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_HORIZON",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_HORIZON",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        39
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 169,
+      "m_SortIndex": 10,
+      "m_EpisodeStrID": "ESI_CHALLENGE_FALLEN",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_FALLEN",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_FALLEN",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_FALLENHAWK",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_FALLEN",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_FALLEN",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        40
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 170,
+      "m_SortIndex": 11,
+      "m_EpisodeStrID": "ESI_CHALLENGE_VATICAN",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_VATICAN",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_VATICAN",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_VATICAN",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_VATICAN",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_VATICAN",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        41
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 254,
+      "m_SortIndex": 12,
+      "m_EpisodeStrID": "ESI_CHALLENGE_BAR",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_BAR",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_BAR",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_BAR",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_BAR",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_BAR",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        42
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 171,
+      "m_SortIndex": 1100,
+      "m_EpisodeStrID": "ESI_CHALLENGE_CREDIT",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_CREDIT",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_CREDIT",
+      "m_Stage_Viewer_Prefab": "UI_C_RESOURCE_CREDIT",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_CREDIT",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 172,
+      "m_SortIndex": 1200,
+      "m_EpisodeStrID": "ESI_CHALLENGE_MAKE_MATERIAL",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_MAKE_MATERIAL",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_MAKE_MATERIAL",
+      "m_Stage_Viewer_Prefab": "UI_C_RESOURCE_MAKE_MATERIAL",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_MAKE_MATERIAL",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 173,
+      "m_SortIndex": 1900,
+      "m_EpisodeStrID": "ESI_CHALLENGE_INFORMATION",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_INFORMATION",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_INFORMATION",
+      "m_Stage_Viewer_Prefab": "UI_C_RESOURCE_INFORMATION",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_INFORMATION",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 174,
+      "m_SortIndex": 1400,
+      "m_EpisodeStrID": "ESI_CHALLENGE_ENCHANT_MODULE",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_ENCHANT_MODULE",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_ENCHANT_MODULE",
+      "m_Stage_Viewer_Prefab": "UI_C_RESOURCE_ENCHANT_MODULE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_ENCHANT_MODULE",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 175,
+      "m_SortIndex": 1300,
+      "m_EpisodeStrID": "ESI_CHALLENGE_NEGOTIATE_DOC",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_NEGOTIATE_DOC",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_NEGOTIATE_DOC",
+      "m_Stage_Viewer_Prefab": "UI_C_RESOURCE_NEGOTIATE_DOC",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_NEGOTIATE_DOC",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 176,
+      "m_SortIndex": 2001,
+      "m_EpisodeStrID": "ESI_CHALLENGE_RELIC_WEAPON",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_RELIC_WEAPON",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_RELIC_WEAPON",
+      "m_Stage_Viewer_Prefab": "UI_C_EQUIP_RELIC_01",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_RELIC_WEAPON_1",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 177,
+      "m_SortIndex": 2002,
+      "m_EpisodeStrID": "ESI_CHALLENGE_RELIC_DEFENCE",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_RELIC_DEFENCE",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_RELIC_DEFENCE",
+      "m_Stage_Viewer_Prefab": "UI_C_EQUIP_RELIC_02",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_RELIC_DEFENCE_1",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 178,
+      "m_SortIndex": 2003,
+      "m_EpisodeStrID": "ESI_CHALLENGE_RELIC_ACC",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_RELIC_ACC",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_RELIC_ACC",
+      "m_Stage_Viewer_Prefab": "UI_C_EQUIP_RELIC_03",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_RELIC_ACC_1",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 179,
+      "m_SortIndex": 1950,
+      "m_EpisodeStrID": "ESI_CHALLENGE_TUNING_MATERIAL",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_TUNING_MATERIAL",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_TUNING_MATERIAL",
+      "m_Stage_Viewer_Prefab": "UI_C_RESOURCE_TUNING_MATERIAL",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_TUNING_MATERIAL",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 181,
+      "m_SortIndex": 1500,
+      "m_EpisodeStrID": "ESI_CHALLENGE_SHIP_MATERIAL",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_SHIP_MATERIAL",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_SHIP_MATERIAL",
+      "m_Stage_Viewer_Prefab": "UI_C_RESOURCE_SHIP",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_SHIP_MATERIAL",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 1101,
+      "m_SortIndex": 13,
+      "m_EpisodeStrID": "ESI_CHALLENGE_MAID",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_MAID",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_BAR",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_MAID",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_MAID",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_MAID",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        43
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 1102,
+      "m_SortIndex": 14,
+      "m_EpisodeStrID": "ESI_CHALLENGE_ESPR",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_ESPR",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_BAR",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_ESPR",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_ESPR",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_ESPR",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        44
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 1103,
+      "m_SortIndex": 15,
+      "m_EpisodeStrID": "ESI_CHALLENGE_KNIGHT",
+      "m_EpisodeDesc_1": "SI_EPISODE_EPISODE_DESC_1_CHALLENGE_KNIGHT",
+      "m_EpisodeDesc_2": "SI_EPISODE_EPISODE_DESC_2_CHALLENGE_BAR",
+      "m_Stage_Viewer_Prefab": "UI_C_TEAM_KNIGHT",
+      "m_ShopShortcut": "TAB_EXCHANGE_CHALLENGE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_CHALLENGE_KNIGHT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_CHALLENGE_KNIGHT",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        45
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 213,
+      "m_EpisodeStrID": "ESI_EVENT_MAID",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_MAID",
+      "m_ShopShortcut": "TAB_EVENT,28",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50010",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_MAID",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_MAID",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_MAID",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_MAID",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        617,
+        618
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_MAID",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 214,
+      "m_EpisodeStrID": "ESI_EVENT_MAID_CM",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_MAID_CM",
+      "m_ShopShortcut": "TAB_EVENT,28",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50010",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_MAID",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_MAID",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_MAID_CM",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_MAID_CM",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        617,
+        618
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 215,
+      "m_EpisodeStrID": "ESI_EVENT_XMAS",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_XMAS",
+      "m_ShopShortcut": "TAB_EVENT,29",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50011",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_KILLER",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_XMAS",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_XMAS",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_XMAS",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        619
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_XMAS",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 216,
+      "m_EpisodeStrID": "ESI_EVENT_ADMIN_CM",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_ADMIN_CM",
+      "m_ShopShortcut": "TAB_EVENT,25",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50007",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_ADMIN",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_ADMIN",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_ADMIN",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_ADMIN_CM",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        613
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 217,
+      "m_EpisodeStrID": "ESI_EVENT_MILITIA",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_MILITIA",
+      "m_ShopShortcut": "TAB_EVENT,30",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50012",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_MILITIA",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_MILITIA",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_MILITIA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_MILITIA",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        620
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_MILITIA",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 218,
+      "m_EpisodeStrID": "ESI_EVENT_MILITIA_CM",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_MILITIA_CM",
+      "m_ShopShortcut": "TAB_EVENT,30",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50012",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_MILITIA",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_MILITIA",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_MILITIA_CM",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_MILITIA_CM",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        620
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 219,
+      "m_SortIndex": 8005,
+      "m_EpisodeStrID": "ESI_EVENT_BARCODE",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_BARCODE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_COMMON",
+      "m_DateStrID": "DATE_COMMON_EPISODE_SUPPLEMENT_BARCODE_C_CHILDREN",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLEMENT_BARCODE_C_CHILDREN",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 220,
+      "m_EpisodeStrID": "ESI_EVENT_VALENTINE_R",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_VALENTINE",
+      "m_ShopShortcut": "TAB_EVENT,17",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50001",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_VALENTINE_R",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_VALENTINE",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_VALENTINE",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_VALENTINE",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        603
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_VALENTINE",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 221,
+      "m_EpisodeStrID": "ESI_EVENT_VALENTINE_CM",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_VALENTINE_CM",
+      "m_ShopShortcut": "TAB_EVENT,17",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50001",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_VALENTINE_R",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_VALENTINE",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_VALENTINE_CM",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_VALENTINE_CM",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        603
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 222,
+      "m_SortIndex": 8004,
+      "m_EpisodeStrID": "ESI_EVENT_REPLACER",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_REPLACER",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_COMMON",
+      "m_DateStrID": "DATE_COMMON_EPISODE_SUPPLEMENT_REPLACER_CA_KING",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLEMENT_REPLACER_CA_KING",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 223,
+      "m_EpisodeStrID": "ESI_EVENT_SPRING_R",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_SPRING",
+      "m_ShopShortcut": "TAB_EVENT,18",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50002",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_SPRING",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SPRING",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_SPRING",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_SPRING",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        605
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_SPRING",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 224,
+      "m_EpisodeStrID": "ESI_EVENT_SPRING_CM",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_SPRING_CM",
+      "m_ShopShortcut": "TAB_EVENT,18",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50002",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_SPRING",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SPRING",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_SPRING_CM",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_SPRING_CM",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        605
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 225,
+      "m_EpisodeStrID": "ESI_EVENT_FOOLSDAY",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_FOOLSDAY",
+      "m_ShopShortcut": "TAB_EVENT,31",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50013",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_2021_FOOLS",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_FOOLSDAY",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_FOOLSDAY",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_FOOLSDAY",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        622,
+        623,
+        624
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_FOOLSDAY",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 226,
+      "m_EpisodeStrID": "ESI_EVENT_SHADE",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_SHADE",
+      "m_ShopShortcut": "TAB_EVENT,36",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50014",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_SHADE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SHADE",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_SHADE_01",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_SHADE",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        625,
+        626
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_SHADE",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 227,
+      "m_EpisodeStrID": "ESI_EVENT_SHADE_CM",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_SHADE_CM",
+      "m_ShopShortcut": "TAB_EVENT,36",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50014",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_SHADE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SHADE",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_SHADE_01",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_SHADE",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        625,
+        626
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 228,
+      "m_EpisodeStrID": "ESI_EVENT_SPORTS",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_SPORTS",
+      "m_ShopShortcut": "TAB_EVENT,37",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50015",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_SPORTS",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SPORTS",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_SPORTS_01",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_SPORTS",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        628
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_SPORTS",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 229,
+      "m_EpisodeStrID": "ESI_EVENT_SPORTS_CM",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_SPORTS_CM",
+      "m_ShopShortcut": "TAB_EVENT,37",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50015",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_SPORTS",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SPORTS",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_SPORTS_01",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_SPORTS",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        628
+      ],
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 230,
+      "m_EpisodeStrID": "ESI_EVENT_CLB001",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_CLB_001",
+      "m_ShopShortcut": "TAB_EVENT,39",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50016",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_CLB001",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_CLB_001",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_CLB001_01",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_CLB001",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        629,
+        630
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_CLB001",
+      "m_Scroll_Type": "VERTICAL"
+    },
+    {
+      "m_EpisodeID": 231,
+      "m_EpisodeStrID": "ESI_EVENT_CLB001_CM",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_CLB_001_CM",
+      "m_ShopShortcut": "TAB_EVENT,39",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50016",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_CLB001",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_CLB_001",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_CLB001_01",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_CLB001",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        629,
+        630
+      ],
+      "m_Scroll_Type": "VERTICAL"
+    },
+    {
+      "m_EpisodeID": 232,
+      "m_EpisodeStrID": "ESI_EVENT_SUMMER2021",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_SUMMER2021",
+      "m_ShopShortcut": "TAB_EVENT,41",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50017",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_SUMMER2021",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SUMMER2021",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_SUMMER2021_01",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_SUMMER2021",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        631,
+        632
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_SUMMER2021",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 233,
+      "m_EpisodeStrID": "ESI_EVENT_SUMMER2021_CM",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_SUMMER2021_CM",
+      "m_ShopShortcut": "TAB_EVENT,41",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50017",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_SUMMER2021",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SUMMER2021",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_SUMMER2021_02",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_SUMMER2021_CM",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        631,
+        632
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_SUMMER2021_CM",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 234,
+      "m_SortIndex": 8003,
+      "m_EpisodeStrID": "ESI_EVENT_DJEHUTY",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_DJEHUTY",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_COMMON",
+      "m_DateStrID": "DATE_COMMON_EPISODE_SUPPLEMENT_DJEHUTY",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLEMENT_DJEHUTY",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 235,
+      "m_SortIndex": 2,
+      "m_EpisodeStrID": "ESI_EVENT_HORIZON",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_HORIZON",
+      "m_ShopShortcut": "TAB_EVENT,46",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50018",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_HORIZON",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_HORIZON",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_HORIZON_01",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_HORIZON",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        634,
+        635
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_HORIZON",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 236,
+      "m_SortIndex": 3,
+      "m_EpisodeStrID": "ESI_EVENT_HORIZON_CM",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_HORIZON_CM",
+      "m_ShopShortcut": "TAB_EVENT,48",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "5001",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_HORIZON_CM",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_CHALLENGE_EVENT",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_HORIZON_03",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_HORIZON_CM",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        636
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_HORIZON_CM",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 237,
+      "m_SortIndex": 20,
+      "m_EpisodeStrID": "ESI_SS_ORCA_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SS_ORCA",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SS_ORCA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_ORCA_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_ORCA",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 238,
+      "m_SortIndex": 30,
+      "m_EpisodeStrID": "ESI_SS_SOF_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SS_SOF",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SS_SOF",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_SOF_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_SOF",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 239,
+      "m_SortIndex": 50,
+      "m_EpisodeStrID": "ESI_SS_POLICE_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SS_POLICE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SS_POLICE",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_POLICE_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_POLICE",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 240,
+      "m_SortIndex": 120,
+      "m_EpisodeStrID": "ESI_SS_DELTA_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SS_DELTA",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SS_DELTA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_DELTA_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_DELTA",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 241,
+      "m_SortIndex": 10,
+      "m_EpisodeStrID": "ESI_SS_FAILURE ",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_COMMON",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_FAILURE_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_FAILURE",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 242,
+      "m_SortIndex": 40,
+      "m_EpisodeStrID": "ESI_SS_CROSSROAD_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_SS_CROSSROAD",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SS_CROSSROAD",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_CROSSROAD_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_CROSSROAD_R",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 243,
+      "m_SortIndex": 8002,
+      "m_EpisodeStrID": "ESI_EVENT_WHITERABBIT",
+      "m_Stage_Viewer_Prefab": "UI_S_WHITERABBIT",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_COMMON",
+      "m_DateStrID": "DATE_COMMON_EPISODE_SUPPLEMENT_WHITERABBIT",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLEMENT_WHITERABBIT",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 244,
+      "m_EpisodeStrID": "ESI_EVENT_NANAHARA",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_NANAHARA",
+      "m_ShopShortcut": "TAB_EVENT,50",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50019",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_NANAHARA",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_NANAHARA",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_NANAHARA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_NANAHARA",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        637
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_NANAHARA",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 245,
+      "m_SortIndex": 8001,
+      "m_EpisodeStrID": "ESI_EVENT_SOF",
+      "m_Stage_Viewer_Prefab": "UI_S_SOF",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_COMMON",
+      "m_DateStrID": "DATE_COMMON_EPISODE_SUPPLEMENT_SOF",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLEMENT_SOF",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 246,
+      "m_EpisodeStrID": "ESI_EVENT_GREMORY",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_GREMORY",
+      "m_ShopShortcut": "TAB_EVENT,56",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50020",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_GREMORY",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_GREMORY",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_GREMORY",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_GREMORY",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        640
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_GREMORY",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 247,
+      "m_EpisodeStrID": "ESI_EVENT_ALPHA",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_ALPHA",
+      "m_ShopShortcut": "TAB_EVENT,58",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50021",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_ALPHA",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_ALPHA",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_ALPHA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_ALPHA",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        644
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_ALPHA",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 248,
+      "m_SortIndex": 2,
+      "m_EpisodeStrID": "ESI_EVENT_OZ",
+      "m_Stage_Viewer_Prefab": "UI_S_OZ",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_COMMON",
+      "m_DateStrID": "DATE_COMMON_EPISODE_SUPPLEMENT_OZ",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLEMENT_OZ",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 249,
+      "m_SortIndex": 1,
+      "m_EpisodeStrID": "ESI_EVENT_CARNIVAL",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_CARNIVAL",
+      "m_ShopShortcut": "TAB_EVENT,58",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50022",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EPISODE_EVENT_CARNIVAL",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_CARNIVAL",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_CARNIVAL",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_CARNIVAL",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        645,
+        646
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_CARNIVAL",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 250,
+      "m_SortIndex": 2,
+      "m_EpisodeStrID": "ESI_EVENT_FALLEN",
+      "m_Stage_Viewer_Prefab": "UI_S_FALLEN",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_COMMON",
+      "m_DateStrID": "DATE_COMMON_EPISODE_SUPPLEMENT_FALLEN",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLEMENT_FALLEN",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 251,
+      "m_SortIndex": 1,
+      "m_EpisodeStrID": "ESI_EVENT_NIGHTMARE",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_NIGHTMARE",
+      "m_ShopShortcut": "TAB_EVENT,62",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50023",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EPISODE_EVENT_NIGHTMARE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_NIGHTMARE",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_NIGHTMARE",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_NIGHTMARE",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        648
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_NIGHTMARE",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 252,
+      "m_SortIndex": 1,
+      "m_EpisodeStrID": "ESI_EVENT_KINGDOM",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_KINGDOM",
+      "m_ShopShortcut": "TAB_EVENT,63",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50024",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EPISODE_EVENT_KINGDOM",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_KINGDOM",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_KINGDOM",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_KINGDOM",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        649
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_KINGDOM",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 253,
+      "m_SortIndex": 1,
+      "m_EpisodeStrID": "ESI_EVENT_VATICAN",
+      "m_Stage_Viewer_Prefab": "UI_S_VATICAN",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_COMMON",
+      "m_DateStrID": "DATE_COMMON_EPISODE_SUPPLEMENT_VATICAN",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SUPPLEMENT_VATICAN",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 255,
+      "m_SortIndex": 1,
+      "m_EpisodeStrID": "ESI_EVENT_NEVERLAND",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_NEVERLAND",
+      "m_ShopShortcut": "TAB_EVENT,63",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50025",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EPISODE_EVENT_NEVERLAND",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_NEVERLAND",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_NEVERLAND",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_NEVERLAND",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        652
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_NEVERLAND",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 256,
+      "m_SortIndex": 1,
+      "m_EpisodeStrID": "ESI_EVENT_CLB_002",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_CLB_002",
+      "m_ShopShortcut": "TAB_EVENT,65",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50026",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EPISODE_EVENT_CLB_002",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_CLB_002",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_CLB_002",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_CLB_002",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        654
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_CLB_002",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 257,
+      "m_SortIndex": 1,
+      "m_EpisodeStrID": "ESI_EVENT_ESPR2",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_ESPR2",
+      "m_ShopShortcut": "TAB_EVENT,67",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50027",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EPISODE_EVENT_ESPR2",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_ESPR2",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_ESPR2",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_ESPR2",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        657,
+        658
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_ESPR2",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 258,
+      "m_SortIndex": 1,
+      "m_EpisodeStrID": "ESI_EVENT_GAMECIRCLE",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_GAMECIRCLE",
+      "m_ShopShortcut": "TAB_EVENT,69",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50028",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EPISODE_EVENT_GAMECIRCLE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_GAMECIRCLE",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_GAMECIRCLE",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_GAMECIRCLE",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        660
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_GAMECIRCLE",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 259,
+      "m_SortIndex": 1,
+      "m_EpisodeStrID": "ESI_EVENT_NANAHARA2",
+      "m_Stage_Viewer_Prefab": "UI_EVENT_NANAHARA2",
+      "m_ShopShortcut": "TAB_EVENT,70",
+      "m_Button_Image": "NKM_UI_OPERATION_EVENTMISSION_SPRING",
+      "m_ButtonShortCutType": "SHORTCUT_EVENT",
+      "m_ButtonShortCut": "50029",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EPISODE_EVENT_NANAHARA2",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_NANAHARA2",
+      "m_DateStrID": "DATE_COMMON_EPISODE_EVENT_NANAHARA2",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_NANAHARA2",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        661
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_EVENT_NANAHARA2",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 800,
+      "m_SortIndex": 9001,
+      "m_EpisodeStrID": "ESI_EVENT_TIME_ATTACK",
+      "m_Stage_Viewer_Prefab": "UI_MODE_TIMEATTACK",
+      "m_ButtonShortCutType": "SHORTCUT_RANKING_POPUP",
+      "m_ButtonShortCutDesc": "SI_EPISODE_EVENT_SHORTCUT_TIMEATTACK",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_TIMEATTACK",
+      "m_OpenTag": "TAG_COMMON_EPISODE_EVENT_TIME_ATTACK",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_Scroll_Type": "HORIZONTAL",
+      "m_bHideActTab": true,
+      "m_bSpecialShortCut": true
+    },
+    {
+      "m_EpisodeID": 1001,
+      "m_SortIndex": 90,
+      "m_EpisodeStrID": "ESI_SS_ESPR_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_NONE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_SS_ESPR",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_ESPR_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_ESPR_R",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 1002,
+      "m_SortIndex": 130,
+      "m_EpisodeStrID": "ESI_SS_ADMIN_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_NONE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_ADMIN",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_ADMIN_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_ADMIN_R",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 1003,
+      "m_SortIndex": 60,
+      "m_EpisodeStrID": "ESI_SS_SIGMA_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_NONE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SIGMA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_SIGMA_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_SIGMA_R",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 1004,
+      "m_SortIndex": 100,
+      "m_EpisodeStrID": "ESI_SS_STREGA_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_NONE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_STREGA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_STREGA_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_STREGA_R",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 1005,
+      "m_SortIndex": 70,
+      "m_EpisodeStrID": "ESI_SS_SPRING_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_NONE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SPRING",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_SPRING_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_SPRING_R",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 1006,
+      "m_SortIndex": 110,
+      "m_EpisodeStrID": "ESI_SS_SHADE_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_NONE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_SHADE",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_SHADE_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_SHADE_R",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 1007,
+      "m_SortIndex": 80,
+      "m_EpisodeStrID": "ESI_SS_WANTED_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_NONE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_WANTED_01",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_WANTED_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_WANTED_R",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 1008,
+      "m_SortIndex": 140,
+      "m_EpisodeStrID": "ESI_SS_MILITIA_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_NONE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_MILITIA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_MILITIA_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_MILITIA_R",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 1009,
+      "m_SortIndex": 150,
+      "m_EpisodeStrID": "ESI_SS_MAID_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_NONE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_MAID",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_MAID_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_MAID_R",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 1010,
+      "m_SortIndex": 160,
+      "m_EpisodeStrID": "ESI_SS_HORIZON_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_NONE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_HORIZON",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_HORIZON_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_HORIZON_R",
+      "m_Scroll_Type": "HORIZONTAL"
+    },
+    {
+      "m_EpisodeID": 1011,
+      "m_SortIndex": 170,
+      "m_EpisodeStrID": "ESI_SS_NANAHARA_R",
+      "m_BG_Image_Title": "NKM_UI_OPERATION_TITLE_BG_NONE",
+      "m_BG_Image_BG": "NKM_UI_OPERATION_BG_EVENT_NANAHARA",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_NANAHARA_R",
+      "m_ResourceTypeID": [
+        1,
+        2,
+        101
+      ],
+      "m_CollectionOpenTag": "TAG_COMMON_COLLECTION_SIDE_NANAHARA_R",
+      "m_Scroll_Type": "HORIZONTAL"
+    }
+  ],
+  "unsupportedCount": 0,
+  "unsupported": []
+}

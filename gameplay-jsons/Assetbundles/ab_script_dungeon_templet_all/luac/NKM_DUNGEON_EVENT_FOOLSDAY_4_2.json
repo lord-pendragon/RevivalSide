@@ -1,0 +1,95 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_EVENT_FOOLSDAY_4_2.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 8
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.0
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_FOOLSDAY_JOO_SHI_YOON_AP_RA"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 0.7,
+          "NST_HP": 0.6,
+          "NST_DEF": 0.7
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_FOOLSDAY_S_SOF_JANE",
+          "m_bShowGage": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventPos": 0.1,
+            "m_fEventTimeStart": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5,
+              "NST_HP": 1.0,
+              "NST_DEF": 1.0,
+              "NST_CRITICAL": 1.0,
+              "NST_HIT": 1.0,
+              "NST_EVADE": 1.0
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 8,
+    "m_fCostSpeedRateB": 1.0,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_FOOLSDAY_JOO_SHI_YOON_AP_RA",
+    "m_fBossPosZ": 0.6,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 0.7,
+          "NST_HP": 0.6,
+          "NST_DEF": 0.7
+        }
+      }
+    },
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_FOOLSDAY_S_SOF_JANE",
+        "m_bShowGage": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventPos": 0.1,
+          "m_fEventTimeStart": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5,
+            "NST_HP": 1.0,
+            "NST_DEF": 1.0,
+            "NST_CRITICAL": 1.0,
+            "NST_HIT": 1.0,
+            "NST_EVADE": 1.0
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

@@ -1,0 +1,2111 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script\\luac\\LUA_COMMANDMODULE_RANDOM_STAT.lua",
+  "rootName": "COMMANDMODULE_RANDOM_STAT",
+  "recordCount": 150,
+  "records": [
+    {
+      "StatGroupID": 10001,
+      "StatType": "NST_ATK",
+      "MinStatFactor": 0.005,
+      "MaxStatFactor": 0.015,
+      "StatFactorControl": 0.001
+    },
+    {
+      "StatGroupID": 10001,
+      "StatType": "NST_CRITICAL",
+      "MinStatFactor": 0.02,
+      "MaxStatFactor": 0.05,
+      "StatFactorControl": 0.003
+    },
+    {
+      "StatGroupID": 10001,
+      "StatType": "NST_HIT",
+      "MinStatFactor": 0.02,
+      "MaxStatFactor": 0.05,
+      "StatFactorControl": 0.003
+    },
+    {
+      "StatGroupID": 10001,
+      "StatType": "NST_CRITICAL_DAMAGE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 10001,
+      "StatType": "NST_SKILL_DAMAGE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 10001,
+      "StatType": "NST_HYPER_SKILL_DAMAGE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 10001,
+      "StatType": "NST_DEF_PENETRATE_RATE",
+      "MinStatValue": 0.015,
+      "MaxStatValue": 0.025,
+      "StatValueControl": 0.001
+    },
+    {
+      "StatGroupID": 10001,
+      "StatType": "NST_LONG_RANGE_DAMAGE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 10001,
+      "StatType": "NST_SHORT_RANGE_DAMAGE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_ATK",
+      "MinStatFactor": 0.015,
+      "MaxStatFactor": 0.025,
+      "StatFactorControl": 0.002
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_CRITICAL",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_HIT",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_CRITICAL_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_SKILL_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_HYPER_SKILL_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_UNIT_TYPE_COUNTER_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_UNIT_TYPE_MECHANIC_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_UNIT_TYPE_SOLDIER_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_DEF_PENETRATE_RATE",
+      "MinStatValue": 0.025,
+      "MaxStatValue": 0.035,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_MOVE_TYPE_LAND_DAMAGE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_MOVE_TYPE_AIR_DAMAGE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_ATTACK_SPEED_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_ROLE_TYPE_DAMAGE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.12,
+      "StatValueControl": 0.02
+    },
+    {
+      "StatGroupID": 20001,
+      "StatType": "NST_HP",
+      "MinStatFactor": 0.005,
+      "MaxStatFactor": 0.015,
+      "StatFactorControl": 0.001
+    },
+    {
+      "StatGroupID": 20001,
+      "StatType": "NST_DEF",
+      "MinStatFactor": 0.02,
+      "MaxStatFactor": 0.05,
+      "StatFactorControl": 0.003
+    },
+    {
+      "StatGroupID": 20001,
+      "StatType": "NST_EVADE",
+      "MinStatFactor": 0.02,
+      "MaxStatFactor": 0.05,
+      "StatFactorControl": 0.003
+    },
+    {
+      "StatGroupID": 20001,
+      "StatType": "NST_CC_RESIST_RATE",
+      "MinStatValue": 0.015,
+      "MaxStatValue": 0.025,
+      "StatValueControl": 0.001
+    },
+    {
+      "StatGroupID": 20001,
+      "StatType": "NST_CRITICAL_DAMAGE_RESIST_RATE",
+      "MinStatValue": 0.015,
+      "MaxStatValue": 0.035,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 20001,
+      "StatType": "NST_SKILL_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 20001,
+      "StatType": "NST_HYPER_SKILL_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 20001,
+      "StatType": "NST_LONG_RANGE_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 20001,
+      "StatType": "NST_SHORT_RANGE_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 20001,
+      "StatType": "NST_BARRIER_REINFORCE_RATE",
+      "MinStatValue": 0.04,
+      "MaxStatValue": 0.16,
+      "StatValueControl": 0.012
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_HP",
+      "MinStatFactor": 0.015,
+      "MaxStatFactor": 0.025,
+      "StatFactorControl": 0.002
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_DEF",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_EVADE",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_CC_RESIST_RATE",
+      "MinStatValue": 0.025,
+      "MaxStatValue": 0.035,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_CRITICAL_DAMAGE_RESIST_RATE",
+      "MinStatValue": 0.035,
+      "MaxStatValue": 0.085,
+      "StatValueControl": 0.01
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_SKILL_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_HYPER_SKILL_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_UNIT_TYPE_COUNTER_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_UNIT_TYPE_MECHANIC_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_UNIT_TYPE_SOLDIER_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_MOVE_TYPE_LAND_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_MOVE_TYPE_AIR_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_MOVE_SPEED_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_ROLE_TYPE_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.04,
+      "MaxStatValue": 0.16,
+      "StatValueControl": 0.024
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_HEAL_REDUCE_RATE",
+      "MinStatValue": -0.16,
+      "MaxStatValue": -0.04,
+      "StatValueControl": 0.024
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_ATK",
+      "MinStatFactor": 0.005,
+      "MaxStatFactor": 0.015,
+      "StatFactorControl": 0.001
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_CRITICAL",
+      "MinStatFactor": 0.02,
+      "MaxStatFactor": 0.05,
+      "StatFactorControl": 0.003
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_HIT",
+      "MinStatFactor": 0.02,
+      "MaxStatFactor": 0.05,
+      "StatFactorControl": 0.003
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_CRITICAL_DAMAGE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_SKILL_DAMAGE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_HYPER_SKILL_DAMAGE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_DEF_PENETRATE_RATE",
+      "MinStatValue": 0.015,
+      "MaxStatValue": 0.025,
+      "StatValueControl": 0.001
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_LONG_RANGE_DAMAGE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_SHORT_RANGE_DAMAGE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_HP",
+      "MinStatFactor": 0.005,
+      "MaxStatFactor": 0.015,
+      "StatFactorControl": 0.001
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_DEF",
+      "MinStatFactor": 0.02,
+      "MaxStatFactor": 0.05,
+      "StatFactorControl": 0.003
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_EVADE",
+      "MinStatFactor": 0.02,
+      "MaxStatFactor": 0.05,
+      "StatFactorControl": 0.003
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_CC_RESIST_RATE",
+      "MinStatValue": 0.015,
+      "MaxStatValue": 0.025,
+      "StatValueControl": 0.001
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_CRITICAL_DAMAGE_RESIST_RATE",
+      "MinStatValue": 0.015,
+      "MaxStatValue": 0.035,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_SKILL_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_HYPER_SKILL_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_LONG_RANGE_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_SHORT_RANGE_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_BARRIER_REINFORCE_RATE",
+      "MinStatValue": 0.04,
+      "MaxStatValue": 0.16,
+      "StatValueControl": 0.012
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_ATK",
+      "MinStatFactor": 0.015,
+      "MaxStatFactor": 0.025,
+      "StatFactorControl": 0.002
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_CRITICAL",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_HIT",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_CRITICAL_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_SKILL_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_HYPER_SKILL_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_UNIT_TYPE_COUNTER_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_UNIT_TYPE_MECHANIC_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_UNIT_TYPE_SOLDIER_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_DEF_PENETRATE_RATE",
+      "MinStatValue": 0.025,
+      "MaxStatValue": 0.035,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_MOVE_TYPE_LAND_DAMAGE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_MOVE_TYPE_AIR_DAMAGE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_ATTACK_SPEED_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_ROLE_TYPE_DAMAGE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.12,
+      "StatValueControl": 0.02
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_HP",
+      "MinStatFactor": 0.015,
+      "MaxStatFactor": 0.025,
+      "StatFactorControl": 0.002
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_DEF",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_EVADE",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_CC_RESIST_RATE",
+      "MinStatValue": 0.025,
+      "MaxStatValue": 0.035,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_CRITICAL_DAMAGE_RESIST_RATE",
+      "MinStatValue": 0.035,
+      "MaxStatValue": 0.085,
+      "StatValueControl": 0.01
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_SKILL_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_HYPER_SKILL_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_UNIT_TYPE_COUNTER_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_UNIT_TYPE_MECHANIC_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_UNIT_TYPE_SOLDIER_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_MOVE_TYPE_LAND_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_MOVE_TYPE_AIR_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_MOVE_SPEED_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_ROLE_TYPE_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.04,
+      "MaxStatValue": 0.16,
+      "StatValueControl": 0.024
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_HEAL_REDUCE_RATE",
+      "MinStatValue": -0.16,
+      "MaxStatValue": -0.04,
+      "StatValueControl": 0.024
+    },
+    {
+      "StatGroupID": 10003,
+      "StatType": "NST_ATK",
+      "MinStatFactor": 0.015,
+      "MaxStatFactor": 0.025,
+      "StatFactorControl": 0.002
+    },
+    {
+      "StatGroupID": 10003,
+      "StatType": "NST_CRITICAL",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 10003,
+      "StatType": "NST_HIT",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 10003,
+      "StatType": "NST_CRITICAL_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10003,
+      "StatType": "NST_SKILL_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10003,
+      "StatType": "NST_HYPER_SKILL_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10003,
+      "StatType": "NST_UNIT_TYPE_COUNTER_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10003,
+      "StatType": "NST_UNIT_TYPE_MECHANIC_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10003,
+      "StatType": "NST_UNIT_TYPE_SOLDIER_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10003,
+      "StatType": "NST_DEF_PENETRATE_RATE",
+      "MinStatValue": 0.025,
+      "MaxStatValue": 0.035,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 10003,
+      "StatType": "NST_MOVE_TYPE_LAND_DAMAGE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10003,
+      "StatType": "NST_MOVE_TYPE_AIR_DAMAGE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10003,
+      "StatType": "NST_ATTACK_SPEED_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_HP",
+      "MinStatFactor": 0.015,
+      "MaxStatFactor": 0.025,
+      "StatFactorControl": 0.002
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_DEF",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_EVADE",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_CC_RESIST_RATE",
+      "MinStatValue": 0.025,
+      "MaxStatValue": 0.035,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_CRITICAL_DAMAGE_RESIST_RATE",
+      "MinStatValue": 0.035,
+      "MaxStatValue": 0.085,
+      "StatValueControl": 0.01
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_SKILL_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_HYPER_SKILL_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_UNIT_TYPE_COUNTER_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_UNIT_TYPE_MECHANIC_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_UNIT_TYPE_SOLDIER_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_MOVE_TYPE_LAND_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_MOVE_TYPE_AIR_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_MOVE_SPEED_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_HEAL_REDUCE_RATE",
+      "MinStatValue": -0.16,
+      "MaxStatValue": -0.04,
+      "StatValueControl": 0.024
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_ATK",
+      "MinStatFactor": 0.015,
+      "MaxStatFactor": 0.025,
+      "StatFactorControl": 0.002
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_CRITICAL",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_HIT",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_CRITICAL_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_SKILL_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_HYPER_SKILL_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_UNIT_TYPE_COUNTER_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_UNIT_TYPE_MECHANIC_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_UNIT_TYPE_SOLDIER_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_DEF_PENETRATE_RATE",
+      "MinStatValue": 0.025,
+      "MaxStatValue": 0.035,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_MOVE_TYPE_LAND_DAMAGE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_MOVE_TYPE_AIR_DAMAGE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_ATTACK_SPEED_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_HP",
+      "MinStatFactor": 0.015,
+      "MaxStatFactor": 0.025,
+      "StatFactorControl": 0.002
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_DEF",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_EVADE",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_CC_RESIST_RATE",
+      "MinStatValue": 0.025,
+      "MaxStatValue": 0.035,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_CRITICAL_DAMAGE_RESIST_RATE",
+      "MinStatValue": 0.035,
+      "MaxStatValue": 0.085,
+      "StatValueControl": 0.01
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_SKILL_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_HYPER_SKILL_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_UNIT_TYPE_COUNTER_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_UNIT_TYPE_MECHANIC_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_UNIT_TYPE_SOLDIER_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_MOVE_TYPE_LAND_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_MOVE_TYPE_AIR_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_MOVE_SPEED_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_HEAL_REDUCE_RATE",
+      "MinStatValue": -0.16,
+      "MaxStatValue": -0.04,
+      "StatValueControl": 0.024
+    }
+  ],
+  "root": [
+    {
+      "StatGroupID": 10001,
+      "StatType": "NST_ATK",
+      "MinStatFactor": 0.005,
+      "MaxStatFactor": 0.015,
+      "StatFactorControl": 0.001
+    },
+    {
+      "StatGroupID": 10001,
+      "StatType": "NST_CRITICAL",
+      "MinStatFactor": 0.02,
+      "MaxStatFactor": 0.05,
+      "StatFactorControl": 0.003
+    },
+    {
+      "StatGroupID": 10001,
+      "StatType": "NST_HIT",
+      "MinStatFactor": 0.02,
+      "MaxStatFactor": 0.05,
+      "StatFactorControl": 0.003
+    },
+    {
+      "StatGroupID": 10001,
+      "StatType": "NST_CRITICAL_DAMAGE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 10001,
+      "StatType": "NST_SKILL_DAMAGE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 10001,
+      "StatType": "NST_HYPER_SKILL_DAMAGE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 10001,
+      "StatType": "NST_DEF_PENETRATE_RATE",
+      "MinStatValue": 0.015,
+      "MaxStatValue": 0.025,
+      "StatValueControl": 0.001
+    },
+    {
+      "StatGroupID": 10001,
+      "StatType": "NST_LONG_RANGE_DAMAGE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 10001,
+      "StatType": "NST_SHORT_RANGE_DAMAGE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_ATK",
+      "MinStatFactor": 0.015,
+      "MaxStatFactor": 0.025,
+      "StatFactorControl": 0.002
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_CRITICAL",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_HIT",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_CRITICAL_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_SKILL_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_HYPER_SKILL_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_UNIT_TYPE_COUNTER_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_UNIT_TYPE_MECHANIC_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_UNIT_TYPE_SOLDIER_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_DEF_PENETRATE_RATE",
+      "MinStatValue": 0.025,
+      "MaxStatValue": 0.035,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_MOVE_TYPE_LAND_DAMAGE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_MOVE_TYPE_AIR_DAMAGE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_ATTACK_SPEED_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10002,
+      "StatType": "NST_ROLE_TYPE_DAMAGE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.12,
+      "StatValueControl": 0.02
+    },
+    {
+      "StatGroupID": 20001,
+      "StatType": "NST_HP",
+      "MinStatFactor": 0.005,
+      "MaxStatFactor": 0.015,
+      "StatFactorControl": 0.001
+    },
+    {
+      "StatGroupID": 20001,
+      "StatType": "NST_DEF",
+      "MinStatFactor": 0.02,
+      "MaxStatFactor": 0.05,
+      "StatFactorControl": 0.003
+    },
+    {
+      "StatGroupID": 20001,
+      "StatType": "NST_EVADE",
+      "MinStatFactor": 0.02,
+      "MaxStatFactor": 0.05,
+      "StatFactorControl": 0.003
+    },
+    {
+      "StatGroupID": 20001,
+      "StatType": "NST_CC_RESIST_RATE",
+      "MinStatValue": 0.015,
+      "MaxStatValue": 0.025,
+      "StatValueControl": 0.001
+    },
+    {
+      "StatGroupID": 20001,
+      "StatType": "NST_CRITICAL_DAMAGE_RESIST_RATE",
+      "MinStatValue": 0.015,
+      "MaxStatValue": 0.035,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 20001,
+      "StatType": "NST_SKILL_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 20001,
+      "StatType": "NST_HYPER_SKILL_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 20001,
+      "StatType": "NST_LONG_RANGE_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 20001,
+      "StatType": "NST_SHORT_RANGE_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 20001,
+      "StatType": "NST_BARRIER_REINFORCE_RATE",
+      "MinStatValue": 0.04,
+      "MaxStatValue": 0.16,
+      "StatValueControl": 0.012
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_HP",
+      "MinStatFactor": 0.015,
+      "MaxStatFactor": 0.025,
+      "StatFactorControl": 0.002
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_DEF",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_EVADE",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_CC_RESIST_RATE",
+      "MinStatValue": 0.025,
+      "MaxStatValue": 0.035,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_CRITICAL_DAMAGE_RESIST_RATE",
+      "MinStatValue": 0.035,
+      "MaxStatValue": 0.085,
+      "StatValueControl": 0.01
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_SKILL_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_HYPER_SKILL_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_UNIT_TYPE_COUNTER_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_UNIT_TYPE_MECHANIC_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_UNIT_TYPE_SOLDIER_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_MOVE_TYPE_LAND_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_MOVE_TYPE_AIR_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_MOVE_SPEED_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_ROLE_TYPE_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.04,
+      "MaxStatValue": 0.16,
+      "StatValueControl": 0.024
+    },
+    {
+      "StatGroupID": 20002,
+      "StatType": "NST_HEAL_REDUCE_RATE",
+      "MinStatValue": -0.16,
+      "MaxStatValue": -0.04,
+      "StatValueControl": 0.024
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_ATK",
+      "MinStatFactor": 0.005,
+      "MaxStatFactor": 0.015,
+      "StatFactorControl": 0.001
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_CRITICAL",
+      "MinStatFactor": 0.02,
+      "MaxStatFactor": 0.05,
+      "StatFactorControl": 0.003
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_HIT",
+      "MinStatFactor": 0.02,
+      "MaxStatFactor": 0.05,
+      "StatFactorControl": 0.003
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_CRITICAL_DAMAGE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_SKILL_DAMAGE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_HYPER_SKILL_DAMAGE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_DEF_PENETRATE_RATE",
+      "MinStatValue": 0.015,
+      "MaxStatValue": 0.025,
+      "StatValueControl": 0.001
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_LONG_RANGE_DAMAGE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_SHORT_RANGE_DAMAGE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_HP",
+      "MinStatFactor": 0.005,
+      "MaxStatFactor": 0.015,
+      "StatFactorControl": 0.001
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_DEF",
+      "MinStatFactor": 0.02,
+      "MaxStatFactor": 0.05,
+      "StatFactorControl": 0.003
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_EVADE",
+      "MinStatFactor": 0.02,
+      "MaxStatFactor": 0.05,
+      "StatFactorControl": 0.003
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_CC_RESIST_RATE",
+      "MinStatValue": 0.015,
+      "MaxStatValue": 0.025,
+      "StatValueControl": 0.001
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_CRITICAL_DAMAGE_RESIST_RATE",
+      "MinStatValue": 0.015,
+      "MaxStatValue": 0.035,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_SKILL_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_HYPER_SKILL_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_LONG_RANGE_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_SHORT_RANGE_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30001,
+      "StatType": "NST_BARRIER_REINFORCE_RATE",
+      "MinStatValue": 0.04,
+      "MaxStatValue": 0.16,
+      "StatValueControl": 0.012
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_ATK",
+      "MinStatFactor": 0.015,
+      "MaxStatFactor": 0.025,
+      "StatFactorControl": 0.002
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_CRITICAL",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_HIT",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_CRITICAL_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_SKILL_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_HYPER_SKILL_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_UNIT_TYPE_COUNTER_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_UNIT_TYPE_MECHANIC_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_UNIT_TYPE_SOLDIER_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_DEF_PENETRATE_RATE",
+      "MinStatValue": 0.025,
+      "MaxStatValue": 0.035,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_MOVE_TYPE_LAND_DAMAGE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_MOVE_TYPE_AIR_DAMAGE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_ATTACK_SPEED_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_ROLE_TYPE_DAMAGE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.12,
+      "StatValueControl": 0.02
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_HP",
+      "MinStatFactor": 0.015,
+      "MaxStatFactor": 0.025,
+      "StatFactorControl": 0.002
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_DEF",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_EVADE",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_CC_RESIST_RATE",
+      "MinStatValue": 0.025,
+      "MaxStatValue": 0.035,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_CRITICAL_DAMAGE_RESIST_RATE",
+      "MinStatValue": 0.035,
+      "MaxStatValue": 0.085,
+      "StatValueControl": 0.01
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_SKILL_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_HYPER_SKILL_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_UNIT_TYPE_COUNTER_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_UNIT_TYPE_MECHANIC_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_UNIT_TYPE_SOLDIER_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_MOVE_TYPE_LAND_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_MOVE_TYPE_AIR_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_MOVE_SPEED_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_ROLE_TYPE_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.04,
+      "MaxStatValue": 0.16,
+      "StatValueControl": 0.024
+    },
+    {
+      "StatGroupID": 30002,
+      "StatType": "NST_HEAL_REDUCE_RATE",
+      "MinStatValue": -0.16,
+      "MaxStatValue": -0.04,
+      "StatValueControl": 0.024
+    },
+    {
+      "StatGroupID": 10003,
+      "StatType": "NST_ATK",
+      "MinStatFactor": 0.015,
+      "MaxStatFactor": 0.025,
+      "StatFactorControl": 0.002
+    },
+    {
+      "StatGroupID": 10003,
+      "StatType": "NST_CRITICAL",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 10003,
+      "StatType": "NST_HIT",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 10003,
+      "StatType": "NST_CRITICAL_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10003,
+      "StatType": "NST_SKILL_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10003,
+      "StatType": "NST_HYPER_SKILL_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10003,
+      "StatType": "NST_UNIT_TYPE_COUNTER_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10003,
+      "StatType": "NST_UNIT_TYPE_MECHANIC_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10003,
+      "StatType": "NST_UNIT_TYPE_SOLDIER_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10003,
+      "StatType": "NST_DEF_PENETRATE_RATE",
+      "MinStatValue": 0.025,
+      "MaxStatValue": 0.035,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 10003,
+      "StatType": "NST_MOVE_TYPE_LAND_DAMAGE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10003,
+      "StatType": "NST_MOVE_TYPE_AIR_DAMAGE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 10003,
+      "StatType": "NST_ATTACK_SPEED_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_HP",
+      "MinStatFactor": 0.015,
+      "MaxStatFactor": 0.025,
+      "StatFactorControl": 0.002
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_DEF",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_EVADE",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_CC_RESIST_RATE",
+      "MinStatValue": 0.025,
+      "MaxStatValue": 0.035,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_CRITICAL_DAMAGE_RESIST_RATE",
+      "MinStatValue": 0.035,
+      "MaxStatValue": 0.085,
+      "StatValueControl": 0.01
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_SKILL_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_HYPER_SKILL_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_UNIT_TYPE_COUNTER_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_UNIT_TYPE_MECHANIC_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_UNIT_TYPE_SOLDIER_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_MOVE_TYPE_LAND_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_MOVE_TYPE_AIR_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_MOVE_SPEED_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 20003,
+      "StatType": "NST_HEAL_REDUCE_RATE",
+      "MinStatValue": -0.16,
+      "MaxStatValue": -0.04,
+      "StatValueControl": 0.024
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_ATK",
+      "MinStatFactor": 0.015,
+      "MaxStatFactor": 0.025,
+      "StatFactorControl": 0.002
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_CRITICAL",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_HIT",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_CRITICAL_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_SKILL_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_HYPER_SKILL_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_UNIT_TYPE_COUNTER_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_UNIT_TYPE_MECHANIC_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_UNIT_TYPE_SOLDIER_DAMAGE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_DEF_PENETRATE_RATE",
+      "MinStatValue": 0.025,
+      "MaxStatValue": 0.035,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_MOVE_TYPE_LAND_DAMAGE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_MOVE_TYPE_AIR_DAMAGE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_ATTACK_SPEED_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_HP",
+      "MinStatFactor": 0.015,
+      "MaxStatFactor": 0.025,
+      "StatFactorControl": 0.002
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_DEF",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_EVADE",
+      "MinStatFactor": 0.03,
+      "MaxStatFactor": 0.07,
+      "StatFactorControl": 0.008
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_CC_RESIST_RATE",
+      "MinStatValue": 0.025,
+      "MaxStatValue": 0.035,
+      "StatValueControl": 0.002
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_CRITICAL_DAMAGE_RESIST_RATE",
+      "MinStatValue": 0.035,
+      "MaxStatValue": 0.085,
+      "StatValueControl": 0.01
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_SKILL_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_HYPER_SKILL_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_UNIT_TYPE_COUNTER_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_UNIT_TYPE_MECHANIC_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_UNIT_TYPE_SOLDIER_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.03,
+      "MaxStatValue": 0.05,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_MOVE_TYPE_LAND_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_MOVE_TYPE_AIR_DAMAGE_REDUCE_RATE",
+      "MinStatValue": 0.02,
+      "MaxStatValue": 0.04,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_MOVE_SPEED_RATE",
+      "MinStatValue": 0.01,
+      "MaxStatValue": 0.03,
+      "StatValueControl": 0.004
+    },
+    {
+      "StatGroupID": 30003,
+      "StatType": "NST_HEAL_REDUCE_RATE",
+      "MinStatValue": -0.16,
+      "MaxStatValue": -0.04,
+      "StatValueControl": 0.024
+    }
+  ],
+  "unsupportedCount": 0,
+  "unsupported": []
+}

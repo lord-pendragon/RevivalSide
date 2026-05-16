@@ -1,0 +1,441 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_GUILD_DUNGEON_S01_BATTLE_03_H.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 8
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.8
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_GUILD_BITER_H"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_GUILD_BITER_S",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.1
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "DEBUFF_MOB_GUILD_HP",
+              "m_BuffLevel": 30
+            },
+            {
+              "m_BuffStrID": "DEBUFF_MOB_GUILD_ATK",
+              "m_BuffLevel": 30
+            }
+          ]
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_GUILD_SCOURGE_S",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 20,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.0
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "DEBUFF_MOB_GUILD_HP",
+              "m_BuffLevel": 30
+            },
+            {
+              "m_BuffStrID": "DEBUFF_MOB_GUILD_ATK",
+              "m_BuffLevel": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_GUILD_BITER_S",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 1.1,
+            "m_fEventBossHPUpper": 0.8,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.6
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "DEBUFF_MOB_GUILD_HP",
+              "m_BuffLevel": 30
+            },
+            {
+              "m_BuffStrID": "DEBUFF_MOB_GUILD_ATK",
+              "m_BuffLevel": 30
+            }
+          ]
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_GUILD_SCOURGE_S",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 1.1,
+            "m_fEventBossHPUpper": 0.8,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.4
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "DEBUFF_MOB_GUILD_HP",
+              "m_BuffLevel": 30
+            },
+            {
+              "m_BuffStrID": "DEBUFF_MOB_GUILD_ATK",
+              "m_BuffLevel": 30
+            }
+          ]
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_GUILD_BITER_S",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.8,
+            "m_fEventBossHPUpper": 0.5,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.4
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "DEBUFF_MOB_GUILD_HP",
+              "m_BuffLevel": 30
+            },
+            {
+              "m_BuffStrID": "DEBUFF_MOB_GUILD_ATK",
+              "m_BuffLevel": 30
+            }
+          ]
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_GUILD_SCOURGE_S",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.8,
+            "m_fEventBossHPUpper": 0.5,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.2
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "DEBUFF_MOB_GUILD_HP",
+              "m_BuffLevel": 30
+            },
+            {
+              "m_BuffStrID": "DEBUFF_MOB_GUILD_ATK",
+              "m_BuffLevel": 30
+            }
+          ]
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_GUILD_BITER_S",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.6,
+            "m_fEventBossHPUpper": 0.3,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.4
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "DEBUFF_MOB_GUILD_HP",
+              "m_BuffLevel": 30
+            },
+            {
+              "m_BuffStrID": "DEBUFF_MOB_GUILD_ATK",
+              "m_BuffLevel": 30
+            }
+          ]
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_GUILD_SCOURGE_S",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.6,
+            "m_fEventBossHPUpper": 0.3,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.2
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "DEBUFF_MOB_GUILD_HP",
+              "m_BuffLevel": 30
+            },
+            {
+              "m_BuffStrID": "DEBUFF_MOB_GUILD_ATK",
+              "m_BuffLevel": 30
+            }
+          ]
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_GUILD_BITER_S",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.3,
+            "m_fEventBossHPUpper": 0.1,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.2
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "DEBUFF_MOB_GUILD_HP",
+              "m_BuffLevel": 30
+            },
+            {
+              "m_BuffStrID": "DEBUFF_MOB_GUILD_ATK",
+              "m_BuffLevel": 30
+            }
+          ]
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_GUILD_SCOURGE_S",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.3,
+            "m_fEventBossHPUpper": 0.1,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.0
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "DEBUFF_MOB_GUILD_HP",
+              "m_BuffLevel": 30
+            },
+            {
+              "m_BuffStrID": "DEBUFF_MOB_GUILD_ATK",
+              "m_BuffLevel": 30
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 8,
+    "m_fCostSpeedRateB": 0.8,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_GUILD_BITER_H",
+    "m_fBossPosZ": 0.6,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_GUILD_BITER_S",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.1
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "DEBUFF_MOB_GUILD_HP",
+            "m_BuffLevel": 30
+          },
+          {
+            "m_BuffStrID": "DEBUFF_MOB_GUILD_ATK",
+            "m_BuffLevel": 30
+          }
+        ]
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_GUILD_SCOURGE_S",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 20,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.0
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "DEBUFF_MOB_GUILD_HP",
+            "m_BuffLevel": 30
+          },
+          {
+            "m_BuffStrID": "DEBUFF_MOB_GUILD_ATK",
+            "m_BuffLevel": 30
+          }
+        ]
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_GUILD_BITER_S",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 1.1,
+          "m_fEventBossHPUpper": 0.8,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.6
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "DEBUFF_MOB_GUILD_HP",
+            "m_BuffLevel": 30
+          },
+          {
+            "m_BuffStrID": "DEBUFF_MOB_GUILD_ATK",
+            "m_BuffLevel": 30
+          }
+        ]
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_GUILD_SCOURGE_S",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 1.1,
+          "m_fEventBossHPUpper": 0.8,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.4
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "DEBUFF_MOB_GUILD_HP",
+            "m_BuffLevel": 30
+          },
+          {
+            "m_BuffStrID": "DEBUFF_MOB_GUILD_ATK",
+            "m_BuffLevel": 30
+          }
+        ]
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_GUILD_BITER_S",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.8,
+          "m_fEventBossHPUpper": 0.5,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.4
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "DEBUFF_MOB_GUILD_HP",
+            "m_BuffLevel": 30
+          },
+          {
+            "m_BuffStrID": "DEBUFF_MOB_GUILD_ATK",
+            "m_BuffLevel": 30
+          }
+        ]
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_GUILD_SCOURGE_S",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.8,
+          "m_fEventBossHPUpper": 0.5,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.2
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "DEBUFF_MOB_GUILD_HP",
+            "m_BuffLevel": 30
+          },
+          {
+            "m_BuffStrID": "DEBUFF_MOB_GUILD_ATK",
+            "m_BuffLevel": 30
+          }
+        ]
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_GUILD_BITER_S",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.6,
+          "m_fEventBossHPUpper": 0.3,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.4
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "DEBUFF_MOB_GUILD_HP",
+            "m_BuffLevel": 30
+          },
+          {
+            "m_BuffStrID": "DEBUFF_MOB_GUILD_ATK",
+            "m_BuffLevel": 30
+          }
+        ]
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_GUILD_SCOURGE_S",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.6,
+          "m_fEventBossHPUpper": 0.3,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.2
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "DEBUFF_MOB_GUILD_HP",
+            "m_BuffLevel": 30
+          },
+          {
+            "m_BuffStrID": "DEBUFF_MOB_GUILD_ATK",
+            "m_BuffLevel": 30
+          }
+        ]
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_GUILD_BITER_S",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.3,
+          "m_fEventBossHPUpper": 0.1,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.2
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "DEBUFF_MOB_GUILD_HP",
+            "m_BuffLevel": 30
+          },
+          {
+            "m_BuffStrID": "DEBUFF_MOB_GUILD_ATK",
+            "m_BuffLevel": 30
+          }
+        ]
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_GUILD_SCOURGE_S",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.3,
+          "m_fEventBossHPUpper": 0.1,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.0
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "DEBUFF_MOB_GUILD_HP",
+            "m_BuffLevel": 30
+          },
+          {
+            "m_BuffStrID": "DEBUFF_MOB_GUILD_ATK",
+            "m_BuffLevel": 30
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

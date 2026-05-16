@@ -1,0 +1,108 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_COMPLETE_1_4_2.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 1,
+  "records": [
+    {
+      "__key": "m_listDungeonWave",
+      "value": [
+        {
+          "m_WaveID": 1,
+          "m_NextWaveID": 2,
+          "m_fNextWavetime": 60,
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 10,
+                "m_fEventPos": 0.6
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 3,
+                "m_fEventPos": 0.3
+              }
+            }
+          ]
+        },
+        {
+          "m_WaveID": 2,
+          "m_fNextWavetime": 60,
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0,
+                "m_fEventPos": 0.25
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_WRAITH",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 5,
+                "m_fEventPos": 0.4
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_listDungeonWave": [
+      {
+        "m_WaveID": 1,
+        "m_NextWaveID": 2,
+        "m_fNextWavetime": 60,
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 10,
+              "m_fEventPos": 0.6
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 3,
+              "m_fEventPos": 0.3
+            }
+          }
+        ]
+      },
+      {
+        "m_WaveID": 2,
+        "m_fNextWavetime": 60,
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0,
+              "m_fEventPos": 0.25
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_WRAITH",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 5,
+              "m_fEventPos": 0.4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

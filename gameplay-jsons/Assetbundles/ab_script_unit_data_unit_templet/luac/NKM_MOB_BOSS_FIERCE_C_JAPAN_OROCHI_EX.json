@@ -1,0 +1,3685 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_EX.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 32,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_UNIT_BASE_BOSS_MOVE"
+    },
+    {
+      "__key": "m_UnitSizeX",
+      "value": 130
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 280
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.1
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 310
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": false
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 200
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 200
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.41
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.5
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 200
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 1100
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 1200
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 850
+    },
+    {
+      "__key": "m_AttackedTargetTime",
+      "value": 1
+    },
+    {
+      "__key": "m_bAttackedTarget",
+      "value": false
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": true
+    },
+    {
+      "__key": "m_bImmuneAttackSlow",
+      "value": true
+    },
+    {
+      "__key": "m_bImmuneConfuse",
+      "value": true
+    },
+    {
+      "__key": "m_bImmuneMoveSlow",
+      "value": true
+    },
+    {
+      "__key": "m_bImmuneSilence",
+      "value": true
+    },
+    {
+      "__key": "m_bImmuneStun",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageState",
+      "value": true
+    },
+    {
+      "__key": "m_listFixedStatusEffect",
+      "value": [
+        "NUSE_IMMUNE_NEGATIVE_STATUS"
+      ]
+    },
+    {
+      "__key": "m_SubTargetFindData",
+      "m_FindTargetType": "NFTT_FAR_ENEMY_BOSS_LAST",
+      "m_bCanTargetBoss": false,
+      "m_fSeeRange": 2000,
+      "m_bNoBackTarget": true
+    },
+    {
+      "__key": "m_listTriggerRepeatData",
+      "value": [
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "EventVariable",
+              "m_Name": "HYPER_TRIGGER",
+              "m_Value": [
+                2,
+                2
+              ]
+            }
+          ],
+          "m_TriggerName": "HYPER_SKILL",
+          "m_fRepeatTime": 0.3333333333333333
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_OROCHI_2"
+            }
+          ],
+          "m_TriggerName": "CONDITION_PATTERN",
+          "m_fRepeatTime": 4
+        }
+      ]
+    },
+    {
+      "__key": "m_dicTriggerSet",
+      "value": [
+        {
+          "m_Name": "HYPER_SKILL",
+          "m_DuplicateMode": "IGNORE",
+          "m_listNKMEventChangeState": [
+            {
+              "m_ChangeState": "USN_HYPER1"
+            }
+          ]
+        },
+        {
+          "m_Name": "CONDITION_PATTERN",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER_PATTERN",
+              "m_OffsetX": 0,
+              "m_bTargetPos": true,
+              "m_bUseSubTarget": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1"
+        }
+      ]
+    },
+    {
+      "__key": "m_listSkillStateData",
+      "value": [
+        {
+          "m_StateName": "USN_SKILL1"
+        }
+      ]
+    },
+    {
+      "__key": "m_listAccumStateChangePack",
+      "value": [
+        {
+          "m_listAccumStateChange": [
+            {
+              "m_listAccumStateName": [
+                "USN_SKILL1"
+              ],
+              "m_AccumCount": 1,
+              "m_TargetStateName": "USN_SKILL2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_listPhaseChangeData",
+      "value": [
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_OROCHI_1",
+              "m_bIgnore": true
+            }
+          ],
+          "m_TargetPhase": 1,
+          "m_fChangeConditionHPRate": 0.7,
+          "m_ChangeStateName": "USN_PATTERN2_CHARGE"
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_OROCHI_1",
+              "m_bIgnore": true
+            }
+          ],
+          "m_TargetPhase": 2,
+          "m_fChangeConditionHPRate": 0.25,
+          "m_ChangeStateName": "USN_PATTERN2_CHARGE"
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_OROCHI_1"
+            }
+          ],
+          "m_TargetPhase": 1,
+          "m_fChangeConditionHPRate": 0.7,
+          "m_ChangeStateName": "USN_PATTERN2_CHARGE_PENALTY"
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_OROCHI_1"
+            }
+          ],
+          "m_TargetPhase": 2,
+          "m_fChangeConditionHPRate": 0.25,
+          "m_ChangeStateName": "USN_PATTERN2_CHARGE_PENALTY"
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_DamagedChangeState": "USN_ASTAND",
+          "m_listNKMEventVariable": [
+            {
+              "m_Type": "SET",
+              "m_Name": "HYPER_TRIGGER",
+              "m_Value": 0
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.1,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.3333333333333333,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashGap": 5.0,
+              "m_fCameraCrashTime": 0.5
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_WATER_06"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.1666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_24"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ANIMAL_SNAKE_SMALL"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+          "m_StateName": "USN_ASTAND",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": true,
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_ChangeState": "DES_ASTAND"
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_StateName": "USN_RUN",
+          "m_AnimName": "RUN",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 0.8,
+          "m_bRun": true,
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_ChangeState": "DES_RUN"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.75,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimEndChangeState": "USN_ATTACK1_LOOP",
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_ChangeState": "DES_ATTACK1"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ELECTRIC_ATTACK_BIG_02"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1_LOOP",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK1_LOOP",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 1.25,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_StateTimeChangeStateTime": 5,
+          "m_StateTimeChangeState": "USN_ATTACK1_END",
+          "m_TargetLostOrDieStateDurationTime": 0.5,
+          "m_TargetLostOrDieState": "USN_ATTACK1_END",
+          "m_TargetDistOverChangeStateDist": 1100.0,
+          "m_TargetDistOverChangeState": "USN_ATTACK1_END",
+          "m_AnimEndChangeState": "USN_ATTACK1_END",
+          "m_bSeeTarget": true,
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_ChangeState": "DES_ATTACK1_LOOP"
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_ATTACK_LINE",
+              "m_ChangeState": "DES_END"
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_ATTACK_LINE",
+              "m_OffsetX": 160,
+              "m_OffsetY": 265,
+              "m_bHold": true,
+              "m_FollowType": "TDT_INVALID"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ELECTRIC_05"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 1.0333333333333334,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ELECTRIC_05"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 2.033333333333333,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ELECTRIC_05"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 3.033333333333333,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ELECTRIC_05"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1_END",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK1_END",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.3,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_ChangeState": "DES_ATTACK1_END"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PASSIVE1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "PASSIVE",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_ChangeState": "DES_ASTAND"
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTimeMin": 1.1666666666666667,
+              "m_fEventTimeMax": 1.8333333333333333,
+              "m_fRangeMin": -3000.0,
+              "m_fRangeMax": 3000.0,
+              "m_AttackUnitCount": 99,
+              "m_AttackUnitCountOnly": true,
+              "m_listNKM_UNIT_ROLE_TYPE": [
+                "NURT_SUPPORTER"
+              ],
+              "m_DamageTempletName": "DT_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_PASSIVE"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.2,
+          "m_StateCoolTime": 10,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_ChangeState": "DES_SKILL1"
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 3.0,
+              "m_fColorR": 0.5,
+              "m_fColorG": 0.5,
+              "m_fColorB": 1.0
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_EffectName": "AB_FX_CAST_SKILL",
+              "m_AnimName": "BASE",
+              "m_BoneName": "BIP01_SPINE1",
+              "m_fScaleFactor": 30.0,
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.3333333333333333,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SKILL1",
+              "m_OffsetX": 0,
+              "m_bTargetPos": true
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_OROCHI_SKILL",
+              "m_BuffLevel": 8
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.3333333333333333,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_ELECTRIC_BIG_03"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.3333333333333333,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_24"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_fLocalVol": 0.2,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ANIMAL_SNAKE_BIG"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL2",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.2,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_AnimEndChangeState": "USN_PASSIVE1",
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_ChangeState": "DES_SKILL1"
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 3.0,
+              "m_fColorR": 0.5,
+              "m_fColorG": 0.5,
+              "m_fColorB": 1.0
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L13_1 / 30"
+              },
+              "m_EffectName": "AB_FX_CAST_SKILL",
+              "m_AnimName": "BASE",
+              "m_BoneName": "BIP01_SPINE1",
+              "m_fScaleFactor": 30.0,
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.3333333333333333,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SKILL1",
+              "m_OffsetX": 0,
+              "m_bTargetPos": true
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_OROCHI_SKILL",
+              "m_BuffLevel": 8
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.3333333333333333,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_ELECTRIC_BIG_03"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.3333333333333333,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_24"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_fLocalVol": 0.2,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ANIMAL_SNAKE_BIG"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PATTERN1_START_0",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "PASSIVE",
+          "m_bAnimLoop": false,
+          "m_bForceLeft": true,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_listNKMEventChangeState": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5,
+              "m_ChangeState": "USN_PATTERN1_START"
+            }
+          ],
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_ChangeState": "DES_DIE"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_02"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PATTERN1_START",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_bAnimLoop": false,
+          "m_fAnimStartTime": 0.06666666666666667,
+          "m_bForceLeft": true,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_listNKMEventChangeState": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5,
+              "m_ChangeState": "USN_PATTERN1_MOVE1"
+            }
+          ],
+          "m_listNKMEventMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.4666666666666666,
+              "m_bUseMapPos": true,
+              "m_fMapPosFactor": 0.8,
+              "m_MoveTime": 0.03333333333333333,
+              "m_bLandMove": false,
+              "m_bTargetUnit": false,
+              "m_bOffsetDependMe": true
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PATTERN1_MOVE1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_fAnimStartTime": 0.6666666666666666,
+          "m_bForceLeft": true,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_listNKMEventChangeState": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.3333333333333335,
+              "m_ChangeState": "USN_PATTERN1_MOVE2"
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.3333333333333333,
+              "m_fEventTimeMax": 2.0,
+              "m_fRangeMin": -500.0,
+              "m_fRangeMax": 500.0,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_PATTERN1"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_WATER_06"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.1666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_24"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ANIMAL_SNAKE_SMALL"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PATTERN1_MOVE2",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_bAnimLoop": false,
+          "m_fAnimStartTime": 0.06666666666666667,
+          "m_bForceLeft": true,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_listNKMEventChangeState": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5,
+              "m_ChangeState": "USN_PATTERN1_MOVE2_ATTACK"
+            }
+          ],
+          "m_listNKMEventMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.4666666666666666,
+              "m_bUseMapPos": true,
+              "m_fMapPosFactor": 0.5,
+              "m_MoveTime": 0.03333333333333333,
+              "m_bLandMove": false,
+              "m_bTargetUnit": false,
+              "m_bOffsetDependMe": true
+            }
+          ],
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_ChangeState": "DES_DIE"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_02"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PATTERN1_MOVE2_ATTACK",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_fAnimStartTime": 0.6666666666666666,
+          "m_bForceLeft": true,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_listNKMEventChangeState": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.3333333333333335,
+              "m_ChangeState": "USN_PATTERN1_MOVE_BACK"
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.3333333333333333,
+              "m_fEventTimeMax": 2.0,
+              "m_fRangeMin": -500.0,
+              "m_fRangeMax": 500.0,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_PATTERN1"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_WATER_06"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.1666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_24"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ANIMAL_SNAKE_SMALL"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PATTERN1_MOVE_BACK",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_bAnimLoop": false,
+          "m_fAnimStartTime": 0.06666666666666667,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_bForceLeft": true,
+          "m_listNKMEventChangeState": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5,
+              "m_ChangeState": "USN_PATTERN1_MOVE_END"
+            }
+          ],
+          "m_listNKMEventMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.4666666666666666,
+              "m_bUseMapPos": true,
+              "m_fMapPosFactor": 0.2,
+              "m_MoveTime": 0.03333333333333333,
+              "m_bLandMove": false,
+              "m_bTargetUnit": false,
+              "m_bOffsetDependMe": true
+            }
+          ],
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_ChangeState": "DES_DIE"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_02"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PATTERN1_MOVE_END",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_fAnimStartTime": 0.6666666666666666,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.3333333333333333,
+              "m_fEventTimeMax": 2.0,
+              "m_fRangeMin": -500.0,
+              "m_fRangeMax": 500.0,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_PATTERN1"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_WATER_06"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.1666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_24"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ANIMAL_SNAKE_SMALL"
+              ]
+            }
+          ],
+          "m_listNKMEventVariable": [
+            {
+              "m_bStateEndTime": true,
+              "m_Type": "ADD",
+              "m_Name": "HYPER_TRIGGER",
+              "m_Value": 1
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_HYPER1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "HYPER_SKILL1",
+          "m_bAnimLoop": false,
+          "m_SuperArmor": false,
+          "m_fAnimSpeed": 0.7,
+          "m_bShowGage": false,
+          "m_bForceLeft": true,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_AnimEndChangeState": "USN_HYPER1_MOVE_BACK",
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_ChangeState": "DES_DIE"
+            }
+          ],
+          "m_listNKMEventVariable": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L21_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "HYPER_TRIGGER",
+              "m_Value": 0
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L21_1 / 30"
+              },
+              "m_EffectName": "AB_FX_CAST_HYPER",
+              "m_AnimName": "BASE",
+              "m_OffsetX": 0,
+              "m_OffsetY": 190,
+              "m_fScaleFactor": 20.0
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_EffectName": "AB_FX_BUFF_MAP_RED",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_AnimName": "BASE",
+              "m_fAddRotate": 0
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_OROCHI_HYPER"
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_OROCHI_HYPER",
+              "m_BuffRemove": true
+            },
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_OROCHI_HYPER1",
+              "m_bEnemy": true,
+              "m_fRange": 6000
+            },
+            {
+              "m_fEventTime": 0.06666666666666667,
+              "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_OROCHI_HYPER2",
+              "m_bEnemy": true,
+              "m_fRange": 6000
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_OROCHI_HYPER1",
+              "m_BuffRemove": true
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_OROCHI_HYPER2",
+              "m_BuffRemove": true
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_OROCHI_HYPER_TRIGGER",
+              "m_BuffRemove": true
+            }
+          ],
+          "m_listNKMEventSpeedX": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.5,
+              "m_fEventTimeMax": 2.5,
+              "m_bStateEndTime": false,
+              "m_SpeedX": 70.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.5,
+              "m_fEventTimeMax": 5.0,
+              "m_bStateEndTime": false,
+              "m_SpeedX": 150.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 5.0,
+              "m_fEventTimeMax": 5.5,
+              "m_bStateEndTime": false,
+              "m_SpeedX": 50.0
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 8.5,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER2_HYPER",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.99
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 8.5,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER2_HYPER",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.8
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 8.5,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER2_HYPER",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.6
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 8.5,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER2_HYPER",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.4
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 8.5,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER2_HYPER",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.2
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 8.5,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER2_HYPER",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.01
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 9.0,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_HYPER",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.99
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 9.0,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_HYPER",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.8
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 9.0,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_HYPER",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.6
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 9.0,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_HYPER",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.4
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 9.0,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_HYPER",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.2
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 9.0,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_HYPER",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.01
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 9.5,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER2_HYPER",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.99
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 9.5,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER2_HYPER",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.8
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 9.5,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER2_HYPER",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.6
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 9.5,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER2_HYPER",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.4
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 9.5,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER2_HYPER",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.2
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 9.5,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER2_HYPER",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.01
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.5,
+              "m_fEventTimeMax": 2.8333333333333335,
+              "m_fRangeMin": -1200.0,
+              "m_fRangeMax": 1200.0,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_HYPER1_START"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 3.5,
+              "m_fEventTimeMax": 3.8333333333333335,
+              "m_fRangeMin": -1200.0,
+              "m_fRangeMax": 1200.0,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_HYPER1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 4.5,
+              "m_fEventTimeMax": 4.833333333333333,
+              "m_fRangeMin": -1200.0,
+              "m_fRangeMax": 1200.0,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_HYPER1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 5.5,
+              "m_fEventTimeMax": 5.833333333333333,
+              "m_fRangeMin": -1200.0,
+              "m_fRangeMax": 1200.0,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_HYPER1"
+            }
+          ],
+          "m_listNKMEventCameraMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L22_1 / 30"
+              },
+              "m_fEventTimeMax": 2.1666666666666665,
+              "m_fPosXOffset": -400,
+              "m_fPosYOffset": 150,
+              "m_fZoom": -100,
+              "m_fMoveTrackingTime": 0.2,
+              "m_fZoomTrackingTime": 0.2,
+              "m_fCameraRadius": 0.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.1666666666666665,
+              "m_fEventTimeMax": 5.833333333333333,
+              "m_fPosXOffset": 350,
+              "m_fPosYOffset": 0,
+              "m_fZoom": 0,
+              "m_fMoveTrackingTime": 4.0,
+              "m_fZoomTrackingTime": 4.0,
+              "m_fCameraRadius": 0.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 5.833333333333333,
+              "m_fEventTimeMax": 6.666666666666667,
+              "m_fPosXOffset": 350,
+              "m_fPosYOffset": 0,
+              "m_fZoom": 0,
+              "m_fMoveTrackingTime": 1.0,
+              "m_fZoomTrackingTime": 1.0,
+              "m_fCameraRadius": 0.0
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L21_1 / 30"
+              },
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashGap": 3.0,
+              "m_fCameraCrashTime": 2.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.1666666666666665,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashGap": 8.0,
+              "m_fCameraCrashTime": 4.0
+            }
+          ],
+          "m_listNKMEventStopTime": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_StopTimeIndex": "NSTI_SKILL",
+              "m_fStopTime": 1.5,
+              "m_bStopEnemyOnly": false,
+              "m_bMyStop": false,
+              "m_fRange": 800
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HYPER_ATTACK_START"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_36"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.3333333333333335,
+              "m_fLocalVol": 0.3,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_38"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.3333333333333335,
+              "m_fLocalVol": 0.3,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_38"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 5.0,
+              "m_fLocalVol": 0.3,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_74"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.3333333333333333,
+              "m_fLocalVol": 0.4,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ANIMAL_SNAKE_BIG_03"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_HYPER1_MOVE_BACK",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_bAnimLoop": false,
+          "m_fAnimStartTime": 0.06666666666666667,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_bForceLeft": true,
+          "m_listNKMEventChangeState": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5,
+              "m_ChangeState": "USN_HYPER1_MOVE_END"
+            }
+          ],
+          "m_listNKMEventMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.4666666666666666,
+              "m_bUseMapPos": true,
+              "m_fMapPosFactor": 0.2,
+              "m_MoveTime": 0.03333333333333333,
+              "m_bLandMove": false,
+              "m_bTargetUnit": false,
+              "m_bOffsetDependMe": true
+            }
+          ],
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_ChangeState": "DES_DIE"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_02"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_HYPER1_MOVE_END",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_fAnimStartTime": 0.6666666666666666,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_WATER_06"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.1666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_24"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ANIMAL_SNAKE_SMALL"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_PATTERN2_CHARGE",
+          "m_AnimName": "ATTACK1_LOOP",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 1.0,
+          "m_bNoDamageBackSpeed": true,
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_listNKMEventBuff": [
+            {
+              "m_BuffStrID": "BUFF_FIERCE_OROCHI_CHARGE_DAMAGE_REDUCE",
+              "m_BuffStatLevel": 8,
+              "m_StateEndRemove": true
+            }
+          ],
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_ChangeState": "DES_ATTACK1_LOOP"
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.1,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_CHARGE",
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.05
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.2,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_CHARGE",
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.25
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_CHARGE",
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.45
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.4,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_CHARGE",
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.65
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_CHARGE",
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.85
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.1,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_32"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.2,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_32"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_32"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.4,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_32"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_32"
+              ]
+            }
+          ],
+          "m_DangerCharge": {
+            "m_fChargeTime": 8,
+            "m_CancelHitCount": 80,
+            "m_SuccessState": "USN_PATTERN1_START_0",
+            "m_CancelState": "USN_GROGGY"
+          }
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_GROGGY",
+          "m_AnimName": "DAMAGE_STUN",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 1.0,
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_StateTimeChangeStateTime": 6,
+          "m_StateTimeChangeState": "USN_ASTAND",
+          "m_listNKMEventBuff": [
+            {
+              "m_BuffStrID": "DEBUFF_FIERCE_OROCHI_CHARGE_DAMAGE_REDUCE",
+              "m_BuffStatLevel": 10,
+              "m_StateEndRemove": true
+            }
+          ],
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_ChangeState": "DES_DAMAGE_STUN"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_HYPER1_MOVE_END",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_fAnimStartTime": 0.6666666666666666,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_WATER_06"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.1666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_24"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ANIMAL_SNAKE_SMALL"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_PATTERN2_CHARGE_PENALTY",
+          "m_AnimName": "ATTACK1_LOOP",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 1.0,
+          "m_bNoDamageBackSpeed": true,
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_listNKMEventBuff": [
+            {
+              "m_BuffStrID": "BUFF_FIERCE_OROCHI_CHARGE_DAMAGE_REDUCE",
+              "m_BuffStatLevel": 8,
+              "m_StateEndRemove": true
+            }
+          ],
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_ChangeState": "DES_ATTACK1_LOOP"
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.1,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_CHARGE",
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.05
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.2,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_CHARGE",
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.25
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_CHARGE",
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.45
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.4,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_CHARGE",
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.65
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_CHARGE",
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.85
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.1,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_32"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.2,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_32"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_32"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.4,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_32"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_32"
+              ]
+            }
+          ],
+          "m_DangerCharge": {
+            "m_fChargeTime": 8,
+            "m_CancelHitCount": 160,
+            "m_SuccessState": "USN_PATTERN1_START_0",
+            "m_CancelState": "USN_GROGGY"
+          }
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_GROGGY",
+          "m_AnimName": "DAMAGE_STUN",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 1.0,
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_StateTimeChangeStateTime": 6,
+          "m_StateTimeChangeState": "USN_ASTAND",
+          "m_listNKMEventBuff": [
+            {
+              "m_BuffStrID": "DEBUFF_FIERCE_OROCHI_CHARGE_DAMAGE_REDUCE",
+              "m_BuffStatLevel": 10,
+              "m_StateEndRemove": true
+            }
+          ],
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_ChangeState": "DES_DAMAGE_STUN"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_STUN",
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_ChangeState": "DES_DAMAGE_STUN"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_A",
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_ChangeState": "DES_DAMAGE_A"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_B",
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_ChangeState": "DES_DAMAGE_A"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_AIR_UP",
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_ChangeState": "DES_DAMAGE_A"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_ChangeState": "DES_DAMAGE_A"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+              "m_ChangeState": "DES_DIE"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_UNIT_BASE_BOSS_MOVE",
+    "m_UnitSizeX": 130,
+    "m_UnitSizeY": 280,
+    "m_SpriteScale": 1.1,
+    "m_fGageOffsetY": 310,
+    "m_bShowGage": false,
+    "m_fShadowScaleX": 200,
+    "m_fShadowScaleY": 200,
+    "m_fForceRespawnZposMin": 0.41,
+    "m_fForceRespawnZposMax": 0.5,
+    "m_SpeedRun": 200,
+    "m_SeeRange": 1100,
+    "m_SeeRangeMax": 1200,
+    "m_TargetNearRange": 850,
+    "m_AttackedTargetTime": 1,
+    "m_bAttackedTarget": false,
+    "m_bUseMotionBlur": true,
+    "m_bImmuneAttackSlow": true,
+    "m_bImmuneConfuse": true,
+    "m_bImmuneMoveSlow": true,
+    "m_bImmuneSilence": true,
+    "m_bImmuneStun": true,
+    "m_bNoDamageState": true,
+    "m_listFixedStatusEffect": [
+      "NUSE_IMMUNE_NEGATIVE_STATUS"
+    ],
+    "m_SubTargetFindData": {
+      "m_FindTargetType": "NFTT_FAR_ENEMY_BOSS_LAST",
+      "m_bCanTargetBoss": false,
+      "m_fSeeRange": 2000,
+      "m_bNoBackTarget": true
+    },
+    "m_listTriggerRepeatData": [
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "EventVariable",
+            "m_Name": "HYPER_TRIGGER",
+            "m_Value": [
+              2,
+              2
+            ]
+          }
+        ],
+        "m_TriggerName": "HYPER_SKILL",
+        "m_fRepeatTime": 0.3333333333333333
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_OROCHI_2"
+          }
+        ],
+        "m_TriggerName": "CONDITION_PATTERN",
+        "m_fRepeatTime": 4
+      }
+    ],
+    "m_dicTriggerSet": [
+      {
+        "m_Name": "HYPER_SKILL",
+        "m_DuplicateMode": "IGNORE",
+        "m_listNKMEventChangeState": [
+          {
+            "m_ChangeState": "USN_HYPER1"
+          }
+        ]
+      },
+      {
+        "m_Name": "CONDITION_PATTERN",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER_PATTERN",
+            "m_OffsetX": 0,
+            "m_bTargetPos": true,
+            "m_bUseSubTarget": true
+          }
+        ]
+      }
+    ],
+    "m_listAttackStateData": [
+      {
+        "m_StateName": "USN_ATTACK1"
+      }
+    ],
+    "m_listSkillStateData": [
+      {
+        "m_StateName": "USN_SKILL1"
+      }
+    ],
+    "m_listAccumStateChangePack": [
+      {
+        "m_listAccumStateChange": [
+          {
+            "m_listAccumStateName": [
+              "USN_SKILL1"
+            ],
+            "m_AccumCount": 1,
+            "m_TargetStateName": "USN_SKILL2"
+          }
+        ]
+      }
+    ],
+    "m_listPhaseChangeData": [
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_OROCHI_1",
+            "m_bIgnore": true
+          }
+        ],
+        "m_TargetPhase": 1,
+        "m_fChangeConditionHPRate": 0.7,
+        "m_ChangeStateName": "USN_PATTERN2_CHARGE"
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_OROCHI_1",
+            "m_bIgnore": true
+          }
+        ],
+        "m_TargetPhase": 2,
+        "m_fChangeConditionHPRate": 0.25,
+        "m_ChangeStateName": "USN_PATTERN2_CHARGE"
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_OROCHI_1"
+          }
+        ],
+        "m_TargetPhase": 1,
+        "m_fChangeConditionHPRate": 0.7,
+        "m_ChangeStateName": "USN_PATTERN2_CHARGE_PENALTY"
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_OROCHI_1"
+          }
+        ],
+        "m_TargetPhase": 2,
+        "m_fChangeConditionHPRate": 0.25,
+        "m_ChangeStateName": "USN_PATTERN2_CHARGE_PENALTY"
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_DamagedChangeState": "USN_ASTAND",
+        "m_listNKMEventVariable": [
+          {
+            "m_Type": "SET",
+            "m_Name": "HYPER_TRIGGER",
+            "m_Value": 0
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.1,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.3333333333333333,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashGap": 5.0,
+            "m_fCameraCrashTime": 0.5
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_WATER_06"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.1666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_24"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ANIMAL_SNAKE_SMALL"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+        "m_StateName": "USN_ASTAND",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": true,
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_ChangeState": "DES_ASTAND"
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_StateName": "USN_RUN",
+        "m_AnimName": "RUN",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 0.8,
+        "m_bRun": true,
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_ChangeState": "DES_RUN"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.75,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimEndChangeState": "USN_ATTACK1_LOOP",
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_ChangeState": "DES_ATTACK1"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ELECTRIC_ATTACK_BIG_02"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1_LOOP",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK1_LOOP",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 1.25,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_StateTimeChangeStateTime": 5,
+        "m_StateTimeChangeState": "USN_ATTACK1_END",
+        "m_TargetLostOrDieStateDurationTime": 0.5,
+        "m_TargetLostOrDieState": "USN_ATTACK1_END",
+        "m_TargetDistOverChangeStateDist": 1100.0,
+        "m_TargetDistOverChangeState": "USN_ATTACK1_END",
+        "m_AnimEndChangeState": "USN_ATTACK1_END",
+        "m_bSeeTarget": true,
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_ChangeState": "DES_ATTACK1_LOOP"
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_ATTACK_LINE",
+            "m_ChangeState": "DES_END"
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_ATTACK_LINE",
+            "m_OffsetX": 160,
+            "m_OffsetY": 265,
+            "m_bHold": true,
+            "m_FollowType": "TDT_INVALID"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ELECTRIC_05"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 1.0333333333333334,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ELECTRIC_05"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 2.033333333333333,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ELECTRIC_05"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 3.033333333333333,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ELECTRIC_05"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1_END",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK1_END",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.3,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_ChangeState": "DES_ATTACK1_END"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PASSIVE1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "PASSIVE",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_ChangeState": "DES_ASTAND"
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTimeMin": 1.1666666666666667,
+            "m_fEventTimeMax": 1.8333333333333333,
+            "m_fRangeMin": -3000.0,
+            "m_fRangeMax": 3000.0,
+            "m_AttackUnitCount": 99,
+            "m_AttackUnitCountOnly": true,
+            "m_listNKM_UNIT_ROLE_TYPE": [
+              "NURT_SUPPORTER"
+            ],
+            "m_DamageTempletName": "DT_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_PASSIVE"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.2,
+        "m_StateCoolTime": 10,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_ChangeState": "DES_SKILL1"
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 3.0,
+            "m_fColorR": 0.5,
+            "m_fColorG": 0.5,
+            "m_fColorB": 1.0
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_EffectName": "AB_FX_CAST_SKILL",
+            "m_AnimName": "BASE",
+            "m_BoneName": "BIP01_SPINE1",
+            "m_fScaleFactor": 30.0,
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.3333333333333333,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SKILL1",
+            "m_OffsetX": 0,
+            "m_bTargetPos": true
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_OROCHI_SKILL",
+            "m_BuffLevel": 8
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.3333333333333333,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_ELECTRIC_BIG_03"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.3333333333333333,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_24"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_fLocalVol": 0.2,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ANIMAL_SNAKE_BIG"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL2",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.2,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_AnimEndChangeState": "USN_PASSIVE1",
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_ChangeState": "DES_SKILL1"
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 3.0,
+            "m_fColorR": 0.5,
+            "m_fColorG": 0.5,
+            "m_fColorB": 1.0
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L13_1 / 30"
+            },
+            "m_EffectName": "AB_FX_CAST_SKILL",
+            "m_AnimName": "BASE",
+            "m_BoneName": "BIP01_SPINE1",
+            "m_fScaleFactor": 30.0,
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.3333333333333333,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SKILL1",
+            "m_OffsetX": 0,
+            "m_bTargetPos": true
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_OROCHI_SKILL",
+            "m_BuffLevel": 8
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.3333333333333333,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_ELECTRIC_BIG_03"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.3333333333333333,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_24"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_fLocalVol": 0.2,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ANIMAL_SNAKE_BIG"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PATTERN1_START_0",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "PASSIVE",
+        "m_bAnimLoop": false,
+        "m_bForceLeft": true,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_listNKMEventChangeState": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5,
+            "m_ChangeState": "USN_PATTERN1_START"
+          }
+        ],
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_ChangeState": "DES_DIE"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_02"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PATTERN1_START",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_bAnimLoop": false,
+        "m_fAnimStartTime": 0.06666666666666667,
+        "m_bForceLeft": true,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_listNKMEventChangeState": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5,
+            "m_ChangeState": "USN_PATTERN1_MOVE1"
+          }
+        ],
+        "m_listNKMEventMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.4666666666666666,
+            "m_bUseMapPos": true,
+            "m_fMapPosFactor": 0.8,
+            "m_MoveTime": 0.03333333333333333,
+            "m_bLandMove": false,
+            "m_bTargetUnit": false,
+            "m_bOffsetDependMe": true
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PATTERN1_MOVE1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_fAnimStartTime": 0.6666666666666666,
+        "m_bForceLeft": true,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_listNKMEventChangeState": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.3333333333333335,
+            "m_ChangeState": "USN_PATTERN1_MOVE2"
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.3333333333333333,
+            "m_fEventTimeMax": 2.0,
+            "m_fRangeMin": -500.0,
+            "m_fRangeMax": 500.0,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_PATTERN1"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_WATER_06"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.1666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_24"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ANIMAL_SNAKE_SMALL"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PATTERN1_MOVE2",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_bAnimLoop": false,
+        "m_fAnimStartTime": 0.06666666666666667,
+        "m_bForceLeft": true,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_listNKMEventChangeState": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5,
+            "m_ChangeState": "USN_PATTERN1_MOVE2_ATTACK"
+          }
+        ],
+        "m_listNKMEventMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.4666666666666666,
+            "m_bUseMapPos": true,
+            "m_fMapPosFactor": 0.5,
+            "m_MoveTime": 0.03333333333333333,
+            "m_bLandMove": false,
+            "m_bTargetUnit": false,
+            "m_bOffsetDependMe": true
+          }
+        ],
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_ChangeState": "DES_DIE"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_02"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PATTERN1_MOVE2_ATTACK",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_fAnimStartTime": 0.6666666666666666,
+        "m_bForceLeft": true,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_listNKMEventChangeState": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.3333333333333335,
+            "m_ChangeState": "USN_PATTERN1_MOVE_BACK"
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.3333333333333333,
+            "m_fEventTimeMax": 2.0,
+            "m_fRangeMin": -500.0,
+            "m_fRangeMax": 500.0,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_PATTERN1"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_WATER_06"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.1666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_24"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ANIMAL_SNAKE_SMALL"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PATTERN1_MOVE_BACK",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_bAnimLoop": false,
+        "m_fAnimStartTime": 0.06666666666666667,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_bForceLeft": true,
+        "m_listNKMEventChangeState": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5,
+            "m_ChangeState": "USN_PATTERN1_MOVE_END"
+          }
+        ],
+        "m_listNKMEventMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.4666666666666666,
+            "m_bUseMapPos": true,
+            "m_fMapPosFactor": 0.2,
+            "m_MoveTime": 0.03333333333333333,
+            "m_bLandMove": false,
+            "m_bTargetUnit": false,
+            "m_bOffsetDependMe": true
+          }
+        ],
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_ChangeState": "DES_DIE"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_02"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PATTERN1_MOVE_END",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_fAnimStartTime": 0.6666666666666666,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.3333333333333333,
+            "m_fEventTimeMax": 2.0,
+            "m_fRangeMin": -500.0,
+            "m_fRangeMax": 500.0,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_PATTERN1"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_WATER_06"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.1666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_24"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ANIMAL_SNAKE_SMALL"
+            ]
+          }
+        ],
+        "m_listNKMEventVariable": [
+          {
+            "m_bStateEndTime": true,
+            "m_Type": "ADD",
+            "m_Name": "HYPER_TRIGGER",
+            "m_Value": 1
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_HYPER1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "HYPER_SKILL1",
+        "m_bAnimLoop": false,
+        "m_SuperArmor": false,
+        "m_fAnimSpeed": 0.7,
+        "m_bShowGage": false,
+        "m_bForceLeft": true,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_AnimEndChangeState": "USN_HYPER1_MOVE_BACK",
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_ChangeState": "DES_DIE"
+          }
+        ],
+        "m_listNKMEventVariable": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L21_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "HYPER_TRIGGER",
+            "m_Value": 0
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L21_1 / 30"
+            },
+            "m_EffectName": "AB_FX_CAST_HYPER",
+            "m_AnimName": "BASE",
+            "m_OffsetX": 0,
+            "m_OffsetY": 190,
+            "m_fScaleFactor": 20.0
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_EffectName": "AB_FX_BUFF_MAP_RED",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_AnimName": "BASE",
+            "m_fAddRotate": 0
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_OROCHI_HYPER"
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_OROCHI_HYPER",
+            "m_BuffRemove": true
+          },
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_OROCHI_HYPER1",
+            "m_bEnemy": true,
+            "m_fRange": 6000
+          },
+          {
+            "m_fEventTime": 0.06666666666666667,
+            "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_OROCHI_HYPER2",
+            "m_bEnemy": true,
+            "m_fRange": 6000
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_OROCHI_HYPER1",
+            "m_BuffRemove": true
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_OROCHI_HYPER2",
+            "m_BuffRemove": true
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_OROCHI_HYPER_TRIGGER",
+            "m_BuffRemove": true
+          }
+        ],
+        "m_listNKMEventSpeedX": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.5,
+            "m_fEventTimeMax": 2.5,
+            "m_bStateEndTime": false,
+            "m_SpeedX": 70.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.5,
+            "m_fEventTimeMax": 5.0,
+            "m_bStateEndTime": false,
+            "m_SpeedX": 150.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 5.0,
+            "m_fEventTimeMax": 5.5,
+            "m_bStateEndTime": false,
+            "m_SpeedX": 50.0
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 8.5,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER2_HYPER",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.99
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 8.5,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER2_HYPER",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.8
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 8.5,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER2_HYPER",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.6
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 8.5,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER2_HYPER",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.4
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 8.5,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER2_HYPER",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.2
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 8.5,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER2_HYPER",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.01
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 9.0,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_HYPER",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.99
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 9.0,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_HYPER",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.8
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 9.0,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_HYPER",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.6
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 9.0,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_HYPER",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.4
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 9.0,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_HYPER",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.2
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 9.0,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_HYPER",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.01
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 9.5,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER2_HYPER",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.99
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 9.5,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER2_HYPER",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.8
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 9.5,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER2_HYPER",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.6
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 9.5,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER2_HYPER",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.4
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 9.5,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER2_HYPER",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.2
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 9.5,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER2_HYPER",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.01
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.5,
+            "m_fEventTimeMax": 2.8333333333333335,
+            "m_fRangeMin": -1200.0,
+            "m_fRangeMax": 1200.0,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_HYPER1_START"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 3.5,
+            "m_fEventTimeMax": 3.8333333333333335,
+            "m_fRangeMin": -1200.0,
+            "m_fRangeMax": 1200.0,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_HYPER1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 4.5,
+            "m_fEventTimeMax": 4.833333333333333,
+            "m_fRangeMin": -1200.0,
+            "m_fRangeMax": 1200.0,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_HYPER1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 5.5,
+            "m_fEventTimeMax": 5.833333333333333,
+            "m_fRangeMin": -1200.0,
+            "m_fRangeMax": 1200.0,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_HYPER1"
+          }
+        ],
+        "m_listNKMEventCameraMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L22_1 / 30"
+            },
+            "m_fEventTimeMax": 2.1666666666666665,
+            "m_fPosXOffset": -400,
+            "m_fPosYOffset": 150,
+            "m_fZoom": -100,
+            "m_fMoveTrackingTime": 0.2,
+            "m_fZoomTrackingTime": 0.2,
+            "m_fCameraRadius": 0.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.1666666666666665,
+            "m_fEventTimeMax": 5.833333333333333,
+            "m_fPosXOffset": 350,
+            "m_fPosYOffset": 0,
+            "m_fZoom": 0,
+            "m_fMoveTrackingTime": 4.0,
+            "m_fZoomTrackingTime": 4.0,
+            "m_fCameraRadius": 0.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 5.833333333333333,
+            "m_fEventTimeMax": 6.666666666666667,
+            "m_fPosXOffset": 350,
+            "m_fPosYOffset": 0,
+            "m_fZoom": 0,
+            "m_fMoveTrackingTime": 1.0,
+            "m_fZoomTrackingTime": 1.0,
+            "m_fCameraRadius": 0.0
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L21_1 / 30"
+            },
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashGap": 3.0,
+            "m_fCameraCrashTime": 2.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.1666666666666665,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashGap": 8.0,
+            "m_fCameraCrashTime": 4.0
+          }
+        ],
+        "m_listNKMEventStopTime": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_StopTimeIndex": "NSTI_SKILL",
+            "m_fStopTime": 1.5,
+            "m_bStopEnemyOnly": false,
+            "m_bMyStop": false,
+            "m_fRange": 800
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HYPER_ATTACK_START"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_36"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.3333333333333335,
+            "m_fLocalVol": 0.3,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_38"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.3333333333333335,
+            "m_fLocalVol": 0.3,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_38"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 5.0,
+            "m_fLocalVol": 0.3,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_74"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.3333333333333333,
+            "m_fLocalVol": 0.4,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ANIMAL_SNAKE_BIG_03"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_HYPER1_MOVE_BACK",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_bAnimLoop": false,
+        "m_fAnimStartTime": 0.06666666666666667,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_bForceLeft": true,
+        "m_listNKMEventChangeState": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5,
+            "m_ChangeState": "USN_HYPER1_MOVE_END"
+          }
+        ],
+        "m_listNKMEventMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.4666666666666666,
+            "m_bUseMapPos": true,
+            "m_fMapPosFactor": 0.2,
+            "m_MoveTime": 0.03333333333333333,
+            "m_bLandMove": false,
+            "m_bTargetUnit": false,
+            "m_bOffsetDependMe": true
+          }
+        ],
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_ChangeState": "DES_DIE"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_02"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_HYPER1_MOVE_END",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_fAnimStartTime": 0.6666666666666666,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_WATER_06"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.1666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_24"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ANIMAL_SNAKE_SMALL"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_PATTERN2_CHARGE",
+        "m_AnimName": "ATTACK1_LOOP",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 1.0,
+        "m_bNoDamageBackSpeed": true,
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_listNKMEventBuff": [
+          {
+            "m_BuffStrID": "BUFF_FIERCE_OROCHI_CHARGE_DAMAGE_REDUCE",
+            "m_BuffStatLevel": 8,
+            "m_StateEndRemove": true
+          }
+        ],
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_ChangeState": "DES_ATTACK1_LOOP"
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.1,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_CHARGE",
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.05
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.2,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_CHARGE",
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.25
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_CHARGE",
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.45
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.4,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_CHARGE",
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.65
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_CHARGE",
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.85
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.1,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_32"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.2,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_32"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_32"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.4,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_32"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_32"
+            ]
+          }
+        ],
+        "m_DangerCharge": {
+          "m_fChargeTime": 8,
+          "m_CancelHitCount": 80,
+          "m_SuccessState": "USN_PATTERN1_START_0",
+          "m_CancelState": "USN_GROGGY"
+        }
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_GROGGY",
+        "m_AnimName": "DAMAGE_STUN",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 1.0,
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_StateTimeChangeStateTime": 6,
+        "m_StateTimeChangeState": "USN_ASTAND",
+        "m_listNKMEventBuff": [
+          {
+            "m_BuffStrID": "DEBUFF_FIERCE_OROCHI_CHARGE_DAMAGE_REDUCE",
+            "m_BuffStatLevel": 10,
+            "m_StateEndRemove": true
+          }
+        ],
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_ChangeState": "DES_DAMAGE_STUN"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_HYPER1_MOVE_END",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_fAnimStartTime": 0.6666666666666666,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_WATER_06"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.1666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_24"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ANIMAL_SNAKE_SMALL"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_PATTERN2_CHARGE_PENALTY",
+        "m_AnimName": "ATTACK1_LOOP",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 1.0,
+        "m_bNoDamageBackSpeed": true,
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_listNKMEventBuff": [
+          {
+            "m_BuffStrID": "BUFF_FIERCE_OROCHI_CHARGE_DAMAGE_REDUCE",
+            "m_BuffStatLevel": 8,
+            "m_StateEndRemove": true
+          }
+        ],
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_ChangeState": "DES_ATTACK1_LOOP"
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.1,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_CHARGE",
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.05
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.2,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_CHARGE",
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.25
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_CHARGE",
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.45
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.4,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_CHARGE",
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.65
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_DEName": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_THUNDER1_CHARGE",
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.85
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.1,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_32"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.2,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_32"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_32"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.4,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_32"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_32"
+            ]
+          }
+        ],
+        "m_DangerCharge": {
+          "m_fChargeTime": 8,
+          "m_CancelHitCount": 160,
+          "m_SuccessState": "USN_PATTERN1_START_0",
+          "m_CancelState": "USN_GROGGY"
+        }
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_GROGGY",
+        "m_AnimName": "DAMAGE_STUN",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 1.0,
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_StateTimeChangeStateTime": 6,
+        "m_StateTimeChangeState": "USN_ASTAND",
+        "m_listNKMEventBuff": [
+          {
+            "m_BuffStrID": "DEBUFF_FIERCE_OROCHI_CHARGE_DAMAGE_REDUCE",
+            "m_BuffStatLevel": 10,
+            "m_StateEndRemove": true
+          }
+        ],
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_ChangeState": "DES_DAMAGE_STUN"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_STUN",
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_ChangeState": "DES_DAMAGE_STUN"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_A",
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_ChangeState": "DES_DAMAGE_A"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_B",
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_ChangeState": "DES_DAMAGE_A"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_AIR_UP",
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_ChangeState": "DES_DAMAGE_A"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_ChangeState": "DES_DAMAGE_A"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_C_JAPAN_OROCHI_SNAKE",
+            "m_ChangeState": "DES_DIE"
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

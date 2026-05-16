@@ -1,0 +1,1060 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_BOSS_EP14_BEAST_BASIC_N.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 23,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_UNIT_BASE_BOSS"
+    },
+    {
+      "__key": "m_UnitSizeX",
+      "value": 300
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 300
+    },
+    {
+      "__key": "m_bDieDeActive",
+      "value": false
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": false
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_SpriteOffsetX",
+      "value": -200
+    },
+    {
+      "__key": "m_NKC_TEAM_COLOR_TYPE",
+      "value": "NTCT_ONLY_SHADOW"
+    },
+    {
+      "__key": "m_fShadowOffsetX",
+      "value": -200
+    },
+    {
+      "__key": "m_fShadowOffsetY",
+      "value": 0
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 2000
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 4000
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 1.0
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 1.0
+    },
+    {
+      "__key": "m_bNoRun",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageStopTime",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageState",
+      "value": true
+    },
+    {
+      "__key": "m_fDamageUpFactor",
+      "value": 0.0
+    },
+    {
+      "__key": "m_bNoDamageBackSpeed",
+      "value": true
+    },
+    {
+      "__key": "m_bImmuneStun",
+      "value": true
+    },
+    {
+      "__key": "m_listFixedStatusEffect",
+      "value": [
+        "NUSE_EXILE"
+      ]
+    },
+    {
+      "__key": "m_dicTriggerSet",
+      "value": [
+        {
+          "m_Name": "TRIGGER_TEXT_MASTER",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "RESTART",
+          "m_listNKMEventText": [
+            {
+              "m_fEventTime": 10.0,
+              "m_Text": "SI_BATTLE_MOB_BOSS_EP14_BEAST_BASIC_N_START"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_START_BOSS",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_AnimName": "NOANI",
+          "m_bAnimLoop": false,
+          "m_StateTimeChangeStateTime": 1,
+          "m_StateTimeChangeState": "USN_START",
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0,
+              "m_EffectName": "AB_FX_UI_WARNING",
+              "m_ParentType": "NEPT_NUF_BEFORE_HUD_EFFECT",
+              "m_bUseZScale": false,
+              "m_AnimName": "FX_UI_WARNING",
+              "m_bForceRight": true,
+              "m_bFixedPos": true
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_START",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_bShowGage": false,
+          "m_bNoMove": true,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_bForceRight": true,
+          "m_listNKMEventTrigger": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_TargetTrigger": "TRIGGER_TEXT_MASTER"
+            }
+          ],
+          "m_listNKMEventCameraMove": {
+            "m_listNKMEventCameraMove": [
+              {
+                "m_bAnimTime": true,
+                "m_fEventTimeMin": {
+                  "__unparsed_expr": "L7_1 / 30"
+                },
+                "m_fEventTimeMax": 1.0,
+                "m_fPosXOffset": 300,
+                "m_fPosYOffset": 0,
+                "m_fZoom": -200,
+                "m_fFocusBlur": 0.0,
+                "m_fMoveTrackingTime": 0.3333333333333333,
+                "m_fZoomTrackingTime": 0.3333333333333333,
+                "m_fCameraRadius": 0.0,
+                "m_bForce": true
+              },
+              {
+                "m_bAnimTime": true,
+                "m_fEventTimeMin": 1.0,
+                "m_fEventTimeMax": 2.6666666666666665,
+                "m_fPosXOffset": 300,
+                "m_fPosYOffset": 300,
+                "m_fZoom": -100,
+                "m_fFocusBlur": 0.0,
+                "m_fMoveTrackingTime": 0.6666666666666666,
+                "m_fZoomTrackingTime": 0.6666666666666666,
+                "m_fCameraRadius": 0.0,
+                "m_bForce": true
+              },
+              {
+                "m_bAnimTime": true,
+                "m_fEventTimeMin": 2.6666666666666665,
+                "m_fEventTimeMax": 5.0,
+                "m_fPosXOffset": 0,
+                "m_fPosYOffset": 600,
+                "m_fZoom": 0,
+                "m_fFocusBlur": 0.5,
+                "m_fMoveTrackingTime": 1.0,
+                "m_fZoomTrackingTime": 1.0,
+                "m_fCameraRadius": 0.0,
+                "m_bForce": true
+              }
+            ]
+          },
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_fCameraCrashGap": 5.0,
+              "m_fCameraCrashSpeed": 5.0,
+              "m_fCameraCrashAccel": 0.0,
+              "m_fCameraCrashTime": 1.0666666666666667,
+              "m_fCrashRadius": 1250.0
+            },
+            {
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.2333333333333334,
+              "m_fCameraCrashGap": 20.0,
+              "m_fCameraCrashSpeed": 20.0,
+              "m_fCameraCrashAccel": 0.0,
+              "m_fCameraCrashTime": 0.3333333333333333,
+              "m_fCrashRadius": 1250.0
+            },
+            {
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.8333333333333333,
+              "m_fCameraCrashGap": 10.0,
+              "m_fCameraCrashSpeed": 10.0,
+              "m_fCameraCrashAccel": 0.0,
+              "m_fCameraCrashTime": 0.16666666666666666,
+              "m_fCrashRadius": 1250.0
+            },
+            {
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.8333333333333335,
+              "m_fCameraCrashSpeed": 100.0,
+              "m_fCameraCrashAccel": -100.0,
+              "m_fCameraCrashGap": 20.0,
+              "m_fCameraCrashTime": 2.0,
+              "m_fCrashRadius": 9999.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_BEAST_MINI_MOVE_START"
+              ],
+              "m_b3D": true,
+              "m_bLoop": false,
+              "m_PlayRate": 1.0,
+              "m_bStopSound": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.9333333333333333,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_EARTHQUAKE_02"
+              ],
+              "m_b3D": true,
+              "m_bLoop": false,
+              "m_PlayRate": 1.0,
+              "m_bStopSound": true
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+          "m_StateName": "USN_ASTAND",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": true,
+          "m_bForceRight": true,
+          "m_DangerCharge": {
+            "m_fChargeTime": 20,
+            "m_SuccessState": "USN_COMMON4"
+          }
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_bAnimLoop": false,
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+          "m_fAnimSpeed": 0.9,
+          "m_bForceRight": true,
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_BEAST_MINI_MOVE_DAMAGE_DOWN"
+              ],
+              "m_b3D": true,
+              "m_bLoop": false,
+              "m_PlayRate": 1.0,
+              "m_bStopSound": false
+            }
+          ],
+          "m_listNKMEventGameSpeed": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_fGameSpeed": 0.33,
+              "m_fTrackingTime": 1.5
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_fCameraCrashGap": 10.0,
+              "m_fCameraCrashSpeed": 10.0,
+              "m_fCameraCrashAccel": 0.0,
+              "m_fCameraCrashTime": 0.16666666666666666,
+              "m_fCrashRadius": 1250.0
+            },
+            {
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5666666666666667,
+              "m_fCameraCrashGap": 20.0,
+              "m_fCameraCrashSpeed": 20.0,
+              "m_fCameraCrashAccel": 0.0,
+              "m_fCameraCrashTime": 0.16666666666666666,
+              "m_fCrashRadius": 1250.0
+            },
+            {
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.6666666666666667,
+              "m_fCameraCrashGap": 20.0,
+              "m_fCameraCrashSpeed": 20.0,
+              "m_fCameraCrashAccel": 0.0,
+              "m_fCameraCrashTime": 1.5,
+              "m_fCrashRadius": 1250.0
+            }
+          ],
+          "m_listNKMEventCameraMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 0.5,
+              "m_bForce": true,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 200,
+              "m_fZoom": -100,
+              "m_fFocusBlur": 0.3,
+              "m_fMoveTrackingTime": 0.2,
+              "m_fZoomTrackingTime": 1.0,
+              "m_fCameraRadius": 0.0
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_COMMON4",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "COMMON4",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1,
+          "m_StateCoolTime": 20,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_bSkillCutIn": true,
+          "m_bForceRight": true,
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_bDamageSpeedDependRight": true,
+              "m_fEventTimeMin": 1.0,
+              "m_fEventTimeMax": 1.1666666666666667,
+              "m_fRangeMin": -400.0,
+              "m_fRangeMax": 300.0,
+              "m_bHitAir": true,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_BEAST_MINI_COMMON4"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_bDamageSpeedDependRight": true,
+              "m_fEventTimeMin": 1.5,
+              "m_fEventTimeMax": 1.6666666666666667,
+              "m_fRangeMin": -400.0,
+              "m_fRangeMax": 300.0,
+              "m_bHitAir": true,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_BEAST_MINI_COMMON4"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_bDamageSpeedDependRight": true,
+              "m_fEventTimeMin": 2.0,
+              "m_fEventTimeMax": 2.1666666666666665,
+              "m_fRangeMin": -400.0,
+              "m_fRangeMax": 300.0,
+              "m_bHitAir": true,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_BEAST_MINI_COMMON4"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_bDamageSpeedDependRight": true,
+              "m_fEventTimeMin": 2.5,
+              "m_fEventTimeMax": 2.6666666666666665,
+              "m_fRangeMin": -400.0,
+              "m_fRangeMax": 300.0,
+              "m_bHitAir": true,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_BEAST_MINI_COMMON4"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_bDamageSpeedDependRight": true,
+              "m_fEventTimeMin": 3.066666666666667,
+              "m_fEventTimeMax": 3.1666666666666665,
+              "m_fRangeMin": -400.0,
+              "m_fRangeMax": 300.0,
+              "m_bHitAir": true,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_BEAST_MINI_COMMON4_END"
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_fCameraCrashGap": 10.0,
+              "m_fCameraCrashSpeed": 10.0,
+              "m_fCameraCrashAccel": 0.0,
+              "m_fCameraCrashTime": 0.16666666666666666,
+              "m_fCrashRadius": 1250.0
+            },
+            {
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5,
+              "m_fCameraCrashGap": 10.0,
+              "m_fCameraCrashSpeed": 10.0,
+              "m_fCameraCrashAccel": 0.0,
+              "m_fCameraCrashTime": 0.16666666666666666,
+              "m_fCrashRadius": 1250.0
+            },
+            {
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.0,
+              "m_fCameraCrashGap": 10.0,
+              "m_fCameraCrashSpeed": 10.0,
+              "m_fCameraCrashAccel": 0.0,
+              "m_fCameraCrashTime": 0.16666666666666666,
+              "m_fCrashRadius": 1250.0
+            },
+            {
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.5,
+              "m_fCameraCrashGap": 10.0,
+              "m_fCameraCrashSpeed": 10.0,
+              "m_fCameraCrashAccel": 0.0,
+              "m_fCameraCrashTime": 0.16666666666666666,
+              "m_fCrashRadius": 1250.0
+            },
+            {
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.1666666666666665,
+              "m_fCameraCrashGap": 20.0,
+              "m_fCameraCrashSpeed": 20.0,
+              "m_fCameraCrashAccel": 0.0,
+              "m_fCameraCrashTime": 0.16666666666666666,
+              "m_fCrashRadius": 1250.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_EARTHQUAKE"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_EARTHQUAKE"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_EARTHQUAKE"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_EARTHQUAKE"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.1666666666666665,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_EXPLOSION_FIRE_BIG_03"
+              ]
+            }
+          ],
+          "m_listNKMEventSpeedX": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.0,
+              "m_fEventTimeMax": 3.0,
+              "m_SpeedX": 200
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_StateName": "USN_RUN",
+          "m_AnimName": "RUN",
+          "m_bAnimLoop": true,
+          "m_bRun": true,
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.13333333333333333,
+              "m_fCameraCrashGap": 1.0,
+              "m_fCameraCrashSpeed": 1.0,
+              "m_fCameraCrashAccel": 0.0,
+              "m_fCameraCrashTime": 0.16666666666666666,
+              "m_fCrashRadius": 1250.0
+            },
+            {
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.4666666666666666,
+              "m_fCameraCrashGap": 1.0,
+              "m_fCameraCrashSpeed": 1.0,
+              "m_fCameraCrashAccel": 0.0,
+              "m_fCameraCrashTime": 0.16666666666666666,
+              "m_fCrashRadius": 1250.0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_UNIT_BASE_BOSS",
+    "m_UnitSizeX": 300,
+    "m_UnitSizeY": 300,
+    "m_bDieDeActive": false,
+    "m_bShowGage": false,
+    "m_SpriteScale": 1.0,
+    "m_SpriteOffsetX": -200,
+    "m_NKC_TEAM_COLOR_TYPE": "NTCT_ONLY_SHADOW",
+    "m_fShadowOffsetX": -200,
+    "m_fShadowOffsetY": 0,
+    "m_fShadowScaleX": 2000,
+    "m_fShadowScaleY": 4000,
+    "m_fForceRespawnZposMin": 1.0,
+    "m_fForceRespawnZposMax": 1.0,
+    "m_bNoRun": true,
+    "m_bNoDamageStopTime": true,
+    "m_bNoDamageState": true,
+    "m_fDamageUpFactor": 0.0,
+    "m_bNoDamageBackSpeed": true,
+    "m_bImmuneStun": true,
+    "m_listFixedStatusEffect": [
+      "NUSE_EXILE"
+    ],
+    "m_dicTriggerSet": [
+      {
+        "m_Name": "TRIGGER_TEXT_MASTER",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "RESTART",
+        "m_listNKMEventText": [
+          {
+            "m_fEventTime": 10.0,
+            "m_Text": "SI_BATTLE_MOB_BOSS_EP14_BEAST_BASIC_N_START"
+          }
+        ]
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_START_BOSS",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_AnimName": "NOANI",
+        "m_bAnimLoop": false,
+        "m_StateTimeChangeStateTime": 1,
+        "m_StateTimeChangeState": "USN_START",
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0,
+            "m_EffectName": "AB_FX_UI_WARNING",
+            "m_ParentType": "NEPT_NUF_BEFORE_HUD_EFFECT",
+            "m_bUseZScale": false,
+            "m_AnimName": "FX_UI_WARNING",
+            "m_bForceRight": true,
+            "m_bFixedPos": true
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_START",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_bShowGage": false,
+        "m_bNoMove": true,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_bForceRight": true,
+        "m_listNKMEventTrigger": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_TargetTrigger": "TRIGGER_TEXT_MASTER"
+          }
+        ],
+        "m_listNKMEventCameraMove": {
+          "m_listNKMEventCameraMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_fEventTimeMax": 1.0,
+              "m_fPosXOffset": 300,
+              "m_fPosYOffset": 0,
+              "m_fZoom": -200,
+              "m_fFocusBlur": 0.0,
+              "m_fMoveTrackingTime": 0.3333333333333333,
+              "m_fZoomTrackingTime": 0.3333333333333333,
+              "m_fCameraRadius": 0.0,
+              "m_bForce": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.0,
+              "m_fEventTimeMax": 2.6666666666666665,
+              "m_fPosXOffset": 300,
+              "m_fPosYOffset": 300,
+              "m_fZoom": -100,
+              "m_fFocusBlur": 0.0,
+              "m_fMoveTrackingTime": 0.6666666666666666,
+              "m_fZoomTrackingTime": 0.6666666666666666,
+              "m_fCameraRadius": 0.0,
+              "m_bForce": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.6666666666666665,
+              "m_fEventTimeMax": 5.0,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 600,
+              "m_fZoom": 0,
+              "m_fFocusBlur": 0.5,
+              "m_fMoveTrackingTime": 1.0,
+              "m_fZoomTrackingTime": 1.0,
+              "m_fCameraRadius": 0.0,
+              "m_bForce": true
+            }
+          ]
+        },
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_fCameraCrashGap": 5.0,
+            "m_fCameraCrashSpeed": 5.0,
+            "m_fCameraCrashAccel": 0.0,
+            "m_fCameraCrashTime": 1.0666666666666667,
+            "m_fCrashRadius": 1250.0
+          },
+          {
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.2333333333333334,
+            "m_fCameraCrashGap": 20.0,
+            "m_fCameraCrashSpeed": 20.0,
+            "m_fCameraCrashAccel": 0.0,
+            "m_fCameraCrashTime": 0.3333333333333333,
+            "m_fCrashRadius": 1250.0
+          },
+          {
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.8333333333333333,
+            "m_fCameraCrashGap": 10.0,
+            "m_fCameraCrashSpeed": 10.0,
+            "m_fCameraCrashAccel": 0.0,
+            "m_fCameraCrashTime": 0.16666666666666666,
+            "m_fCrashRadius": 1250.0
+          },
+          {
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.8333333333333335,
+            "m_fCameraCrashSpeed": 100.0,
+            "m_fCameraCrashAccel": -100.0,
+            "m_fCameraCrashGap": 20.0,
+            "m_fCameraCrashTime": 2.0,
+            "m_fCrashRadius": 9999.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_BEAST_MINI_MOVE_START"
+            ],
+            "m_b3D": true,
+            "m_bLoop": false,
+            "m_PlayRate": 1.0,
+            "m_bStopSound": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.9333333333333333,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_EARTHQUAKE_02"
+            ],
+            "m_b3D": true,
+            "m_bLoop": false,
+            "m_PlayRate": 1.0,
+            "m_bStopSound": true
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+        "m_StateName": "USN_ASTAND",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": true,
+        "m_bForceRight": true,
+        "m_DangerCharge": {
+          "m_fChargeTime": 20,
+          "m_SuccessState": "USN_COMMON4"
+        }
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_bAnimLoop": false,
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+        "m_fAnimSpeed": 0.9,
+        "m_bForceRight": true,
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_BEAST_MINI_MOVE_DAMAGE_DOWN"
+            ],
+            "m_b3D": true,
+            "m_bLoop": false,
+            "m_PlayRate": 1.0,
+            "m_bStopSound": false
+          }
+        ],
+        "m_listNKMEventGameSpeed": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_fGameSpeed": 0.33,
+            "m_fTrackingTime": 1.5
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_fCameraCrashGap": 10.0,
+            "m_fCameraCrashSpeed": 10.0,
+            "m_fCameraCrashAccel": 0.0,
+            "m_fCameraCrashTime": 0.16666666666666666,
+            "m_fCrashRadius": 1250.0
+          },
+          {
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5666666666666667,
+            "m_fCameraCrashGap": 20.0,
+            "m_fCameraCrashSpeed": 20.0,
+            "m_fCameraCrashAccel": 0.0,
+            "m_fCameraCrashTime": 0.16666666666666666,
+            "m_fCrashRadius": 1250.0
+          },
+          {
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.6666666666666667,
+            "m_fCameraCrashGap": 20.0,
+            "m_fCameraCrashSpeed": 20.0,
+            "m_fCameraCrashAccel": 0.0,
+            "m_fCameraCrashTime": 1.5,
+            "m_fCrashRadius": 1250.0
+          }
+        ],
+        "m_listNKMEventCameraMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 0.5,
+            "m_bForce": true,
+            "m_fPosXOffset": 0,
+            "m_fPosYOffset": 200,
+            "m_fZoom": -100,
+            "m_fFocusBlur": 0.3,
+            "m_fMoveTrackingTime": 0.2,
+            "m_fZoomTrackingTime": 1.0,
+            "m_fCameraRadius": 0.0
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_COMMON4",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "COMMON4",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1,
+        "m_StateCoolTime": 20,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_bSkillCutIn": true,
+        "m_bForceRight": true,
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_bDamageSpeedDependRight": true,
+            "m_fEventTimeMin": 1.0,
+            "m_fEventTimeMax": 1.1666666666666667,
+            "m_fRangeMin": -400.0,
+            "m_fRangeMax": 300.0,
+            "m_bHitAir": true,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_BEAST_MINI_COMMON4"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_bDamageSpeedDependRight": true,
+            "m_fEventTimeMin": 1.5,
+            "m_fEventTimeMax": 1.6666666666666667,
+            "m_fRangeMin": -400.0,
+            "m_fRangeMax": 300.0,
+            "m_bHitAir": true,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_BEAST_MINI_COMMON4"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_bDamageSpeedDependRight": true,
+            "m_fEventTimeMin": 2.0,
+            "m_fEventTimeMax": 2.1666666666666665,
+            "m_fRangeMin": -400.0,
+            "m_fRangeMax": 300.0,
+            "m_bHitAir": true,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_BEAST_MINI_COMMON4"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_bDamageSpeedDependRight": true,
+            "m_fEventTimeMin": 2.5,
+            "m_fEventTimeMax": 2.6666666666666665,
+            "m_fRangeMin": -400.0,
+            "m_fRangeMax": 300.0,
+            "m_bHitAir": true,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_BEAST_MINI_COMMON4"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_bDamageSpeedDependRight": true,
+            "m_fEventTimeMin": 3.066666666666667,
+            "m_fEventTimeMax": 3.1666666666666665,
+            "m_fRangeMin": -400.0,
+            "m_fRangeMax": 300.0,
+            "m_bHitAir": true,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_BEAST_MINI_COMMON4_END"
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_fCameraCrashGap": 10.0,
+            "m_fCameraCrashSpeed": 10.0,
+            "m_fCameraCrashAccel": 0.0,
+            "m_fCameraCrashTime": 0.16666666666666666,
+            "m_fCrashRadius": 1250.0
+          },
+          {
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5,
+            "m_fCameraCrashGap": 10.0,
+            "m_fCameraCrashSpeed": 10.0,
+            "m_fCameraCrashAccel": 0.0,
+            "m_fCameraCrashTime": 0.16666666666666666,
+            "m_fCrashRadius": 1250.0
+          },
+          {
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.0,
+            "m_fCameraCrashGap": 10.0,
+            "m_fCameraCrashSpeed": 10.0,
+            "m_fCameraCrashAccel": 0.0,
+            "m_fCameraCrashTime": 0.16666666666666666,
+            "m_fCrashRadius": 1250.0
+          },
+          {
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.5,
+            "m_fCameraCrashGap": 10.0,
+            "m_fCameraCrashSpeed": 10.0,
+            "m_fCameraCrashAccel": 0.0,
+            "m_fCameraCrashTime": 0.16666666666666666,
+            "m_fCrashRadius": 1250.0
+          },
+          {
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.1666666666666665,
+            "m_fCameraCrashGap": 20.0,
+            "m_fCameraCrashSpeed": 20.0,
+            "m_fCameraCrashAccel": 0.0,
+            "m_fCameraCrashTime": 0.16666666666666666,
+            "m_fCrashRadius": 1250.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_EARTHQUAKE"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_EARTHQUAKE"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_EARTHQUAKE"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_EARTHQUAKE"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.1666666666666665,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_EXPLOSION_FIRE_BIG_03"
+            ]
+          }
+        ],
+        "m_listNKMEventSpeedX": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.0,
+            "m_fEventTimeMax": 3.0,
+            "m_SpeedX": 200
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_StateName": "USN_RUN",
+        "m_AnimName": "RUN",
+        "m_bAnimLoop": true,
+        "m_bRun": true,
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.13333333333333333,
+            "m_fCameraCrashGap": 1.0,
+            "m_fCameraCrashSpeed": 1.0,
+            "m_fCameraCrashAccel": 0.0,
+            "m_fCameraCrashTime": 0.16666666666666666,
+            "m_fCrashRadius": 1250.0
+          },
+          {
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.4666666666666666,
+            "m_fCameraCrashGap": 1.0,
+            "m_fCameraCrashSpeed": 1.0,
+            "m_fCameraCrashAccel": 0.0,
+            "m_fCameraCrashTime": 0.16666666666666666,
+            "m_fCrashRadius": 1250.0
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

@@ -1,0 +1,187 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_BATTLE_EVENT_VALENTINE_ACT_4_1_BOSS_C.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 5
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.3
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MONSTER_BOSS_BASIC_BEAST_BASIC_VALENTINE_MOVE_N"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.0
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_BITER_VALENTINE_SOLO_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_BITER_VALENTINE_SOLO_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 2,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.6
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_BITER_VALENTINE_SOLO_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 4,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_BITER_VALENTINE_SOLO_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 6,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_BITER_VALENTINE_SOLO_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 8,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.4
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_UNIT_C_YG_HARIM",
+          "m_UnitLevel": 20,
+          "m_UnitLimitBreakLevel": 1,
+          "m_SkinID": 113503,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 2,
+            "m_fEventTimeGap": 15,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_S_YG_SORIM",
+          "m_UnitLevel": 20,
+          "m_UnitLimitBreakLevel": 1,
+          "m_SkinID": 113603,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 4,
+            "m_fEventTimeGap": 15,
+            "m_fEventPos": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB"
+    }
+  ],
+  "root": {
+    "m_fStartCost": 5,
+    "m_fCostSpeedRateB": 0.3,
+    "m_BossUnitStrID": "NKM_MONSTER_BOSS_BASIC_BEAST_BASIC_VALENTINE_MOVE_N",
+    "m_fBossPosZ": 0.0,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_BITER_VALENTINE_SOLO_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_BITER_VALENTINE_SOLO_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 2,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.6
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_BITER_VALENTINE_SOLO_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 4,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_BITER_VALENTINE_SOLO_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 6,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_BITER_VALENTINE_SOLO_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 8,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.4
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_UNIT_C_YG_HARIM",
+        "m_UnitLevel": 20,
+        "m_UnitLimitBreakLevel": 1,
+        "m_SkinID": 113503,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 2,
+          "m_fEventTimeGap": 15,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_S_YG_SORIM",
+        "m_UnitLevel": 20,
+        "m_UnitLimitBreakLevel": 1,
+        "m_SkinID": 113603,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 4,
+          "m_fEventTimeGap": 15,
+          "m_fEventPos": 0.1
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": {}
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

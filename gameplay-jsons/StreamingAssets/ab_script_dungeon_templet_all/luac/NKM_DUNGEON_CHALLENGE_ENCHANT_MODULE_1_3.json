@@ -1,0 +1,276 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_CHALLENGE_ENCHANT_MODULE_1_3.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.5
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_MTC_STATE_TANK"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatValue": {
+          "NST_ATK": 20000,
+          "NST_HIT": 1000,
+          "NST_DEF": -500
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_MTC_TIDE_HELI",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 10,
+            "m_fEventTimeEnd": 240,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 4.5,
+              "NST_DEF": 0.1,
+              "NST_HP": 0.4
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_MTC_TIDE_VEHICLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeEnd": 240,
+            "m_fEventPos": 0.36
+          },
+          "m_StatFactor": {
+            "NST_ATK": 3.5,
+            "NST_DEF": 0.1,
+            "NST_HP": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_EVENT_TIDE_GUNSHIELD_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 8,
+            "m_fEventTimeEnd": 240,
+            "m_fEventPos": 0.25
+          },
+          "m_StatFactor": {
+            "NST_DEF": 0.9,
+            "NST_HP": 0.6
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_MTC_TIDE_HELI",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 10,
+            "m_fEventTimeEnd": 180,
+            "m_fEventTimeGap": 30,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.4
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 4.5,
+              "NST_DEF": 0.1,
+              "NST_HP": 0.4
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_MTC_SL_CARGO",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 10,
+            "m_fEventTimeEnd": 180,
+            "m_fEventTimeGap": 25,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.01
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_MTC_TIDE_HELI",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.5,
+            "m_fEventBossHPUpper": 0.4,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.65
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 4.5,
+              "NST_DEF": 0.1,
+              "NST_HP": 0.4
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_MTC_TIDE_HELI",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.5,
+            "m_fEventBossHPUpper": 0.4,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.33
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 4.5,
+              "NST_DEF": 0.1,
+              "NST_HP": 0.4
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 0.5,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_MTC_STATE_TANK",
+    "m_fBossPosZ": 0.6,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatValue": {
+          "NST_ATK": 20000,
+          "NST_HIT": 1000,
+          "NST_DEF": -500
+        }
+      }
+    },
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_MTC_TIDE_HELI",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 10,
+          "m_fEventTimeEnd": 240,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 4.5,
+            "NST_DEF": 0.1,
+            "NST_HP": 0.4
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_MTC_TIDE_VEHICLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeEnd": 240,
+          "m_fEventPos": 0.36
+        },
+        "m_StatFactor": {
+          "NST_ATK": 3.5,
+          "NST_DEF": 0.1,
+          "NST_HP": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_EVENT_TIDE_GUNSHIELD_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 8,
+          "m_fEventTimeEnd": 240,
+          "m_fEventPos": 0.25
+        },
+        "m_StatFactor": {
+          "NST_DEF": 0.9,
+          "NST_HP": 0.6
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_MTC_TIDE_HELI",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 10,
+          "m_fEventTimeEnd": 180,
+          "m_fEventTimeGap": 30,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.4
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 4.5,
+            "NST_DEF": 0.1,
+            "NST_HP": 0.4
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_MTC_SL_CARGO",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 10,
+          "m_fEventTimeEnd": 180,
+          "m_fEventTimeGap": 25,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.01
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_MTC_TIDE_HELI",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.5,
+          "m_fEventBossHPUpper": 0.4,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.65
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 4.5,
+            "NST_DEF": 0.1,
+            "NST_HP": 0.4
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_MTC_TIDE_HELI",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.5,
+          "m_fEventBossHPUpper": 0.4,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.33
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 4.5,
+            "NST_DEF": 0.1,
+            "NST_HP": 0.4
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

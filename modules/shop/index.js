@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { getGameplayTableFileCandidates } = require("../gameplay-jsons");
 const { getMiscItem, spendMiscItem, toBigInt } = require("../inventory");
 const { buildUnitData, buildOperatorData, buildEquipItemData } = require("../packet-codec");
 const { grantRewardByType, mergeReward } = require("../reward");
@@ -96,14 +97,8 @@ const PACKETS = Object.freeze({
   SHOP_RANDOM_SHOP_BUY_LIST_ACK: 2429,
 });
 
-const SHOP_TABLE_ROOTS = [
-  path.join(ROOT_DIR, "gameplay-tables-json", "StreamingAssets"),
-  path.join(ROOT_DIR, "gameplay-tables-json", "Assetbundles"),
-  path.join(ROOT_DIR, "gameplay-jsons", "StreamingAssets"),
-  path.join(ROOT_DIR, "gameplay-jsons", "Assetbundles"),
-];
 const SHOP_TEMPLET_FILES = ["LUA_SHOP_TEMPLET_01.json", "LUA_SHOP_TEMPLET_02.json"].flatMap((fileName) =>
-  SHOP_TABLE_ROOTS.map((root) => path.join(root, "ab_script", "luac", fileName))
+  getGameplayTableFileCandidates("ab_script", fileName, { rootDir: ROOT_DIR })
 );
 
 let cachedCatalog = null;

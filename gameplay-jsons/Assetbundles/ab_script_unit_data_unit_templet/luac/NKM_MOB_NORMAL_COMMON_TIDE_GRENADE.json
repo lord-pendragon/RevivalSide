@@ -1,0 +1,128 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_NORMAL_COMMON_TIDE_GRENADE.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 3,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_UNIT_S_TIDE_GRENADE"
+    },
+    {
+      "__key": "m_listAccumStateChangePack",
+      "value": [
+        {
+          "m_Condition": {
+            "m_SkillStrID": -1,
+            "m_SkillLevel": [
+              1,
+              99
+            ]
+          },
+          "m_listAccumStateChange": [
+            {
+              "m_listAccumStateName": [
+                "USN_ATTACK1"
+              ],
+              "m_AccumCount": 3,
+              "m_TargetStateName": "USN_PASSIVE2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_PASSIVE2",
+          "m_listNKMEventDamageEffect": [
+            {},
+            {
+              "m_Condition": {
+                "m_SkillStrID": -1
+              }
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL_03"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.4,
+              "m_listSoundName": [
+                "VOICE_UNIT_S_TIDE_GRENADE_BATTLE_ATTACK_3",
+                "VOICE_UNIT_S_TIDE_GRENADE_BATTLE_ATTACK_5",
+                "VOICE_UNIT_S_TIDE_GRENADE_BATTLE_ATTACK_7"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_UNIT_S_TIDE_GRENADE",
+    "m_listAccumStateChangePack": [
+      {
+        "m_Condition": {
+          "m_SkillStrID": -1,
+          "m_SkillLevel": [
+            1,
+            99
+          ]
+        },
+        "m_listAccumStateChange": [
+          {
+            "m_listAccumStateName": [
+              "USN_ATTACK1"
+            ],
+            "m_AccumCount": 3,
+            "m_TargetStateName": "USN_PASSIVE2"
+          }
+        ]
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_PASSIVE2",
+        "m_listNKMEventDamageEffect": [
+          {},
+          {
+            "m_Condition": {
+              "m_SkillStrID": -1
+            }
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL_03"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.4,
+            "m_listSoundName": [
+              "VOICE_UNIT_S_TIDE_GRENADE_BATTLE_ATTACK_3",
+              "VOICE_UNIT_S_TIDE_GRENADE_BATTLE_ATTACK_5",
+              "VOICE_UNIT_S_TIDE_GRENADE_BATTLE_ATTACK_7"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

@@ -1,0 +1,363 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_BATTLE_SHADOW_2_1.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 8,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 7
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_SHADOW_H_ENTERPRISE"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_fCostSpeedRateA",
+      "value": 1
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.2
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_SHADOW_C_ZODIAC_CHARLOTTE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 181,
+            "m_fEventTimeEnd": 181
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_S_SL_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 180
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_S_SL_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 180
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_S_SL_SNIPER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 15,
+            "m_fEventTimeEnd": 180
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_SL_AIR_FIGHTER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 30,
+            "m_fEventTimeEnd": 180
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamB",
+      "value": [
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_SHADOW_C_ZODIAC_CHARLOTTE",
+          "m_EventConditionValue2": "USN_START",
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 101085,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 100
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_SHADOW_C_ZODIAC_CHARLOTTE",
+          "m_EventRespawnUnitTag": "BOSS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 2,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_SL_AIR_FIGHTER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 20,
+            "m_fEventPos": 0.7
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_C_ZODIAC_CHARLOTTE",
+          "m_EventRespawnUnitTag": "BOSS",
+          "m_NKMDungeonEventTiming": {
+            "m_EventDieUnitTag": "BOSS",
+            "m_EventDieUnitTagCount": 1,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 55,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_S_SL_SNIPER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 25,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_S_SL_SNIPER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 25,
+            "m_fEventPos": 0.15
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_S_SL_SNIPER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 65,
+            "m_fEventPos": 0.05
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_C_ZODIAC_CHARLOTTE",
+          "m_EventRespawnUnitTag": "BOSS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 110,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_S_SL_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.66,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_S_SL_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.66,
+            "m_fEventPos": 0.5
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_S_SL_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.66,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_SL_AIR_FIGHTER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.33,
+            "m_fEventPos": 0.65
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_SL_AIR_FIGHTER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.33,
+            "m_fEventPos": 0.6
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 7,
+    "m_BossUnitStrID": "NKM_SHADOW_H_ENTERPRISE",
+    "m_fBossPosZ": 0.6,
+    "m_fCostSpeedRateA": 1,
+    "m_fCostSpeedRateB": 1.2,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_SHADOW_C_ZODIAC_CHARLOTTE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 181,
+          "m_fEventTimeEnd": 181
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_S_SL_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 180
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_S_SL_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 180
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_S_SL_SNIPER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 15,
+          "m_fEventTimeEnd": 180
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_SL_AIR_FIGHTER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 30,
+          "m_fEventTimeEnd": 180
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamB": [
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_SHADOW_C_ZODIAC_CHARLOTTE",
+        "m_EventConditionValue2": "USN_START",
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 101085,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 100
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_SHADOW_C_ZODIAC_CHARLOTTE",
+        "m_EventRespawnUnitTag": "BOSS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 2,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_SL_AIR_FIGHTER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 20,
+          "m_fEventPos": 0.7
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_C_ZODIAC_CHARLOTTE",
+        "m_EventRespawnUnitTag": "BOSS",
+        "m_NKMDungeonEventTiming": {
+          "m_EventDieUnitTag": "BOSS",
+          "m_EventDieUnitTagCount": 1,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 55,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_S_SL_SNIPER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 25,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_S_SL_SNIPER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 25,
+          "m_fEventPos": 0.15
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_S_SL_SNIPER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 65,
+          "m_fEventPos": 0.05
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_C_ZODIAC_CHARLOTTE",
+        "m_EventRespawnUnitTag": "BOSS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 110,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_S_SL_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.66,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_S_SL_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.66,
+          "m_fEventPos": 0.5
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_S_SL_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.66,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_SL_AIR_FIGHTER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.33,
+          "m_fEventPos": 0.65
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_SL_AIR_FIGHTER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.33,
+          "m_fEventPos": 0.6
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

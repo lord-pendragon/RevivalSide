@@ -1,0 +1,4248 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_BOSS_FIERCE_CORRUPTED_ARMOR.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 37,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_UNIT_BASE_BOSS"
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.31
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.4
+    },
+    {
+      "__key": "m_fForceRespawnXpos",
+      "value": 0.2
+    },
+    {
+      "__key": "m_UnitSizeX",
+      "value": 140
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 260
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.15
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": false
+    },
+    {
+      "__key": "m_fGageOffsetX",
+      "value": 50
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 375
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 300
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 300
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 240
+    },
+    {
+      "__key": "m_SeeTarget",
+      "value": true
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 350
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 600
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 700
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 1.5
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": true
+    },
+    {
+      "__key": "m_fBuffEffectScaleFactor",
+      "value": 1.0
+    },
+    {
+      "__key": "m_bNoDamageDownState",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageStopTime",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageState",
+      "value": true
+    },
+    {
+      "__key": "m_fDamageBackFactor",
+      "value": 0.0
+    },
+    {
+      "__key": "m_fDamageUpFactor",
+      "value": 0.0
+    },
+    {
+      "__key": "m_bImmuneStun",
+      "value": true
+    },
+    {
+      "__key": "m_bImmuneSleep",
+      "value": true
+    },
+    {
+      "__key": "m_bNoBackTarget",
+      "value": true
+    },
+    {
+      "__key": "m_listFixedStatusEffect",
+      "value": [
+        "NUSE_IMMUNE_CC",
+        "NUSE_IMMUNE_SKILL_COOLTIME_DAMAGE",
+        "NUSE_IMMUNE_ATTACK_SLOW",
+        "NUSE_IMMUNE_NEGATIVE_STATUS"
+      ]
+    },
+    {
+      "__key": "m_listFixedStatusImmune",
+      "value": [
+        "NUSE_SILENCE"
+      ]
+    },
+    {
+      "__key": "m_listConditionMacro",
+      "value": [
+        {
+          "m_Name": "IS_PASSIVE_ATTACK_USABLE",
+          "1": {
+            "Type": "EventVariable",
+            "m_Name": "VAR_PASSIVE_ATTACK_COOLTIME",
+            "m_Value": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "m_Name": "IS_PASSIVE_ATTACK_USABLE_NOT",
+          "1": {
+            "Type": "EventVariable",
+            "m_Name": "VAR_PASSIVE_ATTACK_COOLTIME",
+            "m_Value": [
+              0,
+              0
+            ],
+            "Inverse": true
+          }
+        },
+        {
+          "m_Name": "IS_SKILL1_PASSIVE_ATTACK_USABLE",
+          "1": {
+            "Type": "EventVariable",
+            "m_Name": "VAR_SKILL1_COOLTIME_PASSIVE",
+            "m_Value": [
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "m_Name": "IS_SKILL1_PASSIVE_ATTACK_USABLE_NOT",
+          "1": {
+            "Type": "EventVariable",
+            "m_Name": "VAR_SKILL1_COOLTIME_PASSIVE",
+            "m_Value": [
+              1,
+              1
+            ],
+            "Inverse": true
+          }
+        },
+        {
+          "m_Name": "IS_EX",
+          "1": {
+            "Type": "Level",
+            "m_LevelRange": [
+              150,
+              999
+            ]
+          }
+        },
+        {
+          "m_Name": "IS_SUPPORTER_COUNT_OVER_3",
+          "1": {
+            "Type": "EventVariable",
+            "m_Name": "VAR_CHECK_SUPPORTER",
+            "m_Value": [
+              3,
+              999
+            ]
+          }
+        },
+        {
+          "m_Name": "IS_SUPPORTER_COUNT_OVER_3_NOT",
+          "1": {
+            "Type": "EventVariable",
+            "m_Name": "VAR_CHECK_SUPPORTER",
+            "m_Value": [
+              3,
+              999
+            ],
+            "Inverse": true
+          }
+        },
+        {
+          "m_Name": "IS_TARGET_EXIST",
+          "1": {
+            "Type": "HasTarget"
+          }
+        },
+        {
+          "m_Name": "IS_ENEMY_EXIST_BACKSIDE",
+          "1": {
+            "Type": "UnitCount",
+            "m_Range": [
+              -3000,
+              0
+            ],
+            "m_TargetConditionV2": [
+              {
+                "Type": "Enemy"
+              },
+              {
+                "Type": "Boss",
+                "Inverse": true
+              }
+            ],
+            "m_Count": [
+              1,
+              99
+            ]
+          }
+        },
+        {
+          "m_Name": "IS_PATTERN_ON",
+          "1": {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_CORRUPTED_ARMOR_1"
+          }
+        },
+        {
+          "m_Name": "IS_CONDITION_ON",
+          "1": {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_CORRUPTED_ARMOR_2"
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listTriggerRepeatData",
+      "value": [
+        {
+          "m_ConditionV2": [
+            "IS_ENEMY_EXIST_BACKSIDE"
+          ],
+          "m_TriggerName": "TRIGGER_ENEMY_EXIST_BACKSIDE",
+          "m_fRepeatTime": 3.0
+        },
+        {
+          "m_ConditionV2": [
+            "IS_EX",
+            "IS_SUPPORTER_COUNT_OVER_3_NOT"
+          ],
+          "m_TriggerName": "TRIGGER_RESPAWN_LONG_SUPPORTER_NOCLEAR",
+          "m_fRepeatTime": 5.0
+        },
+        {
+          "m_ConditionV2": {
+            "ConditionType": "ANY",
+            "1": {
+              "Type": "EventVariable",
+              "m_Name": "VAR_CHECK_SUPPORTER",
+              "m_Value": [
+                3,
+                999
+              ]
+            },
+            "2": {
+              "Type": "Level",
+              "m_LevelRange": [
+                1,
+                149
+              ]
+            }
+          },
+          "m_TriggerName": "TRIGGER_RESPAWN_LONG_SUPPORTER_CLEAR",
+          "m_fRepeatTime": 5.0
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_CORRUPTED_ARMOR_2"
+            },
+            {
+              "Type": "UnitCount",
+              "m_Range": [
+                -3000,
+                3000
+              ],
+              "m_TargetConditionV2": [
+                {
+                  "Type": "Enemy"
+                },
+                {
+                  "Type": "UnitRole",
+                  "m_Type": [
+                    "NURT_SNIPER",
+                    "NURT_RANGER"
+                  ]
+                }
+              ],
+              "m_Count": [
+                1,
+                99
+              ]
+            }
+          ],
+          "m_TriggerName": "TRIGGER_ENEMY_CHECK",
+          "m_fRepeatTime": 1.5
+        }
+      ]
+    },
+    {
+      "__key": "m_dicReaction",
+      "value": [
+        {
+          "m_Name": "REACTION_CHECK_DIE_UNIT",
+          "m_EventType": "UNIT_HP_RATE",
+          "m_Param": 0.0,
+          "m_RequireCount": 1,
+          "m_TriggerTarget": "REACTION_UNIT",
+          "m_Trigger": "TRIGGER_CHECK_UNIT_DIE",
+          "m_bImmediate": true
+        },
+        {
+          "m_Name": "REACTION_CHECK_SUPPORTER",
+          "m_EventType": "RESPAWN",
+          "m_RequireCount": 1,
+          "m_TriggerTarget": "MASTER",
+          "m_bImmediate": true,
+          "m_ReactionCondition": [
+            {
+              "Type": "Enemy"
+            },
+            {
+              "Type": "UnitRole",
+              "m_Type": [
+                "NURT_SUPPORTER"
+              ]
+            }
+          ],
+          "m_Trigger": "TRIGGER_CHECK_SUPPORTER"
+        },
+        {
+          "m_Name": "REACTION_CHECK_KILLCOUNT_DUMMY_MASTER",
+          "m_EventType": "UNIT_HP_RATE",
+          "m_Param": 0.0,
+          "m_RequireCount": 1,
+          "m_ReactionCondition": [
+            {
+              "Type": "Enemy"
+            },
+            {
+              "Type": "UnitStyle",
+              "m_Type": [
+                "NUST_COUNTER",
+                "NUST_SOLDIER",
+                "NUST_MECHANIC"
+              ]
+            }
+          ],
+          "m_TriggerTarget": "LAST_INVOKER",
+          "m_Trigger": "TRIGGER_KILLCOUNT_DUMMY",
+          "m_bImmediate": true
+        },
+        {
+          "m_Name": "REACTION_CHECK_HP_60",
+          "m_EventType": "HP_RATE",
+          "m_Param": 0.6,
+          "m_RequireCount": 1,
+          "m_bImmediate": true,
+          "m_TriggerTarget": "MASTER",
+          "m_Trigger": "TRIGGER_CHECK_HP"
+        },
+        {
+          "m_Name": "REACTION_CHECK_HP_30",
+          "m_EventType": "HP_RATE",
+          "m_Param": 0.3,
+          "m_RequireCount": 1,
+          "m_bImmediate": true,
+          "m_TriggerTarget": "MASTER",
+          "m_Trigger": "TRIGGER_CHECK_HP"
+        }
+      ]
+    },
+    {
+      "__key": "m_dicTriggerSet",
+      "value": [
+        {
+          "m_Name": "TRIGGER_KILLCOUNT_DUMMY",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "PARALLEL",
+          "m_bProcessWhileDying": true,
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_DEName": "DE_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_DUMMY",
+              "m_MoveBase": "TRIGGER_TARGET_UNIT",
+              "m_bIgnoreTarget": false,
+              "m_OffsetY": 100
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_CHECK_UNIT_DIE",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "PARALLEL",
+          "m_listNKMEventText": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_TEXT_DIE_COUNT",
+                  "m_Value": 1,
+                  "Inverse": true
+                }
+              ],
+              "m_fEventTime": 2.0,
+              "m_Text": "SI_BATTLE_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_COUNT"
+            }
+          ],
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": 2.1666666666666665,
+              "m_Name": "VAR_TEXT_DIE_COUNT",
+              "m_Type": "SET",
+              "m_Value": 1
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_fEventTime": 2.5,
+              "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_DIE",
+              "m_BuffTimeLevel": 999,
+              "m_BuffStatLevel": 50,
+              "m_Overlap": 1
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_PASSIVE_ATTACK_COOLTIME",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "RESTART",
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_Name": "VAR_PASSIVE_ATTACK_COOLTIME",
+              "m_Type": "SET",
+              "m_Value": 1
+            },
+            {
+              "m_fEventTime": 8.0,
+              "m_Name": "VAR_PASSIVE_ATTACK_COOLTIME",
+              "m_Type": "SET",
+              "m_Value": 0
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_SKILL1_COOLTIME_PASSIVE",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "RESTART",
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_Name": "VAR_SKILL1_COOLTIME_PASSIVE",
+              "m_Type": "SET",
+              "m_Value": 1
+            },
+            {
+              "m_fEventTime": 16.0,
+              "m_Name": "VAR_SKILL1_COOLTIME_PASSIVE",
+              "m_Type": "SET",
+              "m_Value": 0
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_PASSIVE_RESPAWN_SHORT",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "RESTART",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_DEName": "DE_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_CHECK1",
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 1.1,
+              "m_bIgnoreTarget": true
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_RESPAWN_LONG_SUPPORTER_NOCLEAR",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "RESTART",
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_Name": "VAR_RESPAWN_LONG_SUPPORTER",
+              "m_Type": "RANDOM",
+              "m_Value": 2
+            }
+          ],
+          "m_listNKMEventRespawn": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_RESPAWN_LONG_SUPPORTER",
+                  "m_Value": 0
+                }
+              ],
+              "m_fEventTime": 0.06666666666666667,
+              "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+              "m_MoveBase": "ME",
+              "m_MoveOffset": "MY_LOOK_DIR",
+              "m_fOffsetX": -400,
+              "m_RespawnState": "USN_START"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_RESPAWN_LONG_SUPPORTER",
+                  "m_Value": 0
+                }
+              ],
+              "m_fEventTime": 0.5333333333333333,
+              "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+              "m_MoveBase": "ME",
+              "m_MoveOffset": "MY_LOOK_DIR",
+              "m_fOffsetX": -550,
+              "m_RespawnState": "USN_START"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_RESPAWN_LONG_SUPPORTER",
+                  "m_Value": 0
+                }
+              ],
+              "m_fEventTime": 0.7,
+              "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+              "m_MoveBase": "ME",
+              "m_MoveOffset": "MY_LOOK_DIR",
+              "m_fOffsetX": -700,
+              "m_RespawnState": "USN_START"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_RESPAWN_LONG_SUPPORTER",
+                  "m_Value": 1
+                }
+              ],
+              "m_fEventTime": 0.5333333333333333,
+              "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+              "m_MoveBase": "ME",
+              "m_MoveOffset": "MY_LOOK_DIR",
+              "m_fOffsetX": -400,
+              "m_RespawnState": "USN_START"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_RESPAWN_LONG_SUPPORTER",
+                  "m_Value": 1
+                }
+              ],
+              "m_fEventTime": 0.06666666666666667,
+              "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+              "m_MoveBase": "ME",
+              "m_MoveOffset": "MY_LOOK_DIR",
+              "m_fOffsetX": -550,
+              "m_RespawnState": "USN_START"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_RESPAWN_LONG_SUPPORTER",
+                  "m_Value": 1
+                }
+              ],
+              "m_fEventTime": 0.7,
+              "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+              "m_MoveBase": "ME",
+              "m_MoveOffset": "MY_LOOK_DIR",
+              "m_fOffsetX": -700,
+              "m_RespawnState": "USN_START"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_RESPAWN_LONG_SUPPORTER",
+                  "m_Value": 2
+                }
+              ],
+              "m_fEventTime": 0.7,
+              "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+              "m_MoveBase": "ME",
+              "m_MoveOffset": "MY_LOOK_DIR",
+              "m_fOffsetX": -400,
+              "m_RespawnState": "USN_START"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_RESPAWN_LONG_SUPPORTER",
+                  "m_Value": 2
+                }
+              ],
+              "m_fEventTime": 0.5333333333333333,
+              "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+              "m_MoveBase": "ME",
+              "m_MoveOffset": "MY_LOOK_DIR",
+              "m_fOffsetX": -550,
+              "m_RespawnState": "USN_START"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_RESPAWN_LONG_SUPPORTER",
+                  "m_Value": 2
+                }
+              ],
+              "m_fEventTime": 0.06666666666666667,
+              "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+              "m_MoveBase": "ME",
+              "m_MoveOffset": "MY_LOOK_DIR",
+              "m_fOffsetX": -700,
+              "m_RespawnState": "USN_START"
+            }
+          ],
+          "m_listNKMEventChangeState": [
+            {
+              "m_fEventTime": 1.5,
+              "m_TargetUnitID": 220462,
+              "m_ChangeState": "USN_START2"
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_RESPAWN_LONG_SUPPORTER_CLEAR",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "RESTART",
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_Name": "VAR_RESPAWN_LONG",
+              "m_Type": "RANDOM",
+              "m_Value": 2
+            }
+          ],
+          "m_listNKMEventRespawn": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_RESPAWN_LONG",
+                  "m_Value": 0
+                }
+              ],
+              "m_fEventTime": 0.06666666666666667,
+              "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+              "m_MoveBase": "ME",
+              "m_MoveOffset": "MY_LOOK_DIR",
+              "m_fOffsetX": -400,
+              "m_RespawnState": "USN_START"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_RESPAWN_LONG",
+                  "m_Value": 0
+                }
+              ],
+              "m_fEventTime": 0.5333333333333333,
+              "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+              "m_MoveBase": "ME",
+              "m_MoveOffset": "MY_LOOK_DIR",
+              "m_fOffsetX": -550,
+              "m_RespawnState": "USN_START"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_RESPAWN_LONG",
+                  "m_Value": 0
+                }
+              ],
+              "m_fEventTime": 0.7,
+              "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+              "m_MoveBase": "ME",
+              "m_MoveOffset": "MY_LOOK_DIR",
+              "m_fOffsetX": -700,
+              "m_RespawnState": "USN_START"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_RESPAWN_LONG",
+                  "m_Value": 1
+                }
+              ],
+              "m_fEventTime": 0.5333333333333333,
+              "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+              "m_MoveBase": "ME",
+              "m_MoveOffset": "MY_LOOK_DIR",
+              "m_fOffsetX": -400,
+              "m_RespawnState": "USN_START"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_RESPAWN_LONG",
+                  "m_Value": 1
+                }
+              ],
+              "m_fEventTime": 0.06666666666666667,
+              "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+              "m_MoveBase": "ME",
+              "m_MoveOffset": "MY_LOOK_DIR",
+              "m_fOffsetX": -550,
+              "m_RespawnState": "USN_START"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_RESPAWN_LONG",
+                  "m_Value": 1
+                }
+              ],
+              "m_fEventTime": 0.7,
+              "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+              "m_MoveBase": "ME",
+              "m_MoveOffset": "MY_LOOK_DIR",
+              "m_fOffsetX": -700,
+              "m_RespawnState": "USN_START"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_RESPAWN_LONG",
+                  "m_Value": 2
+                }
+              ],
+              "m_fEventTime": 0.7,
+              "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+              "m_MoveBase": "ME",
+              "m_MoveOffset": "MY_LOOK_DIR",
+              "m_fOffsetX": -400,
+              "m_RespawnState": "USN_START"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_RESPAWN_LONG",
+                  "m_Value": 2
+                }
+              ],
+              "m_fEventTime": 0.5333333333333333,
+              "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+              "m_MoveBase": "ME",
+              "m_MoveOffset": "MY_LOOK_DIR",
+              "m_fOffsetX": -550,
+              "m_RespawnState": "USN_START"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_RESPAWN_LONG",
+                  "m_Value": 2
+                }
+              ],
+              "m_fEventTime": 0.06666666666666667,
+              "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+              "m_MoveBase": "ME",
+              "m_MoveOffset": "MY_LOOK_DIR",
+              "m_fOffsetX": -700,
+              "m_RespawnState": "USN_START"
+            }
+          ],
+          "m_listNKMEventChangeState": [
+            {
+              "m_fEventTime": 1.5,
+              "m_TargetUnitID": 220462,
+              "m_ChangeState": "USN_START1"
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_ENEMY_EXIST_BACKSIDE",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "RESTART",
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": 0.6666666666666666,
+              "m_Name": "VAR_TEXT_BACKSIDE",
+              "m_Type": "SET",
+              "m_Value": 1
+            }
+          ],
+          "m_listNKMEventText": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_TEXT_BACKSIDE",
+                  "m_Value": 1,
+                  "Inverse": true
+                }
+              ],
+              "m_fEventTime": 0.5,
+              "m_Text": "SI_BATTLE_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_BACKSIDE"
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_DEName": "DE_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_CHECK1",
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.0,
+              "m_bIgnoreTarget": true
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_PASSIVE_RESPAWN_SHORT_BACKSIDE",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "RESTART",
+          "m_listNKMEventRespawn": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L13_1 / 30"
+              },
+              "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON",
+              "m_MoveBase": "TRIGGER_TARGET_UNIT",
+              "m_MoveOffset": "MY_LOOK_DIR",
+              "m_fOffsetX": -300,
+              "m_RespawnState": "USN_HYPER1"
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_CHECK_SUPPORTER",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "RESTART",
+          "m_listNKMEventVariable": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_CHECK_SUPPORTER",
+                  "m_Value": [
+                    0,
+                    2
+                  ]
+                }
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L14_1 / 30"
+              },
+              "m_Name": "VAR_CHECK_SUPPORTER",
+              "m_Type": "ADD",
+              "m_Value": 1
+            }
+          ],
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_CHECK_SUPPORTER",
+                  "m_Value": 1
+                }
+              ],
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_CHECK_SUPPORTER_1",
+              "m_ChangeState": "DES_END"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_CHECK_SUPPORTER",
+                  "m_Value": 2
+                }
+              ],
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_CHECK_SUPPORTER_2",
+              "m_ChangeState": "DES_END"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_CHECK_SUPPORTER",
+                  "m_Value": 3
+                }
+              ],
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_CHECK_SUPPORTER_3",
+              "m_ChangeState": "DES_END"
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Level",
+                  "m_LevelRange": [
+                    150,
+                    999
+                  ]
+                },
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_CHECK_SUPPORTER",
+                  "m_Value": 3
+                }
+              ],
+              "m_fEventTime": 0.1,
+              "m_EffectName": "AB_FX_BUFF_START_GREEN",
+              "m_AnimName": "BASE",
+              "m_OffsetX": 0.0,
+              "m_OffsetY": 0.0,
+              "m_fAddRotate": 0.0,
+              "m_fScaleFactor": 1.0,
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Level",
+                  "m_LevelRange": [
+                    150,
+                    999
+                  ]
+                },
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_CHECK_SUPPORTER",
+                  "m_Value": 3
+                }
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L14_1 / 30"
+              },
+              "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_DUMMY",
+              "m_BuffRemove": true
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_CHECK_HP",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "RESTART",
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L15_1 / 30"
+              },
+              "m_Name": "VAR_CHECK_HP",
+              "m_Type": "SET",
+              "m_Value": 1
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_ENEMY_CHECK",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "RESTART",
+          "m_listNKMEventBuff": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "UnitCount",
+                  "m_Range": [
+                    -3000,
+                    3000
+                  ],
+                  "m_TargetConditionV2": [
+                    {
+                      "Type": "Enemy"
+                    },
+                    {
+                      "Type": "UnitRole",
+                      "m_Type": [
+                        "NURT_SNIPER",
+                        "NURT_RANGER"
+                      ]
+                    }
+                  ],
+                  "m_Count": [
+                    0,
+                    0
+                  ]
+                }
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L16_1 / 30"
+              },
+              "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_PENALTY_1",
+              "m_BuffStatLevel": 1
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "UnitCount",
+                  "m_Range": [
+                    -3000,
+                    3000
+                  ],
+                  "m_TargetConditionV2": [
+                    {
+                      "Type": "Enemy"
+                    },
+                    {
+                      "Type": "UnitRole",
+                      "m_Type": [
+                        "NURT_SNIPER",
+                        "NURT_RANGER"
+                      ]
+                    }
+                  ],
+                  "m_Count": [
+                    1,
+                    1
+                  ]
+                }
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L17_1 / 30"
+              },
+              "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_PENALTY_1",
+              "m_BuffStatLevel": 11
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "UnitCount",
+                  "m_Range": [
+                    -3000,
+                    3000
+                  ],
+                  "m_TargetConditionV2": [
+                    {
+                      "Type": "Enemy"
+                    },
+                    {
+                      "Type": "UnitRole",
+                      "m_Type": [
+                        "NURT_SNIPER",
+                        "NURT_RANGER"
+                      ]
+                    }
+                  ],
+                  "m_Count": [
+                    2,
+                    2
+                  ]
+                }
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L18_1 / 30"
+              },
+              "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_PENALTY_1",
+              "m_BuffStatLevel": 21
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "UnitCount",
+                  "m_Range": [
+                    -3000,
+                    3000
+                  ],
+                  "m_TargetConditionV2": [
+                    {
+                      "Type": "Enemy"
+                    },
+                    {
+                      "Type": "UnitRole",
+                      "m_Type": [
+                        "NURT_SNIPER",
+                        "NURT_RANGER"
+                      ]
+                    }
+                  ],
+                  "m_Count": [
+                    3,
+                    3
+                  ]
+                }
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L19_1 / 30"
+              },
+              "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_PENALTY_1",
+              "m_BuffStatLevel": 31
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "UnitCount",
+                  "m_Range": [
+                    -3000,
+                    3000
+                  ],
+                  "m_TargetConditionV2": [
+                    {
+                      "Type": "Enemy"
+                    },
+                    {
+                      "Type": "UnitRole",
+                      "m_Type": [
+                        "NURT_SNIPER",
+                        "NURT_RANGER"
+                      ]
+                    }
+                  ],
+                  "m_Count": [
+                    4,
+                    4
+                  ]
+                }
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L20_1 / 30"
+              },
+              "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_PENALTY_1",
+              "m_BuffStatLevel": 41
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "UnitCount",
+                  "m_Range": [
+                    -3000,
+                    3000
+                  ],
+                  "m_TargetConditionV2": [
+                    {
+                      "Type": "Enemy"
+                    },
+                    {
+                      "Type": "UnitRole",
+                      "m_Type": [
+                        "NURT_SNIPER",
+                        "NURT_RANGER"
+                      ]
+                    }
+                  ],
+                  "m_Count": [
+                    5,
+                    5
+                  ]
+                }
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L21_1 / 30"
+              },
+              "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_PENALTY_1",
+              "m_BuffStatLevel": 51
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "UnitCount",
+                  "m_Range": [
+                    -3000,
+                    3000
+                  ],
+                  "m_TargetConditionV2": [
+                    {
+                      "Type": "Enemy"
+                    },
+                    {
+                      "Type": "UnitRole",
+                      "m_Type": [
+                        "NURT_SNIPER",
+                        "NURT_RANGER"
+                      ]
+                    }
+                  ],
+                  "m_Count": [
+                    6,
+                    6
+                  ]
+                }
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L22_1 / 30"
+              },
+              "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_PENALTY_1",
+              "m_BuffStatLevel": 61
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "UnitCount",
+                  "m_Range": [
+                    -3000,
+                    3000
+                  ],
+                  "m_TargetConditionV2": [
+                    {
+                      "Type": "Enemy"
+                    },
+                    {
+                      "Type": "UnitRole",
+                      "m_Type": [
+                        "NURT_SNIPER",
+                        "NURT_RANGER"
+                      ]
+                    }
+                  ],
+                  "m_Count": [
+                    7,
+                    7
+                  ]
+                }
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L23_1 / 30"
+              },
+              "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_PENALTY_1",
+              "m_BuffStatLevel": 71
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "UnitCount",
+                  "m_Range": [
+                    -3000,
+                    3000
+                  ],
+                  "m_TargetConditionV2": [
+                    {
+                      "Type": "Enemy"
+                    },
+                    {
+                      "Type": "UnitRole",
+                      "m_Type": [
+                        "NURT_SNIPER",
+                        "NURT_RANGER"
+                      ]
+                    }
+                  ],
+                  "m_Count": [
+                    8,
+                    8
+                  ]
+                }
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L24_1 / 30"
+              },
+              "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_PENALTY_1",
+              "m_BuffStatLevel": 81
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "UnitCount",
+                  "m_Range": [
+                    -3000,
+                    3000
+                  ],
+                  "m_TargetConditionV2": [
+                    {
+                      "Type": "Enemy"
+                    },
+                    {
+                      "Type": "UnitRole",
+                      "m_Type": [
+                        "NURT_SNIPER",
+                        "NURT_RANGER"
+                      ]
+                    }
+                  ],
+                  "m_Count": [
+                    9,
+                    9
+                  ]
+                }
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L25_1 / 30"
+              },
+              "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_PENALTY_1",
+              "m_BuffStatLevel": 91
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "UnitCount",
+                  "m_Range": [
+                    -3000,
+                    3000
+                  ],
+                  "m_TargetConditionV2": [
+                    {
+                      "Type": "Enemy"
+                    },
+                    {
+                      "Type": "UnitRole",
+                      "m_Type": [
+                        "NURT_SNIPER",
+                        "NURT_RANGER"
+                      ]
+                    }
+                  ],
+                  "m_Count": [
+                    10,
+                    999
+                  ]
+                }
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L26_1 / 30"
+              },
+              "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_PENALTY_1",
+              "m_BuffStatLevel": 101
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_RESPAWN_EX",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "RESTART",
+          "m_listNKMEventRespawn": [
+            {
+              "m_fEventTime": 5.0,
+              "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON",
+              "m_MoveBase": "ME",
+              "m_MoveOffset": "MY_LOOK_DIR",
+              "m_fOffsetX": -400,
+              "m_RespawnState": "USN_START"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_ConditionV2": [
+            "IS_PASSIVE_ATTACK_USABLE_NOT",
+            "IS_SKILL1_PASSIVE_ATTACK_USABLE_NOT"
+          ],
+          "m_StateName": "USN_ATTACK1"
+        },
+        {
+          "m_ConditionV2": [
+            "IS_PASSIVE_ATTACK_USABLE",
+            "IS_SKILL1_PASSIVE_ATTACK_USABLE_NOT"
+          ],
+          "m_StateName": "USN_PASSIVE1"
+        },
+        {
+          "m_ConditionV2": [
+            "IS_SKILL1_PASSIVE_ATTACK_USABLE"
+          ],
+          "m_StateName": "USN_PASSIVE1_UP"
+        }
+      ]
+    },
+    {
+      "__key": "m_listSkillStateData",
+      "value": [
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_fStartCool": 1.0,
+          "m_bNoTarget": true
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_START",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_AnimName": "START",
+          "m_bShowGage": false,
+          "m_fAnimSpeed": 1.0,
+          "m_bForceLeft": true,
+          "m_listNKMEventText": [
+            {
+              "m_fEventTime": 1.8333333333333333,
+              "m_Text": "SI_BATTLE_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_START"
+            }
+          ],
+          "m_listNKMEventTrigger": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_TargetTrigger": "TRIGGER_RESPAWN_EX"
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_ConditionV2": [
+                "IS_EX"
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_DUMMY"
+            }
+          ],
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_Name": "VAR_PASSIVE_ATTACK_COOLTIME",
+              "m_Type": "SET",
+              "m_Value": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_Name": "VAR_SKILL1_COOLTIME_PASSIVE",
+              "m_Type": "SET",
+              "m_Value": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_Name": "VAR_TEXT_DIE_COUNT",
+              "m_Type": "SET",
+              "m_Value": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_Name": "VAR_TEXT_BACKSIDE",
+              "m_Type": "SET",
+              "m_Value": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_Name": "VAR_CHECK_SUPPORTER",
+              "m_Type": "SET",
+              "m_Value": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_Name": "VAR_CHECK_HP",
+              "m_Type": "SET",
+              "m_Value": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_Name": "VAR_RESPAWN_LONG_SUPPORTER",
+              "m_Type": "SET",
+              "m_Value": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_Name": "VAR_RESPAWN_LONG",
+              "m_Type": "SET",
+              "m_Value": 0
+            }
+          ],
+          "m_listNKMEventReaction": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_Reaction": "REACTION_CHECK_KILLCOUNT_DUMMY_MASTER"
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_Reaction": "REACTION_CHECK_DIE_UNIT"
+            },
+            {
+              "m_ConditionV2": [
+                "IS_EX"
+              ],
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_Reaction": "REACTION_CHECK_SUPPORTER"
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_Reaction": "REACTION_CHECK_HP_60"
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_Reaction": "REACTION_CHECK_HP_30"
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_ConditionV2": [
+                "IS_EX"
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_DEName": "DE_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_CHECK_SUPPORTER_1",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bHold": true
+            },
+            {
+              "m_ConditionV2": [
+                "IS_EX"
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_DEName": "DE_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_CHECK_SUPPORTER_2",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bHold": true
+            },
+            {
+              "m_ConditionV2": [
+                "IS_EX"
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_DEName": "DE_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_CHECK_SUPPORTER_3",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 0.2,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashGap": 15,
+              "m_fCameraCrashTime": 0.5
+            }
+          ],
+          "m_listNKMEventFadeWorld": [
+            {
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_fEventTimeMax": 1.5,
+              "m_fColorR": 0.03,
+              "m_fColorG": 0.03,
+              "m_fColorB": 0.03,
+              "m_fMapColorKeepTime": 0.16666666666666666,
+              "m_fMapColorReturnTime": 1.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.1,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_ROCK_BIG"
+              ]
+            },
+            {
+              "m_fEventTime": 0.2,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_ROCK_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 0.26666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_ROCK_BIG"
+              ]
+            },
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_ROCK_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 0.4,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_ROCK_BIG_02"
+              ]
+            },
+            {
+              "m_fEventTime": 0.9,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK"
+              ]
+            },
+            {
+              "m_fEventTime": 1.6666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_13"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_fLocalVol": 2,
+              "m_PlayRate": 1,
+              "m_listSoundName": [
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_PASSIVE_1",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_PASSIVE_5",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_PASSIVE_7",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_PASSIVE_8"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_RUN",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_AnimName": "RUN",
+          "m_bForceLeft": true,
+          "m_fAnimSpeed": 0.9,
+          "m_bAnimLoop": true,
+          "m_bRun": true
+        },
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimName": "ATTACK1",
+          "m_fAnimSpeed": 0.9,
+          "m_bForceLeft": true,
+          "m_listNKMEventAttack": [
+            {
+              "m_fEventTimeMin": 0.4,
+              "m_fEventTimeMax": 0.6,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 650,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 2,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_ATTACK1"
+            },
+            {
+              "m_fEventTimeMin": 1.6666666666666667,
+              "m_fEventTimeMax": 1.8666666666666667,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 650,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 2,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_ATTACK1"
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 2.0,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashGap": 2,
+              "m_fCameraCrashTime": 0.3333333333333333
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.3,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_05"
+              ]
+            },
+            {
+              "m_fEventTime": 1.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_05"
+              ]
+            },
+            {
+              "m_fEventTime": 1.7333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_ROCK_BIG"
+              ]
+            },
+            {
+              "m_fEventTime": 0.4,
+              "m_bVoice": true,
+              "m_PlayRate": 0.3,
+              "m_listSoundName": [
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_ATTACK_3",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_ATTACK_4",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_ATTACK_5",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_ATTACK_16",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_ATTACK_17"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PASSIVE1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimName": "SKILL1",
+          "m_fAnimSpeed": 1,
+          "m_bForceLeft": true,
+          "m_listNKMEventTrigger": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_TargetTrigger": "TRIGGER_PASSIVE_ATTACK_COOLTIME"
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_fEventTimeMin": 1.1333333333333333,
+              "m_fEventTimeMax": 1.3333333333333333,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 650,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 3,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_SKILL1"
+            },
+            {
+              "m_fEventTimeMin": 2.1666666666666665,
+              "m_fEventTimeMax": 2.3333333333333335,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 650,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 3,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_SKILL1_END"
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 1.1333333333333333,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashGap": 7,
+              "m_fCameraCrashTime": 0.3333333333333333
+            },
+            {
+              "m_fEventTime": 2.1666666666666665,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashGap": 12,
+              "m_fCameraCrashTime": 0.6666666666666666
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_10"
+              ]
+            },
+            {
+              "m_fEventTime": 1.1333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_09"
+              ]
+            },
+            {
+              "m_fEventTime": 2.1666666666666665,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_EARTHQUAKE_02"
+              ]
+            },
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_ACTIVE_1",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_ACTIVE_2",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_ACTIVE_7"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PASSIVE1_UP",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimName": "SKILL1",
+          "m_fAnimSpeed": 1,
+          "m_bForceLeft": true,
+          "m_listNKMEventChangeState": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_ChangeState": "USN_PASSIVE1"
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_SKILL1",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_AnimName": "PASSIVE2",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1,
+          "m_StateCoolTime": 40,
+          "m_bForceLeft": true,
+          "m_listNKMEventChangeState": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_CHECK_HP",
+                  "m_Value": 1,
+                  "Inverse": true
+                }
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_ChangeState": "USN_SKILL1_SUCCESS"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "VAR_CHECK_HP",
+                  "m_Value": 1
+                }
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_ChangeState": "USN_SKILL1_FAIL"
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_SKILL1_SUCCESS",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_AnimName": "PASSIVE2",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1,
+          "m_bForceLeft": true,
+          "m_listNKMEventText": [
+            {
+              "m_fEventTime": 0.5,
+              "m_Text": "SI_BATTLE_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_SUCCESS"
+            }
+          ],
+          "m_listNKMEventVariable": [
+            {
+              "m_bStateEndTime": true,
+              "m_Name": "VAR_CHECK_HP",
+              "m_Type": "SET",
+              "m_Value": 0
+            }
+          ],
+          "m_listNKMEventTrigger": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_TargetTrigger": "TRIGGER_SKILL1_COOLTIME_PASSIVE"
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_SKILL1_G1",
+              "m_BuffTimeLevel": 16,
+              "m_BuffStatLevel": 80
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_SKILL1_G2",
+              "m_BuffTimeLevel": 16,
+              "m_BuffStatLevel": 100
+            },
+            {
+              "m_ConditionV2": [
+                "IS_PATTERN_ON"
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L13_1 / 30"
+              },
+              "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_PENALTY_1",
+              "m_BuffTimeLevel": 16
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_EffectName": "AB_FX_CAST_SKILL",
+              "m_OffsetX": 30,
+              "m_OffsetY": 200,
+              "m_AnimName": "BASE",
+              "m_fScaleFactor": 30.0
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_fEventTimeMin": 1.1,
+              "m_fEventTimeMax": 1.2666666666666666,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 650,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 3,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_PASSIVE1"
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 1.1,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashGap": 5,
+              "m_fCameraCrashTime": 0.3333333333333333
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 100,
+              "m_fColorR": 1.0,
+              "m_fColorG": 0.5,
+              "m_fColorB": 0.5
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ]
+            },
+            {
+              "m_fEventTime": 0.3,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_16"
+              ]
+            },
+            {
+              "m_fEventTime": 1.1,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_EARTHQUAKE_04"
+              ]
+            },
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 1,
+              "m_listSoundName": [
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_HYPER_3",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_HYPER_5"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_SKILL1_FAIL",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1,
+          "m_bForceLeft": true,
+          "m_listNKMEventText": [
+            {
+              "m_fEventTime": 0.5,
+              "m_Text": "SI_BATTLE_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_FAIL"
+            }
+          ],
+          "m_listNKMEventVariable": [
+            {
+              "m_bStateEndTime": true,
+              "m_Name": "VAR_CHECK_HP",
+              "m_Type": "SET",
+              "m_Value": 0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_5",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_6"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_A",
+          "m_bForceLeft": true,
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_5",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_6"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_B",
+          "m_bForceLeft": true,
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_5",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_6"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_AIR_UP",
+          "m_bForceLeft": true,
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_5",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_6"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_bForceLeft": true,
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_5",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_6"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_bForceLeft": true,
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DEATH_1",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DEATH_2",
+                "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DEATH_7"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_UNIT_BASE_BOSS",
+    "m_fForceRespawnZposMin": 0.31,
+    "m_fForceRespawnZposMax": 0.4,
+    "m_fForceRespawnXpos": 0.2,
+    "m_UnitSizeX": 140,
+    "m_UnitSizeY": 260,
+    "m_SpriteScale": 1.15,
+    "m_bShowGage": false,
+    "m_fGageOffsetX": 50,
+    "m_fGageOffsetY": 375,
+    "m_fShadowScaleX": 300,
+    "m_fShadowScaleY": 300,
+    "m_SpeedRun": 240,
+    "m_SeeTarget": true,
+    "m_TargetNearRange": 350,
+    "m_SeeRange": 600,
+    "m_SeeRangeMax": 700,
+    "m_fDieCompleteTime": 1.5,
+    "m_bUseMotionBlur": true,
+    "m_fBuffEffectScaleFactor": 1.0,
+    "m_bNoDamageDownState": true,
+    "m_bNoDamageStopTime": true,
+    "m_bNoDamageState": true,
+    "m_fDamageBackFactor": 0.0,
+    "m_fDamageUpFactor": 0.0,
+    "m_bImmuneStun": true,
+    "m_bImmuneSleep": true,
+    "m_bNoBackTarget": true,
+    "m_listFixedStatusEffect": [
+      "NUSE_IMMUNE_CC",
+      "NUSE_IMMUNE_SKILL_COOLTIME_DAMAGE",
+      "NUSE_IMMUNE_ATTACK_SLOW",
+      "NUSE_IMMUNE_NEGATIVE_STATUS"
+    ],
+    "m_listFixedStatusImmune": [
+      "NUSE_SILENCE"
+    ],
+    "m_listConditionMacro": [
+      {
+        "m_Name": "IS_PASSIVE_ATTACK_USABLE",
+        "1": {
+          "Type": "EventVariable",
+          "m_Name": "VAR_PASSIVE_ATTACK_COOLTIME",
+          "m_Value": [
+            0,
+            0
+          ]
+        }
+      },
+      {
+        "m_Name": "IS_PASSIVE_ATTACK_USABLE_NOT",
+        "1": {
+          "Type": "EventVariable",
+          "m_Name": "VAR_PASSIVE_ATTACK_COOLTIME",
+          "m_Value": [
+            0,
+            0
+          ],
+          "Inverse": true
+        }
+      },
+      {
+        "m_Name": "IS_SKILL1_PASSIVE_ATTACK_USABLE",
+        "1": {
+          "Type": "EventVariable",
+          "m_Name": "VAR_SKILL1_COOLTIME_PASSIVE",
+          "m_Value": [
+            1,
+            1
+          ]
+        }
+      },
+      {
+        "m_Name": "IS_SKILL1_PASSIVE_ATTACK_USABLE_NOT",
+        "1": {
+          "Type": "EventVariable",
+          "m_Name": "VAR_SKILL1_COOLTIME_PASSIVE",
+          "m_Value": [
+            1,
+            1
+          ],
+          "Inverse": true
+        }
+      },
+      {
+        "m_Name": "IS_EX",
+        "1": {
+          "Type": "Level",
+          "m_LevelRange": [
+            150,
+            999
+          ]
+        }
+      },
+      {
+        "m_Name": "IS_SUPPORTER_COUNT_OVER_3",
+        "1": {
+          "Type": "EventVariable",
+          "m_Name": "VAR_CHECK_SUPPORTER",
+          "m_Value": [
+            3,
+            999
+          ]
+        }
+      },
+      {
+        "m_Name": "IS_SUPPORTER_COUNT_OVER_3_NOT",
+        "1": {
+          "Type": "EventVariable",
+          "m_Name": "VAR_CHECK_SUPPORTER",
+          "m_Value": [
+            3,
+            999
+          ],
+          "Inverse": true
+        }
+      },
+      {
+        "m_Name": "IS_TARGET_EXIST",
+        "1": {
+          "Type": "HasTarget"
+        }
+      },
+      {
+        "m_Name": "IS_ENEMY_EXIST_BACKSIDE",
+        "1": {
+          "Type": "UnitCount",
+          "m_Range": [
+            -3000,
+            0
+          ],
+          "m_TargetConditionV2": [
+            {
+              "Type": "Enemy"
+            },
+            {
+              "Type": "Boss",
+              "Inverse": true
+            }
+          ],
+          "m_Count": [
+            1,
+            99
+          ]
+        }
+      },
+      {
+        "m_Name": "IS_PATTERN_ON",
+        "1": {
+          "Type": "Buff",
+          "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_CORRUPTED_ARMOR_1"
+        }
+      },
+      {
+        "m_Name": "IS_CONDITION_ON",
+        "1": {
+          "Type": "Buff",
+          "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_CORRUPTED_ARMOR_2"
+        }
+      }
+    ],
+    "m_listTriggerRepeatData": [
+      {
+        "m_ConditionV2": [
+          "IS_ENEMY_EXIST_BACKSIDE"
+        ],
+        "m_TriggerName": "TRIGGER_ENEMY_EXIST_BACKSIDE",
+        "m_fRepeatTime": 3.0
+      },
+      {
+        "m_ConditionV2": [
+          "IS_EX",
+          "IS_SUPPORTER_COUNT_OVER_3_NOT"
+        ],
+        "m_TriggerName": "TRIGGER_RESPAWN_LONG_SUPPORTER_NOCLEAR",
+        "m_fRepeatTime": 5.0
+      },
+      {
+        "m_ConditionV2": {
+          "ConditionType": "ANY",
+          "1": {
+            "Type": "EventVariable",
+            "m_Name": "VAR_CHECK_SUPPORTER",
+            "m_Value": [
+              3,
+              999
+            ]
+          },
+          "2": {
+            "Type": "Level",
+            "m_LevelRange": [
+              1,
+              149
+            ]
+          }
+        },
+        "m_TriggerName": "TRIGGER_RESPAWN_LONG_SUPPORTER_CLEAR",
+        "m_fRepeatTime": 5.0
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_CORRUPTED_ARMOR_2"
+          },
+          {
+            "Type": "UnitCount",
+            "m_Range": [
+              -3000,
+              3000
+            ],
+            "m_TargetConditionV2": [
+              {
+                "Type": "Enemy"
+              },
+              {
+                "Type": "UnitRole",
+                "m_Type": [
+                  "NURT_SNIPER",
+                  "NURT_RANGER"
+                ]
+              }
+            ],
+            "m_Count": [
+              1,
+              99
+            ]
+          }
+        ],
+        "m_TriggerName": "TRIGGER_ENEMY_CHECK",
+        "m_fRepeatTime": 1.5
+      }
+    ],
+    "m_dicReaction": [
+      {
+        "m_Name": "REACTION_CHECK_DIE_UNIT",
+        "m_EventType": "UNIT_HP_RATE",
+        "m_Param": 0.0,
+        "m_RequireCount": 1,
+        "m_TriggerTarget": "REACTION_UNIT",
+        "m_Trigger": "TRIGGER_CHECK_UNIT_DIE",
+        "m_bImmediate": true
+      },
+      {
+        "m_Name": "REACTION_CHECK_SUPPORTER",
+        "m_EventType": "RESPAWN",
+        "m_RequireCount": 1,
+        "m_TriggerTarget": "MASTER",
+        "m_bImmediate": true,
+        "m_ReactionCondition": [
+          {
+            "Type": "Enemy"
+          },
+          {
+            "Type": "UnitRole",
+            "m_Type": [
+              "NURT_SUPPORTER"
+            ]
+          }
+        ],
+        "m_Trigger": "TRIGGER_CHECK_SUPPORTER"
+      },
+      {
+        "m_Name": "REACTION_CHECK_KILLCOUNT_DUMMY_MASTER",
+        "m_EventType": "UNIT_HP_RATE",
+        "m_Param": 0.0,
+        "m_RequireCount": 1,
+        "m_ReactionCondition": [
+          {
+            "Type": "Enemy"
+          },
+          {
+            "Type": "UnitStyle",
+            "m_Type": [
+              "NUST_COUNTER",
+              "NUST_SOLDIER",
+              "NUST_MECHANIC"
+            ]
+          }
+        ],
+        "m_TriggerTarget": "LAST_INVOKER",
+        "m_Trigger": "TRIGGER_KILLCOUNT_DUMMY",
+        "m_bImmediate": true
+      },
+      {
+        "m_Name": "REACTION_CHECK_HP_60",
+        "m_EventType": "HP_RATE",
+        "m_Param": 0.6,
+        "m_RequireCount": 1,
+        "m_bImmediate": true,
+        "m_TriggerTarget": "MASTER",
+        "m_Trigger": "TRIGGER_CHECK_HP"
+      },
+      {
+        "m_Name": "REACTION_CHECK_HP_30",
+        "m_EventType": "HP_RATE",
+        "m_Param": 0.3,
+        "m_RequireCount": 1,
+        "m_bImmediate": true,
+        "m_TriggerTarget": "MASTER",
+        "m_Trigger": "TRIGGER_CHECK_HP"
+      }
+    ],
+    "m_dicTriggerSet": [
+      {
+        "m_Name": "TRIGGER_KILLCOUNT_DUMMY",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "PARALLEL",
+        "m_bProcessWhileDying": true,
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_DEName": "DE_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_DUMMY",
+            "m_MoveBase": "TRIGGER_TARGET_UNIT",
+            "m_bIgnoreTarget": false,
+            "m_OffsetY": 100
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_CHECK_UNIT_DIE",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "PARALLEL",
+        "m_listNKMEventText": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_TEXT_DIE_COUNT",
+                "m_Value": 1,
+                "Inverse": true
+              }
+            ],
+            "m_fEventTime": 2.0,
+            "m_Text": "SI_BATTLE_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_COUNT"
+          }
+        ],
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": 2.1666666666666665,
+            "m_Name": "VAR_TEXT_DIE_COUNT",
+            "m_Type": "SET",
+            "m_Value": 1
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_fEventTime": 2.5,
+            "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_DIE",
+            "m_BuffTimeLevel": 999,
+            "m_BuffStatLevel": 50,
+            "m_Overlap": 1
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_PASSIVE_ATTACK_COOLTIME",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "RESTART",
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_Name": "VAR_PASSIVE_ATTACK_COOLTIME",
+            "m_Type": "SET",
+            "m_Value": 1
+          },
+          {
+            "m_fEventTime": 8.0,
+            "m_Name": "VAR_PASSIVE_ATTACK_COOLTIME",
+            "m_Type": "SET",
+            "m_Value": 0
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_SKILL1_COOLTIME_PASSIVE",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "RESTART",
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_Name": "VAR_SKILL1_COOLTIME_PASSIVE",
+            "m_Type": "SET",
+            "m_Value": 1
+          },
+          {
+            "m_fEventTime": 16.0,
+            "m_Name": "VAR_SKILL1_COOLTIME_PASSIVE",
+            "m_Type": "SET",
+            "m_Value": 0
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_PASSIVE_RESPAWN_SHORT",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "RESTART",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_DEName": "DE_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_CHECK1",
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 1.1,
+            "m_bIgnoreTarget": true
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_RESPAWN_LONG_SUPPORTER_NOCLEAR",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "RESTART",
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_Name": "VAR_RESPAWN_LONG_SUPPORTER",
+            "m_Type": "RANDOM",
+            "m_Value": 2
+          }
+        ],
+        "m_listNKMEventRespawn": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_RESPAWN_LONG_SUPPORTER",
+                "m_Value": 0
+              }
+            ],
+            "m_fEventTime": 0.06666666666666667,
+            "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+            "m_MoveBase": "ME",
+            "m_MoveOffset": "MY_LOOK_DIR",
+            "m_fOffsetX": -400,
+            "m_RespawnState": "USN_START"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_RESPAWN_LONG_SUPPORTER",
+                "m_Value": 0
+              }
+            ],
+            "m_fEventTime": 0.5333333333333333,
+            "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+            "m_MoveBase": "ME",
+            "m_MoveOffset": "MY_LOOK_DIR",
+            "m_fOffsetX": -550,
+            "m_RespawnState": "USN_START"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_RESPAWN_LONG_SUPPORTER",
+                "m_Value": 0
+              }
+            ],
+            "m_fEventTime": 0.7,
+            "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+            "m_MoveBase": "ME",
+            "m_MoveOffset": "MY_LOOK_DIR",
+            "m_fOffsetX": -700,
+            "m_RespawnState": "USN_START"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_RESPAWN_LONG_SUPPORTER",
+                "m_Value": 1
+              }
+            ],
+            "m_fEventTime": 0.5333333333333333,
+            "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+            "m_MoveBase": "ME",
+            "m_MoveOffset": "MY_LOOK_DIR",
+            "m_fOffsetX": -400,
+            "m_RespawnState": "USN_START"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_RESPAWN_LONG_SUPPORTER",
+                "m_Value": 1
+              }
+            ],
+            "m_fEventTime": 0.06666666666666667,
+            "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+            "m_MoveBase": "ME",
+            "m_MoveOffset": "MY_LOOK_DIR",
+            "m_fOffsetX": -550,
+            "m_RespawnState": "USN_START"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_RESPAWN_LONG_SUPPORTER",
+                "m_Value": 1
+              }
+            ],
+            "m_fEventTime": 0.7,
+            "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+            "m_MoveBase": "ME",
+            "m_MoveOffset": "MY_LOOK_DIR",
+            "m_fOffsetX": -700,
+            "m_RespawnState": "USN_START"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_RESPAWN_LONG_SUPPORTER",
+                "m_Value": 2
+              }
+            ],
+            "m_fEventTime": 0.7,
+            "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+            "m_MoveBase": "ME",
+            "m_MoveOffset": "MY_LOOK_DIR",
+            "m_fOffsetX": -400,
+            "m_RespawnState": "USN_START"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_RESPAWN_LONG_SUPPORTER",
+                "m_Value": 2
+              }
+            ],
+            "m_fEventTime": 0.5333333333333333,
+            "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+            "m_MoveBase": "ME",
+            "m_MoveOffset": "MY_LOOK_DIR",
+            "m_fOffsetX": -550,
+            "m_RespawnState": "USN_START"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_RESPAWN_LONG_SUPPORTER",
+                "m_Value": 2
+              }
+            ],
+            "m_fEventTime": 0.06666666666666667,
+            "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+            "m_MoveBase": "ME",
+            "m_MoveOffset": "MY_LOOK_DIR",
+            "m_fOffsetX": -700,
+            "m_RespawnState": "USN_START"
+          }
+        ],
+        "m_listNKMEventChangeState": [
+          {
+            "m_fEventTime": 1.5,
+            "m_TargetUnitID": 220462,
+            "m_ChangeState": "USN_START2"
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_RESPAWN_LONG_SUPPORTER_CLEAR",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "RESTART",
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_Name": "VAR_RESPAWN_LONG",
+            "m_Type": "RANDOM",
+            "m_Value": 2
+          }
+        ],
+        "m_listNKMEventRespawn": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_RESPAWN_LONG",
+                "m_Value": 0
+              }
+            ],
+            "m_fEventTime": 0.06666666666666667,
+            "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+            "m_MoveBase": "ME",
+            "m_MoveOffset": "MY_LOOK_DIR",
+            "m_fOffsetX": -400,
+            "m_RespawnState": "USN_START"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_RESPAWN_LONG",
+                "m_Value": 0
+              }
+            ],
+            "m_fEventTime": 0.5333333333333333,
+            "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+            "m_MoveBase": "ME",
+            "m_MoveOffset": "MY_LOOK_DIR",
+            "m_fOffsetX": -550,
+            "m_RespawnState": "USN_START"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_RESPAWN_LONG",
+                "m_Value": 0
+              }
+            ],
+            "m_fEventTime": 0.7,
+            "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+            "m_MoveBase": "ME",
+            "m_MoveOffset": "MY_LOOK_DIR",
+            "m_fOffsetX": -700,
+            "m_RespawnState": "USN_START"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_RESPAWN_LONG",
+                "m_Value": 1
+              }
+            ],
+            "m_fEventTime": 0.5333333333333333,
+            "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+            "m_MoveBase": "ME",
+            "m_MoveOffset": "MY_LOOK_DIR",
+            "m_fOffsetX": -400,
+            "m_RespawnState": "USN_START"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_RESPAWN_LONG",
+                "m_Value": 1
+              }
+            ],
+            "m_fEventTime": 0.06666666666666667,
+            "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+            "m_MoveBase": "ME",
+            "m_MoveOffset": "MY_LOOK_DIR",
+            "m_fOffsetX": -550,
+            "m_RespawnState": "USN_START"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_RESPAWN_LONG",
+                "m_Value": 1
+              }
+            ],
+            "m_fEventTime": 0.7,
+            "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+            "m_MoveBase": "ME",
+            "m_MoveOffset": "MY_LOOK_DIR",
+            "m_fOffsetX": -700,
+            "m_RespawnState": "USN_START"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_RESPAWN_LONG",
+                "m_Value": 2
+              }
+            ],
+            "m_fEventTime": 0.7,
+            "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+            "m_MoveBase": "ME",
+            "m_MoveOffset": "MY_LOOK_DIR",
+            "m_fOffsetX": -400,
+            "m_RespawnState": "USN_START"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_RESPAWN_LONG",
+                "m_Value": 2
+              }
+            ],
+            "m_fEventTime": 0.5333333333333333,
+            "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+            "m_MoveBase": "ME",
+            "m_MoveOffset": "MY_LOOK_DIR",
+            "m_fOffsetX": -550,
+            "m_RespawnState": "USN_START"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_RESPAWN_LONG",
+                "m_Value": 2
+              }
+            ],
+            "m_fEventTime": 0.06666666666666667,
+            "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON2",
+            "m_MoveBase": "ME",
+            "m_MoveOffset": "MY_LOOK_DIR",
+            "m_fOffsetX": -700,
+            "m_RespawnState": "USN_START"
+          }
+        ],
+        "m_listNKMEventChangeState": [
+          {
+            "m_fEventTime": 1.5,
+            "m_TargetUnitID": 220462,
+            "m_ChangeState": "USN_START1"
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_ENEMY_EXIST_BACKSIDE",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "RESTART",
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": 0.6666666666666666,
+            "m_Name": "VAR_TEXT_BACKSIDE",
+            "m_Type": "SET",
+            "m_Value": 1
+          }
+        ],
+        "m_listNKMEventText": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_TEXT_BACKSIDE",
+                "m_Value": 1,
+                "Inverse": true
+              }
+            ],
+            "m_fEventTime": 0.5,
+            "m_Text": "SI_BATTLE_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_BACKSIDE"
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_DEName": "DE_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_CHECK1",
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.0,
+            "m_bIgnoreTarget": true
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_PASSIVE_RESPAWN_SHORT_BACKSIDE",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "RESTART",
+        "m_listNKMEventRespawn": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L13_1 / 30"
+            },
+            "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON",
+            "m_MoveBase": "TRIGGER_TARGET_UNIT",
+            "m_MoveOffset": "MY_LOOK_DIR",
+            "m_fOffsetX": -300,
+            "m_RespawnState": "USN_HYPER1"
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_CHECK_SUPPORTER",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "RESTART",
+        "m_listNKMEventVariable": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_CHECK_SUPPORTER",
+                "m_Value": [
+                  0,
+                  2
+                ]
+              }
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L14_1 / 30"
+            },
+            "m_Name": "VAR_CHECK_SUPPORTER",
+            "m_Type": "ADD",
+            "m_Value": 1
+          }
+        ],
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_CHECK_SUPPORTER",
+                "m_Value": 1
+              }
+            ],
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_CHECK_SUPPORTER_1",
+            "m_ChangeState": "DES_END"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_CHECK_SUPPORTER",
+                "m_Value": 2
+              }
+            ],
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_CHECK_SUPPORTER_2",
+            "m_ChangeState": "DES_END"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_CHECK_SUPPORTER",
+                "m_Value": 3
+              }
+            ],
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_CHECK_SUPPORTER_3",
+            "m_ChangeState": "DES_END"
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Level",
+                "m_LevelRange": [
+                  150,
+                  999
+                ]
+              },
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_CHECK_SUPPORTER",
+                "m_Value": 3
+              }
+            ],
+            "m_fEventTime": 0.1,
+            "m_EffectName": "AB_FX_BUFF_START_GREEN",
+            "m_AnimName": "BASE",
+            "m_OffsetX": 0.0,
+            "m_OffsetY": 0.0,
+            "m_fAddRotate": 0.0,
+            "m_fScaleFactor": 1.0,
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Level",
+                "m_LevelRange": [
+                  150,
+                  999
+                ]
+              },
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_CHECK_SUPPORTER",
+                "m_Value": 3
+              }
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L14_1 / 30"
+            },
+            "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_DUMMY",
+            "m_BuffRemove": true
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_CHECK_HP",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "RESTART",
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L15_1 / 30"
+            },
+            "m_Name": "VAR_CHECK_HP",
+            "m_Type": "SET",
+            "m_Value": 1
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_ENEMY_CHECK",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "RESTART",
+        "m_listNKMEventBuff": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "UnitCount",
+                "m_Range": [
+                  -3000,
+                  3000
+                ],
+                "m_TargetConditionV2": [
+                  {
+                    "Type": "Enemy"
+                  },
+                  {
+                    "Type": "UnitRole",
+                    "m_Type": [
+                      "NURT_SNIPER",
+                      "NURT_RANGER"
+                    ]
+                  }
+                ],
+                "m_Count": [
+                  0,
+                  0
+                ]
+              }
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L16_1 / 30"
+            },
+            "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_PENALTY_1",
+            "m_BuffStatLevel": 1
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "UnitCount",
+                "m_Range": [
+                  -3000,
+                  3000
+                ],
+                "m_TargetConditionV2": [
+                  {
+                    "Type": "Enemy"
+                  },
+                  {
+                    "Type": "UnitRole",
+                    "m_Type": [
+                      "NURT_SNIPER",
+                      "NURT_RANGER"
+                    ]
+                  }
+                ],
+                "m_Count": [
+                  1,
+                  1
+                ]
+              }
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L17_1 / 30"
+            },
+            "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_PENALTY_1",
+            "m_BuffStatLevel": 11
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "UnitCount",
+                "m_Range": [
+                  -3000,
+                  3000
+                ],
+                "m_TargetConditionV2": [
+                  {
+                    "Type": "Enemy"
+                  },
+                  {
+                    "Type": "UnitRole",
+                    "m_Type": [
+                      "NURT_SNIPER",
+                      "NURT_RANGER"
+                    ]
+                  }
+                ],
+                "m_Count": [
+                  2,
+                  2
+                ]
+              }
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L18_1 / 30"
+            },
+            "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_PENALTY_1",
+            "m_BuffStatLevel": 21
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "UnitCount",
+                "m_Range": [
+                  -3000,
+                  3000
+                ],
+                "m_TargetConditionV2": [
+                  {
+                    "Type": "Enemy"
+                  },
+                  {
+                    "Type": "UnitRole",
+                    "m_Type": [
+                      "NURT_SNIPER",
+                      "NURT_RANGER"
+                    ]
+                  }
+                ],
+                "m_Count": [
+                  3,
+                  3
+                ]
+              }
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L19_1 / 30"
+            },
+            "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_PENALTY_1",
+            "m_BuffStatLevel": 31
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "UnitCount",
+                "m_Range": [
+                  -3000,
+                  3000
+                ],
+                "m_TargetConditionV2": [
+                  {
+                    "Type": "Enemy"
+                  },
+                  {
+                    "Type": "UnitRole",
+                    "m_Type": [
+                      "NURT_SNIPER",
+                      "NURT_RANGER"
+                    ]
+                  }
+                ],
+                "m_Count": [
+                  4,
+                  4
+                ]
+              }
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L20_1 / 30"
+            },
+            "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_PENALTY_1",
+            "m_BuffStatLevel": 41
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "UnitCount",
+                "m_Range": [
+                  -3000,
+                  3000
+                ],
+                "m_TargetConditionV2": [
+                  {
+                    "Type": "Enemy"
+                  },
+                  {
+                    "Type": "UnitRole",
+                    "m_Type": [
+                      "NURT_SNIPER",
+                      "NURT_RANGER"
+                    ]
+                  }
+                ],
+                "m_Count": [
+                  5,
+                  5
+                ]
+              }
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L21_1 / 30"
+            },
+            "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_PENALTY_1",
+            "m_BuffStatLevel": 51
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "UnitCount",
+                "m_Range": [
+                  -3000,
+                  3000
+                ],
+                "m_TargetConditionV2": [
+                  {
+                    "Type": "Enemy"
+                  },
+                  {
+                    "Type": "UnitRole",
+                    "m_Type": [
+                      "NURT_SNIPER",
+                      "NURT_RANGER"
+                    ]
+                  }
+                ],
+                "m_Count": [
+                  6,
+                  6
+                ]
+              }
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L22_1 / 30"
+            },
+            "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_PENALTY_1",
+            "m_BuffStatLevel": 61
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "UnitCount",
+                "m_Range": [
+                  -3000,
+                  3000
+                ],
+                "m_TargetConditionV2": [
+                  {
+                    "Type": "Enemy"
+                  },
+                  {
+                    "Type": "UnitRole",
+                    "m_Type": [
+                      "NURT_SNIPER",
+                      "NURT_RANGER"
+                    ]
+                  }
+                ],
+                "m_Count": [
+                  7,
+                  7
+                ]
+              }
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L23_1 / 30"
+            },
+            "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_PENALTY_1",
+            "m_BuffStatLevel": 71
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "UnitCount",
+                "m_Range": [
+                  -3000,
+                  3000
+                ],
+                "m_TargetConditionV2": [
+                  {
+                    "Type": "Enemy"
+                  },
+                  {
+                    "Type": "UnitRole",
+                    "m_Type": [
+                      "NURT_SNIPER",
+                      "NURT_RANGER"
+                    ]
+                  }
+                ],
+                "m_Count": [
+                  8,
+                  8
+                ]
+              }
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L24_1 / 30"
+            },
+            "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_PENALTY_1",
+            "m_BuffStatLevel": 81
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "UnitCount",
+                "m_Range": [
+                  -3000,
+                  3000
+                ],
+                "m_TargetConditionV2": [
+                  {
+                    "Type": "Enemy"
+                  },
+                  {
+                    "Type": "UnitRole",
+                    "m_Type": [
+                      "NURT_SNIPER",
+                      "NURT_RANGER"
+                    ]
+                  }
+                ],
+                "m_Count": [
+                  9,
+                  9
+                ]
+              }
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L25_1 / 30"
+            },
+            "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_PENALTY_1",
+            "m_BuffStatLevel": 91
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "UnitCount",
+                "m_Range": [
+                  -3000,
+                  3000
+                ],
+                "m_TargetConditionV2": [
+                  {
+                    "Type": "Enemy"
+                  },
+                  {
+                    "Type": "UnitRole",
+                    "m_Type": [
+                      "NURT_SNIPER",
+                      "NURT_RANGER"
+                    ]
+                  }
+                ],
+                "m_Count": [
+                  10,
+                  999
+                ]
+              }
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L26_1 / 30"
+            },
+            "m_BuffStrID": "DEBUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_PENALTY_1",
+            "m_BuffStatLevel": 101
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_RESPAWN_EX",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "RESTART",
+        "m_listNKMEventRespawn": [
+          {
+            "m_fEventTime": 5.0,
+            "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_CORRUPTED_ARMOR_SUMMON",
+            "m_MoveBase": "ME",
+            "m_MoveOffset": "MY_LOOK_DIR",
+            "m_fOffsetX": -400,
+            "m_RespawnState": "USN_START"
+          }
+        ]
+      }
+    ],
+    "m_listAttackStateData": [
+      {
+        "m_ConditionV2": [
+          "IS_PASSIVE_ATTACK_USABLE_NOT",
+          "IS_SKILL1_PASSIVE_ATTACK_USABLE_NOT"
+        ],
+        "m_StateName": "USN_ATTACK1"
+      },
+      {
+        "m_ConditionV2": [
+          "IS_PASSIVE_ATTACK_USABLE",
+          "IS_SKILL1_PASSIVE_ATTACK_USABLE_NOT"
+        ],
+        "m_StateName": "USN_PASSIVE1"
+      },
+      {
+        "m_ConditionV2": [
+          "IS_SKILL1_PASSIVE_ATTACK_USABLE"
+        ],
+        "m_StateName": "USN_PASSIVE1_UP"
+      }
+    ],
+    "m_listSkillStateData": [
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_fStartCool": 1.0,
+        "m_bNoTarget": true
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_START",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_AnimName": "START",
+        "m_bShowGage": false,
+        "m_fAnimSpeed": 1.0,
+        "m_bForceLeft": true,
+        "m_listNKMEventText": [
+          {
+            "m_fEventTime": 1.8333333333333333,
+            "m_Text": "SI_BATTLE_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_START"
+          }
+        ],
+        "m_listNKMEventTrigger": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_TargetTrigger": "TRIGGER_RESPAWN_EX"
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_ConditionV2": [
+              "IS_EX"
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_DUMMY"
+          }
+        ],
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_Name": "VAR_PASSIVE_ATTACK_COOLTIME",
+            "m_Type": "SET",
+            "m_Value": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_Name": "VAR_SKILL1_COOLTIME_PASSIVE",
+            "m_Type": "SET",
+            "m_Value": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_Name": "VAR_TEXT_DIE_COUNT",
+            "m_Type": "SET",
+            "m_Value": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_Name": "VAR_TEXT_BACKSIDE",
+            "m_Type": "SET",
+            "m_Value": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_Name": "VAR_CHECK_SUPPORTER",
+            "m_Type": "SET",
+            "m_Value": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_Name": "VAR_CHECK_HP",
+            "m_Type": "SET",
+            "m_Value": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_Name": "VAR_RESPAWN_LONG_SUPPORTER",
+            "m_Type": "SET",
+            "m_Value": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_Name": "VAR_RESPAWN_LONG",
+            "m_Type": "SET",
+            "m_Value": 0
+          }
+        ],
+        "m_listNKMEventReaction": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_Reaction": "REACTION_CHECK_KILLCOUNT_DUMMY_MASTER"
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_Reaction": "REACTION_CHECK_DIE_UNIT"
+          },
+          {
+            "m_ConditionV2": [
+              "IS_EX"
+            ],
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_Reaction": "REACTION_CHECK_SUPPORTER"
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_Reaction": "REACTION_CHECK_HP_60"
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_Reaction": "REACTION_CHECK_HP_30"
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_ConditionV2": [
+              "IS_EX"
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_DEName": "DE_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_CHECK_SUPPORTER_1",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bHold": true
+          },
+          {
+            "m_ConditionV2": [
+              "IS_EX"
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_DEName": "DE_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_CHECK_SUPPORTER_2",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bHold": true
+          },
+          {
+            "m_ConditionV2": [
+              "IS_EX"
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_DEName": "DE_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_CHECK_SUPPORTER_3",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 0.2,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashGap": 15,
+            "m_fCameraCrashTime": 0.5
+          }
+        ],
+        "m_listNKMEventFadeWorld": [
+          {
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_fEventTimeMax": 1.5,
+            "m_fColorR": 0.03,
+            "m_fColorG": 0.03,
+            "m_fColorB": 0.03,
+            "m_fMapColorKeepTime": 0.16666666666666666,
+            "m_fMapColorReturnTime": 1.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.1,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_ROCK_BIG"
+            ]
+          },
+          {
+            "m_fEventTime": 0.2,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_ROCK_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 0.26666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_ROCK_BIG"
+            ]
+          },
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_ROCK_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 0.4,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_ROCK_BIG_02"
+            ]
+          },
+          {
+            "m_fEventTime": 0.9,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK"
+            ]
+          },
+          {
+            "m_fEventTime": 1.6666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_13"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_fLocalVol": 2,
+            "m_PlayRate": 1,
+            "m_listSoundName": [
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_PASSIVE_1",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_PASSIVE_5",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_PASSIVE_7",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_PASSIVE_8"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_RUN",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_AnimName": "RUN",
+        "m_bForceLeft": true,
+        "m_fAnimSpeed": 0.9,
+        "m_bAnimLoop": true,
+        "m_bRun": true
+      },
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimName": "ATTACK1",
+        "m_fAnimSpeed": 0.9,
+        "m_bForceLeft": true,
+        "m_listNKMEventAttack": [
+          {
+            "m_fEventTimeMin": 0.4,
+            "m_fEventTimeMax": 0.6,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 650,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 2,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_ATTACK1"
+          },
+          {
+            "m_fEventTimeMin": 1.6666666666666667,
+            "m_fEventTimeMax": 1.8666666666666667,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 650,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 2,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_ATTACK1"
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 2.0,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashGap": 2,
+            "m_fCameraCrashTime": 0.3333333333333333
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.3,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_05"
+            ]
+          },
+          {
+            "m_fEventTime": 1.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_05"
+            ]
+          },
+          {
+            "m_fEventTime": 1.7333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_ROCK_BIG"
+            ]
+          },
+          {
+            "m_fEventTime": 0.4,
+            "m_bVoice": true,
+            "m_PlayRate": 0.3,
+            "m_listSoundName": [
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_ATTACK_3",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_ATTACK_4",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_ATTACK_5",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_ATTACK_16",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_ATTACK_17"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PASSIVE1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimName": "SKILL1",
+        "m_fAnimSpeed": 1,
+        "m_bForceLeft": true,
+        "m_listNKMEventTrigger": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_TargetTrigger": "TRIGGER_PASSIVE_ATTACK_COOLTIME"
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_fEventTimeMin": 1.1333333333333333,
+            "m_fEventTimeMax": 1.3333333333333333,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 650,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 3,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_SKILL1"
+          },
+          {
+            "m_fEventTimeMin": 2.1666666666666665,
+            "m_fEventTimeMax": 2.3333333333333335,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 650,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 3,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_SKILL1_END"
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 1.1333333333333333,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashGap": 7,
+            "m_fCameraCrashTime": 0.3333333333333333
+          },
+          {
+            "m_fEventTime": 2.1666666666666665,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashGap": 12,
+            "m_fCameraCrashTime": 0.6666666666666666
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_10"
+            ]
+          },
+          {
+            "m_fEventTime": 1.1333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_09"
+            ]
+          },
+          {
+            "m_fEventTime": 2.1666666666666665,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_EARTHQUAKE_02"
+            ]
+          },
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_ACTIVE_1",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_ACTIVE_2",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_ACTIVE_7"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PASSIVE1_UP",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimName": "SKILL1",
+        "m_fAnimSpeed": 1,
+        "m_bForceLeft": true,
+        "m_listNKMEventChangeState": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_ChangeState": "USN_PASSIVE1"
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_SKILL1",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_AnimName": "PASSIVE2",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1,
+        "m_StateCoolTime": 40,
+        "m_bForceLeft": true,
+        "m_listNKMEventChangeState": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_CHECK_HP",
+                "m_Value": 1,
+                "Inverse": true
+              }
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_ChangeState": "USN_SKILL1_SUCCESS"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "VAR_CHECK_HP",
+                "m_Value": 1
+              }
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_ChangeState": "USN_SKILL1_FAIL"
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_SKILL1_SUCCESS",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_AnimName": "PASSIVE2",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1,
+        "m_bForceLeft": true,
+        "m_listNKMEventText": [
+          {
+            "m_fEventTime": 0.5,
+            "m_Text": "SI_BATTLE_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_SUCCESS"
+          }
+        ],
+        "m_listNKMEventVariable": [
+          {
+            "m_bStateEndTime": true,
+            "m_Name": "VAR_CHECK_HP",
+            "m_Type": "SET",
+            "m_Value": 0
+          }
+        ],
+        "m_listNKMEventTrigger": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_TargetTrigger": "TRIGGER_SKILL1_COOLTIME_PASSIVE"
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_SKILL1_G1",
+            "m_BuffTimeLevel": 16,
+            "m_BuffStatLevel": 80
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_SKILL1_G2",
+            "m_BuffTimeLevel": 16,
+            "m_BuffStatLevel": 100
+          },
+          {
+            "m_ConditionV2": [
+              "IS_PATTERN_ON"
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L13_1 / 30"
+            },
+            "m_BuffStrID": "BUFF_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_PENALTY_1",
+            "m_BuffTimeLevel": 16
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_EffectName": "AB_FX_CAST_SKILL",
+            "m_OffsetX": 30,
+            "m_OffsetY": 200,
+            "m_AnimName": "BASE",
+            "m_fScaleFactor": 30.0
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_fEventTimeMin": 1.1,
+            "m_fEventTimeMax": 1.2666666666666666,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 650,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 3,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_PASSIVE1"
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 1.1,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashGap": 5,
+            "m_fCameraCrashTime": 0.3333333333333333
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 100,
+            "m_fColorR": 1.0,
+            "m_fColorG": 0.5,
+            "m_fColorB": 0.5
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ]
+          },
+          {
+            "m_fEventTime": 0.3,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_16"
+            ]
+          },
+          {
+            "m_fEventTime": 1.1,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_EARTHQUAKE_04"
+            ]
+          },
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 1,
+            "m_listSoundName": [
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_HYPER_3",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_HYPER_5"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_SKILL1_FAIL",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1,
+        "m_bForceLeft": true,
+        "m_listNKMEventText": [
+          {
+            "m_fEventTime": 0.5,
+            "m_Text": "SI_BATTLE_MOB_BOSS_FIERCE_CORRUPTED_ARMOR_FAIL"
+          }
+        ],
+        "m_listNKMEventVariable": [
+          {
+            "m_bStateEndTime": true,
+            "m_Name": "VAR_CHECK_HP",
+            "m_Type": "SET",
+            "m_Value": 0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_3",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_5",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_6"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_A",
+        "m_bForceLeft": true,
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_3",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_5",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_6"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_B",
+        "m_bForceLeft": true,
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_3",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_5",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_6"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_AIR_UP",
+        "m_bForceLeft": true,
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_3",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_5",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_6"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_bForceLeft": true,
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_3",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_5",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DAMAGE_6"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_bForceLeft": true,
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DEATH_1",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DEATH_2",
+              "VOICE_UNIT_CORRUPTED_M_ARMOR_BATTLE_DEATH_7"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

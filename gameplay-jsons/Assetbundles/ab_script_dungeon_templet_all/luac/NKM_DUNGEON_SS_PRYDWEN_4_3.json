@@ -1,0 +1,536 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_PRYDWEN_4_3.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.2
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_PRYDWEN_ESPR_KNIGHT"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatValue": {
+          "NST_ATK": 2.0,
+          "NST_DEF": 5.0,
+          "NST_HP": 5.0
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LOCUST_HIGH",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.3,
+            "m_fEventPos": 0.45
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LOCUST_HIGH",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.3,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LOCUST_HIGH",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.3,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LYCORIS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.6,
+            "m_fEventPos": 0.25
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LYCORIS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.6,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_S_DOCTOR",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.7,
+            "m_fEventPos": 0.05
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LOCUST_HIGH",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 8.3,
+            "m_fEventPos": 0.45
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LOCUST_HIGH",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 8.3,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LOCUST_HIGH",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 8.3,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LYCORIS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 8.6,
+            "m_fEventPos": 0.25
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LYCORIS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 8.6,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_S_DOCTOR",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 8.7,
+            "m_fEventPos": 0.05
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LOCUST_HIGH",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 12.3,
+            "m_fEventPos": 0.45
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LOCUST_HIGH",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 12.3,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LOCUST_HIGH",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 12.3,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LYCORIS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 12.6,
+            "m_fEventPos": 0.25
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LYCORIS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 12.6,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_S_DOCTOR",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 12.7,
+            "m_fEventPos": 0.05
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LOCUST_HIGH",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 17.3,
+            "m_fEventPos": 0.45
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LOCUST_HIGH",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 17.3,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LOCUST_HIGH",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 17.3,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LYCORIS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 17.6,
+            "m_fEventPos": 0.25
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LYCORIS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 17.6,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_S_DOCTOR",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 17.7,
+            "m_fEventPos": 0.05
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_ESPR_CA_SHADOW_ENEMY_ALLY",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.15,
+            "m_EventTag": "EVE",
+            "m_EventTagCount": 1
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamB",
+      "value": [
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 2384021,
+          "m_fEventDelay": 0,
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 20
+          }
+        },
+        {
+          "m_dungeonEventType": "ADD_EVENTTAG",
+          "m_EventActionStrValue": "EVE",
+          "m_EventActionValue": 1,
+          "m_fEventDelay": 0,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 21
+          }
+        },
+        {
+          "m_dungeonEventType": "FORCE_LOSE",
+          "m_EventActionValue": 1,
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_UNIT_ESPR_CA_SHADOW_ENEMY_ALLY",
+          "m_EventConditionValue2": "USN_HYPER1",
+          "m_fEventDelay": 0,
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 0.2,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_PRYDWEN_ESPR_KNIGHT",
+    "m_fBossPosZ": 0.6,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatValue": {
+          "NST_ATK": 2.0,
+          "NST_DEF": 5.0,
+          "NST_HP": 5.0
+        }
+      }
+    },
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LOCUST_HIGH",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.3,
+          "m_fEventPos": 0.45
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LOCUST_HIGH",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.3,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LOCUST_HIGH",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.3,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LYCORIS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.6,
+          "m_fEventPos": 0.25
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LYCORIS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.6,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_S_DOCTOR",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.7,
+          "m_fEventPos": 0.05
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LOCUST_HIGH",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 8.3,
+          "m_fEventPos": 0.45
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LOCUST_HIGH",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 8.3,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LOCUST_HIGH",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 8.3,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LYCORIS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 8.6,
+          "m_fEventPos": 0.25
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LYCORIS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 8.6,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_S_DOCTOR",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 8.7,
+          "m_fEventPos": 0.05
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LOCUST_HIGH",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 12.3,
+          "m_fEventPos": 0.45
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LOCUST_HIGH",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 12.3,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LOCUST_HIGH",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 12.3,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LYCORIS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 12.6,
+          "m_fEventPos": 0.25
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LYCORIS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 12.6,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_S_DOCTOR",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 12.7,
+          "m_fEventPos": 0.05
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LOCUST_HIGH",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 17.3,
+          "m_fEventPos": 0.45
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LOCUST_HIGH",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 17.3,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LOCUST_HIGH",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 17.3,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LYCORIS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 17.6,
+          "m_fEventPos": 0.25
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_LYCORIS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 17.6,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_S_DOCTOR",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 17.7,
+          "m_fEventPos": 0.05
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_ESPR_CA_SHADOW_ENEMY_ALLY",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.15,
+          "m_EventTag": "EVE",
+          "m_EventTagCount": 1
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamB": [
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 2384021,
+        "m_fEventDelay": 0,
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 20
+        }
+      },
+      {
+        "m_dungeonEventType": "ADD_EVENTTAG",
+        "m_EventActionStrValue": "EVE",
+        "m_EventActionValue": 1,
+        "m_fEventDelay": 0,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 21
+        }
+      },
+      {
+        "m_dungeonEventType": "FORCE_LOSE",
+        "m_EventActionValue": 1,
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_UNIT_ESPR_CA_SHADOW_ENEMY_ALLY",
+        "m_EventConditionValue2": "USN_HYPER1",
+        "m_fEventDelay": 0,
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

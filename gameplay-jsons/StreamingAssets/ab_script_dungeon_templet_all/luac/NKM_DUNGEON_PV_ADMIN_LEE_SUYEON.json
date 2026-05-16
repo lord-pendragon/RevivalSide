@@ -1,0 +1,369 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_PV_ADMIN_LEE_SUYEON.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 8,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 6
+    },
+    {
+      "__key": "m_fCostSpeedRateA",
+      "value": 0.9
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.5
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MONSTER_BOSS_BASIC_MINISTRA_ADMIN_PV_CA_H"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.5
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_WRAITH_EP5_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 300
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_WRAITH_EVENT_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventPos": 0.4
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "DEBUFF_MONSTER_PV_CA_LEE_SUYEON_RANGER_RATE",
+              "m_BuffLevel": 20
+            }
+          ]
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_WRAITH_EVENT_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventPos": 0.3
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "DEBUFF_MONSTER_PV_CA_LEE_SUYEON_RANGER_RATE",
+              "m_BuffLevel": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_UNIT_M_ADMIN_TANK",
+          "m_UnitLevel": 80,
+          "m_UnitLimitBreakLevel": 1,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 15,
+            "m_fEventPos": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_WRAITH_EVENT_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventPos": 0.75
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "DEBUFF_MONSTER_PV_CA_LEE_SUYEON_RANGER_RATE",
+              "m_BuffLevel": 20
+            }
+          ]
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_WRAITH_EVENT_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventPos": 0.6
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "DEBUFF_MONSTER_PV_CA_LEE_SUYEON_RANGER_RATE",
+              "m_BuffLevel": 20
+            }
+          ]
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_WRAITH_EP5_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeGap": 20,
+            "m_fEventPos": 0.3,
+            "m_fEventBossHPLess": 0.3,
+            "m_fEventBossHPUpper": 0.15
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "DEBUFF_MONSTER_PV_CA_LEE_SUYEON_RANGER_RATE",
+              "m_BuffLevel": 20
+            }
+          ]
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_WRAITH_EVENT_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventPos": 0.7,
+            "m_fEventBossHPLess": 0.15,
+            "m_fEventBossHPUpper": 0.0
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "DEBUFF_MONSTER_PV_CA_LEE_SUYEON_RANGER_RATE",
+              "m_BuffLevel": 20
+            }
+          ]
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_FLOATER_EVENT_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventPos": 0.6,
+            "m_fEventBossHPLess": 0.15,
+            "m_fEventBossHPUpper": 0.0
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "DEBUFF_MONSTER_PV_CA_LEE_SUYEON_RANGER_RATE",
+              "m_BuffLevel": 20
+            },
+            {
+              "m_BuffStrID": "DEBUFF_MONSTER_PV_CA_LEE_SUYEON_ATK_SPD",
+              "m_BuffLevel": 30
+            }
+          ]
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_DEMOLISHER_EVENT_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeGap": 15,
+            "m_fEventPos": 0.3,
+            "m_fEventTimeStart": 0
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "DEBUFF_MONSTER_PV_CA_LEE_SUYEON_RANGER_RATE",
+              "m_BuffLevel": 100
+            },
+            {
+              "m_BuffStrID": "DEBUFF_MONSTER_PV_CA_LEE_SUYEON_ATK_SPD",
+              "m_BuffLevel": 50
+            }
+          ]
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_BRINGER_EP5_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeGap": 40,
+            "m_fEventPos": 0.5,
+            "m_fEventTimeStart": 0,
+            "m_fEventBossHPLess": 0.3,
+            "m_fEventBossHPUpper": 0.15
+          },
+          "m_listStaticBuffData": [
+            {
+              "m_BuffStrID": "DEBUFF_MONSTER_PV_CA_LEE_SUYEON_RANGER_RATE",
+              "m_BuffLevel": 20
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 6,
+    "m_fCostSpeedRateA": 0.9,
+    "m_fCostSpeedRateB": 0.5,
+    "m_BossUnitStrID": "NKM_MONSTER_BOSS_BASIC_MINISTRA_ADMIN_PV_CA_H",
+    "m_fBossPosZ": 0.5,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_WRAITH_EP5_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 300
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_WRAITH_EVENT_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventPos": 0.4
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "DEBUFF_MONSTER_PV_CA_LEE_SUYEON_RANGER_RATE",
+            "m_BuffLevel": 20
+          }
+        ]
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_WRAITH_EVENT_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventPos": 0.3
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "DEBUFF_MONSTER_PV_CA_LEE_SUYEON_RANGER_RATE",
+            "m_BuffLevel": 20
+          }
+        ]
+      }
+    ],
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_UNIT_M_ADMIN_TANK",
+        "m_UnitLevel": 80,
+        "m_UnitLimitBreakLevel": 1,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 15,
+          "m_fEventPos": 0.1
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_WRAITH_EVENT_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventPos": 0.75
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "DEBUFF_MONSTER_PV_CA_LEE_SUYEON_RANGER_RATE",
+            "m_BuffLevel": 20
+          }
+        ]
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_WRAITH_EVENT_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventPos": 0.6
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "DEBUFF_MONSTER_PV_CA_LEE_SUYEON_RANGER_RATE",
+            "m_BuffLevel": 20
+          }
+        ]
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_WRAITH_EP5_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeGap": 20,
+          "m_fEventPos": 0.3,
+          "m_fEventBossHPLess": 0.3,
+          "m_fEventBossHPUpper": 0.15
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "DEBUFF_MONSTER_PV_CA_LEE_SUYEON_RANGER_RATE",
+            "m_BuffLevel": 20
+          }
+        ]
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_WRAITH_EVENT_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventPos": 0.7,
+          "m_fEventBossHPLess": 0.15,
+          "m_fEventBossHPUpper": 0.0
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "DEBUFF_MONSTER_PV_CA_LEE_SUYEON_RANGER_RATE",
+            "m_BuffLevel": 20
+          }
+        ]
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_FLOATER_EVENT_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventPos": 0.6,
+          "m_fEventBossHPLess": 0.15,
+          "m_fEventBossHPUpper": 0.0
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "DEBUFF_MONSTER_PV_CA_LEE_SUYEON_RANGER_RATE",
+            "m_BuffLevel": 20
+          },
+          {
+            "m_BuffStrID": "DEBUFF_MONSTER_PV_CA_LEE_SUYEON_ATK_SPD",
+            "m_BuffLevel": 30
+          }
+        ]
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_DEMOLISHER_EVENT_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeGap": 15,
+          "m_fEventPos": 0.3,
+          "m_fEventTimeStart": 0
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "DEBUFF_MONSTER_PV_CA_LEE_SUYEON_RANGER_RATE",
+            "m_BuffLevel": 100
+          },
+          {
+            "m_BuffStrID": "DEBUFF_MONSTER_PV_CA_LEE_SUYEON_ATK_SPD",
+            "m_BuffLevel": 50
+          }
+        ]
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_BRINGER_EP5_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeGap": 40,
+          "m_fEventPos": 0.5,
+          "m_fEventTimeStart": 0,
+          "m_fEventBossHPLess": 0.3,
+          "m_fEventBossHPUpper": 0.15
+        },
+        "m_listStaticBuffData": [
+          {
+            "m_BuffStrID": "DEBUFF_MONSTER_PV_CA_LEE_SUYEON_RANGER_RATE",
+            "m_BuffLevel": 20
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

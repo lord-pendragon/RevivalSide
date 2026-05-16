@@ -1,0 +1,299 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_BATTLE_TRIM_SHADOW_3_Lv41.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.5
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_SHADOW_A_GLEIPNIR"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_SHADOW_C_ADMIN_NA_YUBIN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 181
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_S_TIDE_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.4
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0,
+              "NST_DEF": 1.5,
+              "NST_HP": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_SL_TANK",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 7,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.2,
+              "NST_HP": 2.0,
+              "NST_DEF": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_FUTURE_SPIDER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 10,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_SHADOW_C_ADMIN_NA_YUBIN",
+          "m_EventRespawnUnitTag": "BOSS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_TIDE_VEHICLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 40,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_TIDE_HELI",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 50,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0,
+              "NST_HP": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_C_ADMIN_NA_YUBIN",
+          "m_EventRespawnUnitTag": "BOSS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 60,
+            "m_fEventPos": 0.15,
+            "m_EventDieUnitTag": "BOSS",
+            "m_EventDieUnitTagCount": 1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_TIDE_VEHICLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 80,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_M_TIDE_HELI",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 90,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0,
+              "NST_HP": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_SHADOW_C_ADMIN_NA_YUBIN",
+          "m_EventRespawnUnitTag": "BOSS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 120,
+            "m_fEventPos": 0.1,
+            "m_EventDieUnitTag": "BOSS",
+            "m_EventDieUnitTagCount": 2
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 1.5,
+    "m_BossUnitStrID": "NKM_SHADOW_A_GLEIPNIR",
+    "m_fBossPosZ": 0.6,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_SHADOW_C_ADMIN_NA_YUBIN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 181
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_S_TIDE_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.4
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0,
+            "NST_DEF": 1.5,
+            "NST_HP": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_SL_TANK",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 7,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.2,
+            "NST_HP": 2.0,
+            "NST_DEF": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_FUTURE_SPIDER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 10,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5
+          }
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_SHADOW_C_ADMIN_NA_YUBIN",
+        "m_EventRespawnUnitTag": "BOSS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_TIDE_VEHICLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 40,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_TIDE_HELI",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 50,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0,
+            "NST_HP": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_C_ADMIN_NA_YUBIN",
+        "m_EventRespawnUnitTag": "BOSS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 60,
+          "m_fEventPos": 0.15,
+          "m_EventDieUnitTag": "BOSS",
+          "m_EventDieUnitTagCount": 1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_TIDE_VEHICLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 80,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_M_TIDE_HELI",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 90,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0,
+            "NST_HP": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_SHADOW_C_ADMIN_NA_YUBIN",
+        "m_EventRespawnUnitTag": "BOSS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 120,
+          "m_fEventPos": 0.1,
+          "m_EventDieUnitTag": "BOSS",
+          "m_EventDieUnitTagCount": 2
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

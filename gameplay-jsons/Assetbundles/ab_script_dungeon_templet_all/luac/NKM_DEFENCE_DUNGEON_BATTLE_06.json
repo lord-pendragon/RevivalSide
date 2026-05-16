@@ -1,0 +1,963 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DEFENCE_DUNGEON_BATTLE_06.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 8,
+  "records": [
+    {
+      "__key": "m_fCostSpeedRateA",
+      "value": 1.0
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EVENT_WAVE_OMEN"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listValidLand",
+      "value": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "__key": "m_fStartCost",
+      "value": 0
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamB",
+      "value": [
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_ELITE_EVENT_WAVE_BONUS_DRONE",
+          "m_EventConditionValue2": "USN_DAMAGE_DIE",
+          "m_dungeonEventType": "ADD_EVENTTAG",
+          "m_EventActionStrValue": "SWORD_ULT",
+          "m_EventActionValue": 1,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 1,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 2,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 3,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 4,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 5,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 6,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 7,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 8,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 9,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 10,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 11,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 12,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 13,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 14,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 15,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 16,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 17,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 18,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 19,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 20,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 21,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 22,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 23,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 24,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 25,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 26,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 27,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 28,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 29,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+          "m_EventActionValue": 1267,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_EventTag": "SWORD_ULT",
+            "m_EventTagCount": 30,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_BOSS_EVENT_WAVE_OMEN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventPos": 0.01
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHIELD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 10,
+            "m_fEventPos": 0
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 3,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 3,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 0,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 0,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 0,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_EVENT_NANAHARA2_REAPER_RAILGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 60,
+            "m_fEventTimeGap": 0,
+            "m_fEventPos": 0
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_BOSS_EVENT_REAPER_M_HELI",
+          "m_UnitLevel": 120,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 90,
+            "m_fEventTimeGap": 30,
+            "m_fEventPos": 0
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_BOSS_EVENT_NANAHARA2_REAPER_M_SIEGE",
+          "m_UnitLevel": 150,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 120,
+            "m_fEventTimeGap": 30,
+            "m_fEventPos": 0.25
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATTACK_SPEED_RATE": 2.0,
+              "NST_HP": 1.5,
+              "NST_ATK": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_EVENT_WAVE_BONUS_DRONE",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 155,
+            "m_fEventTimeGap": 30,
+            "m_fEventPos": 0
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fCostSpeedRateA": 1.0,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EVENT_WAVE_OMEN",
+    "m_fBossPosZ": 0.6,
+    "m_listValidLand": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "m_fStartCost": 0,
+    "m_fCostSpeedRateB": 0,
+    "m_listDungeonEventTempletTeamB": [
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_ELITE_EVENT_WAVE_BONUS_DRONE",
+        "m_EventConditionValue2": "USN_DAMAGE_DIE",
+        "m_dungeonEventType": "ADD_EVENTTAG",
+        "m_EventActionStrValue": "SWORD_ULT",
+        "m_EventActionValue": 1,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 1,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 2,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 3,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 4,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 5,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 6,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 7,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 8,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 9,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 10,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 11,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 12,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 13,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 14,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 15,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 16,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 17,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 18,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 19,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 20,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 21,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 22,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 23,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 24,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 25,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 26,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 27,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 28,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 29,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_HYPER_FULL",
+        "m_EventActionValue": 1267,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_EventTag": "SWORD_ULT",
+          "m_EventTagCount": 30,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_BOSS_EVENT_WAVE_OMEN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventPos": 0.01
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHIELD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 10,
+          "m_fEventPos": 0
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 3,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 3,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 0,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 0,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 0,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_EVENT_NANAHARA2_REAPER_RAILGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 60,
+          "m_fEventTimeGap": 0,
+          "m_fEventPos": 0
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_BOSS_EVENT_REAPER_M_HELI",
+        "m_UnitLevel": 120,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 90,
+          "m_fEventTimeGap": 30,
+          "m_fEventPos": 0
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_BOSS_EVENT_NANAHARA2_REAPER_M_SIEGE",
+        "m_UnitLevel": 150,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 120,
+          "m_fEventTimeGap": 30,
+          "m_fEventPos": 0.25
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATTACK_SPEED_RATE": 2.0,
+            "NST_HP": 1.5,
+            "NST_ATK": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_EVENT_WAVE_BONUS_DRONE",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 155,
+          "m_fEventTimeGap": 30,
+          "m_fEventPos": 0
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

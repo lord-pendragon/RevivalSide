@@ -1,0 +1,126 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_ELITE_COMMON_TOTEM_TRANS.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 3,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_MONSTER_NORMAL_BASIC_TOTEM_N"
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_BuffStrID": "DEBUFF_TRANS_TOTEM_RANGE",
+          "m_BuffLevel": 1
+        },
+        {
+          "m_BuffStrID": "BUFF_MOB_COMMON_TRANS",
+          "m_BuffLevel": 10
+        },
+        {
+          "m_BuffStrID": "DEBUFF_MOB_COMMON_TRANS",
+          "m_BuffLevel": 20
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_START",
+          "m_listNKMEventBuff": [
+            {
+              "m_BuffStrID": "DEBUFF_TRANS_TOTEM_SKILL",
+              "m_bMyTeam": false,
+              "m_bEnemy": true
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_EffectName": "AB_FX_BUFF_START_RED"
+            },
+            {
+              "m_EffectName": "AB_FX_BUFF_MAP_RED"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_listNKMEventBuff": [
+            {
+              "m_BuffStrID": "DEBUFF_TRANS_TOTEM_SKILL",
+              "m_bMyTeam": false,
+              "m_bEnemy": true
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_EffectName": "AB_FX_BUFF_START_RED"
+            },
+            {
+              "m_EffectName": "AB_FX_BUFF_MAP_RED"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_MONSTER_NORMAL_BASIC_TOTEM_N",
+    "m_listStaticBuffData": [
+      {
+        "m_BuffStrID": "DEBUFF_TRANS_TOTEM_RANGE",
+        "m_BuffLevel": 1
+      },
+      {
+        "m_BuffStrID": "BUFF_MOB_COMMON_TRANS",
+        "m_BuffLevel": 10
+      },
+      {
+        "m_BuffStrID": "DEBUFF_MOB_COMMON_TRANS",
+        "m_BuffLevel": 20
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_START",
+        "m_listNKMEventBuff": [
+          {
+            "m_BuffStrID": "DEBUFF_TRANS_TOTEM_SKILL",
+            "m_bMyTeam": false,
+            "m_bEnemy": true
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_EffectName": "AB_FX_BUFF_START_RED"
+          },
+          {
+            "m_EffectName": "AB_FX_BUFF_MAP_RED"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_listNKMEventBuff": [
+          {
+            "m_BuffStrID": "DEBUFF_TRANS_TOTEM_SKILL",
+            "m_bMyTeam": false,
+            "m_bEnemy": true
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_EffectName": "AB_FX_BUFF_START_RED"
+          },
+          {
+            "m_EffectName": "AB_FX_BUFF_MAP_RED"
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

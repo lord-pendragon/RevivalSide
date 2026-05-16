@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { getGameplayTableRoots } = require("../gameplay-jsons");
 
 const DATE_PROFILES_FILE = path.join(__dirname, "date-profiles.json");
 const DATE_PROFILE_TABLE_NAME = "EVENT_DATE_PROFILE";
@@ -1444,21 +1445,11 @@ function looksLikeObjectMap(value) {
 }
 
 function resolveTableRoots(rootDir, env) {
-  const explicit = parsePathList(env.CS_EVENT_TABLE_ROOTS || "");
-  if (explicit.length) return explicit.map((entry) => path.resolve(rootDir, entry));
-  return [
-    path.join(rootDir, "gameplay-tables-json", "Assetbundles"),
-    path.join(rootDir, "gameplay-tables-json", "StreamingAssets"),
-    path.join(rootDir, "gameplay-jsons", "Assetbundles"),
-    path.join(rootDir, "gameplay-jsons", "StreamingAssets"),
-  ];
-}
-
-function parsePathList(value) {
-  return String(value || "")
-    .split(/[;,]/)
-    .map((entry) => entry.trim())
-    .filter(Boolean);
+  return getGameplayTableRoots({
+    rootDir,
+    env,
+    explicitEnvName: "CS_EVENT_TABLE_ROOTS",
+  });
 }
 
 function findJsonFiles(root) {

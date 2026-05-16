@@ -1,0 +1,151 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_EVENT_FALLEN_1_1.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 6
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.3
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_FALLEN_MACHINE_GAP"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatValue": {
+          "NST_DEF": -450,
+          "NST_HP": -100000
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_FALLEN_MACHINE_GAP",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 120,
+            "m_fEventPos": 0.05
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.5,
+              "NST_EVADE": 0.7,
+              "NST_HP": 0.8
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_FALLEN_MACHINE_GAP",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 2,
+            "m_fEventTimeEnd": 120,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.5,
+              "NST_EVADE": 0.7,
+              "NST_HP": 0.8
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_FALLEN_MACHINE_GAP",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 8,
+            "m_fEventTimeEnd": 120,
+            "m_fEventPos": 0.12
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.5,
+              "NST_EVADE": 0.7,
+              "NST_HP": 0.8
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 6,
+    "m_fCostSpeedRateB": 0.3,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_FALLEN_MACHINE_GAP",
+    "m_fBossPosZ": 0.6,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatValue": {
+          "NST_DEF": -450,
+          "NST_HP": -100000
+        }
+      }
+    },
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_FALLEN_MACHINE_GAP",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 120,
+          "m_fEventPos": 0.05
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.5,
+            "NST_EVADE": 0.7,
+            "NST_HP": 0.8
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_FALLEN_MACHINE_GAP",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 2,
+          "m_fEventTimeEnd": 120,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.5,
+            "NST_EVADE": 0.7,
+            "NST_HP": 0.8
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_FALLEN_MACHINE_GAP",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 8,
+          "m_fEventTimeEnd": 120,
+          "m_fEventPos": 0.12
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.5,
+            "NST_EVADE": 0.7,
+            "NST_HP": 0.8
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

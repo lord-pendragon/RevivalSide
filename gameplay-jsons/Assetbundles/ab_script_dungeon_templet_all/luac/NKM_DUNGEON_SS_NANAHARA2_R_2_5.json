@@ -1,0 +1,829 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_NANAHARA2_R_2_5.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 2,
+  "records": [
+    {
+      "__key": "m_listDungeonWave",
+      "value": [
+        {
+          "m_WaveID": 1,
+          "m_NextWaveID": 2,
+          "m_fNextWavetime": 40,
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0,
+                "m_fEventPos": 0.3
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0.3,
+                "m_fEventPos": 0.12
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 8,
+                "m_fEventPos": 0.18
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 8.3,
+                "m_fEventPos": 0.2
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 8.6,
+                "m_fEventPos": 0.2
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 8.9,
+                "m_fEventPos": 0.22
+              }
+            }
+          ]
+        },
+        {
+          "m_WaveID": 2,
+          "m_NextWaveID": 3,
+          "m_fNextWavetime": 40,
+          "m_listDungeonUnitRespawnA": [
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_MINE_H",
+              "m_UnitLevel": 100,
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 12,
+                "m_fEventPos": 0.4,
+                "m_EventTag": "CUTIN_2",
+                "m_EventTagCount": 1
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_MINE_H",
+              "m_UnitLevel": 100,
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 12,
+                "m_fEventPos": 0.6,
+                "m_EventTag": "CUTIN_2",
+                "m_EventTagCount": 1
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_MINE_H",
+              "m_UnitLevel": 100,
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 12,
+                "m_fEventPos": 0.8,
+                "m_EventTag": "CUTIN_2",
+                "m_EventTagCount": 1
+              }
+            }
+          ],
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+              "m_EventRespawnUnitTag": "CUTIN_2",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0,
+                "m_fEventPos": 0.4
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 7,
+                "m_fEventPos": 0.12
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 7.3,
+                "m_fEventPos": 0.15
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 7.9,
+                "m_fEventPos": 0.1
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 14,
+                "m_fEventPos": 0.2
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 14.6,
+                "m_fEventPos": 0.25
+              }
+            }
+          ]
+        },
+        {
+          "m_WaveID": 3,
+          "m_NextWaveID": 4,
+          "m_fNextWavetime": 40,
+          "m_listDungeonUnitRespawnA": [
+            {
+              "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_RAS_TOWER_WALL_EVENT_SIGMA_E",
+              "m_UnitLevel": 100,
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 12,
+                "m_fEventPos": 0.35,
+                "m_EventTag": "CUTIN_3",
+                "m_EventTagCount": 1
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_RAS_TOWER_WALL_EVENT_SIGMA_E",
+              "m_UnitLevel": 100,
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 12,
+                "m_fEventPos": 0.7,
+                "m_EventTag": "CUTIN_3",
+                "m_EventTagCount": 1
+              }
+            }
+          ],
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+              "m_EventRespawnUnitTag": "CUTIN_3",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0,
+                "m_fEventPos": 0.3
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 7.3,
+                "m_fEventPos": 0.3
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 7.6,
+                "m_fEventPos": 0.45
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 7.9,
+                "m_fEventPos": 0.35
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 14,
+                "m_fEventPos": 0.5
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 14,
+                "m_fEventPos": 0.4
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 14.3,
+                "m_fEventPos": 0.35
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 14.6,
+                "m_fEventPos": 0.1
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 14.6,
+                "m_fEventPos": 0.2
+              }
+            }
+          ]
+        },
+        {
+          "m_WaveID": 4,
+          "m_fNextWavetime": 180,
+          "m_listDungeonUnitRespawnA": [
+            {
+              "m_UnitStrID": "NKM_UNIT_C_JAPAN_CHIHIRO",
+              "m_UnitLevel": 100,
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0,
+                "m_fEventPos": 0.15,
+                "m_EventTag": "CUTIN_4",
+                "m_EventTagCount": 1
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_UNIT_C_JAPAN_SENHIME",
+              "m_UnitLevel": 100,
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 1,
+                "m_fEventPos": 0.1,
+                "m_EventTag": "CUTIN_4",
+                "m_EventTagCount": 1
+              }
+            }
+          ],
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+              "m_EventRespawnUnitTag": "CUTIN_4",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0,
+                "m_fEventPos": 0.1
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0.3,
+                "m_fEventPos": 0.12
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_ELITE_EVENT_NANAHARA2_AXE",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 3.6,
+                "m_fEventPos": 0.25
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 8.3,
+                "m_fEventPos": 0.2
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 8.6,
+                "m_fEventPos": 0.22
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamB",
+      "value": [
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 3412251,
+          "m_bPause": true,
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+          "m_EventConditionValue2": "USN_START",
+          "m_fEventDelay": 2,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 3412252,
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_EventDieDeckTag": "CUTIN_2",
+            "m_EventDieDeckTagCount": 1,
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "ADD_EVENTTAG",
+          "m_EventActionStrValue": "CUTIN_2",
+          "m_EventActionValue": 1,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_EventDieDeckTag": "CUTIN_2",
+            "m_EventDieDeckTagCount": 1,
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 3412253,
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_EventDieDeckTag": "CUTIN_3",
+            "m_EventDieDeckTagCount": 1,
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "ADD_EVENTTAG",
+          "m_EventActionStrValue": "CUTIN_3",
+          "m_EventActionValue": 1,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_EventDieDeckTag": "CUTIN_3",
+            "m_EventDieDeckTagCount": 1,
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 3412254,
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_ELITE_EVENT_NANAHARA2_AXE",
+          "m_EventConditionValue2": "USN_START",
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_ELITE_EVENT_NANAHARA2_AXE",
+          "m_EventConditionValue2": "USN_START",
+          "m_dungeonEventType": "ADD_EVENTTAG",
+          "m_EventActionStrValue": "CUTIN_4",
+          "m_EventActionValue": 1,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_listDungeonWave": [
+      {
+        "m_WaveID": 1,
+        "m_NextWaveID": 2,
+        "m_fNextWavetime": 40,
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0,
+              "m_fEventPos": 0.3
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0.3,
+              "m_fEventPos": 0.12
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 8,
+              "m_fEventPos": 0.18
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 8.3,
+              "m_fEventPos": 0.2
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 8.6,
+              "m_fEventPos": 0.2
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 8.9,
+              "m_fEventPos": 0.22
+            }
+          }
+        ]
+      },
+      {
+        "m_WaveID": 2,
+        "m_NextWaveID": 3,
+        "m_fNextWavetime": 40,
+        "m_listDungeonUnitRespawnA": [
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_MINE_H",
+            "m_UnitLevel": 100,
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 12,
+              "m_fEventPos": 0.4,
+              "m_EventTag": "CUTIN_2",
+              "m_EventTagCount": 1
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_MINE_H",
+            "m_UnitLevel": 100,
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 12,
+              "m_fEventPos": 0.6,
+              "m_EventTag": "CUTIN_2",
+              "m_EventTagCount": 1
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_MINE_H",
+            "m_UnitLevel": 100,
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 12,
+              "m_fEventPos": 0.8,
+              "m_EventTag": "CUTIN_2",
+              "m_EventTagCount": 1
+            }
+          }
+        ],
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+            "m_EventRespawnUnitTag": "CUTIN_2",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0,
+              "m_fEventPos": 0.4
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 7,
+              "m_fEventPos": 0.12
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 7.3,
+              "m_fEventPos": 0.15
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 7.9,
+              "m_fEventPos": 0.1
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 14,
+              "m_fEventPos": 0.2
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 14.6,
+              "m_fEventPos": 0.25
+            }
+          }
+        ]
+      },
+      {
+        "m_WaveID": 3,
+        "m_NextWaveID": 4,
+        "m_fNextWavetime": 40,
+        "m_listDungeonUnitRespawnA": [
+          {
+            "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_RAS_TOWER_WALL_EVENT_SIGMA_E",
+            "m_UnitLevel": 100,
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 12,
+              "m_fEventPos": 0.35,
+              "m_EventTag": "CUTIN_3",
+              "m_EventTagCount": 1
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_RAS_TOWER_WALL_EVENT_SIGMA_E",
+            "m_UnitLevel": 100,
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 12,
+              "m_fEventPos": 0.7,
+              "m_EventTag": "CUTIN_3",
+              "m_EventTagCount": 1
+            }
+          }
+        ],
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+            "m_EventRespawnUnitTag": "CUTIN_3",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0,
+              "m_fEventPos": 0.3
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 7.3,
+              "m_fEventPos": 0.3
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 7.6,
+              "m_fEventPos": 0.45
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 7.9,
+              "m_fEventPos": 0.35
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 14,
+              "m_fEventPos": 0.5
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 14,
+              "m_fEventPos": 0.4
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 14.3,
+              "m_fEventPos": 0.35
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 14.6,
+              "m_fEventPos": 0.1
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 14.6,
+              "m_fEventPos": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "m_WaveID": 4,
+        "m_fNextWavetime": 180,
+        "m_listDungeonUnitRespawnA": [
+          {
+            "m_UnitStrID": "NKM_UNIT_C_JAPAN_CHIHIRO",
+            "m_UnitLevel": 100,
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0,
+              "m_fEventPos": 0.15,
+              "m_EventTag": "CUTIN_4",
+              "m_EventTagCount": 1
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_UNIT_C_JAPAN_SENHIME",
+            "m_UnitLevel": 100,
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 1,
+              "m_fEventPos": 0.1,
+              "m_EventTag": "CUTIN_4",
+              "m_EventTagCount": 1
+            }
+          }
+        ],
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+            "m_EventRespawnUnitTag": "CUTIN_4",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0,
+              "m_fEventPos": 0.1
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0.3,
+              "m_fEventPos": 0.12
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_ELITE_EVENT_NANAHARA2_AXE",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 3.6,
+              "m_fEventPos": 0.25
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 8.3,
+              "m_fEventPos": 0.2
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 8.6,
+              "m_fEventPos": 0.22
+            }
+          }
+        ]
+      }
+    ],
+    "m_listDungeonEventTempletTeamB": [
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 3412251,
+        "m_bPause": true,
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_NORMAL_EVENT_NANAHARA2_GHOST",
+        "m_EventConditionValue2": "USN_START",
+        "m_fEventDelay": 2,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 3412252,
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_EventDieDeckTag": "CUTIN_2",
+          "m_EventDieDeckTagCount": 1,
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "ADD_EVENTTAG",
+        "m_EventActionStrValue": "CUTIN_2",
+        "m_EventActionValue": 1,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_EventDieDeckTag": "CUTIN_2",
+          "m_EventDieDeckTagCount": 1,
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 3412253,
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_EventDieDeckTag": "CUTIN_3",
+          "m_EventDieDeckTagCount": 1,
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "ADD_EVENTTAG",
+        "m_EventActionStrValue": "CUTIN_3",
+        "m_EventActionValue": 1,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_EventDieDeckTag": "CUTIN_3",
+          "m_EventDieDeckTagCount": 1,
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 3412254,
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_ELITE_EVENT_NANAHARA2_AXE",
+        "m_EventConditionValue2": "USN_START",
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_ELITE_EVENT_NANAHARA2_AXE",
+        "m_EventConditionValue2": "USN_START",
+        "m_dungeonEventType": "ADD_EVENTTAG",
+        "m_EventActionStrValue": "CUTIN_4",
+        "m_EventActionValue": 1,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

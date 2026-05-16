@@ -1,0 +1,155 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_CHALLENGE_MAID_1_3.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_CHALLENGE_EQC_MAID_S_LEADER"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 3.8,
+          "NST_HIT": 2.0,
+          "NST_DEF": 1.4,
+          "NST_HP": 1.4
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_EQC_MAID_C_MASK",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.5
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 3.5,
+              "NST_EVADE": 1.1,
+              "NST_DEF": 1.7,
+              "NST_HP": 1.7
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_EQC_MAID_C_SPEAR",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 20,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.5,
+              "NST_EVADE": 1.1,
+              "NST_DEF": 1.9,
+              "NST_HP": 1.9
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_EQC_MAID_C_TONFA",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.5,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 3.0,
+              "NST_EVADE": 1.1,
+              "NST_DEF": 1.3,
+              "NST_HP": 1.3
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 1,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_CHALLENGE_EQC_MAID_S_LEADER",
+    "m_fBossPosZ": 0.6,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 3.8,
+          "NST_HIT": 2.0,
+          "NST_DEF": 1.4,
+          "NST_HP": 1.4
+        }
+      }
+    },
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_EQC_MAID_C_MASK",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.5
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 3.5,
+            "NST_EVADE": 1.1,
+            "NST_DEF": 1.7,
+            "NST_HP": 1.7
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_EQC_MAID_C_SPEAR",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 20,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.5,
+            "NST_EVADE": 1.1,
+            "NST_DEF": 1.9,
+            "NST_HP": 1.9
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_EQC_MAID_C_TONFA",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.5,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 3.0,
+            "NST_EVADE": 1.1,
+            "NST_DEF": 1.3,
+            "NST_HP": 1.3
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

@@ -1,0 +1,179 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_BOSS_FIERCE_TYRANT_DEFFENDER_EX.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 12,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_MOB_BOSS_FIERCE_TYRANT_DEFFENDER_S"
+    },
+    {
+      "__key": "m_bImmuneStun",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageStopTime",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageState",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageDownState",
+      "value": true
+    },
+    {
+      "__key": "m_fDamageUpFactor",
+      "value": 0.0
+    },
+    {
+      "__key": "m_fDamageBackFactor",
+      "value": 0.0
+    },
+    {
+      "__key": "m_listTriggerRepeatData",
+      "value": [
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_TYRANT_DEFFENDER_2"
+            }
+          ],
+          "m_TriggerName": "DEFFENDER_2",
+          "m_fRepeatTime": 10
+        }
+      ]
+    },
+    {
+      "__key": "m_dicTriggerSet",
+      "value": [
+        {
+          "m_Name": "TYRANT_DEFFENDER_EX",
+          "m_listNKMEventBuff": [
+            {
+              "m_BuffStrID": "BUFF_FIERCE_TYRANT_DEFFENDER_EX_DEF_STACK",
+              "m_Overlap": -1
+            }
+          ]
+        },
+        {
+          "m_Name": "DEFFENDER_2",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_DEName": "DE_FIERCE_PENALTY_BOSS_TYRANT_DEFFENDER_2",
+              "m_OffsetX": 400,
+              "m_OffsetY": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_listHitFeedBack",
+      "value": [
+        {
+          "m_HitCount": 10,
+          "m_TargetTrigger": "TYRANT_DEFFENDER_EX",
+          "m_bStartAnyTime": true
+        }
+      ]
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_BuffStrID": "BUFF_FIERCE_TYRANT_PASSIVE"
+        },
+        {
+          "m_BuffStrID": "BUFF_FIERCE_TYRANT_DEFFENDER_EX_DEF_INF"
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_START",
+          "m_listNKMEventBuff": [
+            {
+              "m_BuffStrID": "BUFF_FIERCE_TYRANT_DEFFENDER_EX_DEF_STACK",
+              "m_Overlap": 50
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_MOB_BOSS_FIERCE_TYRANT_DEFFENDER_S",
+    "m_bImmuneStun": true,
+    "m_bNoDamageStopTime": true,
+    "m_bNoDamageState": true,
+    "m_bNoDamageDownState": true,
+    "m_fDamageUpFactor": 0.0,
+    "m_fDamageBackFactor": 0.0,
+    "m_listTriggerRepeatData": [
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_TYRANT_DEFFENDER_2"
+          }
+        ],
+        "m_TriggerName": "DEFFENDER_2",
+        "m_fRepeatTime": 10
+      }
+    ],
+    "m_dicTriggerSet": [
+      {
+        "m_Name": "TYRANT_DEFFENDER_EX",
+        "m_listNKMEventBuff": [
+          {
+            "m_BuffStrID": "BUFF_FIERCE_TYRANT_DEFFENDER_EX_DEF_STACK",
+            "m_Overlap": -1
+          }
+        ]
+      },
+      {
+        "m_Name": "DEFFENDER_2",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_DEName": "DE_FIERCE_PENALTY_BOSS_TYRANT_DEFFENDER_2",
+            "m_OffsetX": 400,
+            "m_OffsetY": 0
+          }
+        ]
+      }
+    ],
+    "m_listHitFeedBack": [
+      {
+        "m_HitCount": 10,
+        "m_TargetTrigger": "TYRANT_DEFFENDER_EX",
+        "m_bStartAnyTime": true
+      }
+    ],
+    "m_listStaticBuffData": [
+      {
+        "m_BuffStrID": "BUFF_FIERCE_TYRANT_PASSIVE"
+      },
+      {
+        "m_BuffStrID": "BUFF_FIERCE_TYRANT_DEFFENDER_EX_DEF_INF"
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_START",
+        "m_listNKMEventBuff": [
+          {
+            "m_BuffStrID": "BUFF_FIERCE_TYRANT_DEFFENDER_EX_DEF_STACK",
+            "m_Overlap": 50
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

@@ -1,14 +1,10 @@
 const fs = require("fs");
 const path = require("path");
 const { TUTORIAL_STAGE_CHAIN } = require("./tutorialStage");
+const { getGameplayTableRoots } = require("../modules/gameplay-jsons");
 
 const ROOT_DIR = path.resolve(__dirname, "..");
-const TABLE_ROOTS = Object.freeze([
-  path.join(ROOT_DIR, "gameplay-tables-json", "Assetbundles"),
-  path.join(ROOT_DIR, "gameplay-tables-json", "StreamingAssets"),
-  path.join(ROOT_DIR, "gameplay-jsons", "Assetbundles"),
-  path.join(ROOT_DIR, "gameplay-jsons", "StreamingAssets"),
-]);
+const TABLE_ROOTS = Object.freeze(getGameplayTableRoots({ rootDir: ROOT_DIR }));
 
 const DEFAULT_MAIN_STORY_RUNTIME = Object.freeze({
   gameUnitUIDIndex: 30,

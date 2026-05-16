@@ -1,0 +1,329 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_ELITE_ARCADE_SPELL_BASE4.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 34,
+  "records": [
+    {
+      "__key": "m_UnitSizeX",
+      "value": 200
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 300
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 600
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 850
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.5
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.5
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 0
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 1000
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 1000
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 1000
+    },
+    {
+      "__key": "m_SeeTarget",
+      "value": false
+    },
+    {
+      "__key": "m_bTargetNoChange",
+      "value": true
+    },
+    {
+      "__key": "m_AttackedTargetTime",
+      "value": 1
+    },
+    {
+      "__key": "m_bAttackedTarget",
+      "value": false
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": false
+    },
+    {
+      "__key": "m_bNoDamageStopTime",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageState",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageDownState",
+      "value": true
+    },
+    {
+      "__key": "m_fDamageUpFactor",
+      "value": 0.0
+    },
+    {
+      "__key": "m_fDamageBackFactor",
+      "value": 0.0
+    },
+    {
+      "__key": "m_fGAccel",
+      "value": 0
+    },
+    {
+      "__key": "m_NKC_TEAM_COLOR_TYPE",
+      "value": "NTCT_NO"
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": false
+    },
+    {
+      "__key": "m_listFixedStatusEffect",
+      "value": [
+        "NUSE_EXILE",
+        "NUSE_IMMUNE_NEGATIVE_STATUS"
+      ]
+    },
+    {
+      "__key": "m_RespawnEffectRange",
+      "value": [
+        -500,
+        500
+      ]
+    },
+    {
+      "__key": "m_RespawnEffectUseUnitSize",
+      "value": true
+    },
+    {
+      "__key": "m_RespawnEffectColorR",
+      "value": 1.0
+    },
+    {
+      "__key": "m_RespawnEffectColorG",
+      "value": 0.0
+    },
+    {
+      "__key": "m_RespawnEffectColorB",
+      "value": 0.0
+    },
+    {
+      "__key": "m_RespawnEffectCondition",
+      "ConditionType": "ALL",
+      "1": {
+        "Type": "Enemy"
+      },
+      "2": {
+        "Type": "Land"
+      }
+    },
+    {
+      "__key": "m_fForceRespawnXpos",
+      "value": 0.5
+    },
+    {
+      "__key": "m_RespawnEffectFullMap",
+      "value": true
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_START",
+          "m_AnimName": "ASTART",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 1.0,
+          "m_SkillCutInName": "SI_UNIT_SKILL_NAME_SCAVENGER_C_COLLECT_SKILL",
+          "m_listNKMEventRespawn": [
+            {
+              "m_UnitStrID": "NKM_MOB_ELITE_ARCADE_SPELL_BASE4_SUMMON",
+              "m_MaxCount": 4,
+              "m_bMaxCountReRespawn": true,
+              "m_MoveBase": "MAP_RATE",
+              "m_fMapPosFactor": 0.5
+            }
+          ],
+          "m_listNKMEventDie": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bImmediateDie": true
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+          "m_StateName": "USN_ASTAND",
+          "m_AnimName": "ASTART",
+          "m_bAnimLoop": true
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_StateName": "USN_RUN",
+          "m_AnimName": "ASTART",
+          "m_bAnimLoop": true,
+          "m_bRun": true
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_AnimName": "ASTART",
+          "m_bAnimLoop": false,
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+          "m_fAnimSpeed": 1.6
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_AnimName": "ASTART",
+          "m_bAnimLoop": false,
+          "m_bShowGage": false,
+          "m_listNKMEventDissolve": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.0,
+              "m_fDissolve": 1,
+              "m_fTrackTime": 1.8
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_UnitSizeX": 200,
+    "m_UnitSizeY": 300,
+    "m_SpriteScale": 1.0,
+    "m_fShadowScaleX": 600,
+    "m_fShadowScaleY": 850,
+    "m_fForceRespawnZposMin": 0.5,
+    "m_fForceRespawnZposMax": 0.5,
+    "m_SpeedRun": 0,
+    "m_SeeRange": 1000,
+    "m_SeeRangeMax": 1000,
+    "m_TargetNearRange": 1000,
+    "m_SeeTarget": false,
+    "m_bTargetNoChange": true,
+    "m_AttackedTargetTime": 1,
+    "m_bAttackedTarget": false,
+    "m_bUseMotionBlur": false,
+    "m_bNoDamageStopTime": true,
+    "m_bNoDamageState": true,
+    "m_bNoDamageDownState": true,
+    "m_fDamageUpFactor": 0.0,
+    "m_fDamageBackFactor": 0.0,
+    "m_fGAccel": 0,
+    "m_NKC_TEAM_COLOR_TYPE": "NTCT_NO",
+    "m_bShowGage": false,
+    "m_listFixedStatusEffect": [
+      "NUSE_EXILE",
+      "NUSE_IMMUNE_NEGATIVE_STATUS"
+    ],
+    "m_RespawnEffectRange": [
+      -500,
+      500
+    ],
+    "m_RespawnEffectUseUnitSize": true,
+    "m_RespawnEffectColorR": 1.0,
+    "m_RespawnEffectColorG": 0.0,
+    "m_RespawnEffectColorB": 0.0,
+    "m_RespawnEffectCondition": {
+      "ConditionType": "ALL",
+      "1": {
+        "Type": "Enemy"
+      },
+      "2": {
+        "Type": "Land"
+      }
+    },
+    "m_fForceRespawnXpos": 0.5,
+    "m_RespawnEffectFullMap": true,
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_START",
+        "m_AnimName": "ASTART",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 1.0,
+        "m_SkillCutInName": "SI_UNIT_SKILL_NAME_SCAVENGER_C_COLLECT_SKILL",
+        "m_listNKMEventRespawn": [
+          {
+            "m_UnitStrID": "NKM_MOB_ELITE_ARCADE_SPELL_BASE4_SUMMON",
+            "m_MaxCount": 4,
+            "m_bMaxCountReRespawn": true,
+            "m_MoveBase": "MAP_RATE",
+            "m_fMapPosFactor": 0.5
+          }
+        ],
+        "m_listNKMEventDie": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bImmediateDie": true
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+        "m_StateName": "USN_ASTAND",
+        "m_AnimName": "ASTART",
+        "m_bAnimLoop": true
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_StateName": "USN_RUN",
+        "m_AnimName": "ASTART",
+        "m_bAnimLoop": true,
+        "m_bRun": true
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_AnimName": "ASTART",
+        "m_bAnimLoop": false,
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+        "m_fAnimSpeed": 1.6
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_AnimName": "ASTART",
+        "m_bAnimLoop": false,
+        "m_bShowGage": false,
+        "m_listNKMEventDissolve": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.0,
+            "m_fDissolve": 1,
+            "m_fTrackTime": 1.8
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

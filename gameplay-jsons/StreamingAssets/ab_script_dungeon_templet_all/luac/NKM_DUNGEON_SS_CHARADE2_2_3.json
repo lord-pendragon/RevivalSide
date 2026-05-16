@@ -1,0 +1,225 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_CHARADE2_2_3.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 8,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.0
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_COMMON_ZODIAC_PIONE"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_bRespawnFreePos",
+      "value": true
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_bShowGage": false,
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 1.5,
+          "NST_HP": 0.5,
+          "NST_DEF": 1.2,
+          "NST_CRITICAL": 1.0,
+          "NST_HIT": 1.0,
+          "NST_EVADE": 1.0
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_ZODIAC_LIV",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventPos": 0.2,
+            "m_fEventTimeStart": 0
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0,
+              "NST_HP": 1.0,
+              "NST_DEF": 1.0,
+              "NST_CRITICAL": 1.0,
+              "NST_HIT": 1.5,
+              "NST_EVADE": 2.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_ZODIAC_YANG_HANSOL",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventPos": 0.1,
+            "m_fEventTimeStart": 1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.8,
+              "NST_HP": 1.2,
+              "NST_DEF": 1.0,
+              "NST_CRITICAL": 1.0,
+              "NST_HIT": 1.0,
+              "NST_EVADE": 1.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_GREEN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventPos": 0.3,
+            "m_fEventTimeStart": 2,
+            "m_fEventTimeEnd": 45
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.9,
+              "NST_HP": 0.6,
+              "NST_DEF": 1.0,
+              "NST_CRITICAL": 1.0,
+              "NST_HIT": 1.0,
+              "NST_EVADE": 1.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BLUE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventPos": 0.3,
+            "m_fEventTimeStart": 2,
+            "m_fEventTimeEnd": 45
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.4,
+              "NST_HP": 0.7,
+              "NST_DEF": 1.0,
+              "NST_CRITICAL": 1.0,
+              "NST_HIT": 1.0,
+              "NST_EVADE": 1.0
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 1.0,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_COMMON_ZODIAC_PIONE",
+    "m_fBossPosZ": 0.6,
+    "m_bRespawnFreePos": true,
+    "m_BossRespawnUnitTemplet": {
+      "m_bShowGage": false,
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 1.5,
+          "NST_HP": 0.5,
+          "NST_DEF": 1.2,
+          "NST_CRITICAL": 1.0,
+          "NST_HIT": 1.0,
+          "NST_EVADE": 1.0
+        }
+      }
+    },
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_ZODIAC_LIV",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventPos": 0.2,
+          "m_fEventTimeStart": 0
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0,
+            "NST_HP": 1.0,
+            "NST_DEF": 1.0,
+            "NST_CRITICAL": 1.0,
+            "NST_HIT": 1.5,
+            "NST_EVADE": 2.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_ZODIAC_YANG_HANSOL",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventPos": 0.1,
+          "m_fEventTimeStart": 1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.8,
+            "NST_HP": 1.2,
+            "NST_DEF": 1.0,
+            "NST_CRITICAL": 1.0,
+            "NST_HIT": 1.0,
+            "NST_EVADE": 1.0
+          }
+        }
+      }
+    ],
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_GREEN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventPos": 0.3,
+          "m_fEventTimeStart": 2,
+          "m_fEventTimeEnd": 45
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.9,
+            "NST_HP": 0.6,
+            "NST_DEF": 1.0,
+            "NST_CRITICAL": 1.0,
+            "NST_HIT": 1.0,
+            "NST_EVADE": 1.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BLUE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventPos": 0.3,
+          "m_fEventTimeStart": 2,
+          "m_fEventTimeEnd": 45
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.4,
+            "NST_HP": 0.7,
+            "NST_DEF": 1.0,
+            "NST_CRITICAL": 1.0,
+            "NST_HIT": 1.0,
+            "NST_EVADE": 1.0
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

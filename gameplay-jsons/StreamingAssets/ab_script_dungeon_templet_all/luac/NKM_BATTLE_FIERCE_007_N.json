@@ -1,0 +1,185 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_BATTLE_FIERCE_007_N.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 8
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.5
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_FIERCE_REGEN_KNIGHT_N"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_REPLACER_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 3,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.25
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.3,
+              "NST_HP": 1.0,
+              "NST_HIT": 1.3,
+              "NST_DEF": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_REPLACER_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 8,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.15
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.3,
+              "NST_HP": 1.0,
+              "NST_HIT": 1.3,
+              "NST_DEF": 1.5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_REPLACER_SHIELD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeGap": 25,
+            "m_fEventPos": 0.3,
+            "m_fEventBossHPLess": 1.01,
+            "m_fEventBossHPUpper": 0.8,
+            "m_fEventIgnoreBossInitHPLess": false
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_REPLACER_SHIELD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 3,
+            "m_fEventTimeGap": 25,
+            "m_fEventPos": 0.3,
+            "m_fEventBossHPLess": 0.8,
+            "m_fEventBossHPUpper": 0.41,
+            "m_fEventIgnoreBossInitHPLess": false
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_REPLACER_SHIELD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 3,
+            "m_fEventTimeGap": 25,
+            "m_fEventPos": 0.3,
+            "m_fEventBossHPLess": 0.4,
+            "m_fEventBossHPUpper": 0.21,
+            "m_fEventIgnoreBossInitHPLess": false
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 8,
+    "m_fCostSpeedRateB": 0.5,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_FIERCE_REGEN_KNIGHT_N",
+    "m_fBossPosZ": 0.6,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_REPLACER_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 3,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.25
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.3,
+            "NST_HP": 1.0,
+            "NST_HIT": 1.3,
+            "NST_DEF": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_FIERCE_REPLACER_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 8,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.15
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.3,
+            "NST_HP": 1.0,
+            "NST_HIT": 1.3,
+            "NST_DEF": 1.5
+          }
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_REPLACER_SHIELD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeGap": 25,
+          "m_fEventPos": 0.3,
+          "m_fEventBossHPLess": 1.01,
+          "m_fEventBossHPUpper": 0.8,
+          "m_fEventIgnoreBossInitHPLess": false
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_REPLACER_SHIELD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 3,
+          "m_fEventTimeGap": 25,
+          "m_fEventPos": 0.3,
+          "m_fEventBossHPLess": 0.8,
+          "m_fEventBossHPUpper": 0.41,
+          "m_fEventIgnoreBossInitHPLess": false
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_REPLACER_SHIELD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 3,
+          "m_fEventTimeGap": 25,
+          "m_fEventPos": 0.3,
+          "m_fEventBossHPLess": 0.4,
+          "m_fEventBossHPUpper": 0.21,
+          "m_fEventIgnoreBossInitHPLess": false
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

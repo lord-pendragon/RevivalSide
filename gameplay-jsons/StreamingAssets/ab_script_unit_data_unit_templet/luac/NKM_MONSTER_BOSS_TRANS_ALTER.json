@@ -1,0 +1,181 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_MONSTER_BOSS_TRANS_ALTER.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 2,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_MONSTER_BOSS_BASIC_ALTER_N"
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_listNKMEventAttack": [
+            {
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_TRANS_ALTER_ATTACK1"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_listNKMEventAttack": [
+            {
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_TRANS_ALTER_SKILL1"
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": 1.5,
+              "m_DEName": "DE_NKM_MONSTER_BOSS_TRANS_GRAVE_MIST",
+              "m_bTargetPos": false,
+              "m_bShipSkillPos": false,
+              "m_bIgnoreTarget": true,
+              "m_bIgnoreNoTarget": false,
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_OffsetZ": 0,
+              "m_fAddRotate": 0
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_HYPER1",
+          "m_listNKMEventAttack": [
+            {
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_TRANS_ALTER_HYPER1"
+            },
+            {
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_TRANS_ALTER_HYPER1"
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": 2.0,
+              "m_DEName": "DE_NKM_MONSTER_BOSS_TRANS_ALTER_HYPER_MIST",
+              "m_bTargetPos": false,
+              "m_bShipSkillPos": false,
+              "m_bIgnoreTarget": true,
+              "m_bIgnoreNoTarget": false,
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_OffsetZ": 0,
+              "m_fAddRotate": 0
+            },
+            {
+              "m_fEventTime": 2.1666666666666665,
+              "m_DEName": "DE_NKM_MONSTER_BOSS_TRANS_ALTER_HYPER_MIST",
+              "m_bTargetPos": false,
+              "m_bShipSkillPos": false,
+              "m_bIgnoreTarget": true,
+              "m_bIgnoreNoTarget": false,
+              "m_OffsetX": 800,
+              "m_OffsetY": 0,
+              "m_OffsetZ": 0,
+              "m_fAddRotate": 0
+            },
+            {
+              "m_fEventTime": 2.3333333333333335,
+              "m_DEName": "DE_NKM_MONSTER_BOSS_TRANS_ALTER_HYPER_MIST",
+              "m_bTargetPos": false,
+              "m_bShipSkillPos": false,
+              "m_bIgnoreTarget": true,
+              "m_bIgnoreNoTarget": false,
+              "m_OffsetX": 1600,
+              "m_OffsetY": 0,
+              "m_OffsetZ": 0,
+              "m_fAddRotate": 0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_MONSTER_BOSS_BASIC_ALTER_N",
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_listNKMEventAttack": [
+          {
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_TRANS_ALTER_ATTACK1"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_listNKMEventAttack": [
+          {
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_TRANS_ALTER_SKILL1"
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": 1.5,
+            "m_DEName": "DE_NKM_MONSTER_BOSS_TRANS_GRAVE_MIST",
+            "m_bTargetPos": false,
+            "m_bShipSkillPos": false,
+            "m_bIgnoreTarget": true,
+            "m_bIgnoreNoTarget": false,
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_OffsetZ": 0,
+            "m_fAddRotate": 0
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_HYPER1",
+        "m_listNKMEventAttack": [
+          {
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_TRANS_ALTER_HYPER1"
+          },
+          {
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_TRANS_ALTER_HYPER1"
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": 2.0,
+            "m_DEName": "DE_NKM_MONSTER_BOSS_TRANS_ALTER_HYPER_MIST",
+            "m_bTargetPos": false,
+            "m_bShipSkillPos": false,
+            "m_bIgnoreTarget": true,
+            "m_bIgnoreNoTarget": false,
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_OffsetZ": 0,
+            "m_fAddRotate": 0
+          },
+          {
+            "m_fEventTime": 2.1666666666666665,
+            "m_DEName": "DE_NKM_MONSTER_BOSS_TRANS_ALTER_HYPER_MIST",
+            "m_bTargetPos": false,
+            "m_bShipSkillPos": false,
+            "m_bIgnoreTarget": true,
+            "m_bIgnoreNoTarget": false,
+            "m_OffsetX": 800,
+            "m_OffsetY": 0,
+            "m_OffsetZ": 0,
+            "m_fAddRotate": 0
+          },
+          {
+            "m_fEventTime": 2.3333333333333335,
+            "m_DEName": "DE_NKM_MONSTER_BOSS_TRANS_ALTER_HYPER_MIST",
+            "m_bTargetPos": false,
+            "m_bShipSkillPos": false,
+            "m_bIgnoreTarget": true,
+            "m_bIgnoreNoTarget": false,
+            "m_OffsetX": 1600,
+            "m_OffsetY": 0,
+            "m_OffsetZ": 0,
+            "m_fAddRotate": 0
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

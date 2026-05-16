@@ -1,0 +1,213 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DIVE_BATTLE_9_KNIGHT02.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.0
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_COMMON_INHIBITOR"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 1
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_PRIEST",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 4.0,
+              "NST_ATK": 4.0,
+              "NST_DEF": 4.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_PALADIN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeGap": 3,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 4.0,
+              "NST_ATK": 4.0,
+              "NST_DEF": 4.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_RED",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 2,
+            "m_fEventTimeGap": 3,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 4.0,
+              "NST_ATK": 4.0,
+              "NST_DEF": 4.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_MAGE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 3,
+            "m_fEventTimeGap": 3,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 4.0,
+              "NST_ATK": 4.0,
+              "NST_DEF": 4.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BLUE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 4,
+            "m_fEventTimeGap": 3,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.01
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 4.0,
+              "NST_ATK": 4.0,
+              "NST_DEF": 4.0
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 1.0,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_COMMON_INHIBITOR",
+    "m_fBossPosZ": 1,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_PRIEST",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 4.0,
+            "NST_ATK": 4.0,
+            "NST_DEF": 4.0
+          }
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_PALADIN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeGap": 3,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 4.0,
+            "NST_ATK": 4.0,
+            "NST_DEF": 4.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_RED",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 2,
+          "m_fEventTimeGap": 3,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 4.0,
+            "NST_ATK": 4.0,
+            "NST_DEF": 4.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_MAGE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 3,
+          "m_fEventTimeGap": 3,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 4.0,
+            "NST_ATK": 4.0,
+            "NST_DEF": 4.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BLUE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 4,
+          "m_fEventTimeGap": 3,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.01
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 4.0,
+            "NST_ATK": 4.0,
+            "NST_DEF": 4.0
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

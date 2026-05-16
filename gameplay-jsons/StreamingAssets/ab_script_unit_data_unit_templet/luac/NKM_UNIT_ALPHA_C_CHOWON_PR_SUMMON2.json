@@ -1,0 +1,296 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_UNIT_ALPHA_C_CHOWON_PR_SUMMON2.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 19,
+  "records": [
+    {
+      "__key": "m_UnitSizeX",
+      "value": 120
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 120
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_NKC_TEAM_COLOR_TYPE",
+      "value": "NTCT_NO"
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.5
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.5
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": true
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 60
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 0
+    },
+    {
+      "__key": "m_bNoMove",
+      "value": true
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 500
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 600
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 50
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 2.0
+    },
+    {
+      "__key": "m_listFixedStatusEffect",
+      "value": [
+        "NUSE_STABLE_HP",
+        "NUSE_BLOCK_BUFF",
+        "NUSE_BLOCK_DEBUFF",
+        "NUSE_NO_DAMAGE_BACK_SPEED",
+        "NUSE_IMMUNE_CC",
+        "NUSE_IMMUNE_NEGATIVE_STATUS",
+        "NUSE_IMMUNE_SKILL_COOLTIME_DAMAGE"
+      ]
+    },
+    {
+      "__key": "m_listFixedStatusImmune",
+      "value": [
+        "NUSE_STUN",
+        "NUSE_NOHEAL"
+      ]
+    },
+    {
+      "__key": "m_listSkillStateData",
+      "value": [
+        {
+          "m_NKM_ATTACK_STATE_DATA_TYPE": "NASDT_REVENGE",
+          "m_StateName": "USN_SKILL1"
+        }
+      ]
+    },
+    {
+      "__key": "m_listPhaseChangeData",
+      "value": [
+        {
+          "m_TargetPhase": 1,
+          "m_fChangeConditionHPRate": 0.01,
+          "m_ChangeStateName": "USN_SKILL1"
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "ASTART",
+          "m_fAnimSpeed": 1.0,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_DEName": "DE_NKM_UNIT_ALPHA_C_CHOWON_PR_SUMMON2",
+              "m_bHold": true,
+              "m_FollowType": "TDT_INVALID"
+            }
+          ],
+          "m_listNKMEventChangeCooltime": [
+            {
+              "m_TargetStateName": "USN_SKILL1",
+              "m_eChangeType": "SET_RATIO",
+              "m_fChangeValue": 0
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ASTAND",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": true,
+          "m_StateTimeChangeStateTime": 40,
+          "m_StateTimeChangeState": "USN_SKILL1"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_SKILL1",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_AnimName": "ASTAND",
+          "m_bSkillCutIn": false,
+          "m_StateCoolTime": 40.0,
+          "m_bRevengeState": true,
+          "m_bInvincibleState": true,
+          "m_bShowGage": false,
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_DamageEffectID": "DE_NKM_UNIT_ALPHA_C_CHOWON_PR_SUMMON2",
+              "m_ChangeState": "DES_END2"
+            }
+          ],
+          "m_listNKMEventDie": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.16666666666666666
+            }
+          ],
+          "m_listNKMEventStopTime": [
+            {
+              "m_fEventTime": 0.1,
+              "m_StopTimeIndex": "NSTI_SKILL",
+              "m_fStopTime": 0.5,
+              "m_bStopEnemyOnly": false,
+              "m_bMyStop": false,
+              "m_fRange": 800
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_UnitSizeX": 120,
+    "m_UnitSizeY": 120,
+    "m_SpriteScale": 1.0,
+    "m_NKC_TEAM_COLOR_TYPE": "NTCT_NO",
+    "m_fForceRespawnZposMin": 0.5,
+    "m_fForceRespawnZposMax": 0.5,
+    "m_bShowGage": true,
+    "m_fGageOffsetY": 60,
+    "m_SpeedRun": 0,
+    "m_bNoMove": true,
+    "m_SeeRange": 500,
+    "m_SeeRangeMax": 600,
+    "m_TargetNearRange": 50,
+    "m_fDieCompleteTime": 2.0,
+    "m_listFixedStatusEffect": [
+      "NUSE_STABLE_HP",
+      "NUSE_BLOCK_BUFF",
+      "NUSE_BLOCK_DEBUFF",
+      "NUSE_NO_DAMAGE_BACK_SPEED",
+      "NUSE_IMMUNE_CC",
+      "NUSE_IMMUNE_NEGATIVE_STATUS",
+      "NUSE_IMMUNE_SKILL_COOLTIME_DAMAGE"
+    ],
+    "m_listFixedStatusImmune": [
+      "NUSE_STUN",
+      "NUSE_NOHEAL"
+    ],
+    "m_listSkillStateData": [
+      {
+        "m_NKM_ATTACK_STATE_DATA_TYPE": "NASDT_REVENGE",
+        "m_StateName": "USN_SKILL1"
+      }
+    ],
+    "m_listPhaseChangeData": [
+      {
+        "m_TargetPhase": 1,
+        "m_fChangeConditionHPRate": 0.01,
+        "m_ChangeStateName": "USN_SKILL1"
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "ASTART",
+        "m_fAnimSpeed": 1.0,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_DEName": "DE_NKM_UNIT_ALPHA_C_CHOWON_PR_SUMMON2",
+            "m_bHold": true,
+            "m_FollowType": "TDT_INVALID"
+          }
+        ],
+        "m_listNKMEventChangeCooltime": [
+          {
+            "m_TargetStateName": "USN_SKILL1",
+            "m_eChangeType": "SET_RATIO",
+            "m_fChangeValue": 0
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ASTAND",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": true,
+        "m_StateTimeChangeStateTime": 40,
+        "m_StateTimeChangeState": "USN_SKILL1"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_SKILL1",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_AnimName": "ASTAND",
+        "m_bSkillCutIn": false,
+        "m_StateCoolTime": 40.0,
+        "m_bRevengeState": true,
+        "m_bInvincibleState": true,
+        "m_bShowGage": false,
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_DamageEffectID": "DE_NKM_UNIT_ALPHA_C_CHOWON_PR_SUMMON2",
+            "m_ChangeState": "DES_END2"
+          }
+        ],
+        "m_listNKMEventDie": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.16666666666666666
+          }
+        ],
+        "m_listNKMEventStopTime": [
+          {
+            "m_fEventTime": 0.1,
+            "m_StopTimeIndex": "NSTI_SKILL",
+            "m_fStopTime": 0.5,
+            "m_bStopEnemyOnly": false,
+            "m_bMyStop": false,
+            "m_fRange": 800
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

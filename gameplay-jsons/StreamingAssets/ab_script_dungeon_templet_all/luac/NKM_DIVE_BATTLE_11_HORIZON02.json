@@ -1,0 +1,203 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DIVE_BATTLE_11_HORIZON02.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.0
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_UNIT_HORIZON_C_SCYTHE"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 1.0
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_UnitEffect": "SHADOW",
+      "m_bShowGage": false,
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_HP": 22.0,
+          "NST_ATK": 10.5,
+          "NST_DEF": 22.0,
+          "NST_SKILL_COOL_TIME_REDUCE_RATE": 30.0
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_UNIT_FUTURE_MA_LOAN",
+          "m_UnitEffect": "SHADOW",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 9,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 5.5,
+              "NST_ATK": 10.5,
+              "NST_DEF": 5.5,
+              "NST_SKILL_COOL_TIME_REDUCE_RATE": 30.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_HORIZON_C_STAND",
+          "m_UnitEffect": "SHADOW",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 9,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 5.5,
+              "NST_ATK": 10.5,
+              "NST_DEF": 5.5,
+              "NST_SKILL_COOL_TIME_REDUCE_RATE": 30.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeGap": 2,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 10.5,
+              "NST_HP": 10.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeGap": 2,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 10.5,
+              "NST_HP": 10.0
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 1.0,
+    "m_BossUnitStrID": "NKM_UNIT_HORIZON_C_SCYTHE",
+    "m_fBossPosZ": 1.0,
+    "m_BossRespawnUnitTemplet": {
+      "m_UnitEffect": "SHADOW",
+      "m_bShowGage": false,
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_HP": 22.0,
+          "NST_ATK": 10.5,
+          "NST_DEF": 22.0,
+          "NST_SKILL_COOL_TIME_REDUCE_RATE": 30.0
+        }
+      }
+    },
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_UNIT_FUTURE_MA_LOAN",
+        "m_UnitEffect": "SHADOW",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 9,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 5.5,
+            "NST_ATK": 10.5,
+            "NST_DEF": 5.5,
+            "NST_SKILL_COOL_TIME_REDUCE_RATE": 30.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_HORIZON_C_STAND",
+        "m_UnitEffect": "SHADOW",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 9,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 5.5,
+            "NST_ATK": 10.5,
+            "NST_DEF": 5.5,
+            "NST_SKILL_COOL_TIME_REDUCE_RATE": 30.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeGap": 2,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 10.5,
+            "NST_HP": 10.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeGap": 2,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 10.5,
+            "NST_HP": 10.0
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

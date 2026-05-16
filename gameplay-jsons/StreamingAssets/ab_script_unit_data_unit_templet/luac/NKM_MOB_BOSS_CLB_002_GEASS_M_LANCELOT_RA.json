@@ -1,0 +1,1604 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_BOSS_CLB_002_GEASS_M_LANCELOT_RA.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 25,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_UNIT_BASE_BOSS"
+    },
+    {
+      "__key": "m_UnitSizeX",
+      "value": 120
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 270
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.3
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 410
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 400
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 400
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.6
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.65
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 290
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 1200
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 3000
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 1000
+    },
+    {
+      "__key": "m_fDamageBackFactor",
+      "value": 0.5
+    },
+    {
+      "__key": "m_fDamageUpFactor",
+      "value": 0.0
+    },
+    {
+      "__key": "m_bNoDamageDownState",
+      "value": false
+    },
+    {
+      "__key": "m_AttackedTargetTime",
+      "value": 1
+    },
+    {
+      "__key": "m_bAttackedTarget",
+      "value": true
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": true
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK"
+        }
+      ]
+    },
+    {
+      "__key": "m_listAirAttackStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK_AIR",
+          "m_fRangeMax": 500
+        }
+      ]
+    },
+    {
+      "__key": "m_listSkillStateData",
+      "value": [
+        {
+          "m_StateName": "USN_SKILL"
+        }
+      ]
+    },
+    {
+      "__key": "m_listHyperSkillStateData",
+      "value": [
+        {
+          "m_StateName": "USN_HYPER",
+          "m_fStartCool": 0.7,
+          "m_fRangeMax": 1600
+        }
+      ]
+    },
+    {
+      "__key": "m_listHitCriticalFeedBack",
+      "value": [
+        {
+          "m_Count": 9,
+          "m_BuffStrID": "BUFF_BOSS_CLB_002_GEASS_M_LANCELOT_PASSIVE1",
+          "m_BuffLevel": 8
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_START",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_AnimName": "START",
+          "m_fAnimSpeed": 1.0,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_DamagedChangeState": "USN_ASTAND",
+          "m_listNKMEventBuff": [
+            {
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_BOSS_CLB_002_GEASS_M_LANCELOT_LEADER"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_16"
+              ]
+            },
+            {
+              "m_fEventTime": 1.1333333333333333,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_TANK_SMALL_START"
+              ]
+            },
+            {
+              "m_fEventTime": 2.066666666666667,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_TANK_START_BIG"
+              ]
+            },
+            {
+              "m_fEventTime": 2.4,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_15"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_START_1",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_START_2",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_START_4",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_START_5"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_RUN",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_AnimName": "RUN",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 1.0,
+          "m_bRun": true
+        },
+        {
+          "m_StateName": "USN_ATTACK",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK1",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6,
+              "m_DEName": "DE_NKM_UNIT_GEASS_M_LANCELOT_ATTACK1",
+              "m_bTargetPos": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_DEName": "DE_NKM_UNIT_GEASS_M_LANCELOT_ATTACK1",
+              "m_bTargetPos": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5,
+              "m_DEName": "DE_NKM_UNIT_GEASS_M_LANCELOT_ATTACK1",
+              "m_bTargetPos": true
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.6,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+              ]
+            },
+            {
+              "m_fEventTime": 1.0,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+              ]
+            },
+            {
+              "m_fEventTime": 1.5666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5666666666666667,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_PASSIVE_1",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_PASSIVE_3",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ATTACK_16",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ATTACK_17",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ATTACK_18",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ATTACK_21"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK_AIR",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK1_AIR",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6,
+              "m_DEName": "DE_NKM_MOB_BOSS_CLB_002_GEASS_M_LANCELOT_ATTACK1",
+              "m_bTargetPos": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_DEName": "DE_NKM_MOB_BOSS_CLB_002_GEASS_M_LANCELOT_ATTACK1",
+              "m_bTargetPos": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5,
+              "m_DEName": "DE_NKM_MOB_BOSS_CLB_002_GEASS_M_LANCELOT_ATTACK1",
+              "m_bTargetPos": true
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.6,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+              ]
+            },
+            {
+              "m_fEventTime": 1.0,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+              ]
+            },
+            {
+              "m_fEventTime": 1.5666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5666666666666667,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_PASSIVE_1",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_PASSIVE_3",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ATTACK_16",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ATTACK_17",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ATTACK_18",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ATTACK_21"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "SKILL1",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_bSkillCutIn": true,
+          "m_StateCoolTime": 20,
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_EffectName": "AB_FX_CAST_SKILL",
+              "m_fScaleFactor": 30.0,
+              "m_OffsetX": -15,
+              "m_OffsetY": 200,
+              "m_AnimName": "BASE"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.2333333333333334,
+              "m_EffectName": "AB_FX_COMMON_MISSILE_START",
+              "m_OffsetX": 160,
+              "m_OffsetY": 160,
+              "m_OffsetZ": 0,
+              "m_fScaleFactor": 1.3,
+              "m_AnimName": "BASE"
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_BuffStrID": "BUFF_BOSS_CLB_002_GEASS_M_LANCELOT_SKILL"
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_BOSS_CLB_002_GEASS_M_LANCELOT_SKILL",
+              "m_BuffRemove": true
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.8333333333333333,
+              "m_DEName": "DE_NKM_MOB_BOSS_CLB_002_GEASS_M_LANCELOT_SKILL1",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_bTargetPos": true
+            }
+          ],
+          "m_listNKMEventInvincible": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_fEventTimeMax": 0.6666666666666666
+            }
+          ],
+          "m_listNKMEventMove": [
+            {
+              "m_fEventTime": 1.3333333333333333,
+              "m_bOffsetDependMe": true,
+              "m_OffsetX": -150,
+              "m_MoveTime": 0.5,
+              "m_bLandMove": true
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 99999,
+              "m_fColorR": 0.5,
+              "m_fColorG": 0.5,
+              "m_fColorB": 1.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.65,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_30"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.775,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_07"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.2333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MISSILE_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MISSILE_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.4333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MISSILE_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MISSILE_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.6333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MISSILE_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_07"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8333333333333334,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ATTACK_25",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ACTIVE_1",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ACTIVE_3",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ACTIVE_4",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ACTIVE_6"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_HYPER",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "HYPER_SKILL1",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_StateCoolTime": 40,
+          "m_listNKMEventHyperSkillCutIn": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_fDurationTime": 1.8333333333333333,
+              "m_BGEffectName": "AB_FX_SKILL_CUTIN_COMMON_A",
+              "m_CutInEffectName": "AB_FX_SKILL_CUTIN_NKM_UNIT_GEASS_M_LANCELOT",
+              "m_CutInEffectAnimName": "BASE"
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_EffectName": "AB_FX_CAST_HYPER",
+              "m_AnimName": "BASE",
+              "m_fScaleFactor": 30.0,
+              "m_BoneName": "BIP01_SPINE1"
+            }
+          ],
+          "m_listNKMEventInvincible": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_fEventTimeMax": 3.066666666666667
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_bDamageSpeedDependRight": true,
+              "m_fEventTimeMin": 3.0,
+              "m_fEventTimeMax": 3.1666666666666665,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1800,
+              "m_AttackUnitCount": 3,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_UNIT_GEASS_M_LANCELOT_HYPER1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_bDamageSpeedDependRight": true,
+              "m_fEventTimeMin": 3.6666666666666665,
+              "m_fEventTimeMax": 3.8333333333333335,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1800,
+              "m_AttackUnitCount": 3,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_UNIT_GEASS_M_LANCELOT_HYPER1"
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_Condition": {
+                "m_IgnoreBuffStrID": "BUFF_BOSS_CLB_002_GEASS_M_LANCELOT_HYPER_LV5",
+                "m_IgnoreBuffOverlapCount": [
+                  1,
+                  99
+                ]
+              },
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_BOSS_CLB_002_GEASS_M_LANCELOT_HYPER_LV5"
+            },
+            {
+              "m_Condition": {
+                "m_IgnoreBuffStrID": "BUFF_BOSS_CLB_002_GEASS_M_LANCELOT_HYPER_LV10",
+                "m_IgnoreBuffOverlapCount": [
+                  1,
+                  99
+                ]
+              },
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_BOSS_CLB_002_GEASS_M_LANCELOT_HYPER_LV10"
+            }
+          ],
+          "m_listNKMEventMove": [
+            {
+              "m_fEventTime": 3.1,
+              "m_bTargetUnit": false,
+              "m_OffsetX": -50,
+              "m_MoveTime": 0.5,
+              "m_bLandMove": true
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HYPER_ATTACK_START"
+              ]
+            },
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_50"
+              ]
+            },
+            {
+              "m_fEventTime": 0.9666666666666667,
+              "m_fLocalVol": 3.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_GUN_RELOAD_SMALL_03"
+              ]
+            },
+            {
+              "m_fEventTime": 1.2,
+              "m_fLocalVol": 3.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_GUN_RELOAD_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 1.3666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_51"
+              ]
+            },
+            {
+              "m_fEventTime": 1.3666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_03"
+              ]
+            },
+            {
+              "m_fEventTime": 1.6666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_RISE"
+              ]
+            },
+            {
+              "m_fEventTime": 3.066666666666667,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_09"
+              ]
+            },
+            {
+              "m_fEventTime": 3.5,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_03"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_HYPER_1",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_HYPER_2",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_HYPER_3"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.033333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ATTACK_30",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ATTACK_31"
+              ]
+            }
+          ],
+          "m_listNKMEventCameraMove": [
+            {
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_fEventTimeMax": 1.5,
+              "m_fPosXOffset": -100,
+              "m_fPosYOffset": 150,
+              "m_fZoom": -250,
+              "m_fFocusBlur": 0.0,
+              "m_fMoveTrackingTime": 0.1,
+              "m_fZoomTrackingTime": 0.1,
+              "m_fCameraRadius": 0.0
+            },
+            {
+              "m_fEventTimeMin": 1.5,
+              "m_fEventTimeMax": 2.3333333333333335,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 150,
+              "m_fZoom": -250,
+              "m_fFocusBlur": 0.0,
+              "m_fMoveTrackingTime": 0.5,
+              "m_fZoomTrackingTime": 0.5,
+              "m_fCameraRadius": 0.0
+            }
+          ],
+          "m_listNKMEventFadeWorld": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.3333333333333333,
+              "m_fEventTimeMax": 3.0,
+              "m_fColorR": 0.0,
+              "m_fColorG": 0.0,
+              "m_fColorB": 0.3,
+              "m_fMapColorKeepTime": 0.3,
+              "m_fMapColorReturnTime": 1
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_fEventTimeMax": 3.3,
+              "m_fColorR": 1.0,
+              "m_fColorG": 0.5,
+              "m_fColorB": 0.5
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 2.3666666666666667,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 9999,
+              "m_fCameraCrashSpeed": 100,
+              "m_fCameraCrashGap": 100,
+              "m_fCameraCrashTime": 0.23333333333333334
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_A",
+          "m_AnimName": "DAMAGE_A",
+          "m_bAnimLoop": false,
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.4,
+              "m_listSoundName": [
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_8",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_9",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_10",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_11"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_B",
+          "m_AnimName": "DAMAGE_B",
+          "m_bAnimLoop": false,
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.4,
+              "m_listSoundName": [
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_8",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_9",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_10",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_11"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_AIR_UP",
+          "m_AnimName": "DAMAGE_AIR_UP",
+          "m_bAnimLoop": false,
+          "m_SpeedY0NegativeChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.6,
+              "m_listSoundName": [
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_16",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_17",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_19",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_20"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_bAnimLoop": false,
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.6,
+              "m_listSoundName": [
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_16",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_17",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_19",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_20"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_bAnimLoop": false,
+          "m_bShowGage": false,
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DEATH_4",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DEATH_6",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DEATH_7",
+                "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DEATH_9"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_UNIT_BASE_BOSS",
+    "m_UnitSizeX": 120,
+    "m_UnitSizeY": 270,
+    "m_SpriteScale": 1.3,
+    "m_fGageOffsetY": 410,
+    "m_fShadowScaleX": 400,
+    "m_fShadowScaleY": 400,
+    "m_fForceRespawnZposMin": 0.6,
+    "m_fForceRespawnZposMax": 0.65,
+    "m_SpeedRun": 290,
+    "m_SeeRange": 1200,
+    "m_SeeRangeMax": 3000,
+    "m_TargetNearRange": 1000,
+    "m_fDamageBackFactor": 0.5,
+    "m_fDamageUpFactor": 0.0,
+    "m_bNoDamageDownState": false,
+    "m_AttackedTargetTime": 1,
+    "m_bAttackedTarget": true,
+    "m_bUseMotionBlur": true,
+    "m_listAttackStateData": [
+      {
+        "m_StateName": "USN_ATTACK"
+      }
+    ],
+    "m_listAirAttackStateData": [
+      {
+        "m_StateName": "USN_ATTACK_AIR",
+        "m_fRangeMax": 500
+      }
+    ],
+    "m_listSkillStateData": [
+      {
+        "m_StateName": "USN_SKILL"
+      }
+    ],
+    "m_listHyperSkillStateData": [
+      {
+        "m_StateName": "USN_HYPER",
+        "m_fStartCool": 0.7,
+        "m_fRangeMax": 1600
+      }
+    ],
+    "m_listHitCriticalFeedBack": [
+      {
+        "m_Count": 9,
+        "m_BuffStrID": "BUFF_BOSS_CLB_002_GEASS_M_LANCELOT_PASSIVE1",
+        "m_BuffLevel": 8
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_START",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_AnimName": "START",
+        "m_fAnimSpeed": 1.0,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_DamagedChangeState": "USN_ASTAND",
+        "m_listNKMEventBuff": [
+          {
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_BOSS_CLB_002_GEASS_M_LANCELOT_LEADER"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_16"
+            ]
+          },
+          {
+            "m_fEventTime": 1.1333333333333333,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_TANK_SMALL_START"
+            ]
+          },
+          {
+            "m_fEventTime": 2.066666666666667,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_TANK_START_BIG"
+            ]
+          },
+          {
+            "m_fEventTime": 2.4,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_15"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_START_1",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_START_2",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_START_4",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_START_5"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_RUN",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_AnimName": "RUN",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 1.0,
+        "m_bRun": true
+      },
+      {
+        "m_StateName": "USN_ATTACK",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK1",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6,
+            "m_DEName": "DE_NKM_UNIT_GEASS_M_LANCELOT_ATTACK1",
+            "m_bTargetPos": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_DEName": "DE_NKM_UNIT_GEASS_M_LANCELOT_ATTACK1",
+            "m_bTargetPos": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5,
+            "m_DEName": "DE_NKM_UNIT_GEASS_M_LANCELOT_ATTACK1",
+            "m_bTargetPos": true
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.6,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+            ]
+          },
+          {
+            "m_fEventTime": 1.0,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+            ]
+          },
+          {
+            "m_fEventTime": 1.5666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5666666666666667,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_PASSIVE_1",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_PASSIVE_3",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ATTACK_16",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ATTACK_17",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ATTACK_18",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ATTACK_21"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK_AIR",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK1_AIR",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6,
+            "m_DEName": "DE_NKM_MOB_BOSS_CLB_002_GEASS_M_LANCELOT_ATTACK1",
+            "m_bTargetPos": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_DEName": "DE_NKM_MOB_BOSS_CLB_002_GEASS_M_LANCELOT_ATTACK1",
+            "m_bTargetPos": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5,
+            "m_DEName": "DE_NKM_MOB_BOSS_CLB_002_GEASS_M_LANCELOT_ATTACK1",
+            "m_bTargetPos": true
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.6,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+            ]
+          },
+          {
+            "m_fEventTime": 1.0,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+            ]
+          },
+          {
+            "m_fEventTime": 1.5666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5666666666666667,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_PASSIVE_1",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_PASSIVE_3",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ATTACK_16",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ATTACK_17",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ATTACK_18",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ATTACK_21"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "SKILL1",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_bSkillCutIn": true,
+        "m_StateCoolTime": 20,
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_EffectName": "AB_FX_CAST_SKILL",
+            "m_fScaleFactor": 30.0,
+            "m_OffsetX": -15,
+            "m_OffsetY": 200,
+            "m_AnimName": "BASE"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.2333333333333334,
+            "m_EffectName": "AB_FX_COMMON_MISSILE_START",
+            "m_OffsetX": 160,
+            "m_OffsetY": 160,
+            "m_OffsetZ": 0,
+            "m_fScaleFactor": 1.3,
+            "m_AnimName": "BASE"
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_BuffStrID": "BUFF_BOSS_CLB_002_GEASS_M_LANCELOT_SKILL"
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_BOSS_CLB_002_GEASS_M_LANCELOT_SKILL",
+            "m_BuffRemove": true
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.8333333333333333,
+            "m_DEName": "DE_NKM_MOB_BOSS_CLB_002_GEASS_M_LANCELOT_SKILL1",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_bTargetPos": true
+          }
+        ],
+        "m_listNKMEventInvincible": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_fEventTimeMax": 0.6666666666666666
+          }
+        ],
+        "m_listNKMEventMove": [
+          {
+            "m_fEventTime": 1.3333333333333333,
+            "m_bOffsetDependMe": true,
+            "m_OffsetX": -150,
+            "m_MoveTime": 0.5,
+            "m_bLandMove": true
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 99999,
+            "m_fColorR": 0.5,
+            "m_fColorG": 0.5,
+            "m_fColorB": 1.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.65,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_30"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.775,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_07"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.2333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MISSILE_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MISSILE_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.4333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MISSILE_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MISSILE_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.6333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MISSILE_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_07"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8333333333333334,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ATTACK_25",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ACTIVE_1",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ACTIVE_3",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ACTIVE_4",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ACTIVE_6"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_HYPER",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "HYPER_SKILL1",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_StateCoolTime": 40,
+        "m_listNKMEventHyperSkillCutIn": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_fDurationTime": 1.8333333333333333,
+            "m_BGEffectName": "AB_FX_SKILL_CUTIN_COMMON_A",
+            "m_CutInEffectName": "AB_FX_SKILL_CUTIN_NKM_UNIT_GEASS_M_LANCELOT",
+            "m_CutInEffectAnimName": "BASE"
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_EffectName": "AB_FX_CAST_HYPER",
+            "m_AnimName": "BASE",
+            "m_fScaleFactor": 30.0,
+            "m_BoneName": "BIP01_SPINE1"
+          }
+        ],
+        "m_listNKMEventInvincible": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_fEventTimeMax": 3.066666666666667
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_bDamageSpeedDependRight": true,
+            "m_fEventTimeMin": 3.0,
+            "m_fEventTimeMax": 3.1666666666666665,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1800,
+            "m_AttackUnitCount": 3,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_UNIT_GEASS_M_LANCELOT_HYPER1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_bDamageSpeedDependRight": true,
+            "m_fEventTimeMin": 3.6666666666666665,
+            "m_fEventTimeMax": 3.8333333333333335,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1800,
+            "m_AttackUnitCount": 3,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_UNIT_GEASS_M_LANCELOT_HYPER1"
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_Condition": {
+              "m_IgnoreBuffStrID": "BUFF_BOSS_CLB_002_GEASS_M_LANCELOT_HYPER_LV5",
+              "m_IgnoreBuffOverlapCount": [
+                1,
+                99
+              ]
+            },
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_BOSS_CLB_002_GEASS_M_LANCELOT_HYPER_LV5"
+          },
+          {
+            "m_Condition": {
+              "m_IgnoreBuffStrID": "BUFF_BOSS_CLB_002_GEASS_M_LANCELOT_HYPER_LV10",
+              "m_IgnoreBuffOverlapCount": [
+                1,
+                99
+              ]
+            },
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_BOSS_CLB_002_GEASS_M_LANCELOT_HYPER_LV10"
+          }
+        ],
+        "m_listNKMEventMove": [
+          {
+            "m_fEventTime": 3.1,
+            "m_bTargetUnit": false,
+            "m_OffsetX": -50,
+            "m_MoveTime": 0.5,
+            "m_bLandMove": true
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HYPER_ATTACK_START"
+            ]
+          },
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_50"
+            ]
+          },
+          {
+            "m_fEventTime": 0.9666666666666667,
+            "m_fLocalVol": 3.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_GUN_RELOAD_SMALL_03"
+            ]
+          },
+          {
+            "m_fEventTime": 1.2,
+            "m_fLocalVol": 3.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_GUN_RELOAD_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 1.3666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_51"
+            ]
+          },
+          {
+            "m_fEventTime": 1.3666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_03"
+            ]
+          },
+          {
+            "m_fEventTime": 1.6666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_RISE"
+            ]
+          },
+          {
+            "m_fEventTime": 3.066666666666667,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_09"
+            ]
+          },
+          {
+            "m_fEventTime": 3.5,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_03"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_HYPER_1",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_HYPER_2",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_HYPER_3"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.033333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ATTACK_30",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_ATTACK_31"
+            ]
+          }
+        ],
+        "m_listNKMEventCameraMove": [
+          {
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_fEventTimeMax": 1.5,
+            "m_fPosXOffset": -100,
+            "m_fPosYOffset": 150,
+            "m_fZoom": -250,
+            "m_fFocusBlur": 0.0,
+            "m_fMoveTrackingTime": 0.1,
+            "m_fZoomTrackingTime": 0.1,
+            "m_fCameraRadius": 0.0
+          },
+          {
+            "m_fEventTimeMin": 1.5,
+            "m_fEventTimeMax": 2.3333333333333335,
+            "m_fPosXOffset": 0,
+            "m_fPosYOffset": 150,
+            "m_fZoom": -250,
+            "m_fFocusBlur": 0.0,
+            "m_fMoveTrackingTime": 0.5,
+            "m_fZoomTrackingTime": 0.5,
+            "m_fCameraRadius": 0.0
+          }
+        ],
+        "m_listNKMEventFadeWorld": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.3333333333333333,
+            "m_fEventTimeMax": 3.0,
+            "m_fColorR": 0.0,
+            "m_fColorG": 0.0,
+            "m_fColorB": 0.3,
+            "m_fMapColorKeepTime": 0.3,
+            "m_fMapColorReturnTime": 1
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_fEventTimeMax": 3.3,
+            "m_fColorR": 1.0,
+            "m_fColorG": 0.5,
+            "m_fColorB": 0.5
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 2.3666666666666667,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 9999,
+            "m_fCameraCrashSpeed": 100,
+            "m_fCameraCrashGap": 100,
+            "m_fCameraCrashTime": 0.23333333333333334
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_A",
+        "m_AnimName": "DAMAGE_A",
+        "m_bAnimLoop": false,
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.4,
+            "m_listSoundName": [
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_8",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_9",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_10",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_11"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_B",
+        "m_AnimName": "DAMAGE_B",
+        "m_bAnimLoop": false,
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.4,
+            "m_listSoundName": [
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_8",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_9",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_10",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_11"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_AIR_UP",
+        "m_AnimName": "DAMAGE_AIR_UP",
+        "m_bAnimLoop": false,
+        "m_SpeedY0NegativeChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.6,
+            "m_listSoundName": [
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_16",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_17",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_19",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_20"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_bAnimLoop": false,
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.6,
+            "m_listSoundName": [
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_16",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_17",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_19",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DAMAGE_20"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_bAnimLoop": false,
+        "m_bShowGage": false,
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DEATH_4",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DEATH_6",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DEATH_7",
+              "VOICE_UNIT_GEASS_M_LANCELOT_BATTLE_DEATH_9"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

@@ -1,0 +1,2458 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_UNIT_BAR_S_BARTENDER_PR.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 21,
+  "records": [
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.21
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.3
+    },
+    {
+      "__key": "m_UnitSizeX",
+      "value": 120
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 300
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 285
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 150
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 150
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 300
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 1200
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 1600
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 700
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 3.0
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": true
+    },
+    {
+      "__key": "m_listConditionMacro",
+      "value": [
+        {
+          "m_Name": "IS_PASSIVE2_LEVEL_LESS_4",
+          "1": {
+            "Type": "SkillLevel",
+            "m_SkillStrID": "NKM_UNIT_BAR_S_BARTENDER_PR_PASSIVE3",
+            "m_SkillLevel": [
+              1,
+              4
+            ]
+          }
+        },
+        {
+          "m_Name": "IS_PASSIVE2_LEVEL_OVER_5",
+          "1": {
+            "Type": "SkillLevel",
+            "m_SkillStrID": "NKM_UNIT_BAR_S_BARTENDER_PR_PASSIVE3",
+            "m_SkillLevel": [
+              5,
+              99
+            ]
+          }
+        },
+        {
+          "m_Name": "IS_PASSIVE2_BUFF_EXIST_NOT",
+          "1": {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_BAR_S_BARTENDER_PR_PASSIVE2",
+            "Inverse": true
+          },
+          "2": {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_BAR_S_BARTENDER_PR_PASSIVE2_LV5",
+            "Inverse": true
+          }
+        },
+        {
+          "m_Name": "IS_PASSIVE1_COOLTIME_ING",
+          "1": {
+            "Type": "EventVariable",
+            "m_Name": "VAR_PASSIVE1_COOLTIME",
+            "m_Value": 0,
+            "Inverse": true
+          }
+        },
+        {
+          "m_Name": "IS_PASSIVE1_COOLTIME_ING_NOT",
+          "1": {
+            "Type": "EventVariable",
+            "m_Name": "VAR_PASSIVE1_COOLTIME",
+            "m_Value": 0
+          }
+        },
+        {
+          "m_Name": "IS_ATTACK1_LOOP_ING_NOT",
+          "1": {
+            "Type": "EventVariable",
+            "m_Name": "VAR_ATTACK1_LOOP_ING",
+            "m_Value": 1,
+            "Inverse": true
+          }
+        },
+        {
+          "m_Name": "IS_START_OR_ASTAND",
+          "1": {
+            "Type": "EventVariable",
+            "m_Name": "VAR_CHECK_START_ASTAND",
+            "m_Value": 1
+          }
+        },
+        {
+          "m_Name": "IS_START_OR_ASTAND_NOT",
+          "1": {
+            "Type": "EventVariable",
+            "m_Name": "VAR_CHECK_START_ASTAND",
+            "m_Value": 1,
+            "Inverse": true
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listTriggerRepeatData",
+      "value": [
+        {
+          "m_ConditionV2": [
+            "IS_PASSIVE1_COOLTIME_ING"
+          ],
+          "m_TriggerName": "TRIGGER_PASSIVE1_COOLTIME_SUBTRACT",
+          "m_fRepeatTime": 1.0
+        }
+      ]
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_ConditionV2": [
+            "IS_PASSIVE1_COOLTIME_ING",
+            "IS_START_OR_ASTAND"
+          ],
+          "m_StateName": "USN_ATTACK1_START",
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 700
+        },
+        {
+          "m_ConditionV2": [
+            "IS_PASSIVE1_COOLTIME_ING",
+            "IS_START_OR_ASTAND_NOT"
+          ],
+          "m_StateName": "USN_ATTACK1_LOOP",
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 700
+        },
+        {
+          "m_ConditionV2": [
+            "IS_PASSIVE1_COOLTIME_ING_NOT"
+          ],
+          "m_StateName": "USN_PASSIVE1",
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 700
+        }
+      ]
+    },
+    {
+      "__key": "m_listSkillStateData",
+      "value": [
+        {
+          "m_ConditionV2": [
+            "IS_ATTACK1_LOOP_ING_NOT"
+          ],
+          "m_StateName": "USN_SKILL1",
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 700
+        }
+      ]
+    },
+    {
+      "__key": "m_dicReaction",
+      "value": [
+        {
+          "m_Name": "REACTION_PASSIVE2_MASTER",
+          "m_EventType": "ATTACK",
+          "m_RequireCount": 1,
+          "m_TriggerTarget": "MASTER",
+          "m_Trigger": "TRIGGER_PASSIVE2_MASTER"
+        }
+      ]
+    },
+    {
+      "__key": "m_dicTriggerSet",
+      "value": [
+        {
+          "m_Name": "TRIGGER_PASSIVE2_MASTER",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "RESTART",
+          "m_listNKMEventBuff": [
+            {
+              "m_ConditionV2": [
+                "IS_PASSIVE2_LEVEL_LESS_4"
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_BuffStrID": "BUFF_BAR_S_BARTENDER_PR_PASSIVE2",
+              "m_Overlap": -1
+            },
+            {
+              "m_ConditionV2": [
+                "IS_PASSIVE2_LEVEL_OVER_5"
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_BuffStrID": "BUFF_BAR_S_BARTENDER_PR_PASSIVE2_LV5",
+              "m_Overlap": -1
+            }
+          ],
+          "m_listNKMEventReaction": [
+            {
+              "m_ConditionV2": [
+                "IS_PASSIVE2_BUFF_EXIST_NOT"
+              ],
+              "m_fEventTime": 0.06666666666666667,
+              "m_Reaction": "REACTION_PASSIVE2_MASTER",
+              "m_bRemove": true
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_PASSIVE1_COOLTIME",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "RESTART",
+          "m_listNKMEventBuff": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_BuffStrID": "BUFF_BAR_S_BARTENDER_PR_PASSIVE1_TRIGGER",
+              "m_Overlap": 10
+            }
+          ],
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_Name": "VAR_PASSIVE1_COOLTIME",
+              "m_Type": "SET",
+              "m_Value": 10
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_PASSIVE1_COOLTIME_SUBTRACT",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "PARALLEL",
+          "m_listNKMEventBuff": [
+            {
+              "m_ConditionV2": [
+                "IS_PASSIVE1_COOLTIME_ING"
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_BuffStrID": "BUFF_BAR_S_BARTENDER_PR_PASSIVE1_TRIGGER",
+              "m_Overlap": -1
+            }
+          ],
+          "m_listNKMEventVariable": [
+            {
+              "m_ConditionV2": [
+                "IS_PASSIVE1_COOLTIME_ING"
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_Name": "VAR_PASSIVE1_COOLTIME",
+              "m_Type": "ADD",
+              "m_Value": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.2,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventChangeCooltime": [
+            {
+              "m_fEventAnimTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_TargetStateName": "USN_SKILL1",
+              "m_eChangeType": "SET_RATIO",
+              "m_fChangeValue": 0.0
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_BuffStrID": "BUFF_BAR_S_BARTENDER_PR_PASSIVE1_TRIGGER",
+              "m_Overlap": 10
+            }
+          ],
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_CHECK_START_ASTAND",
+              "m_Value": 1
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_ATTACK1_LOOP_ING",
+              "m_Value": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_Name": "VAR_PASSIVE1_COOLTIME",
+              "m_Type": "SET",
+              "m_Value": 10
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.2,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SMASH_ATTACK_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_START_1",
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_START_2",
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_START_3",
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_START_4",
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_START_5"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_StateName": "USN_RUN",
+          "m_AnimName": "RUN",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 1.0,
+          "m_bRun": true,
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_CHECK_START_ASTAND",
+              "m_Value": 0
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+          "m_StateName": "USN_ASTAND",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": true,
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_CHECK_START_ASTAND",
+              "m_Value": 1
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK1_START",
+          "m_AnimName": "ATTACK1_START",
+          "m_bAnimLoop": false,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_fAnimSpeed": 1.0,
+          "m_AnimEndChangeState": "USN_ATTACK1_LOOP",
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_CHECK_START_ASTAND",
+              "m_Value": 1
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK1_LOOP",
+          "m_AnimName": "ATTACK1_LOOP",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 1.0,
+          "m_TargetLostOrDieStateDurationTime": 0.5,
+          "m_TargetLostOrDieState": "USN_ATTACK1_END",
+          "m_TargetDistOverChangeStateDist": 700,
+          "m_TargetDistOverChangeState": "USN_ATTACK1_END",
+          "m_listNKMEventVariable": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_Type": "SET",
+              "m_Name": "VAR_ATTACK1_LOOP_ING",
+              "m_Value": 1
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6666666666666666,
+              "m_Type": "SET",
+              "m_Name": "VAR_ATTACK1_LOOP_ING",
+              "m_Value": 0
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_Type": "SET",
+              "m_Name": "VAR_ATTACK1_LOOP_ING",
+              "m_Value": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_CHECK_START_ASTAND",
+              "m_Value": 0
+            }
+          ],
+          "m_listNKMEventChangeState": [
+            {
+              "m_ConditionV2": [
+                "IS_PASSIVE1_COOLTIME_ING_NOT"
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_ChangeState": "USN_PASSIVE1"
+            }
+          ],
+          "m_listNKMEventChangeCooltime": [
+            {
+              "m_fEventAnimTime": 0.03333333333333333,
+              "m_TargetStateName": "USN_SKILL1",
+              "m_eChangeType": "ADD_SECONDS",
+              "m_fChangeValue": -1
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_fEventTimeMin": 0.3333333333333333,
+              "m_fEventTimeMax": 0.5,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 750.0,
+              "m_bHitLand": true,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 2,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_ATTACK1"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.26666666666666666,
+              "m_fLocalVol": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.33,
+              "m_listSoundName": [
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_ATTACK_2",
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_ATTACK_3",
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_ATTACK_4",
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_ATTACK_5"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1_END",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK1_END",
+          "m_bAnimLoop": false,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_fAnimSpeed": 1.0,
+          "m_AnimEndChangeState": "USN_ASTAND"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_PASSIVE1",
+          "m_AnimName": "PASSIVE1",
+          "m_bAnimLoop": false,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_CHECK_START_ASTAND",
+              "m_Value": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_Name": "VAR_PASSIVE1_COOLTIME",
+              "m_Type": "SET",
+              "m_Value": 10
+            }
+          ],
+          "m_listNKMEventChangeCooltime": [
+            {
+              "m_fEventAnimTime": 0.03333333333333333,
+              "m_TargetStateName": "USN_SKILL1",
+              "m_eChangeType": "ADD_SECONDS",
+              "m_fChangeValue": -1
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_BuffStrID": "BUFF_BAR_S_BARTENDER_PR_PASSIVE1_TRIGGER",
+              "m_Overlap": 10
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6333333333333333,
+              "m_DEName": "DE_NKM_UNIT_BAR_S_BARTENDER_PR_PASSIVE1",
+              "m_OffsetX": 120,
+              "m_OffsetY": 195,
+              "m_bHold": true,
+              "m_FollowType": "TDT_INVALID"
+            }
+          ],
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.3333333333333333,
+              "m_DamageEffectID": "DE_NKM_UNIT_BAR_S_BARTENDER_PR_PASSIVE1",
+              "m_ChangeState": "DES_END"
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.4666666666666666,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 1250,
+              "m_fCameraCrashGap": 5,
+              "m_fCameraCrashTime": 0.3333333333333333
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 99999,
+              "m_fColorR": 0.5,
+              "m_fColorG": 0.5,
+              "m_fColorB": 1.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6,
+              "m_fLocalVol": 1.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MOVEMENT_10"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.3,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.066666666666667,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_GUN_RELOAD_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.33,
+              "m_listSoundName": [
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_PASSIVE_3",
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_PASSIVE_4",
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_PASSIVE_7",
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_PASSIVE_8",
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_PASSIVE_9"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_SKILL1",
+          "m_AnimName": "SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_SKILL",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_bSkillCutIn": true,
+          "m_listNKMEventTrigger": [
+            {
+              "m_ConditionV2": [
+                "IS_PASSIVE1_COOLTIME_ING"
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_TargetTrigger": "TRIGGER_PASSIVE1_COOLTIME_SUBTRACT"
+            },
+            {
+              "m_ConditionV2": [
+                "IS_PASSIVE1_COOLTIME_ING"
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L13_1 / 30"
+              },
+              "m_TargetTrigger": "TRIGGER_PASSIVE1_COOLTIME_SUBTRACT"
+            },
+            {
+              "m_ConditionV2": [
+                "IS_PASSIVE1_COOLTIME_ING"
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L14_1 / 30"
+              },
+              "m_TargetTrigger": "TRIGGER_PASSIVE1_COOLTIME_SUBTRACT"
+            }
+          ],
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_CHECK_START_ASTAND",
+              "m_Value": 0
+            }
+          ],
+          "m_listNKMEventReaction": [
+            {
+              "m_bStateEndTime": true,
+              "m_Reaction": "REACTION_PASSIVE2_MASTER"
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_ConditionV2": [
+                "IS_PASSIVE2_LEVEL_LESS_4"
+              ],
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_BAR_S_BARTENDER_PR_PASSIVE2",
+              "m_Overlap": 5
+            },
+            {
+              "m_ConditionV2": [
+                "IS_PASSIVE2_LEVEL_OVER_5"
+              ],
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_BAR_S_BARTENDER_PR_PASSIVE2_LV5",
+              "m_Overlap": 5
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.1333333333333333,
+              "m_fEventTimeMax": 1.2,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 750.0,
+              "m_bDamageSpeedDependRight": true,
+              "m_bHitLand": true,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1"
+            },
+            {
+              "m_ConditionTargetV2": [
+                {
+                  "Type": "Enemy"
+                },
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "DEBUFF_BAR_S_BARTENDER_PR_PASSIVE1",
+                  "Inverse": true
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.1333333333333333,
+              "m_fEventTimeMax": 1.2,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 750.0,
+              "m_bDamageSpeedDependRight": true,
+              "m_bHitLand": true,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1_DEBUFF"
+            },
+            {
+              "m_ConditionTargetV2": [
+                {
+                  "Type": "Enemy"
+                },
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "DEBUFF_BAR_S_BARTENDER_PR_PASSIVE1"
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.1333333333333333,
+              "m_fEventTimeMax": 1.2,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 750.0,
+              "m_bDamageSpeedDependRight": true,
+              "m_bHitLand": true,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1_DEBUFF_UP"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.2333333333333334,
+              "m_fEventTimeMax": 1.3,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 750.0,
+              "m_bDamageSpeedDependRight": true,
+              "m_bHitLand": true,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1"
+            },
+            {
+              "m_ConditionTargetV2": [
+                {
+                  "Type": "Enemy"
+                },
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "DEBUFF_BAR_S_BARTENDER_PR_PASSIVE1",
+                  "Inverse": true
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.2333333333333334,
+              "m_fEventTimeMax": 1.3,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 750.0,
+              "m_bDamageSpeedDependRight": true,
+              "m_bHitLand": true,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1_DEBUFF"
+            },
+            {
+              "m_ConditionTargetV2": [
+                {
+                  "Type": "Enemy"
+                },
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "DEBUFF_BAR_S_BARTENDER_PR_PASSIVE1"
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.2333333333333334,
+              "m_fEventTimeMax": 1.3,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 750.0,
+              "m_bDamageSpeedDependRight": true,
+              "m_bHitLand": true,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1_DEBUFF_UP"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.3333333333333333,
+              "m_fEventTimeMax": 1.4,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 750.0,
+              "m_bDamageSpeedDependRight": true,
+              "m_bHitLand": true,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1"
+            },
+            {
+              "m_ConditionTargetV2": [
+                {
+                  "Type": "Enemy"
+                },
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "DEBUFF_BAR_S_BARTENDER_PR_PASSIVE1",
+                  "Inverse": true
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.3333333333333333,
+              "m_fEventTimeMax": 1.4,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 750.0,
+              "m_bDamageSpeedDependRight": true,
+              "m_bHitLand": true,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1_DEBUFF"
+            },
+            {
+              "m_ConditionTargetV2": [
+                {
+                  "Type": "Enemy"
+                },
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "DEBUFF_BAR_S_BARTENDER_PR_PASSIVE1"
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.3333333333333333,
+              "m_fEventTimeMax": 1.4,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 750.0,
+              "m_bDamageSpeedDependRight": true,
+              "m_bHitLand": true,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1_DEBUFF_UP"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.4333333333333333,
+              "m_fEventTimeMax": 1.5,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 750.0,
+              "m_bDamageSpeedDependRight": true,
+              "m_bHitLand": true,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1"
+            },
+            {
+              "m_ConditionTargetV2": [
+                {
+                  "Type": "Enemy"
+                },
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "DEBUFF_BAR_S_BARTENDER_PR_PASSIVE1",
+                  "Inverse": true
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.4333333333333333,
+              "m_fEventTimeMax": 1.5,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 750.0,
+              "m_bDamageSpeedDependRight": true,
+              "m_bHitLand": true,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1_DEBUFF"
+            },
+            {
+              "m_ConditionTargetV2": [
+                {
+                  "Type": "Enemy"
+                },
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "DEBUFF_BAR_S_BARTENDER_PR_PASSIVE1"
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.4333333333333333,
+              "m_fEventTimeMax": 1.5,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 750.0,
+              "m_bDamageSpeedDependRight": true,
+              "m_bHitLand": true,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1_DEBUFF_UP"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.7666666666666666,
+              "m_fEventTimeMax": 1.9333333333333333,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 750.0,
+              "m_bDamageSpeedDependRight": true,
+              "m_bHitLand": true,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1_END"
+            },
+            {
+              "m_ConditionTargetV2": [
+                {
+                  "Type": "Enemy"
+                },
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "DEBUFF_BAR_S_BARTENDER_PR_PASSIVE1",
+                  "Inverse": true
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.7666666666666666,
+              "m_fEventTimeMax": 1.9333333333333333,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 750.0,
+              "m_bDamageSpeedDependRight": true,
+              "m_bHitLand": true,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1_DEBUFF"
+            },
+            {
+              "m_ConditionTargetV2": [
+                {
+                  "Type": "Enemy"
+                },
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "DEBUFF_BAR_S_BARTENDER_PR_PASSIVE1"
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.7666666666666666,
+              "m_fEventTimeMax": 1.9333333333333333,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 750.0,
+              "m_bDamageSpeedDependRight": true,
+              "m_bHitLand": true,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1_DEBUFF_UP"
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_EffectName": "AB_FX_CAST_SKILL",
+              "m_AnimName": "BASE",
+              "m_BoneName": "BIP01_SPINE1",
+              "m_fScaleFactor": 30.0,
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 99999,
+              "m_fColorR": 0.5,
+              "m_fColorG": 0.5,
+              "m_fColorB": 1.0
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.1333333333333333,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 750,
+              "m_fCameraCrashAccel": 1000,
+              "m_fCameraCrashGap": 2,
+              "m_fCameraCrashTime": 0.5333333333333333
+            },
+            {
+              "m_fEventTime": 1.8333333333333333,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 750,
+              "m_fCameraCrashGap": 4,
+              "m_fCameraCrashTime": 0.26666666666666666
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.2,
+              "m_fLocalVol": 1.2,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_FOOT_STEP_LANDING_BIG_02"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.1666666666666667,
+              "m_fLocalVol": 0.8,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.2666666666666666,
+              "m_fLocalVol": 0.8,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.3666666666666667,
+              "m_fLocalVol": 0.8,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.4666666666666666,
+              "m_fLocalVol": 0.8,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.8,
+              "m_fLocalVol": 1.1,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.4,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWING_SMALL_17"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_listSoundName": [
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_PASSIVE_6",
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_ACTIVE_1",
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_ACTIVE_2",
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_ACTIVE_3",
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_ACTIVE_4",
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_ACTIVE_5"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.0,
+              "m_bVoice": true,
+              "m_PlayRate": 0.2,
+              "m_listSoundName": [
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_PASSIVE_10"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_A",
+          "m_AnimName": "DAMAGE_A",
+          "m_bAnimLoop": false,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_ATTACK_1",
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_DAMAGE_2"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_B",
+          "m_AnimName": "DAMAGE_B",
+          "m_bAnimLoop": false,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_DAMAGE_2"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_AIR_UP",
+          "m_AnimName": "DAMAGE_AIR_UP",
+          "m_bAnimLoop": false,
+          "m_SpeedY0NegativeChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_DAMAGE_4"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_bAnimLoop": false,
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_DAMAGE_4"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_bAnimLoop": false,
+          "m_bShowGage": false,
+          "m_fAnimSpeed": 1.5,
+          "m_listNKMEventDissolve": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.8333333333333335,
+              "m_fDissolve": 1.0,
+              "m_fTrackTime": 1.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_DEATH_1",
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_DEATH_2",
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_DEATH_3",
+                "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_DEATH_4"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fForceRespawnZposMin": 0.21,
+    "m_fForceRespawnZposMax": 0.3,
+    "m_UnitSizeX": 120,
+    "m_UnitSizeY": 300,
+    "m_SpriteScale": 1.0,
+    "m_fGageOffsetY": 285,
+    "m_fShadowScaleX": 150,
+    "m_fShadowScaleY": 150,
+    "m_SpeedRun": 300,
+    "m_SeeRange": 1200,
+    "m_SeeRangeMax": 1600,
+    "m_TargetNearRange": 700,
+    "m_fDieCompleteTime": 3.0,
+    "m_bUseMotionBlur": true,
+    "m_listConditionMacro": [
+      {
+        "m_Name": "IS_PASSIVE2_LEVEL_LESS_4",
+        "1": {
+          "Type": "SkillLevel",
+          "m_SkillStrID": "NKM_UNIT_BAR_S_BARTENDER_PR_PASSIVE3",
+          "m_SkillLevel": [
+            1,
+            4
+          ]
+        }
+      },
+      {
+        "m_Name": "IS_PASSIVE2_LEVEL_OVER_5",
+        "1": {
+          "Type": "SkillLevel",
+          "m_SkillStrID": "NKM_UNIT_BAR_S_BARTENDER_PR_PASSIVE3",
+          "m_SkillLevel": [
+            5,
+            99
+          ]
+        }
+      },
+      {
+        "m_Name": "IS_PASSIVE2_BUFF_EXIST_NOT",
+        "1": {
+          "Type": "Buff",
+          "m_BuffStrID": "BUFF_BAR_S_BARTENDER_PR_PASSIVE2",
+          "Inverse": true
+        },
+        "2": {
+          "Type": "Buff",
+          "m_BuffStrID": "BUFF_BAR_S_BARTENDER_PR_PASSIVE2_LV5",
+          "Inverse": true
+        }
+      },
+      {
+        "m_Name": "IS_PASSIVE1_COOLTIME_ING",
+        "1": {
+          "Type": "EventVariable",
+          "m_Name": "VAR_PASSIVE1_COOLTIME",
+          "m_Value": 0,
+          "Inverse": true
+        }
+      },
+      {
+        "m_Name": "IS_PASSIVE1_COOLTIME_ING_NOT",
+        "1": {
+          "Type": "EventVariable",
+          "m_Name": "VAR_PASSIVE1_COOLTIME",
+          "m_Value": 0
+        }
+      },
+      {
+        "m_Name": "IS_ATTACK1_LOOP_ING_NOT",
+        "1": {
+          "Type": "EventVariable",
+          "m_Name": "VAR_ATTACK1_LOOP_ING",
+          "m_Value": 1,
+          "Inverse": true
+        }
+      },
+      {
+        "m_Name": "IS_START_OR_ASTAND",
+        "1": {
+          "Type": "EventVariable",
+          "m_Name": "VAR_CHECK_START_ASTAND",
+          "m_Value": 1
+        }
+      },
+      {
+        "m_Name": "IS_START_OR_ASTAND_NOT",
+        "1": {
+          "Type": "EventVariable",
+          "m_Name": "VAR_CHECK_START_ASTAND",
+          "m_Value": 1,
+          "Inverse": true
+        }
+      }
+    ],
+    "m_listTriggerRepeatData": [
+      {
+        "m_ConditionV2": [
+          "IS_PASSIVE1_COOLTIME_ING"
+        ],
+        "m_TriggerName": "TRIGGER_PASSIVE1_COOLTIME_SUBTRACT",
+        "m_fRepeatTime": 1.0
+      }
+    ],
+    "m_listAttackStateData": [
+      {
+        "m_ConditionV2": [
+          "IS_PASSIVE1_COOLTIME_ING",
+          "IS_START_OR_ASTAND"
+        ],
+        "m_StateName": "USN_ATTACK1_START",
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 700
+      },
+      {
+        "m_ConditionV2": [
+          "IS_PASSIVE1_COOLTIME_ING",
+          "IS_START_OR_ASTAND_NOT"
+        ],
+        "m_StateName": "USN_ATTACK1_LOOP",
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 700
+      },
+      {
+        "m_ConditionV2": [
+          "IS_PASSIVE1_COOLTIME_ING_NOT"
+        ],
+        "m_StateName": "USN_PASSIVE1",
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 700
+      }
+    ],
+    "m_listSkillStateData": [
+      {
+        "m_ConditionV2": [
+          "IS_ATTACK1_LOOP_ING_NOT"
+        ],
+        "m_StateName": "USN_SKILL1",
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 700
+      }
+    ],
+    "m_dicReaction": [
+      {
+        "m_Name": "REACTION_PASSIVE2_MASTER",
+        "m_EventType": "ATTACK",
+        "m_RequireCount": 1,
+        "m_TriggerTarget": "MASTER",
+        "m_Trigger": "TRIGGER_PASSIVE2_MASTER"
+      }
+    ],
+    "m_dicTriggerSet": [
+      {
+        "m_Name": "TRIGGER_PASSIVE2_MASTER",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "RESTART",
+        "m_listNKMEventBuff": [
+          {
+            "m_ConditionV2": [
+              "IS_PASSIVE2_LEVEL_LESS_4"
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_BuffStrID": "BUFF_BAR_S_BARTENDER_PR_PASSIVE2",
+            "m_Overlap": -1
+          },
+          {
+            "m_ConditionV2": [
+              "IS_PASSIVE2_LEVEL_OVER_5"
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_BuffStrID": "BUFF_BAR_S_BARTENDER_PR_PASSIVE2_LV5",
+            "m_Overlap": -1
+          }
+        ],
+        "m_listNKMEventReaction": [
+          {
+            "m_ConditionV2": [
+              "IS_PASSIVE2_BUFF_EXIST_NOT"
+            ],
+            "m_fEventTime": 0.06666666666666667,
+            "m_Reaction": "REACTION_PASSIVE2_MASTER",
+            "m_bRemove": true
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_PASSIVE1_COOLTIME",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "RESTART",
+        "m_listNKMEventBuff": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_BuffStrID": "BUFF_BAR_S_BARTENDER_PR_PASSIVE1_TRIGGER",
+            "m_Overlap": 10
+          }
+        ],
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_Name": "VAR_PASSIVE1_COOLTIME",
+            "m_Type": "SET",
+            "m_Value": 10
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_PASSIVE1_COOLTIME_SUBTRACT",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "PARALLEL",
+        "m_listNKMEventBuff": [
+          {
+            "m_ConditionV2": [
+              "IS_PASSIVE1_COOLTIME_ING"
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_BuffStrID": "BUFF_BAR_S_BARTENDER_PR_PASSIVE1_TRIGGER",
+            "m_Overlap": -1
+          }
+        ],
+        "m_listNKMEventVariable": [
+          {
+            "m_ConditionV2": [
+              "IS_PASSIVE1_COOLTIME_ING"
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_Name": "VAR_PASSIVE1_COOLTIME",
+            "m_Type": "ADD",
+            "m_Value": -1
+          }
+        ]
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.2,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventChangeCooltime": [
+          {
+            "m_fEventAnimTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_TargetStateName": "USN_SKILL1",
+            "m_eChangeType": "SET_RATIO",
+            "m_fChangeValue": 0.0
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_BuffStrID": "BUFF_BAR_S_BARTENDER_PR_PASSIVE1_TRIGGER",
+            "m_Overlap": 10
+          }
+        ],
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_CHECK_START_ASTAND",
+            "m_Value": 1
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_ATTACK1_LOOP_ING",
+            "m_Value": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_Name": "VAR_PASSIVE1_COOLTIME",
+            "m_Type": "SET",
+            "m_Value": 10
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.2,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SMASH_ATTACK_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_START_1",
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_START_2",
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_START_3",
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_START_4",
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_START_5"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_StateName": "USN_RUN",
+        "m_AnimName": "RUN",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 1.0,
+        "m_bRun": true,
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_CHECK_START_ASTAND",
+            "m_Value": 0
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+        "m_StateName": "USN_ASTAND",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": true,
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_CHECK_START_ASTAND",
+            "m_Value": 1
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK1_START",
+        "m_AnimName": "ATTACK1_START",
+        "m_bAnimLoop": false,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_fAnimSpeed": 1.0,
+        "m_AnimEndChangeState": "USN_ATTACK1_LOOP",
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_CHECK_START_ASTAND",
+            "m_Value": 1
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK1_LOOP",
+        "m_AnimName": "ATTACK1_LOOP",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 1.0,
+        "m_TargetLostOrDieStateDurationTime": 0.5,
+        "m_TargetLostOrDieState": "USN_ATTACK1_END",
+        "m_TargetDistOverChangeStateDist": 700,
+        "m_TargetDistOverChangeState": "USN_ATTACK1_END",
+        "m_listNKMEventVariable": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_Type": "SET",
+            "m_Name": "VAR_ATTACK1_LOOP_ING",
+            "m_Value": 1
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6666666666666666,
+            "m_Type": "SET",
+            "m_Name": "VAR_ATTACK1_LOOP_ING",
+            "m_Value": 0
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_Type": "SET",
+            "m_Name": "VAR_ATTACK1_LOOP_ING",
+            "m_Value": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_CHECK_START_ASTAND",
+            "m_Value": 0
+          }
+        ],
+        "m_listNKMEventChangeState": [
+          {
+            "m_ConditionV2": [
+              "IS_PASSIVE1_COOLTIME_ING_NOT"
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_ChangeState": "USN_PASSIVE1"
+          }
+        ],
+        "m_listNKMEventChangeCooltime": [
+          {
+            "m_fEventAnimTime": 0.03333333333333333,
+            "m_TargetStateName": "USN_SKILL1",
+            "m_eChangeType": "ADD_SECONDS",
+            "m_fChangeValue": -1
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_fEventTimeMin": 0.3333333333333333,
+            "m_fEventTimeMax": 0.5,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 750.0,
+            "m_bHitLand": true,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 2,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_ATTACK1"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.26666666666666666,
+            "m_fLocalVol": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.33,
+            "m_listSoundName": [
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_ATTACK_2",
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_ATTACK_3",
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_ATTACK_4",
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_ATTACK_5"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1_END",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK1_END",
+        "m_bAnimLoop": false,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_fAnimSpeed": 1.0,
+        "m_AnimEndChangeState": "USN_ASTAND"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_PASSIVE1",
+        "m_AnimName": "PASSIVE1",
+        "m_bAnimLoop": false,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_CHECK_START_ASTAND",
+            "m_Value": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_Name": "VAR_PASSIVE1_COOLTIME",
+            "m_Type": "SET",
+            "m_Value": 10
+          }
+        ],
+        "m_listNKMEventChangeCooltime": [
+          {
+            "m_fEventAnimTime": 0.03333333333333333,
+            "m_TargetStateName": "USN_SKILL1",
+            "m_eChangeType": "ADD_SECONDS",
+            "m_fChangeValue": -1
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_BuffStrID": "BUFF_BAR_S_BARTENDER_PR_PASSIVE1_TRIGGER",
+            "m_Overlap": 10
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6333333333333333,
+            "m_DEName": "DE_NKM_UNIT_BAR_S_BARTENDER_PR_PASSIVE1",
+            "m_OffsetX": 120,
+            "m_OffsetY": 195,
+            "m_bHold": true,
+            "m_FollowType": "TDT_INVALID"
+          }
+        ],
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.3333333333333333,
+            "m_DamageEffectID": "DE_NKM_UNIT_BAR_S_BARTENDER_PR_PASSIVE1",
+            "m_ChangeState": "DES_END"
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.4666666666666666,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 1250,
+            "m_fCameraCrashGap": 5,
+            "m_fCameraCrashTime": 0.3333333333333333
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 99999,
+            "m_fColorR": 0.5,
+            "m_fColorG": 0.5,
+            "m_fColorB": 1.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6,
+            "m_fLocalVol": 1.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MOVEMENT_10"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.3,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.066666666666667,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_GUN_RELOAD_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.33,
+            "m_listSoundName": [
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_PASSIVE_3",
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_PASSIVE_4",
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_PASSIVE_7",
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_PASSIVE_8",
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_PASSIVE_9"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_SKILL1",
+        "m_AnimName": "SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_SKILL",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_bSkillCutIn": true,
+        "m_listNKMEventTrigger": [
+          {
+            "m_ConditionV2": [
+              "IS_PASSIVE1_COOLTIME_ING"
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_TargetTrigger": "TRIGGER_PASSIVE1_COOLTIME_SUBTRACT"
+          },
+          {
+            "m_ConditionV2": [
+              "IS_PASSIVE1_COOLTIME_ING"
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L13_1 / 30"
+            },
+            "m_TargetTrigger": "TRIGGER_PASSIVE1_COOLTIME_SUBTRACT"
+          },
+          {
+            "m_ConditionV2": [
+              "IS_PASSIVE1_COOLTIME_ING"
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L14_1 / 30"
+            },
+            "m_TargetTrigger": "TRIGGER_PASSIVE1_COOLTIME_SUBTRACT"
+          }
+        ],
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_CHECK_START_ASTAND",
+            "m_Value": 0
+          }
+        ],
+        "m_listNKMEventReaction": [
+          {
+            "m_bStateEndTime": true,
+            "m_Reaction": "REACTION_PASSIVE2_MASTER"
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_ConditionV2": [
+              "IS_PASSIVE2_LEVEL_LESS_4"
+            ],
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_BAR_S_BARTENDER_PR_PASSIVE2",
+            "m_Overlap": 5
+          },
+          {
+            "m_ConditionV2": [
+              "IS_PASSIVE2_LEVEL_OVER_5"
+            ],
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_BAR_S_BARTENDER_PR_PASSIVE2_LV5",
+            "m_Overlap": 5
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.1333333333333333,
+            "m_fEventTimeMax": 1.2,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 750.0,
+            "m_bDamageSpeedDependRight": true,
+            "m_bHitLand": true,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1"
+          },
+          {
+            "m_ConditionTargetV2": [
+              {
+                "Type": "Enemy"
+              },
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "DEBUFF_BAR_S_BARTENDER_PR_PASSIVE1",
+                "Inverse": true
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.1333333333333333,
+            "m_fEventTimeMax": 1.2,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 750.0,
+            "m_bDamageSpeedDependRight": true,
+            "m_bHitLand": true,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1_DEBUFF"
+          },
+          {
+            "m_ConditionTargetV2": [
+              {
+                "Type": "Enemy"
+              },
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "DEBUFF_BAR_S_BARTENDER_PR_PASSIVE1"
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.1333333333333333,
+            "m_fEventTimeMax": 1.2,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 750.0,
+            "m_bDamageSpeedDependRight": true,
+            "m_bHitLand": true,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1_DEBUFF_UP"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.2333333333333334,
+            "m_fEventTimeMax": 1.3,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 750.0,
+            "m_bDamageSpeedDependRight": true,
+            "m_bHitLand": true,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1"
+          },
+          {
+            "m_ConditionTargetV2": [
+              {
+                "Type": "Enemy"
+              },
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "DEBUFF_BAR_S_BARTENDER_PR_PASSIVE1",
+                "Inverse": true
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.2333333333333334,
+            "m_fEventTimeMax": 1.3,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 750.0,
+            "m_bDamageSpeedDependRight": true,
+            "m_bHitLand": true,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1_DEBUFF"
+          },
+          {
+            "m_ConditionTargetV2": [
+              {
+                "Type": "Enemy"
+              },
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "DEBUFF_BAR_S_BARTENDER_PR_PASSIVE1"
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.2333333333333334,
+            "m_fEventTimeMax": 1.3,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 750.0,
+            "m_bDamageSpeedDependRight": true,
+            "m_bHitLand": true,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1_DEBUFF_UP"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.3333333333333333,
+            "m_fEventTimeMax": 1.4,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 750.0,
+            "m_bDamageSpeedDependRight": true,
+            "m_bHitLand": true,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1"
+          },
+          {
+            "m_ConditionTargetV2": [
+              {
+                "Type": "Enemy"
+              },
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "DEBUFF_BAR_S_BARTENDER_PR_PASSIVE1",
+                "Inverse": true
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.3333333333333333,
+            "m_fEventTimeMax": 1.4,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 750.0,
+            "m_bDamageSpeedDependRight": true,
+            "m_bHitLand": true,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1_DEBUFF"
+          },
+          {
+            "m_ConditionTargetV2": [
+              {
+                "Type": "Enemy"
+              },
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "DEBUFF_BAR_S_BARTENDER_PR_PASSIVE1"
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.3333333333333333,
+            "m_fEventTimeMax": 1.4,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 750.0,
+            "m_bDamageSpeedDependRight": true,
+            "m_bHitLand": true,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1_DEBUFF_UP"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.4333333333333333,
+            "m_fEventTimeMax": 1.5,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 750.0,
+            "m_bDamageSpeedDependRight": true,
+            "m_bHitLand": true,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1"
+          },
+          {
+            "m_ConditionTargetV2": [
+              {
+                "Type": "Enemy"
+              },
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "DEBUFF_BAR_S_BARTENDER_PR_PASSIVE1",
+                "Inverse": true
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.4333333333333333,
+            "m_fEventTimeMax": 1.5,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 750.0,
+            "m_bDamageSpeedDependRight": true,
+            "m_bHitLand": true,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1_DEBUFF"
+          },
+          {
+            "m_ConditionTargetV2": [
+              {
+                "Type": "Enemy"
+              },
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "DEBUFF_BAR_S_BARTENDER_PR_PASSIVE1"
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.4333333333333333,
+            "m_fEventTimeMax": 1.5,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 750.0,
+            "m_bDamageSpeedDependRight": true,
+            "m_bHitLand": true,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1_DEBUFF_UP"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.7666666666666666,
+            "m_fEventTimeMax": 1.9333333333333333,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 750.0,
+            "m_bDamageSpeedDependRight": true,
+            "m_bHitLand": true,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1_END"
+          },
+          {
+            "m_ConditionTargetV2": [
+              {
+                "Type": "Enemy"
+              },
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "DEBUFF_BAR_S_BARTENDER_PR_PASSIVE1",
+                "Inverse": true
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.7666666666666666,
+            "m_fEventTimeMax": 1.9333333333333333,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 750.0,
+            "m_bDamageSpeedDependRight": true,
+            "m_bHitLand": true,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1_DEBUFF"
+          },
+          {
+            "m_ConditionTargetV2": [
+              {
+                "Type": "Enemy"
+              },
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "DEBUFF_BAR_S_BARTENDER_PR_PASSIVE1"
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.7666666666666666,
+            "m_fEventTimeMax": 1.9333333333333333,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 750.0,
+            "m_bDamageSpeedDependRight": true,
+            "m_bHitLand": true,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_UNIT_BAR_S_BARTENDER_PR_SKILL1_DEBUFF_UP"
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_EffectName": "AB_FX_CAST_SKILL",
+            "m_AnimName": "BASE",
+            "m_BoneName": "BIP01_SPINE1",
+            "m_fScaleFactor": 30.0,
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 99999,
+            "m_fColorR": 0.5,
+            "m_fColorG": 0.5,
+            "m_fColorB": 1.0
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.1333333333333333,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 750,
+            "m_fCameraCrashAccel": 1000,
+            "m_fCameraCrashGap": 2,
+            "m_fCameraCrashTime": 0.5333333333333333
+          },
+          {
+            "m_fEventTime": 1.8333333333333333,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 750,
+            "m_fCameraCrashGap": 4,
+            "m_fCameraCrashTime": 0.26666666666666666
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.2,
+            "m_fLocalVol": 1.2,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_FOOT_STEP_LANDING_BIG_02"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.1666666666666667,
+            "m_fLocalVol": 0.8,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.2666666666666666,
+            "m_fLocalVol": 0.8,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.3666666666666667,
+            "m_fLocalVol": 0.8,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.4666666666666666,
+            "m_fLocalVol": 0.8,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.8,
+            "m_fLocalVol": 1.1,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SHOTGUN_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.4,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWING_SMALL_17"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_listSoundName": [
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_PASSIVE_6",
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_ACTIVE_1",
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_ACTIVE_2",
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_ACTIVE_3",
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_ACTIVE_4",
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_ACTIVE_5"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.0,
+            "m_bVoice": true,
+            "m_PlayRate": 0.2,
+            "m_listSoundName": [
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_PASSIVE_10"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_A",
+        "m_AnimName": "DAMAGE_A",
+        "m_bAnimLoop": false,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_ATTACK_1",
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_DAMAGE_2"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_B",
+        "m_AnimName": "DAMAGE_B",
+        "m_bAnimLoop": false,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_DAMAGE_2"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_AIR_UP",
+        "m_AnimName": "DAMAGE_AIR_UP",
+        "m_bAnimLoop": false,
+        "m_SpeedY0NegativeChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_DAMAGE_3",
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_DAMAGE_4"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_bAnimLoop": false,
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_DAMAGE_3",
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_DAMAGE_4"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_bAnimLoop": false,
+        "m_bShowGage": false,
+        "m_fAnimSpeed": 1.5,
+        "m_listNKMEventDissolve": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.8333333333333335,
+            "m_fDissolve": 1.0,
+            "m_fTrackTime": 1.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_DEATH_1",
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_DEATH_2",
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_DEATH_3",
+              "VOICE_UNIT_BAR_S_BARTENDER_PR_BATTLE_DEATH_4"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

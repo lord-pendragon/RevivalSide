@@ -1,0 +1,278 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_EP_1_ACT_1_2.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 10,
+  "records": [
+    {
+      "__key": "m_bCanUseAuto",
+      "value": false
+    },
+    {
+      "__key": "m_fStartCost",
+      "value": 7
+    },
+    {
+      "__key": "m_fCostSpeedRateA",
+      "value": 1
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.5
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MONSTER_BOSS_BASIC_GRAVE_MINI_N_TR"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listDungeonDeck"
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_DEMOLISHER_TR",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.15
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 10501,
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 3
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_UNIT_C_YOO_MI_NA_TR_NOULT",
+          "m_EventConditionValue2": "USN_START",
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 10504,
+          "m_bPause": true,
+          "m_fEventDelay": 0.6,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 2
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_UNIT_C_JOO_SHI_YOON_TR",
+          "m_EventConditionValue2": "USN_SKILL1",
+          "m_dungeonEventType": "SET_ENEMY_BOSS_HP_RATE",
+          "m_EventActionValue": 50,
+          "m_fEventDelay": 0.0,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 3
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_UNIT_C_JOO_SHI_YOON_TR",
+          "m_EventConditionValue2": "USN_SKILL1",
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 10507,
+          "m_bPause": true,
+          "m_fEventDelay": 0.6,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 3
+          }
+        },
+        {
+          "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+          "m_EventConditionNumValue": 1,
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 10508,
+          "m_bPause": false,
+          "m_fEventDelay": 0.0,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 3
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamB",
+      "value": [
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MONSTER_NORMAL_BASIC_DEMOLISHER_TR",
+          "m_EventConditionValue2": "USN_START",
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 10503,
+          "m_bPause": true,
+          "m_fEventDelay": 0,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 3.5
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MONSTER_NORMAL_BASIC_DEMOLISHER_TR",
+          "m_EventConditionValue2": "USN_DAMAGE_DIE",
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 10505,
+          "m_bPause": false,
+          "m_fEventDelay": 0.2,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 3
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MONSTER_BOSS_BASIC_GRAVE_MINI_N_TR",
+          "m_EventConditionValue2": "USN_SKILL1",
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 10506,
+          "m_bPause": true,
+          "m_fEventDelay": 0.3,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 3
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_bCanUseAuto": false,
+    "m_fStartCost": 7,
+    "m_fCostSpeedRateA": 1,
+    "m_fCostSpeedRateB": 0.5,
+    "m_BossUnitStrID": "NKM_MONSTER_BOSS_BASIC_GRAVE_MINI_N_TR",
+    "m_fBossPosZ": 0.6,
+    "m_listDungeonDeck": {},
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_DEMOLISHER_TR",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.15
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 10501,
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 3
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_UNIT_C_YOO_MI_NA_TR_NOULT",
+        "m_EventConditionValue2": "USN_START",
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 10504,
+        "m_bPause": true,
+        "m_fEventDelay": 0.6,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 2
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_UNIT_C_JOO_SHI_YOON_TR",
+        "m_EventConditionValue2": "USN_SKILL1",
+        "m_dungeonEventType": "SET_ENEMY_BOSS_HP_RATE",
+        "m_EventActionValue": 50,
+        "m_fEventDelay": 0.0,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 3
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_UNIT_C_JOO_SHI_YOON_TR",
+        "m_EventConditionValue2": "USN_SKILL1",
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 10507,
+        "m_bPause": true,
+        "m_fEventDelay": 0.6,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 3
+        }
+      },
+      {
+        "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+        "m_EventConditionNumValue": 1,
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 10508,
+        "m_bPause": false,
+        "m_fEventDelay": 0.0,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 3
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamB": [
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MONSTER_NORMAL_BASIC_DEMOLISHER_TR",
+        "m_EventConditionValue2": "USN_START",
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 10503,
+        "m_bPause": true,
+        "m_fEventDelay": 0,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 3.5
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MONSTER_NORMAL_BASIC_DEMOLISHER_TR",
+        "m_EventConditionValue2": "USN_DAMAGE_DIE",
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 10505,
+        "m_bPause": false,
+        "m_fEventDelay": 0.2,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 3
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MONSTER_BOSS_BASIC_GRAVE_MINI_N_TR",
+        "m_EventConditionValue2": "USN_SKILL1",
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 10506,
+        "m_bPause": true,
+        "m_fEventDelay": 0.3,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 3
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

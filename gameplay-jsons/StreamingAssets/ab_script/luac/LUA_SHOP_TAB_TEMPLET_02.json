@@ -1,0 +1,5077 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script\\luac\\LUA_SHOP_TAB_TEMPLET_02.lua",
+  "rootName": "m_ShopTabTable",
+  "recordCount": 214,
+  "records": [
+    {
+      "m_TabID": "TAB_SEASON_GAUNTLET",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_SEASON_GAUNTLET",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PVP",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_GAUNTLET",
+      "m_ResourceTypeID_1": 5,
+      "m_ResourceTypeID_2": 14,
+      "m_ResourceTypeID_3": 101
+    },
+    {
+      "m_TabID": "TAB_SEASON_GAUNTLET",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_NEW_SEASON_GAUNTLET_POINT_GAUNTLET",
+      "m_ShopDisplay": "Item",
+      "m_bTabChain": true,
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_GAUNTLET",
+      "m_ResetDays": "1",
+      "m_ResourceTypeID_1": 5,
+      "m_ResourceTypeID_2": 14,
+      "m_ResourceTypeID_3": 101
+    },
+    {
+      "m_TabID": "TAB_SEASON_GAUNTLET",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_NEW_SEASON_GAUNTLET_EQUIP_COMMON",
+      "listContentsTagAllow": [
+        "TAG_COMMON_PVP_BASIC_DATA"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_GAUNTLET",
+      "m_ResourceTypeID_1": 5,
+      "m_ResourceTypeID_2": 14,
+      "m_ResourceTypeID_3": 101
+    },
+    {
+      "m_TabID": "TAB_SEASON_GAUNTLET",
+      "m_TabSubIndex": 3,
+      "m_TabName": "SI_SHOP_TAB_NAME_NEW_SEASON_GAUNTLET_EQUIP_SEASON",
+      "listContentsTagAllow": [
+        "TAG_COMMON_PVP_BASIC_DATA"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TagImage": "HOT",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_GAUNTLET",
+      "m_ResourceTypeID_1": 5,
+      "m_ResourceTypeID_2": 14,
+      "m_ResourceTypeID_3": 101
+    },
+    {
+      "m_TabID": "TAB_SEASON_GAUNTLET",
+      "m_TabSubIndex": 4,
+      "m_TabName": "SI_SHOP_TAB_NAME_NEW_SEASON_GAUNTLET_POINT_SEASON_VIEW",
+      "listContentsTagAllow": [
+        "TAG_COMMON_PVP_BASIC_DATA"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_GAUNTLET",
+      "m_ResourceTypeID_1": 5,
+      "m_ResourceTypeID_2": 14,
+      "m_ResourceTypeID_3": 101
+    },
+    {
+      "m_TabID": "TAB_SEASON_GAUNTLET",
+      "m_TabSubIndex": 5,
+      "m_TabName": "SI_SHOP_TAB_NAME_NEW_SEASON_GAUNTLET_POINT_SEASON_MINI",
+      "listContentsTagAllow": [
+        "TAG_COMMON_PVP_BASIC_DATA"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_GAUNTLET",
+      "m_ResourceTypeID_1": 5,
+      "m_ResourceTypeID_2": 14,
+      "m_ResourceTypeID_3": 101
+    },
+    {
+      "m_TabID": "TAB_SEASON_GAUNTLET",
+      "m_TabSubIndex": 6,
+      "m_TabName": "SI_SHOP_TAB_NAME_NEW_SEASON_GAUNTLET_POINT_SEASON_SKIN",
+      "listContentsTagAllow": [
+        "TAG_COMMON_PVP_BASIC_DATA_SHOP_SKIN"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_GAUNTLET",
+      "m_ResourceTypeID_1": 5,
+      "m_ResourceTypeID_2": 14,
+      "m_ResourceTypeID_3": 101
+    },
+    {
+      "m_TabID": "TAB_SEASON_FIERCE_POINT",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_SEASON_FIERCE_POINT",
+      "listContentsTagAllow": [
+        "UNLOCK_FIERCE_ON"
+      ],
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_FIERCE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_FIERCE_POINT",
+      "m_ResourceTypeID_1": 25,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_SEASON_FIERCE_POINT",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_SEASON_FIERCE_POINT_LIMITED_EQUIP",
+      "listContentsTagAllow": [
+        "UNLOCK_FIERCE_ON"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_FIERCE_POINT",
+      "m_ResourceTypeID_1": 25,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_SEASON_FIERCE_POINT",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_SEASON_FIERCE_POINT_EQUIP_GROWTH_ITEM",
+      "listContentsTagAllow": [
+        "UNLOCK_FIERCE_ON"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_FIERCE_POINT",
+      "m_ResourceTypeID_1": 25,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_SEASON_FIERCE_POINT",
+      "m_TabSubIndex": 3,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_SEASON_FIERCE_POINT_UNIT_GROWTH_ITEM",
+      "listContentsTagAllow": [
+        "UNLOCK_FIERCE_ON"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_FIERCE_POINT",
+      "m_ResourceTypeID_1": 25,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_SEASON_FIERCE_POINT",
+      "m_TabSubIndex": 4,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_SEASON_FIERCE_POINT_SHIP_GROWTH_ITEM",
+      "listContentsTagAllow": [
+        "UNLOCK_FIERCE_ON"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_FIERCE_POINT",
+      "m_ResourceTypeID_1": 25,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_SEASON_FIERCE_POINT",
+      "m_TabSubIndex": 5,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_SEASON_FIERCE_POINT_RESOURCE_EXCHANGE",
+      "listContentsTagAllow": [
+        "UNLOCK_FIERCE_ON"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_FIERCE_POINT",
+      "m_ResourceTypeID_1": 25,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_SEASON_TAB_EVENT",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EVENT"
+      ],
+      "m_ShopDisplay": "None",
+      "m_TagImage": "EVENT",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_EVENT",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CHUSEOK",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "TAB_EVENT_CHUSEOK",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 615
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_EVENT_SIGMA",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_SIGMA",
+      "m_DateStrID": "TAB_EVENT_SIGMA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 614
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 3,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CHUSEOK_CONTRACT",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Card",
+      "m_DateStrID": "SHOP_EVENT_CHUSEOK_CONTRACT",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19009
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 4,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CROSSROAD2",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "TAB_EVENT_CROSSROAD2",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 606
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 5,
+      "m_TabName": "SI_SHOP_TAB_EVENT_WANTED",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "TAB_EVENT_WANTED",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 18
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 6,
+      "m_TabName": "SI_SHOP_TAB_EVENT_STREGA",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "TAB_EVENT_STREGA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 616
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 7,
+      "m_TabName": "SI_SHOP_TAB_EVENT_ESPR",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "TAB_EVENT_ESPR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 608
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 8,
+      "m_TabName": "SI_SHOP_TAB_EVENT_MAID",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "TAB_EVENT_MAID",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 617,
+      "m_ResourceTypeID_4": 618
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 9,
+      "m_TabName": "SI_SHOP_TAB_EVENT_XMAS_CONTRACT",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Card",
+      "m_DateStrID": "TAB_EVENT_XMAS_CONTRACT",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19011
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 10,
+      "m_TabName": "SI_SHOP_TAB_EVENT_KILLER",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "TAB_EVENT_KILLER",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 619
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 11,
+      "m_TabName": "SI_SHOP_TAB_EVENT_ADMIN",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "TAB_EVENT_ADMIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 613
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 12,
+      "m_TabName": "SI_SHOP_TAB_EVENT_MILITIA",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "TAB_EVENT_MILITIA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 620
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 13,
+      "m_TabName": "SI_SHOP_TAB_EVENT_1YEAR",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Card",
+      "m_DateStrID": "TAB_EVENT_1YEAR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19012
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 14,
+      "m_TabName": "SI_SHOP_TAB_EVENT_VALENTINE_R",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "TAB_EVENT_VALENTINE_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 603
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 15,
+      "m_TabName": "SI_SHOP_TAB_EVENT_SPRING_R",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_SPRING_R",
+      "m_DateStrID": "TAB_EVENT_SPRING_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 605
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 16,
+      "m_TabName": "SI_SHOP_TAB_EVENT_2021_FOOLS",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_2021_FOOLS",
+      "m_DateStrID": "TAB_EVENT_2021_FOOLS",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 622,
+      "m_ResourceTypeID_4": 623,
+      "m_ResourceTypeID_5": 624
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 4,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CROSSROAD2",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "TAB_EVENT_CROSSROAD_TWN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 606
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 5,
+      "m_TabName": "SI_SHOP_TAB_EVENT_WANTED",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_WANTED",
+      "m_DateStrID": "TAB_EVENT_WANTED",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 18
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 14,
+      "m_TabName": "SI_SHOP_TAB_EVENT_VALENTINE_R",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "TAB_EVENT_VALENTINE_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 603
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 7,
+      "m_TabName": "SI_SHOP_TAB_EVENT_ESPR",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "TAB_EVENT_ESPR",
+      "listContentsTagIgnore": [
+        "KOR"
+      ],
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 608
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 16,
+      "m_TabName": "SI_SHOP_TAB_EVENT_2021_FOOLS",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_2021_FOOLS",
+      "m_DateStrID": "TAB_EVENT_2021_FOOLS",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 622,
+      "m_ResourceTypeID_4": 623,
+      "m_ResourceTypeID_5": 624
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 17,
+      "m_TabName": "SI_SHOP_TAB_EVENT_VALENTINE_R",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_VALENTINE_R",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_VALENTINE",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_VALENTINE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 603
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 18,
+      "m_TabName": "SI_SHOP_TAB_EVENT_SPRING_R",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_SPRING_R",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_SPRING",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_SPRING",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 605
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 19,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CROSSROAD2",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_CROSSROAD",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_CROSSROAD",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_CROSSROAD",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 606
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 20,
+      "m_TabName": "SI_SHOP_TAB_EVENT_WANTED",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_WANTED",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_WANTED_1",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_WANTED_1",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 18
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 21,
+      "m_TabName": "SI_SHOP_TAB_EVENT_ESPR",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_ESPR",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_ESPR",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_ESPR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 608
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 22,
+      "m_TabName": "SI_SHOP_TAB_EVENT_STRANGE_SUMMER_DUCK",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_STRANGE_SUMMER_DUCK",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_SUMMER_01",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_SUMMER_01",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 610
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 23,
+      "m_TabName": "SI_SHOP_TAB_EVENT_STRANGE_SUMMER_DOLPHIN",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_STRANGE_SUMMER_DOLPHIN",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_SUMMER_02",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_SUMMER_02",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 611
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 24,
+      "m_TabName": "SI_SHOP_TAB_EVENT_STRANGE_SUMMER_FLAMINGO",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_STRANGE_SUMMER_FLAMINGO",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_SUMMER_03",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_SUMMER_03",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 612
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 25,
+      "m_TabName": "SI_SHOP_TAB_EVENT_ADMIN",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_ADMIN",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_ADMIN",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_ADMIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 613
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 26,
+      "m_TabName": "SI_SHOP_TAB_EVENT_SIGMA",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_SIGMA",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_SIGMA",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_SIGMA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 614
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 27,
+      "m_TabName": "SI_SHOP_TAB_EVENT_STREGA",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_STREGA",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_STREGA",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_STREGA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 616
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 28,
+      "m_TabName": "SI_SHOP_TAB_EVENT_MAID",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_MAID",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_MAID",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_MAID",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 617,
+      "m_ResourceTypeID_4": 618
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 29,
+      "m_TabName": "SI_SHOP_TAB_EVENT_KILLER",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_KILLER",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_XMAS",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_XMAS",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 619
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 30,
+      "m_TabName": "SI_SHOP_TAB_EVENT_MILITIA",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_MILITIA",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_MILITIA",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_MILITIA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 620
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 31,
+      "m_TabName": "SI_SHOP_TAB_EVENT_2021_FOOLS",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_2021_FOOLS",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_FOOLSDAY",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_FOOLSDAY",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 622,
+      "m_ResourceTypeID_4": 623,
+      "m_ResourceTypeID_5": 624
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 32,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CHUSEOK",
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_CHUSEOK",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_CHUSEOK",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 615
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 33,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CHUSEOK_CONTRACT",
+      "m_ShopDisplay": "Card",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_CHUSEOK_CONTRACT",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_CHUSEOK_CONTRACT",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19009
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 34,
+      "m_TabName": "SI_SHOP_TAB_EVENT_XMAS_CONTRACT",
+      "m_ShopDisplay": "Card",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_XMAS_CONTRACT",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_XMAS_CONTRACT",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19011
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 35,
+      "m_TabName": "SI_SHOP_TAB_EVENT_1YEAR",
+      "m_ShopDisplay": "Card",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_1YEAR_CONTRACT",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_1YEAR_CONTRACT",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19012
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 36,
+      "m_TabName": "SI_SHOP_TAB_EVENT_SHADE",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_SHADE",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_SHADE",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_SHADE_1",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 625,
+      "m_ResourceTypeID_4": 626,
+      "m_ResourceTypeID_5": 810
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 37,
+      "m_TabName": "SI_SHOP_TAB_EVENT_SPORTS",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_SPORTS",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_SPORTS",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_SPORTS",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 628
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 38,
+      "m_TabName": "SI_SHOP_TAB_EVENT_BINGO",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_BINGO_JISOO",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_BINGO_JISOO",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_BINGO_JISOO",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19013
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 39,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CLB_001",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_CLB_001",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_CLB_001",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_CLB_001",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 629
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 40,
+      "m_TabName": "SI_SHOP_TAB_EVENT_BINGO",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_BINGO_LONELY",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_BINGO_LONELY",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_BINGO_LONELY",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19017
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 41,
+      "m_TabName": "SI_SHOP_TAB_EVENT_SUMMER2021_HAIRPIN",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_SUMMER2021_HAIRPIN",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_SUMMER2021_01",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_SUMMER2021_01",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 631
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 42,
+      "m_TabName": "SI_SHOP_TAB_EVENT_SUMMER2021_COCONUT",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_SUMMER2021_COCONUT",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_SUMMER2021_02",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_SUMMER2021_02",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 632
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 43,
+      "m_TabName": "SI_SHOP_TAB_EVENT_BINGO",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_BINGO_JAKE",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_BINGO_JAKE",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_BINGO_JAKE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19015
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 44,
+      "m_TabName": "SI_SHOP_TAB_EVENT_LFT_CLB_KR",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_ShopDisplay": "Card",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_LFT_CLB_KR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 45,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CHUSEOK_2021",
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_CHUSEOK_2021",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_CHUSEOK_2021",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 633
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 46,
+      "m_TabName": "SI_SHOP_TAB_EVENT_HORIZON_1",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_HORIZON_1",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_HORIZON_01",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_HORIZON_1",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 634
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 47,
+      "m_TabName": "SI_SHOP_TAB_EVENT_HORIZON_2",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_HORIZON_2",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_HORIZON_02",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_HORIZON_2",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 635
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 48,
+      "m_TabName": "SI_SHOP_TAB_EVENT_HORIZON_3",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_HORIZON_3",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_HORIZON_03",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_HORIZON_3",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 634,
+      "m_ResourceTypeID_4": 635
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 49,
+      "m_TabName": "SI_SHOP_TAB_EVENT_BINGO",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_BINGO_AUTUMN",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_BINGO_AUTUMN",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_BINGO_AUTUMN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19018
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 50,
+      "m_TabName": "SI_SHOP_TAB_EVENT_NANAHARA",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_NANAHARA",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_NANAHARA",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_NANAHARA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 637
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 51,
+      "m_TabName": "SI_SHOP_TAB_EVENT_BINGO",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_BINGO_NEWYEAR_2022",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_BINGO_NEWYEAR_2022",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_BINGO_NEWYEAR_2022",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19019
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 52,
+      "m_TabName": "SI_SHOP_TAB_EVENT_REMIND_EPISODE_1",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_REMIND_EPISODE_1",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_REMIND_EPISODE_01",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_REMIND_EPISODE_1",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 614,
+      "m_ResourceTypeID_4": 616
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 53,
+      "m_TabName": "SI_SHOP_TAB_EVENT_REMIND_EPISODE_2",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_REMIND_EPISODE_2",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_REMIND_EPISODE_02",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_REMIND_EPISODE_2",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 617,
+      "m_ResourceTypeID_4": 618,
+      "m_ResourceTypeID_5": 620
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 54,
+      "m_TabName": "SI_SHOP_TAB_EVENT_REMIND_EPISODE_3",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_REMIND_EPISODE_3",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_REMIND_EPISODE_03",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_REMIND_EPISODE_3",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 625,
+      "m_ResourceTypeID_4": 626
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 55,
+      "m_TabName": "SI_SHOP_TAB_EVENT_NEW_YEAR_FESTIVAL_2022",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_NEW_YEAR_FESTIVAL_2022",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_NEW_YEAR_FESTIVAL_2022",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_NEW_YEAR_FESTIVAL_2022",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 638
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 56,
+      "m_TabName": "SI_SHOP_TAB_EVENT_GREMORY",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_GREMORY",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_GREMORY",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_GREMORY",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 640
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 57,
+      "m_TabName": "SI_SHOP_TAB_EVENT_GREMORY_BAR",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_GREMORY_BAR",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_GREMORY_BAR",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_GREMORY_BAR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 647,
+      "m_ResourceTypeID_3": 641,
+      "m_ResourceTypeID_4": 642,
+      "m_ResourceTypeID_5": 643
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 58,
+      "m_TabName": "SI_SHOP_TAB_EVENT_ALPHA",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_ALPHA",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_ALPHA",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_ALPHA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 644
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 59,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CARNIVAL_1",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_CARNIVAL",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_CARNIVAL_01",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_CARNIVAL_1",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 645
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 60,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CARNIVAL_2",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_CARNIVAL",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_CARNIVAL_02",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_CARNIVAL_2",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 646
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 61,
+      "m_TabName": "SI_SHOP_TAB_EVENT_BINGO",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_BINGO_GAP_2022@@SI_ITEM_MISC_NAME_IMI_ITEM_MISC_EVENT_2021_BINGO_USE_GAP_DATA_PIECE",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_BINGO_GAP_2022",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_BINGO_GAP_2022",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19020
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 62,
+      "m_TabName": "SI_SHOP_TAB_EVENT_NIGHTMARE",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_NIGHTMARE",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_NIGHTMARE",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_NIGHTMARE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 648
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 63,
+      "m_TabName": "SI_SHOP_TAB_EVENT_KINGDOM",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_KINGDOM",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_KINGDOM",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_KINGDOM",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 649
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 64,
+      "m_TabName": "SI_SHOP_TAB_EVENT_NEVERLAND",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_NEVERLAND",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_NEVERLAND",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_NEVERLAND",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 652
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 65,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CLB_002",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_CLB_002",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_CLB_002",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_CLB_002",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 654
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 66,
+      "m_TabName": "SI_SHOP_TAB_EVENT_1000DAYS",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_1000DAYS",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_1000DAYS",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_1000DAYS",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 656
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 67,
+      "m_TabName": "SI_SHOP_TAB_EVENT_ESPR2_01",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_ESPR2_01",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_ESPR2_01",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_ESPR2_01",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 657
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 68,
+      "m_TabName": "SI_SHOP_TAB_EVENT_ESPR2_02",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_ESPR2_01",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_ESPR2_02",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_ESPR2_02",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 658
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 69,
+      "m_TabName": "SI_SHOP_TAB_EVENT_GAMECIRCLE",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_GAMECIRCLE",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_GAMECIRCLE",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_GAMECIRCLE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 660
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 70,
+      "m_TabName": "SI_SHOP_TAB_EVENT_NANAHARA2",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_NANAHARA2",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_NANAHARA2",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_NANAHARA2",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 661
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 71,
+      "m_TabName": "SI_SHOP_TAB_EVENT_BINGO",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_BINGO_GAP_2022@@SI_ITEM_MISC_NAME_IMI_ITEM_MISC_EVENT_2021_BINGO_USE_NEWYEAR_DATA_PIECE",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_BINGO_NEWYEAR_2023",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_BINGO_NEWYEAR_2023",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19023
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 72,
+      "m_TabName": "SI_SHOP_TAB_EVENT_GLOBAL_EAS_2023",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_GLOBAL_EAS_2023",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_GLOBAL_EAS_2023",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_GLOBAL_EAS_2023",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 691
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 78,
+      "m_TabName": "SI_SHOP_TAB_EVENT_FRONTBAY",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_FRONTBAY",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_FRONTBAY",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_FRONTBAY",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 701
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 74,
+      "m_TabName": "SI_SHOP_TAB_EVENT_GLOBAL_FIRST_HALF_ANN_ZL",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_SHOP@@SI_ITEM_MISC_NAME_IMI_ITEM_MISC_RESOURCE_SPECIAL_CONTRACT_POINT_GLOBAL_FIRST_HALF_ANN_ZL",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_GLOBAL_FIRST_HALF_ANN",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_GLOBAL_FIRST_HALF_ANN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19025
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 75,
+      "m_TabName": "SI_SHOP_TAB_EVENT_GLOBAL_EAS_2023",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_SHOP@@SI_ITEM_MISC_NAME_IMI_ITEM_MISC_RESOURCE_LUCKY_BAG_2022",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_HOLY_DAY_23",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_HOLY_DAY_23",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 702
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 76,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CAFE_STREGA",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_CAFE_STREGA",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_CAFE_STREGA",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_CAFE_STREGA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 703,
+      "m_ResourceTypeID_3": 704,
+      "m_ResourceTypeID_4": 705,
+      "m_ResourceTypeID_5": 706
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 77,
+      "m_TabName": "SI_SHOP_TAB_EVENT_EVENT_RACE",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_SHOP@@SI_ITEM_MISC_NAME_IMI_ITEM_MISC_RESOURCE_2021_EVENT_SPORTS_RACE",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_RACE_SPORT",
+      "m_OpenTag": "TAG_KOR_EVENT_RACE_SPORTS_V2",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 627
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 73,
+      "m_TabName": "SI_SHOP_TAB_EVENT_BINGO",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_BINGO_GAP_2022@@SI_ITEM_MISC_NAME_IMI_ITEM_MISC_EVENT_2021_BINGO_USE_NEWYEAR_DATA_PIECE",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_BINGO_NEWYEAR_2024",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_BINGO_NEWYEAR_2024",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19026
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 79,
+      "m_TabName": "SI_SHOP_TAB_EVENT_ANNIVERSARY",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_ANNIVERSARY",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_ANNIVERSARY_1YEAR",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_ANNIVERSARY_1YEAR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 710
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 80,
+      "m_TabName": "SI_SHOP_TAB_EVENT_BINGO",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_BINGO_GAP_2022@@SI_ITEM_MISC_NAME_IMI_ITEM_MISC_EVENT_2024_BINGO_USE_SUMMER_DATA_PIECE",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_BINGO_SUMMER_2024",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_BINGO_SUMMER_2024",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19027
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 81,
+      "m_TabName": "SI_SHOP_TAB_EVENT_DEBT",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_DEBT",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_DEBT",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_DEBT",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 715
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 82,
+      "m_TabName": "SI_SHOP_TAB_EVENT_ANNIVERSARY",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_ANNIVERSARY",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_ANNIVERSARY_1_5YEAR",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_ANNIVERSARY_1_5YEAR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 718
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 83,
+      "m_TabName": "SI_SHOP_TAB_EVENT_REARM_EXCHANGE",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_REARM_EXCHANGE",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_REARM_EXCHANGE",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_REARM_EXCHANGE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 719,
+      "m_ResourceTypeID_4": 720
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 84,
+      "m_TabName": "SI_SHOP_TAB_EVENT_ANNIVERSARY",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_ANNIVERSARY",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_ANNIVERSARY_2YEAR",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_ANNIVERSARY_2YEAR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 726
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 85,
+      "m_TabName": "SI_SHOP_TAB_EVENT_BINGO",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_BINGO_GAP_2022@@SI_ITEM_MISC_NAME_IMI_ITEM_MISC_EVENT_2024_BINGO_USE_SUMMER_DATA_PIECE",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_BINGO_SUMMER_2025",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_BINGO_SUMMER_2025",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19028
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 86,
+      "m_TabName": "SI_SHOP_TAB_EVENT_ANNIVERSARY",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_ANNIVERSARY",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_ANNIVERSARY_2_5YEAR",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_ANNIVERSARY_2_5YEAR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 812
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 87,
+      "m_TabName": "SI_SHOP_TAB_EVENT_RAID_1",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_RAID_1",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_RAID_4",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_RAID_1",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 53
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 88,
+      "m_TabName": "SI_SHOP_TAB_EVENT_REACTOR_EXCHANGE",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_REACTOR_EXCHANGE",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_REACTOR_EXCHANGE",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_REACTOR_EXCHANGE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 748,
+      "m_ResourceTypeID_4": 747
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 89,
+      "m_TabName": "SI_SHOP_TAB_EVENT_ANNIVERSARY",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_ANNIVERSARY",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_ANNIVERSARY_3YEAR",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_ANNIVERSARY_3YEAR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 824
+    },
+    {
+      "m_TabID": "TAB_EVENT_V2",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_SEASON_TAB_EVENT",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EVENT"
+      ],
+      "m_ShopDisplay": "None",
+      "m_TagImage": "EVENT",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_EVENT",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_EVENT_V2",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_EVENT_BINGO",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_BINGO_GAP_2022@@SI_ITEM_MISC_NAME_IMI_ITEM_MISC_EVENT_2023_BINGO_USE_FAM_DATA_PIECE",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_BINGO_FAM_05_2023",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_BINGO_FAM_05_2023",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19024
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1001,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2022_SUMMER",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2022_SUMMER",
+      "m_ResourceTypeID_1": 650
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1002,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2022_GLOBAL",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2022_GLOBAL",
+      "m_ResourceTypeID_1": 653
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1003,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2023_NEWYEAR",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2023_NEWYEAR",
+      "m_ResourceTypeID_1": 662
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1004,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2023_APOCALYPSE_001",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2023_APOCALYPSE_001"
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1005,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_EVENT_POINT_EXCHANGE_2023_SUMMER",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2023_SUMMER"
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1006,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2023_GLOBAL",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2023_GLOBAL"
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1007,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2023_WINTER",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2023_WINTER"
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1008,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2024_APOCALYPSE_001",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2024_APOCALYPSE_001"
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1009,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2024_APOCALYPSE_002",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2024_APOCALYPSE_002"
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1010,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2024_WINTER",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2024_WINTER"
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1011,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2025_APOCALYPSE_001",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2025_APOCALYPSE_001"
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1012,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2025_COMMON",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2025_COMMON"
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1013,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2025_APOCALYPSE_002",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2025_APOCALYPSE_002"
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1014,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2025_WINTER",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2025_WINTER"
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1015,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2026_COMMON",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2026_COMMON"
+    },
+    {
+      "m_TabID": "TAB_MAINSTREAM",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_EPISODE_GROUP_NAME_MAINSTREAM",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_SIDESTORY",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_MAINSTREAM",
+      "m_TabSubIndex": 3005,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_MAINSTREAM_EP_5",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP5_HARD",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 734
+    },
+    {
+      "m_TabID": "TAB_MAINSTREAM",
+      "m_TabSubIndex": 3013,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_MAINSTREAM_EP_13",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP13_HARD",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 743,
+      "m_ResourceTypeID_4": 806
+    },
+    {
+      "m_TabID": "TAB_MAINSTREAM",
+      "m_TabSubIndex": 3014,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_MAINSTREAM_EP_14",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP14_HARD",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 745,
+      "m_ResourceTypeID_4": 814,
+      "m_ResourceTypeID_5": 826
+    },
+    {
+      "m_TabID": "TAB_MAINSTREAM",
+      "m_TabSubIndex": 3007,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_MAINSTREAM_EP_7",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP7_HARD",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 736,
+      "m_ResourceTypeID_4": 813
+    },
+    {
+      "m_TabID": "TAB_MAINSTREAM",
+      "m_TabSubIndex": 3004,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_MAINSTREAM_EP_4",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP4_HARD",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 733,
+      "m_ResourceTypeID_4": 818
+    },
+    {
+      "m_TabID": "TAB_MAINSTREAM",
+      "m_TabSubIndex": 3010,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_MAINSTREAM_EP_10",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP10_HARD",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 740,
+      "m_ResourceTypeID_4": 821
+    },
+    {
+      "m_TabID": "TAB_MAINSTREAM",
+      "m_TabSubIndex": 3008,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_MAINSTREAM_EP_8",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP8_HARD",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 737,
+      "m_ResourceTypeID_4": 828
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_EPISODE_GROUP_NAME_SUBSTREAM",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_SIDESTORY",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2000,
+      "m_TabName": "SI_BATTLE_TEST",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_DEVELOPMENT",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 743
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2006,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_EVENT_SPRING",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_SPRING_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 663
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2008,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_CROSSROAD",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_CROSSROAD_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 664
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2013,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_EVENT_WANTED_01",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_WANTED_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 666
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2007,
+      "m_TabName": "SI_EPISODE_EPISODE_TITLE_SS_ESPR",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_ESPR_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 665
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2009,
+      "m_TabName": "SI_EPISODE_EPISODE_EVENT_ADMIN",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_ADMIN_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 667,
+      "m_ResourceTypeID_4": 817
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2010,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_EVENT_SIGMA",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_SIGMA_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 668
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2011,
+      "m_TabName": "SI_EPISODE_EPISODE_EVENT_STREGA",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_STREGA_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 669,
+      "m_ResourceTypeID_4": 807
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2012,
+      "m_TabName": "SI_EPISODE_EPISODE_EVENT_MAID",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_MAID_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 670
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2014,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_EVENT_MILITIA",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_MILITIA_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 671
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2015,
+      "m_TabName": "SI_EPISODE_EPISODE_EVENT_SHADE",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_SHADE_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 672,
+      "m_ResourceTypeID_4": 810
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2016,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_EVENT_SPORTS",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_SPORTS_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 673
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2017,
+      "m_TabName": "SI_EPISODE_EPISODE_HORIZON",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_HORIZON_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 674
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2018,
+      "m_TabName": "SI_EPISODE_EPISODE_NANAHARA",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_NANAHARA_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 675
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2019,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_EVENT_GREMORY",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_GREMORY_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 676
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2020,
+      "m_TabName": "SI_EPISODE_EPISODE_EVENT_ALPHA",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_ALPHA_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 677,
+      "m_ResourceTypeID_4": 819
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2021,
+      "m_TabName": "SI_EPISODE_EPISODE_EVENT_CARNIVAL",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_CARNIVAL_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 678
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2022,
+      "m_TabName": "SI_EPISODE_EPISODE_EVENT_NIGHTMARE",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_NIGHTMARE_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 679
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2023,
+      "m_TabName": "SI_EPISODE_EPISODE_EVENT_KINGDOM",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_KINGDOM_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 680
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2024,
+      "m_TabName": "SI_EPISODE_EPISODE_EVENT_NEVERLAND",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_NEVERLAND_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 681,
+      "m_ResourceTypeID_4": 827
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2025,
+      "m_TabName": "SI_EPISODE_EPISODE_EVENT_ESPR2",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_ESPR2_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 682,
+      "m_ResourceTypeID_4": 816
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2026,
+      "m_TabName": "SI_EPISODE_EPISODE_EVENT_GAMECIRCLE",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_GAMECIRCLE_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 683
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2027,
+      "m_TabName": "SI_EPISODE_EPISODE_EVENT_NANAHARA2",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_NANAHARA2_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 684,
+      "m_ResourceTypeID_4": 823
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2002,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_ORCA",
+      "m_ShopDisplay": "Item",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 685
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2003,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_SOF",
+      "m_ShopDisplay": "Item",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 686
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2004,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_POLICE",
+      "m_ShopDisplay": "Item",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 687
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2005,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_DELTA",
+      "m_ShopDisplay": "Item",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 688,
+      "m_ResourceTypeID_4": 811
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2001,
+      "m_TabName": "SI_EPISODE_EPISODE_TITLE_SS_FAILURE",
+      "m_ShopDisplay": "Item",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 689
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2028,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_CHARADE",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_CHARADE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 690
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2029,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_EXILER",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_EXILER",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 692
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2030,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_ACADEMY",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_ACADEMY",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 693
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2031,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_CHARADE2",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_CHARADE2",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 699
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2032,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_CARNIVAL2",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_CARNIVAL2",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 700
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2033,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_PRYDWEN",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_PRYDWEN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 707,
+      "m_ResourceTypeID_4": 801,
+      "m_ResourceTypeID_5": 820
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2034,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_FLOOR",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_FLOOR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 709
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2035,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_YAKSHA",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_YAKSHA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 711,
+      "m_ResourceTypeID_4": 829
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2036,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_DOLL",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_DOLL",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 712
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2037,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_AVENGER",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_AVENGER",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 714
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2038,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_SWANSONG",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_SWANSONG",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 716,
+      "m_ResourceTypeID_4": 822
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2039,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_VARUNA",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_VARUNA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 717,
+      "m_ResourceTypeID_4": 830
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2040,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_LEGACY",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_LEGACY",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 722
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2041,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_WINTERVACATION",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_WINTERVACATION",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 725,
+      "m_ResourceTypeID_4": 800
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2042,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_MOONLIGHT",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_MOONLIGHT",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 729,
+      "m_ResourceTypeID_4": 802
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2043,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_PRIDE",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_PRIDE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 744,
+      "m_ResourceTypeID_4": 809
+    },
+    {
+      "m_TabID": "TAB_SUPPLY",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_MAIN_TAB_SUPPLY",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SUPPLY"
+      ],
+      "m_ShopDisplay": "Item_Extend",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_AGENCY",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_MultiBuy": true
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_RESOURCE",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_RESOURCE",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_RESOURCE"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_RESOURCE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_RESOURCE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_COMBINI",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_COMBINI",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_COMBINI"
+      ],
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_QUARTZ",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_COMBINI",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_COMBINI",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_COMBINI_PACKAGE",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_COMBINI"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_COMBINI",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_COMBINI",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_COMBINI_IMOTICON",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_COMBINI"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_COMBINI",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_COMBINI",
+      "m_TabSubIndex": 3,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_COMBINI_IMOTICON_CONTEST",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_COMBINI",
+      "m_HideWhenSoldOut": true,
+      "m_OpenTag": "TAG_COMMON_SHOP_TAB_EXCHANGE_COMBINI_CONTEST_PACKAGE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_COMBINI",
+      "m_TabSubIndex": 4,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_COMBINI_IMOTICON_CONTEST",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_COMBINI",
+      "m_HideWhenSoldOut": true,
+      "m_OpenTag": "TAG_COMMON_SHOP_TAB_EXCHANGE_COMBINI_CONTEST",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_BACKGROUND",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_COMBINI_BACKGROUND",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_BACKGROUND",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_BACKGROUND",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_BACKGROUND",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_BACKGROUND_BACKGROUND",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_BACKGROUND",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_BACKGROUND",
+      "m_TabSubIndex": 3,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_BACKGROUND_FLASHBACK_SUB",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_BACKGROUND",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_BACKGROUND",
+      "m_TabSubIndex": 4,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_BACKGROUND_FLASHBACK_MAIN",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_BACKGROUND",
+      "m_OpenTag": "TAG_COMMON_SHOP_TAB_FLASHBACK_MAIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_OFFICE",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_OFFICE",
+      "listContentsTagAllow": [
+        "OFFICE_ROOM"
+      ],
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_QUARTZ",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_OFFICE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_OFFICE",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_OFFICE_FURNITURE",
+      "listContentsTagAllow": [
+        "OFFICE_ROOM"
+      ],
+      "m_ShopDisplay": "Interior",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_OFFICE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_OFFICE",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_OFFICE_BGM",
+      "listContentsTagAllow": [
+        "OFFICE_ROOM"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_INTERIOR_BGM",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_OFFICE",
+      "m_TabSubIndex": 4,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_OFFICE_FLOOR",
+      "listContentsTagAllow": [
+        "OFFICE_ROOM"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_OFFICE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_OFFICE",
+      "m_TabSubIndex": 5,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_OFFICE_WALL",
+      "listContentsTagAllow": [
+        "OFFICE_ROOM"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_OFFICE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_OFFICE",
+      "m_TabSubIndex": 6,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_OFFICE_BACKGROUND",
+      "listContentsTagAllow": [
+        "OFFICE_ROOM"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_OFFICE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_TASK_PLANET",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_TASK_PLANET",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_TASK_PLANET"
+      ],
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_HR",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_TASK_PLANET",
+      "m_ResourceTypeID_1": 401,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_TASK_PLANET",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_TASK_PLANET_ITEM",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_TASK_PLANET"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_TASK_PLANET",
+      "m_ResourceTypeID_1": 401,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_TASK_PLANET",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_TASK_PLANET_OPERATOR",
+      "listContentsTagAllow": [
+        "SYSTEM_OPERATOR"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_TASK_PLANET",
+      "m_ResourceTypeID_1": 401,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_TASK_PLANET",
+      "m_TabSubIndex": 3,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_TASK_PLANET_OPERATOR_TOKEN",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_TASK_PLANET",
+      "m_OpenTag": "OPERATOR_EXTRACT_TASK_PLANET",
+      "m_ResourceTypeID_1": 401,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_TASK_PLANET",
+      "m_TabSubIndex": 4,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_TASK_PLANET_PIECE_SSR",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_TASK_PLANET_PIECE"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_TASK_PLANET",
+      "m_ResourceTypeID_1": 401,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_TASK_PLANET",
+      "m_TabSubIndex": 5,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_TASK_PLANET_PIECE_SR",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_TASK_PLANET_PIECE"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_TASK_PLANET",
+      "m_ResourceTypeID_1": 401,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_TASK_PLANET",
+      "m_TabSubIndex": 6,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_TASK_PLANET_PIECE_CH",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_TASK_PLANET_PIECE"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_TASK_PLANET",
+      "m_ResourceTypeID_1": 401,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_RAID_COIN",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_RAID_COIN",
+      "m_ShopDisplay": "Item",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_RAID",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_RAID",
+      "m_OpenTag": "TAG_SHOP_RAID_SEASON",
+      "m_ResourceTypeID_1": 22,
+      "m_ResourceTypeID_2": 38,
+      "m_ResourceTypeID_3": 48
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_DIVE_POINT",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_DIVE_POINT",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_DIVE_POINT"
+      ],
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_DIVESHOP"
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_DIVE_POINT",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_IMAGINARY_CORE",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_IMAGINARY_CORE"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_IMAGINARY_CORE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 11
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_DIVE_POINT",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_GOLDEN_BULLET",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_GOLDEN_BULLET"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_GOLDEN_BULLET",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 11,
+      "m_ResourceTypeID_4": 28
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_CHALLENGE",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_CHALLENGE",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PVP",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_CHALLENGE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 26,
+      "m_ResourceTypeID_4": 27
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_CHALLENGE",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_CHALLENGE_GENERAL",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 26,
+      "m_ResourceTypeID_4": 27
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_CHALLENGE",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_CHALLENGE_LIMITED",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 26,
+      "m_ResourceTypeID_4": 27
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_CHALLENGE",
+      "m_TabSubIndex": 3,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_CHALLENGE_PIECE",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 26,
+      "m_ResourceTypeID_4": 27
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_SHADOW_COIN",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_SHADOW_COIN",
+      "listContentsTagAllow": [
+        "UNLOCK_SHADOW_PALACE_ON"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_SHADOW",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_SHADOW_COIN",
+      "m_ResourceTypeID_1": 20,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_GUILD_COIN",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_GUILD_COIN",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_GUILD_COIN"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_CONSORTIUM",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_GUILD_COIN",
+      "m_ResourceTypeID_1": 21,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_REMOVE_CARD",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_REMOVE_CARD",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_REMOVE_CARD"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_BUSINESSCARD",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_REMOVE_CARD",
+      "m_ResourceTypeID_1": 1022,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_NO_USE",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_NO_USE",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_NO_USE"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    }
+  ],
+  "root": [
+    {
+      "m_TabID": "TAB_SEASON_GAUNTLET",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_SEASON_GAUNTLET",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PVP",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_GAUNTLET",
+      "m_ResourceTypeID_1": 5,
+      "m_ResourceTypeID_2": 14,
+      "m_ResourceTypeID_3": 101
+    },
+    {
+      "m_TabID": "TAB_SEASON_GAUNTLET",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_NEW_SEASON_GAUNTLET_POINT_GAUNTLET",
+      "m_ShopDisplay": "Item",
+      "m_bTabChain": true,
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_GAUNTLET",
+      "m_ResetDays": "1",
+      "m_ResourceTypeID_1": 5,
+      "m_ResourceTypeID_2": 14,
+      "m_ResourceTypeID_3": 101
+    },
+    {
+      "m_TabID": "TAB_SEASON_GAUNTLET",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_NEW_SEASON_GAUNTLET_EQUIP_COMMON",
+      "listContentsTagAllow": [
+        "TAG_COMMON_PVP_BASIC_DATA"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_GAUNTLET",
+      "m_ResourceTypeID_1": 5,
+      "m_ResourceTypeID_2": 14,
+      "m_ResourceTypeID_3": 101
+    },
+    {
+      "m_TabID": "TAB_SEASON_GAUNTLET",
+      "m_TabSubIndex": 3,
+      "m_TabName": "SI_SHOP_TAB_NAME_NEW_SEASON_GAUNTLET_EQUIP_SEASON",
+      "listContentsTagAllow": [
+        "TAG_COMMON_PVP_BASIC_DATA"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TagImage": "HOT",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_GAUNTLET",
+      "m_ResourceTypeID_1": 5,
+      "m_ResourceTypeID_2": 14,
+      "m_ResourceTypeID_3": 101
+    },
+    {
+      "m_TabID": "TAB_SEASON_GAUNTLET",
+      "m_TabSubIndex": 4,
+      "m_TabName": "SI_SHOP_TAB_NAME_NEW_SEASON_GAUNTLET_POINT_SEASON_VIEW",
+      "listContentsTagAllow": [
+        "TAG_COMMON_PVP_BASIC_DATA"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_GAUNTLET",
+      "m_ResourceTypeID_1": 5,
+      "m_ResourceTypeID_2": 14,
+      "m_ResourceTypeID_3": 101
+    },
+    {
+      "m_TabID": "TAB_SEASON_GAUNTLET",
+      "m_TabSubIndex": 5,
+      "m_TabName": "SI_SHOP_TAB_NAME_NEW_SEASON_GAUNTLET_POINT_SEASON_MINI",
+      "listContentsTagAllow": [
+        "TAG_COMMON_PVP_BASIC_DATA"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_GAUNTLET",
+      "m_ResourceTypeID_1": 5,
+      "m_ResourceTypeID_2": 14,
+      "m_ResourceTypeID_3": 101
+    },
+    {
+      "m_TabID": "TAB_SEASON_GAUNTLET",
+      "m_TabSubIndex": 6,
+      "m_TabName": "SI_SHOP_TAB_NAME_NEW_SEASON_GAUNTLET_POINT_SEASON_SKIN",
+      "listContentsTagAllow": [
+        "TAG_COMMON_PVP_BASIC_DATA_SHOP_SKIN"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_GAUNTLET",
+      "m_ResourceTypeID_1": 5,
+      "m_ResourceTypeID_2": 14,
+      "m_ResourceTypeID_3": 101
+    },
+    {
+      "m_TabID": "TAB_SEASON_FIERCE_POINT",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_SEASON_FIERCE_POINT",
+      "listContentsTagAllow": [
+        "UNLOCK_FIERCE_ON"
+      ],
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_FIERCE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_FIERCE_POINT",
+      "m_ResourceTypeID_1": 25,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_SEASON_FIERCE_POINT",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_SEASON_FIERCE_POINT_LIMITED_EQUIP",
+      "listContentsTagAllow": [
+        "UNLOCK_FIERCE_ON"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_FIERCE_POINT",
+      "m_ResourceTypeID_1": 25,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_SEASON_FIERCE_POINT",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_SEASON_FIERCE_POINT_EQUIP_GROWTH_ITEM",
+      "listContentsTagAllow": [
+        "UNLOCK_FIERCE_ON"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_FIERCE_POINT",
+      "m_ResourceTypeID_1": 25,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_SEASON_FIERCE_POINT",
+      "m_TabSubIndex": 3,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_SEASON_FIERCE_POINT_UNIT_GROWTH_ITEM",
+      "listContentsTagAllow": [
+        "UNLOCK_FIERCE_ON"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_FIERCE_POINT",
+      "m_ResourceTypeID_1": 25,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_SEASON_FIERCE_POINT",
+      "m_TabSubIndex": 4,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_SEASON_FIERCE_POINT_SHIP_GROWTH_ITEM",
+      "listContentsTagAllow": [
+        "UNLOCK_FIERCE_ON"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_FIERCE_POINT",
+      "m_ResourceTypeID_1": 25,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_SEASON_FIERCE_POINT",
+      "m_TabSubIndex": 5,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_SEASON_FIERCE_POINT_RESOURCE_EXCHANGE",
+      "listContentsTagAllow": [
+        "UNLOCK_FIERCE_ON"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_FIERCE_POINT",
+      "m_ResourceTypeID_1": 25,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_SEASON_TAB_EVENT",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EVENT"
+      ],
+      "m_ShopDisplay": "None",
+      "m_TagImage": "EVENT",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_EVENT",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CHUSEOK",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "TAB_EVENT_CHUSEOK",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 615
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_EVENT_SIGMA",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_SIGMA",
+      "m_DateStrID": "TAB_EVENT_SIGMA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 614
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 3,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CHUSEOK_CONTRACT",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Card",
+      "m_DateStrID": "SHOP_EVENT_CHUSEOK_CONTRACT",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19009
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 4,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CROSSROAD2",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "TAB_EVENT_CROSSROAD2",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 606
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 5,
+      "m_TabName": "SI_SHOP_TAB_EVENT_WANTED",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "TAB_EVENT_WANTED",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 18
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 6,
+      "m_TabName": "SI_SHOP_TAB_EVENT_STREGA",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "TAB_EVENT_STREGA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 616
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 7,
+      "m_TabName": "SI_SHOP_TAB_EVENT_ESPR",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "TAB_EVENT_ESPR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 608
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 8,
+      "m_TabName": "SI_SHOP_TAB_EVENT_MAID",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "TAB_EVENT_MAID",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 617,
+      "m_ResourceTypeID_4": 618
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 9,
+      "m_TabName": "SI_SHOP_TAB_EVENT_XMAS_CONTRACT",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Card",
+      "m_DateStrID": "TAB_EVENT_XMAS_CONTRACT",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19011
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 10,
+      "m_TabName": "SI_SHOP_TAB_EVENT_KILLER",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "TAB_EVENT_KILLER",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 619
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 11,
+      "m_TabName": "SI_SHOP_TAB_EVENT_ADMIN",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "TAB_EVENT_ADMIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 613
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 12,
+      "m_TabName": "SI_SHOP_TAB_EVENT_MILITIA",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "TAB_EVENT_MILITIA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 620
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 13,
+      "m_TabName": "SI_SHOP_TAB_EVENT_1YEAR",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Card",
+      "m_DateStrID": "TAB_EVENT_1YEAR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19012
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 14,
+      "m_TabName": "SI_SHOP_TAB_EVENT_VALENTINE_R",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "TAB_EVENT_VALENTINE_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 603
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 15,
+      "m_TabName": "SI_SHOP_TAB_EVENT_SPRING_R",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_SPRING_R",
+      "m_DateStrID": "TAB_EVENT_SPRING_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 605
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 16,
+      "m_TabName": "SI_SHOP_TAB_EVENT_2021_FOOLS",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_2021_FOOLS",
+      "m_DateStrID": "TAB_EVENT_2021_FOOLS",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 622,
+      "m_ResourceTypeID_4": 623,
+      "m_ResourceTypeID_5": 624
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 4,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CROSSROAD2",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "TAB_EVENT_CROSSROAD_TWN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 606
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 5,
+      "m_TabName": "SI_SHOP_TAB_EVENT_WANTED",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_WANTED",
+      "m_DateStrID": "TAB_EVENT_WANTED",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 18
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 14,
+      "m_TabName": "SI_SHOP_TAB_EVENT_VALENTINE_R",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "TAB_EVENT_VALENTINE_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 603
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 7,
+      "m_TabName": "SI_SHOP_TAB_EVENT_ESPR",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "TAB_EVENT_ESPR",
+      "listContentsTagIgnore": [
+        "KOR"
+      ],
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 608
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 16,
+      "m_TabName": "SI_SHOP_TAB_EVENT_2021_FOOLS",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_2021_FOOLS",
+      "m_DateStrID": "TAB_EVENT_2021_FOOLS",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 622,
+      "m_ResourceTypeID_4": 623,
+      "m_ResourceTypeID_5": 624
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 17,
+      "m_TabName": "SI_SHOP_TAB_EVENT_VALENTINE_R",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_VALENTINE_R",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_VALENTINE",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_VALENTINE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 603
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 18,
+      "m_TabName": "SI_SHOP_TAB_EVENT_SPRING_R",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_SPRING_R",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_SPRING",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_SPRING",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 605
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 19,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CROSSROAD2",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_CROSSROAD",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_CROSSROAD",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_CROSSROAD",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 606
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 20,
+      "m_TabName": "SI_SHOP_TAB_EVENT_WANTED",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_WANTED",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_WANTED_1",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_WANTED_1",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 18
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 21,
+      "m_TabName": "SI_SHOP_TAB_EVENT_ESPR",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_ESPR",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_ESPR",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_ESPR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 608
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 22,
+      "m_TabName": "SI_SHOP_TAB_EVENT_STRANGE_SUMMER_DUCK",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_STRANGE_SUMMER_DUCK",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_SUMMER_01",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_SUMMER_01",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 610
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 23,
+      "m_TabName": "SI_SHOP_TAB_EVENT_STRANGE_SUMMER_DOLPHIN",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_STRANGE_SUMMER_DOLPHIN",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_SUMMER_02",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_SUMMER_02",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 611
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 24,
+      "m_TabName": "SI_SHOP_TAB_EVENT_STRANGE_SUMMER_FLAMINGO",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_STRANGE_SUMMER_FLAMINGO",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_SUMMER_03",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_SUMMER_03",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 612
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 25,
+      "m_TabName": "SI_SHOP_TAB_EVENT_ADMIN",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_ADMIN",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_ADMIN",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_ADMIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 613
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 26,
+      "m_TabName": "SI_SHOP_TAB_EVENT_SIGMA",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_SIGMA",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_SIGMA",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_SIGMA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 614
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 27,
+      "m_TabName": "SI_SHOP_TAB_EVENT_STREGA",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_STREGA",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_STREGA",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_STREGA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 616
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 28,
+      "m_TabName": "SI_SHOP_TAB_EVENT_MAID",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_MAID",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_MAID",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_MAID",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 617,
+      "m_ResourceTypeID_4": 618
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 29,
+      "m_TabName": "SI_SHOP_TAB_EVENT_KILLER",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_KILLER",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_XMAS",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_XMAS",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 619
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 30,
+      "m_TabName": "SI_SHOP_TAB_EVENT_MILITIA",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_MILITIA",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_MILITIA",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_MILITIA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 620
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 31,
+      "m_TabName": "SI_SHOP_TAB_EVENT_2021_FOOLS",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_2021_FOOLS",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_FOOLSDAY",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_FOOLSDAY",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 622,
+      "m_ResourceTypeID_4": 623,
+      "m_ResourceTypeID_5": 624
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 32,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CHUSEOK",
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_CHUSEOK",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_CHUSEOK",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 615
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 33,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CHUSEOK_CONTRACT",
+      "m_ShopDisplay": "Card",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_CHUSEOK_CONTRACT",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_CHUSEOK_CONTRACT",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19009
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 34,
+      "m_TabName": "SI_SHOP_TAB_EVENT_XMAS_CONTRACT",
+      "m_ShopDisplay": "Card",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_XMAS_CONTRACT",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_XMAS_CONTRACT",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19011
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 35,
+      "m_TabName": "SI_SHOP_TAB_EVENT_1YEAR",
+      "m_ShopDisplay": "Card",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_1YEAR_CONTRACT",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_1YEAR_CONTRACT",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19012
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 36,
+      "m_TabName": "SI_SHOP_TAB_EVENT_SHADE",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_SHADE",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_SHADE",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_SHADE_1",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 625,
+      "m_ResourceTypeID_4": 626,
+      "m_ResourceTypeID_5": 810
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 37,
+      "m_TabName": "SI_SHOP_TAB_EVENT_SPORTS",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_SPORTS",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_SPORTS",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_SPORTS",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 628
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 38,
+      "m_TabName": "SI_SHOP_TAB_EVENT_BINGO",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_BINGO_JISOO",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_BINGO_JISOO",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_BINGO_JISOO",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19013
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 39,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CLB_001",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_CLB_001",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_CLB_001",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_CLB_001",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 629
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 40,
+      "m_TabName": "SI_SHOP_TAB_EVENT_BINGO",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_BINGO_LONELY",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_BINGO_LONELY",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_BINGO_LONELY",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19017
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 41,
+      "m_TabName": "SI_SHOP_TAB_EVENT_SUMMER2021_HAIRPIN",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_SUMMER2021_HAIRPIN",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_SUMMER2021_01",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_SUMMER2021_01",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 631
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 42,
+      "m_TabName": "SI_SHOP_TAB_EVENT_SUMMER2021_COCONUT",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_SUMMER2021_COCONUT",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_SUMMER2021_02",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_SUMMER2021_02",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 632
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 43,
+      "m_TabName": "SI_SHOP_TAB_EVENT_BINGO",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_BINGO_JAKE",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_BINGO_JAKE",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_BINGO_JAKE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19015
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 44,
+      "m_TabName": "SI_SHOP_TAB_EVENT_LFT_CLB_KR",
+      "listContentsTagAllow": [
+        "KOR"
+      ],
+      "m_ShopDisplay": "Card",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_LFT_CLB_KR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 45,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CHUSEOK_2021",
+      "m_ShopDisplay": "Item",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_CHUSEOK_2021",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_CHUSEOK_2021",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 633
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 46,
+      "m_TabName": "SI_SHOP_TAB_EVENT_HORIZON_1",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_HORIZON_1",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_HORIZON_01",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_HORIZON_1",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 634
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 47,
+      "m_TabName": "SI_SHOP_TAB_EVENT_HORIZON_2",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_HORIZON_2",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_HORIZON_02",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_HORIZON_2",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 635
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 48,
+      "m_TabName": "SI_SHOP_TAB_EVENT_HORIZON_3",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_HORIZON_3",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_HORIZON_03",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_HORIZON_3",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 634,
+      "m_ResourceTypeID_4": 635
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 49,
+      "m_TabName": "SI_SHOP_TAB_EVENT_BINGO",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_BINGO_AUTUMN",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_BINGO_AUTUMN",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_BINGO_AUTUMN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19018
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 50,
+      "m_TabName": "SI_SHOP_TAB_EVENT_NANAHARA",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_NANAHARA",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_NANAHARA",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_NANAHARA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 637
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 51,
+      "m_TabName": "SI_SHOP_TAB_EVENT_BINGO",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_BINGO_NEWYEAR_2022",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_BINGO_NEWYEAR_2022",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_BINGO_NEWYEAR_2022",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19019
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 52,
+      "m_TabName": "SI_SHOP_TAB_EVENT_REMIND_EPISODE_1",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_REMIND_EPISODE_1",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_REMIND_EPISODE_01",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_REMIND_EPISODE_1",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 614,
+      "m_ResourceTypeID_4": 616
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 53,
+      "m_TabName": "SI_SHOP_TAB_EVENT_REMIND_EPISODE_2",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_REMIND_EPISODE_2",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_REMIND_EPISODE_02",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_REMIND_EPISODE_2",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 617,
+      "m_ResourceTypeID_4": 618,
+      "m_ResourceTypeID_5": 620
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 54,
+      "m_TabName": "SI_SHOP_TAB_EVENT_REMIND_EPISODE_3",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_REMIND_EPISODE_3",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_REMIND_EPISODE_03",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_REMIND_EPISODE_3",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 625,
+      "m_ResourceTypeID_4": 626
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 55,
+      "m_TabName": "SI_SHOP_TAB_EVENT_NEW_YEAR_FESTIVAL_2022",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_NEW_YEAR_FESTIVAL_2022",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_NEW_YEAR_FESTIVAL_2022",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_NEW_YEAR_FESTIVAL_2022",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 638
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 56,
+      "m_TabName": "SI_SHOP_TAB_EVENT_GREMORY",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_GREMORY",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_GREMORY",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_GREMORY",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 640
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 57,
+      "m_TabName": "SI_SHOP_TAB_EVENT_GREMORY_BAR",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_GREMORY_BAR",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_GREMORY_BAR",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_GREMORY_BAR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 647,
+      "m_ResourceTypeID_3": 641,
+      "m_ResourceTypeID_4": 642,
+      "m_ResourceTypeID_5": 643
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 58,
+      "m_TabName": "SI_SHOP_TAB_EVENT_ALPHA",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_ALPHA",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_ALPHA",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_ALPHA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 644
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 59,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CARNIVAL_1",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_CARNIVAL",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_CARNIVAL_01",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_CARNIVAL_1",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 645
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 60,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CARNIVAL_2",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_CARNIVAL",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_CARNIVAL_02",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_CARNIVAL_2",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 646
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 61,
+      "m_TabName": "SI_SHOP_TAB_EVENT_BINGO",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_BINGO_GAP_2022@@SI_ITEM_MISC_NAME_IMI_ITEM_MISC_EVENT_2021_BINGO_USE_GAP_DATA_PIECE",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_BINGO_GAP_2022",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_BINGO_GAP_2022",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19020
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 62,
+      "m_TabName": "SI_SHOP_TAB_EVENT_NIGHTMARE",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_NIGHTMARE",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_NIGHTMARE",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_NIGHTMARE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 648
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 63,
+      "m_TabName": "SI_SHOP_TAB_EVENT_KINGDOM",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_KINGDOM",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_KINGDOM",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_KINGDOM",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 649
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 64,
+      "m_TabName": "SI_SHOP_TAB_EVENT_NEVERLAND",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_NEVERLAND",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_NEVERLAND",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_NEVERLAND",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 652
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 65,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CLB_002",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_CLB_002",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_CLB_002",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_CLB_002",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 654
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 66,
+      "m_TabName": "SI_SHOP_TAB_EVENT_1000DAYS",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_1000DAYS",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_1000DAYS",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_1000DAYS",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 656
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 67,
+      "m_TabName": "SI_SHOP_TAB_EVENT_ESPR2_01",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_ESPR2_01",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_ESPR2_01",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_ESPR2_01",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 657
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 68,
+      "m_TabName": "SI_SHOP_TAB_EVENT_ESPR2_02",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_ESPR2_01",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_ESPR2_02",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_ESPR2_02",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 658
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 69,
+      "m_TabName": "SI_SHOP_TAB_EVENT_GAMECIRCLE",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_GAMECIRCLE",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_GAMECIRCLE",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_GAMECIRCLE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 660
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 70,
+      "m_TabName": "SI_SHOP_TAB_EVENT_NANAHARA2",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_NANAHARA2",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_NANAHARA2",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_NANAHARA2",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 661
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 71,
+      "m_TabName": "SI_SHOP_TAB_EVENT_BINGO",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_BINGO_GAP_2022@@SI_ITEM_MISC_NAME_IMI_ITEM_MISC_EVENT_2021_BINGO_USE_NEWYEAR_DATA_PIECE",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_BINGO_NEWYEAR_2023",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_BINGO_NEWYEAR_2023",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19023
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 72,
+      "m_TabName": "SI_SHOP_TAB_EVENT_GLOBAL_EAS_2023",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_GLOBAL_EAS_2023",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_GLOBAL_EAS_2023",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_GLOBAL_EAS_2023",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 691
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 78,
+      "m_TabName": "SI_SHOP_TAB_EVENT_FRONTBAY",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_FRONTBAY",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_FRONTBAY",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_FRONTBAY",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 701
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 74,
+      "m_TabName": "SI_SHOP_TAB_EVENT_GLOBAL_FIRST_HALF_ANN_ZL",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_SHOP@@SI_ITEM_MISC_NAME_IMI_ITEM_MISC_RESOURCE_SPECIAL_CONTRACT_POINT_GLOBAL_FIRST_HALF_ANN_ZL",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_GLOBAL_FIRST_HALF_ANN",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_GLOBAL_FIRST_HALF_ANN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19025
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 75,
+      "m_TabName": "SI_SHOP_TAB_EVENT_GLOBAL_EAS_2023",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_SHOP@@SI_ITEM_MISC_NAME_IMI_ITEM_MISC_RESOURCE_LUCKY_BAG_2022",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_HOLY_DAY_23",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_HOLY_DAY_23",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 702
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 76,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CAFE_STREGA",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_CAFE_STREGA",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_CAFE_STREGA",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_CAFE_STREGA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 703,
+      "m_ResourceTypeID_3": 704,
+      "m_ResourceTypeID_4": 705,
+      "m_ResourceTypeID_5": 706
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 77,
+      "m_TabName": "SI_SHOP_TAB_EVENT_EVENT_RACE",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_SHOP@@SI_ITEM_MISC_NAME_IMI_ITEM_MISC_RESOURCE_2021_EVENT_SPORTS_RACE",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_RACE_SPORT",
+      "m_OpenTag": "TAG_KOR_EVENT_RACE_SPORTS_V2",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 627
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 73,
+      "m_TabName": "SI_SHOP_TAB_EVENT_BINGO",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_BINGO_GAP_2022@@SI_ITEM_MISC_NAME_IMI_ITEM_MISC_EVENT_2021_BINGO_USE_NEWYEAR_DATA_PIECE",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_BINGO_NEWYEAR_2024",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_BINGO_NEWYEAR_2024",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19026
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 79,
+      "m_TabName": "SI_SHOP_TAB_EVENT_ANNIVERSARY",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_ANNIVERSARY",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_ANNIVERSARY_1YEAR",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_ANNIVERSARY_1YEAR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 710
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 80,
+      "m_TabName": "SI_SHOP_TAB_EVENT_BINGO",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_BINGO_GAP_2022@@SI_ITEM_MISC_NAME_IMI_ITEM_MISC_EVENT_2024_BINGO_USE_SUMMER_DATA_PIECE",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_BINGO_SUMMER_2024",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_BINGO_SUMMER_2024",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19027
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 81,
+      "m_TabName": "SI_SHOP_TAB_EVENT_DEBT",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_DEBT",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_DEBT",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_DEBT",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 715
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 82,
+      "m_TabName": "SI_SHOP_TAB_EVENT_ANNIVERSARY",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_ANNIVERSARY",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_ANNIVERSARY_1_5YEAR",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_ANNIVERSARY_1_5YEAR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 718
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 83,
+      "m_TabName": "SI_SHOP_TAB_EVENT_REARM_EXCHANGE",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_REARM_EXCHANGE",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_REARM_EXCHANGE",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_REARM_EXCHANGE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 719,
+      "m_ResourceTypeID_4": 720
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 84,
+      "m_TabName": "SI_SHOP_TAB_EVENT_ANNIVERSARY",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_ANNIVERSARY",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_ANNIVERSARY_2YEAR",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_ANNIVERSARY_2YEAR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 726
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 85,
+      "m_TabName": "SI_SHOP_TAB_EVENT_BINGO",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_BINGO_GAP_2022@@SI_ITEM_MISC_NAME_IMI_ITEM_MISC_EVENT_2024_BINGO_USE_SUMMER_DATA_PIECE",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_BINGO_SUMMER_2025",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_BINGO_SUMMER_2025",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19028
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 86,
+      "m_TabName": "SI_SHOP_TAB_EVENT_ANNIVERSARY",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_ANNIVERSARY",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_ANNIVERSARY_2_5YEAR",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_ANNIVERSARY_2_5YEAR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 812
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 87,
+      "m_TabName": "SI_SHOP_TAB_EVENT_RAID_1",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_RAID_1",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_RAID_4",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_RAID_1",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 53
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 88,
+      "m_TabName": "SI_SHOP_TAB_EVENT_REACTOR_EXCHANGE",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_REACTOR_EXCHANGE",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_REACTOR_EXCHANGE",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_REACTOR_EXCHANGE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 748,
+      "m_ResourceTypeID_4": 747
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 89,
+      "m_TabName": "SI_SHOP_TAB_EVENT_ANNIVERSARY",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_ANNIVERSARY",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_ANNIVERSARY_3YEAR",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_ANNIVERSARY_3YEAR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 824
+    },
+    {
+      "m_TabID": "TAB_EVENT_V2",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_SEASON_TAB_EVENT",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EVENT"
+      ],
+      "m_ShopDisplay": "None",
+      "m_TagImage": "EVENT",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_EVENT",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_EVENT_V2",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_EVENT_BINGO",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_BINGO_GAP_2022@@SI_ITEM_MISC_NAME_IMI_ITEM_MISC_EVENT_2023_BINGO_USE_FAM_DATA_PIECE",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_BINGO_FAM_05_2023",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_BINGO_FAM_05_2023",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 19024
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1001,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2022_SUMMER",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2022_SUMMER",
+      "m_ResourceTypeID_1": 650
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1002,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2022_GLOBAL",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2022_GLOBAL",
+      "m_ResourceTypeID_1": 653
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1003,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2023_NEWYEAR",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2023_NEWYEAR",
+      "m_ResourceTypeID_1": 662
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1004,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2023_APOCALYPSE_001",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2023_APOCALYPSE_001"
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1005,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_EVENT_POINT_EXCHANGE_2023_SUMMER",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2023_SUMMER"
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1006,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2023_GLOBAL",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2023_GLOBAL"
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1007,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2023_WINTER",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2023_WINTER"
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1008,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2024_APOCALYPSE_001",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2024_APOCALYPSE_001"
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1009,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2024_APOCALYPSE_002",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2024_APOCALYPSE_002"
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1010,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2024_WINTER",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2024_WINTER"
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1011,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2025_APOCALYPSE_001",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2025_APOCALYPSE_001"
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1012,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2025_COMMON",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2025_COMMON"
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1013,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2025_APOCALYPSE_002",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2025_APOCALYPSE_002"
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1014,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2025_WINTER",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2025_WINTER"
+    },
+    {
+      "m_TabID": "TAB_EVENT",
+      "m_TabSubIndex": 1015,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_2022_SUMMER",
+      "m_ShopDisplay": "None",
+      "m_DateStrID": "DATE_COMMON_SHOP_EVENT_POINT_EXCHANGE_2026_COMMON",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_EVENT_POINT_EXCHANGE_2026_COMMON"
+    },
+    {
+      "m_TabID": "TAB_MAINSTREAM",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_EPISODE_GROUP_NAME_MAINSTREAM",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_SIDESTORY",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_MAINSTREAM",
+      "m_TabSubIndex": 3005,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_MAINSTREAM_EP_5",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP5_HARD",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 734
+    },
+    {
+      "m_TabID": "TAB_MAINSTREAM",
+      "m_TabSubIndex": 3013,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_MAINSTREAM_EP_13",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP13_HARD",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 743,
+      "m_ResourceTypeID_4": 806
+    },
+    {
+      "m_TabID": "TAB_MAINSTREAM",
+      "m_TabSubIndex": 3014,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_MAINSTREAM_EP_14",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP14_HARD",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 745,
+      "m_ResourceTypeID_4": 814,
+      "m_ResourceTypeID_5": 826
+    },
+    {
+      "m_TabID": "TAB_MAINSTREAM",
+      "m_TabSubIndex": 3007,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_MAINSTREAM_EP_7",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP7_HARD",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 736,
+      "m_ResourceTypeID_4": 813
+    },
+    {
+      "m_TabID": "TAB_MAINSTREAM",
+      "m_TabSubIndex": 3004,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_MAINSTREAM_EP_4",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP4_HARD",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 733,
+      "m_ResourceTypeID_4": 818
+    },
+    {
+      "m_TabID": "TAB_MAINSTREAM",
+      "m_TabSubIndex": 3010,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_MAINSTREAM_EP_10",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP10_HARD",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 740,
+      "m_ResourceTypeID_4": 821
+    },
+    {
+      "m_TabID": "TAB_MAINSTREAM",
+      "m_TabSubIndex": 3008,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_MAINSTREAM_EP_8",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_MAIN_EP8_HARD",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 737,
+      "m_ResourceTypeID_4": 828
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_EPISODE_GROUP_NAME_SUBSTREAM",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_SIDESTORY",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2000,
+      "m_TabName": "SI_BATTLE_TEST",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_DEVELOPMENT",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 743
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2006,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_EVENT_SPRING",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_SPRING_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 663
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2008,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_CROSSROAD",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_CROSSROAD_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 664
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2013,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_EVENT_WANTED_01",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_WANTED_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 666
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2007,
+      "m_TabName": "SI_EPISODE_EPISODE_TITLE_SS_ESPR",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_ESPR_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 665
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2009,
+      "m_TabName": "SI_EPISODE_EPISODE_EVENT_ADMIN",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_ADMIN_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 667,
+      "m_ResourceTypeID_4": 817
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2010,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_EVENT_SIGMA",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_SIGMA_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 668
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2011,
+      "m_TabName": "SI_EPISODE_EPISODE_EVENT_STREGA",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_STREGA_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 669,
+      "m_ResourceTypeID_4": 807
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2012,
+      "m_TabName": "SI_EPISODE_EPISODE_EVENT_MAID",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_MAID_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 670
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2014,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_EVENT_MILITIA",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_MILITIA_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 671
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2015,
+      "m_TabName": "SI_EPISODE_EPISODE_EVENT_SHADE",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_SHADE_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 672,
+      "m_ResourceTypeID_4": 810
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2016,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_EVENT_SPORTS",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_SPORTS_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 673
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2017,
+      "m_TabName": "SI_EPISODE_EPISODE_HORIZON",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_HORIZON_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 674
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2018,
+      "m_TabName": "SI_EPISODE_EPISODE_NANAHARA",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_NANAHARA_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 675
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2019,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_EVENT_GREMORY",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_GREMORY_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 676
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2020,
+      "m_TabName": "SI_EPISODE_EPISODE_EVENT_ALPHA",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_ALPHA_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 677,
+      "m_ResourceTypeID_4": 819
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2021,
+      "m_TabName": "SI_EPISODE_EPISODE_EVENT_CARNIVAL",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_CARNIVAL_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 678
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2022,
+      "m_TabName": "SI_EPISODE_EPISODE_EVENT_NIGHTMARE",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_NIGHTMARE_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 679
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2023,
+      "m_TabName": "SI_EPISODE_EPISODE_EVENT_KINGDOM",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_KINGDOM_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 680
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2024,
+      "m_TabName": "SI_EPISODE_EPISODE_EVENT_NEVERLAND",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_NEVERLAND_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 681,
+      "m_ResourceTypeID_4": 827
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2025,
+      "m_TabName": "SI_EPISODE_EPISODE_EVENT_ESPR2",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_ESPR2_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 682,
+      "m_ResourceTypeID_4": 816
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2026,
+      "m_TabName": "SI_EPISODE_EPISODE_EVENT_GAMECIRCLE",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_GAMECIRCLE_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 683
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2027,
+      "m_TabName": "SI_EPISODE_EPISODE_EVENT_NANAHARA2",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_NANAHARA2_R",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 684,
+      "m_ResourceTypeID_4": 823
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2002,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_ORCA",
+      "m_ShopDisplay": "Item",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 685
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2003,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_SOF",
+      "m_ShopDisplay": "Item",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 686
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2004,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_POLICE",
+      "m_ShopDisplay": "Item",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 687
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2005,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_DELTA",
+      "m_ShopDisplay": "Item",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 688,
+      "m_ResourceTypeID_4": 811
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2001,
+      "m_TabName": "SI_EPISODE_EPISODE_TITLE_SS_FAILURE",
+      "m_ShopDisplay": "Item",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 689
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2028,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_CHARADE",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_CHARADE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 690
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2029,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_EXILER",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_EXILER",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 692
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2030,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_ACADEMY",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_ACADEMY",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 693
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2031,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_CHARADE2",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_CHARADE2",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 699
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2032,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_CARNIVAL2",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_CARNIVAL2",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 700
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2033,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_PRYDWEN",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_PRYDWEN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 707,
+      "m_ResourceTypeID_4": 801,
+      "m_ResourceTypeID_5": 820
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2034,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_FLOOR",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_FLOOR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 709
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2035,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_YAKSHA",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_YAKSHA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 711,
+      "m_ResourceTypeID_4": 829
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2036,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_DOLL",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_DOLL",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 712
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2037,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_AVENGER",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_AVENGER",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 714
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2038,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_SWANSONG",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_SWANSONG",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 716,
+      "m_ResourceTypeID_4": 822
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2039,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_VARUNA",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_VARUNA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 717,
+      "m_ResourceTypeID_4": 830
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2040,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_LEGACY",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_LEGACY",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 722
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2041,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_WINTERVACATION",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_WINTERVACATION",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 725,
+      "m_ResourceTypeID_4": 800
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2042,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_MOONLIGHT",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_MOONLIGHT",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 729,
+      "m_ResourceTypeID_4": 802
+    },
+    {
+      "m_TabID": "TAB_EPISODE",
+      "m_TabSubIndex": 2043,
+      "m_TabName": "SI_EPISODE_EPISODE_NAME_SS_PRIDE",
+      "m_ShopDisplay": "Item",
+      "m_OpenTag": "TAG_COMMON_EPISODE_SIDE_PRIDE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 744,
+      "m_ResourceTypeID_4": 809
+    },
+    {
+      "m_TabID": "TAB_SUPPLY",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_MAIN_TAB_SUPPLY",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SUPPLY"
+      ],
+      "m_ShopDisplay": "Item_Extend",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_AGENCY",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_MultiBuy": true
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_RESOURCE",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_RESOURCE",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_RESOURCE"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_RESOURCE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_RESOURCE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_COMBINI",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_COMBINI",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_COMBINI"
+      ],
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_QUARTZ",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_COMBINI",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_COMBINI",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_COMBINI_PACKAGE",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_COMBINI"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_COMBINI",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_COMBINI",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_COMBINI_IMOTICON",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_COMBINI"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_COMBINI",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_COMBINI",
+      "m_TabSubIndex": 3,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_COMBINI_IMOTICON_CONTEST",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_COMBINI",
+      "m_HideWhenSoldOut": true,
+      "m_OpenTag": "TAG_COMMON_SHOP_TAB_EXCHANGE_COMBINI_CONTEST_PACKAGE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_COMBINI",
+      "m_TabSubIndex": 4,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_COMBINI_IMOTICON_CONTEST",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_COMBINI",
+      "m_HideWhenSoldOut": true,
+      "m_OpenTag": "TAG_COMMON_SHOP_TAB_EXCHANGE_COMBINI_CONTEST",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_BACKGROUND",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_COMBINI_BACKGROUND",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_BACKGROUND",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_BACKGROUND",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_BACKGROUND",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_BACKGROUND_BACKGROUND",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_BACKGROUND",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_BACKGROUND",
+      "m_TabSubIndex": 3,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_BACKGROUND_FLASHBACK_SUB",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_BACKGROUND",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_BACKGROUND",
+      "m_TabSubIndex": 4,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_BACKGROUND_FLASHBACK_MAIN",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_BACKGROUND",
+      "m_OpenTag": "TAG_COMMON_SHOP_TAB_FLASHBACK_MAIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_OFFICE",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_OFFICE",
+      "listContentsTagAllow": [
+        "OFFICE_ROOM"
+      ],
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_QUARTZ",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_OFFICE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_OFFICE",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_OFFICE_FURNITURE",
+      "listContentsTagAllow": [
+        "OFFICE_ROOM"
+      ],
+      "m_ShopDisplay": "Interior",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_OFFICE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_OFFICE",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_OFFICE_BGM",
+      "listContentsTagAllow": [
+        "OFFICE_ROOM"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_INTERIOR_BGM",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_OFFICE",
+      "m_TabSubIndex": 4,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_OFFICE_FLOOR",
+      "listContentsTagAllow": [
+        "OFFICE_ROOM"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_OFFICE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_OFFICE",
+      "m_TabSubIndex": 5,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_OFFICE_WALL",
+      "listContentsTagAllow": [
+        "OFFICE_ROOM"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_OFFICE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_OFFICE",
+      "m_TabSubIndex": 6,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_OFFICE_BACKGROUND",
+      "listContentsTagAllow": [
+        "OFFICE_ROOM"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_OFFICE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_TASK_PLANET",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_TASK_PLANET",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_TASK_PLANET"
+      ],
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_HR",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_TASK_PLANET",
+      "m_ResourceTypeID_1": 401,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_TASK_PLANET",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_TASK_PLANET_ITEM",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_TASK_PLANET"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_TASK_PLANET",
+      "m_ResourceTypeID_1": 401,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_TASK_PLANET",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_TASK_PLANET_OPERATOR",
+      "listContentsTagAllow": [
+        "SYSTEM_OPERATOR"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_TASK_PLANET",
+      "m_ResourceTypeID_1": 401,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_TASK_PLANET",
+      "m_TabSubIndex": 3,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_TASK_PLANET_OPERATOR_TOKEN",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_TASK_PLANET",
+      "m_OpenTag": "OPERATOR_EXTRACT_TASK_PLANET",
+      "m_ResourceTypeID_1": 401,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_TASK_PLANET",
+      "m_TabSubIndex": 4,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_TASK_PLANET_PIECE_SSR",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_TASK_PLANET_PIECE"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_TASK_PLANET",
+      "m_ResourceTypeID_1": 401,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_TASK_PLANET",
+      "m_TabSubIndex": 5,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_TASK_PLANET_PIECE_SR",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_TASK_PLANET_PIECE"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_TASK_PLANET",
+      "m_ResourceTypeID_1": 401,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_TASK_PLANET",
+      "m_TabSubIndex": 6,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_TASK_PLANET_PIECE_CH",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_TASK_PLANET_PIECE"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_TASK_PLANET",
+      "m_ResourceTypeID_1": 401,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_RAID_COIN",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_RAID_COIN",
+      "m_ShopDisplay": "Item",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_RAID",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SEASON_RAID",
+      "m_OpenTag": "TAG_SHOP_RAID_SEASON",
+      "m_ResourceTypeID_1": 22,
+      "m_ResourceTypeID_2": 38,
+      "m_ResourceTypeID_3": 48
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_DIVE_POINT",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_DIVE_POINT",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_DIVE_POINT"
+      ],
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_DIVESHOP"
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_DIVE_POINT",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_IMAGINARY_CORE",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_IMAGINARY_CORE"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_IMAGINARY_CORE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 11
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_DIVE_POINT",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_GOLDEN_BULLET",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_GOLDEN_BULLET"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_GOLDEN_BULLET",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 101,
+      "m_ResourceTypeID_3": 11,
+      "m_ResourceTypeID_4": 28
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_CHALLENGE",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_CHALLENGE",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PVP",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_CHALLENGE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 26,
+      "m_ResourceTypeID_4": 27
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_CHALLENGE",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_CHALLENGE_GENERAL",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 26,
+      "m_ResourceTypeID_4": 27
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_CHALLENGE",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_CHALLENGE_LIMITED",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 26,
+      "m_ResourceTypeID_4": 27
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_CHALLENGE",
+      "m_TabSubIndex": 3,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_CHALLENGE_PIECE",
+      "listContentsTagAllow": [
+        "TAG_SHOP_NOT_USED"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 26,
+      "m_ResourceTypeID_4": 27
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_SHADOW_COIN",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_SHADOW_COIN",
+      "listContentsTagAllow": [
+        "UNLOCK_SHADOW_PALACE_ON"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_SHADOW",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_SHADOW_COIN",
+      "m_ResourceTypeID_1": 20,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_GUILD_COIN",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_GUILD_COIN",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_GUILD_COIN"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_CONSORTIUM",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_GUILD_COIN",
+      "m_ResourceTypeID_1": 21,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_EXCHANGE_REMOVE_CARD",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_REMOVE_CARD",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_EXCHANGE_REMOVE_CARD"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_BUSINESSCARD",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_REMOVE_CARD",
+      "m_ResourceTypeID_1": 1022,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_NO_USE",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_NO_USE",
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_NO_USE"
+      ],
+      "m_ShopDisplay": "Item",
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102
+    }
+  ],
+  "unsupportedCount": 0,
+  "unsupported": []
+}

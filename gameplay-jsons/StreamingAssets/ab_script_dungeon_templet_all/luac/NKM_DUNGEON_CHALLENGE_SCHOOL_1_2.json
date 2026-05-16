@@ -1,0 +1,199 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_CHALLENGE_SCHOOL_1_2.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 8
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EQC_SCHOOL_C_CHAIR"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.4
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_SHIELD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.48,
+            "m_fEventBossHPUpper": 0.4,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.35
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.48,
+            "m_fEventBossHPUpper": 0.4,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.37
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.48,
+            "m_fEventBossHPUpper": 0.4,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.39
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TIDE_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.48,
+            "m_fEventBossHPUpper": 0.4,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.25
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TIDE_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.48,
+            "m_fEventBossHPUpper": 0.4,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.26
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 8,
+    "m_fCostSpeedRateB": 1,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EQC_SCHOOL_C_CHAIR",
+    "m_fBossPosZ": 0.4,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_SHIELD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.1
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.48,
+          "m_fEventBossHPUpper": 0.4,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.35
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.48,
+          "m_fEventBossHPUpper": 0.4,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.37
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.48,
+          "m_fEventBossHPUpper": 0.4,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.39
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TIDE_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.48,
+          "m_fEventBossHPUpper": 0.4,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.25
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TIDE_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.48,
+          "m_fEventBossHPUpper": 0.4,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.26
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

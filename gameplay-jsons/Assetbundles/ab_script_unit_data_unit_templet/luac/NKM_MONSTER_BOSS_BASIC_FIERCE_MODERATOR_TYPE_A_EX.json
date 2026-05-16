@@ -1,0 +1,96 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_A_EX.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 5,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_A_S"
+    },
+    {
+      "__key": "m_dicTriggerSet",
+      "value": [
+        {
+          "m_Name": "TEST",
+          "m_listNKMEventBuff": [
+            {
+              "m_BuffStrID": "BUFF_BOSS_BASIC_FIERCE_MODERATOR_TYPE_A_EX_DEF_STACK",
+              "m_Overlap": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_listHitFeedBack",
+      "value": [
+        {
+          "m_HitCount": 10,
+          "m_TargetTrigger": "TEST",
+          "m_bStartAnyTime": true
+        }
+      ]
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_BuffStrID": "BUFF_BOSS_BASIC_FIERCE_MODERATOR_TYPE_A_EX_DEF_INF"
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_START",
+          "m_listNKMEventBuff": [
+            {
+              "m_BuffStrID": "BUFF_BOSS_BASIC_FIERCE_MODERATOR_TYPE_A_EX_DEF_STACK",
+              "m_Overlap": 50
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_A_S",
+    "m_dicTriggerSet": [
+      {
+        "m_Name": "TEST",
+        "m_listNKMEventBuff": [
+          {
+            "m_BuffStrID": "BUFF_BOSS_BASIC_FIERCE_MODERATOR_TYPE_A_EX_DEF_STACK",
+            "m_Overlap": -1
+          }
+        ]
+      }
+    ],
+    "m_listHitFeedBack": [
+      {
+        "m_HitCount": 10,
+        "m_TargetTrigger": "TEST",
+        "m_bStartAnyTime": true
+      }
+    ],
+    "m_listStaticBuffData": [
+      {
+        "m_BuffStrID": "BUFF_BOSS_BASIC_FIERCE_MODERATOR_TYPE_A_EX_DEF_INF"
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_START",
+        "m_listNKMEventBuff": [
+          {
+            "m_BuffStrID": "BUFF_BOSS_BASIC_FIERCE_MODERATOR_TYPE_A_EX_DEF_STACK",
+            "m_Overlap": 50
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

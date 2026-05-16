@@ -1,0 +1,62 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_CHARADE_2_1.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 5,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 5
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.4
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_PV_CA_SEO_YOON_YOO_MI_NA"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+          "m_EventConditionNumValue": 33,
+          "m_dungeonEventType": "FORCE_WIN",
+          "m_EventActionValue": 1,
+          "m_fEventDelay": 1,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 5,
+    "m_fCostSpeedRateB": 0.4,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_PV_CA_SEO_YOON_YOO_MI_NA",
+    "m_fBossPosZ": 0.6,
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+        "m_EventConditionNumValue": 33,
+        "m_dungeonEventType": "FORCE_WIN",
+        "m_EventActionValue": 1,
+        "m_fEventDelay": 1,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

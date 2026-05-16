@@ -1,0 +1,555 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DEFENCE_DUNGEON_BATTLE_11.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EVENT_WAVE_OMEN"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listValidLand",
+      "value": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "__key": "m_fStartCost",
+      "value": 0
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_BOSS_EVENT_WAVE_OMEN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 1,
+            "m_fEventPos": 0.01
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_PALADIN",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 90,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 1.5,
+              "NST_ATK": 1.5,
+              "NST_DEF": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_PALADIN",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeEnd": 90,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 1.5,
+              "NST_ATK": 1.5,
+              "NST_DEF": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_MAGE",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 90,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 1.5,
+              "NST_ATK": 1.5,
+              "NST_DEF": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_MAGE",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeEnd": 90,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 1.5,
+              "NST_ATK": 1.5,
+              "NST_DEF": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_MAGE",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 2,
+            "m_fEventTimeEnd": 90,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 1.5,
+              "NST_ATK": 1.5,
+              "NST_DEF": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_BOMBER",
+          "m_UnitLevel": 110,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 90,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 1.5,
+              "NST_ATK": 2.0,
+              "NST_DEF": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+          "m_UnitLevel": 110,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 91,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 1.5,
+              "NST_ATK": 2.0,
+              "NST_DEF": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_MACE",
+          "m_UnitLevel": 110,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 90,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 3.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_MAGE_PURPLE",
+          "m_UnitLevel": 110,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 90,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_MAGE_PURPLE",
+          "m_UnitLevel": 110,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 90,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_MAGE_PURPLE",
+          "m_UnitLevel": 110,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 91,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_MAGE_PURPLE",
+          "m_UnitLevel": 110,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 91,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_MAGE_GREEN",
+          "m_UnitLevel": 110,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 92,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_MAGE_GREEN",
+          "m_UnitLevel": 110,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 92,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_MAGE_GREEN",
+          "m_UnitLevel": 110,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 93,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_MAGE_GREEN",
+          "m_UnitLevel": 110,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 93,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EVENT_WAVE_OMEN",
+    "m_fBossPosZ": 0.6,
+    "m_listValidLand": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "m_fStartCost": 0,
+    "m_fCostSpeedRateB": 0,
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_BOSS_EVENT_WAVE_OMEN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 1,
+          "m_fEventPos": 0.01
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_PALADIN",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 90,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 1.5,
+            "NST_ATK": 1.5,
+            "NST_DEF": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_PALADIN",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeEnd": 90,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 1.5,
+            "NST_ATK": 1.5,
+            "NST_DEF": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_MAGE",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 90,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 1.5,
+            "NST_ATK": 1.5,
+            "NST_DEF": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_MAGE",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeEnd": 90,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 1.5,
+            "NST_ATK": 1.5,
+            "NST_DEF": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_MAGE",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 2,
+          "m_fEventTimeEnd": 90,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 1.5,
+            "NST_ATK": 1.5,
+            "NST_DEF": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_BOMBER",
+        "m_UnitLevel": 110,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 90,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 1.5,
+            "NST_ATK": 2.0,
+            "NST_DEF": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+        "m_UnitLevel": 110,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 91,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 1.5,
+            "NST_ATK": 2.0,
+            "NST_DEF": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_MACE",
+        "m_UnitLevel": 110,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 90,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 3.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_MAGE_PURPLE",
+        "m_UnitLevel": 110,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 90,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_MAGE_PURPLE",
+        "m_UnitLevel": 110,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 90,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_MAGE_PURPLE",
+        "m_UnitLevel": 110,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 91,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_MAGE_PURPLE",
+        "m_UnitLevel": 110,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 91,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_MAGE_GREEN",
+        "m_UnitLevel": 110,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 92,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_MAGE_GREEN",
+        "m_UnitLevel": 110,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 92,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_MAGE_GREEN",
+        "m_UnitLevel": 110,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 93,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_MAGE_GREEN",
+        "m_UnitLevel": 110,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 93,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

@@ -1,0 +1,425 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_CHALLENGE_ALPHA_1_2.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 2
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EQC_ALPHA_CHOI"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_ALPHA_SEAROM",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 15,
+            "m_fEventTimeGap": 45,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.25
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 4,
+            "m_fEventTimeGap": 6,
+            "m_fEventTimeEnd": 240,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 4,
+            "m_fEventTimeGap": 6,
+            "m_fEventTimeEnd": 240,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 5,
+            "m_fEventTimeGap": 6,
+            "m_fEventTimeEnd": 240,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 13,
+            "m_fEventTimeGap": 12,
+            "m_fEventTimeEnd": 240,
+            "m_fEventPos": 0.22
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 13,
+            "m_fEventTimeGap": 12,
+            "m_fEventTimeEnd": 240,
+            "m_fEventPos": 0.2
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_ADMIN_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.8,
+            "m_fEventBossHPUpper": 0.7,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.12
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_ADMIN_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.8,
+            "m_fEventBossHPUpper": 0.7,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.14
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.79,
+            "m_fEventBossHPUpper": 0.7,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.35
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.79,
+            "m_fEventBossHPUpper": 0.7,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.37
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_ADMIN_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.5,
+            "m_fEventBossHPUpper": 0.45,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.35
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_ADMIN_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.5,
+            "m_fEventBossHPUpper": 0.45,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.37
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_ADMIN_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.48,
+            "m_fEventBossHPUpper": 0.4,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.45
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.48,
+            "m_fEventBossHPUpper": 0.4,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.47
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.58,
+            "m_fEventBossHPUpper": 0.4,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.43
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.28,
+            "m_fEventBossHPUpper": 0.4,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.65
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.28,
+            "m_fEventBossHPUpper": 0.4,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.67
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.28,
+            "m_fEventBossHPUpper": 0.4,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.69
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.28,
+            "m_fEventBossHPUpper": 0.4,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.71
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 2,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EQC_ALPHA_CHOI",
+    "m_fBossPosZ": 0.6,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_ALPHA_SEAROM",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 15,
+          "m_fEventTimeGap": 45,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.25
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 4,
+          "m_fEventTimeGap": 6,
+          "m_fEventTimeEnd": 240,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 4,
+          "m_fEventTimeGap": 6,
+          "m_fEventTimeEnd": 240,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 5,
+          "m_fEventTimeGap": 6,
+          "m_fEventTimeEnd": 240,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 13,
+          "m_fEventTimeGap": 12,
+          "m_fEventTimeEnd": 240,
+          "m_fEventPos": 0.22
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 13,
+          "m_fEventTimeGap": 12,
+          "m_fEventTimeEnd": 240,
+          "m_fEventPos": 0.2
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_ADMIN_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.8,
+          "m_fEventBossHPUpper": 0.7,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.12
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_ADMIN_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.8,
+          "m_fEventBossHPUpper": 0.7,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.14
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.79,
+          "m_fEventBossHPUpper": 0.7,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.35
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.79,
+          "m_fEventBossHPUpper": 0.7,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.37
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_ADMIN_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.5,
+          "m_fEventBossHPUpper": 0.45,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.35
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_ADMIN_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.5,
+          "m_fEventBossHPUpper": 0.45,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.37
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_ADMIN_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.48,
+          "m_fEventBossHPUpper": 0.4,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.45
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.48,
+          "m_fEventBossHPUpper": 0.4,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.47
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.58,
+          "m_fEventBossHPUpper": 0.4,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.43
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.28,
+          "m_fEventBossHPUpper": 0.4,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.65
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.28,
+          "m_fEventBossHPUpper": 0.4,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.67
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.28,
+          "m_fEventBossHPUpper": 0.4,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.69
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.28,
+          "m_fEventBossHPUpper": 0.4,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.71
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

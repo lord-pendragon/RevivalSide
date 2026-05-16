@@ -1,0 +1,390 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DIVE_BATTLE_8_RANKER01.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 5,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.0
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_COMMON_SHIP_A_GLEIPNIR"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 1.0
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_UNIT_HORIZON_M_LOAN",
+          "m_UnitEffect": "SHADOW",
+          "m_bForceMonster": true,
+          "m_bReactor": true,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeGap": 10,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.4
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 3.0,
+              "NST_ATK": 4.0,
+              "NST_DEF": 3.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_FALLEN_CA_ROSARIA",
+          "m_UnitEffect": "SHADOW",
+          "m_bForceMonster": true,
+          "m_bReactor": true,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeGap": 20,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 2.0,
+              "NST_ATK": 4.0,
+              "NST_DEF": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_S_ESPR_PILE_RA",
+          "m_UnitEffect": "SHADOW",
+          "m_bForceMonster": true,
+          "m_bReactor": true,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 4,
+            "m_fEventTimeGap": 10,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 3.0,
+              "NST_ATK": 4.0,
+              "NST_DEF": 3.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_BARCODE_C_CHILDREN",
+          "m_UnitEffect": "SHADOW",
+          "m_bForceMonster": true,
+          "m_bReactor": true,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 7,
+            "m_fEventTimeGap": 10,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 3.0,
+              "NST_ATK": 4.0,
+              "NST_DEF": 3.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_CORRUPTED_C_SHADOW",
+          "m_UnitEffect": "SHADOW",
+          "m_bForceMonster": true,
+          "m_bReactor": true,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 10,
+            "m_fEventTimeGap": 10,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 3.0,
+              "NST_ATK": 4.0,
+              "NST_DEF": 3.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_C_SIXWING_LEE_JISOO",
+          "m_UnitEffect": "SHADOW",
+          "m_bForceMonster": true,
+          "m_bReactor": true,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 13,
+            "m_fEventTimeGap": 20,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.35
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 2.0,
+              "NST_ATK": 4.0,
+              "NST_DEF": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_SCHOOL_C_PENCIL",
+          "m_UnitEffect": "SHADOW",
+          "m_bForceMonster": true,
+          "m_bReactor": true,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 16,
+            "m_fEventTimeGap": 10,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.15
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 3.0,
+              "NST_ATK": 4.0,
+              "NST_DEF": 3.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_MAID_C_MASK",
+          "m_UnitEffect": "SHADOW",
+          "m_bForceMonster": true,
+          "m_bReactor": true,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 19,
+            "m_fEventTimeGap": 10,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.15
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 3.0,
+              "NST_ATK": 4.0,
+              "NST_DEF": 3.0
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 1.0,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_COMMON_SHIP_A_GLEIPNIR",
+    "m_fBossPosZ": 1.0,
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_UNIT_HORIZON_M_LOAN",
+        "m_UnitEffect": "SHADOW",
+        "m_bForceMonster": true,
+        "m_bReactor": true,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeGap": 10,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.4
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 3.0,
+            "NST_ATK": 4.0,
+            "NST_DEF": 3.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_FALLEN_CA_ROSARIA",
+        "m_UnitEffect": "SHADOW",
+        "m_bForceMonster": true,
+        "m_bReactor": true,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeGap": 20,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 2.0,
+            "NST_ATK": 4.0,
+            "NST_DEF": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_S_ESPR_PILE_RA",
+        "m_UnitEffect": "SHADOW",
+        "m_bForceMonster": true,
+        "m_bReactor": true,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 4,
+          "m_fEventTimeGap": 10,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 3.0,
+            "NST_ATK": 4.0,
+            "NST_DEF": 3.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_BARCODE_C_CHILDREN",
+        "m_UnitEffect": "SHADOW",
+        "m_bForceMonster": true,
+        "m_bReactor": true,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 7,
+          "m_fEventTimeGap": 10,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 3.0,
+            "NST_ATK": 4.0,
+            "NST_DEF": 3.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_CORRUPTED_C_SHADOW",
+        "m_UnitEffect": "SHADOW",
+        "m_bForceMonster": true,
+        "m_bReactor": true,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 10,
+          "m_fEventTimeGap": 10,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 3.0,
+            "NST_ATK": 4.0,
+            "NST_DEF": 3.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_C_SIXWING_LEE_JISOO",
+        "m_UnitEffect": "SHADOW",
+        "m_bForceMonster": true,
+        "m_bReactor": true,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 13,
+          "m_fEventTimeGap": 20,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.35
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 2.0,
+            "NST_ATK": 4.0,
+            "NST_DEF": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_SCHOOL_C_PENCIL",
+        "m_UnitEffect": "SHADOW",
+        "m_bForceMonster": true,
+        "m_bReactor": true,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 16,
+          "m_fEventTimeGap": 10,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.15
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 3.0,
+            "NST_ATK": 4.0,
+            "NST_DEF": 3.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_MAID_C_MASK",
+        "m_UnitEffect": "SHADOW",
+        "m_bForceMonster": true,
+        "m_bReactor": true,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 19,
+          "m_fEventTimeGap": 10,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.15
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 3.0,
+            "NST_ATK": 4.0,
+            "NST_DEF": 3.0
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

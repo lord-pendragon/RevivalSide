@@ -1,0 +1,716 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_GAMECIRCLE_R_1_1.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 3,
+  "records": [
+    {
+      "__key": "m_listDungeonWave",
+      "value": [
+        {
+          "m_WaveID": 1,
+          "m_NextWaveID": 2,
+          "m_fNextWavetime": 180,
+          "m_listDungeonUnitRespawnA": [
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_SL_SHOTGUN_N",
+              "m_UnitLevel": 50,
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 2,
+                "m_fEventPos": 0.4
+              },
+              "m_AddStatData": {
+                "m_StatFactor": {
+                  "NST_ATK": 1,
+                  "NST_DEF": 0.1,
+                  "NST_HP": 0.2
+                }
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_SL_RIFLE_N",
+              "m_UnitLevel": 50,
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 2,
+                "m_fEventPos": 0.2
+              },
+              "m_AddStatData": {
+                "m_StatFactor": {
+                  "NST_ATK": 1,
+                  "NST_DEF": 0.1,
+                  "NST_HP": 0.2
+                }
+              }
+            }
+          ],
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_NEEDLER_EVENT_N",
+              "m_EventTag": "WAVE1",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 1,
+                "m_fEventPos": 0.1
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_BITER_EVENT_N",
+              "m_EventTag": "WAVE1",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 1.3,
+                "m_fEventPos": 0.1
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_PALADIN",
+              "m_EventTag": "WAVE1",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 1.6,
+                "m_fEventPos": 0.15
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_MAGE",
+              "m_EventTag": "WAVE1",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 8,
+                "m_fEventPos": 0.1
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_PALADIN",
+              "m_EventTag": "WAVE1",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 8.3,
+                "m_fEventPos": 0.1
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_PALADIN",
+              "m_EventTag": "WAVE1",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 12,
+                "m_fEventPos": 0.1
+              }
+            }
+          ]
+        },
+        {
+          "m_WaveID": 2,
+          "m_NextWaveID": 3,
+          "m_fNextWavetime": 180,
+          "m_listDungeonUnitRespawnA": [
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_SL_SHOTGUN",
+              "m_UnitLevel": 50,
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 7,
+                "m_fEventPos": 0.5
+              },
+              "m_AddStatData": {
+                "m_StatFactor": {
+                  "NST_ATK": 1,
+                  "NST_DEF": 0.1,
+                  "NST_HP": 0.2
+                }
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_SL_SHOTGUN",
+              "m_UnitLevel": 50,
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 7,
+                "m_fEventPos": 0.5,
+                "m_EventTag": "WAVE2",
+                "m_EventTagCount": 1
+              },
+              "m_AddStatData": {
+                "m_StatFactor": {
+                  "NST_ATK": 1,
+                  "NST_DEF": 0.1,
+                  "NST_HP": 0.2
+                }
+              }
+            }
+          ],
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_MAGE",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 2,
+                "m_fEventPos": 0.3
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_PALADIN",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 2.3,
+                "m_fEventPos": 0.6
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_MAGE",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 10,
+                "m_fEventPos": 0.3
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_PALADIN",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 10.3,
+                "m_fEventPos": 0.6
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_MAGE",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 16,
+                "m_fEventPos": 0.3
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_PALADIN",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 16.3,
+                "m_fEventPos": 0.6
+              }
+            }
+          ]
+        },
+        {
+          "m_WaveID": 3,
+          "m_fNextWavetime": 15,
+          "m_listDungeonUnitRespawnA": [
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_SL_SHOTGUN",
+              "m_UnitLevel": 50,
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+                "m_fEventTimeStart": 3,
+                "m_fEventTimeGap": 5,
+                "m_fEventPos": 0.5
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_SL_RIFLE",
+              "m_UnitLevel": 50,
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+                "m_fEventTimeStart": 3,
+                "m_fEventTimeGap": 5,
+                "m_fEventPos": 0.5
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_SL_CARGO",
+              "m_UnitLevel": 50,
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+                "m_fEventTimeStart": 5,
+                "m_fEventTimeGap": 5,
+                "m_fEventPos": 0.5
+              }
+            }
+          ],
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_PALADIN",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 2,
+                "m_fEventPos": 0.3
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_MAGE",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 2.3,
+                "m_fEventPos": 0.3
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_BOSS_EVENT_GAMECIRCLE_PALADIN",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 2,
+                "m_fEventPos": 0.5
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_PALADIN",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 10.3,
+                "m_fEventPos": 0.6
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_MAGE",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 10.3,
+                "m_fEventPos": 0.3
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_MAGE",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 16,
+                "m_fEventPos": 0.3
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_PALADIN",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 16.3,
+                "m_fEventPos": 0.6
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamB",
+      "value": [
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 3402111,
+          "m_bPause": true,
+          "m_fEventDelay": 3,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 3.0
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_PALADIN",
+          "m_EventConditionValue2": "USN_START",
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 3402113,
+          "m_fEventDelay": 2,
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 2.0
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_EVENT_GAMECIRCLE_PALADIN",
+          "m_EventConditionValue2": "USN_START",
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 3402117,
+          "m_fEventDelay": 2,
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_SL_SHOTGUN",
+          "m_EventConditionValue2": "USN_START",
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 3402116,
+          "m_fEventDelay": 1,
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 4.0
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_SL_SHOTGUN",
+          "m_EventConditionValue2": "USN_START",
+          "m_dungeonEventType": "CHANGE_BGM",
+          "m_EventActionStrValue": "UI_SPORT_RACE",
+          "m_fEventDelay": 2,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 4.0
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_listDungeonWave": [
+      {
+        "m_WaveID": 1,
+        "m_NextWaveID": 2,
+        "m_fNextWavetime": 180,
+        "m_listDungeonUnitRespawnA": [
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_SL_SHOTGUN_N",
+            "m_UnitLevel": 50,
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 2,
+              "m_fEventPos": 0.4
+            },
+            "m_AddStatData": {
+              "m_StatFactor": {
+                "NST_ATK": 1,
+                "NST_DEF": 0.1,
+                "NST_HP": 0.2
+              }
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_SL_RIFLE_N",
+            "m_UnitLevel": 50,
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 2,
+              "m_fEventPos": 0.2
+            },
+            "m_AddStatData": {
+              "m_StatFactor": {
+                "NST_ATK": 1,
+                "NST_DEF": 0.1,
+                "NST_HP": 0.2
+              }
+            }
+          }
+        ],
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_NEEDLER_EVENT_N",
+            "m_EventTag": "WAVE1",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 1,
+              "m_fEventPos": 0.1
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_BITER_EVENT_N",
+            "m_EventTag": "WAVE1",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 1.3,
+              "m_fEventPos": 0.1
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_PALADIN",
+            "m_EventTag": "WAVE1",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 1.6,
+              "m_fEventPos": 0.15
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_MAGE",
+            "m_EventTag": "WAVE1",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 8,
+              "m_fEventPos": 0.1
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_PALADIN",
+            "m_EventTag": "WAVE1",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 8.3,
+              "m_fEventPos": 0.1
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_PALADIN",
+            "m_EventTag": "WAVE1",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 12,
+              "m_fEventPos": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "m_WaveID": 2,
+        "m_NextWaveID": 3,
+        "m_fNextWavetime": 180,
+        "m_listDungeonUnitRespawnA": [
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_SL_SHOTGUN",
+            "m_UnitLevel": 50,
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 7,
+              "m_fEventPos": 0.5
+            },
+            "m_AddStatData": {
+              "m_StatFactor": {
+                "NST_ATK": 1,
+                "NST_DEF": 0.1,
+                "NST_HP": 0.2
+              }
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_SL_SHOTGUN",
+            "m_UnitLevel": 50,
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 7,
+              "m_fEventPos": 0.5,
+              "m_EventTag": "WAVE2",
+              "m_EventTagCount": 1
+            },
+            "m_AddStatData": {
+              "m_StatFactor": {
+                "NST_ATK": 1,
+                "NST_DEF": 0.1,
+                "NST_HP": 0.2
+              }
+            }
+          }
+        ],
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_MAGE",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 2,
+              "m_fEventPos": 0.3
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_PALADIN",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 2.3,
+              "m_fEventPos": 0.6
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_MAGE",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 10,
+              "m_fEventPos": 0.3
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_PALADIN",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 10.3,
+              "m_fEventPos": 0.6
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_MAGE",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 16,
+              "m_fEventPos": 0.3
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_PALADIN",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 16.3,
+              "m_fEventPos": 0.6
+            }
+          }
+        ]
+      },
+      {
+        "m_WaveID": 3,
+        "m_fNextWavetime": 15,
+        "m_listDungeonUnitRespawnA": [
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_SL_SHOTGUN",
+            "m_UnitLevel": 50,
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+              "m_fEventTimeStart": 3,
+              "m_fEventTimeGap": 5,
+              "m_fEventPos": 0.5
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_SL_RIFLE",
+            "m_UnitLevel": 50,
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+              "m_fEventTimeStart": 3,
+              "m_fEventTimeGap": 5,
+              "m_fEventPos": 0.5
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_SL_CARGO",
+            "m_UnitLevel": 50,
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+              "m_fEventTimeStart": 5,
+              "m_fEventTimeGap": 5,
+              "m_fEventPos": 0.5
+            }
+          }
+        ],
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_PALADIN",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 2,
+              "m_fEventPos": 0.3
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_MAGE",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 2.3,
+              "m_fEventPos": 0.3
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_BOSS_EVENT_GAMECIRCLE_PALADIN",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 2,
+              "m_fEventPos": 0.5
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_PALADIN",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 10.3,
+              "m_fEventPos": 0.6
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_MAGE",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 10.3,
+              "m_fEventPos": 0.3
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_MAGE",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 16,
+              "m_fEventPos": 0.3
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_PALADIN",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 16.3,
+              "m_fEventPos": 0.6
+            }
+          }
+        ]
+      }
+    ],
+    "m_listDungeonEventTempletTeamB": [
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 3402111,
+        "m_bPause": true,
+        "m_fEventDelay": 3,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 3.0
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_PALADIN",
+        "m_EventConditionValue2": "USN_START",
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 3402113,
+        "m_fEventDelay": 2,
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 2.0
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_EVENT_GAMECIRCLE_PALADIN",
+        "m_EventConditionValue2": "USN_START",
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 3402117,
+        "m_fEventDelay": 2,
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.0
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_SL_SHOTGUN",
+        "m_EventConditionValue2": "USN_START",
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 3402116,
+        "m_fEventDelay": 1,
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 4.0
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_SL_SHOTGUN",
+        "m_EventConditionValue2": "USN_START",
+        "m_dungeonEventType": "CHANGE_BGM",
+        "m_EventActionStrValue": "UI_SPORT_RACE",
+        "m_fEventDelay": 2,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 4.0
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

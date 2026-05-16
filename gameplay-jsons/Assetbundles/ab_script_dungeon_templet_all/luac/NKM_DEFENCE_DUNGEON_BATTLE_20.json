@@ -1,0 +1,981 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DEFENCE_DUNGEON_BATTLE_20.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 10,
+  "records": [
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_DEFENCE_WAVE_OMEN_SPELL_BATTLE_20"
+    },
+    {
+      "__key": "m_UnitLevel",
+      "value": 1000
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listValidLand",
+      "value": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "__key": "m_fStartCost",
+      "value": 4
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": false
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_ELITE_DEFENCE_SPELL_COST_INCREASE",
+          "m_EventConditionValue2": "USN_START",
+          "m_dungeonEventType": "ADD_TEAM_A_EXTRA_RESPAWN_COST",
+          "m_EventActionValue": 1.5,
+          "m_fEventDelay": 0.0,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 1,
+            "m_fEventPos": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamB",
+      "value": [
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_ELITE_DEFENCE_DISTURB",
+          "m_EventConditionValue2": "USN_DAMAGE_DIE",
+          "m_dungeonEventType": "SET_EVENTTAG",
+          "m_EventActionStrValue": "DUNGEONTAG_DISTURB_COUNT",
+          "m_EventActionValue": 0,
+          "m_bPause": false,
+          "m_fEventDelay": {
+            "__unparsed_expr": "L3_1 / 30"
+          },
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 3
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_ELITE_DEFENCE_DISTURB",
+          "m_EventConditionValue2": "USN_DAMAGE_DIE2",
+          "m_dungeonEventType": "SET_EVENTTAG",
+          "m_EventActionStrValue": "DUNGEONTAG_DISTURB_COUNT",
+          "m_EventActionValue": 0,
+          "m_bPause": false,
+          "m_fEventDelay": {
+            "__unparsed_expr": "L4_1 / 30"
+          },
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 3
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_DEFENCE_WAVE_OMEN_SPELL_BATTLE_20",
+          "m_EventConditionValue2": "USN_COUNT_1",
+          "m_dungeonEventType": "SET_EVENTTAG",
+          "m_EventActionStrValue": "DUNGEONTAG_DISTURB_COUNT",
+          "m_EventActionValue": 1,
+          "m_bPause": false,
+          "m_fEventDelay": {
+            "__unparsed_expr": "L5_1 / 30"
+          },
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 1
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_DEFENCE_WAVE_OMEN_SPELL_BATTLE_20",
+          "m_EventConditionValue2": "USN_COUNT_1",
+          "m_dungeonEventType": "SET_EVENTTAG",
+          "m_EventActionStrValue": "DUNGEONTAG_DISTURB_COUNT",
+          "m_EventActionValue": 0,
+          "m_bPause": false,
+          "m_fEventDelay": {
+            "__unparsed_expr": "L6_1 / 30"
+          },
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 3
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_DEFENCE_WAVE_OMEN_SPELL_BATTLE_20",
+          "m_EventConditionValue2": "USN_COUNT_2",
+          "m_dungeonEventType": "SET_EVENTTAG",
+          "m_EventActionStrValue": "DUNGEONTAG_DISTURB_COUNT",
+          "m_EventActionValue": 2,
+          "m_bPause": false,
+          "m_fEventDelay": {
+            "__unparsed_expr": "L7_1 / 30"
+          },
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 3
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_DEFENCE_WAVE_OMEN_SPELL_BATTLE_20",
+          "m_EventConditionValue2": "USN_COUNT_2",
+          "m_dungeonEventType": "SET_EVENTTAG",
+          "m_EventActionStrValue": "DUNGEONTAG_DISTURB_COUNT",
+          "m_EventActionValue": 0,
+          "m_bPause": false,
+          "m_fEventDelay": {
+            "__unparsed_expr": "L8_1 / 30"
+          },
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 3
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_DEFENCE_WAVE_OMEN_SPELL_BATTLE_20",
+          "m_EventConditionValue2": "USN_COUNT_3",
+          "m_dungeonEventType": "SET_EVENTTAG",
+          "m_EventActionStrValue": "DUNGEONTAG_DISTURB_COUNT",
+          "m_EventActionValue": 3,
+          "m_bPause": false,
+          "m_fEventDelay": {
+            "__unparsed_expr": "L9_1 / 30"
+          },
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 3
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_DEFENCE_WAVE_OMEN_SPELL_BATTLE_20",
+          "m_EventConditionValue2": "USN_COUNT_3",
+          "m_dungeonEventType": "SET_EVENTTAG",
+          "m_EventActionStrValue": "DUNGEONTAG_DISTURB_COUNT",
+          "m_EventActionValue": 0,
+          "m_bPause": false,
+          "m_fEventDelay": {
+            "__unparsed_expr": "L10_1 / 30"
+          },
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 3
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_DEFENCE_WAVE_OMEN_SPELL_BATTLE_20",
+          "m_EventConditionValue2": "USN_COUNT_4",
+          "m_dungeonEventType": "SET_EVENTTAG",
+          "m_EventActionStrValue": "DUNGEONTAG_DISTURB_COUNT",
+          "m_EventActionValue": 4,
+          "m_bPause": false,
+          "m_fEventDelay": {
+            "__unparsed_expr": "L11_1 / 30"
+          },
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 3
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_DEFENCE_WAVE_OMEN_SPELL_BATTLE_20",
+          "m_EventConditionValue2": "USN_COUNT_4",
+          "m_dungeonEventType": "SET_EVENTTAG",
+          "m_EventActionStrValue": "DUNGEONTAG_DISTURB_COUNT",
+          "m_EventActionValue": 0,
+          "m_bPause": false,
+          "m_fEventDelay": {
+            "__unparsed_expr": "L12_1 / 30"
+          },
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 3
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_DEFENCE_WAVE_OMEN_SPELL_BATTLE_20",
+          "m_EventConditionValue2": "USN_COUNT_5",
+          "m_dungeonEventType": "SET_EVENTTAG",
+          "m_EventActionStrValue": "DUNGEONTAG_DISTURB_COUNT",
+          "m_EventActionValue": 5,
+          "m_bPause": false,
+          "m_fEventDelay": {
+            "__unparsed_expr": "L13_1 / 30"
+          },
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 3
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_DEFENCE_WAVE_OMEN_SPELL_BATTLE_20",
+          "m_EventConditionValue2": "USN_COUNT_5",
+          "m_dungeonEventType": "SET_EVENTTAG",
+          "m_EventActionStrValue": "DUNGEONTAG_DISTURB_COUNT",
+          "m_EventActionValue": 0,
+          "m_bPause": false,
+          "m_fEventDelay": {
+            "__unparsed_expr": "L14_1 / 30"
+          },
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 3
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_BOSS_DEFENCE_WAVE_OMEN_SPELL_BATTLE_20",
+          "m_UnitLevel": 1000,
+          "m_bShowGage": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 1,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_PALADIN",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_PALADIN",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_MAGE",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_MAGE",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_MAGE",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 2,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_ALT_C_YOO_JIN_RB_BATTLE_20",
+          "m_UnitLevel": 110,
+          "m_UnitEffect": "SHADOW",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 90,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATTACK_SPEED_RATE": 1.8
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_BOMBER",
+          "m_UnitLevel": 110,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 90,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0,
+              "NST_DEF": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+          "m_UnitLevel": 110,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 91,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0,
+              "NST_DEF": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_MACE",
+          "m_UnitLevel": 110,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 90,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 3.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_MAGE_GREEN",
+          "m_UnitLevel": 110,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 90,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_JAPAN_S_KUNOICHI_BATTLE_20",
+          "m_UnitLevel": 110,
+          "m_UnitEffect": "SHADOW",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 90,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.2,
+              "NST_ATTACK_SPEED_RATE": 1.8,
+              "NST_SKILL_COOL_TIME_REDUCE_RATE": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_DISTURB_BLASTER_SUMMON",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeGap": 1,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_DISTURB",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 5.0,
+            "m_EventTag": "DUNGEONTAG_DISTURB_COUNT",
+            "m_EventTagCount": 1,
+            "m_fEventPos": 0.0
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_DISTURB",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 5.0,
+            "m_EventTag": "DUNGEONTAG_DISTURB_COUNT",
+            "m_EventTagCount": 2,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_DISTURB",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 5.0,
+            "m_EventTag": "DUNGEONTAG_DISTURB_COUNT",
+            "m_EventTagCount": 3,
+            "m_fEventPos": 0.05
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_DISTURB",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 5.0,
+            "m_EventTag": "DUNGEONTAG_DISTURB_COUNT",
+            "m_EventTagCount": 4,
+            "m_fEventPos": 0.15
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_DISTURB",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 5.0,
+            "m_EventTag": "DUNGEONTAG_DISTURB_COUNT",
+            "m_EventTagCount": 5,
+            "m_fEventPos": 0.1
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_BossUnitStrID": "NKM_MOB_BOSS_DEFENCE_WAVE_OMEN_SPELL_BATTLE_20",
+    "m_UnitLevel": 1000,
+    "m_fBossPosZ": 0.6,
+    "m_listValidLand": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "m_fStartCost": 4,
+    "m_fCostSpeedRateB": 0,
+    "m_bShowGage": false,
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_ELITE_DEFENCE_SPELL_COST_INCREASE",
+        "m_EventConditionValue2": "USN_START",
+        "m_dungeonEventType": "ADD_TEAM_A_EXTRA_RESPAWN_COST",
+        "m_EventActionValue": 1.5,
+        "m_fEventDelay": 0.0,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 1,
+          "m_fEventPos": 0.5
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamB": [
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_ELITE_DEFENCE_DISTURB",
+        "m_EventConditionValue2": "USN_DAMAGE_DIE",
+        "m_dungeonEventType": "SET_EVENTTAG",
+        "m_EventActionStrValue": "DUNGEONTAG_DISTURB_COUNT",
+        "m_EventActionValue": 0,
+        "m_bPause": false,
+        "m_fEventDelay": {
+          "__unparsed_expr": "L3_1 / 30"
+        },
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 3
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_ELITE_DEFENCE_DISTURB",
+        "m_EventConditionValue2": "USN_DAMAGE_DIE2",
+        "m_dungeonEventType": "SET_EVENTTAG",
+        "m_EventActionStrValue": "DUNGEONTAG_DISTURB_COUNT",
+        "m_EventActionValue": 0,
+        "m_bPause": false,
+        "m_fEventDelay": {
+          "__unparsed_expr": "L4_1 / 30"
+        },
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 3
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_DEFENCE_WAVE_OMEN_SPELL_BATTLE_20",
+        "m_EventConditionValue2": "USN_COUNT_1",
+        "m_dungeonEventType": "SET_EVENTTAG",
+        "m_EventActionStrValue": "DUNGEONTAG_DISTURB_COUNT",
+        "m_EventActionValue": 1,
+        "m_bPause": false,
+        "m_fEventDelay": {
+          "__unparsed_expr": "L5_1 / 30"
+        },
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 1
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_DEFENCE_WAVE_OMEN_SPELL_BATTLE_20",
+        "m_EventConditionValue2": "USN_COUNT_1",
+        "m_dungeonEventType": "SET_EVENTTAG",
+        "m_EventActionStrValue": "DUNGEONTAG_DISTURB_COUNT",
+        "m_EventActionValue": 0,
+        "m_bPause": false,
+        "m_fEventDelay": {
+          "__unparsed_expr": "L6_1 / 30"
+        },
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 3
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_DEFENCE_WAVE_OMEN_SPELL_BATTLE_20",
+        "m_EventConditionValue2": "USN_COUNT_2",
+        "m_dungeonEventType": "SET_EVENTTAG",
+        "m_EventActionStrValue": "DUNGEONTAG_DISTURB_COUNT",
+        "m_EventActionValue": 2,
+        "m_bPause": false,
+        "m_fEventDelay": {
+          "__unparsed_expr": "L7_1 / 30"
+        },
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 3
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_DEFENCE_WAVE_OMEN_SPELL_BATTLE_20",
+        "m_EventConditionValue2": "USN_COUNT_2",
+        "m_dungeonEventType": "SET_EVENTTAG",
+        "m_EventActionStrValue": "DUNGEONTAG_DISTURB_COUNT",
+        "m_EventActionValue": 0,
+        "m_bPause": false,
+        "m_fEventDelay": {
+          "__unparsed_expr": "L8_1 / 30"
+        },
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 3
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_DEFENCE_WAVE_OMEN_SPELL_BATTLE_20",
+        "m_EventConditionValue2": "USN_COUNT_3",
+        "m_dungeonEventType": "SET_EVENTTAG",
+        "m_EventActionStrValue": "DUNGEONTAG_DISTURB_COUNT",
+        "m_EventActionValue": 3,
+        "m_bPause": false,
+        "m_fEventDelay": {
+          "__unparsed_expr": "L9_1 / 30"
+        },
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 3
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_DEFENCE_WAVE_OMEN_SPELL_BATTLE_20",
+        "m_EventConditionValue2": "USN_COUNT_3",
+        "m_dungeonEventType": "SET_EVENTTAG",
+        "m_EventActionStrValue": "DUNGEONTAG_DISTURB_COUNT",
+        "m_EventActionValue": 0,
+        "m_bPause": false,
+        "m_fEventDelay": {
+          "__unparsed_expr": "L10_1 / 30"
+        },
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 3
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_DEFENCE_WAVE_OMEN_SPELL_BATTLE_20",
+        "m_EventConditionValue2": "USN_COUNT_4",
+        "m_dungeonEventType": "SET_EVENTTAG",
+        "m_EventActionStrValue": "DUNGEONTAG_DISTURB_COUNT",
+        "m_EventActionValue": 4,
+        "m_bPause": false,
+        "m_fEventDelay": {
+          "__unparsed_expr": "L11_1 / 30"
+        },
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 3
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_DEFENCE_WAVE_OMEN_SPELL_BATTLE_20",
+        "m_EventConditionValue2": "USN_COUNT_4",
+        "m_dungeonEventType": "SET_EVENTTAG",
+        "m_EventActionStrValue": "DUNGEONTAG_DISTURB_COUNT",
+        "m_EventActionValue": 0,
+        "m_bPause": false,
+        "m_fEventDelay": {
+          "__unparsed_expr": "L12_1 / 30"
+        },
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 3
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_DEFENCE_WAVE_OMEN_SPELL_BATTLE_20",
+        "m_EventConditionValue2": "USN_COUNT_5",
+        "m_dungeonEventType": "SET_EVENTTAG",
+        "m_EventActionStrValue": "DUNGEONTAG_DISTURB_COUNT",
+        "m_EventActionValue": 5,
+        "m_bPause": false,
+        "m_fEventDelay": {
+          "__unparsed_expr": "L13_1 / 30"
+        },
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 3
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_DEFENCE_WAVE_OMEN_SPELL_BATTLE_20",
+        "m_EventConditionValue2": "USN_COUNT_5",
+        "m_dungeonEventType": "SET_EVENTTAG",
+        "m_EventActionStrValue": "DUNGEONTAG_DISTURB_COUNT",
+        "m_EventActionValue": 0,
+        "m_bPause": false,
+        "m_fEventDelay": {
+          "__unparsed_expr": "L14_1 / 30"
+        },
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 3
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_BOSS_DEFENCE_WAVE_OMEN_SPELL_BATTLE_20",
+        "m_UnitLevel": 1000,
+        "m_bShowGage": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 1,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_PALADIN",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_PALADIN",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_MAGE",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_MAGE",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_MAGE",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 2,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_ALT_C_YOO_JIN_RB_BATTLE_20",
+        "m_UnitLevel": 110,
+        "m_UnitEffect": "SHADOW",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 90,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATTACK_SPEED_RATE": 1.8
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_BOMBER",
+        "m_UnitLevel": 110,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 90,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0,
+            "NST_DEF": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_SL_DRONE_FIGHTER",
+        "m_UnitLevel": 110,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 91,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0,
+            "NST_DEF": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_MACE",
+        "m_UnitLevel": 110,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 90,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 3.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_MAGE_GREEN",
+        "m_UnitLevel": 110,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 90,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_JAPAN_S_KUNOICHI_BATTLE_20",
+        "m_UnitLevel": 110,
+        "m_UnitEffect": "SHADOW",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 90,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.2,
+            "NST_ATTACK_SPEED_RATE": 1.8,
+            "NST_SKILL_COOL_TIME_REDUCE_RATE": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_DISTURB_BLASTER_SUMMON",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeGap": 1,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_DISTURB",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 5.0,
+          "m_EventTag": "DUNGEONTAG_DISTURB_COUNT",
+          "m_EventTagCount": 1,
+          "m_fEventPos": 0.0
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_DISTURB",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 5.0,
+          "m_EventTag": "DUNGEONTAG_DISTURB_COUNT",
+          "m_EventTagCount": 2,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_DISTURB",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 5.0,
+          "m_EventTag": "DUNGEONTAG_DISTURB_COUNT",
+          "m_EventTagCount": 3,
+          "m_fEventPos": 0.05
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_DISTURB",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 5.0,
+          "m_EventTag": "DUNGEONTAG_DISTURB_COUNT",
+          "m_EventTagCount": 4,
+          "m_fEventPos": 0.15
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_DISTURB",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 5.0,
+          "m_EventTag": "DUNGEONTAG_DISTURB_COUNT",
+          "m_EventTagCount": 5,
+          "m_fEventPos": 0.1
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

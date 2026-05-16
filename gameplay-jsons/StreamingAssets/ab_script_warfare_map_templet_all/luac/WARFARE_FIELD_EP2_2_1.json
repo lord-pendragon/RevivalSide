@@ -1,0 +1,293 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_warfare_map_templet_all\\luac\\WARFARE_FIELD_EP2_2_1.lua",
+  "rootName": "NKMWarfareMapTemplet",
+  "recordCount": 20,
+  "records": [
+    {
+      "__key": "m_MapSizeX",
+      "value": 6
+    },
+    {
+      "__key": "m_MapSizeY",
+      "value": 3
+    },
+    {
+      "__key": "NKMWarfareTile0",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_NKM_WARFARE_SPAWN_POINT_TYPE": "NWSPT_DIVE",
+      "m_BattleConditionStrID": "BC_BLIZZARD"
+    },
+    {
+      "__key": "NKMWarfareTile1",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_BLIZZARD"
+    },
+    {
+      "__key": "NKMWarfareTile2",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_DungeonStrID": "NKM_FIELD_BATTLE_EP2_2_1_MEDIUM_WAVE_A",
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_NEAREST_ATK",
+      "m_BattleConditionStrID": "BC_BLIZZARD"
+    },
+    {
+      "__key": "NKMWarfareTile3",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_BLIZZARD"
+    },
+    {
+      "__key": "NKMWarfareTile4",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_BLIZZARD"
+    },
+    {
+      "__key": "NKMWarfareTile5",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_BLIZZARD"
+    },
+    {
+      "__key": "NKMWarfareTile6",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_NKM_WARFARE_SPAWN_POINT_TYPE": "NWSPT_DIVE",
+      "BattleConditionChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 1,
+        "StrID": "BC_BLIZZARD"
+      }
+    },
+    {
+      "__key": "NKMWarfareTile7",
+      "m_TileType": "NWMTT_NORMAL",
+      "BattleConditionChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 1,
+        "StrID": "BC_BLIZZARD"
+      }
+    },
+    {
+      "__key": "NKMWarfareTile8",
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    {
+      "__key": "NKMWarfareTile9",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_DungeonStrID": "NKM_FIELD_BATTLE_EP2_2_1_MEDIUM_WAVE_A",
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_NEAREST_ATK",
+      "BattleConditionChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 1,
+        "StrID": "BC_BLIZZARD"
+      }
+    },
+    {
+      "__key": "NKMWarfareTile10",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_DungeonStrID": "NKM_FIELD_BATTLE_EP2_2_1_MEDIUM_BOSS_B",
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_NEAREST_ATK",
+      "BattleConditionChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 1,
+        "StrID": "BC_BLIZZARD"
+      }
+    },
+    {
+      "__key": "NKMWarfareTile11",
+      "m_TileType": "NWMTT_NORMAL",
+      "BattleConditionChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 1,
+        "StrID": "BC_BLIZZARD"
+      }
+    },
+    {
+      "__key": "NKMWarfareTile12",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_NKM_WARFARE_SPAWN_POINT_TYPE": "NWSPT_DIVE",
+      "BattleConditionChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 2,
+        "StrID": "BC_BLIZZARD"
+      }
+    },
+    {
+      "__key": "NKMWarfareTile13",
+      "m_TileType": "NWMTT_NORMAL",
+      "BattleConditionChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 2,
+        "StrID": "BC_BLIZZARD"
+      }
+    },
+    {
+      "__key": "NKMWarfareTile14",
+      "m_TileType": "NWMTT_RESUPPLY",
+      "BattleConditionChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 2,
+        "StrID": "BC_BLIZZARD"
+      }
+    },
+    {
+      "__key": "NKMWarfareTile15",
+      "m_TileType": "NWMTT_NORMAL",
+      "BattleConditionChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 2,
+        "StrID": "BC_BLIZZARD"
+      }
+    },
+    {
+      "__key": "NKMWarfareTile16",
+      "m_TileType": "NWMTT_NORMAL",
+      "BattleConditionChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 2,
+        "StrID": "BC_BLIZZARD"
+      }
+    },
+    {
+      "__key": "NKMWarfareTile17",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_DungeonStrID": "NKM_FIELD_BATTLE_EP2_2_1_HARD_BOSS_A",
+      "m_bFlagDungeon": true,
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_DEFENSE",
+      "BattleConditionChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 2,
+        "StrID": "BC_BLIZZARD"
+      }
+    }
+  ],
+  "root": {
+    "m_MapSizeX": 6,
+    "m_MapSizeY": 3,
+    "NKMWarfareTile0": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_NKM_WARFARE_SPAWN_POINT_TYPE": "NWSPT_DIVE",
+      "m_BattleConditionStrID": "BC_BLIZZARD"
+    },
+    "NKMWarfareTile1": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_BLIZZARD"
+    },
+    "NKMWarfareTile2": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_DungeonStrID": "NKM_FIELD_BATTLE_EP2_2_1_MEDIUM_WAVE_A",
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_NEAREST_ATK",
+      "m_BattleConditionStrID": "BC_BLIZZARD"
+    },
+    "NKMWarfareTile3": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_BLIZZARD"
+    },
+    "NKMWarfareTile4": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_BLIZZARD"
+    },
+    "NKMWarfareTile5": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_BattleConditionStrID": "BC_BLIZZARD"
+    },
+    "NKMWarfareTile6": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_NKM_WARFARE_SPAWN_POINT_TYPE": "NWSPT_DIVE",
+      "BattleConditionChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 1,
+        "StrID": "BC_BLIZZARD"
+      }
+    },
+    "NKMWarfareTile7": {
+      "m_TileType": "NWMTT_NORMAL",
+      "BattleConditionChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 1,
+        "StrID": "BC_BLIZZARD"
+      }
+    },
+    "NKMWarfareTile8": {
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    "NKMWarfareTile9": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_DungeonStrID": "NKM_FIELD_BATTLE_EP2_2_1_MEDIUM_WAVE_A",
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_NEAREST_ATK",
+      "BattleConditionChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 1,
+        "StrID": "BC_BLIZZARD"
+      }
+    },
+    "NKMWarfareTile10": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_DungeonStrID": "NKM_FIELD_BATTLE_EP2_2_1_MEDIUM_BOSS_B",
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_NEAREST_ATK",
+      "BattleConditionChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 1,
+        "StrID": "BC_BLIZZARD"
+      }
+    },
+    "NKMWarfareTile11": {
+      "m_TileType": "NWMTT_NORMAL",
+      "BattleConditionChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 1,
+        "StrID": "BC_BLIZZARD"
+      }
+    },
+    "NKMWarfareTile12": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_NKM_WARFARE_SPAWN_POINT_TYPE": "NWSPT_DIVE",
+      "BattleConditionChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 2,
+        "StrID": "BC_BLIZZARD"
+      }
+    },
+    "NKMWarfareTile13": {
+      "m_TileType": "NWMTT_NORMAL",
+      "BattleConditionChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 2,
+        "StrID": "BC_BLIZZARD"
+      }
+    },
+    "NKMWarfareTile14": {
+      "m_TileType": "NWMTT_RESUPPLY",
+      "BattleConditionChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 2,
+        "StrID": "BC_BLIZZARD"
+      }
+    },
+    "NKMWarfareTile15": {
+      "m_TileType": "NWMTT_NORMAL",
+      "BattleConditionChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 2,
+        "StrID": "BC_BLIZZARD"
+      }
+    },
+    "NKMWarfareTile16": {
+      "m_TileType": "NWMTT_NORMAL",
+      "BattleConditionChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 2,
+        "StrID": "BC_BLIZZARD"
+      }
+    },
+    "NKMWarfareTile17": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_DungeonStrID": "NKM_FIELD_BATTLE_EP2_2_1_HARD_BOSS_A",
+      "m_bFlagDungeon": true,
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_DEFENSE",
+      "BattleConditionChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 2,
+        "StrID": "BC_BLIZZARD"
+      }
+    }
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

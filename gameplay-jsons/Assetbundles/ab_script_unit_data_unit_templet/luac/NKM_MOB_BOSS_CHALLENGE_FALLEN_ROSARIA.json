@@ -1,0 +1,1816 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_BOSS_CHALLENGE_FALLEN_ROSARIA.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 33,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_UNIT_BASE_BOSS"
+    },
+    {
+      "__key": "m_UnitSizeX",
+      "value": 200
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 270
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 250
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": false
+    },
+    {
+      "__key": "m_fAirHigh",
+      "value": 150
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 200
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 200
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.56
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.6
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 60
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 1500
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 1600
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 1100
+    },
+    {
+      "__key": "m_AttackedTargetTime",
+      "value": 1
+    },
+    {
+      "__key": "m_bAttackedTarget",
+      "value": false
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": true
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 1.5
+    },
+    {
+      "__key": "m_bImmuneStun",
+      "value": true
+    },
+    {
+      "__key": "m_bImmuneSleep",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageStopTime",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageState",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageDownState",
+      "value": true
+    },
+    {
+      "__key": "m_fDamageUpFactor",
+      "value": 0.0
+    },
+    {
+      "__key": "m_fDamageBackFactor",
+      "value": 0.3
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_BuffStrID": "BUFF_MOB_BOSS_CHALLENGE_FALLEN_ROSARIA_PASSIVE2",
+          "m_BuffLevel": 2
+        }
+      ]
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_NKM_ATTACK_STATE_DATA_TYPE": "NASDT_NORMAL",
+          "m_StateName": "USN_ATTACK2",
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 300
+        },
+        {
+          "m_NKM_ATTACK_STATE_DATA_TYPE": "NASDT_NORMAL",
+          "m_StateName": "USN_ATTACK1",
+          "m_fRangeMin": 300,
+          "m_fRangeMax": 1100
+        }
+      ]
+    },
+    {
+      "__key": "m_listAirAttackStateData",
+      "value": [
+        {
+          "m_NKM_ATTACK_STATE_DATA_TYPE": "NASDT_NORMAL",
+          "m_StateName": "USN_ATTACK1_AIR",
+          "m_fRangeMax": 1100
+        }
+      ]
+    },
+    {
+      "__key": "m_listSkillStateData",
+      "value": [
+        {
+          "m_NKM_ATTACK_STATE_DATA_TYPE": "NASDT_NORMAL",
+          "m_StateName": "USN_SKILL1",
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 1000
+        }
+      ]
+    },
+    {
+      "__key": "m_listHyperSkillStateData",
+      "value": [
+        {
+          "m_NKM_ATTACK_STATE_DATA_TYPE": "NASDT_NORMAL",
+          "m_StateName": "USN_HYPER_SKILL1",
+          "m_fStartCool": 0.7,
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 1100
+        }
+      ]
+    },
+    {
+      "__key": "m_listBuffUnitDieEvent",
+      "value": [
+        {
+          "m_BuffStrID": "DEBUFF_MOB_BOSS_CHALLENGE_FALLEN_ROSARIA_PASSIVE1",
+          "m_OutBuffStrID": "BUFF_MOB_BOSS_CHALLENGE_FALLEN_ROSARIA_PASSIVE1",
+          "m_OutBuffLevel": 5
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_RUN",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_AnimName": "RUN",
+          "m_fAnimSpeed": 0.8,
+          "m_bAnimLoop": true,
+          "m_bRun": true
+        },
+        {
+          "m_StateName": "USN_START",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_AnimName": "START",
+          "m_DamagedChangeState": "USN_ASTAND",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_fAnimSpeed": 1.25,
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_FIRE"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 0.6666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_03"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_START_1",
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_START_2",
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_START_3"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+          "m_StateName": "USN_ASTAND",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 0.8,
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 4.666666666666667,
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_2",
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_7"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK1",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": 0.6666666666666666,
+              "m_DEName": "DE_NKM_MOB_BOSS_CHALLENGE_FALLEN_ROSARIA_ATTACK1",
+              "m_bTargetPos": false,
+              "m_bShipSkillPos": false,
+              "m_bIgnoreTarget": false,
+              "m_bIgnoreNoTarget": false,
+              "m_OffsetX": 50,
+              "m_OffsetY": 150,
+              "m_OffsetZ": 0,
+              "m_fAddRotate": -30
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.43333333333333335,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_WHOOSH_FIRE_SMALL"
+              ],
+              "m_fLocalVol": 0.5
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_bVoice": true,
+              "m_PlayRate": 0.4,
+              "m_listSoundName": [
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_1",
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_2",
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_4",
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_5"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1_AIR",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK1_AIR",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": 0.6666666666666666,
+              "m_DEName": "DE_NKM_MOB_BOSS_CHALLENGE_FALLEN_ROSARIA_ATTACK1_AIR",
+              "m_bTargetPos": false,
+              "m_bShipSkillPos": false,
+              "m_bIgnoreTarget": false,
+              "m_bIgnoreNoTarget": false,
+              "m_OffsetX": 50,
+              "m_OffsetY": 200,
+              "m_OffsetZ": 0,
+              "m_fAddRotate": 0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.43333333333333335,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_WHOOSH_FIRE_SMALL"
+              ],
+              "m_fLocalVol": 0.5
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_bVoice": true,
+              "m_PlayRate": 0.4,
+              "m_listSoundName": [
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_1",
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_2",
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_4",
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_5"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK2",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK2",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventAttack": [
+            {
+              "m_fEventTimeMin": 0.6666666666666666,
+              "m_fEventTimeMax": 0.8333333333333334,
+              "m_fRangeMin": -50,
+              "m_fRangeMax": 350,
+              "m_bHitAir": false,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 2,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_CHALLENGE_FALLEN_ROSARIA_ATTACK2",
+              "m_bDamageSpeedDependRight": true
+            },
+            {
+              "m_fEventTimeMin": 0.6666666666666666,
+              "m_fEventTimeMax": 0.8333333333333334,
+              "m_fRangeMin": -50,
+              "m_fRangeMax": 350,
+              "m_bHitAir": false,
+              "m_AttackTargetUnit": false,
+              "m_bHitSummonOnly": true,
+              "m_AttackUnitCount": 8,
+              "m_bCleanHit": true,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_CHALLENGE_FALLEN_ROSARIA_KILL",
+              "m_bDamageSpeedDependRight": true
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.6666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWING_SMALL"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6666666666666666,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_2",
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_7",
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_9"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "SKILL1_AIR",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_StateCoolTime": 15,
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventAttack": [
+            {
+              "m_fEventTimeMin": 1.3666666666666667,
+              "m_fEventTimeMax": 2.0,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1100,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 6,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_CHALLENGE_FALLEN_ROSARIA_SKILL1"
+            },
+            {
+              "m_fEventTimeMin": 1.3666666666666667,
+              "m_fEventTimeMax": 2.0,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1100,
+              "m_AttackTargetUnit": false,
+              "m_bHitSummonOnly": true,
+              "m_AttackUnitCount": 6,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_CHALLENGE_FALLEN_ROSARIA_KILL"
+            }
+          ],
+          "m_listNKMEventAnimSpeed": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_fAnimSpeed": 0.9
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.16666666666666666,
+              "m_fAnimSpeed": 1.7
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5,
+              "m_fAnimSpeed": 0.9
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 1.3666666666666667,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 1250,
+              "m_fCameraCrashGap": 10,
+              "m_fCameraCrashTime": 0.5
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ],
+              "m_fLocalVol": 1.0
+            },
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_FIRE"
+              ],
+              "m_fLocalVol": 0.5
+            },
+            {
+              "m_fEventTime": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_56"
+              ],
+              "m_fLocalVol": 1.0
+            },
+            {
+              "m_fEventTime": 1.2666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_FIRE_02"
+              ],
+              "m_fLocalVol": 1.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ACTIVE_1",
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ACTIVE_2"
+              ]
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 99999,
+              "m_fColorR": 0.5,
+              "m_fColorG": 0.5,
+              "m_fColorB": 1.0
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_HYPER_SKILL1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "HYPER_SKILL1",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_StateCoolTime": 50,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_bTargetUnit": false,
+              "m_OffsetX": 0,
+              "m_OffsetJumpYPos": -100,
+              "m_MoveTime": 1.0,
+              "m_bLandMove": false,
+              "m_bOffsetDependMe": false,
+              "m_MoveTrackingType": "TDT_SLOWER"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 4.0,
+              "m_bTargetUnit": false,
+              "m_OffsetX": 0,
+              "m_OffsetJumpYPos": 100,
+              "m_MoveTime": 1.0,
+              "m_bLandMove": false,
+              "m_bOffsetDependMe": false,
+              "m_MoveTrackingType": "TDT_SLOWER"
+            }
+          ],
+          "m_listNKMEventAnimSpeed": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_fAnimSpeed": 0.9
+            },
+            {
+              "m_fEventTime": 2.3333333333333335,
+              "m_fAnimSpeed": 1.5
+            },
+            {
+              "m_fEventTime": 2.6,
+              "m_fAnimSpeed": 0.3
+            },
+            {
+              "m_fEventTime": 2.6666666666666665,
+              "m_fAnimSpeed": 1.0
+            }
+          ],
+          "m_listNKMEventInvincible": [
+            {
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_fEventTimeMax": 2.5
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_fEventTimeMin": 2.5,
+              "m_fEventTimeMax": 3.5,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1200,
+              "m_AttackTargetUnit": false,
+              "m_bHitSummonOnly": true,
+              "m_bCleanHit": true,
+              "m_AttackUnitCount": 8,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_CHALLENGE_FALLEN_ROSARIA_KILL",
+              "m_bDamageSpeedDependRight": true
+            },
+            {
+              "m_fEventTimeMin": 2.5,
+              "m_fEventTimeMax": 2.6666666666666665,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1200,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 8,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_CHALLENGE_FALLEN_ROSARIA_HYPER1",
+              "m_bDamageSpeedDependRight": true
+            },
+            {
+              "m_fEventTimeMin": 2.7,
+              "m_fEventTimeMax": 3.5,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1200,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 8,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_CHALLENGE_FALLEN_ROSARIA_HYPER1_END",
+              "m_bDamageSpeedDependRight": true
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HYPER_ATTACK_START"
+              ],
+              "m_fLocalVol": 1.0
+            },
+            {
+              "m_fEventTime": 0.26666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_27"
+              ],
+              "m_fLocalVol": 1.0
+            },
+            {
+              "m_fEventTime": 0.7333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_16"
+              ],
+              "m_fLocalVol": 1.0
+            },
+            {
+              "m_fEventTime": 0.6666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_FIRE"
+              ],
+              "m_fLocalVol": 1.0
+            },
+            {
+              "m_fEventTime": 1.1,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG_07"
+              ],
+              "m_fLocalVol": 1.0
+            },
+            {
+              "m_fEventTime": 1.8333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_15"
+              ],
+              "m_fLocalVol": 1.0
+            },
+            {
+              "m_fEventTime": 2.466666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWING_BIG_02"
+              ],
+              "m_fLocalVol": 1.0
+            },
+            {
+              "m_fEventTime": 2.466666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG_09"
+              ],
+              "m_fLocalVol": 1.0
+            },
+            {
+              "m_fEventTime": 2.533333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG_03"
+              ],
+              "m_fLocalVol": 0.5
+            },
+            {
+              "m_fEventTime": 2.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_EXPLOSION_ATTACK_BIG_02"
+              ],
+              "m_fLocalVol": 1.0
+            },
+            {
+              "m_fEventTime": 3.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_FIRE_04"
+              ],
+              "m_fLocalVol": 1.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_HYPER_1",
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_HYPER_2"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.5,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_4",
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_10"
+              ]
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 2.5,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 2000,
+              "m_fCameraCrashGap": 20,
+              "m_fCameraCrashTime": 0.16666666666666666
+            },
+            {
+              "m_fEventTime": 2.8333333333333335,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 2000,
+              "m_fCameraCrashGap": 15,
+              "m_fCameraCrashTime": 1.5
+            }
+          ],
+          "m_listNKMEventCameraMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.03333333333333333,
+              "m_fEventTimeMax": 0.6666666666666666,
+              "m_fPosXOffset": -150,
+              "m_fPosYOffset": 200,
+              "m_fZoom": -200,
+              "m_fFocusBlur": 0.0,
+              "m_fMoveTrackingTime": 0.3333333333333333,
+              "m_fZoomTrackingTime": 0.3333333333333333,
+              "m_fCameraRadius": 0.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.6666666666666666,
+              "m_fEventTimeMax": 1.6666666666666667,
+              "m_fPosXOffset": -100,
+              "m_fPosYOffset": 400,
+              "m_fZoom": -150,
+              "m_fFocusBlur": 0.0,
+              "m_fMoveTrackingTime": 0.6666666666666666,
+              "m_fZoomTrackingTime": 0.6666666666666666,
+              "m_fCameraRadius": 0.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.6666666666666667,
+              "m_fEventTimeMax": 2.6666666666666665,
+              "m_fPosXOffset": 600,
+              "m_fPosYOffset": 300,
+              "m_fZoom": 0,
+              "m_fFocusBlur": 0.0,
+              "m_fMoveTrackingTime": 1.0,
+              "m_fZoomTrackingTime": 1.0,
+              "m_fCameraRadius": 0.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.6666666666666665,
+              "m_fEventTimeMax": 3.0,
+              "m_fPosXOffset": 600,
+              "m_fPosYOffset": 300,
+              "m_fZoom": 0,
+              "m_fFocusBlur": 0.5,
+              "m_fMoveTrackingTime": 0.3333333333333333,
+              "m_fZoomTrackingTime": 0.3333333333333333,
+              "m_fCameraRadius": 0.0
+            }
+          ],
+          "m_listNKMEventStopTime": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_StopTimeIndex": "NSTI_SKILL",
+              "m_fStopTime": 1.0,
+              "m_bStopEnemyOnly": false,
+              "m_bMyStop": false,
+              "m_fRange": 800
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 99999,
+              "m_fColorR": 1.0,
+              "m_fColorG": 0.5,
+              "m_fColorB": 0.5
+            }
+          ],
+          "m_listNKMEventFadeWorld": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L13_1 / 30"
+              },
+              "m_fEventTimeMax": 3.0,
+              "m_fColorR": 0.0,
+              "m_fColorG": 0.0,
+              "m_fColorB": 0.0,
+              "m_fMapColorKeepTime": 0.3,
+              "m_fMapColorReturnTime": 3.0
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_bAnimLoop": false,
+          "m_AnimEndChangeState": "USN_DAMAGE_DIE",
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+          "m_FootOnLandChangeState": "",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DAMAGE_3"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_bAnimLoop": false,
+          "m_fAirHigh": 0,
+          "m_listNKMEventSpeedY": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L15_1 / 30"
+              },
+              "m_fEventTimeMax": 0.36666666666666664,
+              "m_SpeedY": 0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.36666666666666664,
+              "m_fEventTimeMax": 3.3,
+              "m_SpeedY": -600
+            }
+          ],
+          "m_listNKMEventDissolve": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0,
+              "m_fDissolve": 0,
+              "m_fTrackTime": 1
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_WHOOSH_02"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 0.8333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MONSTER_MOVEMENT_07"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DEATH_1",
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DEATH_2"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_A",
+          "m_AnimName": "DAMAGE_A",
+          "m_bAnimLoop": false,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DAMAGE_3"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_B",
+          "m_AnimName": "DAMAGE_B",
+          "m_bAnimLoop": false,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DAMAGE_3"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_AIR_UP",
+          "m_AnimName": "DAMAGE_AIR_UP",
+          "m_bAnimLoop": false,
+          "m_SpeedY0NegativeChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DAMAGE_3"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_UNIT_BASE_BOSS",
+    "m_UnitSizeX": 200,
+    "m_UnitSizeY": 270,
+    "m_SpriteScale": 1.0,
+    "m_fGageOffsetY": 250,
+    "m_bShowGage": false,
+    "m_fAirHigh": 150,
+    "m_fShadowScaleX": 200,
+    "m_fShadowScaleY": 200,
+    "m_fForceRespawnZposMin": 0.56,
+    "m_fForceRespawnZposMax": 0.6,
+    "m_SpeedRun": 60,
+    "m_SeeRange": 1500,
+    "m_SeeRangeMax": 1600,
+    "m_TargetNearRange": 1100,
+    "m_AttackedTargetTime": 1,
+    "m_bAttackedTarget": false,
+    "m_bUseMotionBlur": true,
+    "m_fDieCompleteTime": 1.5,
+    "m_bImmuneStun": true,
+    "m_bImmuneSleep": true,
+    "m_bNoDamageStopTime": true,
+    "m_bNoDamageState": true,
+    "m_bNoDamageDownState": true,
+    "m_fDamageUpFactor": 0.0,
+    "m_fDamageBackFactor": 0.3,
+    "m_listStaticBuffData": [
+      {
+        "m_BuffStrID": "BUFF_MOB_BOSS_CHALLENGE_FALLEN_ROSARIA_PASSIVE2",
+        "m_BuffLevel": 2
+      }
+    ],
+    "m_listAttackStateData": [
+      {
+        "m_NKM_ATTACK_STATE_DATA_TYPE": "NASDT_NORMAL",
+        "m_StateName": "USN_ATTACK2",
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 300
+      },
+      {
+        "m_NKM_ATTACK_STATE_DATA_TYPE": "NASDT_NORMAL",
+        "m_StateName": "USN_ATTACK1",
+        "m_fRangeMin": 300,
+        "m_fRangeMax": 1100
+      }
+    ],
+    "m_listAirAttackStateData": [
+      {
+        "m_NKM_ATTACK_STATE_DATA_TYPE": "NASDT_NORMAL",
+        "m_StateName": "USN_ATTACK1_AIR",
+        "m_fRangeMax": 1100
+      }
+    ],
+    "m_listSkillStateData": [
+      {
+        "m_NKM_ATTACK_STATE_DATA_TYPE": "NASDT_NORMAL",
+        "m_StateName": "USN_SKILL1",
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 1000
+      }
+    ],
+    "m_listHyperSkillStateData": [
+      {
+        "m_NKM_ATTACK_STATE_DATA_TYPE": "NASDT_NORMAL",
+        "m_StateName": "USN_HYPER_SKILL1",
+        "m_fStartCool": 0.7,
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 1100
+      }
+    ],
+    "m_listBuffUnitDieEvent": [
+      {
+        "m_BuffStrID": "DEBUFF_MOB_BOSS_CHALLENGE_FALLEN_ROSARIA_PASSIVE1",
+        "m_OutBuffStrID": "BUFF_MOB_BOSS_CHALLENGE_FALLEN_ROSARIA_PASSIVE1",
+        "m_OutBuffLevel": 5
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_RUN",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_AnimName": "RUN",
+        "m_fAnimSpeed": 0.8,
+        "m_bAnimLoop": true,
+        "m_bRun": true
+      },
+      {
+        "m_StateName": "USN_START",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_AnimName": "START",
+        "m_DamagedChangeState": "USN_ASTAND",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_fAnimSpeed": 1.25,
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_FIRE"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 0.6666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_03"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_START_1",
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_START_2",
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_START_3"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+        "m_StateName": "USN_ASTAND",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 0.8,
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 4.666666666666667,
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_2",
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_7"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK1",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": 0.6666666666666666,
+            "m_DEName": "DE_NKM_MOB_BOSS_CHALLENGE_FALLEN_ROSARIA_ATTACK1",
+            "m_bTargetPos": false,
+            "m_bShipSkillPos": false,
+            "m_bIgnoreTarget": false,
+            "m_bIgnoreNoTarget": false,
+            "m_OffsetX": 50,
+            "m_OffsetY": 150,
+            "m_OffsetZ": 0,
+            "m_fAddRotate": -30
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.43333333333333335,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_WHOOSH_FIRE_SMALL"
+            ],
+            "m_fLocalVol": 0.5
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_bVoice": true,
+            "m_PlayRate": 0.4,
+            "m_listSoundName": [
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_1",
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_2",
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_4",
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_5"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1_AIR",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK1_AIR",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": 0.6666666666666666,
+            "m_DEName": "DE_NKM_MOB_BOSS_CHALLENGE_FALLEN_ROSARIA_ATTACK1_AIR",
+            "m_bTargetPos": false,
+            "m_bShipSkillPos": false,
+            "m_bIgnoreTarget": false,
+            "m_bIgnoreNoTarget": false,
+            "m_OffsetX": 50,
+            "m_OffsetY": 200,
+            "m_OffsetZ": 0,
+            "m_fAddRotate": 0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.43333333333333335,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_WHOOSH_FIRE_SMALL"
+            ],
+            "m_fLocalVol": 0.5
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_bVoice": true,
+            "m_PlayRate": 0.4,
+            "m_listSoundName": [
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_1",
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_2",
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_4",
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_5"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK2",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK2",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventAttack": [
+          {
+            "m_fEventTimeMin": 0.6666666666666666,
+            "m_fEventTimeMax": 0.8333333333333334,
+            "m_fRangeMin": -50,
+            "m_fRangeMax": 350,
+            "m_bHitAir": false,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 2,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_CHALLENGE_FALLEN_ROSARIA_ATTACK2",
+            "m_bDamageSpeedDependRight": true
+          },
+          {
+            "m_fEventTimeMin": 0.6666666666666666,
+            "m_fEventTimeMax": 0.8333333333333334,
+            "m_fRangeMin": -50,
+            "m_fRangeMax": 350,
+            "m_bHitAir": false,
+            "m_AttackTargetUnit": false,
+            "m_bHitSummonOnly": true,
+            "m_AttackUnitCount": 8,
+            "m_bCleanHit": true,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_CHALLENGE_FALLEN_ROSARIA_KILL",
+            "m_bDamageSpeedDependRight": true
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.6666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWING_SMALL"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6666666666666666,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_2",
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_7",
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_9"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "SKILL1_AIR",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_StateCoolTime": 15,
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventAttack": [
+          {
+            "m_fEventTimeMin": 1.3666666666666667,
+            "m_fEventTimeMax": 2.0,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1100,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 6,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_CHALLENGE_FALLEN_ROSARIA_SKILL1"
+          },
+          {
+            "m_fEventTimeMin": 1.3666666666666667,
+            "m_fEventTimeMax": 2.0,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1100,
+            "m_AttackTargetUnit": false,
+            "m_bHitSummonOnly": true,
+            "m_AttackUnitCount": 6,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_CHALLENGE_FALLEN_ROSARIA_KILL"
+          }
+        ],
+        "m_listNKMEventAnimSpeed": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_fAnimSpeed": 0.9
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.16666666666666666,
+            "m_fAnimSpeed": 1.7
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5,
+            "m_fAnimSpeed": 0.9
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 1.3666666666666667,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 1250,
+            "m_fCameraCrashGap": 10,
+            "m_fCameraCrashTime": 0.5
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ],
+            "m_fLocalVol": 1.0
+          },
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_FIRE"
+            ],
+            "m_fLocalVol": 0.5
+          },
+          {
+            "m_fEventTime": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_56"
+            ],
+            "m_fLocalVol": 1.0
+          },
+          {
+            "m_fEventTime": 1.2666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_FIRE_02"
+            ],
+            "m_fLocalVol": 1.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ACTIVE_1",
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ACTIVE_2"
+            ]
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 99999,
+            "m_fColorR": 0.5,
+            "m_fColorG": 0.5,
+            "m_fColorB": 1.0
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_HYPER_SKILL1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "HYPER_SKILL1",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_StateCoolTime": 50,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_bTargetUnit": false,
+            "m_OffsetX": 0,
+            "m_OffsetJumpYPos": -100,
+            "m_MoveTime": 1.0,
+            "m_bLandMove": false,
+            "m_bOffsetDependMe": false,
+            "m_MoveTrackingType": "TDT_SLOWER"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 4.0,
+            "m_bTargetUnit": false,
+            "m_OffsetX": 0,
+            "m_OffsetJumpYPos": 100,
+            "m_MoveTime": 1.0,
+            "m_bLandMove": false,
+            "m_bOffsetDependMe": false,
+            "m_MoveTrackingType": "TDT_SLOWER"
+          }
+        ],
+        "m_listNKMEventAnimSpeed": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_fAnimSpeed": 0.9
+          },
+          {
+            "m_fEventTime": 2.3333333333333335,
+            "m_fAnimSpeed": 1.5
+          },
+          {
+            "m_fEventTime": 2.6,
+            "m_fAnimSpeed": 0.3
+          },
+          {
+            "m_fEventTime": 2.6666666666666665,
+            "m_fAnimSpeed": 1.0
+          }
+        ],
+        "m_listNKMEventInvincible": [
+          {
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_fEventTimeMax": 2.5
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_fEventTimeMin": 2.5,
+            "m_fEventTimeMax": 3.5,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1200,
+            "m_AttackTargetUnit": false,
+            "m_bHitSummonOnly": true,
+            "m_bCleanHit": true,
+            "m_AttackUnitCount": 8,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_CHALLENGE_FALLEN_ROSARIA_KILL",
+            "m_bDamageSpeedDependRight": true
+          },
+          {
+            "m_fEventTimeMin": 2.5,
+            "m_fEventTimeMax": 2.6666666666666665,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1200,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 8,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_CHALLENGE_FALLEN_ROSARIA_HYPER1",
+            "m_bDamageSpeedDependRight": true
+          },
+          {
+            "m_fEventTimeMin": 2.7,
+            "m_fEventTimeMax": 3.5,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1200,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 8,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_CHALLENGE_FALLEN_ROSARIA_HYPER1_END",
+            "m_bDamageSpeedDependRight": true
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HYPER_ATTACK_START"
+            ],
+            "m_fLocalVol": 1.0
+          },
+          {
+            "m_fEventTime": 0.26666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_27"
+            ],
+            "m_fLocalVol": 1.0
+          },
+          {
+            "m_fEventTime": 0.7333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_16"
+            ],
+            "m_fLocalVol": 1.0
+          },
+          {
+            "m_fEventTime": 0.6666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_FIRE"
+            ],
+            "m_fLocalVol": 1.0
+          },
+          {
+            "m_fEventTime": 1.1,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG_07"
+            ],
+            "m_fLocalVol": 1.0
+          },
+          {
+            "m_fEventTime": 1.8333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_15"
+            ],
+            "m_fLocalVol": 1.0
+          },
+          {
+            "m_fEventTime": 2.466666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWING_BIG_02"
+            ],
+            "m_fLocalVol": 1.0
+          },
+          {
+            "m_fEventTime": 2.466666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG_09"
+            ],
+            "m_fLocalVol": 1.0
+          },
+          {
+            "m_fEventTime": 2.533333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG_03"
+            ],
+            "m_fLocalVol": 0.5
+          },
+          {
+            "m_fEventTime": 2.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_EXPLOSION_ATTACK_BIG_02"
+            ],
+            "m_fLocalVol": 1.0
+          },
+          {
+            "m_fEventTime": 3.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_FIRE_04"
+            ],
+            "m_fLocalVol": 1.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_HYPER_1",
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_HYPER_2"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.5,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_4",
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_ATTACK_10"
+            ]
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 2.5,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 2000,
+            "m_fCameraCrashGap": 20,
+            "m_fCameraCrashTime": 0.16666666666666666
+          },
+          {
+            "m_fEventTime": 2.8333333333333335,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 2000,
+            "m_fCameraCrashGap": 15,
+            "m_fCameraCrashTime": 1.5
+          }
+        ],
+        "m_listNKMEventCameraMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.03333333333333333,
+            "m_fEventTimeMax": 0.6666666666666666,
+            "m_fPosXOffset": -150,
+            "m_fPosYOffset": 200,
+            "m_fZoom": -200,
+            "m_fFocusBlur": 0.0,
+            "m_fMoveTrackingTime": 0.3333333333333333,
+            "m_fZoomTrackingTime": 0.3333333333333333,
+            "m_fCameraRadius": 0.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.6666666666666666,
+            "m_fEventTimeMax": 1.6666666666666667,
+            "m_fPosXOffset": -100,
+            "m_fPosYOffset": 400,
+            "m_fZoom": -150,
+            "m_fFocusBlur": 0.0,
+            "m_fMoveTrackingTime": 0.6666666666666666,
+            "m_fZoomTrackingTime": 0.6666666666666666,
+            "m_fCameraRadius": 0.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.6666666666666667,
+            "m_fEventTimeMax": 2.6666666666666665,
+            "m_fPosXOffset": 600,
+            "m_fPosYOffset": 300,
+            "m_fZoom": 0,
+            "m_fFocusBlur": 0.0,
+            "m_fMoveTrackingTime": 1.0,
+            "m_fZoomTrackingTime": 1.0,
+            "m_fCameraRadius": 0.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.6666666666666665,
+            "m_fEventTimeMax": 3.0,
+            "m_fPosXOffset": 600,
+            "m_fPosYOffset": 300,
+            "m_fZoom": 0,
+            "m_fFocusBlur": 0.5,
+            "m_fMoveTrackingTime": 0.3333333333333333,
+            "m_fZoomTrackingTime": 0.3333333333333333,
+            "m_fCameraRadius": 0.0
+          }
+        ],
+        "m_listNKMEventStopTime": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_StopTimeIndex": "NSTI_SKILL",
+            "m_fStopTime": 1.0,
+            "m_bStopEnemyOnly": false,
+            "m_bMyStop": false,
+            "m_fRange": 800
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 99999,
+            "m_fColorR": 1.0,
+            "m_fColorG": 0.5,
+            "m_fColorB": 0.5
+          }
+        ],
+        "m_listNKMEventFadeWorld": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L13_1 / 30"
+            },
+            "m_fEventTimeMax": 3.0,
+            "m_fColorR": 0.0,
+            "m_fColorG": 0.0,
+            "m_fColorB": 0.0,
+            "m_fMapColorKeepTime": 0.3,
+            "m_fMapColorReturnTime": 3.0
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_bAnimLoop": false,
+        "m_AnimEndChangeState": "USN_DAMAGE_DIE",
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+        "m_FootOnLandChangeState": "",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DAMAGE_3"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_bAnimLoop": false,
+        "m_fAirHigh": 0,
+        "m_listNKMEventSpeedY": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L15_1 / 30"
+            },
+            "m_fEventTimeMax": 0.36666666666666664,
+            "m_SpeedY": 0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.36666666666666664,
+            "m_fEventTimeMax": 3.3,
+            "m_SpeedY": -600
+          }
+        ],
+        "m_listNKMEventDissolve": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0,
+            "m_fDissolve": 0,
+            "m_fTrackTime": 1
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_WHOOSH_02"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 0.8333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MONSTER_MOVEMENT_07"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DEATH_1",
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DEATH_2"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_A",
+        "m_AnimName": "DAMAGE_A",
+        "m_bAnimLoop": false,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DAMAGE_3"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_B",
+        "m_AnimName": "DAMAGE_B",
+        "m_bAnimLoop": false,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DAMAGE_3"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_AIR_UP",
+        "m_AnimName": "DAMAGE_AIR_UP",
+        "m_bAnimLoop": false,
+        "m_SpeedY0NegativeChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_C_FALLEN_ROSARIA_BATTLE_DAMAGE_3"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

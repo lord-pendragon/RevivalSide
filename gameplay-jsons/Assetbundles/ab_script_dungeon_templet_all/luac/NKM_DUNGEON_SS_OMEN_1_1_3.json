@@ -1,0 +1,185 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_OMEN_1_1_3.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 8,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 50
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 3.0
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_CHALLENGE_TRIM_GHILLIE_JUNGLE"
+    },
+    {
+      "__key": "m_BossUnitChangeName",
+      "value": "SI_MOB_BOSS_OMEN_1_GHILLIE_JUNGLE"
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_HP": 0.6,
+          "NST_ATK": 2.0,
+          "NST_EVADE": 0.0
+        }
+      },
+      "m_listStaticBuffData": [
+        {
+          "m_BuffStrID": "DEBUFF_BC_GUILD_S02_BATTLE_11_CHALLENGE"
+        }
+      ]
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_TRIM_BLASTER_JUNGLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 300,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_TRIM_RANGER_JUNGLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 300,
+            "m_fEventTimeGap": 10,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": -0.3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_TRIM_BOMB_JUNGLE",
+          "m_EventRespawnUnitTag": "BOMB",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 2,
+            "m_fEventPos": 0.25
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.5,
+              "NST_DEF": 0.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_TRIM_BLASTER_JUNGLE",
+          "m_EventRespawnUnitTag": "BLASTER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_EventDieUnitTag": "BOMB",
+            "m_EventDieUnitTagCount": 1,
+            "m_fEventTimeStart": 2,
+            "m_fEventPos": 0.23
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_DEF": 2.5
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 50,
+    "m_fCostSpeedRateB": 3.0,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_CHALLENGE_TRIM_GHILLIE_JUNGLE",
+    "m_BossUnitChangeName": "SI_MOB_BOSS_OMEN_1_GHILLIE_JUNGLE",
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_HP": 0.6,
+          "NST_ATK": 2.0,
+          "NST_EVADE": 0.0
+        }
+      },
+      "m_listStaticBuffData": [
+        {
+          "m_BuffStrID": "DEBUFF_BC_GUILD_S02_BATTLE_11_CHALLENGE"
+        }
+      ]
+    },
+    "m_fBossPosZ": 0.6,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_TRIM_BLASTER_JUNGLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 300,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_TRIM_RANGER_JUNGLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 300,
+          "m_fEventTimeGap": 10,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": -0.3
+          }
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_TRIM_BOMB_JUNGLE",
+        "m_EventRespawnUnitTag": "BOMB",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 2,
+          "m_fEventPos": 0.25
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.5,
+            "NST_DEF": 0.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_TRIM_BLASTER_JUNGLE",
+        "m_EventRespawnUnitTag": "BLASTER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_EventDieUnitTag": "BOMB",
+          "m_EventDieUnitTagCount": 1,
+          "m_fEventTimeStart": 2,
+          "m_fEventPos": 0.23
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_DEF": 2.5
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

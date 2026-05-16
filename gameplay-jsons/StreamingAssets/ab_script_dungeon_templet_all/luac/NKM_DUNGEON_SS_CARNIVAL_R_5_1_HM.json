@@ -1,0 +1,406 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_CARNIVAL_R_5_1_HM.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 8
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.2
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EVENT_M_ADMIN_CANNON"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 1,
+          "NST_DEF": 1,
+          "NST_EVADE": 1,
+          "NST_HP": 2
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_DJEHUTY_SL_SHIELD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.8,
+              "NST_DEF": 1,
+              "NST_EVADE": 1,
+              "NST_HP": 0.8
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_DJEHUTY_SL_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0.4,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.15
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.8,
+              "NST_DEF": 1,
+              "NST_EVADE": 1,
+              "NST_HP": 0.8
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_DJEHUTY_SL_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0.8,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.8,
+              "NST_DEF": 1,
+              "NST_EVADE": 1,
+              "NST_HP": 0.8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_DJEHUTY_SL_SHIELD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.8,
+              "NST_DEF": 1,
+              "NST_EVADE": 1,
+              "NST_HP": 0.8
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_DJEHUTY_SL_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.15
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.8,
+              "NST_DEF": 1,
+              "NST_EVADE": 1,
+              "NST_HP": 0.8
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_DJEHUTY_SL_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.8,
+              "NST_DEF": 1,
+              "NST_EVADE": 1,
+              "NST_HP": 0.8
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_DJEHUTY_SL_SHIELD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 8,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.8,
+              "NST_DEF": 1,
+              "NST_EVADE": 1,
+              "NST_HP": 0.8
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_DJEHUTY_SL_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 8,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.15
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.8,
+              "NST_DEF": 1,
+              "NST_EVADE": 1,
+              "NST_HP": 0.8
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_DJEHUTY_SL_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 8,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.15
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.8,
+              "NST_DEF": 1,
+              "NST_EVADE": 1,
+              "NST_HP": 0.8
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_DJEHUTY_SL_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 8,
+            "m_fEventTimeEnd": 999,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.8,
+              "NST_DEF": 1,
+              "NST_EVADE": 1,
+              "NST_HP": 0.8
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 8,
+    "m_fCostSpeedRateB": 0.2,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EVENT_M_ADMIN_CANNON",
+    "m_fBossPosZ": 0.6,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 1,
+          "NST_DEF": 1,
+          "NST_EVADE": 1,
+          "NST_HP": 2
+        }
+      }
+    },
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_DJEHUTY_SL_SHIELD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.8,
+            "NST_DEF": 1,
+            "NST_EVADE": 1,
+            "NST_HP": 0.8
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_DJEHUTY_SL_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0.4,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.15
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.8,
+            "NST_DEF": 1,
+            "NST_EVADE": 1,
+            "NST_HP": 0.8
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_DJEHUTY_SL_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0.8,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.8,
+            "NST_DEF": 1,
+            "NST_EVADE": 1,
+            "NST_HP": 0.8
+          }
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_DJEHUTY_SL_SHIELD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.8,
+            "NST_DEF": 1,
+            "NST_EVADE": 1,
+            "NST_HP": 0.8
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_DJEHUTY_SL_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.15
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.8,
+            "NST_DEF": 1,
+            "NST_EVADE": 1,
+            "NST_HP": 0.8
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_DJEHUTY_SL_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.8,
+            "NST_DEF": 1,
+            "NST_EVADE": 1,
+            "NST_HP": 0.8
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_DJEHUTY_SL_SHIELD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 8,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.8,
+            "NST_DEF": 1,
+            "NST_EVADE": 1,
+            "NST_HP": 0.8
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_DJEHUTY_SL_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 8,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.15
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.8,
+            "NST_DEF": 1,
+            "NST_EVADE": 1,
+            "NST_HP": 0.8
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_DJEHUTY_SL_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 8,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.15
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.8,
+            "NST_DEF": 1,
+            "NST_EVADE": 1,
+            "NST_HP": 0.8
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_DJEHUTY_SL_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 8,
+          "m_fEventTimeEnd": 999,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.8,
+            "NST_DEF": 1,
+            "NST_EVADE": 1,
+            "NST_HP": 0.8
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

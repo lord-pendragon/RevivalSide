@@ -1,0 +1,165 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_BOSS_FIERCE_TYRANT_DEFFENDER_H.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 2,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_MOB_BOSS_FIERCE_TYRANT_DEFFENDER_N"
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.8,
+              "m_fEventTimeMax": 1.1333333333333333,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 310,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_TYRANT_DEFFENDER_ATTACK1_H"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.5,
+              "m_fEventTimeMax": 1.8,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 310,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_TYRANT_DEFFENDER_ATTACK1_H"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PATTERN1",
+          "m_listNKMEventBuff": [
+            {
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_DEFFENDER_PATTERN_H"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PATTERN1_LOOP",
+          "m_DangerCharge": {
+            "m_fChargeTime": 8,
+            "m_CancelHitCount": 60,
+            "m_SuccessState": "USN_PATTERN1_SUCCESS",
+            "m_CancelState": "USN_PATTERN1_CANCEL"
+          }
+        },
+        {
+          "m_StateName": "USN_PATTERN1_SUCCESS",
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_DEFFENDER_PATTERN_H",
+              "m_BuffRemove": true
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_FIERCE_TYRANT_DEFFENDER_DAMAGE_REDUCE"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PATTERN1_CANCEL",
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_DEFFENDER_PATTERN_H",
+              "m_BuffRemove": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_MOB_BOSS_FIERCE_TYRANT_DEFFENDER_N",
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.8,
+            "m_fEventTimeMax": 1.1333333333333333,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 310,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_TYRANT_DEFFENDER_ATTACK1_H"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.5,
+            "m_fEventTimeMax": 1.8,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 310,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_TYRANT_DEFFENDER_ATTACK1_H"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PATTERN1",
+        "m_listNKMEventBuff": [
+          {
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_DEFFENDER_PATTERN_H"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PATTERN1_LOOP",
+        "m_DangerCharge": {
+          "m_fChargeTime": 8,
+          "m_CancelHitCount": 60,
+          "m_SuccessState": "USN_PATTERN1_SUCCESS",
+          "m_CancelState": "USN_PATTERN1_CANCEL"
+        }
+      },
+      {
+        "m_StateName": "USN_PATTERN1_SUCCESS",
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_DEFFENDER_PATTERN_H",
+            "m_BuffRemove": true
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_FIERCE_TYRANT_DEFFENDER_DAMAGE_REDUCE"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PATTERN1_CANCEL",
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_BuffStrID": "DEBUFF_FIERCE_TYRANT_DEFFENDER_PATTERN_H",
+            "m_BuffRemove": true
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

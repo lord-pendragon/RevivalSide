@@ -1,0 +1,515 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_MAIN_BATTLE_EP3_3_4_ACT_BOSS_A_HM_TEST.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 10,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateA",
+      "value": 0.4
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.0
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_CHALLENGE_TRIM_EATER_VOLCANO"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 1.0,
+          "NST_HP": 0.5,
+          "NST_DEF": 1.0,
+          "NST_CRITICAL": 1.0,
+          "NST_HIT": 1.0,
+          "NST_EVADE": 1.0
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TRIM_DEMOLISHER_VOLCANO",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 2,
+            "m_fEventTimeEnd": 60,
+            "m_fEventPos": 0.25
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.7,
+              "NST_HP": 0.7,
+              "NST_DEF": 1.5,
+              "NST_CRITICAL": 1.0,
+              "NST_HIT": 1.0,
+              "NST_EVADE": 1.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TRIM_DEMOLISHER_VOLCANO",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 4,
+            "m_fEventTimeEnd": 120,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.7,
+              "NST_HP": 0.5,
+              "NST_DEF": 1.5,
+              "NST_CRITICAL": 1.0,
+              "NST_HIT": 1.0,
+              "NST_EVADE": 1.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TRIM_BITER_VOLCANO",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 999,
+            "m_fEventTimeEnd": 999
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.0,
+              "NST_HP": 1.0,
+              "NST_DEF": 1.0,
+              "NST_CRITICAL": 1.0,
+              "NST_HIT": 1.0,
+              "NST_EVADE": 1.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TRIM_RANGER_VOLCANO",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventBossHPLess": 2.0,
+            "m_fEventBossHPUpper": 0.15,
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.7,
+              "NST_HP": 1.0,
+              "NST_DEF": 1.0,
+              "NST_CRITICAL": 1.0,
+              "NST_HIT": 1.0,
+              "NST_EVADE": 1.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TRIM_TOWER_MISSILE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventPos": 0.35,
+            "m_fEventTimeStart": 15
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TRIM_TOWER_MISSILE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventPos": 0.35,
+            "m_fEventTimeStart": 45
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TRIM_TOWER_MISSILE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventPos": 0.35,
+            "m_fEventTimeStart": 75
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TRIM_TOWER_MISSILE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventPos": 0.35,
+            "m_fEventTimeStart": 105
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TRIM_TOWER_MISSILE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_EventTag": "BACKDASH",
+            "m_EventTagCount": 1,
+            "m_fEventPos": 0.35,
+            "m_fEventTimeGap": 30
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TRIM_TOWER_MISSILE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_EventTag": "BACKDASH",
+            "m_EventTagCount": 1,
+            "m_fEventPos": 0.65,
+            "m_fEventTimeGap": 30
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamB",
+      "value": [
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_CHALLENGE_TRIM_EATER_VOLCANO",
+          "m_EventConditionValue2": "USN_PATTERN1_LOOP",
+          "m_dungeonEventType": "ADD_EVENTTAG",
+          "m_EventActionStrValue": "BOMB",
+          "m_EventActionValue": 1,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeGap": 10,
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_CHALLENGE_TRIM_EATER_VOLCANO",
+          "m_EventConditionValue2": "USN_BACKDASH",
+          "m_dungeonEventType": "ADD_EVENTTAG",
+          "m_EventActionStrValue": "BACKDASH",
+          "m_EventActionValue": 1,
+          "m_fEventDelay": 2.0,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeGap": 10,
+            "m_fEventTimeStart": 0
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TRIM_THROWN_VOLCANO",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventPos": 0.5
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.0,
+              "NST_HP": 1.0,
+              "NST_DEF": 1.0,
+              "NST_CRITICAL": 1.0,
+              "NST_HIT": 1.0,
+              "NST_EVADE": 1.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TRIM_BASIC_BOMB2_VOLCANO",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventPos": 0.0,
+            "m_fEventTimeStart": 0,
+            "m_EventTag": "BOMB",
+            "m_EventTagCount": 1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1000.0,
+              "NST_HP": 1.2,
+              "NST_DEF": 2.0,
+              "NST_CRITICAL": 1.0,
+              "NST_HIT": 1.0,
+              "NST_EVADE": 1.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TRIM_BASIC_BOMB2_VOLCANO",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventPos": 0.0,
+            "m_fEventTimeStart": 0,
+            "m_EventTag": "BOMB",
+            "m_EventTagCount": 2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1000.0,
+              "NST_HP": 1.2,
+              "NST_DEF": 2.0,
+              "NST_CRITICAL": 1.0,
+              "NST_HIT": 1.0,
+              "NST_EVADE": 1.0
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateA": 0.4,
+    "m_fCostSpeedRateB": 1.0,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_CHALLENGE_TRIM_EATER_VOLCANO",
+    "m_fBossPosZ": 0.6,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 1.0,
+          "NST_HP": 0.5,
+          "NST_DEF": 1.0,
+          "NST_CRITICAL": 1.0,
+          "NST_HIT": 1.0,
+          "NST_EVADE": 1.0
+        }
+      }
+    },
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TRIM_DEMOLISHER_VOLCANO",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 2,
+          "m_fEventTimeEnd": 60,
+          "m_fEventPos": 0.25
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.7,
+            "NST_HP": 0.7,
+            "NST_DEF": 1.5,
+            "NST_CRITICAL": 1.0,
+            "NST_HIT": 1.0,
+            "NST_EVADE": 1.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TRIM_DEMOLISHER_VOLCANO",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 4,
+          "m_fEventTimeEnd": 120,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.7,
+            "NST_HP": 0.5,
+            "NST_DEF": 1.5,
+            "NST_CRITICAL": 1.0,
+            "NST_HIT": 1.0,
+            "NST_EVADE": 1.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TRIM_BITER_VOLCANO",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 999,
+          "m_fEventTimeEnd": 999
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.0,
+            "NST_HP": 1.0,
+            "NST_DEF": 1.0,
+            "NST_CRITICAL": 1.0,
+            "NST_HIT": 1.0,
+            "NST_EVADE": 1.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TRIM_RANGER_VOLCANO",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventBossHPLess": 2.0,
+          "m_fEventBossHPUpper": 0.15,
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.7,
+            "NST_HP": 1.0,
+            "NST_DEF": 1.0,
+            "NST_CRITICAL": 1.0,
+            "NST_HIT": 1.0,
+            "NST_EVADE": 1.0
+          }
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TRIM_TOWER_MISSILE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventPos": 0.35,
+          "m_fEventTimeStart": 15
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TRIM_TOWER_MISSILE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventPos": 0.35,
+          "m_fEventTimeStart": 45
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TRIM_TOWER_MISSILE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventPos": 0.35,
+          "m_fEventTimeStart": 75
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TRIM_TOWER_MISSILE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventPos": 0.35,
+          "m_fEventTimeStart": 105
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TRIM_TOWER_MISSILE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_EventTag": "BACKDASH",
+          "m_EventTagCount": 1,
+          "m_fEventPos": 0.35,
+          "m_fEventTimeGap": 30
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TRIM_TOWER_MISSILE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_EventTag": "BACKDASH",
+          "m_EventTagCount": 1,
+          "m_fEventPos": 0.65,
+          "m_fEventTimeGap": 30
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamB": [
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_CHALLENGE_TRIM_EATER_VOLCANO",
+        "m_EventConditionValue2": "USN_PATTERN1_LOOP",
+        "m_dungeonEventType": "ADD_EVENTTAG",
+        "m_EventActionStrValue": "BOMB",
+        "m_EventActionValue": 1,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeGap": 10,
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_CHALLENGE_TRIM_EATER_VOLCANO",
+        "m_EventConditionValue2": "USN_BACKDASH",
+        "m_dungeonEventType": "ADD_EVENTTAG",
+        "m_EventActionStrValue": "BACKDASH",
+        "m_EventActionValue": 1,
+        "m_fEventDelay": 2.0,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeGap": 10,
+          "m_fEventTimeStart": 0
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TRIM_THROWN_VOLCANO",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventPos": 0.5
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.0,
+            "NST_HP": 1.0,
+            "NST_DEF": 1.0,
+            "NST_CRITICAL": 1.0,
+            "NST_HIT": 1.0,
+            "NST_EVADE": 1.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TRIM_BASIC_BOMB2_VOLCANO",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventPos": 0.0,
+          "m_fEventTimeStart": 0,
+          "m_EventTag": "BOMB",
+          "m_EventTagCount": 1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1000.0,
+            "NST_HP": 1.2,
+            "NST_DEF": 2.0,
+            "NST_CRITICAL": 1.0,
+            "NST_HIT": 1.0,
+            "NST_EVADE": 1.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_TRIM_BASIC_BOMB2_VOLCANO",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventPos": 0.0,
+          "m_fEventTimeStart": 0,
+          "m_EventTag": "BOMB",
+          "m_EventTagCount": 2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1000.0,
+            "NST_HP": 1.2,
+            "NST_DEF": 2.0,
+            "NST_CRITICAL": 1.0,
+            "NST_HIT": 1.0,
+            "NST_EVADE": 1.0
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

@@ -1,0 +1,2366 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_UNIT_ATELIER_C_JWIBUL.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 25,
+  "records": [
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.11
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.2
+    },
+    {
+      "__key": "m_UnitSizeX",
+      "value": 120
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 260
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": true
+    },
+    {
+      "__key": "m_fGageOffsetX",
+      "value": 0
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 290
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 200
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 200
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 130
+    },
+    {
+      "__key": "m_SeeTarget",
+      "value": true
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 1000
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 1500
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 1600
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 2.0
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": true
+    },
+    {
+      "__key": "m_fBuffEffectScaleFactor",
+      "value": 1.0
+    },
+    {
+      "__key": "m_dicReaction",
+      "value": [
+        {
+          "m_Name": "PASSIVE_TRIGGER",
+          "m_EventType": "RESPAWN",
+          "m_RequireCount": 1,
+          "m_Trigger": "PASSIVE_TRIGGER",
+          "m_bImmediate": true
+        }
+      ]
+    },
+    {
+      "__key": "m_dicTriggerSet",
+      "value": [
+        {
+          "m_Name": "PASSIVE_TRIGGER",
+          "m_listNKMEventVariable": [
+            {
+              "m_Type": "ADD",
+              "m_Name": "PASSIVE_TRIGGER",
+              "m_Value": 1
+            }
+          ],
+          "m_DuplicateMode": "PARALLEL"
+        }
+      ]
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "EventVariable",
+              "m_Name": "PASSIVE_TRIGGER",
+              "m_Value": [
+                -99999999,
+                0
+              ]
+            }
+          ],
+          "m_StateName": "USN_ATTACK1",
+          "m_bTargetLandOnly": true,
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 1000
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "EventVariable",
+              "m_Name": "PASSIVE_TRIGGER",
+              "m_Value": [
+                1,
+                999999999
+              ]
+            },
+            {
+              "Type": "EventVariable",
+              "m_Name": "PASSIVE_VARIATION_TRIGGER",
+              "m_Value": [
+                0,
+                0
+              ]
+            }
+          ],
+          "m_StateName": "USN_PASSIVE1",
+          "m_bTargetLandOnly": true,
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 1000
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "EventVariable",
+              "m_Name": "PASSIVE_TRIGGER",
+              "m_Value": [
+                1,
+                999999999
+              ]
+            },
+            {
+              "Type": "EventVariable",
+              "m_Name": "PASSIVE_VARIATION_TRIGGER",
+              "m_Value": [
+                1,
+                1
+              ]
+            }
+          ],
+          "m_StateName": "USN_PASSIVE2",
+          "m_bTargetLandOnly": true,
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 1000
+        }
+      ]
+    },
+    {
+      "__key": "m_listAirAttackStateData",
+      "value": [
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "EventVariable",
+              "m_Name": "PASSIVE_TRIGGER",
+              "m_Value": [
+                -99999999,
+                0
+              ]
+            }
+          ],
+          "m_StateName": "USN_ATTACK1_AIR",
+          "m_bTargetAirOnly": true,
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 1000
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "EventVariable",
+              "m_Name": "PASSIVE_TRIGGER",
+              "m_Value": [
+                1,
+                999999999
+              ]
+            },
+            {
+              "Type": "EventVariable",
+              "m_Name": "PASSIVE_VARIATION_TRIGGER",
+              "m_Value": [
+                0,
+                0
+              ]
+            }
+          ],
+          "m_StateName": "USN_PASSIVE1_AIR",
+          "m_bTargetAirOnly": true,
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 1000
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "EventVariable",
+              "m_Name": "PASSIVE_TRIGGER",
+              "m_Value": [
+                1,
+                999999999
+              ]
+            },
+            {
+              "Type": "EventVariable",
+              "m_Name": "PASSIVE_VARIATION_TRIGGER",
+              "m_Value": [
+                1,
+                1
+              ]
+            }
+          ],
+          "m_StateName": "USN_PASSIVE2_AIR",
+          "m_bTargetAirOnly": true,
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 1000
+        }
+      ]
+    },
+    {
+      "__key": "m_listSkillStateData",
+      "value": [
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 1000
+        }
+      ]
+    },
+    {
+      "__key": "m_listHyperSkillStateData",
+      "value": [
+        {
+          "m_StateName": "USN_HYPER1",
+          "m_fStartCool": 0.7,
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 1000
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventReaction": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_Reaction": "PASSIVE_TRIGGER"
+            }
+          ],
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "PASSIVE_TRIGGER",
+              "m_Value": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "PASSIVE_VARIATION_TRIGGER",
+              "m_Value": 0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_18"
+              ]
+            },
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_WORK_09"
+              ]
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_START_1",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_START_2",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_START_3",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_START_4",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_START_5"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+          "m_StateName": "USN_ASTAND",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": true
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_StateName": "USN_RUN",
+          "m_AnimName": "RUN",
+          "m_bAnimLoop": true,
+          "m_bRun": true
+        },
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimName": "ATTACK1",
+          "m_fAnimSpeed": 1.0,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": 0.5666666666666667,
+              "m_DEName": "DE_NKM_UNIT_ATELIER_C_JWIBUL_ATTACK1",
+              "m_bTargetPos": true,
+              "m_OffsetY": 150
+            },
+            {
+              "m_fEventTime": 1.0666666666666667,
+              "m_DEName": "DE_NKM_UNIT_ATELIER_C_JWIBUL_ATTACK1",
+              "m_bTargetPos": true,
+              "m_OffsetY": 150
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.5,
+              "m_fLocalVol": 0.6,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_FIRE_06"
+              ]
+            },
+            {
+              "m_fEventTime": 0.9666666666666667,
+              "m_fLocalVol": 0.6,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_FIRE_06"
+              ]
+            },
+            {
+              "m_fEventTime": 0.4666666666666667,
+              "m_bVoice": true,
+              "m_PlayRate": 0.3,
+              "m_listSoundName": [
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_ATTACK_1",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_ATTACK_5"
+              ]
+            },
+            {
+              "m_fEventTime": 0.9333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.3,
+              "m_listSoundName": [
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_ATTACK_3",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_ATTACK_6"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1_AIR",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimName": "ATTACK1_AIR",
+          "m_fAnimSpeed": 1.0,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": 0.5666666666666667,
+              "m_DEName": "DE_NKM_UNIT_ATELIER_C_JWIBUL_ATTACK1_AIR",
+              "m_bTargetPos": true,
+              "m_OffsetY": 160
+            },
+            {
+              "m_fEventTime": 1.0666666666666667,
+              "m_DEName": "DE_NKM_UNIT_ATELIER_C_JWIBUL_ATTACK1_AIR",
+              "m_bTargetPos": true,
+              "m_OffsetY": 160
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.5,
+              "m_fLocalVol": 0.6,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_FIRE_06"
+              ]
+            },
+            {
+              "m_fEventTime": 0.9666666666666667,
+              "m_fLocalVol": 0.6,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_FIRE_06"
+              ]
+            },
+            {
+              "m_fEventTime": 0.4666666666666667,
+              "m_bVoice": true,
+              "m_PlayRate": 0.3,
+              "m_listSoundName": [
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_ATTACK_1",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_ATTACK_5"
+              ]
+            },
+            {
+              "m_fEventTime": 0.9333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.3,
+              "m_listSoundName": [
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_ATTACK_3",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_ATTACK_6"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PASSIVE1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimName": "PASSIVE1",
+          "m_fAnimSpeed": 1.0,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_Type": "ADD",
+              "m_Name": "PASSIVE_TRIGGER",
+              "m_Value": -1
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "PASSIVE_VARIATION_TRIGGER",
+              "m_Value": 1
+            }
+          ],
+          "m_listNKMEventChangeCooltime": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "SkillLevel",
+                  "m_SkillStrID": "NKM_UNIT_ATELIER_C_JWIBUL_PASSIVE",
+                  "m_SkillLevel": [
+                    5,
+                    5
+                  ]
+                }
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_TargetStateName": "USN_HYPER1",
+              "m_eChangeType": "ADD_SECONDS",
+              "m_fChangeValue": -3
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": 1.0666666666666667,
+              "m_DEName": "DE_NKM_UNIT_ATELIER_C_JWIBUL_PASSIVE1",
+              "m_OffsetX": 150,
+              "m_OffsetY": 195
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_WHOOSH_04"
+              ]
+            },
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_LIGHT_18"
+              ]
+            },
+            {
+              "m_fEventTime": 1.0666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_FIRE_ENERGY_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 1.0666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MISSILE_FIRE_SMALL_02"
+              ]
+            },
+            {
+              "m_fEventTime": 1.0,
+              "m_bVoice": true,
+              "m_PlayRate": 0.5,
+              "m_listSoundName": [
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_PASSIVE_2",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_PASSIVE_3",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_PASSIVE_6"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PASSIVE2",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimName": "PASSIVE2",
+          "m_fAnimSpeed": 1.0,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": 1.0666666666666667,
+              "m_DEName": "DE_NKM_UNIT_ATELIER_C_JWIBUL_PASSIVE1",
+              "m_OffsetX": 150,
+              "m_OffsetY": 195
+            }
+          ],
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_Type": "ADD",
+              "m_Name": "PASSIVE_TRIGGER",
+              "m_Value": -1
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "PASSIVE_VARIATION_TRIGGER",
+              "m_Value": 0
+            }
+          ],
+          "m_listNKMEventChangeCooltime": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "SkillLevel",
+                  "m_SkillStrID": "NKM_UNIT_ATELIER_C_JWIBUL_PASSIVE",
+                  "m_SkillLevel": [
+                    5,
+                    5
+                  ]
+                }
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_TargetStateName": "USN_HYPER1",
+              "m_eChangeType": "ADD_SECONDS",
+              "m_fChangeValue": -3
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_WHOOSH_04"
+              ]
+            },
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_LIGHT_18"
+              ]
+            },
+            {
+              "m_fEventTime": 1.0666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_FIRE_ENERGY_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 1.0666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MISSILE_FIRE_SMALL_02"
+              ]
+            },
+            {
+              "m_fEventTime": 1.0,
+              "m_bVoice": true,
+              "m_PlayRate": 0.5,
+              "m_listSoundName": [
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_PASSIVE_1",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_PASSIVE_4",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_PASSIVE_5"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PASSIVE1_AIR",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimName": "PASSIVE1_AIR",
+          "m_fAnimSpeed": 1.0,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": 1.0666666666666667,
+              "m_DEName": "DE_NKM_UNIT_ATELIER_C_JWIBUL_PASSIVE1_AIR",
+              "m_OffsetX": 130,
+              "m_OffsetY": 235,
+              "m_fAddRotate": 20
+            }
+          ],
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_Type": "ADD",
+              "m_Name": "PASSIVE_TRIGGER",
+              "m_Value": -1
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L13_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "PASSIVE_VARIATION_TRIGGER",
+              "m_Value": 1
+            }
+          ],
+          "m_listNKMEventChangeCooltime": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "SkillLevel",
+                  "m_SkillStrID": "NKM_UNIT_ATELIER_C_JWIBUL_PASSIVE",
+                  "m_SkillLevel": [
+                    5,
+                    5
+                  ]
+                }
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_TargetStateName": "USN_HYPER1",
+              "m_eChangeType": "ADD_SECONDS",
+              "m_fChangeValue": -3
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_WHOOSH_04"
+              ]
+            },
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_LIGHT_18"
+              ]
+            },
+            {
+              "m_fEventTime": 1.0666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_FIRE_ENERGY_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 1.0666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MISSILE_FIRE_SMALL_02"
+              ]
+            },
+            {
+              "m_fEventTime": 1.0,
+              "m_bVoice": true,
+              "m_PlayRate": 0.5,
+              "m_listSoundName": [
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_PASSIVE_2",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_PASSIVE_3",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_PASSIVE_6"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PASSIVE2_AIR",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimName": "PASSIVE2_AIR",
+          "m_fAnimSpeed": 1.0,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": 1.0666666666666667,
+              "m_DEName": "DE_NKM_UNIT_ATELIER_C_JWIBUL_PASSIVE1_AIR",
+              "m_OffsetX": 130,
+              "m_OffsetY": 235,
+              "m_fAddRotate": 20
+            }
+          ],
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_Type": "ADD",
+              "m_Name": "PASSIVE_TRIGGER",
+              "m_Value": -1
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L14_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "PASSIVE_VARIATION_TRIGGER",
+              "m_Value": 0
+            }
+          ],
+          "m_listNKMEventChangeCooltime": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "SkillLevel",
+                  "m_SkillStrID": "NKM_UNIT_ATELIER_C_JWIBUL_PASSIVE",
+                  "m_SkillLevel": [
+                    5,
+                    5
+                  ]
+                }
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L13_1 / 30"
+              },
+              "m_TargetStateName": "USN_HYPER1",
+              "m_eChangeType": "ADD_SECONDS",
+              "m_fChangeValue": -3
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_WHOOSH_04"
+              ]
+            },
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_LIGHT_18"
+              ]
+            },
+            {
+              "m_fEventTime": 1.0666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_FIRE_ENERGY_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 1.0666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MISSILE_FIRE_SMALL_02"
+              ]
+            },
+            {
+              "m_fEventTime": 1.0,
+              "m_bVoice": true,
+              "m_PlayRate": 0.5,
+              "m_listSoundName": [
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_PASSIVE_1",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_PASSIVE_4",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_PASSIVE_5"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_SKILL",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_bSkillCutIn": true,
+          "m_AnimName": "SKILL1",
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": 1.3666666666666667,
+              "m_DEName": "DE_NKM_UNIT_ATELIER_C_JWIBUL_SKILL1",
+              "m_bTargetPos": true,
+              "m_OffsetY": 200
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L14_1 / 30"
+              },
+              "m_EffectName": "AB_FX_CAST_SKILL",
+              "m_AnimName": "BASE",
+              "m_OffsetX": 0.0,
+              "m_OffsetY": 190,
+              "m_fScaleFactor": 30.0
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 3.0,
+              "m_fColorR": 0.5,
+              "m_fColorG": 0.5,
+              "m_fColorB": 1.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L14_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ]
+            },
+            {
+              "m_fEventTime": 1.3,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWING_SMALL_16"
+              ]
+            },
+            {
+              "m_fEventTime": 1.3,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_FIRE_05"
+              ]
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L17_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_ACTIVE_1",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_ACTIVE_3",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_ACTIVE_4",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_ACTIVE_5"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_HYPER1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_HYPER",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_bShowGage": false,
+          "m_bAnimLoop": false,
+          "m_AnimName": "HYPER_SKILL1",
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventInvincible": [
+            {
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L15_1 / 30"
+              },
+              "m_fEventTimeMax": 3.0
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L15_1 / 30"
+              },
+              "m_EffectName": "AB_FX_CAST_HYPER",
+              "m_AnimName": "BASE",
+              "m_fScaleFactor": 30.0,
+              "m_BoneName": "BIP01_SPINE1",
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L15_1 / 30"
+              },
+              "m_fEventTimeMax": 3.0,
+              "m_fColorR": 1.0,
+              "m_fColorG": 0.5,
+              "m_fColorB": 0.5
+            }
+          ],
+          "m_listNKMEventHyperSkillCutIn": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L15_1 / 30"
+              },
+              "m_fDurationTime": 1.8333333333333333,
+              "m_BGEffectName": "AB_FX_SKILL_CUTIN_COMMON_A",
+              "m_CutInEffectName": "AB_FX_SKILL_CUTIN_NKM_UNIT_ATELIER_C_JWIBUL",
+              "m_CutInEffectAnimName": "BASE"
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": 0.6666666666666666,
+              "m_DEName": "DE_NKM_UNIT_ATELIER_C_JWIBUL_HYPER1_DUMMY",
+              "m_bTargetPos": true
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_UNIT_ATELIER_C_JWIBUL_HYPER1_ATK"
+            }
+          ],
+          "m_listNKMEventCameraMove": [
+            {
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L15_1 / 30"
+              },
+              "m_fEventTimeMax": 1.0,
+              "m_bForce": true,
+              "m_fPosXOffset": -200,
+              "m_fPosYOffset": 250,
+              "m_fZoom": -250,
+              "m_fMoveTrackingTime": 0.3333333333333333,
+              "m_fZoomTrackingTime": 0.3333333333333333
+            },
+            {
+              "m_fEventTimeMin": 1.0,
+              "m_fEventTimeMax": 3.0,
+              "m_bForce": true,
+              "m_fPosXOffset": 200,
+              "m_fPosYOffset": 250,
+              "m_fZoom": -100,
+              "m_fMoveTrackingTime": 2.0,
+              "m_fZoomTrackingTime": 2.0
+            },
+            {
+              "m_fEventTimeMin": 3.033333333333333,
+              "m_fEventTimeMax": 4.0,
+              "m_bForce": true,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 250,
+              "m_fZoom": 0,
+              "m_fMoveTrackingTime": 0.3333333333333333,
+              "m_fZoomTrackingTime": 0.3333333333333333
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L15_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HYPER_ATTACK_START"
+              ]
+            },
+            {
+              "m_fEventTime": 0.5,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_FIREWORK"
+              ]
+            },
+            {
+              "m_fEventTime": 0.5,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_CUTSCEN_CROWD"
+              ]
+            },
+            {
+              "m_fEventTime": 1.1333333333333333,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_CUTSCEN_BEEP2"
+              ]
+            },
+            {
+              "m_fEventTime": 1.1333333333333333,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_IMPACT_03"
+              ]
+            },
+            {
+              "m_fEventTime": 1.6333333333333333,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_CUTSCEN_BEEP2"
+              ]
+            },
+            {
+              "m_fEventTime": 1.6333333333333333,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_IMPACT_03"
+              ]
+            },
+            {
+              "m_fEventTime": 2.1333333333333333,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_CUTSCEN_BEEP2"
+              ]
+            },
+            {
+              "m_fEventTime": 2.1333333333333333,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_IMPACT_03"
+              ]
+            },
+            {
+              "m_fEventTime": 2.6666666666666665,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_CUTSCEN_BEEP2"
+              ]
+            },
+            {
+              "m_fEventTime": 2.6666666666666665,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_IMPACT_03"
+              ]
+            },
+            {
+              "m_fEventTime": 3.1666666666666665,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_CUTSCEN_BEEP2"
+              ]
+            },
+            {
+              "m_fEventTime": 3.1666666666666665,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_IMPACT_03"
+              ]
+            },
+            {
+              "m_fEventTime": 3.2333333333333334,
+              "m_listSoundName": [
+                "FX_CUTSCEN_NOISE_CAMERA"
+              ]
+            },
+            {
+              "m_fEventTime": 3.2333333333333334,
+              "m_listSoundName": [
+                "FX_CUTSCEN_NOISE_CAMERA"
+              ]
+            },
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_HYPER_1",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_HYPER_2",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_HYPER_3",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_HYPER_4",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_HYPER_5"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_A",
+          "m_AnimName": "DAMAGE_A",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_4"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_B",
+          "m_AnimName": "DAMAGE_B",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_4"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_4"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_AIR_UP",
+          "m_AnimName": "DAMAGE_AIR_UP",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_4"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L20_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DEATH_1",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DEATH_2",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DEATH_3",
+                "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DEATH_4"
+              ]
+            }
+          ],
+          "m_listNKMEventDissolve": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.3333333333333333,
+              "m_fDissolve": 1,
+              "m_fTrackTime": 0.6666666666666666
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fForceRespawnZposMin": 0.11,
+    "m_fForceRespawnZposMax": 0.2,
+    "m_UnitSizeX": 120,
+    "m_UnitSizeY": 260,
+    "m_SpriteScale": 1.0,
+    "m_bShowGage": true,
+    "m_fGageOffsetX": 0,
+    "m_fGageOffsetY": 290,
+    "m_fShadowScaleX": 200,
+    "m_fShadowScaleY": 200,
+    "m_SpeedRun": 130,
+    "m_SeeTarget": true,
+    "m_TargetNearRange": 1000,
+    "m_SeeRange": 1500,
+    "m_SeeRangeMax": 1600,
+    "m_fDieCompleteTime": 2.0,
+    "m_bUseMotionBlur": true,
+    "m_fBuffEffectScaleFactor": 1.0,
+    "m_dicReaction": [
+      {
+        "m_Name": "PASSIVE_TRIGGER",
+        "m_EventType": "RESPAWN",
+        "m_RequireCount": 1,
+        "m_Trigger": "PASSIVE_TRIGGER",
+        "m_bImmediate": true
+      }
+    ],
+    "m_dicTriggerSet": [
+      {
+        "m_Name": "PASSIVE_TRIGGER",
+        "m_listNKMEventVariable": [
+          {
+            "m_Type": "ADD",
+            "m_Name": "PASSIVE_TRIGGER",
+            "m_Value": 1
+          }
+        ],
+        "m_DuplicateMode": "PARALLEL"
+      }
+    ],
+    "m_listAttackStateData": [
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "EventVariable",
+            "m_Name": "PASSIVE_TRIGGER",
+            "m_Value": [
+              -99999999,
+              0
+            ]
+          }
+        ],
+        "m_StateName": "USN_ATTACK1",
+        "m_bTargetLandOnly": true,
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 1000
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "EventVariable",
+            "m_Name": "PASSIVE_TRIGGER",
+            "m_Value": [
+              1,
+              999999999
+            ]
+          },
+          {
+            "Type": "EventVariable",
+            "m_Name": "PASSIVE_VARIATION_TRIGGER",
+            "m_Value": [
+              0,
+              0
+            ]
+          }
+        ],
+        "m_StateName": "USN_PASSIVE1",
+        "m_bTargetLandOnly": true,
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 1000
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "EventVariable",
+            "m_Name": "PASSIVE_TRIGGER",
+            "m_Value": [
+              1,
+              999999999
+            ]
+          },
+          {
+            "Type": "EventVariable",
+            "m_Name": "PASSIVE_VARIATION_TRIGGER",
+            "m_Value": [
+              1,
+              1
+            ]
+          }
+        ],
+        "m_StateName": "USN_PASSIVE2",
+        "m_bTargetLandOnly": true,
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 1000
+      }
+    ],
+    "m_listAirAttackStateData": [
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "EventVariable",
+            "m_Name": "PASSIVE_TRIGGER",
+            "m_Value": [
+              -99999999,
+              0
+            ]
+          }
+        ],
+        "m_StateName": "USN_ATTACK1_AIR",
+        "m_bTargetAirOnly": true,
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 1000
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "EventVariable",
+            "m_Name": "PASSIVE_TRIGGER",
+            "m_Value": [
+              1,
+              999999999
+            ]
+          },
+          {
+            "Type": "EventVariable",
+            "m_Name": "PASSIVE_VARIATION_TRIGGER",
+            "m_Value": [
+              0,
+              0
+            ]
+          }
+        ],
+        "m_StateName": "USN_PASSIVE1_AIR",
+        "m_bTargetAirOnly": true,
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 1000
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "EventVariable",
+            "m_Name": "PASSIVE_TRIGGER",
+            "m_Value": [
+              1,
+              999999999
+            ]
+          },
+          {
+            "Type": "EventVariable",
+            "m_Name": "PASSIVE_VARIATION_TRIGGER",
+            "m_Value": [
+              1,
+              1
+            ]
+          }
+        ],
+        "m_StateName": "USN_PASSIVE2_AIR",
+        "m_bTargetAirOnly": true,
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 1000
+      }
+    ],
+    "m_listSkillStateData": [
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 1000
+      }
+    ],
+    "m_listHyperSkillStateData": [
+      {
+        "m_StateName": "USN_HYPER1",
+        "m_fStartCool": 0.7,
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 1000
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventReaction": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_Reaction": "PASSIVE_TRIGGER"
+          }
+        ],
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "PASSIVE_TRIGGER",
+            "m_Value": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "PASSIVE_VARIATION_TRIGGER",
+            "m_Value": 0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_18"
+            ]
+          },
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_WORK_09"
+            ]
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_START_1",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_START_2",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_START_3",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_START_4",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_START_5"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+        "m_StateName": "USN_ASTAND",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": true
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_StateName": "USN_RUN",
+        "m_AnimName": "RUN",
+        "m_bAnimLoop": true,
+        "m_bRun": true
+      },
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimName": "ATTACK1",
+        "m_fAnimSpeed": 1.0,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": 0.5666666666666667,
+            "m_DEName": "DE_NKM_UNIT_ATELIER_C_JWIBUL_ATTACK1",
+            "m_bTargetPos": true,
+            "m_OffsetY": 150
+          },
+          {
+            "m_fEventTime": 1.0666666666666667,
+            "m_DEName": "DE_NKM_UNIT_ATELIER_C_JWIBUL_ATTACK1",
+            "m_bTargetPos": true,
+            "m_OffsetY": 150
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.5,
+            "m_fLocalVol": 0.6,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_FIRE_06"
+            ]
+          },
+          {
+            "m_fEventTime": 0.9666666666666667,
+            "m_fLocalVol": 0.6,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_FIRE_06"
+            ]
+          },
+          {
+            "m_fEventTime": 0.4666666666666667,
+            "m_bVoice": true,
+            "m_PlayRate": 0.3,
+            "m_listSoundName": [
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_ATTACK_1",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_ATTACK_5"
+            ]
+          },
+          {
+            "m_fEventTime": 0.9333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.3,
+            "m_listSoundName": [
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_ATTACK_3",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_ATTACK_6"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1_AIR",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimName": "ATTACK1_AIR",
+        "m_fAnimSpeed": 1.0,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": 0.5666666666666667,
+            "m_DEName": "DE_NKM_UNIT_ATELIER_C_JWIBUL_ATTACK1_AIR",
+            "m_bTargetPos": true,
+            "m_OffsetY": 160
+          },
+          {
+            "m_fEventTime": 1.0666666666666667,
+            "m_DEName": "DE_NKM_UNIT_ATELIER_C_JWIBUL_ATTACK1_AIR",
+            "m_bTargetPos": true,
+            "m_OffsetY": 160
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.5,
+            "m_fLocalVol": 0.6,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_FIRE_06"
+            ]
+          },
+          {
+            "m_fEventTime": 0.9666666666666667,
+            "m_fLocalVol": 0.6,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_FIRE_06"
+            ]
+          },
+          {
+            "m_fEventTime": 0.4666666666666667,
+            "m_bVoice": true,
+            "m_PlayRate": 0.3,
+            "m_listSoundName": [
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_ATTACK_1",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_ATTACK_5"
+            ]
+          },
+          {
+            "m_fEventTime": 0.9333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.3,
+            "m_listSoundName": [
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_ATTACK_3",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_ATTACK_6"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PASSIVE1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimName": "PASSIVE1",
+        "m_fAnimSpeed": 1.0,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_Type": "ADD",
+            "m_Name": "PASSIVE_TRIGGER",
+            "m_Value": -1
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "PASSIVE_VARIATION_TRIGGER",
+            "m_Value": 1
+          }
+        ],
+        "m_listNKMEventChangeCooltime": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "SkillLevel",
+                "m_SkillStrID": "NKM_UNIT_ATELIER_C_JWIBUL_PASSIVE",
+                "m_SkillLevel": [
+                  5,
+                  5
+                ]
+              }
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_TargetStateName": "USN_HYPER1",
+            "m_eChangeType": "ADD_SECONDS",
+            "m_fChangeValue": -3
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": 1.0666666666666667,
+            "m_DEName": "DE_NKM_UNIT_ATELIER_C_JWIBUL_PASSIVE1",
+            "m_OffsetX": 150,
+            "m_OffsetY": 195
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_WHOOSH_04"
+            ]
+          },
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_LIGHT_18"
+            ]
+          },
+          {
+            "m_fEventTime": 1.0666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_FIRE_ENERGY_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 1.0666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MISSILE_FIRE_SMALL_02"
+            ]
+          },
+          {
+            "m_fEventTime": 1.0,
+            "m_bVoice": true,
+            "m_PlayRate": 0.5,
+            "m_listSoundName": [
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_PASSIVE_2",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_PASSIVE_3",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_PASSIVE_6"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PASSIVE2",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimName": "PASSIVE2",
+        "m_fAnimSpeed": 1.0,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": 1.0666666666666667,
+            "m_DEName": "DE_NKM_UNIT_ATELIER_C_JWIBUL_PASSIVE1",
+            "m_OffsetX": 150,
+            "m_OffsetY": 195
+          }
+        ],
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_Type": "ADD",
+            "m_Name": "PASSIVE_TRIGGER",
+            "m_Value": -1
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "PASSIVE_VARIATION_TRIGGER",
+            "m_Value": 0
+          }
+        ],
+        "m_listNKMEventChangeCooltime": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "SkillLevel",
+                "m_SkillStrID": "NKM_UNIT_ATELIER_C_JWIBUL_PASSIVE",
+                "m_SkillLevel": [
+                  5,
+                  5
+                ]
+              }
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_TargetStateName": "USN_HYPER1",
+            "m_eChangeType": "ADD_SECONDS",
+            "m_fChangeValue": -3
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_WHOOSH_04"
+            ]
+          },
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_LIGHT_18"
+            ]
+          },
+          {
+            "m_fEventTime": 1.0666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_FIRE_ENERGY_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 1.0666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MISSILE_FIRE_SMALL_02"
+            ]
+          },
+          {
+            "m_fEventTime": 1.0,
+            "m_bVoice": true,
+            "m_PlayRate": 0.5,
+            "m_listSoundName": [
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_PASSIVE_1",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_PASSIVE_4",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_PASSIVE_5"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PASSIVE1_AIR",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimName": "PASSIVE1_AIR",
+        "m_fAnimSpeed": 1.0,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": 1.0666666666666667,
+            "m_DEName": "DE_NKM_UNIT_ATELIER_C_JWIBUL_PASSIVE1_AIR",
+            "m_OffsetX": 130,
+            "m_OffsetY": 235,
+            "m_fAddRotate": 20
+          }
+        ],
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_Type": "ADD",
+            "m_Name": "PASSIVE_TRIGGER",
+            "m_Value": -1
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L13_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "PASSIVE_VARIATION_TRIGGER",
+            "m_Value": 1
+          }
+        ],
+        "m_listNKMEventChangeCooltime": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "SkillLevel",
+                "m_SkillStrID": "NKM_UNIT_ATELIER_C_JWIBUL_PASSIVE",
+                "m_SkillLevel": [
+                  5,
+                  5
+                ]
+              }
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_TargetStateName": "USN_HYPER1",
+            "m_eChangeType": "ADD_SECONDS",
+            "m_fChangeValue": -3
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_WHOOSH_04"
+            ]
+          },
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_LIGHT_18"
+            ]
+          },
+          {
+            "m_fEventTime": 1.0666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_FIRE_ENERGY_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 1.0666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MISSILE_FIRE_SMALL_02"
+            ]
+          },
+          {
+            "m_fEventTime": 1.0,
+            "m_bVoice": true,
+            "m_PlayRate": 0.5,
+            "m_listSoundName": [
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_PASSIVE_2",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_PASSIVE_3",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_PASSIVE_6"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PASSIVE2_AIR",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimName": "PASSIVE2_AIR",
+        "m_fAnimSpeed": 1.0,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": 1.0666666666666667,
+            "m_DEName": "DE_NKM_UNIT_ATELIER_C_JWIBUL_PASSIVE1_AIR",
+            "m_OffsetX": 130,
+            "m_OffsetY": 235,
+            "m_fAddRotate": 20
+          }
+        ],
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_Type": "ADD",
+            "m_Name": "PASSIVE_TRIGGER",
+            "m_Value": -1
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L14_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "PASSIVE_VARIATION_TRIGGER",
+            "m_Value": 0
+          }
+        ],
+        "m_listNKMEventChangeCooltime": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "SkillLevel",
+                "m_SkillStrID": "NKM_UNIT_ATELIER_C_JWIBUL_PASSIVE",
+                "m_SkillLevel": [
+                  5,
+                  5
+                ]
+              }
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L13_1 / 30"
+            },
+            "m_TargetStateName": "USN_HYPER1",
+            "m_eChangeType": "ADD_SECONDS",
+            "m_fChangeValue": -3
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_WHOOSH_04"
+            ]
+          },
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_LIGHT_18"
+            ]
+          },
+          {
+            "m_fEventTime": 1.0666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_FIRE_ENERGY_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 1.0666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MISSILE_FIRE_SMALL_02"
+            ]
+          },
+          {
+            "m_fEventTime": 1.0,
+            "m_bVoice": true,
+            "m_PlayRate": 0.5,
+            "m_listSoundName": [
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_PASSIVE_1",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_PASSIVE_4",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_PASSIVE_5"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_SKILL",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_bSkillCutIn": true,
+        "m_AnimName": "SKILL1",
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": 1.3666666666666667,
+            "m_DEName": "DE_NKM_UNIT_ATELIER_C_JWIBUL_SKILL1",
+            "m_bTargetPos": true,
+            "m_OffsetY": 200
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L14_1 / 30"
+            },
+            "m_EffectName": "AB_FX_CAST_SKILL",
+            "m_AnimName": "BASE",
+            "m_OffsetX": 0.0,
+            "m_OffsetY": 190,
+            "m_fScaleFactor": 30.0
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 3.0,
+            "m_fColorR": 0.5,
+            "m_fColorG": 0.5,
+            "m_fColorB": 1.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L14_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ]
+          },
+          {
+            "m_fEventTime": 1.3,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWING_SMALL_16"
+            ]
+          },
+          {
+            "m_fEventTime": 1.3,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_FIRE_05"
+            ]
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L17_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_ACTIVE_1",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_ACTIVE_3",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_ACTIVE_4",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_ACTIVE_5"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_HYPER1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_HYPER",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_bShowGage": false,
+        "m_bAnimLoop": false,
+        "m_AnimName": "HYPER_SKILL1",
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventInvincible": [
+          {
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L15_1 / 30"
+            },
+            "m_fEventTimeMax": 3.0
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L15_1 / 30"
+            },
+            "m_EffectName": "AB_FX_CAST_HYPER",
+            "m_AnimName": "BASE",
+            "m_fScaleFactor": 30.0,
+            "m_BoneName": "BIP01_SPINE1",
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L15_1 / 30"
+            },
+            "m_fEventTimeMax": 3.0,
+            "m_fColorR": 1.0,
+            "m_fColorG": 0.5,
+            "m_fColorB": 0.5
+          }
+        ],
+        "m_listNKMEventHyperSkillCutIn": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L15_1 / 30"
+            },
+            "m_fDurationTime": 1.8333333333333333,
+            "m_BGEffectName": "AB_FX_SKILL_CUTIN_COMMON_A",
+            "m_CutInEffectName": "AB_FX_SKILL_CUTIN_NKM_UNIT_ATELIER_C_JWIBUL",
+            "m_CutInEffectAnimName": "BASE"
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": 0.6666666666666666,
+            "m_DEName": "DE_NKM_UNIT_ATELIER_C_JWIBUL_HYPER1_DUMMY",
+            "m_bTargetPos": true
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_UNIT_ATELIER_C_JWIBUL_HYPER1_ATK"
+          }
+        ],
+        "m_listNKMEventCameraMove": [
+          {
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L15_1 / 30"
+            },
+            "m_fEventTimeMax": 1.0,
+            "m_bForce": true,
+            "m_fPosXOffset": -200,
+            "m_fPosYOffset": 250,
+            "m_fZoom": -250,
+            "m_fMoveTrackingTime": 0.3333333333333333,
+            "m_fZoomTrackingTime": 0.3333333333333333
+          },
+          {
+            "m_fEventTimeMin": 1.0,
+            "m_fEventTimeMax": 3.0,
+            "m_bForce": true,
+            "m_fPosXOffset": 200,
+            "m_fPosYOffset": 250,
+            "m_fZoom": -100,
+            "m_fMoveTrackingTime": 2.0,
+            "m_fZoomTrackingTime": 2.0
+          },
+          {
+            "m_fEventTimeMin": 3.033333333333333,
+            "m_fEventTimeMax": 4.0,
+            "m_bForce": true,
+            "m_fPosXOffset": 0,
+            "m_fPosYOffset": 250,
+            "m_fZoom": 0,
+            "m_fMoveTrackingTime": 0.3333333333333333,
+            "m_fZoomTrackingTime": 0.3333333333333333
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L15_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HYPER_ATTACK_START"
+            ]
+          },
+          {
+            "m_fEventTime": 0.5,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_FIREWORK"
+            ]
+          },
+          {
+            "m_fEventTime": 0.5,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_CUTSCEN_CROWD"
+            ]
+          },
+          {
+            "m_fEventTime": 1.1333333333333333,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_CUTSCEN_BEEP2"
+            ]
+          },
+          {
+            "m_fEventTime": 1.1333333333333333,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_IMPACT_03"
+            ]
+          },
+          {
+            "m_fEventTime": 1.6333333333333333,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_CUTSCEN_BEEP2"
+            ]
+          },
+          {
+            "m_fEventTime": 1.6333333333333333,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_IMPACT_03"
+            ]
+          },
+          {
+            "m_fEventTime": 2.1333333333333333,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_CUTSCEN_BEEP2"
+            ]
+          },
+          {
+            "m_fEventTime": 2.1333333333333333,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_IMPACT_03"
+            ]
+          },
+          {
+            "m_fEventTime": 2.6666666666666665,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_CUTSCEN_BEEP2"
+            ]
+          },
+          {
+            "m_fEventTime": 2.6666666666666665,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_IMPACT_03"
+            ]
+          },
+          {
+            "m_fEventTime": 3.1666666666666665,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_CUTSCEN_BEEP2"
+            ]
+          },
+          {
+            "m_fEventTime": 3.1666666666666665,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_IMPACT_03"
+            ]
+          },
+          {
+            "m_fEventTime": 3.2333333333333334,
+            "m_listSoundName": [
+              "FX_CUTSCEN_NOISE_CAMERA"
+            ]
+          },
+          {
+            "m_fEventTime": 3.2333333333333334,
+            "m_listSoundName": [
+              "FX_CUTSCEN_NOISE_CAMERA"
+            ]
+          },
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_HYPER_1",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_HYPER_2",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_HYPER_3",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_HYPER_4",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_HYPER_5"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_A",
+        "m_AnimName": "DAMAGE_A",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_3",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_4"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_B",
+        "m_AnimName": "DAMAGE_B",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_3",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_4"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_3",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_4"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_AIR_UP",
+        "m_AnimName": "DAMAGE_AIR_UP",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_3",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DAMAGE_4"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L20_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DEATH_1",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DEATH_2",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DEATH_3",
+              "VOICE_UNIT_ATELIER_C_JWIBUL_BATTLE_DEATH_4"
+            ]
+          }
+        ],
+        "m_listNKMEventDissolve": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.3333333333333333,
+            "m_fDissolve": 1,
+            "m_fTrackTime": 0.6666666666666666
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

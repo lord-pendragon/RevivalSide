@@ -1,0 +1,396 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SUPPLY_RESOURCE_NEGOTIATE_LV60.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.5
+    },
+    {
+      "__key": "m_fCostSpeedRateA",
+      "value": 1.2
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_SUPPLY_BARRICADE4_H"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_SHOTGUN_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 100,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_GRENADE_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 10,
+            "m_fEventTimeEnd": 100,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_SHOTGUN_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 55,
+            "m_fEventTimeEnd": 120,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_GRENADE_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 55,
+            "m_fEventTimeEnd": 120,
+            "m_fEventPos": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_SHOTGUN_H",
+          "m_EventRespawnUnitTag": "WAVE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.6
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_SHOTGUN_H",
+          "m_EventRespawnUnitTag": "WAVE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_GRENADE_H",
+          "m_EventRespawnUnitTag": "WAVE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_SHOTGUN_H",
+          "m_EventRespawnUnitTag": "WAVE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_EventDieUnitTag": "WAVE",
+            "m_EventDieUnitTagCount": 5,
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_GRENADE_H",
+          "m_EventRespawnUnitTag": "WAVE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_EventDieUnitTag": "WAVE",
+            "m_EventDieUnitTagCount": 5,
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_SHOTGUN_H",
+          "m_EventRespawnUnitTag": "WAVE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_EventDieUnitTag": "WAVE",
+            "m_EventDieUnitTagCount": 8,
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_GRENADE_H",
+          "m_EventRespawnUnitTag": "WAVE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_EventDieUnitTag": "WAVE",
+            "m_EventDieUnitTagCount": 8,
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_SHOTGUN_H",
+          "m_EventRespawnUnitTag": "WAVE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_EventDieUnitTag": "WAVE",
+            "m_EventDieUnitTagCount": 12,
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_GRENADE_H",
+          "m_EventRespawnUnitTag": "WAVE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_EventDieUnitTag": "WAVE",
+            "m_EventDieUnitTagCount": 12,
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_SHOTGUN_H",
+          "m_EventRespawnUnitTag": "WAVE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_EventDieUnitTag": "WAVE",
+            "m_EventDieUnitTagCount": 16,
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_GRENADE_H",
+          "m_EventRespawnUnitTag": "WAVE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_EventDieUnitTag": "WAVE",
+            "m_EventDieUnitTagCount": 16,
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_SHOTGUN_H",
+          "m_EventRespawnUnitTag": "WAVE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_EventDieUnitTag": "WAVE",
+            "m_EventDieUnitTagCount": 20,
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_GRENADE_H",
+          "m_EventRespawnUnitTag": "WAVE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_EventDieUnitTag": "WAVE",
+            "m_EventDieUnitTagCount": 20,
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.1
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 1.5,
+    "m_fCostSpeedRateA": 1.2,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_SUPPLY_BARRICADE4_H",
+    "m_fBossPosZ": 0.6,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_SHOTGUN_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 100,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_GRENADE_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 10,
+          "m_fEventTimeEnd": 100,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_SHOTGUN_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 55,
+          "m_fEventTimeEnd": 120,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_GRENADE_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 55,
+          "m_fEventTimeEnd": 120,
+          "m_fEventPos": 0.0
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_SHOTGUN_H",
+        "m_EventRespawnUnitTag": "WAVE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.6
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_SHOTGUN_H",
+        "m_EventRespawnUnitTag": "WAVE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_GRENADE_H",
+        "m_EventRespawnUnitTag": "WAVE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_SHOTGUN_H",
+        "m_EventRespawnUnitTag": "WAVE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_EventDieUnitTag": "WAVE",
+          "m_EventDieUnitTagCount": 5,
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_GRENADE_H",
+        "m_EventRespawnUnitTag": "WAVE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_EventDieUnitTag": "WAVE",
+          "m_EventDieUnitTagCount": 5,
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_SHOTGUN_H",
+        "m_EventRespawnUnitTag": "WAVE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_EventDieUnitTag": "WAVE",
+          "m_EventDieUnitTagCount": 8,
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_GRENADE_H",
+        "m_EventRespawnUnitTag": "WAVE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_EventDieUnitTag": "WAVE",
+          "m_EventDieUnitTagCount": 8,
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_SHOTGUN_H",
+        "m_EventRespawnUnitTag": "WAVE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_EventDieUnitTag": "WAVE",
+          "m_EventDieUnitTagCount": 12,
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_GRENADE_H",
+        "m_EventRespawnUnitTag": "WAVE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_EventDieUnitTag": "WAVE",
+          "m_EventDieUnitTagCount": 12,
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_SHOTGUN_H",
+        "m_EventRespawnUnitTag": "WAVE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_EventDieUnitTag": "WAVE",
+          "m_EventDieUnitTagCount": 16,
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_GRENADE_H",
+        "m_EventRespawnUnitTag": "WAVE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_EventDieUnitTag": "WAVE",
+          "m_EventDieUnitTagCount": 16,
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_SHOTGUN_H",
+        "m_EventRespawnUnitTag": "WAVE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_EventDieUnitTag": "WAVE",
+          "m_EventDieUnitTagCount": 20,
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_SUPPLY_TIDE_GRENADE_H",
+        "m_EventRespawnUnitTag": "WAVE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_EventDieUnitTag": "WAVE",
+          "m_EventDieUnitTagCount": 20,
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.1
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

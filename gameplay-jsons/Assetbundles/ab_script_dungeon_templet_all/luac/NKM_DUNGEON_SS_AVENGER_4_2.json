@@ -1,0 +1,534 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_AVENGER_4_2.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 9,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.7
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_BASIC_MINISTRA_EVENT_ADMIN_N"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.5
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 1.4,
+          "NST_DEF": 3.2,
+          "NST_HP": 3.0
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BORDER_S_HUNTER_ALLY",
+          "m_EventRespawnUnitTag": "NPC",
+          "m_UnitLevel": 95,
+          "m_UnitLimitBreakLevel": 1,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 15,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BORDER_S_HUNTER_ALLY",
+          "m_EventRespawnUnitTag": "NPC",
+          "m_UnitLevel": 95,
+          "m_UnitLimitBreakLevel": 1,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.1,
+            "m_fEventTimeGap": 15,
+            "m_fEventPos": 0.35
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BORDER_S_HUNTER_ALLY",
+          "m_EventRespawnUnitTag": "NPC",
+          "m_UnitLevel": 95,
+          "m_UnitLimitBreakLevel": 1,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.2,
+            "m_fEventTimeGap": 15,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BORDER_S_HUNTER_ALLY",
+          "m_EventRespawnUnitTag": "NPC",
+          "m_UnitLevel": 95,
+          "m_UnitLimitBreakLevel": 1,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.3,
+            "m_fEventTimeGap": 15,
+            "m_fEventPos": 0.45
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BORDER_S_HUNTER_ALLY",
+          "m_EventRespawnUnitTag": "NPC",
+          "m_UnitLevel": 95,
+          "m_UnitLimitBreakLevel": 1,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.4,
+            "m_fEventTimeGap": 15,
+            "m_fEventPos": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventPos": 0.3,
+            "m_fEventTimeStart": 4.3,
+            "m_fEventTimeEnd": 45
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.6,
+              "NST_DEF": 0.2,
+              "NST_HP": 0.2
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventPos": 0.3,
+            "m_fEventTimeStart": 4.3,
+            "m_fEventTimeEnd": 45
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.6,
+              "NST_DEF": 0.2,
+              "NST_HP": 0.2
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventPos": 0.2,
+            "m_fEventTimeStart": 6.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.6,
+              "NST_DEF": 0.2,
+              "NST_HP": 0.2
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventPos": 0.2,
+            "m_fEventTimeStart": 6.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.6,
+              "NST_DEF": 0.2,
+              "NST_HP": 0.2
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_RANGER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventPos": 0.1,
+            "m_fEventTimeStart": 10.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.6,
+              "NST_DEF": 0.2,
+              "NST_HP": 0.2
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_RANGER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventPos": 0.05,
+            "m_fEventTimeStart": 10.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.6,
+              "NST_DEF": 0.2,
+              "NST_HP": 0.2
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_WRAITH",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventPos": 0.1,
+            "m_fEventTimeStart": 12.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.6,
+              "NST_DEF": 0.2,
+              "NST_HP": 0.2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_BASIC_MINISTRA_EVENT_ADMIN_N",
+          "m_EventConditionValue2": "USN_HYPER1",
+          "m_dungeonEventType": "KILL_ALL_TAGGED_UNIT",
+          "m_EventActionStrValue": "NPC",
+          "m_EventActionValue": 210536,
+          "m_fEventDelay": 0,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+          "m_EventConditionNumValue": 80,
+          "m_dungeonEventType": "FORCE_WIN",
+          "m_EventActionValue": 0,
+          "m_fEventDelay": 1,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamB",
+      "value": [
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_BASIC_MINISTRA_EVENT_ADMIN_N",
+          "m_EventConditionValue2": "USN_HYPER1",
+          "m_dungeonEventType": "KILL_ALL_TAGGED_UNIT",
+          "m_EventActionStrValue": "NPC",
+          "m_EventActionValue": 1,
+          "m_fEventDelay": 1.5,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_BASIC_MINISTRA_EVENT_ADMIN_N",
+          "m_EventConditionValue2": "USN_HYPER1",
+          "m_dungeonEventType": "NEAT_RESPAWN_COST_A_TEAM",
+          "m_EventActionValue": 10,
+          "m_fEventDelay": 0.0,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 4
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_STATE",
+          "m_EventActionValue": 230607,
+          "m_EventActionStrValue": "USN_HYPER1",
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 3
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 0.7,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_BASIC_MINISTRA_EVENT_ADMIN_N",
+    "m_fBossPosZ": 0.5,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 1.4,
+          "NST_DEF": 3.2,
+          "NST_HP": 3.0
+        }
+      }
+    },
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BORDER_S_HUNTER_ALLY",
+        "m_EventRespawnUnitTag": "NPC",
+        "m_UnitLevel": 95,
+        "m_UnitLimitBreakLevel": 1,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 15,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BORDER_S_HUNTER_ALLY",
+        "m_EventRespawnUnitTag": "NPC",
+        "m_UnitLevel": 95,
+        "m_UnitLimitBreakLevel": 1,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.1,
+          "m_fEventTimeGap": 15,
+          "m_fEventPos": 0.35
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BORDER_S_HUNTER_ALLY",
+        "m_EventRespawnUnitTag": "NPC",
+        "m_UnitLevel": 95,
+        "m_UnitLimitBreakLevel": 1,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.2,
+          "m_fEventTimeGap": 15,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BORDER_S_HUNTER_ALLY",
+        "m_EventRespawnUnitTag": "NPC",
+        "m_UnitLevel": 95,
+        "m_UnitLimitBreakLevel": 1,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.3,
+          "m_fEventTimeGap": 15,
+          "m_fEventPos": 0.45
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BORDER_S_HUNTER_ALLY",
+        "m_EventRespawnUnitTag": "NPC",
+        "m_UnitLevel": 95,
+        "m_UnitLimitBreakLevel": 1,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.4,
+          "m_fEventTimeGap": 15,
+          "m_fEventPos": 0.5
+        }
+      }
+    ],
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventPos": 0.3,
+          "m_fEventTimeStart": 4.3,
+          "m_fEventTimeEnd": 45
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.6,
+            "NST_DEF": 0.2,
+            "NST_HP": 0.2
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventPos": 0.3,
+          "m_fEventTimeStart": 4.3,
+          "m_fEventTimeEnd": 45
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.6,
+            "NST_DEF": 0.2,
+            "NST_HP": 0.2
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventPos": 0.2,
+          "m_fEventTimeStart": 6.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.6,
+            "NST_DEF": 0.2,
+            "NST_HP": 0.2
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventPos": 0.2,
+          "m_fEventTimeStart": 6.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.6,
+            "NST_DEF": 0.2,
+            "NST_HP": 0.2
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_RANGER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventPos": 0.1,
+          "m_fEventTimeStart": 10.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.6,
+            "NST_DEF": 0.2,
+            "NST_HP": 0.2
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_RANGER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventPos": 0.05,
+          "m_fEventTimeStart": 10.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.6,
+            "NST_DEF": 0.2,
+            "NST_HP": 0.2
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_WRAITH",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventPos": 0.1,
+          "m_fEventTimeStart": 12.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.6,
+            "NST_DEF": 0.2,
+            "NST_HP": 0.2
+          }
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_BASIC_MINISTRA_EVENT_ADMIN_N",
+        "m_EventConditionValue2": "USN_HYPER1",
+        "m_dungeonEventType": "KILL_ALL_TAGGED_UNIT",
+        "m_EventActionStrValue": "NPC",
+        "m_EventActionValue": 210536,
+        "m_fEventDelay": 0,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+        "m_EventConditionNumValue": 80,
+        "m_dungeonEventType": "FORCE_WIN",
+        "m_EventActionValue": 0,
+        "m_fEventDelay": 1,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamB": [
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_BASIC_MINISTRA_EVENT_ADMIN_N",
+        "m_EventConditionValue2": "USN_HYPER1",
+        "m_dungeonEventType": "KILL_ALL_TAGGED_UNIT",
+        "m_EventActionStrValue": "NPC",
+        "m_EventActionValue": 1,
+        "m_fEventDelay": 1.5,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_BASIC_MINISTRA_EVENT_ADMIN_N",
+        "m_EventConditionValue2": "USN_HYPER1",
+        "m_dungeonEventType": "NEAT_RESPAWN_COST_A_TEAM",
+        "m_EventActionValue": 10,
+        "m_fEventDelay": 0.0,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 4
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_STATE",
+        "m_EventActionValue": 230607,
+        "m_EventActionStrValue": "USN_HYPER1",
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 3
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

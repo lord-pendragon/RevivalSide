@@ -1,0 +1,113 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_OMEN_3_1_3.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.2
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_UNIT_SABOTAGE_CA_SWORD"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_bForceMonster": true,
+      "m_bReactor": false,
+      "m_TacticUpdateLevel": 6,
+      "m_SkillLevel": 5,
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 1.3,
+          "NST_HP": 7.0,
+          "NST_DEF": 5.0,
+          "NST_EVADE": 0.0
+        },
+        "m_StatValue": {
+          "NST_MOVE_SPEED_RATE": -0.5
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_UNIT_JAPAN_C_CRAFTER",
+          "m_bForceMonster": true,
+          "m_bReactor": false,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.3,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 3.0,
+              "NST_HP": 3.0,
+              "NST_DEF": 4.0,
+              "NST_EVADE": 0.0
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 0.2,
+    "m_BossUnitStrID": "NKM_UNIT_SABOTAGE_CA_SWORD",
+    "m_fBossPosZ": 0.6,
+    "m_BossRespawnUnitTemplet": {
+      "m_bForceMonster": true,
+      "m_bReactor": false,
+      "m_TacticUpdateLevel": 6,
+      "m_SkillLevel": 5,
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 1.3,
+          "NST_HP": 7.0,
+          "NST_DEF": 5.0,
+          "NST_EVADE": 0.0
+        },
+        "m_StatValue": {
+          "NST_MOVE_SPEED_RATE": -0.5
+        }
+      }
+    },
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_UNIT_JAPAN_C_CRAFTER",
+        "m_bForceMonster": true,
+        "m_bReactor": false,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.3,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 3.0,
+            "NST_HP": 3.0,
+            "NST_DEF": 4.0,
+            "NST_EVADE": 0.0
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

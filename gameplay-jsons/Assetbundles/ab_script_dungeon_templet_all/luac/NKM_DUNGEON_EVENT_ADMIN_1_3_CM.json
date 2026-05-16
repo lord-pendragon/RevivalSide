@@ -1,0 +1,454 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_EVENT_ADMIN_1_3_CM.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 5
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.5
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MONSTER_BOSS_BASIC_ADMIN_ARTILLERY_ADMIN_MOVE_H"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_ADMIN_GREATSWORD_ADMIN_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 300
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_dungeonEventType": "SET_ENEMY_BOSS_HP_RATE",
+          "m_EventActionValue": 59,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_EventDieUnitTag": "ADMIN_CANNON",
+            "m_EventDieUnitTagCount": 1
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_ENEMY_BOSS_HP_RATE",
+          "m_EventActionValue": 29,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_EventDieUnitTag": "ADMIN_CANNON",
+            "m_EventDieUnitTagCount": 2
+          }
+        },
+        {
+          "m_dungeonEventType": "KILL_ALL_TAGGED_UNIT",
+          "m_EventActionStrValue": "ADMIN_CANNON",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 150
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_ADMIN_CANNON_ADMIN_FRONTLINE_1",
+          "m_EventRespawnUnitTag": "ADMIN_CANNON",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventPos": 0.5,
+            "m_fEventTimeStart": 1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_ADMIN_CANNON_ADMIN_FRONTLINE_2",
+          "m_EventRespawnUnitTag": "ADMIN_CANNON",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventPos": 0.2,
+            "m_fEventTimeStart": 2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_ADMIN_MACHINEGUN_ADMIN_H",
+          "m_EventRespawnUnitTag": "ADMIN_MACHINEGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventPos": 0.4,
+            "m_fEventTimeStart": 0,
+            "m_EventDieUnitTag": "ADMIN_CANNON",
+            "m_EventDieUnitTagCount": 1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_SWORD_ADMIN_H",
+          "m_EventRespawnUnitTag": "ADMIN_SWORD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeGap": 20,
+            "m_fEventPos": 0.45,
+            "m_fEventBossHPLess": 1.1,
+            "m_fEventBossHPUpper": 0.6,
+            "m_fEventTimeStart": 3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_SWORD_ADMIN_H",
+          "m_EventRespawnUnitTag": "ADMIN_SWORD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeGap": 20,
+            "m_fEventPos": 0.45,
+            "m_fEventBossHPLess": 1.1,
+            "m_fEventBossHPUpper": 0.6,
+            "m_fEventTimeStart": 33
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_SWORD_ADMIN_H",
+          "m_EventRespawnUnitTag": "ADMIN_SWORD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeGap": 20,
+            "m_fEventPos": 0.45,
+            "m_fEventBossHPLess": 1.1,
+            "m_fEventBossHPUpper": 0.6,
+            "m_fEventTimeStart": 63
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_SWORD_ADMIN_H",
+          "m_EventRespawnUnitTag": "ADMIN_SWORD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeGap": 20,
+            "m_fEventPos": 0.45,
+            "m_fEventBossHPLess": 1.1,
+            "m_fEventBossHPUpper": 0.6,
+            "m_fEventTimeStart": 93
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_SWORD_ADMIN_H",
+          "m_EventRespawnUnitTag": "ADMIN_SWORD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeGap": 20,
+            "m_fEventPos": 0.25,
+            "m_fEventBossHPLess": 1.1,
+            "m_fEventBossHPUpper": 0.3,
+            "m_fEventTimeStart": 60,
+            "m_EventDieUnitTag": "ADMIN_CANNON",
+            "m_EventDieUnitTagCount": 1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_SWORD_ADMIN_H",
+          "m_EventRespawnUnitTag": "ADMIN_SWORD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeGap": 20,
+            "m_fEventPos": 0.25,
+            "m_fEventBossHPLess": 1.1,
+            "m_fEventBossHPUpper": 0.3,
+            "m_fEventTimeStart": 75,
+            "m_EventDieUnitTag": "ADMIN_CANNON",
+            "m_EventDieUnitTagCount": 1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_SWORD_ADMIN_H",
+          "m_EventRespawnUnitTag": "ADMIN_SWORD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeGap": 15,
+            "m_fEventPos": 0.25,
+            "m_fEventBossHPLess": 1.1,
+            "m_fEventBossHPUpper": 0.3,
+            "m_fEventTimeStart": 90,
+            "m_EventDieUnitTag": "ADMIN_CANNON",
+            "m_EventDieUnitTagCount": 1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_RIFLE_ADMIN_H",
+          "m_EventRespawnUnitTag": "ADMIN_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeGap": 20,
+            "m_fEventPos": 0.15,
+            "m_fEventBossHPLess": 1.1,
+            "m_fEventBossHPUpper": 0.3,
+            "m_fEventTimeStart": 15
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_RIFLE_ADMIN_H",
+          "m_EventRespawnUnitTag": "ADMIN_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeGap": 20,
+            "m_fEventPos": 0.15,
+            "m_fEventBossHPLess": 1.1,
+            "m_fEventBossHPUpper": 0.3,
+            "m_fEventTimeStart": 65
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_RIFLE_ADMIN_H",
+          "m_EventRespawnUnitTag": "ADMIN_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeGap": 15,
+            "m_fEventPos": 0.15,
+            "m_fEventBossHPLess": 1.1,
+            "m_fEventBossHPUpper": 0.3,
+            "m_fEventTimeStart": 105
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_ADMIN_GREATSWORD_ADMIN_H",
+          "m_EventRespawnUnitTag": "ADMIN_GREATSWORD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventPos": 0.2,
+            "m_fEventTimeStart": 0,
+            "m_EventDieUnitTag": "ADMIN_CANNON",
+            "m_EventDieUnitTagCount": 2
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 5,
+    "m_fCostSpeedRateB": 0.5,
+    "m_BossUnitStrID": "NKM_MONSTER_BOSS_BASIC_ADMIN_ARTILLERY_ADMIN_MOVE_H",
+    "m_fBossPosZ": 0.6,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_ADMIN_GREATSWORD_ADMIN_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 300
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_dungeonEventType": "SET_ENEMY_BOSS_HP_RATE",
+        "m_EventActionValue": 59,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_EventDieUnitTag": "ADMIN_CANNON",
+          "m_EventDieUnitTagCount": 1
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_ENEMY_BOSS_HP_RATE",
+        "m_EventActionValue": 29,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_EventDieUnitTag": "ADMIN_CANNON",
+          "m_EventDieUnitTagCount": 2
+        }
+      },
+      {
+        "m_dungeonEventType": "KILL_ALL_TAGGED_UNIT",
+        "m_EventActionStrValue": "ADMIN_CANNON",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 150
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_ADMIN_CANNON_ADMIN_FRONTLINE_1",
+        "m_EventRespawnUnitTag": "ADMIN_CANNON",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventPos": 0.5,
+          "m_fEventTimeStart": 1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_ADMIN_CANNON_ADMIN_FRONTLINE_2",
+        "m_EventRespawnUnitTag": "ADMIN_CANNON",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventPos": 0.2,
+          "m_fEventTimeStart": 2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_ADMIN_MACHINEGUN_ADMIN_H",
+        "m_EventRespawnUnitTag": "ADMIN_MACHINEGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventPos": 0.4,
+          "m_fEventTimeStart": 0,
+          "m_EventDieUnitTag": "ADMIN_CANNON",
+          "m_EventDieUnitTagCount": 1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_SWORD_ADMIN_H",
+        "m_EventRespawnUnitTag": "ADMIN_SWORD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeGap": 20,
+          "m_fEventPos": 0.45,
+          "m_fEventBossHPLess": 1.1,
+          "m_fEventBossHPUpper": 0.6,
+          "m_fEventTimeStart": 3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_SWORD_ADMIN_H",
+        "m_EventRespawnUnitTag": "ADMIN_SWORD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeGap": 20,
+          "m_fEventPos": 0.45,
+          "m_fEventBossHPLess": 1.1,
+          "m_fEventBossHPUpper": 0.6,
+          "m_fEventTimeStart": 33
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_SWORD_ADMIN_H",
+        "m_EventRespawnUnitTag": "ADMIN_SWORD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeGap": 20,
+          "m_fEventPos": 0.45,
+          "m_fEventBossHPLess": 1.1,
+          "m_fEventBossHPUpper": 0.6,
+          "m_fEventTimeStart": 63
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_SWORD_ADMIN_H",
+        "m_EventRespawnUnitTag": "ADMIN_SWORD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeGap": 20,
+          "m_fEventPos": 0.45,
+          "m_fEventBossHPLess": 1.1,
+          "m_fEventBossHPUpper": 0.6,
+          "m_fEventTimeStart": 93
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_SWORD_ADMIN_H",
+        "m_EventRespawnUnitTag": "ADMIN_SWORD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeGap": 20,
+          "m_fEventPos": 0.25,
+          "m_fEventBossHPLess": 1.1,
+          "m_fEventBossHPUpper": 0.3,
+          "m_fEventTimeStart": 60,
+          "m_EventDieUnitTag": "ADMIN_CANNON",
+          "m_EventDieUnitTagCount": 1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_SWORD_ADMIN_H",
+        "m_EventRespawnUnitTag": "ADMIN_SWORD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeGap": 20,
+          "m_fEventPos": 0.25,
+          "m_fEventBossHPLess": 1.1,
+          "m_fEventBossHPUpper": 0.3,
+          "m_fEventTimeStart": 75,
+          "m_EventDieUnitTag": "ADMIN_CANNON",
+          "m_EventDieUnitTagCount": 1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_SWORD_ADMIN_H",
+        "m_EventRespawnUnitTag": "ADMIN_SWORD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeGap": 15,
+          "m_fEventPos": 0.25,
+          "m_fEventBossHPLess": 1.1,
+          "m_fEventBossHPUpper": 0.3,
+          "m_fEventTimeStart": 90,
+          "m_EventDieUnitTag": "ADMIN_CANNON",
+          "m_EventDieUnitTagCount": 1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_RIFLE_ADMIN_H",
+        "m_EventRespawnUnitTag": "ADMIN_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeGap": 20,
+          "m_fEventPos": 0.15,
+          "m_fEventBossHPLess": 1.1,
+          "m_fEventBossHPUpper": 0.3,
+          "m_fEventTimeStart": 15
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_RIFLE_ADMIN_H",
+        "m_EventRespawnUnitTag": "ADMIN_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeGap": 20,
+          "m_fEventPos": 0.15,
+          "m_fEventBossHPLess": 1.1,
+          "m_fEventBossHPUpper": 0.3,
+          "m_fEventTimeStart": 65
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_ADMIN_RIFLE_ADMIN_H",
+        "m_EventRespawnUnitTag": "ADMIN_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeGap": 15,
+          "m_fEventPos": 0.15,
+          "m_fEventBossHPLess": 1.1,
+          "m_fEventBossHPUpper": 0.3,
+          "m_fEventTimeStart": 105
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_ADMIN_GREATSWORD_ADMIN_H",
+        "m_EventRespawnUnitTag": "ADMIN_GREATSWORD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventPos": 0.2,
+          "m_fEventTimeStart": 0,
+          "m_EventDieUnitTag": "ADMIN_CANNON",
+          "m_EventDieUnitTagCount": 2
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

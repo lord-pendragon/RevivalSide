@@ -1,0 +1,523 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_BOSS_FIERCE_CORRUPTED_THAGIRION_SUMMON.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 28,
+  "records": [
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.5
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.6
+    },
+    {
+      "__key": "m_UnitSizeX",
+      "value": 140
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 260
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": true
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 280
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 0
+    },
+    {
+      "__key": "m_bAirUnit",
+      "value": true
+    },
+    {
+      "__key": "m_fAirHigh",
+      "value": 230
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 400
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 600
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 800
+    },
+    {
+      "__key": "m_NKC_TEAM_COLOR_TYPE",
+      "value": "NTCT_NO"
+    },
+    {
+      "__key": "m_bNoDamageDownState",
+      "value": true
+    },
+    {
+      "__key": "m_fDamageBackFactor",
+      "value": 0.0
+    },
+    {
+      "__key": "m_bNoDamageBackSpeed",
+      "value": true
+    },
+    {
+      "__key": "m_bNoMove",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageState",
+      "value": true
+    },
+    {
+      "__key": "m_fDamageUpFactor",
+      "value": 0
+    },
+    {
+      "__key": "m_bNoDamageStopTime",
+      "value": true
+    },
+    {
+      "__key": "m_bTargetNoChange",
+      "value": true
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 0.03333333333333333
+    },
+    {
+      "__key": "m_listFixedStatusEffect",
+      "value": [
+        "NUSE_IMMUNE_CC",
+        "NUSE_IMMUNE_SKILL_COOLTIME_DAMAGE",
+        "NUSE_IMMUNE_ATTACK_SLOW",
+        "NUSE_IMMUNE_NEGATIVE_STATUS"
+      ]
+    },
+    {
+      "__key": "m_listFixedStatusImmune",
+      "value": [
+        "NUSE_SILENCE"
+      ]
+    },
+    {
+      "__key": "m_listConditionMacro",
+      "value": [
+        {
+          "m_Name": "IS_PATTERN_ON",
+          "1": {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_FIERCE_CORRUPTED_THAGIRION_1"
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_dicTriggerSet",
+      "value": [
+        {
+          "m_Name": "THAGIRION_HYPER_COOLTIME",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "PARALLEL",
+          "m_bProcessWhileDying": true,
+          "m_listNKMEventConsume": [
+            {
+              "m_ConditionV2": [
+                "IS_PATTERN_ON"
+              ],
+              "m_bAnimTime": false,
+              "m_eConsumeType": "HYPER_COOLTIME",
+              "m_fEventTime": 0.03333333333333333,
+              "m_fValue": -5.0,
+              "m_bUseTriggerTargetRange": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_START",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_SeeTarget": true,
+          "m_bForceRight": true,
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_DEName": "DE_NKM_MOB_BOSS_FIERCE_CORRUPTED_THAGIRION_PASSIVE1",
+              "m_bTargetPos": true,
+              "m_OffsetY": 200,
+              "m_OffsetX": 0,
+              "m_OffsetZ": 0,
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_EffectName": "AB_FX_CORRUPTED_THAGIRION_PASSIVE",
+              "m_AnimName": "BASE",
+              "m_bTargetPos": true,
+              "m_OffsetY": 200,
+              "m_OffsetX": 0,
+              "m_OffsetZ": 0,
+              "m_bHold": true,
+              "m_fScaleFactor": 1.0
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+          "m_StateName": "USN_ASTAND",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": true,
+          "m_SeeTarget": true,
+          "m_bForceRight": true,
+          "m_bNoChangeRight": true,
+          "m_StateTimeChangeStateTime": 10,
+          "m_StateTimeChangeState": "USN_DAMAGE_DIE2"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_StateName": "USN_RUN",
+          "m_AnimName": "RUN",
+          "m_bAnimLoop": true,
+          "m_bForceRight": true,
+          "m_bRun": true
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_bAnimLoop": false,
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+          "m_bForceRight": true,
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_DamageEffectID": "DE_NKM_MOB_BOSS_FIERCE_CORRUPTED_THAGIRION_PASSIVE1",
+              "m_ChangeState": "DES_END"
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_bAnimLoop": false,
+          "m_bShowGage": false,
+          "m_bForceRight": true,
+          "m_SeeTarget": true,
+          "m_listNKMEventAttack": [
+            {
+              "m_ConditionTargetV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "DEBUFF_MOB_FIERCE_CORRUPTED_THAGIRION_SUMMON_CHECK"
+                }
+              ],
+              "m_bAnimTime": false,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_fEventTimeMax": 0.16666666666666666,
+              "m_fRangeMin": -350,
+              "m_fRangeMax": 350.0,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_CORRUPTED_THAGIRION_DIE_TEMP"
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+          "m_StateName": "USN_DAMAGE_DIE2",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_bAnimLoop": false,
+          "m_bShowGage": false,
+          "m_bForceRight": true,
+          "m_SeeTarget": true,
+          "m_listNKMEventDie": [
+            {
+              "m_bImmediateDie": true,
+              "m_fEventTime": 0.03333333333333333
+            }
+          ],
+          "m_listNKMEventTrigger": [
+            {
+              "m_Range": [
+                -3000,
+                3000
+              ],
+              "m_ConditionTarget": [
+                {
+                  "Type": "Ally"
+                },
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_MOB_FIERCE_CORRUPTED_THAGIRION_TRIGGER"
+                }
+              ],
+              "m_TargetTrigger": "THAGIRION_HYPER_COOLTIME"
+            }
+          ],
+          "m_listNKMEventDissolve": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.0,
+              "m_fDissolve": 1,
+              "m_fTrackTime": 2
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_ConditionV2": [
+                "IS_PATTERN_ON"
+              ],
+              "m_BuffStrID": "BUFF_MOB_FIERCE_CORRUPTED_THAGIRION_ATK",
+              "m_Overlap": 1,
+              "m_fRange": 6000,
+              "m_bMyTeam": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fForceRespawnZposMin": 0.5,
+    "m_fForceRespawnZposMax": 0.6,
+    "m_UnitSizeX": 140,
+    "m_UnitSizeY": 260,
+    "m_SpriteScale": 1.0,
+    "m_bShowGage": true,
+    "m_fGageOffsetY": 280,
+    "m_SpeedRun": 0,
+    "m_bAirUnit": true,
+    "m_fAirHigh": 230,
+    "m_TargetNearRange": 400,
+    "m_SeeRange": 600,
+    "m_SeeRangeMax": 800,
+    "m_NKC_TEAM_COLOR_TYPE": "NTCT_NO",
+    "m_bNoDamageDownState": true,
+    "m_fDamageBackFactor": 0.0,
+    "m_bNoDamageBackSpeed": true,
+    "m_bNoMove": true,
+    "m_bNoDamageState": true,
+    "m_fDamageUpFactor": 0,
+    "m_bNoDamageStopTime": true,
+    "m_bTargetNoChange": true,
+    "m_fDieCompleteTime": 0.03333333333333333,
+    "m_listFixedStatusEffect": [
+      "NUSE_IMMUNE_CC",
+      "NUSE_IMMUNE_SKILL_COOLTIME_DAMAGE",
+      "NUSE_IMMUNE_ATTACK_SLOW",
+      "NUSE_IMMUNE_NEGATIVE_STATUS"
+    ],
+    "m_listFixedStatusImmune": [
+      "NUSE_SILENCE"
+    ],
+    "m_listConditionMacro": [
+      {
+        "m_Name": "IS_PATTERN_ON",
+        "1": {
+          "Type": "Buff",
+          "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_FIERCE_CORRUPTED_THAGIRION_1"
+        }
+      }
+    ],
+    "m_dicTriggerSet": [
+      {
+        "m_Name": "THAGIRION_HYPER_COOLTIME",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "PARALLEL",
+        "m_bProcessWhileDying": true,
+        "m_listNKMEventConsume": [
+          {
+            "m_ConditionV2": [
+              "IS_PATTERN_ON"
+            ],
+            "m_bAnimTime": false,
+            "m_eConsumeType": "HYPER_COOLTIME",
+            "m_fEventTime": 0.03333333333333333,
+            "m_fValue": -5.0,
+            "m_bUseTriggerTargetRange": true
+          }
+        ]
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_START",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_SeeTarget": true,
+        "m_bForceRight": true,
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_DEName": "DE_NKM_MOB_BOSS_FIERCE_CORRUPTED_THAGIRION_PASSIVE1",
+            "m_bTargetPos": true,
+            "m_OffsetY": 200,
+            "m_OffsetX": 0,
+            "m_OffsetZ": 0,
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_EffectName": "AB_FX_CORRUPTED_THAGIRION_PASSIVE",
+            "m_AnimName": "BASE",
+            "m_bTargetPos": true,
+            "m_OffsetY": 200,
+            "m_OffsetX": 0,
+            "m_OffsetZ": 0,
+            "m_bHold": true,
+            "m_fScaleFactor": 1.0
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+        "m_StateName": "USN_ASTAND",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": true,
+        "m_SeeTarget": true,
+        "m_bForceRight": true,
+        "m_bNoChangeRight": true,
+        "m_StateTimeChangeStateTime": 10,
+        "m_StateTimeChangeState": "USN_DAMAGE_DIE2"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_StateName": "USN_RUN",
+        "m_AnimName": "RUN",
+        "m_bAnimLoop": true,
+        "m_bForceRight": true,
+        "m_bRun": true
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_bAnimLoop": false,
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+        "m_bForceRight": true,
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_DamageEffectID": "DE_NKM_MOB_BOSS_FIERCE_CORRUPTED_THAGIRION_PASSIVE1",
+            "m_ChangeState": "DES_END"
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_bAnimLoop": false,
+        "m_bShowGage": false,
+        "m_bForceRight": true,
+        "m_SeeTarget": true,
+        "m_listNKMEventAttack": [
+          {
+            "m_ConditionTargetV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "DEBUFF_MOB_FIERCE_CORRUPTED_THAGIRION_SUMMON_CHECK"
+              }
+            ],
+            "m_bAnimTime": false,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_fEventTimeMax": 0.16666666666666666,
+            "m_fRangeMin": -350,
+            "m_fRangeMax": 350.0,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_FIERCE_CORRUPTED_THAGIRION_DIE_TEMP"
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+        "m_StateName": "USN_DAMAGE_DIE2",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_bAnimLoop": false,
+        "m_bShowGage": false,
+        "m_bForceRight": true,
+        "m_SeeTarget": true,
+        "m_listNKMEventDie": [
+          {
+            "m_bImmediateDie": true,
+            "m_fEventTime": 0.03333333333333333
+          }
+        ],
+        "m_listNKMEventTrigger": [
+          {
+            "m_Range": [
+              -3000,
+              3000
+            ],
+            "m_ConditionTarget": [
+              {
+                "Type": "Ally"
+              },
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_MOB_FIERCE_CORRUPTED_THAGIRION_TRIGGER"
+              }
+            ],
+            "m_TargetTrigger": "THAGIRION_HYPER_COOLTIME"
+          }
+        ],
+        "m_listNKMEventDissolve": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.0,
+            "m_fDissolve": 1,
+            "m_fTrackTime": 2
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_ConditionV2": [
+              "IS_PATTERN_ON"
+            ],
+            "m_BuffStrID": "BUFF_MOB_FIERCE_CORRUPTED_THAGIRION_ATK",
+            "m_Overlap": 1,
+            "m_fRange": 6000,
+            "m_bMyTeam": true
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

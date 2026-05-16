@@ -1,0 +1,2169 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script\\luac\\LUA_TACTICAL_COMMAND_TEMPLET.lua",
+  "rootName": "m_dicTacticalCommandTempletByID",
+  "recordCount": 45,
+  "records": [
+    {
+      "m_TCID": 1,
+      "m_TCStrID": "TC_DEFAULT_ATTACK",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_ACTIVE",
+      "m_fCoolTime": 80,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_STRIKER",
+      "m_fComboResetCoolTime": 30,
+      "m_StartCost": 3,
+      "m_CostAdd": 1,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_TC_DEFAULT_ATTACK"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_TC_DEFAULT_ATTACK_NAME",
+      "m_lstTCDescMyTeam": [
+        "SI_TC_DEFAULT_ATTACK_DESC"
+      ],
+      "m_TCIconName": "ICON_TC_DEFAULT_ATTACK"
+    },
+    {
+      "m_TCID": 2,
+      "m_TCStrID": "TC_COMBO_DEFAULT_ATTACK",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 80,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_STRIKER",
+      "m_fComboResetCoolTime": 30,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_TC_DEFAULT_ATTACK"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_TC_COMBO_DEFAULT_ATTACK",
+      "m_lstTCDescMyTeam": [
+        "SI_TC_COMBO_DEFAULT_ATTACK_DESC"
+      ],
+      "m_TCIconName": "ICON_TC_DEFAULT_ATTACK"
+    },
+    {
+      "m_TCID": 30101,
+      "m_TCStrID": "TC_OPR_LEE_SUYEON",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 75,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_ComboValue3": "NURT_STRIKER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 15,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_LEE_SUYEON"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_LEE_SUYEON",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_LEE_SUYEON"
+      ],
+      "m_TCIconName": "OPR_LEE_SUYEON"
+    },
+    {
+      "m_TCID": 30201,
+      "m_TCStrID": "TC_OPR_OLIVIA_PARK",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 75,
+      "m_ComboValue1": "NURT_SNIPER",
+      "m_ComboValue2": "NURT_DEFENDER",
+      "m_ComboValue3": "NURT_SUPPORTER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 10,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_OLIVIA_PARK"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_OLIVIA_PARK",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_OLIVIA_PARK"
+      ],
+      "m_TCIconName": "OPR_OLIVIA_PARK"
+    },
+    {
+      "m_TCID": 30301,
+      "m_TCStrID": "TC_OPR_ANASTASIA",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 60,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_SUPPORTER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 17,
+      "m_fActiveTimePerLevel": 1,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_ANASTASIA_VER2_DUMMY",
+        "BUFF_OPR_ANASTASIA_VER2"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_ANASTASIA",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_ANASTASIA"
+      ],
+      "m_TCIconName": "OPR_ANASTASIA",
+      "m_UnitStrID": "NKM_UNIT_OPR_ANASTASIA_SUMMON"
+    },
+    {
+      "m_TCID": 30401,
+      "m_TCStrID": "TC_OPR_CHLOE",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 60,
+      "m_ComboValue1": "NURT_DEFENDER",
+      "m_ComboValue2": "NURT_SNIPER",
+      "m_ComboValue3": "NURT_SUPPORTER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_DEBUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 8,
+      "m_lstBuffStrID_Enemy": [
+        "DEBUFF_OPR_CHLOE",
+        "DEBUFF_OPR_CHLOE_SLEEP"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": true,
+      "m_TCName": "SI_SKILL_NAME_OPR_CHLOE",
+      "m_lstTCDescEnemy": [
+        "SI_SKILL_DESC_OPR_CHLOE"
+      ],
+      "m_TCIconName": "OPR_CHLOE"
+    },
+    {
+      "m_TCID": 30501,
+      "m_TCStrID": "TC_OPR_LENA",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 75,
+      "m_ComboValue1": "NURT_RANGER",
+      "m_ComboValue2": "NURT_SNIPER",
+      "m_ComboValue3": "NURT_STRIKER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 12,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_LENA"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_LENA",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_LENA"
+      ],
+      "m_TCIconName": "OPR_LENA"
+    },
+    {
+      "m_TCID": 30701,
+      "m_TCStrID": "TC_OPR_JANG_WEI",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 75,
+      "m_ComboValue1": "NURT_SNIPER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_ComboValue3": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_DEBUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 10,
+      "m_lstBuffStrID_Enemy": [
+        "DEBUFF_OPR_JANG_WEI"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": true,
+      "m_TCName": "SI_SKILL_NAME_OPR_JANG_WEI",
+      "m_lstTCDescEnemy": [
+        "SI_SKILL_DESC_OPR_JANG_WEI"
+      ],
+      "m_TCIconName": "OPR_JANG_WEI"
+    },
+    {
+      "m_TCID": 30801,
+      "m_TCStrID": "TC_OPR_MARK_FINRI",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 75,
+      "m_ComboValue1": "NURT_RANGER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_ComboValue3": "NURT_SNIPER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 15,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_MARK_FINRI"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_MARK_FINRI",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_MARK_FINRI"
+      ],
+      "m_TCIconName": "OPR_MARK_FINRI"
+    },
+    {
+      "m_TCID": 30901,
+      "m_TCStrID": "TC_OPR_LEE_YOONJUNG",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 75,
+      "m_ComboValue1": "NURT_RANGER",
+      "m_ComboValue2": "NURT_STRIKER",
+      "m_ComboValue3": "NURT_SUPPORTER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 12,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_LEE_YOONJUNG"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_LEE_YOONJUNG",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_LEE_YOONJUNG"
+      ],
+      "m_TCIconName": "OPR_LEE_YOONJUNG"
+    },
+    {
+      "m_TCID": 31001,
+      "m_TCStrID": "TC_OPR_NAHIRIN",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 90,
+      "m_ComboValue1": "NURT_RANGER",
+      "m_ComboValue2": "NURT_STRIKER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 8,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_NAHIRIN"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_NAHIRIN",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_NAHIRIN"
+      ],
+      "m_TCIconName": "OPR_NAHIRIN"
+    },
+    {
+      "m_TCID": 31101,
+      "m_TCStrID": "TC_OPR_REPLACER_COMMANDAR",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 75,
+      "m_ComboValue1": "NURT_DEFENDER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_ComboValue3": "NURT_SNIPER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 8,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_REPLACER_COMMANDAR"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_REPLACER_COMMANDAR",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_REPLACER_COMMANDAR"
+      ],
+      "m_TCIconName": "OPR_REPLACER_COMMANDAR"
+    },
+    {
+      "m_TCID": 31201,
+      "m_TCStrID": "TC_OPR_ALICIA",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 75,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_ComboValue3": "NURT_SNIPER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_DEBUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 8,
+      "m_lstBuffStrID_Enemy": [
+        "DEBUFF_OPR_ALICIA"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": true,
+      "m_TCName": "SI_SKILL_NAME_OPR_ALICIA",
+      "m_lstTCDescEnemy": [
+        "SI_SKILL_DESC_OPR_ALICIA"
+      ],
+      "m_TCIconName": "OPR_ALICIA"
+    },
+    {
+      "m_TCID": 31301,
+      "m_TCStrID": "TC_OPR_ACADEMY_FRESHMAN",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 75,
+      "m_ComboValue1": "NURT_DEFENDER",
+      "m_ComboValue2": "NURT_STRIKER",
+      "m_ComboValue3": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 8,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_ACADEMY_FRESHMAN"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_ACADEMY_FRESHMAN",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_ACADEMY_FRESHMAN"
+      ],
+      "m_TCIconName": "OPR_ACADEMY_FRESHMAN"
+    },
+    {
+      "m_TCID": 31401,
+      "m_TCStrID": "TC_OPR_AUTOMATA",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 75,
+      "m_ComboValue1": "NURT_DEFENDER",
+      "m_ComboValue2": "NURT_STRIKER",
+      "m_ComboValue3": "NURT_SUPPORTER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 8,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_AUTOMATA"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_AUTOMATA",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_AUTOMATA"
+      ],
+      "m_TCIconName": "OPR_AUTOMATA"
+    },
+    {
+      "m_TCID": 30601,
+      "m_TCStrID": "TC_OPR_KIMHANA",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 65,
+      "m_ComboValue1": "NURT_RANGER",
+      "m_ComboValue2": "NURT_SUPPORTER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 15,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_KIMHANA"
+      ],
+      "m_fCostPump": 1,
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_KIMHANA",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_KIMHANA"
+      ],
+      "m_TCIconName": "OPR_KIMHANA"
+    },
+    {
+      "m_TCID": 31501,
+      "m_TCStrID": "TC_OPR_OLD_ALICIA",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 40,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_STRIKER",
+      "m_ComboValue3": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 16,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_MONEKA_VER2"
+      ],
+      "m_lstBuffStrID_Enemy": [
+        "DEBUFF_OPR_MONEKA_VER2"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_OLD_ALICIA",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_OLD_ALICIA"
+      ],
+      "m_TCIconName": "OPR_OLD_ALICIA"
+    },
+    {
+      "m_TCID": 31601,
+      "m_TCStrID": "TC_OPR_REPLACER_KING",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 75,
+      "m_ComboValue1": "NURT_DEFENDER",
+      "m_ComboValue2": "NURT_SNIPER",
+      "m_ComboValue3": "NURT_STRIKER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 15,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_REPLACER_KING"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": true,
+      "m_TCName": "SI_SKILL_NAME_OPR_REPLACER_KING",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_REPLACER_KING"
+      ],
+      "m_TCIconName": "OPR_REPLACER_KING"
+    },
+    {
+      "m_TCID": 31701,
+      "m_TCStrID": "TC_OPR_RAS_TOWER",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 65,
+      "m_ComboValue1": "NURT_DEFENDER",
+      "m_ComboValue2": "NURT_STRIKER",
+      "m_ComboValue3": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 10,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_RAS_TOWER"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": true,
+      "m_TCName": "SI_SKILL_NAME_OPR_RAS_TOWER",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_RAS_TOWER"
+      ],
+      "m_TCIconName": "OPR_RAS_TOWER"
+    },
+    {
+      "m_TCID": 31801,
+      "m_TCStrID": "TC_OPR_MASTER",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 60,
+      "m_ComboValue1": "NURT_DEFENDER",
+      "m_ComboValue2": "NURT_STRIKER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 4.4,
+      "m_fActiveTimePerLevel": 0.8,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_MASTER"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": true,
+      "m_TCName": "SI_SKILL_NAME_OPR_MASTER",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_MASTER"
+      ],
+      "m_TCIconName": "OPR_MASTER"
+    },
+    {
+      "m_TCID": 31901,
+      "m_TCStrID": "TC_OPR_SERINA_SUMMER",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 60,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_SUPPORTER",
+      "m_ComboValue3": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_DEBUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 6,
+      "m_fActiveTimePerLevel": 1,
+      "m_lstBuffStrID_Enemy": [
+        "DEBUFF_OPR_SERINA_SUMMER"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": true,
+      "m_TCName": "SI_SKILL_NAME_OPR_SERINA_SUMMER",
+      "m_lstTCDescEnemy": [
+        "SI_SKILL_DESC_OPR_SERINA_SUMMER"
+      ],
+      "m_TCIconName": "OPR_SERINA_SUMMER"
+    },
+    {
+      "m_TCID": 32001,
+      "m_TCStrID": "TC_OPR_GRAFFITI",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 60,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_ComboValue3": "NURT_SNIPER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 14,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_GRAFFITI_VER2_DUMMY",
+        "BUFF_OPR_GRAFFITI_VER2"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_GRAFFITI",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_GRAFFITI"
+      ],
+      "m_TCIconName": "OPR_GRAFFITI",
+      "m_UnitStrID": "NKM_UNIT_OPR_GRAFFITI_SUMMON"
+    },
+    {
+      "m_TCID": 32101,
+      "m_TCStrID": "TC_OPR_MOMO",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 60,
+      "m_ComboValue1": "NURT_SUPPORTER",
+      "m_ComboValue2": "NURT_DEFENDER",
+      "m_ComboValue3": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_DEBUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 8.5,
+      "m_fActiveTimePerLevel": 0.5,
+      "m_lstBuffStrID_Enemy": [
+        "DEBUFF_OPR_MOMO"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": true,
+      "m_TCName": "SI_SKILL_NAME_OPR_MOMO",
+      "m_lstTCDescEnemy": [
+        "SI_SKILL_DESC_OPR_MOMO"
+      ],
+      "m_TCIconName": "OPR_MOMO"
+    },
+    {
+      "m_TCID": 32201,
+      "m_TCStrID": "TC_OPR_MOTHER",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 180,
+      "m_ComboValue1": "NURT_SUPPORTER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 180,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_MOTHER_VER2_DUMMY"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_MOTHER",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_MOTHER"
+      ],
+      "m_TCIconName": "OPR_MOTHER",
+      "m_UnitStrID": "NKM_UNIT_OPR_MOTHER_SUMMON"
+    },
+    {
+      "m_TCID": 32301,
+      "m_TCStrID": "TC_OPR_REPLACER_LOOK",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 60,
+      "m_ComboValue1": "NURT_DEFENDER",
+      "m_ComboValue2": "NURT_SUPPORTER",
+      "m_ComboValue3": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 15,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_REPLACER_LOOK_VER2"
+      ],
+      "m_lstBuffStrID_Enemy": [
+        "DEBUFF_OPR_REPLACER_LOOK_VER2"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_REPLACER_LOOK",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_REPLACER_LOOK"
+      ],
+      "m_TCIconName": "OPR_REPLACER_LOOK"
+    },
+    {
+      "m_TCID": 32401,
+      "m_TCStrID": "TC_OPR_VILLETTA",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 65,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 10,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_VILLETTA_1",
+        "BUFF_OPR_VILLETTA_2"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_VILLETTA",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_VILLETTA1",
+        "SI_SKILL_DESC_OPR_VILLETTA2"
+      ],
+      "m_TCIconName": "OPR_VILLETTA"
+    },
+    {
+      "m_TCID": 32501,
+      "m_TCStrID": "TC_OPR_DAIN",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 70,
+      "m_ComboValue1": "NURT_DEFENDER",
+      "m_ComboValue2": "NURT_SNIPER",
+      "m_ComboValue3": "NURT_STRIKER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 12,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_DAIN_1",
+        "BUFF_OPR_DAIN_2"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_DAIN",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_DAIN1",
+        "SI_SKILL_DESC_OPR_DAIN2"
+      ],
+      "m_TCIconName": "OPR_DAIN"
+    },
+    {
+      "m_TCID": 32601,
+      "m_TCStrID": "TC_OPR_VIVIEN",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 54,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_SNIPER",
+      "m_ComboValue3": "NURT_SNIPER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 15,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_VIVIEN_1",
+        "BUFF_OPR_VIVIEN_2"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_VIVIEN",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_VIVIEN1",
+        "SI_SKILL_DESC_OPR_VIVIEN2"
+      ],
+      "m_TCIconName": "OPR_VIVIEN"
+    },
+    {
+      "m_TCID": 32701,
+      "m_TCStrID": "TC_OPR_SYSOP",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 85,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_DEFENDER",
+      "m_ComboValue3": "NURT_SUPPORTER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 10,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_SYSOP"
+      ],
+      "m_fCostPump": 0.6,
+      "m_fCostPumpPerLevel": 0.2,
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_SYSOP",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_SYSOP"
+      ],
+      "m_TCIconName": "OPR_SYSOP"
+    },
+    {
+      "m_TCID": 32711,
+      "m_TCStrID": "TC_OPR_MITCH",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 60,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_STRIKER",
+      "m_ComboValue3": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 1,
+      "m_fActiveTimePerLevel": 2,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_MITCH_3_COST",
+        "BUFF_OPR_MITCH_4_COST"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_MITCH",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_MITCH1",
+        "SI_SKILL_DESC_OPR_MITCH2"
+      ],
+      "m_TCIconName": "OPR_MITCH"
+    },
+    {
+      "m_TCID": 32712,
+      "m_TCStrID": "TC_OPR_CANARY_STAFF",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 54,
+      "m_ComboValue1": "NURT_SUPPORTER",
+      "m_ComboValue2": "NURT_SNIPER",
+      "m_ComboValue3": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 12,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_CANARY_STAFF_A"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_CANARY_STAFF",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_CANARY_STAFF"
+      ],
+      "m_TCIconName": "OPR_CANARY_STAFF"
+    },
+    {
+      "m_TCID": 32713,
+      "m_TCStrID": "TC_OPR_SHASHA",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 75,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_ComboValue3": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 12,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_SHASHA"
+      ],
+      "m_fCostPump": 0.45,
+      "m_fCostPumpPerLevel": 0.15,
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_SHASHA",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_SHASHA"
+      ],
+      "m_TCIconName": "OPR_SHASHA"
+    },
+    {
+      "m_TCID": 32714,
+      "m_TCStrID": "TC_OPR_ROOT_DRUID",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 60,
+      "m_ComboValue1": "NURT_DEFENDER",
+      "m_ComboValue2": "NURT_SUPPORTER",
+      "m_ComboValue3": "NURT_STRIKER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 16,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_ROOT_DRUID_VER2_A"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_ROOT_DRUID",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_ROOT_DRUID"
+      ],
+      "m_TCIconName": "OPR_ROOT_DRUID"
+    },
+    {
+      "m_TCID": 32715,
+      "m_TCStrID": "TC_OPR_SPEAKER",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 90,
+      "m_ComboValue1": "NURT_DEFENDER",
+      "m_ComboValue2": "NURT_SNIPER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 8,
+      "m_fActiveTimePerLevel": 2,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_SPEAKER_1"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_SPEAKER",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_SPEAKER"
+      ],
+      "m_TCIconName": "OPR_SPEAKER"
+    },
+    {
+      "m_TCID": 32716,
+      "m_TCStrID": "TC_OPR_ASHA",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 90,
+      "m_ComboValue1": "NURT_DEFENDER",
+      "m_ComboValue2": "NURT_SUPPORTER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_DEBUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 12,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_ASHA_A"
+      ],
+      "m_lstBuffStrID_Enemy": [
+        "DEBUFF_OPR_ASHA"
+      ],
+      "m_lstBuffStrID_EnemyPVP": [
+        "DEBUFF_OPR_ASHA_PVP"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_ASHA",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_ASHA"
+      ],
+      "m_TCIconName": "OPR_ASHA"
+    },
+    {
+      "m_TCID": 32717,
+      "m_TCStrID": "TC_OPR_HESTIA",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 60,
+      "m_ComboValue1": "NURT_SUPPORTER",
+      "m_ComboValue2": "NURT_STRIKER",
+      "m_ComboValue3": "NURT_STRIKER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 16,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_HESTIA"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_HESTIA",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_HESTIA"
+      ],
+      "m_TCIconName": "OPR_HESTIA"
+    },
+    {
+      "m_TCID": 32718,
+      "m_TCStrID": "TC_OPR_DAIN_PR",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 60,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_ComboValue3": "NURT_SNIPER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 5,
+      "m_fActiveTimePerLevel": 1.6,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_DAIN_PR"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_DAIN_PR",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_DAIN_PR"
+      ],
+      "m_TCIconName": "OPR_DAIN_PR"
+    },
+    {
+      "m_TCID": 32719,
+      "m_TCStrID": "TC_OPR_BOOK",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 60,
+      "m_ComboValue1": "NURT_RANGER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_ComboValue3": "NURT_SNIPER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 12,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_BOOK"
+      ],
+      "m_lstBuffStrID_Enemy": [
+        "DEBUFF_OPR_BOOK"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_BOOK",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_BOOK"
+      ],
+      "m_TCIconName": "OPR_BOOK"
+    },
+    {
+      "m_TCID": 32720,
+      "m_TCStrID": "TC_OPR_AGNES",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 15,
+      "m_ComboValue1": "NURT_SNIPER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 20,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_AGNES_DUMMY",
+        "BUFF_OPR_AGNES_COST3",
+        "BUFF_OPR_AGNES_COST4"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_AGNES",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_AGNES"
+      ],
+      "m_TCIconName": "OPR_AGNES"
+    },
+    {
+      "m_TCID": 32721,
+      "m_TCStrID": "TC_OPR_RAT",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 60,
+      "m_ComboValue1": "NURT_DEFENDER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_ComboValue3": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 12,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_RAT",
+        "BUFF_OPR_RAT_COST4"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_RAT",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_RAT"
+      ],
+      "m_TCIconName": "OPR_RAT"
+    },
+    {
+      "m_TCID": 32722,
+      "m_TCStrID": "TC_OPR_GRACE",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 20,
+      "m_ComboValue1": "NURT_RANGER",
+      "m_ComboValue2": "NURT_SNIPER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_DEBUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 8,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_GRACE_DUMMY"
+      ],
+      "m_lstBuffStrID_Enemy": [
+        "DEBUFF_OPR_GRACE"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_GRACE",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_GRACE"
+      ],
+      "m_TCIconName": "OPR_GRACE",
+      "m_UnitStrID": "NKM_UNIT_OPR_GRACE_SUMMON"
+    },
+    {
+      "m_TCID": 32723,
+      "m_TCStrID": "TC_OPR_LEEJISOO",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 40,
+      "m_ComboValue1": "NURT_SUPPORTER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_DEBUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 5,
+      "m_fActiveTimePerLevel": 1,
+      "m_lstBuffStrID_Enemy": [
+        "DEBUFF_OPR_JISOO_DAMAGE_INCREASE",
+        "DEBUFF_OPR_JISOO_DISPEL",
+        "DEBUFF_OPR_JISOO_DAMAGE_INCREASE_COST5",
+        "",
+        "DEBUFF_OPR_JISOO_DISPEL_COST5"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": true,
+      "m_TCName": "SI_SKILL_NAME_OPR_LEEJISOO",
+      "m_lstTCDescEnemy": [
+        "SI_SKILL_DESC_OPR_LEEJISOO"
+      ],
+      "m_TCIconName": "OPR_LEEJISOO"
+    },
+    {
+      "m_TCID": 32724,
+      "m_TCStrID": "TC_OPR_NATALIA",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 40,
+      "m_ComboValue1": "NURT_SNIPER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 16,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_NATALIA"
+      ],
+      "m_lstBuffStrID_Enemy": [
+        "DEBUFF_OPR_NATALIA"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_NATALIA",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_NATALIA"
+      ],
+      "m_TCIconName": "OPR_NATALIA",
+      "m_UnitStrID": "NKM_UNIT_OPR_NATALIA_SUMMON"
+    },
+    {
+      "m_TCID": 32725,
+      "m_TCStrID": "TC_OPR_DOGABI",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 65,
+      "m_ComboValue1": "NURT_SUPPORTER",
+      "m_ComboValue2": "NURT_SNIPER",
+      "m_ComboValue3": "NURT_DEFENDER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 16,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_DOGABI_TEAM_NOT_FRONT",
+        "BUFF_OPR_DOGABI_TEAM_FRONT"
+      ],
+      "m_lstBuffStrID_Enemy": [
+        "DEBUFF_OPR_DOGABI_ENEMY"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_DOGABI",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_DOGABI"
+      ],
+      "m_TCIconName": "OPR_DOGABI"
+    },
+    {
+      "m_TCID": 32726,
+      "m_TCStrID": "TC_OPR_CREW",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 40,
+      "m_ComboValue1": "NURT_SUPPORTER",
+      "m_ComboValue2": "NURT_SUPPORTER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 6,
+      "m_fActiveTimePerLevel": 2,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_CREW",
+        "BUFF_OPR_CREW_DEFENDER"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_CREW",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_CREW"
+      ],
+      "m_TCIconName": "OPR_CREW",
+      "m_UnitStrID": "NKM_UNIT_OPR_CREW_SUMMON"
+    }
+  ],
+  "root": [
+    {
+      "m_TCID": 1,
+      "m_TCStrID": "TC_DEFAULT_ATTACK",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_ACTIVE",
+      "m_fCoolTime": 80,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_STRIKER",
+      "m_fComboResetCoolTime": 30,
+      "m_StartCost": 3,
+      "m_CostAdd": 1,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_TC_DEFAULT_ATTACK"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_TC_DEFAULT_ATTACK_NAME",
+      "m_lstTCDescMyTeam": [
+        "SI_TC_DEFAULT_ATTACK_DESC"
+      ],
+      "m_TCIconName": "ICON_TC_DEFAULT_ATTACK"
+    },
+    {
+      "m_TCID": 2,
+      "m_TCStrID": "TC_COMBO_DEFAULT_ATTACK",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 80,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_STRIKER",
+      "m_fComboResetCoolTime": 30,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_TC_DEFAULT_ATTACK"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_TC_COMBO_DEFAULT_ATTACK",
+      "m_lstTCDescMyTeam": [
+        "SI_TC_COMBO_DEFAULT_ATTACK_DESC"
+      ],
+      "m_TCIconName": "ICON_TC_DEFAULT_ATTACK"
+    },
+    {
+      "m_TCID": 30101,
+      "m_TCStrID": "TC_OPR_LEE_SUYEON",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 75,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_ComboValue3": "NURT_STRIKER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 15,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_LEE_SUYEON"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_LEE_SUYEON",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_LEE_SUYEON"
+      ],
+      "m_TCIconName": "OPR_LEE_SUYEON"
+    },
+    {
+      "m_TCID": 30201,
+      "m_TCStrID": "TC_OPR_OLIVIA_PARK",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 75,
+      "m_ComboValue1": "NURT_SNIPER",
+      "m_ComboValue2": "NURT_DEFENDER",
+      "m_ComboValue3": "NURT_SUPPORTER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 10,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_OLIVIA_PARK"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_OLIVIA_PARK",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_OLIVIA_PARK"
+      ],
+      "m_TCIconName": "OPR_OLIVIA_PARK"
+    },
+    {
+      "m_TCID": 30301,
+      "m_TCStrID": "TC_OPR_ANASTASIA",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 60,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_SUPPORTER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 17,
+      "m_fActiveTimePerLevel": 1,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_ANASTASIA_VER2_DUMMY",
+        "BUFF_OPR_ANASTASIA_VER2"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_ANASTASIA",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_ANASTASIA"
+      ],
+      "m_TCIconName": "OPR_ANASTASIA",
+      "m_UnitStrID": "NKM_UNIT_OPR_ANASTASIA_SUMMON"
+    },
+    {
+      "m_TCID": 30401,
+      "m_TCStrID": "TC_OPR_CHLOE",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 60,
+      "m_ComboValue1": "NURT_DEFENDER",
+      "m_ComboValue2": "NURT_SNIPER",
+      "m_ComboValue3": "NURT_SUPPORTER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_DEBUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 8,
+      "m_lstBuffStrID_Enemy": [
+        "DEBUFF_OPR_CHLOE",
+        "DEBUFF_OPR_CHLOE_SLEEP"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": true,
+      "m_TCName": "SI_SKILL_NAME_OPR_CHLOE",
+      "m_lstTCDescEnemy": [
+        "SI_SKILL_DESC_OPR_CHLOE"
+      ],
+      "m_TCIconName": "OPR_CHLOE"
+    },
+    {
+      "m_TCID": 30501,
+      "m_TCStrID": "TC_OPR_LENA",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 75,
+      "m_ComboValue1": "NURT_RANGER",
+      "m_ComboValue2": "NURT_SNIPER",
+      "m_ComboValue3": "NURT_STRIKER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 12,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_LENA"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_LENA",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_LENA"
+      ],
+      "m_TCIconName": "OPR_LENA"
+    },
+    {
+      "m_TCID": 30701,
+      "m_TCStrID": "TC_OPR_JANG_WEI",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 75,
+      "m_ComboValue1": "NURT_SNIPER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_ComboValue3": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_DEBUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 10,
+      "m_lstBuffStrID_Enemy": [
+        "DEBUFF_OPR_JANG_WEI"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": true,
+      "m_TCName": "SI_SKILL_NAME_OPR_JANG_WEI",
+      "m_lstTCDescEnemy": [
+        "SI_SKILL_DESC_OPR_JANG_WEI"
+      ],
+      "m_TCIconName": "OPR_JANG_WEI"
+    },
+    {
+      "m_TCID": 30801,
+      "m_TCStrID": "TC_OPR_MARK_FINRI",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 75,
+      "m_ComboValue1": "NURT_RANGER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_ComboValue3": "NURT_SNIPER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 15,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_MARK_FINRI"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_MARK_FINRI",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_MARK_FINRI"
+      ],
+      "m_TCIconName": "OPR_MARK_FINRI"
+    },
+    {
+      "m_TCID": 30901,
+      "m_TCStrID": "TC_OPR_LEE_YOONJUNG",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 75,
+      "m_ComboValue1": "NURT_RANGER",
+      "m_ComboValue2": "NURT_STRIKER",
+      "m_ComboValue3": "NURT_SUPPORTER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 12,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_LEE_YOONJUNG"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_LEE_YOONJUNG",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_LEE_YOONJUNG"
+      ],
+      "m_TCIconName": "OPR_LEE_YOONJUNG"
+    },
+    {
+      "m_TCID": 31001,
+      "m_TCStrID": "TC_OPR_NAHIRIN",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 90,
+      "m_ComboValue1": "NURT_RANGER",
+      "m_ComboValue2": "NURT_STRIKER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 8,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_NAHIRIN"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_NAHIRIN",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_NAHIRIN"
+      ],
+      "m_TCIconName": "OPR_NAHIRIN"
+    },
+    {
+      "m_TCID": 31101,
+      "m_TCStrID": "TC_OPR_REPLACER_COMMANDAR",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 75,
+      "m_ComboValue1": "NURT_DEFENDER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_ComboValue3": "NURT_SNIPER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 8,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_REPLACER_COMMANDAR"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_REPLACER_COMMANDAR",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_REPLACER_COMMANDAR"
+      ],
+      "m_TCIconName": "OPR_REPLACER_COMMANDAR"
+    },
+    {
+      "m_TCID": 31201,
+      "m_TCStrID": "TC_OPR_ALICIA",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 75,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_ComboValue3": "NURT_SNIPER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_DEBUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 8,
+      "m_lstBuffStrID_Enemy": [
+        "DEBUFF_OPR_ALICIA"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": true,
+      "m_TCName": "SI_SKILL_NAME_OPR_ALICIA",
+      "m_lstTCDescEnemy": [
+        "SI_SKILL_DESC_OPR_ALICIA"
+      ],
+      "m_TCIconName": "OPR_ALICIA"
+    },
+    {
+      "m_TCID": 31301,
+      "m_TCStrID": "TC_OPR_ACADEMY_FRESHMAN",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 75,
+      "m_ComboValue1": "NURT_DEFENDER",
+      "m_ComboValue2": "NURT_STRIKER",
+      "m_ComboValue3": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 8,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_ACADEMY_FRESHMAN"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_ACADEMY_FRESHMAN",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_ACADEMY_FRESHMAN"
+      ],
+      "m_TCIconName": "OPR_ACADEMY_FRESHMAN"
+    },
+    {
+      "m_TCID": 31401,
+      "m_TCStrID": "TC_OPR_AUTOMATA",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 75,
+      "m_ComboValue1": "NURT_DEFENDER",
+      "m_ComboValue2": "NURT_STRIKER",
+      "m_ComboValue3": "NURT_SUPPORTER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 8,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_AUTOMATA"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_AUTOMATA",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_AUTOMATA"
+      ],
+      "m_TCIconName": "OPR_AUTOMATA"
+    },
+    {
+      "m_TCID": 30601,
+      "m_TCStrID": "TC_OPR_KIMHANA",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 65,
+      "m_ComboValue1": "NURT_RANGER",
+      "m_ComboValue2": "NURT_SUPPORTER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 15,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_KIMHANA"
+      ],
+      "m_fCostPump": 1,
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_KIMHANA",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_KIMHANA"
+      ],
+      "m_TCIconName": "OPR_KIMHANA"
+    },
+    {
+      "m_TCID": 31501,
+      "m_TCStrID": "TC_OPR_OLD_ALICIA",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 40,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_STRIKER",
+      "m_ComboValue3": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 16,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_MONEKA_VER2"
+      ],
+      "m_lstBuffStrID_Enemy": [
+        "DEBUFF_OPR_MONEKA_VER2"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_OLD_ALICIA",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_OLD_ALICIA"
+      ],
+      "m_TCIconName": "OPR_OLD_ALICIA"
+    },
+    {
+      "m_TCID": 31601,
+      "m_TCStrID": "TC_OPR_REPLACER_KING",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 75,
+      "m_ComboValue1": "NURT_DEFENDER",
+      "m_ComboValue2": "NURT_SNIPER",
+      "m_ComboValue3": "NURT_STRIKER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 15,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_REPLACER_KING"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": true,
+      "m_TCName": "SI_SKILL_NAME_OPR_REPLACER_KING",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_REPLACER_KING"
+      ],
+      "m_TCIconName": "OPR_REPLACER_KING"
+    },
+    {
+      "m_TCID": 31701,
+      "m_TCStrID": "TC_OPR_RAS_TOWER",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 65,
+      "m_ComboValue1": "NURT_DEFENDER",
+      "m_ComboValue2": "NURT_STRIKER",
+      "m_ComboValue3": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 10,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_RAS_TOWER"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": true,
+      "m_TCName": "SI_SKILL_NAME_OPR_RAS_TOWER",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_RAS_TOWER"
+      ],
+      "m_TCIconName": "OPR_RAS_TOWER"
+    },
+    {
+      "m_TCID": 31801,
+      "m_TCStrID": "TC_OPR_MASTER",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 60,
+      "m_ComboValue1": "NURT_DEFENDER",
+      "m_ComboValue2": "NURT_STRIKER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 4.4,
+      "m_fActiveTimePerLevel": 0.8,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_MASTER"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": true,
+      "m_TCName": "SI_SKILL_NAME_OPR_MASTER",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_MASTER"
+      ],
+      "m_TCIconName": "OPR_MASTER"
+    },
+    {
+      "m_TCID": 31901,
+      "m_TCStrID": "TC_OPR_SERINA_SUMMER",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 60,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_SUPPORTER",
+      "m_ComboValue3": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_DEBUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 6,
+      "m_fActiveTimePerLevel": 1,
+      "m_lstBuffStrID_Enemy": [
+        "DEBUFF_OPR_SERINA_SUMMER"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": true,
+      "m_TCName": "SI_SKILL_NAME_OPR_SERINA_SUMMER",
+      "m_lstTCDescEnemy": [
+        "SI_SKILL_DESC_OPR_SERINA_SUMMER"
+      ],
+      "m_TCIconName": "OPR_SERINA_SUMMER"
+    },
+    {
+      "m_TCID": 32001,
+      "m_TCStrID": "TC_OPR_GRAFFITI",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 60,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_ComboValue3": "NURT_SNIPER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 14,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_GRAFFITI_VER2_DUMMY",
+        "BUFF_OPR_GRAFFITI_VER2"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_GRAFFITI",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_GRAFFITI"
+      ],
+      "m_TCIconName": "OPR_GRAFFITI",
+      "m_UnitStrID": "NKM_UNIT_OPR_GRAFFITI_SUMMON"
+    },
+    {
+      "m_TCID": 32101,
+      "m_TCStrID": "TC_OPR_MOMO",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 60,
+      "m_ComboValue1": "NURT_SUPPORTER",
+      "m_ComboValue2": "NURT_DEFENDER",
+      "m_ComboValue3": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_DEBUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 8.5,
+      "m_fActiveTimePerLevel": 0.5,
+      "m_lstBuffStrID_Enemy": [
+        "DEBUFF_OPR_MOMO"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": true,
+      "m_TCName": "SI_SKILL_NAME_OPR_MOMO",
+      "m_lstTCDescEnemy": [
+        "SI_SKILL_DESC_OPR_MOMO"
+      ],
+      "m_TCIconName": "OPR_MOMO"
+    },
+    {
+      "m_TCID": 32201,
+      "m_TCStrID": "TC_OPR_MOTHER",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 180,
+      "m_ComboValue1": "NURT_SUPPORTER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 180,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_MOTHER_VER2_DUMMY"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_MOTHER",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_MOTHER"
+      ],
+      "m_TCIconName": "OPR_MOTHER",
+      "m_UnitStrID": "NKM_UNIT_OPR_MOTHER_SUMMON"
+    },
+    {
+      "m_TCID": 32301,
+      "m_TCStrID": "TC_OPR_REPLACER_LOOK",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 60,
+      "m_ComboValue1": "NURT_DEFENDER",
+      "m_ComboValue2": "NURT_SUPPORTER",
+      "m_ComboValue3": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 15,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_REPLACER_LOOK_VER2"
+      ],
+      "m_lstBuffStrID_Enemy": [
+        "DEBUFF_OPR_REPLACER_LOOK_VER2"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_REPLACER_LOOK",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_REPLACER_LOOK"
+      ],
+      "m_TCIconName": "OPR_REPLACER_LOOK"
+    },
+    {
+      "m_TCID": 32401,
+      "m_TCStrID": "TC_OPR_VILLETTA",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 65,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 10,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_VILLETTA_1",
+        "BUFF_OPR_VILLETTA_2"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_VILLETTA",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_VILLETTA1",
+        "SI_SKILL_DESC_OPR_VILLETTA2"
+      ],
+      "m_TCIconName": "OPR_VILLETTA"
+    },
+    {
+      "m_TCID": 32501,
+      "m_TCStrID": "TC_OPR_DAIN",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 70,
+      "m_ComboValue1": "NURT_DEFENDER",
+      "m_ComboValue2": "NURT_SNIPER",
+      "m_ComboValue3": "NURT_STRIKER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 12,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_DAIN_1",
+        "BUFF_OPR_DAIN_2"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_DAIN",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_DAIN1",
+        "SI_SKILL_DESC_OPR_DAIN2"
+      ],
+      "m_TCIconName": "OPR_DAIN"
+    },
+    {
+      "m_TCID": 32601,
+      "m_TCStrID": "TC_OPR_VIVIEN",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 54,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_SNIPER",
+      "m_ComboValue3": "NURT_SNIPER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 15,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_VIVIEN_1",
+        "BUFF_OPR_VIVIEN_2"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_VIVIEN",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_VIVIEN1",
+        "SI_SKILL_DESC_OPR_VIVIEN2"
+      ],
+      "m_TCIconName": "OPR_VIVIEN"
+    },
+    {
+      "m_TCID": 32701,
+      "m_TCStrID": "TC_OPR_SYSOP",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 85,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_DEFENDER",
+      "m_ComboValue3": "NURT_SUPPORTER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 10,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_SYSOP"
+      ],
+      "m_fCostPump": 0.6,
+      "m_fCostPumpPerLevel": 0.2,
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_SYSOP",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_SYSOP"
+      ],
+      "m_TCIconName": "OPR_SYSOP"
+    },
+    {
+      "m_TCID": 32711,
+      "m_TCStrID": "TC_OPR_MITCH",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 60,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_STRIKER",
+      "m_ComboValue3": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 1,
+      "m_fActiveTimePerLevel": 2,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_MITCH_3_COST",
+        "BUFF_OPR_MITCH_4_COST"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_MITCH",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_MITCH1",
+        "SI_SKILL_DESC_OPR_MITCH2"
+      ],
+      "m_TCIconName": "OPR_MITCH"
+    },
+    {
+      "m_TCID": 32712,
+      "m_TCStrID": "TC_OPR_CANARY_STAFF",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 54,
+      "m_ComboValue1": "NURT_SUPPORTER",
+      "m_ComboValue2": "NURT_SNIPER",
+      "m_ComboValue3": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 12,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_CANARY_STAFF_A"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_CANARY_STAFF",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_CANARY_STAFF"
+      ],
+      "m_TCIconName": "OPR_CANARY_STAFF"
+    },
+    {
+      "m_TCID": 32713,
+      "m_TCStrID": "TC_OPR_SHASHA",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 75,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_ComboValue3": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 12,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_SHASHA"
+      ],
+      "m_fCostPump": 0.45,
+      "m_fCostPumpPerLevel": 0.15,
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_SHASHA",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_SHASHA"
+      ],
+      "m_TCIconName": "OPR_SHASHA"
+    },
+    {
+      "m_TCID": 32714,
+      "m_TCStrID": "TC_OPR_ROOT_DRUID",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 60,
+      "m_ComboValue1": "NURT_DEFENDER",
+      "m_ComboValue2": "NURT_SUPPORTER",
+      "m_ComboValue3": "NURT_STRIKER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 16,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_ROOT_DRUID_VER2_A"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_ROOT_DRUID",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_ROOT_DRUID"
+      ],
+      "m_TCIconName": "OPR_ROOT_DRUID"
+    },
+    {
+      "m_TCID": 32715,
+      "m_TCStrID": "TC_OPR_SPEAKER",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 90,
+      "m_ComboValue1": "NURT_DEFENDER",
+      "m_ComboValue2": "NURT_SNIPER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 8,
+      "m_fActiveTimePerLevel": 2,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_SPEAKER_1"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_SPEAKER",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_SPEAKER"
+      ],
+      "m_TCIconName": "OPR_SPEAKER"
+    },
+    {
+      "m_TCID": 32716,
+      "m_TCStrID": "TC_OPR_ASHA",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 90,
+      "m_ComboValue1": "NURT_DEFENDER",
+      "m_ComboValue2": "NURT_SUPPORTER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_DEBUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 12,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_ASHA_A"
+      ],
+      "m_lstBuffStrID_Enemy": [
+        "DEBUFF_OPR_ASHA"
+      ],
+      "m_lstBuffStrID_EnemyPVP": [
+        "DEBUFF_OPR_ASHA_PVP"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_ASHA",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_ASHA"
+      ],
+      "m_TCIconName": "OPR_ASHA"
+    },
+    {
+      "m_TCID": 32717,
+      "m_TCStrID": "TC_OPR_HESTIA",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 60,
+      "m_ComboValue1": "NURT_SUPPORTER",
+      "m_ComboValue2": "NURT_STRIKER",
+      "m_ComboValue3": "NURT_STRIKER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 16,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_HESTIA"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_HESTIA",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_HESTIA"
+      ],
+      "m_TCIconName": "OPR_HESTIA"
+    },
+    {
+      "m_TCID": 32718,
+      "m_TCStrID": "TC_OPR_DAIN_PR",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 60,
+      "m_ComboValue1": "NURT_STRIKER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_ComboValue3": "NURT_SNIPER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 5,
+      "m_fActiveTimePerLevel": 1.6,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_DAIN_PR"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_DAIN_PR",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_DAIN_PR"
+      ],
+      "m_TCIconName": "OPR_DAIN_PR"
+    },
+    {
+      "m_TCID": 32719,
+      "m_TCStrID": "TC_OPR_BOOK",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 60,
+      "m_ComboValue1": "NURT_RANGER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_ComboValue3": "NURT_SNIPER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 12,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_BOOK"
+      ],
+      "m_lstBuffStrID_Enemy": [
+        "DEBUFF_OPR_BOOK"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_BOOK",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_BOOK"
+      ],
+      "m_TCIconName": "OPR_BOOK"
+    },
+    {
+      "m_TCID": 32720,
+      "m_TCStrID": "TC_OPR_AGNES",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 15,
+      "m_ComboValue1": "NURT_SNIPER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 20,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_AGNES_DUMMY",
+        "BUFF_OPR_AGNES_COST3",
+        "BUFF_OPR_AGNES_COST4"
+      ],
+      "m_bTargetBossMyTeam": true,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_AGNES",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_AGNES"
+      ],
+      "m_TCIconName": "OPR_AGNES"
+    },
+    {
+      "m_TCID": 32721,
+      "m_TCStrID": "TC_OPR_RAT",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 60,
+      "m_ComboValue1": "NURT_DEFENDER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_ComboValue3": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 12,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_RAT",
+        "BUFF_OPR_RAT_COST4"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_RAT",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_RAT"
+      ],
+      "m_TCIconName": "OPR_RAT"
+    },
+    {
+      "m_TCID": 32722,
+      "m_TCStrID": "TC_OPR_GRACE",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 20,
+      "m_ComboValue1": "NURT_RANGER",
+      "m_ComboValue2": "NURT_SNIPER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_DEBUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 8,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_GRACE_DUMMY"
+      ],
+      "m_lstBuffStrID_Enemy": [
+        "DEBUFF_OPR_GRACE"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_GRACE",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_GRACE"
+      ],
+      "m_TCIconName": "OPR_GRACE",
+      "m_UnitStrID": "NKM_UNIT_OPR_GRACE_SUMMON"
+    },
+    {
+      "m_TCID": 32723,
+      "m_TCStrID": "TC_OPR_LEEJISOO",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 40,
+      "m_ComboValue1": "NURT_SUPPORTER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_DEBUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 5,
+      "m_fActiveTimePerLevel": 1,
+      "m_lstBuffStrID_Enemy": [
+        "DEBUFF_OPR_JISOO_DAMAGE_INCREASE",
+        "DEBUFF_OPR_JISOO_DISPEL",
+        "DEBUFF_OPR_JISOO_DAMAGE_INCREASE_COST5",
+        "",
+        "DEBUFF_OPR_JISOO_DISPEL_COST5"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": true,
+      "m_TCName": "SI_SKILL_NAME_OPR_LEEJISOO",
+      "m_lstTCDescEnemy": [
+        "SI_SKILL_DESC_OPR_LEEJISOO"
+      ],
+      "m_TCIconName": "OPR_LEEJISOO"
+    },
+    {
+      "m_TCID": 32724,
+      "m_TCStrID": "TC_OPR_NATALIA",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 40,
+      "m_ComboValue1": "NURT_SNIPER",
+      "m_ComboValue2": "NURT_RANGER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 16,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_NATALIA"
+      ],
+      "m_lstBuffStrID_Enemy": [
+        "DEBUFF_OPR_NATALIA"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_NATALIA",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_NATALIA"
+      ],
+      "m_TCIconName": "OPR_NATALIA",
+      "m_UnitStrID": "NKM_UNIT_OPR_NATALIA_SUMMON"
+    },
+    {
+      "m_TCID": 32725,
+      "m_TCStrID": "TC_OPR_DOGABI",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 65,
+      "m_ComboValue1": "NURT_SUPPORTER",
+      "m_ComboValue2": "NURT_SNIPER",
+      "m_ComboValue3": "NURT_DEFENDER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 16,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_DOGABI_TEAM_NOT_FRONT",
+        "BUFF_OPR_DOGABI_TEAM_FRONT"
+      ],
+      "m_lstBuffStrID_Enemy": [
+        "DEBUFF_OPR_DOGABI_ENEMY"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_DOGABI",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_DOGABI"
+      ],
+      "m_TCIconName": "OPR_DOGABI"
+    },
+    {
+      "m_TCID": 32726,
+      "m_TCStrID": "TC_OPR_CREW",
+      "m_NKM_TACTICAL_COMMAND_TYPE": "NTCT_COMBO",
+      "m_fCoolTime": 40,
+      "m_ComboValue1": "NURT_SUPPORTER",
+      "m_ComboValue2": "NURT_SUPPORTER",
+      "m_TCEffectName": "AB_FX_BUFF_OPR_BUFF",
+      "m_TCEffectSound": "FX_UI_OPERATOR_BUFF",
+      "m_fComboResetCoolTime": 30,
+      "m_fActiveTime": 6,
+      "m_fActiveTimePerLevel": 2,
+      "m_lstBuffStrID_MyTeam": [
+        "BUFF_OPR_CREW",
+        "BUFF_OPR_CREW_DEFENDER"
+      ],
+      "m_bTargetBossMyTeam": false,
+      "m_bTargetBossEnemy": false,
+      "m_TCName": "SI_SKILL_NAME_OPR_CREW",
+      "m_lstTCDescMyTeam": [
+        "SI_SKILL_DESC_OPR_CREW"
+      ],
+      "m_TCIconName": "OPR_CREW",
+      "m_UnitStrID": "NKM_UNIT_OPR_CREW_SUMMON"
+    }
+  ],
+  "unsupportedCount": 0,
+  "unsupported": []
+}

@@ -1,0 +1,299 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_MAIN_BATTLE_EP1_2_2_HARD_BOSS_A.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 9,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 5
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.5
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MONSTER_BOSS_BASIC_GRAVE_MINI_N"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listDungeonDeck"
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_UNIT_C_ALT_YOO_JIN",
+          "m_UnitLevel": 10,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 3,
+            "m_fEventPos": 0.0,
+            "m_EventTag": "NKM_UNIT_C_ALT_YOO_JIN",
+            "m_EventTagCount": 0
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_C_ALT_XIAOLIN",
+          "m_UnitLevel": 10,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 4.5,
+            "m_fEventPos": 0.1,
+            "m_EventTag": "NKM_UNIT_C_ALT_XIAOLIN",
+            "m_EventTagCount": 0
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_BITER_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeGap": 20,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_BITER_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 6,
+            "m_fEventTimeGap": 20,
+            "m_fEventPos": 0.0
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_BITER_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 14,
+            "m_fEventTimeGap": 40,
+            "m_fEventPos": 0.15
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_SCOURGE_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 11,
+            "m_fEventTimeGap": 40,
+            "m_fEventPos": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_UNIT_C_ALT_YOO_JIN",
+          "m_EventConditionValue2": "USN_START",
+          "m_EventID": 10902,
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_UNIT_C_ALT_YOO_JIN",
+          "m_EventConditionValue2": "USN_START",
+          "m_dungeonEventType": "ADD_EVENTTAG",
+          "m_EventActionStrValue": "NKM_UNIT_C_ALT_YOO_JIN",
+          "m_EventActionValue": 1,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_UNIT_C_ALT_XIAOLIN",
+          "m_EventConditionValue2": "USN_START",
+          "m_dungeonEventType": "ADD_EVENTTAG",
+          "m_EventActionStrValue": "NKM_UNIT_C_ALT_XIAOLIN",
+          "m_EventActionValue": 1,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamB",
+      "value": [
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MONSTER_NORMAL_BASIC_BITER_N",
+          "m_EventConditionValue2": "USN_START",
+          "m_EventID": 10900,
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MONSTER_NORMAL_BASIC_BITER_N",
+          "m_EventConditionValue2": "USN_START",
+          "m_EventID": 10901,
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_bPause": true,
+          "m_fEventDelay": 1.2,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 5,
+    "m_fCostSpeedRateB": 0.5,
+    "m_BossUnitStrID": "NKM_MONSTER_BOSS_BASIC_GRAVE_MINI_N",
+    "m_fBossPosZ": 0.6,
+    "m_listDungeonDeck": {},
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_UNIT_C_ALT_YOO_JIN",
+        "m_UnitLevel": 10,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 3,
+          "m_fEventPos": 0.0,
+          "m_EventTag": "NKM_UNIT_C_ALT_YOO_JIN",
+          "m_EventTagCount": 0
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_C_ALT_XIAOLIN",
+        "m_UnitLevel": 10,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 4.5,
+          "m_fEventPos": 0.1,
+          "m_EventTag": "NKM_UNIT_C_ALT_XIAOLIN",
+          "m_EventTagCount": 0
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_BITER_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeGap": 20,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_BITER_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 6,
+          "m_fEventTimeGap": 20,
+          "m_fEventPos": 0.0
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_BITER_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 14,
+          "m_fEventTimeGap": 40,
+          "m_fEventPos": 0.15
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_SCOURGE_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 11,
+          "m_fEventTimeGap": 40,
+          "m_fEventPos": 0.1
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_UNIT_C_ALT_YOO_JIN",
+        "m_EventConditionValue2": "USN_START",
+        "m_EventID": 10902,
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_UNIT_C_ALT_YOO_JIN",
+        "m_EventConditionValue2": "USN_START",
+        "m_dungeonEventType": "ADD_EVENTTAG",
+        "m_EventActionStrValue": "NKM_UNIT_C_ALT_YOO_JIN",
+        "m_EventActionValue": 1,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_UNIT_C_ALT_XIAOLIN",
+        "m_EventConditionValue2": "USN_START",
+        "m_dungeonEventType": "ADD_EVENTTAG",
+        "m_EventActionStrValue": "NKM_UNIT_C_ALT_XIAOLIN",
+        "m_EventActionValue": 1,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamB": [
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MONSTER_NORMAL_BASIC_BITER_N",
+        "m_EventConditionValue2": "USN_START",
+        "m_EventID": 10900,
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MONSTER_NORMAL_BASIC_BITER_N",
+        "m_EventConditionValue2": "USN_START",
+        "m_EventID": 10901,
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_bPause": true,
+        "m_fEventDelay": 1.2,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

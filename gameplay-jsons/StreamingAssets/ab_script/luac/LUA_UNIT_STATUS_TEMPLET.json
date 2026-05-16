@@ -1,0 +1,543 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script\\luac\\LUA_UNIT_STATUS_TEMPLET.lua",
+  "rootName": "UNIT_STATUS_TEMPLET",
+  "recordCount": 31,
+  "records": [
+    {
+      "m_StatusType": "NUSE_STUN",
+      "Category_Order_List": 1,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_CROWDCONTROL",
+      "m_StatusStrID": "SI_BATTLE_BUFF_STUN",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_STUN",
+      "m_bDebuff": true,
+      "m_bAllowShip": false,
+      "m_bCrowdControl": true,
+      "m_bDispel": false
+    },
+    {
+      "m_StatusType": "NUSE_SLEEP",
+      "Category_Order_List": 2,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_CROWDCONTROL",
+      "m_StatusStrID": "SI_BATTLE_BUFF_SLEEP",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_SLEEP",
+      "m_bDebuff": true,
+      "m_bAllowShip": false,
+      "m_bCrowdControl": true
+    },
+    {
+      "m_StatusType": "NUSE_FEAR",
+      "Category_Order_List": 4,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_CROWDCONTROL",
+      "m_bShowGuide": false,
+      "m_StatusStrID": "SI_BATTLE_BUFF_FEAR",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_FEAR",
+      "m_bDebuff": true,
+      "m_StatusEffectName": "AB_FX_BUFF_FEAR",
+      "m_StatusEffectPosition": "Head",
+      "m_bAllowBoss": false,
+      "m_bCrowdControl": true
+    },
+    {
+      "m_StatusType": "NUSE_CONFUSE",
+      "Category_Order_List": 5,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_CROWDCONTROL",
+      "m_StatusStrID": "SI_BATTLE_BUFF_CONFUSE",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_CONFUSE",
+      "m_bDebuff": true,
+      "m_bAllowBoss": false,
+      "m_bCrowdControl": true
+    },
+    {
+      "m_StatusType": "NUSE_FREEZE",
+      "Category_Order_List": 6,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_CROWDCONTROL",
+      "m_StatusStrID": "SI_BATTLE_BUFF_FREEZE",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_FREEZE",
+      "m_bDebuff": true,
+      "m_bAllowBoss": false,
+      "m_bCrowdControl": true
+    },
+    {
+      "m_StatusType": "NUSE_HOLD",
+      "Category_Order_List": 7,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_CROWDCONTROL",
+      "m_StatusStrID": "SI_BATTLE_BUFF_HOLD",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_HOLD",
+      "m_bDebuff": true,
+      "m_StatusEffectName": "AB_FX_BUFF_HOLD",
+      "m_StatusEffectPosition": "Ground",
+      "m_bAllowBoss": false,
+      "m_bCrowdControl": true
+    },
+    {
+      "m_StatusType": "NUSE_CLOCKING",
+      "Category_Order_List": 1,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_BUFF_NO_TARGETED",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_CLOCKING"
+    },
+    {
+      "m_StatusType": "NUSE_DETECTER",
+      "Category_Order_List": 2,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_BUFF_DETECT",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_DETECTER",
+      "m_StatusEffectName": "AB_FX_BUFF_DETECT",
+      "m_StatusEffectPosition": "OverGuageMark",
+      "m_bShowFixedStatus": true
+    },
+    {
+      "m_StatusType": "NUSE_IMMORTAL",
+      "Category_Order_List": 3,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_IMMORTAL",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_IMMORTAL",
+      "m_StatusEffectName": "AB_FX_BUFF_IMMORTAL",
+      "m_StatusEffectPosition": "OverGuageMark"
+    },
+    {
+      "m_StatusType": "NUSE_INVINCIBLE",
+      "Category_Order_List": 4,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_BUFF_INVINCIBLE",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_INVINCIBLE",
+      "m_StatusEffectName": "AB_FX_BUFF_COMMON_INVINCIBLE",
+      "m_StatusEffectPosition": "BodyCenter"
+    },
+    {
+      "m_StatusType": "NUSE_BLOCK_DEBUFF",
+      "Category_Order_List": 5,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_bShowGuide": false,
+      "m_StatusStrID": "SI_BATTLE_BUFF_BLOCK_DEBUFF",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_BLOCK_DEBUFF"
+    },
+    {
+      "m_StatusType": "NUSE_FORCE_EVADE",
+      "Category_Order_List": 6,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_BUFF_FORCE_EVADE",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_FORCE_EVADE"
+    },
+    {
+      "m_StatusType": "NUSE_FORCE_HIT",
+      "Category_Order_List": 7,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_BUFF_NOT_FORCE_HIT",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_FORCE_HIT"
+    },
+    {
+      "m_StatusType": "NUSE_BUFF_DAMAGE_IMMUNE",
+      "Category_Order_List": 8,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_bShowGuide": false,
+      "m_StatusStrID": "SI_BATTLE_IMMUNE_BUFF_DAMAGE",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_BUFF_DAMAGE_IMMUNE"
+    },
+    {
+      "m_StatusType": "NUSE_IMMUNE_MOVE_SLOW",
+      "Category_Order_List": 9,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_IMMUNE_MOVE_SLOW",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_IMMUNE_MOVE_SLOW"
+    },
+    {
+      "m_StatusType": "NUSE_IMMUNE_ATTACK_SLOW",
+      "Category_Order_List": 10,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_IMMUNE_ATTACK_SLOW",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_IMMUNE_ATTACK_SLOW"
+    },
+    {
+      "m_StatusType": "NUSE_IMMUNE_AIRBORNE",
+      "Category_Order_List": 11,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_IMMUNE_AIRBORNE",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_IMMUNE_AIRBORNE"
+    },
+    {
+      "m_StatusType": "NUSE_IMMUNE_SKILL_COOLTIME_DAMAGE",
+      "Category_Order_List": 12,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_IMMUNE_SKILL_COOLTIME",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_IMMUNE_SKILL_COOLTIME_DAMAGE"
+    },
+    {
+      "m_StatusType": "NUSE_IMMUNE_NEGATIVE_STATUS",
+      "Category_Order_List": 13,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_bShowGuide": false,
+      "m_StatusStrID": "SI_BATTLE_IMMUNE_NEGATIVE_STATUS",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_IMMUNE_NEGATIVE_STATUS"
+    },
+    {
+      "m_StatusType": "NUSE_IMMUNE_CC",
+      "Category_Order_List": 14,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_IMMUNE_CC",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_IMMUNE_CC"
+    },
+    {
+      "m_StatusType": "NUSE_IMMUNE_INSTANTKILL",
+      "Category_Order_List": 15,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_IMMUNE_INSTANTKILL",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_IMMUNE_INSTANTKILL"
+    },
+    {
+      "m_StatusType": "NUSE_EXILE",
+      "Category_Order_List": 16,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_BUFF_EXILE",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_EXILE"
+    },
+    {
+      "m_StatusType": "NUSE_IMMUNE_HP_RATE_DAMAGE",
+      "Category_Order_List": 17,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_IMMUNE_HP_RATE_DAMAGE",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_IMMUNE_HP_RATE_DAMAGE"
+    },
+    {
+      "m_StatusType": "NUSE_IRONWALL",
+      "Category_Order_List": 18,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_IRONWALL",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_IRONWALL",
+      "m_StatusEffectName": "AB_FX_BUFF_IRONWALL",
+      "m_StatusEffectPosition": "OverGuageMark"
+    },
+    {
+      "m_StatusType": "NUSE_SILENCE",
+      "Category_Order_List": 1,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_DEBUFF",
+      "m_StatusStrID": "SI_BATTLE_BUFF_SILANCE",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_SILENCE",
+      "m_bDebuff": true,
+      "m_StatusEffectName": "AB_FX_BUFF_SILENCE",
+      "m_StatusEffectPosition": "OverGuageMark"
+    },
+    {
+      "m_StatusType": "NUSE_CHILL",
+      "Category_Order_List": 2,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_DEBUFF",
+      "m_StatusStrID": "SI_BATTLE_BUFF_CHILL",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_CHILL",
+      "m_bDebuff": true
+    },
+    {
+      "m_StatusType": "NUSE_NOHEAL",
+      "Category_Order_List": 3,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_DEBUFF",
+      "m_StatusStrID": "SI_BATTLE_BUFF_NOHEAL",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_NOHEAL",
+      "m_bDebuff": true,
+      "m_StatusEffectPosition": "OverGuageMark"
+    },
+    {
+      "m_StatusType": "NUSE_BLOCK_BUFF",
+      "Category_Order_List": 4,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_DEBUFF",
+      "m_bShowGuide": false,
+      "m_StatusStrID": "SI_BATTLE_BUFF_BLOCK_BUFF",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_BLOCK_BUFF",
+      "m_bDebuff": true
+    },
+    {
+      "m_StatusType": "NUSE_FORCE_MISS",
+      "Category_Order_List": 5,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_DEBUFF",
+      "m_StatusStrID": "SI_BATTLE_BUFF_NOT_FORCE_MISS",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_FORCE_MISS",
+      "m_bDebuff": true,
+      "m_bAllowBoss": false
+    },
+    {
+      "m_StatusType": "NUSE_NULLIFY_BARRIER",
+      "Category_Order_List": 6,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_DEBUFF",
+      "m_StatusStrID": "SI_BATTLE_BUFF_CRASH_BARRIER",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_NULLIFY_BARRIER",
+      "m_bDebuff": true
+    },
+    {
+      "m_StatusType": "NUSE_NO_EVADE",
+      "Category_Order_List": 7,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_DEBUFF",
+      "m_StatusStrID": "SI_BATTLE_BUFF_NO_EVADE",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_NO_EVADE",
+      "m_bDebuff": true,
+      "m_bAllowBoss": false
+    }
+  ],
+  "root": [
+    {
+      "m_StatusType": "NUSE_STUN",
+      "Category_Order_List": 1,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_CROWDCONTROL",
+      "m_StatusStrID": "SI_BATTLE_BUFF_STUN",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_STUN",
+      "m_bDebuff": true,
+      "m_bAllowShip": false,
+      "m_bCrowdControl": true,
+      "m_bDispel": false
+    },
+    {
+      "m_StatusType": "NUSE_SLEEP",
+      "Category_Order_List": 2,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_CROWDCONTROL",
+      "m_StatusStrID": "SI_BATTLE_BUFF_SLEEP",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_SLEEP",
+      "m_bDebuff": true,
+      "m_bAllowShip": false,
+      "m_bCrowdControl": true
+    },
+    {
+      "m_StatusType": "NUSE_FEAR",
+      "Category_Order_List": 4,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_CROWDCONTROL",
+      "m_bShowGuide": false,
+      "m_StatusStrID": "SI_BATTLE_BUFF_FEAR",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_FEAR",
+      "m_bDebuff": true,
+      "m_StatusEffectName": "AB_FX_BUFF_FEAR",
+      "m_StatusEffectPosition": "Head",
+      "m_bAllowBoss": false,
+      "m_bCrowdControl": true
+    },
+    {
+      "m_StatusType": "NUSE_CONFUSE",
+      "Category_Order_List": 5,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_CROWDCONTROL",
+      "m_StatusStrID": "SI_BATTLE_BUFF_CONFUSE",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_CONFUSE",
+      "m_bDebuff": true,
+      "m_bAllowBoss": false,
+      "m_bCrowdControl": true
+    },
+    {
+      "m_StatusType": "NUSE_FREEZE",
+      "Category_Order_List": 6,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_CROWDCONTROL",
+      "m_StatusStrID": "SI_BATTLE_BUFF_FREEZE",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_FREEZE",
+      "m_bDebuff": true,
+      "m_bAllowBoss": false,
+      "m_bCrowdControl": true
+    },
+    {
+      "m_StatusType": "NUSE_HOLD",
+      "Category_Order_List": 7,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_CROWDCONTROL",
+      "m_StatusStrID": "SI_BATTLE_BUFF_HOLD",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_HOLD",
+      "m_bDebuff": true,
+      "m_StatusEffectName": "AB_FX_BUFF_HOLD",
+      "m_StatusEffectPosition": "Ground",
+      "m_bAllowBoss": false,
+      "m_bCrowdControl": true
+    },
+    {
+      "m_StatusType": "NUSE_CLOCKING",
+      "Category_Order_List": 1,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_BUFF_NO_TARGETED",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_CLOCKING"
+    },
+    {
+      "m_StatusType": "NUSE_DETECTER",
+      "Category_Order_List": 2,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_BUFF_DETECT",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_DETECTER",
+      "m_StatusEffectName": "AB_FX_BUFF_DETECT",
+      "m_StatusEffectPosition": "OverGuageMark",
+      "m_bShowFixedStatus": true
+    },
+    {
+      "m_StatusType": "NUSE_IMMORTAL",
+      "Category_Order_List": 3,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_IMMORTAL",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_IMMORTAL",
+      "m_StatusEffectName": "AB_FX_BUFF_IMMORTAL",
+      "m_StatusEffectPosition": "OverGuageMark"
+    },
+    {
+      "m_StatusType": "NUSE_INVINCIBLE",
+      "Category_Order_List": 4,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_BUFF_INVINCIBLE",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_INVINCIBLE",
+      "m_StatusEffectName": "AB_FX_BUFF_COMMON_INVINCIBLE",
+      "m_StatusEffectPosition": "BodyCenter"
+    },
+    {
+      "m_StatusType": "NUSE_BLOCK_DEBUFF",
+      "Category_Order_List": 5,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_bShowGuide": false,
+      "m_StatusStrID": "SI_BATTLE_BUFF_BLOCK_DEBUFF",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_BLOCK_DEBUFF"
+    },
+    {
+      "m_StatusType": "NUSE_FORCE_EVADE",
+      "Category_Order_List": 6,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_BUFF_FORCE_EVADE",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_FORCE_EVADE"
+    },
+    {
+      "m_StatusType": "NUSE_FORCE_HIT",
+      "Category_Order_List": 7,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_BUFF_NOT_FORCE_HIT",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_FORCE_HIT"
+    },
+    {
+      "m_StatusType": "NUSE_BUFF_DAMAGE_IMMUNE",
+      "Category_Order_List": 8,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_bShowGuide": false,
+      "m_StatusStrID": "SI_BATTLE_IMMUNE_BUFF_DAMAGE",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_BUFF_DAMAGE_IMMUNE"
+    },
+    {
+      "m_StatusType": "NUSE_IMMUNE_MOVE_SLOW",
+      "Category_Order_List": 9,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_IMMUNE_MOVE_SLOW",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_IMMUNE_MOVE_SLOW"
+    },
+    {
+      "m_StatusType": "NUSE_IMMUNE_ATTACK_SLOW",
+      "Category_Order_List": 10,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_IMMUNE_ATTACK_SLOW",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_IMMUNE_ATTACK_SLOW"
+    },
+    {
+      "m_StatusType": "NUSE_IMMUNE_AIRBORNE",
+      "Category_Order_List": 11,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_IMMUNE_AIRBORNE",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_IMMUNE_AIRBORNE"
+    },
+    {
+      "m_StatusType": "NUSE_IMMUNE_SKILL_COOLTIME_DAMAGE",
+      "Category_Order_List": 12,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_IMMUNE_SKILL_COOLTIME",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_IMMUNE_SKILL_COOLTIME_DAMAGE"
+    },
+    {
+      "m_StatusType": "NUSE_IMMUNE_NEGATIVE_STATUS",
+      "Category_Order_List": 13,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_bShowGuide": false,
+      "m_StatusStrID": "SI_BATTLE_IMMUNE_NEGATIVE_STATUS",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_IMMUNE_NEGATIVE_STATUS"
+    },
+    {
+      "m_StatusType": "NUSE_IMMUNE_CC",
+      "Category_Order_List": 14,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_IMMUNE_CC",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_IMMUNE_CC"
+    },
+    {
+      "m_StatusType": "NUSE_IMMUNE_INSTANTKILL",
+      "Category_Order_List": 15,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_IMMUNE_INSTANTKILL",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_IMMUNE_INSTANTKILL"
+    },
+    {
+      "m_StatusType": "NUSE_EXILE",
+      "Category_Order_List": 16,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_BUFF_EXILE",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_EXILE"
+    },
+    {
+      "m_StatusType": "NUSE_IMMUNE_HP_RATE_DAMAGE",
+      "Category_Order_List": 17,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_IMMUNE_HP_RATE_DAMAGE",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_IMMUNE_HP_RATE_DAMAGE"
+    },
+    {
+      "m_StatusType": "NUSE_IRONWALL",
+      "Category_Order_List": 18,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_BUFF",
+      "m_StatusStrID": "SI_BATTLE_IRONWALL",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_IRONWALL",
+      "m_StatusEffectName": "AB_FX_BUFF_IRONWALL",
+      "m_StatusEffectPosition": "OverGuageMark"
+    },
+    {
+      "m_StatusType": "NUSE_SILENCE",
+      "Category_Order_List": 1,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_DEBUFF",
+      "m_StatusStrID": "SI_BATTLE_BUFF_SILANCE",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_SILENCE",
+      "m_bDebuff": true,
+      "m_StatusEffectName": "AB_FX_BUFF_SILENCE",
+      "m_StatusEffectPosition": "OverGuageMark"
+    },
+    {
+      "m_StatusType": "NUSE_CHILL",
+      "Category_Order_List": 2,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_DEBUFF",
+      "m_StatusStrID": "SI_BATTLE_BUFF_CHILL",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_CHILL",
+      "m_bDebuff": true
+    },
+    {
+      "m_StatusType": "NUSE_NOHEAL",
+      "Category_Order_List": 3,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_DEBUFF",
+      "m_StatusStrID": "SI_BATTLE_BUFF_NOHEAL",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_NOHEAL",
+      "m_bDebuff": true,
+      "m_StatusEffectPosition": "OverGuageMark"
+    },
+    {
+      "m_StatusType": "NUSE_BLOCK_BUFF",
+      "Category_Order_List": 4,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_DEBUFF",
+      "m_bShowGuide": false,
+      "m_StatusStrID": "SI_BATTLE_BUFF_BLOCK_BUFF",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_BLOCK_BUFF",
+      "m_bDebuff": true
+    },
+    {
+      "m_StatusType": "NUSE_FORCE_MISS",
+      "Category_Order_List": 5,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_DEBUFF",
+      "m_StatusStrID": "SI_BATTLE_BUFF_NOT_FORCE_MISS",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_FORCE_MISS",
+      "m_bDebuff": true,
+      "m_bAllowBoss": false
+    },
+    {
+      "m_StatusType": "NUSE_NULLIFY_BARRIER",
+      "Category_Order_List": 6,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_DEBUFF",
+      "m_StatusStrID": "SI_BATTLE_BUFF_CRASH_BARRIER",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_NULLIFY_BARRIER",
+      "m_bDebuff": true
+    },
+    {
+      "m_StatusType": "NUSE_NO_EVADE",
+      "Category_Order_List": 7,
+      "Status_Category_Name": "SI_DP_STATUS_CATEGORY_DEBUFF",
+      "m_StatusStrID": "SI_BATTLE_BUFF_NO_EVADE",
+      "m_StatusDesc": "SI_DP_STATUS_SHORT_DESC_NUSE_NO_EVADE",
+      "m_bDebuff": true,
+      "m_bAllowBoss": false
+    }
+  ],
+  "unsupportedCount": 0,
+  "unsupported": []
+}

@@ -1,0 +1,207 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_CROSSROAD_R_1_1_HM.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MONSTER_BOSS_BASIC_NEPHILIM_MINOR_MOVE_H"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listDungeonDeck"
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_UNIT_C_HILDE",
+          "m_UnitLevel": 60,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 2,
+            "m_fEventPos": 0.4
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_DEF": 2,
+              "NST_HP": 2.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_C_JOO_SHI_YOON",
+          "m_UnitLevel": 60,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 4.8,
+            "m_fEventPos": 0.6
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 2.5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_MAD_DEMOLISHER_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 3,
+            "m_fEventTimeGap": 11,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_MAD_WRAITH_H",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 15,
+            "m_fEventTimeGap": 10,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_DEMOLISHER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.7,
+            "m_fEventBossHPUpper": 0.5,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.2,
+              "NST_HP": 1.3
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_DEMOLISHER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.35,
+            "m_fEventBossHPUpper": 0.1,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.2,
+              "NST_HP": 1.3
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 1,
+    "m_BossUnitStrID": "NKM_MONSTER_BOSS_BASIC_NEPHILIM_MINOR_MOVE_H",
+    "m_fBossPosZ": 0.6,
+    "m_listDungeonDeck": {},
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_UNIT_C_HILDE",
+        "m_UnitLevel": 60,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 2,
+          "m_fEventPos": 0.4
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_DEF": 2,
+            "NST_HP": 2.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_C_JOO_SHI_YOON",
+        "m_UnitLevel": 60,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 4.8,
+          "m_fEventPos": 0.6
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 2.5
+          }
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_MAD_DEMOLISHER_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 3,
+          "m_fEventTimeGap": 11,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_MAD_WRAITH_H",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 15,
+          "m_fEventTimeGap": 10,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_DEMOLISHER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.7,
+          "m_fEventBossHPUpper": 0.5,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.2,
+            "NST_HP": 1.3
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_DEMOLISHER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.35,
+          "m_fEventBossHPUpper": 0.1,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.2,
+            "NST_HP": 1.3
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

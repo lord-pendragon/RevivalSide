@@ -1,0 +1,281 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_EXILER_3_3.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 2,
+  "records": [
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_UNIT_M_STATE_TANK",
+          "m_UnitLevel": 97,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_S_STATE_RIFLE",
+          "m_UnitLevel": 97,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_S_STATE_AIRBORNE",
+          "m_UnitLevel": 97,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_S_STATE_ENGINEER",
+          "m_UnitLevel": 97,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonWave",
+      "value": [
+        {
+          "m_WaveID": 1,
+          "m_NextWaveID": 2,
+          "m_fNextWavetime": 60,
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0,
+                "m_fEventPos": 0.4
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_SCOURGE",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0,
+                "m_fEventPos": 0.2
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_WRAITH",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0,
+                "m_fEventPos": 0.1
+              }
+            }
+          ]
+        },
+        {
+          "m_WaveID": 2,
+          "m_NextWaveID": 3,
+          "m_fNextWavetime": 60,
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0,
+                "m_fEventPos": 0.4
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_RANGER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0,
+                "m_fEventPos": 0.2
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_FLOATER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0,
+                "m_fEventPos": 0.1
+              }
+            }
+          ]
+        },
+        {
+          "m_WaveID": 3,
+          "m_fNextWavetime": 180,
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_STUNNER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0,
+                "m_fEventPos": 0.4
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BLASTER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0,
+                "m_fEventPos": 0.2
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_FLOATER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0,
+                "m_fEventPos": 0.1
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_UNIT_M_STATE_TANK",
+        "m_UnitLevel": 97,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_S_STATE_RIFLE",
+        "m_UnitLevel": 97,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_S_STATE_AIRBORNE",
+        "m_UnitLevel": 97,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_S_STATE_ENGINEER",
+        "m_UnitLevel": 97,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.1
+        }
+      }
+    ],
+    "m_listDungeonWave": [
+      {
+        "m_WaveID": 1,
+        "m_NextWaveID": 2,
+        "m_fNextWavetime": 60,
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0,
+              "m_fEventPos": 0.4
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_SCOURGE",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0,
+              "m_fEventPos": 0.2
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_WRAITH",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0,
+              "m_fEventPos": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "m_WaveID": 2,
+        "m_NextWaveID": 3,
+        "m_fNextWavetime": 60,
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0,
+              "m_fEventPos": 0.4
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_RANGER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0,
+              "m_fEventPos": 0.2
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_FLOATER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0,
+              "m_fEventPos": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "m_WaveID": 3,
+        "m_fNextWavetime": 180,
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_STUNNER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0,
+              "m_fEventPos": 0.4
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BLASTER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0,
+              "m_fEventPos": 0.2
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_FLOATER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0,
+              "m_fEventPos": 0.1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

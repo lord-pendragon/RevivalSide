@@ -1,0 +1,342 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SUPPLY_UNIT_EASY_17.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 15
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MONSTER_BOSS_BASIC_KING_MOVE_N"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.7
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_NEEDLER_S",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 2,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.6
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_REPLACER_SHIELD_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 2,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.6
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_REPLACER_SHOTGUN_EP5_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 2,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.6
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_REPLACER_SHOTGUN_EP5_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 4,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.6
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_DEMOLISHER_S",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventBossHPLess": 0.6,
+            "m_fEventTimeStart": 4,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.6
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_WIZARD_S",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventBossHPLess": 0.6,
+            "m_fEventTimeStart": 4,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.6
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_REPLACER_SHOTGUN_EP5_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.85,
+            "m_fEventTimeStart": 0,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.8
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_WIZARD_S",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventBossHPLess": 0.85,
+            "m_fEventTimeStart": 0,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.8
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_REPLACER_SHIELD_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.85,
+            "m_fEventTimeStart": 0,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.8
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_REPLACER_SHIELD_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.85,
+            "m_fEventTimeStart": 0,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.85
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_WIZARD_S",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventBossHPLess": 0.33,
+            "m_fEventTimeStart": 0,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.9
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_WIZARD_S",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.33,
+            "m_fEventTimeStart": 0,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.9
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_REPLACER_SHIELD_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.33,
+            "m_fEventTimeStart": 0,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.85
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_REPLACER_SHIELD_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventBossHPLess": 0.33,
+            "m_fEventTimeStart": 0,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventPos": 0.85
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_UNIT_C_DELTA_SYLVIA",
+          "m_UnitLevel": 85,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 10,
+            "m_fEventPos": 0.1
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 15,
+    "m_fCostSpeedRateB": 1,
+    "m_BossUnitStrID": "NKM_MONSTER_BOSS_BASIC_KING_MOVE_N",
+    "m_fBossPosZ": 0.7,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_NEEDLER_S",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 2,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.6
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_REPLACER_SHIELD_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 2,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.6
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_REPLACER_SHOTGUN_EP5_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 2,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.6
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_REPLACER_SHOTGUN_EP5_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 4,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.6
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_DEMOLISHER_S",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventBossHPLess": 0.6,
+          "m_fEventTimeStart": 4,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.6
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_WIZARD_S",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventBossHPLess": 0.6,
+          "m_fEventTimeStart": 4,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.6
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_REPLACER_SHOTGUN_EP5_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.85,
+          "m_fEventTimeStart": 0,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.8
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_WIZARD_S",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventBossHPLess": 0.85,
+          "m_fEventTimeStart": 0,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.8
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_REPLACER_SHIELD_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.85,
+          "m_fEventTimeStart": 0,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.8
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_REPLACER_SHIELD_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.85,
+          "m_fEventTimeStart": 0,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.85
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_WIZARD_S",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventBossHPLess": 0.33,
+          "m_fEventTimeStart": 0,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.9
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_WIZARD_S",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.33,
+          "m_fEventTimeStart": 0,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.9
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_REPLACER_SHIELD_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.33,
+          "m_fEventTimeStart": 0,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.85
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_REPLACER_SHIELD_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventBossHPLess": 0.33,
+          "m_fEventTimeStart": 0,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventPos": 0.85
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_UNIT_C_DELTA_SYLVIA",
+        "m_UnitLevel": 85,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 10,
+          "m_fEventPos": 0.1
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

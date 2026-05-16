@@ -1,0 +1,87 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_LEGACY_2_4.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fCostSpeedRateA",
+      "value": 1.5
+    },
+    {
+      "__key": "m_bRespawnFreePos",
+      "value": true
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EVENT_GAMECIRCLE_REPLACER_C_KNIGHT_H"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_bShowGage": false,
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 0.5,
+          "NST_HP": 0.1
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_UNIT_GAMECIRCLE_C_STAR",
+          "m_SkinID": 123835,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.3,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.5,
+              "NST_HP": 1.5
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fCostSpeedRateA": 1.5,
+    "m_bRespawnFreePos": true,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EVENT_GAMECIRCLE_REPLACER_C_KNIGHT_H",
+    "m_fBossPosZ": 0.6,
+    "m_BossRespawnUnitTemplet": {
+      "m_bShowGage": false,
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 0.5,
+          "NST_HP": 0.1
+        }
+      }
+    },
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_UNIT_GAMECIRCLE_C_STAR",
+        "m_SkinID": 123835,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.3,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.5,
+            "NST_HP": 1.5
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

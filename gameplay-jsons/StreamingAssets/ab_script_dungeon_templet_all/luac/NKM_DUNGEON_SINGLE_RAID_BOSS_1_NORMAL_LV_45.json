@@ -1,0 +1,90 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SINGLE_RAID_BOSS_1_NORMAL_LV_45.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MONSTER_RAID_BASIC_ABOMINATION_N"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listDungeonDeck"
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_REPLACER_SHOTGUN_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventBossHPLess": 1.1,
+            "m_fEventBossHPUpper": 0.61,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventTimeGap": 60,
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_REPLACER_SHIELD_N",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventBossHPLess": 0.4,
+            "m_fEventBossHPUpper": 0.31,
+            "m_fEventIgnoreBossInitHPLess": false,
+            "m_fEventTimeGap": 60,
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.2
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 1,
+    "m_BossUnitStrID": "NKM_MONSTER_RAID_BASIC_ABOMINATION_N",
+    "m_fBossPosZ": 0.6,
+    "m_listDungeonDeck": {},
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_REPLACER_SHOTGUN_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventBossHPLess": 1.1,
+          "m_fEventBossHPUpper": 0.61,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventTimeGap": 60,
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_REPLACER_SHIELD_N",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventBossHPLess": 0.4,
+          "m_fEventBossHPUpper": 0.31,
+          "m_fEventIgnoreBossInitHPLess": false,
+          "m_fEventTimeGap": 60,
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.2
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

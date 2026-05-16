@@ -1,0 +1,154 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_PRIDE_3_4.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.7
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EVENT_ZODIAC_C_ARROW_N"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_HP": 20.0,
+          "NST_ATK": 1.5,
+          "NST_DEF": 2.0
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_EventCondition": "TARGET_ALLY_UNIT_HP_RATE_LESS",
+          "m_EventConditionValue1": "NKM_UNIT_C_ZODIAC_PIONE",
+          "m_EventConditionNumValue": 29,
+          "m_dungeonEventType": "FORCE_WIN",
+          "m_EventActionValue": 1,
+          "m_fEventDelay": 1,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.1
+          }
+        },
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 2483041,
+          "m_bPause": true,
+          "m_EventCondition": "TARGET_ALLY_UNIT_HP_RATE_LESS",
+          "m_EventConditionValue1": "NKM_UNIT_C_ZODIAC_PIONE",
+          "m_EventConditionNumValue": 30,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_UNIT_C_ZODIAC_PIONE",
+          "m_hsApplyStatus": [
+            "NUSE_NOHEAL"
+          ],
+          "m_bShowGage": true,
+          "m_UnitLevel": 120,
+          "m_UnitLimitBreakLevel": 13,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.4
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 3.0,
+              "NST_ATK": 1.5
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 0.7,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EVENT_ZODIAC_C_ARROW_N",
+    "m_fBossPosZ": 0.6,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_HP": 20.0,
+          "NST_ATK": 1.5,
+          "NST_DEF": 2.0
+        }
+      }
+    },
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_EventCondition": "TARGET_ALLY_UNIT_HP_RATE_LESS",
+        "m_EventConditionValue1": "NKM_UNIT_C_ZODIAC_PIONE",
+        "m_EventConditionNumValue": 29,
+        "m_dungeonEventType": "FORCE_WIN",
+        "m_EventActionValue": 1,
+        "m_fEventDelay": 1,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.1
+        }
+      },
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 2483041,
+        "m_bPause": true,
+        "m_EventCondition": "TARGET_ALLY_UNIT_HP_RATE_LESS",
+        "m_EventConditionValue1": "NKM_UNIT_C_ZODIAC_PIONE",
+        "m_EventConditionNumValue": 30,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_UNIT_C_ZODIAC_PIONE",
+        "m_hsApplyStatus": [
+          "NUSE_NOHEAL"
+        ],
+        "m_bShowGage": true,
+        "m_UnitLevel": 120,
+        "m_UnitLimitBreakLevel": 13,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.4
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 3.0,
+            "NST_ATK": 1.5
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

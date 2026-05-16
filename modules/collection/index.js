@@ -1,5 +1,5 @@
-const fs = require("fs");
 const path = require("path");
+const { readGameplayTableRecords } = require("../gameplay-jsons");
 
 const {
   writeBool,
@@ -18,12 +18,6 @@ const { getUnitTemplet } = require("../game-data");
 const { MAIN_STORY_STAGE_CHAIN, ensureMainStoryState } = require("../../stages/mainStoryStage");
 
 const ROOT_DIR = path.resolve(__dirname, "..", "..");
-const TABLE_ROOTS = [
-  path.join(ROOT_DIR, "gameplay-tables-json", "Assetbundles"),
-  path.join(ROOT_DIR, "gameplay-tables-json", "StreamingAssets"),
-  path.join(ROOT_DIR, "gameplay-jsons", "Assetbundles"),
-  path.join(ROOT_DIR, "gameplay-jsons", "StreamingAssets"),
-];
 
 const PACKETS = Object.freeze({
   UNIT_MISSION_REWARD_REQ: 1438,
@@ -902,17 +896,7 @@ function loadCollectionTables() {
 }
 
 function readRecords(directory, fileName) {
-  for (const root of TABLE_ROOTS) {
-    const filePath = path.join(root, directory, "luac", fileName);
-    if (!fs.existsSync(filePath)) continue;
-    try {
-      const parsed = JSON.parse(fs.readFileSync(filePath, "utf8"));
-      if (parsed && Array.isArray(parsed.records)) return parsed.records;
-    } catch (err) {
-      console.log(`[collection] failed to load ${filePath}: ${err.message}`);
-    }
-  }
-  return [];
+  return readGameplayTableRecords(directory, fileName, { rootDir: ROOT_DIR, logLabel: "collection" });
 }
 
 function mapCollectionMiscType(value) {

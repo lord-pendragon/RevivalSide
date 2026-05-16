@@ -1,0 +1,1707 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_UNIT_C_STREGA_LAURA_RA.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 20,
+  "records": [
+    {
+      "__key": "m_UnitSizeX",
+      "value": 120
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 270
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 260
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 200
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 200
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.11
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.2
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 280
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 1000
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 1100
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 900
+    },
+    {
+      "__key": "m_AttackedTargetTime",
+      "value": 1
+    },
+    {
+      "__key": "m_bAttackedTarget",
+      "value": false
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": true
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1"
+        }
+      ]
+    },
+    {
+      "__key": "m_listAirAttackStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1_AIR"
+        }
+      ]
+    },
+    {
+      "__key": "m_listSkillStateData",
+      "value": [
+        {
+          "m_StateName": "USN_SKILL1"
+        }
+      ]
+    },
+    {
+      "__key": "m_listHyperSkillStateData",
+      "value": [
+        {
+          "m_StateName": "USN_HYPER1",
+          "m_fStartCool": 0.7
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.5,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_DamagedChangeState": "USN_ASTAND",
+          "m_listNKMEventInvincible": [
+            {
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_fEventTimeMax": 1.4333333333333333
+            }
+          ],
+          "m_listNKMEventChangeState": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_TargetUnitID": 10049,
+              "m_ChangeState": "USN_DIE"
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fScaleFactor": 1.0,
+              "m_fEventTime": 1.4,
+              "m_EffectName": "AB_FX_UNIT_C_STREGA_LAURA_RA_START",
+              "m_OffsetX": 0,
+              "m_OffsetY": 0,
+              "m_AnimName": "BASE",
+              "m_fAddRotate": 0,
+              "m_dicSkinEffectName": [
+                [
+                  109131,
+                  "AB_FX_UNIT_C_STREGA_LAURA_RA_CAFFE_START"
+                ]
+              ]
+            },
+            {
+              "m_Condition": {
+                "m_bLeaderUnit": true
+              },
+              "m_fEventTime": 1.4,
+              "m_EffectName": "AB_FX_BUFF_LEADER_RED",
+              "m_AnimName": "BASE",
+              "m_OffsetX": 0,
+              "m_OffsetY": 400,
+              "m_fScaleFactor": 1.25,
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_Condition": {
+                "m_bLeaderUnit": true,
+                "m_SkillStrID": "NKM_UNIT_C_STREGA_LAURA_RA_LEADER",
+                "m_SkillLevel": [
+                  1,
+                  2
+                ]
+              },
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_LAURA_RA_LEADER_COUNT"
+            },
+            {
+              "m_Condition": {
+                "m_bLeaderUnit": true,
+                "m_SkillStrID": "NKM_UNIT_C_STREGA_LAURA_RA_LEADER",
+                "m_SkillLevel": [
+                  3,
+                  4
+                ]
+              },
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_LAURA_RA_LEADER_COUNT_LV3"
+            },
+            {
+              "m_Condition": {
+                "m_bLeaderUnit": true,
+                "m_SkillStrID": "NKM_UNIT_C_STREGA_LAURA_RA_LEADER",
+                "m_SkillLevel": [
+                  5,
+                  99
+                ]
+              },
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_LAURA_RA_LEADER_COUNT_LV5"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.06666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_LAURA_START"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5,
+              "m_bVoice": true,
+              "m_PlayRate": 0.6,
+              "m_listSoundName": [
+                "VOICE_UNIT_C_STREGA_LAURA_BATTLE_START_1",
+                "VOICE_UNIT_C_STREGA_LAURA_BATTLE_START_2"
+              ],
+              "m_dicSkinSound": [
+                [
+                  109110,
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_START_1",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_START_2",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_START_3",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_START_4",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_START_5",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_START_6"
+                ]
+              ]
+            }
+          ],
+          "m_listNKMEventRespawn": [
+            {
+              "m_dicSummonedUnitSkin": [
+                [
+                  109110,
+                  1004910
+                ]
+              ],
+              "m_UnitStrID": "NKM_UNIT_C_STREGA_LAURA_RA_CAT",
+              "m_MaxCount": 1,
+              "m_fEventTime": 1.4,
+              "m_fOffsetX": 300,
+              "m_bMaxCountReRespawn": true,
+              "m_bUsePerSkillLevel": 0
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_StateName": "USN_RUN",
+          "m_AnimName": "RUN",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 0.8,
+          "m_bRun": true
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK1",
+          "m_AnimName": "ATTACK1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.1,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_bAutoCoolTime": true,
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.43333333333333335,
+              "m_DEName": "DE_UNIT_C_STREGA_LAURA_RA_ATTACK",
+              "m_OffsetX": 40,
+              "m_OffsetY": 150
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.2,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_03"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK1_AIR",
+          "m_AnimName": "ATTACK1_AIR",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 0.8,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_bAutoCoolTime": true,
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.43333333333333335,
+              "m_DEName": "DE_UNIT_C_STREGA_LAURA_RA_ATTACK",
+              "m_OffsetX": 60,
+              "m_OffsetY": 160
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.2,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_03"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_SKILL1",
+          "m_AnimName": "RA_SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.3,
+          "m_NKM_SKILL_TYPE": "NST_SKILL",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_bSkillCutIn": true,
+          "m_listNKMEventBuff": [
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_C_STREGA_LAURA_RA_SKILL",
+                "m_SkillLevel": [
+                  1,
+                  4
+                ]
+              },
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_BuffStrID": "BUFF_LAURA_RA_CAT_SKILL",
+              "m_fRange": 6000,
+              "m_bMyTeam": true
+            },
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_C_STREGA_LAURA_RA_SKILL",
+                "m_SkillLevel": [
+                  5,
+                  99
+                ]
+              },
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_BuffStrID": "BUFF_LAURA_RA_CAT_SKILL_LV5",
+              "m_fRange": 6000,
+              "m_bMyTeam": true
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_DEName": "DE_UNIT_C_STREGA_LAURA_RA_SKILL1",
+              "m_bTargetPos": true
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 99999,
+              "m_fColorR": 0.5,
+              "m_fColorG": 0.5,
+              "m_fColorB": 1.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.1,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_LAURA_SKILL_START"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.2666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_LAURA_SKILL_ATTACK"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.16666666666666666,
+              "m_bVoice": true,
+              "m_PlayRate": 0.6,
+              "m_listSoundName": [
+                "VOICE_UNIT_C_STREGA_LAURA_BATTLE_ACTIVE_1",
+                "VOICE_UNIT_C_STREGA_LAURA_BATTLE_ACTIVE_2"
+              ],
+              "m_dicSkinSound": [
+                [
+                  109110,
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_ACTIVE_1",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_ACTIVE_2",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_ACTIVE_3",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_ACTIVE_4",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_ACTIVE_6",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_ACTIVE_7"
+                ]
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_C_STREGA_LAURA_BATTLE_ATTACK_7",
+                "VOICE_UNIT_C_STREGA_LAURA_BATTLE_ATTACK_8",
+                "VOICE_UNIT_C_STREGA_LAURA_BATTLE_ATTACK_9"
+              ],
+              "m_dicSkinSound": [
+                [
+                  109110
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_HYPER1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1,
+          "m_AnimName": "HYPER_SKILL1",
+          "m_NKM_SKILL_TYPE": "NST_HYPER",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_listNKMEventAnimSpeed": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_fAnimSpeed": 1.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.3333333333333335,
+              "m_fAnimSpeed": 0.6
+            }
+          ],
+          "m_listNKMEventRespawn": [
+            {
+              "m_Condition": {
+                "m_IgnoreBuffStrID": "TRIGGER_NKM_UNIT_C_STREGA_LAURA_CAT_RANGE"
+              },
+              "m_dicSummonedUnitSkin": [
+                [
+                  109110,
+                  1004910
+                ]
+              ],
+              "m_UnitStrID": "NKM_UNIT_C_STREGA_LAURA_RA_CAT",
+              "m_MaxCount": 1,
+              "m_fEventTime": 2.0,
+              "m_fOffsetX": 200,
+              "m_bUsePerSkillLevel": 0
+            }
+          ],
+          "m_listNKMEventHyperSkillCutIn": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_fDurationTime": 1.0,
+              "m_BGEffectName": "AB_FX_SKILL_CUTIN_COMMON_A",
+              "m_CutInEffectName": "AB_FX_SKILL_CUTIN_NKM_UNIT_C_STREGA_LAURA_RA",
+              "m_CutInEffectAnimName": "BASE"
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fScaleFactor": 1.15,
+              "m_fEventTime": 2.3333333333333335,
+              "m_EffectName": "AB_FX_UNIT_C_STREGA_LAURA_RA_HYPER1",
+              "m_OffsetX": -280,
+              "m_OffsetY": -50,
+              "m_AnimName": "BASE",
+              "m_fAddRotate": 0,
+              "m_UseMasterAnimSpeed": true,
+              "m_dicSkinEffectName": [
+                [
+                  109110,
+                  "AB_FX_UNIT_C_STREaGA_LAURA_RA_HYPER1_WEDDING"
+                ],
+                [
+                  109131,
+                  "AB_FX_UNIT_C_STREGA_LAURA_RA_CAFFE_HYPER1"
+                ]
+              ]
+            }
+          ],
+          "m_listNKMEventInvincible": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_fEventTimeMax": 2.3333333333333335
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.3333333333333335,
+              "m_fEventTimeMax": 2.8333333333333335,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1000.0,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_UNIT_C_STREGA_LAURA_RA_HYPER1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.8333333333333335,
+              "m_fEventTimeMax": 3.3333333333333335,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1000.0,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_UNIT_C_STREGA_LAURA_RA_HYPER1_END"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 3.3333333333333335,
+              "m_fEventTimeMax": 3.8333333333333335,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1000.0,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_UNIT_C_STREGA_LAURA_RA_HYPER1_END"
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_LAURA_RA_HYPER",
+              "m_fRange": 6000,
+              "m_bMyTeam": true
+            },
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_C_STREGA_LAURA_RA_HYPER",
+                "m_SkillLevel": [
+                  5,
+                  99
+                ]
+              },
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.6666666666666665,
+              "m_BuffStrID": "DEBUFF_LAURA_HYPER_LV5"
+            },
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_C_STREGA_LAURA_RA_HYPER",
+                "m_SkillLevel": [
+                  10,
+                  99
+                ]
+              },
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_LAURA_RA_CAT_HYPER_LV10",
+              "m_fRange": 6000,
+              "m_bMyTeam": true
+            },
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_C_STREGA_LAURA_RA_HYPER",
+                "m_SkillLevel": [
+                  10,
+                  99
+                ]
+              },
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_LAURA_RA_CAT_HYPER_LV10"
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_Condition": {
+                "m_SkillStrID": "NKM_UNIT_C_STREGA_LAURA_RA_HYPER",
+                "m_SkillLevel": [
+                  5,
+                  99
+                ]
+              },
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.6666666666666665,
+              "m_DEName": "DE_NKM_UNIT_C_STREGA_LAURA_HYPER_LV5",
+              "m_OffsetX": 600,
+              "m_OffsetY": 0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.23333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HYPER_ATTACK_START"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_LAURA_HYPER_ATTACK_START"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.1666666666666665,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_04"
+              ],
+              "m_b3D": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_04"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.8333333333333335,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_04"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.6666666666666665,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_04"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.8333333333333335,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_04"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.16666666666666666,
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_C_STREGA_LAURA_BATTLE_HYPER_1",
+                "VOICE_UNIT_C_STREGA_LAURA_BATTLE_HYPER_2"
+              ],
+              "m_dicSkinSound": [
+                [
+                  109110,
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_HYPER_1",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_HYPER_2",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_HYPER_3",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_HYPER_4",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_HYPER_5",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_HYPER_6"
+                ]
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_C_STREGA_LAURA_BATTLE_ATTACK_10"
+              ]
+            }
+          ],
+          "m_listNKMEventCameraMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_fEventTimeMax": 2.1666666666666665,
+              "m_fPosXOffset": -300,
+              "m_fPosYOffset": 150,
+              "m_fZoom": -150,
+              "m_fMoveTrackingTime": 0.2,
+              "m_fZoomTrackingTime": 0.4
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.1666666666666665,
+              "m_fEventTimeMax": 4.333333333333333,
+              "m_fPosXOffset": 500,
+              "m_fPosYOffset": 100,
+              "m_fZoom": 0,
+              "m_fMoveTrackingTime": 1.5,
+              "m_fZoomTrackingTime": 1.5
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.0,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 300.0,
+              "m_fCameraCrashGap": 10.0,
+              "m_fCameraCrashTime": 2.0
+            }
+          ],
+          "m_listNKMEventFadeWorld": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.3333333333333333,
+              "m_fEventTimeMax": 2.0,
+              "m_fColorR": 0.1,
+              "m_fColorG": 0.1,
+              "m_fColorB": 0.1,
+              "m_fMapColorKeepTime": 0.3,
+              "m_fMapColorReturnTime": 0.5
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 99999,
+              "m_fColorR": 1.0,
+              "m_fColorG": 0.5,
+              "m_fColorB": 0.5
+            }
+          ],
+          "m_listNKMEventStopTime": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_StopTimeIndex": "NSTI_SKILL",
+              "m_fStopTime": 1.33,
+              "m_bStopEnemyOnly": false,
+              "m_bMyStop": false,
+              "m_fRange": 800
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_A",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DAMAGE_3"
+              ],
+              "m_dicSkinSound": [
+                [
+                  109110,
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_2",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_3",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_4",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_11",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_18"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_B",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DAMAGE_3"
+              ],
+              "m_dicSkinSound": [
+                [
+                  109110,
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_2",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_3",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_4",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_11",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_18"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_AIR_UP",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DAMAGE_3"
+              ],
+              "m_dicSkinSound": [
+                [
+                  109110,
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_2",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_3",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_4",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_11",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_18"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DAMAGE_3"
+              ],
+              "m_dicSkinSound": [
+                [
+                  109110,
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_2",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_3",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_4",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_11",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_18"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DEATH_1",
+                "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DEATH_2"
+              ],
+              "m_dicSkinSound": [
+                [
+                  109110,
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DEATH_1",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DEATH_2",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DEATH_3",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DEATH_5",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DEATH_9",
+                  "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DEATH_10"
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_UnitSizeX": 120,
+    "m_UnitSizeY": 270,
+    "m_SpriteScale": 1.0,
+    "m_fGageOffsetY": 260,
+    "m_fShadowScaleX": 200,
+    "m_fShadowScaleY": 200,
+    "m_fForceRespawnZposMin": 0.11,
+    "m_fForceRespawnZposMax": 0.2,
+    "m_SpeedRun": 280,
+    "m_SeeRange": 1000,
+    "m_SeeRangeMax": 1100,
+    "m_TargetNearRange": 900,
+    "m_AttackedTargetTime": 1,
+    "m_bAttackedTarget": false,
+    "m_bUseMotionBlur": true,
+    "m_listAttackStateData": [
+      {
+        "m_StateName": "USN_ATTACK1"
+      }
+    ],
+    "m_listAirAttackStateData": [
+      {
+        "m_StateName": "USN_ATTACK1_AIR"
+      }
+    ],
+    "m_listSkillStateData": [
+      {
+        "m_StateName": "USN_SKILL1"
+      }
+    ],
+    "m_listHyperSkillStateData": [
+      {
+        "m_StateName": "USN_HYPER1",
+        "m_fStartCool": 0.7
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.5,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_DamagedChangeState": "USN_ASTAND",
+        "m_listNKMEventInvincible": [
+          {
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_fEventTimeMax": 1.4333333333333333
+          }
+        ],
+        "m_listNKMEventChangeState": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_TargetUnitID": 10049,
+            "m_ChangeState": "USN_DIE"
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fScaleFactor": 1.0,
+            "m_fEventTime": 1.4,
+            "m_EffectName": "AB_FX_UNIT_C_STREGA_LAURA_RA_START",
+            "m_OffsetX": 0,
+            "m_OffsetY": 0,
+            "m_AnimName": "BASE",
+            "m_fAddRotate": 0,
+            "m_dicSkinEffectName": [
+              [
+                109131,
+                "AB_FX_UNIT_C_STREGA_LAURA_RA_CAFFE_START"
+              ]
+            ]
+          },
+          {
+            "m_Condition": {
+              "m_bLeaderUnit": true
+            },
+            "m_fEventTime": 1.4,
+            "m_EffectName": "AB_FX_BUFF_LEADER_RED",
+            "m_AnimName": "BASE",
+            "m_OffsetX": 0,
+            "m_OffsetY": 400,
+            "m_fScaleFactor": 1.25,
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_Condition": {
+              "m_bLeaderUnit": true,
+              "m_SkillStrID": "NKM_UNIT_C_STREGA_LAURA_RA_LEADER",
+              "m_SkillLevel": [
+                1,
+                2
+              ]
+            },
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_LAURA_RA_LEADER_COUNT"
+          },
+          {
+            "m_Condition": {
+              "m_bLeaderUnit": true,
+              "m_SkillStrID": "NKM_UNIT_C_STREGA_LAURA_RA_LEADER",
+              "m_SkillLevel": [
+                3,
+                4
+              ]
+            },
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_LAURA_RA_LEADER_COUNT_LV3"
+          },
+          {
+            "m_Condition": {
+              "m_bLeaderUnit": true,
+              "m_SkillStrID": "NKM_UNIT_C_STREGA_LAURA_RA_LEADER",
+              "m_SkillLevel": [
+                5,
+                99
+              ]
+            },
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_LAURA_RA_LEADER_COUNT_LV5"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.06666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_LAURA_START"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5,
+            "m_bVoice": true,
+            "m_PlayRate": 0.6,
+            "m_listSoundName": [
+              "VOICE_UNIT_C_STREGA_LAURA_BATTLE_START_1",
+              "VOICE_UNIT_C_STREGA_LAURA_BATTLE_START_2"
+            ],
+            "m_dicSkinSound": [
+              [
+                109110,
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_START_1",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_START_2",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_START_3",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_START_4",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_START_5",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_START_6"
+              ]
+            ]
+          }
+        ],
+        "m_listNKMEventRespawn": [
+          {
+            "m_dicSummonedUnitSkin": [
+              [
+                109110,
+                1004910
+              ]
+            ],
+            "m_UnitStrID": "NKM_UNIT_C_STREGA_LAURA_RA_CAT",
+            "m_MaxCount": 1,
+            "m_fEventTime": 1.4,
+            "m_fOffsetX": 300,
+            "m_bMaxCountReRespawn": true,
+            "m_bUsePerSkillLevel": 0
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_StateName": "USN_RUN",
+        "m_AnimName": "RUN",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 0.8,
+        "m_bRun": true
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK1",
+        "m_AnimName": "ATTACK1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.1,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_bAutoCoolTime": true,
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.43333333333333335,
+            "m_DEName": "DE_UNIT_C_STREGA_LAURA_RA_ATTACK",
+            "m_OffsetX": 40,
+            "m_OffsetY": 150
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.2,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_03"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK1_AIR",
+        "m_AnimName": "ATTACK1_AIR",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 0.8,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_bAutoCoolTime": true,
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.43333333333333335,
+            "m_DEName": "DE_UNIT_C_STREGA_LAURA_RA_ATTACK",
+            "m_OffsetX": 60,
+            "m_OffsetY": 160
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.2,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_03"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_SKILL1",
+        "m_AnimName": "RA_SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.3,
+        "m_NKM_SKILL_TYPE": "NST_SKILL",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_bSkillCutIn": true,
+        "m_listNKMEventBuff": [
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_C_STREGA_LAURA_RA_SKILL",
+              "m_SkillLevel": [
+                1,
+                4
+              ]
+            },
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_BuffStrID": "BUFF_LAURA_RA_CAT_SKILL",
+            "m_fRange": 6000,
+            "m_bMyTeam": true
+          },
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_C_STREGA_LAURA_RA_SKILL",
+              "m_SkillLevel": [
+                5,
+                99
+              ]
+            },
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_BuffStrID": "BUFF_LAURA_RA_CAT_SKILL_LV5",
+            "m_fRange": 6000,
+            "m_bMyTeam": true
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_DEName": "DE_UNIT_C_STREGA_LAURA_RA_SKILL1",
+            "m_bTargetPos": true
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 99999,
+            "m_fColorR": 0.5,
+            "m_fColorG": 0.5,
+            "m_fColorB": 1.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.1,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_LAURA_SKILL_START"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.2666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_LAURA_SKILL_ATTACK"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.16666666666666666,
+            "m_bVoice": true,
+            "m_PlayRate": 0.6,
+            "m_listSoundName": [
+              "VOICE_UNIT_C_STREGA_LAURA_BATTLE_ACTIVE_1",
+              "VOICE_UNIT_C_STREGA_LAURA_BATTLE_ACTIVE_2"
+            ],
+            "m_dicSkinSound": [
+              [
+                109110,
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_ACTIVE_1",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_ACTIVE_2",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_ACTIVE_3",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_ACTIVE_4",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_ACTIVE_6",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_ACTIVE_7"
+              ]
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_C_STREGA_LAURA_BATTLE_ATTACK_7",
+              "VOICE_UNIT_C_STREGA_LAURA_BATTLE_ATTACK_8",
+              "VOICE_UNIT_C_STREGA_LAURA_BATTLE_ATTACK_9"
+            ],
+            "m_dicSkinSound": [
+              [
+                109110
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_HYPER1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1,
+        "m_AnimName": "HYPER_SKILL1",
+        "m_NKM_SKILL_TYPE": "NST_HYPER",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_listNKMEventAnimSpeed": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_fAnimSpeed": 1.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.3333333333333335,
+            "m_fAnimSpeed": 0.6
+          }
+        ],
+        "m_listNKMEventRespawn": [
+          {
+            "m_Condition": {
+              "m_IgnoreBuffStrID": "TRIGGER_NKM_UNIT_C_STREGA_LAURA_CAT_RANGE"
+            },
+            "m_dicSummonedUnitSkin": [
+              [
+                109110,
+                1004910
+              ]
+            ],
+            "m_UnitStrID": "NKM_UNIT_C_STREGA_LAURA_RA_CAT",
+            "m_MaxCount": 1,
+            "m_fEventTime": 2.0,
+            "m_fOffsetX": 200,
+            "m_bUsePerSkillLevel": 0
+          }
+        ],
+        "m_listNKMEventHyperSkillCutIn": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_fDurationTime": 1.0,
+            "m_BGEffectName": "AB_FX_SKILL_CUTIN_COMMON_A",
+            "m_CutInEffectName": "AB_FX_SKILL_CUTIN_NKM_UNIT_C_STREGA_LAURA_RA",
+            "m_CutInEffectAnimName": "BASE"
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fScaleFactor": 1.15,
+            "m_fEventTime": 2.3333333333333335,
+            "m_EffectName": "AB_FX_UNIT_C_STREGA_LAURA_RA_HYPER1",
+            "m_OffsetX": -280,
+            "m_OffsetY": -50,
+            "m_AnimName": "BASE",
+            "m_fAddRotate": 0,
+            "m_UseMasterAnimSpeed": true,
+            "m_dicSkinEffectName": [
+              [
+                109110,
+                "AB_FX_UNIT_C_STREaGA_LAURA_RA_HYPER1_WEDDING"
+              ],
+              [
+                109131,
+                "AB_FX_UNIT_C_STREGA_LAURA_RA_CAFFE_HYPER1"
+              ]
+            ]
+          }
+        ],
+        "m_listNKMEventInvincible": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_fEventTimeMax": 2.3333333333333335
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.3333333333333335,
+            "m_fEventTimeMax": 2.8333333333333335,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1000.0,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_UNIT_C_STREGA_LAURA_RA_HYPER1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.8333333333333335,
+            "m_fEventTimeMax": 3.3333333333333335,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1000.0,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_UNIT_C_STREGA_LAURA_RA_HYPER1_END"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 3.3333333333333335,
+            "m_fEventTimeMax": 3.8333333333333335,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1000.0,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_UNIT_C_STREGA_LAURA_RA_HYPER1_END"
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_LAURA_RA_HYPER",
+            "m_fRange": 6000,
+            "m_bMyTeam": true
+          },
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_C_STREGA_LAURA_RA_HYPER",
+              "m_SkillLevel": [
+                5,
+                99
+              ]
+            },
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.6666666666666665,
+            "m_BuffStrID": "DEBUFF_LAURA_HYPER_LV5"
+          },
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_C_STREGA_LAURA_RA_HYPER",
+              "m_SkillLevel": [
+                10,
+                99
+              ]
+            },
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_LAURA_RA_CAT_HYPER_LV10",
+            "m_fRange": 6000,
+            "m_bMyTeam": true
+          },
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_C_STREGA_LAURA_RA_HYPER",
+              "m_SkillLevel": [
+                10,
+                99
+              ]
+            },
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_LAURA_RA_CAT_HYPER_LV10"
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_Condition": {
+              "m_SkillStrID": "NKM_UNIT_C_STREGA_LAURA_RA_HYPER",
+              "m_SkillLevel": [
+                5,
+                99
+              ]
+            },
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.6666666666666665,
+            "m_DEName": "DE_NKM_UNIT_C_STREGA_LAURA_HYPER_LV5",
+            "m_OffsetX": 600,
+            "m_OffsetY": 0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.23333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HYPER_ATTACK_START"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_LAURA_HYPER_ATTACK_START"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.1666666666666665,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_04"
+            ],
+            "m_b3D": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_04"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.8333333333333335,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_04"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.6666666666666665,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_04"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.8333333333333335,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_04"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.16666666666666666,
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_C_STREGA_LAURA_BATTLE_HYPER_1",
+              "VOICE_UNIT_C_STREGA_LAURA_BATTLE_HYPER_2"
+            ],
+            "m_dicSkinSound": [
+              [
+                109110,
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_HYPER_1",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_HYPER_2",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_HYPER_3",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_HYPER_4",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_HYPER_5",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_HYPER_6"
+              ]
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_C_STREGA_LAURA_BATTLE_ATTACK_10"
+            ]
+          }
+        ],
+        "m_listNKMEventCameraMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_fEventTimeMax": 2.1666666666666665,
+            "m_fPosXOffset": -300,
+            "m_fPosYOffset": 150,
+            "m_fZoom": -150,
+            "m_fMoveTrackingTime": 0.2,
+            "m_fZoomTrackingTime": 0.4
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.1666666666666665,
+            "m_fEventTimeMax": 4.333333333333333,
+            "m_fPosXOffset": 500,
+            "m_fPosYOffset": 100,
+            "m_fZoom": 0,
+            "m_fMoveTrackingTime": 1.5,
+            "m_fZoomTrackingTime": 1.5
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.0,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 300.0,
+            "m_fCameraCrashGap": 10.0,
+            "m_fCameraCrashTime": 2.0
+          }
+        ],
+        "m_listNKMEventFadeWorld": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.3333333333333333,
+            "m_fEventTimeMax": 2.0,
+            "m_fColorR": 0.1,
+            "m_fColorG": 0.1,
+            "m_fColorB": 0.1,
+            "m_fMapColorKeepTime": 0.3,
+            "m_fMapColorReturnTime": 0.5
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 99999,
+            "m_fColorR": 1.0,
+            "m_fColorG": 0.5,
+            "m_fColorB": 0.5
+          }
+        ],
+        "m_listNKMEventStopTime": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_StopTimeIndex": "NSTI_SKILL",
+            "m_fStopTime": 1.33,
+            "m_bStopEnemyOnly": false,
+            "m_bMyStop": false,
+            "m_fRange": 800
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_A",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DAMAGE_3"
+            ],
+            "m_dicSkinSound": [
+              [
+                109110,
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_4",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_11",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_18"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_B",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DAMAGE_3"
+            ],
+            "m_dicSkinSound": [
+              [
+                109110,
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_4",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_11",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_18"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_AIR_UP",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DAMAGE_3"
+            ],
+            "m_dicSkinSound": [
+              [
+                109110,
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_4",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_11",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_18"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DAMAGE_3"
+            ],
+            "m_dicSkinSound": [
+              [
+                109110,
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_4",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_11",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DAMAGE_18"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DEATH_1",
+              "VOICE_UNIT_C_STREGA_LAURA_BATTLE_DEATH_2"
+            ],
+            "m_dicSkinSound": [
+              [
+                109110,
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DEATH_1",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DEATH_2",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DEATH_3",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DEATH_5",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DEATH_9",
+                "VOICE_UNIT_C_STREGA_LAURA_WEDDING_BATTLE_DEATH_10"
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

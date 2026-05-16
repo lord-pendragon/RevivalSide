@@ -1,0 +1,235 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_BATTLE_FIERCE_003_EXPERT.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 4
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.2
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_FIERCE_MINISTRA_TRANS_S"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_NEEDLER_S",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeEnd": 90,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.5,
+              "NST_HP": 1.5,
+              "NST_DEF": 1.5,
+              "NST_CRITICAL": 1.5,
+              "NST_HIT": 1.5,
+              "NST_EVADE": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_NEEDLER_S",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 91,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.5,
+              "NST_HP": 1.5,
+              "NST_DEF": 1.5,
+              "NST_CRITICAL": 1.5,
+              "NST_HIT": 1.5,
+              "NST_EVADE": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_NEEDLER_S",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.5,
+              "NST_HP": 1.5,
+              "NST_DEF": 1.5,
+              "NST_CRITICAL": 1.5,
+              "NST_HIT": 1.5,
+              "NST_EVADE": 2.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_RANGER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 3,
+            "m_fEventTimeGap": 17,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0,
+              "NST_HP": 2.0,
+              "NST_DEF": 2.0,
+              "NST_CRITICAL": 2.0,
+              "NST_HIT": 2.0,
+              "NST_EVADE": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_TOTEM_TRANS",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 8,
+            "m_fEventTimeGap": 28,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2.0,
+              "NST_HP": 1.7,
+              "NST_DEF": 1.7,
+              "NST_CRITICAL": 2.0,
+              "NST_HIT": 2.0,
+              "NST_EVADE": 2.0
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 4,
+    "m_fCostSpeedRateB": 1.2,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_FIERCE_MINISTRA_TRANS_S",
+    "m_fBossPosZ": 0.6,
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_NEEDLER_S",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeEnd": 90,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.5,
+            "NST_HP": 1.5,
+            "NST_DEF": 1.5,
+            "NST_CRITICAL": 1.5,
+            "NST_HIT": 1.5,
+            "NST_EVADE": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_NEEDLER_S",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 91,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.5,
+            "NST_HP": 1.5,
+            "NST_DEF": 1.5,
+            "NST_CRITICAL": 1.5,
+            "NST_HIT": 1.5,
+            "NST_EVADE": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_NORMAL_TRANS_NEEDLER_S",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.5,
+            "NST_HP": 1.5,
+            "NST_DEF": 1.5,
+            "NST_CRITICAL": 1.5,
+            "NST_HIT": 1.5,
+            "NST_EVADE": 2.0
+          }
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_RANGER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 3,
+          "m_fEventTimeGap": 17,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0,
+            "NST_HP": 2.0,
+            "NST_DEF": 2.0,
+            "NST_CRITICAL": 2.0,
+            "NST_HIT": 2.0,
+            "NST_EVADE": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_TOTEM_TRANS",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 8,
+          "m_fEventTimeGap": 28,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0,
+            "NST_HP": 1.7,
+            "NST_DEF": 1.7,
+            "NST_CRITICAL": 2.0,
+            "NST_HIT": 2.0,
+            "NST_EVADE": 2.0
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

@@ -1,0 +1,199 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_LEGACY_2_2.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 8,
+  "records": [
+    {
+      "__key": "m_fCostSpeedRateA",
+      "value": 1.5
+    },
+    {
+      "__key": "m_bRespawnFreePos",
+      "value": true
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EVENT_GAMECIRCLE_C_STAR"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_bShowGage": false,
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 0.5
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_UNIT_SCHOOL_C_PENCIL",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.3,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 2.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_HP": 10.0
+        }
+      },
+      "1": {
+        "m_UnitStrID": "NKM_UNIT_C_YG_HOJIN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.6,
+          "m_fEventPos": 0.1
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_ACADEMY_C_TWINTAIL_ALLY",
+          "m_EventConditionValue2": "USN_START",
+          "m_dungeonEventType": "SET_UNIT_STATE",
+          "m_EventActionValue": 210555,
+          "m_EventActionStrValue": "USN_ASTAND_STORY",
+          "m_bPause": false,
+          "m_fEventDelay": 0.0,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_EventCondition": "TARGET_ALLY_UNIT_HP_RATE_LESS",
+          "m_EventConditionValue1": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_ACADEMY_C_TWINTAIL_ALLY",
+          "m_EventConditionNumValue": 5,
+          "m_dungeonEventType": "SET_EVENTTAG",
+          "m_EventActionStrValue": "TWINTAIL_DIE",
+          "m_EventActionValue": 1,
+          "m_bPause": false,
+          "m_fEventDelay": 0.0,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "FORCE_WIN",
+          "m_EventActionValue": 1,
+          "m_bPause": true,
+          "m_fEventDelay": 2.5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_EventTag": "TWINTAIL_DIE",
+            "m_EventTagCount": 1
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fCostSpeedRateA": 1.5,
+    "m_bRespawnFreePos": true,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EVENT_GAMECIRCLE_C_STAR",
+    "m_fBossPosZ": 0.6,
+    "m_BossRespawnUnitTemplet": {
+      "m_bShowGage": false,
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 0.5
+        }
+      }
+    },
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_UNIT_SCHOOL_C_PENCIL",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.3,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 2.0
+          }
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": {
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_HP": 10.0
+        }
+      },
+      "1": {
+        "m_UnitStrID": "NKM_UNIT_C_YG_HOJIN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.6,
+          "m_fEventPos": 0.1
+        }
+      }
+    },
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_ACADEMY_C_TWINTAIL_ALLY",
+        "m_EventConditionValue2": "USN_START",
+        "m_dungeonEventType": "SET_UNIT_STATE",
+        "m_EventActionValue": 210555,
+        "m_EventActionStrValue": "USN_ASTAND_STORY",
+        "m_bPause": false,
+        "m_fEventDelay": 0.0,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_EventCondition": "TARGET_ALLY_UNIT_HP_RATE_LESS",
+        "m_EventConditionValue1": "NKM_MOB_NORMAL_EVENT_GAMECIRCLE_ACADEMY_C_TWINTAIL_ALLY",
+        "m_EventConditionNumValue": 5,
+        "m_dungeonEventType": "SET_EVENTTAG",
+        "m_EventActionStrValue": "TWINTAIL_DIE",
+        "m_EventActionValue": 1,
+        "m_bPause": false,
+        "m_fEventDelay": 0.0,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "FORCE_WIN",
+        "m_EventActionValue": 1,
+        "m_bPause": true,
+        "m_fEventDelay": 2.5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_EventTag": "TWINTAIL_DIE",
+          "m_EventTagCount": 1
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

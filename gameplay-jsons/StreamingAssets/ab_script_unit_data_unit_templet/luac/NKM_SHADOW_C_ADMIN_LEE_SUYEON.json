@@ -1,0 +1,1923 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_SHADOW_C_ADMIN_LEE_SUYEON.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 20,
+  "records": [
+    {
+      "__key": "m_UnitSizeX",
+      "value": 120
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 280
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 270
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 150
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 150
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 380
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.0
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.2
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 700
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 800
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 125
+    },
+    {
+      "__key": "m_AttackedTargetTime",
+      "value": 1
+    },
+    {
+      "__key": "m_bAttackedTarget",
+      "value": false
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": true
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_fRangeMax": 200
+        }
+      ]
+    },
+    {
+      "__key": "m_listSkillStateData",
+      "value": [
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_fRangeMax": 250
+        }
+      ]
+    },
+    {
+      "__key": "m_listHyperSkillStateData",
+      "value": [
+        {
+          "m_StateName": "USN_HYPER_SKILL1",
+          "m_fStartCool": 0.7,
+          "m_fRangeMax": 1000
+        }
+      ]
+    },
+    {
+      "__key": "m_listPhaseChangeData",
+      "value": [
+        {
+          "m_TargetPhase": 1,
+          "m_fChangeConditionHPRate": 0.7,
+          "m_ChangeStateName": "USN_PASSIVE"
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.5,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_DamagedChangeState": "USN_ASTAND",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.2,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_FOOT_STEP_LANDING_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.9,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_LEE_SUYEON_START"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_StateName": "USN_RUN",
+          "m_AnimName": "RUN",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 0.85,
+          "m_bRun": true
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_ATTACK1",
+          "m_AnimName": "ATTACK1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.16666666666666666,
+              "m_fEventTimeMax": 0.5,
+              "m_fRangeMin": -150.0,
+              "m_fRangeMax": 350.0,
+              "m_bHitAir": false,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_ATTACK1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.5,
+              "m_fEventTimeMax": 1.0666666666666667,
+              "m_fRangeMin": -150.0,
+              "m_fRangeMax": 350.0,
+              "m_bHitAir": false,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_ATTACK1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.0666666666666667,
+              "m_fEventTimeMax": 1.5,
+              "m_fRangeMin": -150.0,
+              "m_fRangeMax": 350.0,
+              "m_bHitAir": false,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_ATTACK1"
+            }
+          ],
+          "m_listNKMEventSpeedX": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.3333333333333333,
+              "m_fEventTimeMax": 0.4,
+              "m_SpeedX": 100.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.0333333333333334,
+              "m_fEventTimeMax": 1.1,
+              "m_SpeedX": 150.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.16666666666666666,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_02"
+              ],
+              "m_b3D": false,
+              "m_bLoop": false,
+              "m_PlayRate": 1.0,
+              "m_bStopSound": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_02"
+              ],
+              "m_b3D": false,
+              "m_bLoop": false,
+              "m_PlayRate": 1.0,
+              "m_bStopSound": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0666666666666667,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_02"
+              ],
+              "m_b3D": false,
+              "m_bLoop": false,
+              "m_PlayRate": 1.0,
+              "m_bStopSound": false
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_PASSIVE",
+          "m_AnimName": "PASSIVE",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.26666666666666666,
+              "m_EffectName": "AB_FX_COMMON_SHOCKWAVE_PURPLE",
+              "m_fScaleFactor": 0.5,
+              "m_OffsetX": -50,
+              "m_OffsetY": 30,
+              "m_AnimName": "BASE"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_EffectName": "AB_FX_HIT_GUN_A_PURPLE",
+              "m_fScaleFactor": 2.0,
+              "m_OffsetX": -10,
+              "m_OffsetY": 200,
+              "m_OffsetZ": 50,
+              "m_AnimName": "BASE"
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_LEE_SUYEON_PASSIVE_LV5"
+            }
+          ],
+          "m_listNKMEventCameraMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_fEventTimeMax": 0.8333333333333334,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 150,
+              "m_fZoom": -100,
+              "m_fFocusBlur": 0.0,
+              "m_fMoveTrackingTime": 0.1,
+              "m_fZoomTrackingTime": 0.1,
+              "m_fCameraRadius": 0.0
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 10.0,
+              "m_fCameraCrashTime": 0.2
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_SKILL1",
+          "m_AnimName": "SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_StateCoolTime": 15,
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.9666666666666666,
+              "m_EffectName": "AB_FX_LEE_SUYEON_SKILL_JUMP",
+              "m_OffsetY": -200,
+              "m_bLandConnect": false,
+              "m_AnimName": "BASE",
+              "m_fScaleFactor": 1.3
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 4.033333333333333,
+              "m_EffectName": "AB_FX_LEE_SUYEON_SKILL_FINAL_BLOW",
+              "m_bLandConnect": true,
+              "m_AnimName": "BASE",
+              "m_fScaleFactor": 1.5
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.8333333333333334,
+              "m_fEventTimeMax": 0.8333333333333334,
+              "m_fRangeMin": -100.0,
+              "m_fRangeMax": 650.0,
+              "m_bHitAir": false,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_SKILL1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.3333333333333333,
+              "m_fEventTimeMax": 1.3333333333333333,
+              "m_fRangeMin": -50.0,
+              "m_fRangeMax": 650.0,
+              "m_bHitAir": false,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_SKILL1_RAPID"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.8333333333333333,
+              "m_fEventTimeMax": 1.8333333333333333,
+              "m_fRangeMin": -50.0,
+              "m_fRangeMax": 650.0,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_SKILL1_UP"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.3333333333333335,
+              "m_fEventTimeMax": 2.5,
+              "m_fRangeMin": -100.0,
+              "m_fRangeMax": 650.0,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_SKILL1_RAPID_AIR"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.8333333333333335,
+              "m_fEventTimeMax": 3.0,
+              "m_fRangeMin": -50.0,
+              "m_fRangeMax": 650.0,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_SKILL1_RAPID_AIR"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 4.0,
+              "m_fEventTimeMax": 4.333333333333333,
+              "m_fRangeMin": -50.0,
+              "m_fRangeMax": 650.0,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_SKILL1_DOWN"
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 4.0,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 1250,
+              "m_fCameraCrashGap": 8,
+              "m_fCameraCrashTime": 0.5
+            }
+          ],
+          "m_listNKMEventDefence": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_fEventTimeMax": 33.3,
+              "m_fDamageReduceRate": 0.25
+            }
+          ],
+          "m_listNKMEventMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.8333333333333333,
+              "m_bTargetUnit": false,
+              "m_bOffsetDependMe": false,
+              "m_OffsetX": 0,
+              "m_OffsetJumpYPos": 300,
+              "m_bLandMove": false,
+              "m_MoveTime": 0.16666666666666666,
+              "m_MoveTrackingType": "TDT_NORMAL"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.0,
+              "m_bTargetUnit": false,
+              "m_bOffsetDependMe": false,
+              "m_OffsetX": 0,
+              "m_OffsetJumpYPos": 0,
+              "m_bLandMove": false,
+              "m_MoveTime": 1.3333333333333333,
+              "m_MoveTrackingType": "TDT_NORMAL"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.3333333333333335,
+              "m_bTargetUnit": false,
+              "m_bOffsetDependMe": false,
+              "m_OffsetX": 0,
+              "m_OffsetJumpYPos": 200,
+              "m_bLandMove": false,
+              "m_MoveTime": 0.3333333333333333,
+              "m_MoveTrackingType": "TDT_SLOWER"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.933333333333333,
+              "m_bTargetUnit": false,
+              "m_bOffsetDependMe": false,
+              "m_OffsetX": 0,
+              "m_OffsetJumpYPos": -600,
+              "m_bLandMove": false,
+              "m_MoveTime": 0.1,
+              "m_MoveTrackingType": "TDT_NORMAL"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ],
+              "m_b3D": false,
+              "m_bLoop": false,
+              "m_PlayRate": 1.0,
+              "m_bStopSound": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8333333333333334,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG_02"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.3333333333333333,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG_02"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.8333333333333333,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG_04"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.3333333333333335,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.5,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.6666666666666665,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.8333333333333335,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.0,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.3333333333333335,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_LEE_SUYEON_SKILL_ATTACK"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 4.0,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG_03"
+              ]
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 99999,
+              "m_fColorR": 0.5,
+              "m_fColorG": 0.5,
+              "m_fColorB": 1.0
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_HYPER_SKILL1",
+          "m_AnimName": "HYPER_SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1,
+          "m_bForceRight": true,
+          "m_bForceRightLeftDependTeam": true,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_StateCoolTime": 60,
+          "m_listNKMEventBuff": [
+            {
+              "m_BuffStrID": "BUFF_SHADOW_PALACE_5_FINISH",
+              "m_BuffLevel": 20
+            }
+          ],
+          "m_listNKMEventInvincible": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_fEventTimeMax": 1.2666666666666666
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.2666666666666666,
+              "m_fEventTimeMax": 2.2,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1200.0,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 5,
+              "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_HYPER1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.2,
+              "m_fEventTimeMax": 2.533333333333333,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1200.0,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 5,
+              "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_HYPER1_RAPID"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.533333333333333,
+              "m_fEventTimeMax": 2.8666666666666667,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1200.0,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 5,
+              "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_HYPER1_RAPID"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.8666666666666667,
+              "m_fEventTimeMax": 3.6666666666666665,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1200.0,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 5,
+              "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_HYPER1_RAPID"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 6.333333333333333,
+              "m_fEventTimeMax": 7.666666666666667,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1200.0,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 5,
+              "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_HYPER1_END"
+            }
+          ],
+          "m_bShowGage": false,
+          "m_listNKMEventAnimSpeed": [
+            {
+              "m_fEventTime": 2.2666666666666666,
+              "m_fAnimSpeed": 2.0
+            },
+            {
+              "m_fEventTime": 3.1333333333333333,
+              "m_fAnimSpeed": 3.0
+            },
+            {
+              "m_fEventTime": 4.0,
+              "m_fAnimSpeed": 1.2
+            },
+            {
+              "m_fEventTime": 6.0,
+              "m_fAnimSpeed": 3.0
+            },
+            {
+              "m_fEventTime": 7.333333333333333,
+              "m_fAnimSpeed": 0.7
+            }
+          ],
+          "m_listNKMEventMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.2666666666666666,
+              "m_bTargetUnit": false,
+              "m_bOffsetDependMe": false,
+              "m_OffsetX": 1000,
+              "m_OffsetJumpYPos": 0,
+              "m_bLandMove": false,
+              "m_MoveTime": 0.3333333333333333,
+              "m_MoveTrackingType": "TDT_NORMAL"
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 6.3,
+              "m_EffectName": "AB_FX_DE_NKM_MONSTER_BOSS_BASIC_KING_SKILL1",
+              "m_AnimName": "BASE",
+              "m_OffsetX": 200.0,
+              "m_OffsetY": 0.0,
+              "m_fAddRotate": 0.0,
+              "m_fScaleFactor": 0.75,
+              "m_bLandConnect": true,
+              "m_bHold": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 6.3,
+              "m_EffectName": "AB_FX_DE_NKM_MONSTER_BOSS_BASIC_KING_SKILL1",
+              "m_AnimName": "BASE",
+              "m_OffsetX": 700.0,
+              "m_OffsetY": 0.0,
+              "m_fAddRotate": 0.0,
+              "m_fScaleFactor": 1.0,
+              "m_bLandConnect": true,
+              "m_bHold": false
+            }
+          ],
+          "m_listNKMEventDefence": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_fEventTimeMax": 33.3,
+              "m_fDamageReduceRate": 0.35
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.16666666666666666,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HYPER_ATTACK_START"
+              ],
+              "m_b3D": false,
+              "m_bLoop": false,
+              "m_PlayRate": 1.0,
+              "m_bStopSound": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.2666666666666666,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_LEE_SUYEON_HYPER_ATTACK"
+              ],
+              "m_b3D": false,
+              "m_bLoop": false,
+              "m_PlayRate": 1.0,
+              "m_bStopSound": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.2,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+              ],
+              "m_b3D": false,
+              "m_bLoop": false,
+              "m_PlayRate": 1.0,
+              "m_bStopSound": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.2666666666666666,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+              ],
+              "m_b3D": false,
+              "m_bLoop": false,
+              "m_PlayRate": 1.0,
+              "m_bStopSound": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.533333333333333,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+              ],
+              "m_b3D": false,
+              "m_bLoop": false,
+              "m_PlayRate": 1.0,
+              "m_bStopSound": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.6,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+              ],
+              "m_b3D": false,
+              "m_bLoop": false,
+              "m_PlayRate": 1.0,
+              "m_bStopSound": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.8666666666666667,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+              ],
+              "m_b3D": false,
+              "m_bLoop": false,
+              "m_PlayRate": 1.0,
+              "m_bStopSound": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.933333333333333,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+              ],
+              "m_b3D": false,
+              "m_bLoop": false,
+              "m_PlayRate": 1.0,
+              "m_bStopSound": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 4.0,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_LEE_SUYEON_HYPER_ATTACK"
+              ],
+              "m_b3D": false,
+              "m_bLoop": false,
+              "m_PlayRate": 1.0,
+              "m_bStopSound": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 6.0,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG_03"
+              ],
+              "m_b3D": false,
+              "m_bLoop": false,
+              "m_PlayRate": 1.0,
+              "m_bStopSound": false
+            }
+          ],
+          "m_listNKMEventSpeedX": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 3.466666666666667,
+              "m_fEventTimeMax": 3.566666666666667,
+              "m_SpeedX": 0.0
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 99999,
+              "m_fColorR": 1.0,
+              "m_fColorG": 0.5,
+              "m_fColorB": 0.5
+            }
+          ],
+          "m_listNKMEventCameraMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_fEventTimeMax": 1.2666666666666666,
+              "m_fPosXOffset": -150,
+              "m_fPosYOffset": 150,
+              "m_fZoom": -200,
+              "m_fFocusBlur": 0.0,
+              "m_fMoveTrackingTime": 0.2,
+              "m_fZoomTrackingTime": 0.2,
+              "m_fCameraRadius": 0.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.2666666666666666,
+              "m_fEventTimeMax": 3.1,
+              "m_fPosXOffset": 350,
+              "m_fPosYOffset": 150,
+              "m_fZoom": -100,
+              "m_fFocusBlur": 0.0,
+              "m_fMoveTrackingTime": 0.4,
+              "m_fZoomTrackingTime": 0.4,
+              "m_fCameraRadius": 0.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 3.1,
+              "m_fEventTimeMax": 4.0,
+              "m_fPosXOffset": 50,
+              "m_fPosYOffset": 100,
+              "m_fZoom": -250,
+              "m_fFocusBlur": 0.0,
+              "m_fMoveTrackingTime": 0.2,
+              "m_fZoomTrackingTime": 0.2,
+              "m_fCameraRadius": 0.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 4.0,
+              "m_fEventTimeMax": 5.333333333333333,
+              "m_fPosXOffset": -500,
+              "m_fPosYOffset": 200,
+              "m_fZoom": -200,
+              "m_fFocusBlur": 0.0,
+              "m_fMoveTrackingTime": 1.2,
+              "m_fZoomTrackingTime": 1.2,
+              "m_fCameraRadius": 0.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 5.333333333333333,
+              "m_fEventTimeMax": 7.0,
+              "m_fPosXOffset": 400,
+              "m_fPosYOffset": 200,
+              "m_fZoom": 0,
+              "m_fFocusBlur": 0.0,
+              "m_fMoveTrackingTime": 1.5,
+              "m_fZoomTrackingTime": 1.5,
+              "m_fCameraRadius": 0.0
+            }
+          ],
+          "m_listNKMEventFadeWorld": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_fEventTimeMax": 1.0,
+              "m_fColorR": 0.0,
+              "m_fColorG": 0.0,
+              "m_fColorB": 0.0,
+              "m_fMapColorKeepTime": 0.2,
+              "m_fMapColorReturnTime": 0.1
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 4.0,
+              "m_fEventTimeMax": 6.666666666666667,
+              "m_fColorR": 0.0,
+              "m_fColorG": 0.0,
+              "m_fColorB": 0.0,
+              "m_fMapColorKeepTime": 0.3,
+              "m_fMapColorReturnTime": 0.3
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.2666666666666666,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 15.0,
+              "m_fCameraCrashTime": 0.1
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.2,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 30.0,
+              "m_fCameraCrashTime": 1.2
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 4.5,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 30.0,
+              "m_fCameraCrashTime": 0.2
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 6.333333333333333,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 50.0,
+              "m_fCameraCrashTime": 0.7
+            }
+          ],
+          "m_listNKMEventStopTime": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_StopTimeIndex": "NSTI_SKILL",
+              "m_fStopTime": 1.0,
+              "m_bStopEnemyOnly": false,
+              "m_bMyStop": false,
+              "m_fRange": 800
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_UnitSizeX": 120,
+    "m_UnitSizeY": 280,
+    "m_SpriteScale": 1.0,
+    "m_fGageOffsetY": 270,
+    "m_fShadowScaleX": 150,
+    "m_fShadowScaleY": 150,
+    "m_SpeedRun": 380,
+    "m_fForceRespawnZposMin": 0.0,
+    "m_fForceRespawnZposMax": 0.2,
+    "m_SeeRange": 700,
+    "m_SeeRangeMax": 800,
+    "m_TargetNearRange": 125,
+    "m_AttackedTargetTime": 1,
+    "m_bAttackedTarget": false,
+    "m_bUseMotionBlur": true,
+    "m_listAttackStateData": [
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_fRangeMax": 200
+      }
+    ],
+    "m_listSkillStateData": [
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_fRangeMax": 250
+      }
+    ],
+    "m_listHyperSkillStateData": [
+      {
+        "m_StateName": "USN_HYPER_SKILL1",
+        "m_fStartCool": 0.7,
+        "m_fRangeMax": 1000
+      }
+    ],
+    "m_listPhaseChangeData": [
+      {
+        "m_TargetPhase": 1,
+        "m_fChangeConditionHPRate": 0.7,
+        "m_ChangeStateName": "USN_PASSIVE"
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.5,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_DamagedChangeState": "USN_ASTAND",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.2,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_FOOT_STEP_LANDING_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.9,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_LEE_SUYEON_START"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_StateName": "USN_RUN",
+        "m_AnimName": "RUN",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 0.85,
+        "m_bRun": true
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_ATTACK1",
+        "m_AnimName": "ATTACK1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.16666666666666666,
+            "m_fEventTimeMax": 0.5,
+            "m_fRangeMin": -150.0,
+            "m_fRangeMax": 350.0,
+            "m_bHitAir": false,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_ATTACK1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.5,
+            "m_fEventTimeMax": 1.0666666666666667,
+            "m_fRangeMin": -150.0,
+            "m_fRangeMax": 350.0,
+            "m_bHitAir": false,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_ATTACK1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.0666666666666667,
+            "m_fEventTimeMax": 1.5,
+            "m_fRangeMin": -150.0,
+            "m_fRangeMax": 350.0,
+            "m_bHitAir": false,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_ATTACK1"
+          }
+        ],
+        "m_listNKMEventSpeedX": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.3333333333333333,
+            "m_fEventTimeMax": 0.4,
+            "m_SpeedX": 100.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.0333333333333334,
+            "m_fEventTimeMax": 1.1,
+            "m_SpeedX": 150.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.16666666666666666,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_02"
+            ],
+            "m_b3D": false,
+            "m_bLoop": false,
+            "m_PlayRate": 1.0,
+            "m_bStopSound": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_02"
+            ],
+            "m_b3D": false,
+            "m_bLoop": false,
+            "m_PlayRate": 1.0,
+            "m_bStopSound": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0666666666666667,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_02"
+            ],
+            "m_b3D": false,
+            "m_bLoop": false,
+            "m_PlayRate": 1.0,
+            "m_bStopSound": false
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_PASSIVE",
+        "m_AnimName": "PASSIVE",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.26666666666666666,
+            "m_EffectName": "AB_FX_COMMON_SHOCKWAVE_PURPLE",
+            "m_fScaleFactor": 0.5,
+            "m_OffsetX": -50,
+            "m_OffsetY": 30,
+            "m_AnimName": "BASE"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_EffectName": "AB_FX_HIT_GUN_A_PURPLE",
+            "m_fScaleFactor": 2.0,
+            "m_OffsetX": -10,
+            "m_OffsetY": 200,
+            "m_OffsetZ": 50,
+            "m_AnimName": "BASE"
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_LEE_SUYEON_PASSIVE_LV5"
+          }
+        ],
+        "m_listNKMEventCameraMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_fEventTimeMax": 0.8333333333333334,
+            "m_fPosXOffset": 0,
+            "m_fPosYOffset": 150,
+            "m_fZoom": -100,
+            "m_fFocusBlur": 0.0,
+            "m_fMoveTrackingTime": 0.1,
+            "m_fZoomTrackingTime": 0.1,
+            "m_fCameraRadius": 0.0
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 10.0,
+            "m_fCameraCrashTime": 0.2
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_SKILL1",
+        "m_AnimName": "SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_StateCoolTime": 15,
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.9666666666666666,
+            "m_EffectName": "AB_FX_LEE_SUYEON_SKILL_JUMP",
+            "m_OffsetY": -200,
+            "m_bLandConnect": false,
+            "m_AnimName": "BASE",
+            "m_fScaleFactor": 1.3
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 4.033333333333333,
+            "m_EffectName": "AB_FX_LEE_SUYEON_SKILL_FINAL_BLOW",
+            "m_bLandConnect": true,
+            "m_AnimName": "BASE",
+            "m_fScaleFactor": 1.5
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.8333333333333334,
+            "m_fEventTimeMax": 0.8333333333333334,
+            "m_fRangeMin": -100.0,
+            "m_fRangeMax": 650.0,
+            "m_bHitAir": false,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_SKILL1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.3333333333333333,
+            "m_fEventTimeMax": 1.3333333333333333,
+            "m_fRangeMin": -50.0,
+            "m_fRangeMax": 650.0,
+            "m_bHitAir": false,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_SKILL1_RAPID"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.8333333333333333,
+            "m_fEventTimeMax": 1.8333333333333333,
+            "m_fRangeMin": -50.0,
+            "m_fRangeMax": 650.0,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_SKILL1_UP"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.3333333333333335,
+            "m_fEventTimeMax": 2.5,
+            "m_fRangeMin": -100.0,
+            "m_fRangeMax": 650.0,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_SKILL1_RAPID_AIR"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.8333333333333335,
+            "m_fEventTimeMax": 3.0,
+            "m_fRangeMin": -50.0,
+            "m_fRangeMax": 650.0,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_SKILL1_RAPID_AIR"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 4.0,
+            "m_fEventTimeMax": 4.333333333333333,
+            "m_fRangeMin": -50.0,
+            "m_fRangeMax": 650.0,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_SKILL1_DOWN"
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 4.0,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 1250,
+            "m_fCameraCrashGap": 8,
+            "m_fCameraCrashTime": 0.5
+          }
+        ],
+        "m_listNKMEventDefence": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_fEventTimeMax": 33.3,
+            "m_fDamageReduceRate": 0.25
+          }
+        ],
+        "m_listNKMEventMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.8333333333333333,
+            "m_bTargetUnit": false,
+            "m_bOffsetDependMe": false,
+            "m_OffsetX": 0,
+            "m_OffsetJumpYPos": 300,
+            "m_bLandMove": false,
+            "m_MoveTime": 0.16666666666666666,
+            "m_MoveTrackingType": "TDT_NORMAL"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.0,
+            "m_bTargetUnit": false,
+            "m_bOffsetDependMe": false,
+            "m_OffsetX": 0,
+            "m_OffsetJumpYPos": 0,
+            "m_bLandMove": false,
+            "m_MoveTime": 1.3333333333333333,
+            "m_MoveTrackingType": "TDT_NORMAL"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.3333333333333335,
+            "m_bTargetUnit": false,
+            "m_bOffsetDependMe": false,
+            "m_OffsetX": 0,
+            "m_OffsetJumpYPos": 200,
+            "m_bLandMove": false,
+            "m_MoveTime": 0.3333333333333333,
+            "m_MoveTrackingType": "TDT_SLOWER"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.933333333333333,
+            "m_bTargetUnit": false,
+            "m_bOffsetDependMe": false,
+            "m_OffsetX": 0,
+            "m_OffsetJumpYPos": -600,
+            "m_bLandMove": false,
+            "m_MoveTime": 0.1,
+            "m_MoveTrackingType": "TDT_NORMAL"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ],
+            "m_b3D": false,
+            "m_bLoop": false,
+            "m_PlayRate": 1.0,
+            "m_bStopSound": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8333333333333334,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG_02"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.3333333333333333,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG_02"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.8333333333333333,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG_04"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.3333333333333335,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.5,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.6666666666666665,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.8333333333333335,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.0,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.3333333333333335,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_LEE_SUYEON_SKILL_ATTACK"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 4.0,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG_03"
+            ]
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 99999,
+            "m_fColorR": 0.5,
+            "m_fColorG": 0.5,
+            "m_fColorB": 1.0
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_HYPER_SKILL1",
+        "m_AnimName": "HYPER_SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1,
+        "m_bForceRight": true,
+        "m_bForceRightLeftDependTeam": true,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_StateCoolTime": 60,
+        "m_listNKMEventBuff": [
+          {
+            "m_BuffStrID": "BUFF_SHADOW_PALACE_5_FINISH",
+            "m_BuffLevel": 20
+          }
+        ],
+        "m_listNKMEventInvincible": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_fEventTimeMax": 1.2666666666666666
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.2666666666666666,
+            "m_fEventTimeMax": 2.2,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1200.0,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 5,
+            "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_HYPER1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.2,
+            "m_fEventTimeMax": 2.533333333333333,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1200.0,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 5,
+            "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_HYPER1_RAPID"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.533333333333333,
+            "m_fEventTimeMax": 2.8666666666666667,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1200.0,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 5,
+            "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_HYPER1_RAPID"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.8666666666666667,
+            "m_fEventTimeMax": 3.6666666666666665,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1200.0,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 5,
+            "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_HYPER1_RAPID"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 6.333333333333333,
+            "m_fEventTimeMax": 7.666666666666667,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1200.0,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 5,
+            "m_DamageTempletName": "DT_NKM_SHADOW_C_ADMIN_LEE_SUYEON_HYPER1_END"
+          }
+        ],
+        "m_bShowGage": false,
+        "m_listNKMEventAnimSpeed": [
+          {
+            "m_fEventTime": 2.2666666666666666,
+            "m_fAnimSpeed": 2.0
+          },
+          {
+            "m_fEventTime": 3.1333333333333333,
+            "m_fAnimSpeed": 3.0
+          },
+          {
+            "m_fEventTime": 4.0,
+            "m_fAnimSpeed": 1.2
+          },
+          {
+            "m_fEventTime": 6.0,
+            "m_fAnimSpeed": 3.0
+          },
+          {
+            "m_fEventTime": 7.333333333333333,
+            "m_fAnimSpeed": 0.7
+          }
+        ],
+        "m_listNKMEventMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.2666666666666666,
+            "m_bTargetUnit": false,
+            "m_bOffsetDependMe": false,
+            "m_OffsetX": 1000,
+            "m_OffsetJumpYPos": 0,
+            "m_bLandMove": false,
+            "m_MoveTime": 0.3333333333333333,
+            "m_MoveTrackingType": "TDT_NORMAL"
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 6.3,
+            "m_EffectName": "AB_FX_DE_NKM_MONSTER_BOSS_BASIC_KING_SKILL1",
+            "m_AnimName": "BASE",
+            "m_OffsetX": 200.0,
+            "m_OffsetY": 0.0,
+            "m_fAddRotate": 0.0,
+            "m_fScaleFactor": 0.75,
+            "m_bLandConnect": true,
+            "m_bHold": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 6.3,
+            "m_EffectName": "AB_FX_DE_NKM_MONSTER_BOSS_BASIC_KING_SKILL1",
+            "m_AnimName": "BASE",
+            "m_OffsetX": 700.0,
+            "m_OffsetY": 0.0,
+            "m_fAddRotate": 0.0,
+            "m_fScaleFactor": 1.0,
+            "m_bLandConnect": true,
+            "m_bHold": false
+          }
+        ],
+        "m_listNKMEventDefence": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_fEventTimeMax": 33.3,
+            "m_fDamageReduceRate": 0.35
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.16666666666666666,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HYPER_ATTACK_START"
+            ],
+            "m_b3D": false,
+            "m_bLoop": false,
+            "m_PlayRate": 1.0,
+            "m_bStopSound": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.2666666666666666,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_LEE_SUYEON_HYPER_ATTACK"
+            ],
+            "m_b3D": false,
+            "m_bLoop": false,
+            "m_PlayRate": 1.0,
+            "m_bStopSound": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.2,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+            ],
+            "m_b3D": false,
+            "m_bLoop": false,
+            "m_PlayRate": 1.0,
+            "m_bStopSound": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.2666666666666666,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+            ],
+            "m_b3D": false,
+            "m_bLoop": false,
+            "m_PlayRate": 1.0,
+            "m_bStopSound": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.533333333333333,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+            ],
+            "m_b3D": false,
+            "m_bLoop": false,
+            "m_PlayRate": 1.0,
+            "m_bStopSound": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.6,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+            ],
+            "m_b3D": false,
+            "m_bLoop": false,
+            "m_PlayRate": 1.0,
+            "m_bStopSound": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.8666666666666667,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+            ],
+            "m_b3D": false,
+            "m_bLoop": false,
+            "m_PlayRate": 1.0,
+            "m_bStopSound": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.933333333333333,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+            ],
+            "m_b3D": false,
+            "m_bLoop": false,
+            "m_PlayRate": 1.0,
+            "m_bStopSound": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 4.0,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_LEE_SUYEON_HYPER_ATTACK"
+            ],
+            "m_b3D": false,
+            "m_bLoop": false,
+            "m_PlayRate": 1.0,
+            "m_bStopSound": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 6.0,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG_03"
+            ],
+            "m_b3D": false,
+            "m_bLoop": false,
+            "m_PlayRate": 1.0,
+            "m_bStopSound": false
+          }
+        ],
+        "m_listNKMEventSpeedX": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 3.466666666666667,
+            "m_fEventTimeMax": 3.566666666666667,
+            "m_SpeedX": 0.0
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 99999,
+            "m_fColorR": 1.0,
+            "m_fColorG": 0.5,
+            "m_fColorB": 0.5
+          }
+        ],
+        "m_listNKMEventCameraMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_fEventTimeMax": 1.2666666666666666,
+            "m_fPosXOffset": -150,
+            "m_fPosYOffset": 150,
+            "m_fZoom": -200,
+            "m_fFocusBlur": 0.0,
+            "m_fMoveTrackingTime": 0.2,
+            "m_fZoomTrackingTime": 0.2,
+            "m_fCameraRadius": 0.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.2666666666666666,
+            "m_fEventTimeMax": 3.1,
+            "m_fPosXOffset": 350,
+            "m_fPosYOffset": 150,
+            "m_fZoom": -100,
+            "m_fFocusBlur": 0.0,
+            "m_fMoveTrackingTime": 0.4,
+            "m_fZoomTrackingTime": 0.4,
+            "m_fCameraRadius": 0.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 3.1,
+            "m_fEventTimeMax": 4.0,
+            "m_fPosXOffset": 50,
+            "m_fPosYOffset": 100,
+            "m_fZoom": -250,
+            "m_fFocusBlur": 0.0,
+            "m_fMoveTrackingTime": 0.2,
+            "m_fZoomTrackingTime": 0.2,
+            "m_fCameraRadius": 0.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 4.0,
+            "m_fEventTimeMax": 5.333333333333333,
+            "m_fPosXOffset": -500,
+            "m_fPosYOffset": 200,
+            "m_fZoom": -200,
+            "m_fFocusBlur": 0.0,
+            "m_fMoveTrackingTime": 1.2,
+            "m_fZoomTrackingTime": 1.2,
+            "m_fCameraRadius": 0.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 5.333333333333333,
+            "m_fEventTimeMax": 7.0,
+            "m_fPosXOffset": 400,
+            "m_fPosYOffset": 200,
+            "m_fZoom": 0,
+            "m_fFocusBlur": 0.0,
+            "m_fMoveTrackingTime": 1.5,
+            "m_fZoomTrackingTime": 1.5,
+            "m_fCameraRadius": 0.0
+          }
+        ],
+        "m_listNKMEventFadeWorld": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_fEventTimeMax": 1.0,
+            "m_fColorR": 0.0,
+            "m_fColorG": 0.0,
+            "m_fColorB": 0.0,
+            "m_fMapColorKeepTime": 0.2,
+            "m_fMapColorReturnTime": 0.1
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 4.0,
+            "m_fEventTimeMax": 6.666666666666667,
+            "m_fColorR": 0.0,
+            "m_fColorG": 0.0,
+            "m_fColorB": 0.0,
+            "m_fMapColorKeepTime": 0.3,
+            "m_fMapColorReturnTime": 0.3
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.2666666666666666,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 15.0,
+            "m_fCameraCrashTime": 0.1
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.2,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 30.0,
+            "m_fCameraCrashTime": 1.2
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 4.5,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 30.0,
+            "m_fCameraCrashTime": 0.2
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 6.333333333333333,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 50.0,
+            "m_fCameraCrashTime": 0.7
+          }
+        ],
+        "m_listNKMEventStopTime": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_StopTimeIndex": "NSTI_SKILL",
+            "m_fStopTime": 1.0,
+            "m_bStopEnemyOnly": false,
+            "m_bMyStop": false,
+            "m_fRange": 800
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

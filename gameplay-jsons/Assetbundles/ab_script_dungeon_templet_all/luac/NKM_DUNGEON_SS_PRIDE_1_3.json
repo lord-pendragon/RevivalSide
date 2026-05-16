@@ -1,0 +1,183 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_PRIDE_1_3.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.7
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EVENT_CANARY_S_SHIELD"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 1.0,
+          "NST_DEF": 0.5,
+          "NST_HP": 0.3
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_UNIT_ALPHA_C_CHOWON_PR",
+          "m_bForceMonster": true,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.3,
+            "m_fEventPos": 0.5
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 1.6,
+              "NST_ATK": 1.6,
+              "NST_DEF": 1.6,
+              "NST_CRITICAL": 1.6,
+              "NST_EVADE": 1.6,
+              "NST_HIT": 1.6
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_C_BD_ROI",
+          "m_bForceMonster": true,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.3,
+            "m_fEventPos": 0.4
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 1.6,
+              "NST_ATK": 1.6,
+              "NST_DEF": 1.6,
+              "NST_CRITICAL": 1.6,
+              "NST_EVADE": 1.6,
+              "NST_HIT": 1.6
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_FENRIR_C_INTERN",
+          "m_bForceMonster": true,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.3,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 1.6,
+              "NST_ATK": 1.6,
+              "NST_DEF": 1.6,
+              "NST_CRITICAL": 1.6,
+              "NST_EVADE": 1.6,
+              "NST_HIT": 1.6
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 0.7,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EVENT_CANARY_S_SHIELD",
+    "m_fBossPosZ": 0.6,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 1.0,
+          "NST_DEF": 0.5,
+          "NST_HP": 0.3
+        }
+      }
+    },
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_UNIT_ALPHA_C_CHOWON_PR",
+        "m_bForceMonster": true,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.3,
+          "m_fEventPos": 0.5
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 1.6,
+            "NST_ATK": 1.6,
+            "NST_DEF": 1.6,
+            "NST_CRITICAL": 1.6,
+            "NST_EVADE": 1.6,
+            "NST_HIT": 1.6
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_C_BD_ROI",
+        "m_bForceMonster": true,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.3,
+          "m_fEventPos": 0.4
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 1.6,
+            "NST_ATK": 1.6,
+            "NST_DEF": 1.6,
+            "NST_CRITICAL": 1.6,
+            "NST_EVADE": 1.6,
+            "NST_HIT": 1.6
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_FENRIR_C_INTERN",
+        "m_bForceMonster": true,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.3,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 1.6,
+            "NST_ATK": 1.6,
+            "NST_DEF": 1.6,
+            "NST_CRITICAL": 1.6,
+            "NST_EVADE": 1.6,
+            "NST_HIT": 1.6
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

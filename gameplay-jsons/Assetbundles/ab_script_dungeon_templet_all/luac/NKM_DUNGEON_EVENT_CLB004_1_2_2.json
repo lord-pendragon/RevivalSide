@@ -1,0 +1,202 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_EVENT_CLB004_1_2_2.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 5
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.2
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MONSTER_BOSS_BASIC_EATER_MOVE_N"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 0.2,
+          "NST_DEF": 10,
+          "NST_HP": 10
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CLB_004_DANMACHI_C_BELL_H",
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 4,
+            "m_fEventPos": 0.45
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CLB_004_DANMACHI_C_RYU",
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 4,
+            "m_fEventPos": 0.3
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 3461022,
+          "m_fEventDelay": 1,
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_NORMAL_CLB_004_DANMACHI_C_RYU",
+          "m_EventConditionValue2": "USN_START",
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 3461031,
+          "m_fEventDelay": 1,
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_NORMAL_CLB_004_DANMACHI_C_RYU",
+          "m_EventConditionValue2": "USN_START",
+          "m_fEventDelay": 3,
+          "m_dungeonEventType": "SET_UNIT_STATE",
+          "m_EventActionValue": 210560,
+          "m_EventActionStrValue": "USN_HYPER1",
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "FORCE_WIN",
+          "m_EventActionValue": 0,
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_NORMAL_CLB_004_DANMACHI_C_RYU",
+          "m_EventConditionValue2": "USN_HYPER1",
+          "m_fEventDelay": 0,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 5,
+    "m_fCostSpeedRateB": 0.2,
+    "m_BossUnitStrID": "NKM_MONSTER_BOSS_BASIC_EATER_MOVE_N",
+    "m_fBossPosZ": 0.6,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 0.2,
+          "NST_DEF": 10,
+          "NST_HP": 10
+        }
+      }
+    },
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CLB_004_DANMACHI_C_BELL_H",
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 4,
+          "m_fEventPos": 0.45
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CLB_004_DANMACHI_C_RYU",
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 4,
+          "m_fEventPos": 0.3
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 3461022,
+        "m_fEventDelay": 1,
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_NORMAL_CLB_004_DANMACHI_C_RYU",
+        "m_EventConditionValue2": "USN_START",
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 3461031,
+        "m_fEventDelay": 1,
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_NORMAL_CLB_004_DANMACHI_C_RYU",
+        "m_EventConditionValue2": "USN_START",
+        "m_fEventDelay": 3,
+        "m_dungeonEventType": "SET_UNIT_STATE",
+        "m_EventActionValue": 210560,
+        "m_EventActionStrValue": "USN_HYPER1",
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "FORCE_WIN",
+        "m_EventActionValue": 0,
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_NORMAL_CLB_004_DANMACHI_C_RYU",
+        "m_EventConditionValue2": "USN_HYPER1",
+        "m_fEventDelay": 0,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

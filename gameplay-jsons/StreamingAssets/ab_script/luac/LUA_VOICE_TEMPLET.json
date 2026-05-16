@@ -1,0 +1,811 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script\\luac\\LUA_VOICE_TEMPLET.lua",
+  "rootName": "m_voiceTemplet",
+  "recordCount": 64,
+  "records": [
+    {
+      "Index": 1,
+      "Type": "VT_GET",
+      "FileName": "GET_01"
+    },
+    {
+      "Index": 2,
+      "Type": "VT_CAPTAIN",
+      "FileName": "LOBBY_CAPTAIN",
+      "NPC": "NPC_OPERATOR_LENA"
+    },
+    {
+      "Index": 3,
+      "Type": "VT_CAPTAIN_SUB",
+      "FileName": "LOBBY_CAPTAIN_SUB",
+      "NPC": "NPC_OPERATOR_LENA"
+    },
+    {
+      "Index": 4,
+      "Type": "VT_LOBBY_CONNECT",
+      "FileName": "LOBBY_CONNECT"
+    },
+    {
+      "Index": 5,
+      "Type": "VT_LOBBY_CONNECT",
+      "Condition": "VC_LIFETIME",
+      "FileName": "LOBBY_CONNECT_LIFETIME"
+    },
+    {
+      "Index": 6,
+      "Type": "VT_LOBBY_RETURN",
+      "FileName": "LOBBY_RETURN"
+    },
+    {
+      "Index": 7,
+      "Type": "VT_LOBBY_RETURN",
+      "Condition": "VC_LIFETIME",
+      "FileName": "LOBBY_RETURN_LIFETIME"
+    },
+    {
+      "Index": 8,
+      "Type": "VT_TOUCH",
+      "Rate": 100,
+      "FileName": "LOBBY_TOUCH_NORMAL_1"
+    },
+    {
+      "Index": 9,
+      "Type": "VT_TOUCH",
+      "Rate": 100,
+      "FileName": "LOBBY_TOUCH_NORMAL_2"
+    },
+    {
+      "Index": 10,
+      "Type": "VT_TOUCH",
+      "Rate": 100,
+      "FileName": "LOBBY_TOUCH_NORMAL_3"
+    },
+    {
+      "Index": 11,
+      "Type": "VT_TOUCH",
+      "Rate": 100,
+      "FileName": "LOBBY_TOUCH_NORMAL_4"
+    },
+    {
+      "Index": 12,
+      "Type": "VT_TOUCH",
+      "Rate": 100,
+      "FileName": "LOBBY_TOUCH_NORMAL_5"
+    },
+    {
+      "Index": 13,
+      "Type": "VT_TOUCH",
+      "Condition": "VC_LIFETIME",
+      "Rate": 100,
+      "FileName": "LOBBY_TOUCH_LIFETIME_1"
+    },
+    {
+      "Index": 14,
+      "Type": "VT_TOUCH",
+      "Condition": "VC_LIFETIME",
+      "Rate": 100,
+      "FileName": "LOBBY_TOUCH_LIFETIME_2"
+    },
+    {
+      "Index": 15,
+      "Type": "VT_TOUCH",
+      "Condition": "VC_LIFETIME",
+      "Rate": 100,
+      "FileName": "LOBBY_TOUCH_LIFETIME_3"
+    },
+    {
+      "Index": 16,
+      "Type": "VT_TOUCH",
+      "Condition": "VC_LIFETIME",
+      "Rate": 100,
+      "FileName": "LOBBY_TOUCH_LIFETIME_4"
+    },
+    {
+      "Index": 17,
+      "Type": "VT_WORLDMAP_CHECK",
+      "FileName": "WORLDMAP_CHECK"
+    },
+    {
+      "Index": 18,
+      "Type": "VT_WORLDMAP_MISSION_START",
+      "FileName": "WORLDMAP_MISSION_START"
+    },
+    {
+      "Index": 19,
+      "Type": "VT_WORLDMAP_MISSION_COMPLETE",
+      "FileName": "WORLDMAP_MISSION_COMPLETE"
+    },
+    {
+      "Index": 20,
+      "Type": "VT_BATTLE_READY",
+      "Priority": 1,
+      "Rate": 100,
+      "FileName": "BATTLE_READY"
+    },
+    {
+      "Index": 21,
+      "Type": "VT_BATTLE_VICTORY",
+      "Priority": 1,
+      "Rate": 100,
+      "FileName": "BATTLE_VICTORY"
+    },
+    {
+      "Index": 22,
+      "Type": "VT_BATTLE_FAIL",
+      "Priority": 1,
+      "Rate": 100,
+      "FileName": "BATTLE_FAIL"
+    },
+    {
+      "Index": 23,
+      "Type": "VT_BATTLE_READY",
+      "Condition": "VC_LIFETIME",
+      "FileName": "BATTLE_READY_LIFETIME"
+    },
+    {
+      "Index": 24,
+      "Type": "VT_BATTLE_VICTORY",
+      "Condition": "VC_LIFETIME",
+      "FileName": "BATTLE_VICTORY_LIFETIME"
+    },
+    {
+      "Index": 25,
+      "Type": "VT_BATTLE_FAIL",
+      "Condition": "VC_LIFETIME",
+      "FileName": "BATTLE_FAIL_LIFETIME"
+    },
+    {
+      "Index": 26,
+      "Type": "VT_SQUAD_ENTER",
+      "FileName": "SQUAD_ENTER"
+    },
+    {
+      "Index": 27,
+      "Type": "VT_SQUAD_LEADER",
+      "FileName": "SQUAD_LEADER"
+    },
+    {
+      "Index": 28,
+      "Type": "VT_GROWTH_EQUIP",
+      "FileName": "GROWTH_EQUIP"
+    },
+    {
+      "Index": 29,
+      "Type": "VT_GROWTH_SKILL",
+      "FileName": "GROWTH_SKILL"
+    },
+    {
+      "Index": 30,
+      "Type": "VT_GROWTH_STATUS",
+      "FileName": "GROWTH_STATUS"
+    },
+    {
+      "Index": 31,
+      "Type": "VT_GROWTH_ASCEND",
+      "FileName": "GROWTH_ASCEND"
+    },
+    {
+      "Index": 32,
+      "Type": "VT_LIFETIME_COMPLETE",
+      "FileName": "LIFETIME_COMPLETE"
+    },
+    {
+      "Index": 33,
+      "Type": "VT_NEGOTITATE_READY",
+      "FileName": "NEGOTIATE_READY"
+    },
+    {
+      "Index": 34,
+      "Type": "VT_NEGOTITATE_SUCCESS_EPIC",
+      "FileName": "NEGOTIATE_SUCCESS_EPIC"
+    },
+    {
+      "Index": 35,
+      "Type": "VT_NEGOTITATE_SUCCESS_GREAT",
+      "FileName": "NEGOTIATE_SUCCESS_GREAT"
+    },
+    {
+      "Index": 36,
+      "Type": "VT_NEGOTITATE_SUCCESS",
+      "FileName": "NEGOTIATE_SUCCESS"
+    },
+    {
+      "Index": 37,
+      "Type": "VT_NEGOTITATE_FAIL",
+      "FileName": "NEGOTIATE_FAIL"
+    },
+    {
+      "Index": 38,
+      "Type": "VT_FIELD_READY",
+      "Priority": 1,
+      "Rate": 80,
+      "FileName": "FIELD_READY"
+    },
+    {
+      "Index": 39,
+      "Type": "VT_BULLET_LACK",
+      "Priority": 1,
+      "Rate": 80,
+      "FileName": "BULLET_LACK"
+    },
+    {
+      "Index": 40,
+      "Type": "VT_BULLET_FILL",
+      "Priority": 1,
+      "Rate": 80,
+      "FileName": "BULLET_FILL"
+    },
+    {
+      "Index": 41,
+      "Type": "VT_BACK_LACK",
+      "Priority": 1,
+      "Rate": 80,
+      "FileName": "BACK_LACK"
+    },
+    {
+      "Index": 42,
+      "Type": "VT_SHIP_RECALL",
+      "Priority": 2,
+      "Rate": 80,
+      "FileName": "SHIP_RECALL"
+    },
+    {
+      "Index": 43,
+      "Type": "VT_SHIP_SELECT",
+      "Priority": 2,
+      "Rate": 80,
+      "FileName": "SHIP_SELECT_A"
+    },
+    {
+      "Index": 44,
+      "Type": "VT_SHIP_SELECT",
+      "Priority": 2,
+      "Rate": 80,
+      "FileName": "SHIP_SELECT_B"
+    },
+    {
+      "Index": 45,
+      "Type": "VT_SHIP_MEET",
+      "Priority": 3,
+      "Rate": 0,
+      "FileName": "SHIP_MEET"
+    },
+    {
+      "Index": 46,
+      "Type": "VT_FIGHT_START",
+      "Priority": 1,
+      "Rate": 100,
+      "FileName": "FIGHT_START_A"
+    },
+    {
+      "Index": 47,
+      "Type": "VT_FIGHT_START",
+      "Priority": 1,
+      "Rate": 100,
+      "FileName": "FIGHT_START_B"
+    },
+    {
+      "Index": 48,
+      "Type": "VT_COST_LACK",
+      "Priority": 2,
+      "Rate": 80,
+      "FileName": "COST_LACK"
+    },
+    {
+      "Index": 49,
+      "Type": "VT_COST_FULL",
+      "Priority": 3,
+      "Rate": 80,
+      "FileName": "COST_FULL"
+    },
+    {
+      "Index": 50,
+      "Type": "VT_WAVE_START",
+      "Priority": 2,
+      "Rate": 85,
+      "FileName": "WAVE_START"
+    },
+    {
+      "Index": 51,
+      "Type": "VT_COUNT_DOWN",
+      "Priority": 2,
+      "Rate": 85,
+      "FileName": "COUNT_DOWN"
+    },
+    {
+      "Index": 52,
+      "Type": "VT_SHIP_SKILL",
+      "Priority": 3,
+      "Rate": 80,
+      "FileName": "SHIP_SKILL_A"
+    },
+    {
+      "Index": 53,
+      "Type": "VT_SHIP_SKILL",
+      "Priority": 3,
+      "Rate": 80,
+      "FileName": "SHIP_SKILL_B"
+    },
+    {
+      "Index": 54,
+      "Type": "VT_SHIP_OUR_AREA_2ND",
+      "Priority": 5,
+      "Rate": 80,
+      "FileName": "SHIP_OUR_AREA_2ND"
+    },
+    {
+      "Index": 55,
+      "Type": "VT_SHIP_OUR_AREA_3RD",
+      "Priority": 4,
+      "Rate": 80,
+      "FileName": "SHIP_OUR_AREA_3RD"
+    },
+    {
+      "Index": 56,
+      "Type": "VT_SHIP_ENEMY_AREA_2ND",
+      "Priority": 5,
+      "Rate": 80,
+      "FileName": "SHIP_ENEMY_AREA_2ND"
+    },
+    {
+      "Index": 57,
+      "Type": "VT_SHIP_ENEMY_AREA_3RD",
+      "Priority": 4,
+      "Rate": 80,
+      "FileName": "SHIP_ENEMY_AREA_3RD"
+    },
+    {
+      "Index": 58,
+      "Type": "VT_COST_SPEED",
+      "Priority": 2,
+      "Rate": 85,
+      "FileName": "COST_SPEED"
+    },
+    {
+      "Index": 59,
+      "Type": "VT_SHIP_FIGHT_LOSE",
+      "Priority": 1,
+      "Rate": 100,
+      "FileName": "FIGHT_LOSE_A"
+    },
+    {
+      "Index": 60,
+      "Type": "VT_SHIP_FIGHT_LOSE",
+      "Priority": 1,
+      "Rate": 100,
+      "FileName": "FIGHT_LOSE_B"
+    },
+    {
+      "Index": 61,
+      "Type": "VT_SHIP_FIGHT_VICTORY",
+      "Priority": 1,
+      "Rate": 100,
+      "FileName": "FIGHT_VICTORY_A"
+    },
+    {
+      "Index": 62,
+      "Type": "VT_SHIP_FIGHT_VICTORY",
+      "Priority": 1,
+      "Rate": 100,
+      "FileName": "FIGHT_VICTORY_B"
+    },
+    {
+      "Index": 63,
+      "Type": "VT_COMBO_COMPLETE",
+      "Priority": 1,
+      "Rate": 90,
+      "FileName": "COMBO_COMPLETE_A"
+    },
+    {
+      "Index": 64,
+      "Type": "VT_COMBO_COMPLETE",
+      "Priority": 1,
+      "Rate": 90,
+      "FileName": "COMBO_COMPLETE_B"
+    }
+  ],
+  "root": [
+    {
+      "Index": 1,
+      "Type": "VT_GET",
+      "FileName": "GET_01"
+    },
+    {
+      "Index": 2,
+      "Type": "VT_CAPTAIN",
+      "FileName": "LOBBY_CAPTAIN",
+      "NPC": "NPC_OPERATOR_LENA"
+    },
+    {
+      "Index": 3,
+      "Type": "VT_CAPTAIN_SUB",
+      "FileName": "LOBBY_CAPTAIN_SUB",
+      "NPC": "NPC_OPERATOR_LENA"
+    },
+    {
+      "Index": 4,
+      "Type": "VT_LOBBY_CONNECT",
+      "FileName": "LOBBY_CONNECT"
+    },
+    {
+      "Index": 5,
+      "Type": "VT_LOBBY_CONNECT",
+      "Condition": "VC_LIFETIME",
+      "FileName": "LOBBY_CONNECT_LIFETIME"
+    },
+    {
+      "Index": 6,
+      "Type": "VT_LOBBY_RETURN",
+      "FileName": "LOBBY_RETURN"
+    },
+    {
+      "Index": 7,
+      "Type": "VT_LOBBY_RETURN",
+      "Condition": "VC_LIFETIME",
+      "FileName": "LOBBY_RETURN_LIFETIME"
+    },
+    {
+      "Index": 8,
+      "Type": "VT_TOUCH",
+      "Rate": 100,
+      "FileName": "LOBBY_TOUCH_NORMAL_1"
+    },
+    {
+      "Index": 9,
+      "Type": "VT_TOUCH",
+      "Rate": 100,
+      "FileName": "LOBBY_TOUCH_NORMAL_2"
+    },
+    {
+      "Index": 10,
+      "Type": "VT_TOUCH",
+      "Rate": 100,
+      "FileName": "LOBBY_TOUCH_NORMAL_3"
+    },
+    {
+      "Index": 11,
+      "Type": "VT_TOUCH",
+      "Rate": 100,
+      "FileName": "LOBBY_TOUCH_NORMAL_4"
+    },
+    {
+      "Index": 12,
+      "Type": "VT_TOUCH",
+      "Rate": 100,
+      "FileName": "LOBBY_TOUCH_NORMAL_5"
+    },
+    {
+      "Index": 13,
+      "Type": "VT_TOUCH",
+      "Condition": "VC_LIFETIME",
+      "Rate": 100,
+      "FileName": "LOBBY_TOUCH_LIFETIME_1"
+    },
+    {
+      "Index": 14,
+      "Type": "VT_TOUCH",
+      "Condition": "VC_LIFETIME",
+      "Rate": 100,
+      "FileName": "LOBBY_TOUCH_LIFETIME_2"
+    },
+    {
+      "Index": 15,
+      "Type": "VT_TOUCH",
+      "Condition": "VC_LIFETIME",
+      "Rate": 100,
+      "FileName": "LOBBY_TOUCH_LIFETIME_3"
+    },
+    {
+      "Index": 16,
+      "Type": "VT_TOUCH",
+      "Condition": "VC_LIFETIME",
+      "Rate": 100,
+      "FileName": "LOBBY_TOUCH_LIFETIME_4"
+    },
+    {
+      "Index": 17,
+      "Type": "VT_WORLDMAP_CHECK",
+      "FileName": "WORLDMAP_CHECK"
+    },
+    {
+      "Index": 18,
+      "Type": "VT_WORLDMAP_MISSION_START",
+      "FileName": "WORLDMAP_MISSION_START"
+    },
+    {
+      "Index": 19,
+      "Type": "VT_WORLDMAP_MISSION_COMPLETE",
+      "FileName": "WORLDMAP_MISSION_COMPLETE"
+    },
+    {
+      "Index": 20,
+      "Type": "VT_BATTLE_READY",
+      "Priority": 1,
+      "Rate": 100,
+      "FileName": "BATTLE_READY"
+    },
+    {
+      "Index": 21,
+      "Type": "VT_BATTLE_VICTORY",
+      "Priority": 1,
+      "Rate": 100,
+      "FileName": "BATTLE_VICTORY"
+    },
+    {
+      "Index": 22,
+      "Type": "VT_BATTLE_FAIL",
+      "Priority": 1,
+      "Rate": 100,
+      "FileName": "BATTLE_FAIL"
+    },
+    {
+      "Index": 23,
+      "Type": "VT_BATTLE_READY",
+      "Condition": "VC_LIFETIME",
+      "FileName": "BATTLE_READY_LIFETIME"
+    },
+    {
+      "Index": 24,
+      "Type": "VT_BATTLE_VICTORY",
+      "Condition": "VC_LIFETIME",
+      "FileName": "BATTLE_VICTORY_LIFETIME"
+    },
+    {
+      "Index": 25,
+      "Type": "VT_BATTLE_FAIL",
+      "Condition": "VC_LIFETIME",
+      "FileName": "BATTLE_FAIL_LIFETIME"
+    },
+    {
+      "Index": 26,
+      "Type": "VT_SQUAD_ENTER",
+      "FileName": "SQUAD_ENTER"
+    },
+    {
+      "Index": 27,
+      "Type": "VT_SQUAD_LEADER",
+      "FileName": "SQUAD_LEADER"
+    },
+    {
+      "Index": 28,
+      "Type": "VT_GROWTH_EQUIP",
+      "FileName": "GROWTH_EQUIP"
+    },
+    {
+      "Index": 29,
+      "Type": "VT_GROWTH_SKILL",
+      "FileName": "GROWTH_SKILL"
+    },
+    {
+      "Index": 30,
+      "Type": "VT_GROWTH_STATUS",
+      "FileName": "GROWTH_STATUS"
+    },
+    {
+      "Index": 31,
+      "Type": "VT_GROWTH_ASCEND",
+      "FileName": "GROWTH_ASCEND"
+    },
+    {
+      "Index": 32,
+      "Type": "VT_LIFETIME_COMPLETE",
+      "FileName": "LIFETIME_COMPLETE"
+    },
+    {
+      "Index": 33,
+      "Type": "VT_NEGOTITATE_READY",
+      "FileName": "NEGOTIATE_READY"
+    },
+    {
+      "Index": 34,
+      "Type": "VT_NEGOTITATE_SUCCESS_EPIC",
+      "FileName": "NEGOTIATE_SUCCESS_EPIC"
+    },
+    {
+      "Index": 35,
+      "Type": "VT_NEGOTITATE_SUCCESS_GREAT",
+      "FileName": "NEGOTIATE_SUCCESS_GREAT"
+    },
+    {
+      "Index": 36,
+      "Type": "VT_NEGOTITATE_SUCCESS",
+      "FileName": "NEGOTIATE_SUCCESS"
+    },
+    {
+      "Index": 37,
+      "Type": "VT_NEGOTITATE_FAIL",
+      "FileName": "NEGOTIATE_FAIL"
+    },
+    {
+      "Index": 38,
+      "Type": "VT_FIELD_READY",
+      "Priority": 1,
+      "Rate": 80,
+      "FileName": "FIELD_READY"
+    },
+    {
+      "Index": 39,
+      "Type": "VT_BULLET_LACK",
+      "Priority": 1,
+      "Rate": 80,
+      "FileName": "BULLET_LACK"
+    },
+    {
+      "Index": 40,
+      "Type": "VT_BULLET_FILL",
+      "Priority": 1,
+      "Rate": 80,
+      "FileName": "BULLET_FILL"
+    },
+    {
+      "Index": 41,
+      "Type": "VT_BACK_LACK",
+      "Priority": 1,
+      "Rate": 80,
+      "FileName": "BACK_LACK"
+    },
+    {
+      "Index": 42,
+      "Type": "VT_SHIP_RECALL",
+      "Priority": 2,
+      "Rate": 80,
+      "FileName": "SHIP_RECALL"
+    },
+    {
+      "Index": 43,
+      "Type": "VT_SHIP_SELECT",
+      "Priority": 2,
+      "Rate": 80,
+      "FileName": "SHIP_SELECT_A"
+    },
+    {
+      "Index": 44,
+      "Type": "VT_SHIP_SELECT",
+      "Priority": 2,
+      "Rate": 80,
+      "FileName": "SHIP_SELECT_B"
+    },
+    {
+      "Index": 45,
+      "Type": "VT_SHIP_MEET",
+      "Priority": 3,
+      "Rate": 0,
+      "FileName": "SHIP_MEET"
+    },
+    {
+      "Index": 46,
+      "Type": "VT_FIGHT_START",
+      "Priority": 1,
+      "Rate": 100,
+      "FileName": "FIGHT_START_A"
+    },
+    {
+      "Index": 47,
+      "Type": "VT_FIGHT_START",
+      "Priority": 1,
+      "Rate": 100,
+      "FileName": "FIGHT_START_B"
+    },
+    {
+      "Index": 48,
+      "Type": "VT_COST_LACK",
+      "Priority": 2,
+      "Rate": 80,
+      "FileName": "COST_LACK"
+    },
+    {
+      "Index": 49,
+      "Type": "VT_COST_FULL",
+      "Priority": 3,
+      "Rate": 80,
+      "FileName": "COST_FULL"
+    },
+    {
+      "Index": 50,
+      "Type": "VT_WAVE_START",
+      "Priority": 2,
+      "Rate": 85,
+      "FileName": "WAVE_START"
+    },
+    {
+      "Index": 51,
+      "Type": "VT_COUNT_DOWN",
+      "Priority": 2,
+      "Rate": 85,
+      "FileName": "COUNT_DOWN"
+    },
+    {
+      "Index": 52,
+      "Type": "VT_SHIP_SKILL",
+      "Priority": 3,
+      "Rate": 80,
+      "FileName": "SHIP_SKILL_A"
+    },
+    {
+      "Index": 53,
+      "Type": "VT_SHIP_SKILL",
+      "Priority": 3,
+      "Rate": 80,
+      "FileName": "SHIP_SKILL_B"
+    },
+    {
+      "Index": 54,
+      "Type": "VT_SHIP_OUR_AREA_2ND",
+      "Priority": 5,
+      "Rate": 80,
+      "FileName": "SHIP_OUR_AREA_2ND"
+    },
+    {
+      "Index": 55,
+      "Type": "VT_SHIP_OUR_AREA_3RD",
+      "Priority": 4,
+      "Rate": 80,
+      "FileName": "SHIP_OUR_AREA_3RD"
+    },
+    {
+      "Index": 56,
+      "Type": "VT_SHIP_ENEMY_AREA_2ND",
+      "Priority": 5,
+      "Rate": 80,
+      "FileName": "SHIP_ENEMY_AREA_2ND"
+    },
+    {
+      "Index": 57,
+      "Type": "VT_SHIP_ENEMY_AREA_3RD",
+      "Priority": 4,
+      "Rate": 80,
+      "FileName": "SHIP_ENEMY_AREA_3RD"
+    },
+    {
+      "Index": 58,
+      "Type": "VT_COST_SPEED",
+      "Priority": 2,
+      "Rate": 85,
+      "FileName": "COST_SPEED"
+    },
+    {
+      "Index": 59,
+      "Type": "VT_SHIP_FIGHT_LOSE",
+      "Priority": 1,
+      "Rate": 100,
+      "FileName": "FIGHT_LOSE_A"
+    },
+    {
+      "Index": 60,
+      "Type": "VT_SHIP_FIGHT_LOSE",
+      "Priority": 1,
+      "Rate": 100,
+      "FileName": "FIGHT_LOSE_B"
+    },
+    {
+      "Index": 61,
+      "Type": "VT_SHIP_FIGHT_VICTORY",
+      "Priority": 1,
+      "Rate": 100,
+      "FileName": "FIGHT_VICTORY_A"
+    },
+    {
+      "Index": 62,
+      "Type": "VT_SHIP_FIGHT_VICTORY",
+      "Priority": 1,
+      "Rate": 100,
+      "FileName": "FIGHT_VICTORY_B"
+    },
+    {
+      "Index": 63,
+      "Type": "VT_COMBO_COMPLETE",
+      "Priority": 1,
+      "Rate": 90,
+      "FileName": "COMBO_COMPLETE_A"
+    },
+    {
+      "Index": 64,
+      "Type": "VT_COMBO_COMPLETE",
+      "Priority": 1,
+      "Rate": 90,
+      "FileName": "COMBO_COMPLETE_B"
+    }
+  ],
+  "unsupportedCount": 0,
+  "unsupported": []
+}

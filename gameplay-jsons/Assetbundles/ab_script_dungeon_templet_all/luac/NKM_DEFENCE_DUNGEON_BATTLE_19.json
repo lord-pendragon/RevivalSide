@@ -1,0 +1,586 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DEFENCE_DUNGEON_BATTLE_19.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 9,
+  "records": [
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EVENT_WAVE_OMEN_SPELL"
+    },
+    {
+      "__key": "m_UnitLevel",
+      "value": 1000
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listValidLand",
+      "value": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "__key": "m_fStartCost",
+      "value": 4
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_ELITE_DEFENCE_SPELL_COST_INCREASE",
+          "m_EventConditionValue2": "USN_START",
+          "m_dungeonEventType": "ADD_TEAM_A_EXTRA_RESPAWN_COST",
+          "m_EventActionValue": 1.5,
+          "m_fEventDelay": 0.0,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 1,
+            "m_fEventPos": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_SPELL_LOCUST_HIGH",
+          "m_UnitLevel": 120,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 2,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatValue": {
+              "NST_DAMAGE_REDUCE_RATE": 0.3
+            },
+            "m_StatFactor": {
+              "NST_ATK": 0.5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_BOSS_EVENT_WAVE_OMEN_SPELL",
+          "m_UnitLevel": 1000,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 1,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHIELD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventPos": 0.1,
+            "m_fEventTimeGap": 3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.8,
+              "NST_HP": 0.6,
+              "NST_DEF": 0.8
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHIELD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventPos": 0.1,
+            "m_fEventTimeGap": 3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.8,
+              "NST_HP": 0.6,
+              "NST_DEF": 0.8
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHIELD",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventPos": 0.1,
+            "m_fEventTimeGap": 3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.8,
+              "NST_HP": 0.6,
+              "NST_DEF": 0.8
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_RIFLE",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 3,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.8,
+              "NST_HP": 0.8
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_RIFLE",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 3,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.8,
+              "NST_HP": 0.8
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_RIFLE",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 3,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.8,
+              "NST_HP": 0.8
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventPos": 0.2,
+            "m_fEventTimeGap": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.8,
+              "NST_HP": 0.8
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_S_STATE_ENGINEER",
+          "m_UnitLevel": 110,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 90,
+            "m_fEventTimeGap": 20,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatValue": {
+              "NST_DAMAGE_REDUCE_RATE": 0.5,
+              "NST_HP_REGEN_RATE": 1.0
+            },
+            "m_StatFactor": {
+              "NST_HP": 2.0,
+              "NST_DEF": 2.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_REAPER_M_SIEGE",
+          "m_UnitLevel": 110,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 90,
+            "m_fEventTimeGap": 20,
+            "m_fEventPos": 0.25
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.5,
+              "NST_HP": 0.8
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_REAPER_RAILGUN",
+          "m_UnitLevel": 110,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 90,
+            "m_fEventTimeGap": 20,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_DISTURB_BLASTER_SUMMON",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeGap": 1,
+            "m_fEventPos": 0.1
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_DISTURB",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 5,
+            "m_fEventTimeGap": 5,
+            "m_fEventPos": 0.0
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_DISTURB",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 15,
+            "m_fEventTimeGap": 15,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_DISTURB",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 25,
+            "m_fEventTimeGap": 25,
+            "m_fEventPos": 0.05
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_DISTURB",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 35,
+            "m_fEventTimeGap": 35,
+            "m_fEventPos": 0.15
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_DISTURB",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 45,
+            "m_fEventTimeGap": 45,
+            "m_fEventPos": 0.1
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EVENT_WAVE_OMEN_SPELL",
+    "m_UnitLevel": 1000,
+    "m_fBossPosZ": 0.6,
+    "m_listValidLand": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "m_fStartCost": 4,
+    "m_fCostSpeedRateB": 0,
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_ELITE_DEFENCE_SPELL_COST_INCREASE",
+        "m_EventConditionValue2": "USN_START",
+        "m_dungeonEventType": "ADD_TEAM_A_EXTRA_RESPAWN_COST",
+        "m_EventActionValue": 1.5,
+        "m_fEventDelay": 0.0,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 1,
+          "m_fEventPos": 0.5
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_SPELL_LOCUST_HIGH",
+        "m_UnitLevel": 120,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 2,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatValue": {
+            "NST_DAMAGE_REDUCE_RATE": 0.3
+          },
+          "m_StatFactor": {
+            "NST_ATK": 0.5
+          }
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_BOSS_EVENT_WAVE_OMEN_SPELL",
+        "m_UnitLevel": 1000,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 1,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHIELD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventPos": 0.1,
+          "m_fEventTimeGap": 3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.8,
+            "NST_HP": 0.6,
+            "NST_DEF": 0.8
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHIELD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventPos": 0.1,
+          "m_fEventTimeGap": 3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.8,
+            "NST_HP": 0.6,
+            "NST_DEF": 0.8
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHIELD",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventPos": 0.1,
+          "m_fEventTimeGap": 3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.8,
+            "NST_HP": 0.6,
+            "NST_DEF": 0.8
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_RIFLE",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 3,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.8,
+            "NST_HP": 0.8
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_RIFLE",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 3,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.8,
+            "NST_HP": 0.8
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_RIFLE",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 3,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.8,
+            "NST_HP": 0.8
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventPos": 0.2,
+          "m_fEventTimeGap": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.8,
+            "NST_HP": 0.8
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_S_STATE_ENGINEER",
+        "m_UnitLevel": 110,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 90,
+          "m_fEventTimeGap": 20,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatValue": {
+            "NST_DAMAGE_REDUCE_RATE": 0.5,
+            "NST_HP_REGEN_RATE": 1.0
+          },
+          "m_StatFactor": {
+            "NST_HP": 2.0,
+            "NST_DEF": 2.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_REAPER_M_SIEGE",
+        "m_UnitLevel": 110,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 90,
+          "m_fEventTimeGap": 20,
+          "m_fEventPos": 0.25
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.5,
+            "NST_HP": 0.8
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_REAPER_RAILGUN",
+        "m_UnitLevel": 110,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 90,
+          "m_fEventTimeGap": 20,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_DISTURB_BLASTER_SUMMON",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeGap": 1,
+          "m_fEventPos": 0.1
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_DISTURB",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 5,
+          "m_fEventTimeGap": 5,
+          "m_fEventPos": 0.0
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_DISTURB",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 15,
+          "m_fEventTimeGap": 15,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_DISTURB",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 25,
+          "m_fEventTimeGap": 25,
+          "m_fEventPos": 0.05
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_DISTURB",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 35,
+          "m_fEventTimeGap": 35,
+          "m_fEventPos": 0.15
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_DISTURB",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 45,
+          "m_fEventTimeGap": 45,
+          "m_fEventPos": 0.1
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

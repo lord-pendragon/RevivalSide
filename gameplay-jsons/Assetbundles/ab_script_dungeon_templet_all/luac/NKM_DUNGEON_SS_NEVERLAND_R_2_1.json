@@ -1,0 +1,470 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_NEVERLAND_R_2_1.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 9,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateA",
+      "value": 0.3
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.2
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EVENT_MA_SIGMA_BALL"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.2
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 0.1,
+          "NST_DEF": 7,
+          "NST_HP": 10
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_dungeonEventType": "SET_ENEMY_BOSS_HP_RATE",
+          "m_EventActionValue": 1,
+          "m_NKMDungeonEventTiming": {
+            "m_EventDieUnitTag": "SPIDER_DIE",
+            "m_EventDieUnitTagCount": 4,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 3372211,
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 6
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_HOGSBACK_TOM",
+          "m_EventRespawnUnitTag": "TOM_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 7,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 0.5,
+              "NST_DEF": 0.7,
+              "NST_HP": 0.7
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_MA_SIGMA_SWING",
+          "m_EventRespawnUnitTag": "SWING_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_EventDieUnitTag": "TOM_DIE",
+            "m_EventDieUnitTagCount": 1,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 5,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1,
+              "NST_DEF": 1.3,
+              "NST_HP": 2
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_MA_SIGMA_SWING",
+          "m_EventRespawnUnitTag": "SWING_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_EventDieUnitTag": "TOM_DIE",
+            "m_EventDieUnitTagCount": 1,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 5,
+            "m_fEventPos": 0.15
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1,
+              "NST_DEF": 1.3,
+              "NST_HP": 2
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_MA_SIGMA_SWING",
+          "m_EventRespawnUnitTag": "SWING_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_EventDieUnitTag": "TOM_DIE",
+            "m_EventDieUnitTagCount": 1,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 5,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1,
+              "NST_DEF": 1.3,
+              "NST_HP": 2
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_MA_SIGMA_SPIDER",
+          "m_EventRespawnUnitTag": "SPIDER_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_EventDieUnitTag": "SWING_DIE",
+            "m_EventDieUnitTagCount": 3,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 5,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1,
+              "NST_DEF": 1.3,
+              "NST_HP": 2
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_MA_SIGMA_SPIDER",
+          "m_EventRespawnUnitTag": "SPIDER_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_EventDieUnitTag": "SWING_DIE",
+            "m_EventDieUnitTagCount": 3,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 5,
+            "m_fEventPos": 0.15
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1,
+              "NST_DEF": 1.3,
+              "NST_HP": 2
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_MA_SIGMA_SPIDER",
+          "m_EventRespawnUnitTag": "SPIDER_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_EventDieUnitTag": "SWING_DIE",
+            "m_EventDieUnitTagCount": 3,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 5,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1,
+              "NST_DEF": 1.3,
+              "NST_HP": 2
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_MA_SIGMA_SPIDER",
+          "m_EventRespawnUnitTag": "SPIDER_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_EventDieUnitTag": "SWING_DIE",
+            "m_EventDieUnitTagCount": 3,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 5,
+            "m_fEventPos": 0.25
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1,
+              "NST_DEF": 1.3,
+              "NST_HP": 2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamB",
+      "value": [
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 3372212,
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_ELITE_CHALLENGE_HOGSBACK_TOM",
+          "m_EventConditionValue2": "USN_START",
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 3372213,
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_NORMAL_EVENT_MA_SIGMA_SWING",
+          "m_EventConditionValue2": "USN_START",
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 3372214,
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_NORMAL_EVENT_MA_SIGMA_SPIDER",
+          "m_EventConditionValue2": "USN_START",
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateA": 0.3,
+    "m_fCostSpeedRateB": 0.2,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EVENT_MA_SIGMA_BALL",
+    "m_fBossPosZ": 0.2,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 0.1,
+          "NST_DEF": 7,
+          "NST_HP": 10
+        }
+      }
+    },
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_dungeonEventType": "SET_ENEMY_BOSS_HP_RATE",
+        "m_EventActionValue": 1,
+        "m_NKMDungeonEventTiming": {
+          "m_EventDieUnitTag": "SPIDER_DIE",
+          "m_EventDieUnitTagCount": 4,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 3372211,
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 6
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_HOGSBACK_TOM",
+        "m_EventRespawnUnitTag": "TOM_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 7,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 0.5,
+            "NST_DEF": 0.7,
+            "NST_HP": 0.7
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_MA_SIGMA_SWING",
+        "m_EventRespawnUnitTag": "SWING_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_EventDieUnitTag": "TOM_DIE",
+          "m_EventDieUnitTagCount": 1,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 5,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1,
+            "NST_DEF": 1.3,
+            "NST_HP": 2
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_MA_SIGMA_SWING",
+        "m_EventRespawnUnitTag": "SWING_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_EventDieUnitTag": "TOM_DIE",
+          "m_EventDieUnitTagCount": 1,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 5,
+          "m_fEventPos": 0.15
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1,
+            "NST_DEF": 1.3,
+            "NST_HP": 2
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_MA_SIGMA_SWING",
+        "m_EventRespawnUnitTag": "SWING_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_EventDieUnitTag": "TOM_DIE",
+          "m_EventDieUnitTagCount": 1,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 5,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1,
+            "NST_DEF": 1.3,
+            "NST_HP": 2
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_MA_SIGMA_SPIDER",
+        "m_EventRespawnUnitTag": "SPIDER_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_EventDieUnitTag": "SWING_DIE",
+          "m_EventDieUnitTagCount": 3,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 5,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1,
+            "NST_DEF": 1.3,
+            "NST_HP": 2
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_MA_SIGMA_SPIDER",
+        "m_EventRespawnUnitTag": "SPIDER_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_EventDieUnitTag": "SWING_DIE",
+          "m_EventDieUnitTagCount": 3,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 5,
+          "m_fEventPos": 0.15
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1,
+            "NST_DEF": 1.3,
+            "NST_HP": 2
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_MA_SIGMA_SPIDER",
+        "m_EventRespawnUnitTag": "SPIDER_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_EventDieUnitTag": "SWING_DIE",
+          "m_EventDieUnitTagCount": 3,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 5,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1,
+            "NST_DEF": 1.3,
+            "NST_HP": 2
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_MA_SIGMA_SPIDER",
+        "m_EventRespawnUnitTag": "SPIDER_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_EventDieUnitTag": "SWING_DIE",
+          "m_EventDieUnitTagCount": 3,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 5,
+          "m_fEventPos": 0.25
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1,
+            "NST_DEF": 1.3,
+            "NST_HP": 2
+          }
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamB": [
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 3372212,
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_ELITE_CHALLENGE_HOGSBACK_TOM",
+        "m_EventConditionValue2": "USN_START",
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 3372213,
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_NORMAL_EVENT_MA_SIGMA_SWING",
+        "m_EventConditionValue2": "USN_START",
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 3372214,
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_NORMAL_EVENT_MA_SIGMA_SPIDER",
+        "m_EventConditionValue2": "USN_START",
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

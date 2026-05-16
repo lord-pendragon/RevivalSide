@@ -1,0 +1,987 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_ELITE_EVENT_NANAHARA2_REAPER_RAILGUN.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 22,
+  "records": [
+    {
+      "__key": "m_UnitSizeX",
+      "value": 200
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 300
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 0.85
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 500
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 700
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 290
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.91
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.94
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 140
+    },
+    {
+      "__key": "m_fDamageUpFactor",
+      "value": 0
+    },
+    {
+      "__key": "m_fDamageBackFactor",
+      "value": 0.5
+    },
+    {
+      "__key": "m_bNoDamageDownState",
+      "value": true
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 2000
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 2100
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 1350
+    },
+    {
+      "__key": "m_AttackedTargetTime",
+      "value": 1
+    },
+    {
+      "__key": "m_bAttackedTarget",
+      "value": false
+    },
+    {
+      "__key": "m_fBuffEffectScaleFactor",
+      "value": 1.5
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_BuffStrID": "BUFF_REAPER_M_RAILGUN_PASSIVE1"
+        }
+      ]
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1_START",
+          "m_fRangeMin": 300,
+          "m_fRangeMax": 1350
+        },
+        {
+          "m_StateName": "USN_ATTACK2",
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 300
+        },
+        {
+          "m_Condition": {
+            "m_NeedBuffStrID": "BUFF_REAPER_M_RAILGUN_PASSIVE_TRIGGER"
+          },
+          "m_StateName": "USN_PASSIVE",
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 3000
+        }
+      ]
+    },
+    {
+      "__key": "m_listSkillStateData",
+      "value": [
+        {
+          "m_Condition": {
+            "m_NeedBuffStrID": "BUFF_REAPER_M_RAILGUN_SKILL_TRIGGER"
+          },
+          "m_StateName": "USN_SKILL1"
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_DamagedChangeState": "USN_ASTAND",
+          "m_fAnimSpeed": 1.3,
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.23333333333333334,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashGap": 10.0,
+              "m_fCameraCrashTime": 0.2
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_TANK_START_BIG"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.4,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ELECTRIC"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6666666666666666,
+              "m_listSoundName": [
+                "FX_CUTSCEN_ENERGY_CHARGE"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_REAPER_M_CANNON_BATTLE_START_1",
+                "VOICE_UNIT_REAPER_M_CANNON_BATTLE_START_3",
+                "VOICE_UNIT_REAPER_M_CANNON_BATTLE_START_5"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_StateName": "USN_RUN",
+          "m_AnimName": "RUN",
+          "m_bAnimLoop": true,
+          "m_bRun": true,
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0,
+              "m_EffectName": "AB_FX_NKM_UNIT_DRONE_TANK_RUN",
+              "m_OffsetZ": 0,
+              "m_bStateEndStop": true,
+              "m_AnimName": "BASE"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1_START",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK1_START",
+          "m_bAnimLoop": false,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimEndChangeState": "USN_ATTACK1",
+          "m_fAnimSpeed": 1.5,
+          "m_listNKMEventBuff": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_REAPER_M_RAILGUN_SKILL_TRIGGER",
+              "m_StateEndRemove": true
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_MECHANIC_CANNON_ATTACK"
+              ],
+              "m_b3D": false,
+              "m_bLoop": false,
+              "m_PlayRate": 1.0,
+              "m_bStopSound": false
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimName": "ATTACK1_LOOP",
+          "m_fAnimSpeed": 1.3,
+          "m_bAnimLoop": true,
+          "m_bSeeTarget": true,
+          "m_StateTimeChangeStateTime": 21,
+          "m_StateTimeChangeState": "USN_ATTACK1_END",
+          "m_TargetLostOrDieStateDurationTime": 0.5,
+          "m_TargetLostOrDieState": "USN_ATTACK1_END",
+          "m_TargetDistOverChangeStateDist": 1370.0,
+          "m_TargetDistOverChangeState": "USN_ATTACK1_END",
+          "m_bNoMove": true,
+          "m_listNKMEventBuff": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_REAPER_M_RAILGUN_SKILL_TRIGGER",
+              "m_StateEndRemove": true
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.9,
+              "m_fEventTimeMax": 1.0,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1450.0,
+              "m_bHitAir": false,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_NKM_MOB_ELITE_EVENT_NANAHARA2_REAPER_M_RAILGUN_ATTACK1"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.16666666666666666,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ELECTRIC_ATTACK_SMALL"
+              ],
+              "m_b3D": false,
+              "m_bLoop": false,
+              "m_PlayRate": 1.0,
+              "m_bStopSound": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8333333333333334,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_03"
+              ],
+              "m_bStopSound": false
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1_END",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK1_END",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.5,
+          "m_AnimEndChangeState": "USN_ASTAND"
+        },
+        {
+          "m_StateName": "USN_ATTACK2",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK2",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_StateCoolTime": 10,
+          "m_AnimEndChangeState": "USN_ATTACK1",
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.7333333333333333,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashGap": 10.0,
+              "m_fCameraCrashTime": 0.2
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.7333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_EARTHQUAKE"
+              ]
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.7333333333333333,
+              "m_fEventTimeMax": 0.7666666666666667,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 300.0,
+              "m_bHitAir": false,
+              "m_bCleanHit": false,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_NKM_MOB_ELITE_EVENT_NANAHARA2_REAPER_M_RAILGUN_ATTACK2"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.3,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_AnimEndChangeState": "USN_PASSIVE",
+          "m_StateCoolTime": 25,
+          "m_listNKMEventEffect": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_EffectName": "AB_FX_CAST_SKILL",
+              "m_AnimName": "BASE",
+              "m_OffsetX": 0.0,
+              "m_OffsetY": 130,
+              "m_fScaleFactor": 60.0
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_REAPER_M_RAILGUN_PASSIVE_TRIGGER",
+              "m_BuffLevel": 4
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.5,
+              "m_DEName": "DE_NKM_MOB_ELITE_EVENT_NANAHARA2_REAPER_M_RAILGUN_SKILL1_DUMMY",
+              "m_bTargetPos": true
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.9,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_REAPER_M_CANNON_BATTLE_ACTIVE_3",
+                "VOICE_UNIT_REAPER_M_CANNON_BATTLE_ACTIVE_4",
+                "VOICE_UNIT_REAPER_M_CANNON_BATTLE_ACTIVE_5",
+                "VOICE_UNIT_REAPER_M_CANNON_BATTLE_ACTIVE_7"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PASSIVE",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "PASSIVE",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.3,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_AnimEndChangeState": "USN_ATTACK1",
+          "m_listNKMEventBuff": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_REAPER_M_RAILGUN_PASSIVE_TRIGGER",
+              "m_BuffRemove": true
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.1666666666666667,
+              "m_fEventTimeMax": 1.1666666666666667,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 3000.0,
+              "m_bHitAir": false,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_NKM_MOB_ELITE_EVENT_NANAHARA2_REAPER_M_RAILGUN_PASSIVE_LV5"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.16666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ELECTRIC_12"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.1,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_16"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_REAPER_M_CANNON_BATTLE_PASSIVE_2",
+                "VOICE_UNIT_REAPER_M_CANNON_BATTLE_PASSIVE_3",
+                "VOICE_UNIT_REAPER_M_CANNON_BATTLE_PASSIVE_5"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_bAnimLoop": false,
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.025,
+              "m_bStateEndTime": false,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MECHANIC_TANK_DAMAGE_DIE"
+              ],
+              "m_bStopSound": false
+            },
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_REAPER_M_CANNON_BATTLE_DEATH_1",
+                "VOICE_UNIT_REAPER_M_CANNON_BATTLE_DEATH_2",
+                "VOICE_UNIT_REAPER_M_CANNON_BATTLE_DEATH_3"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_bAnimLoop": false,
+          "m_bShowGage": false,
+          "m_listNKMEventDissolve": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.0,
+              "m_fDissolve": 1.5,
+              "m_fTrackTime": 1.8
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_UnitSizeX": 200,
+    "m_UnitSizeY": 300,
+    "m_SpriteScale": 0.85,
+    "m_fShadowScaleX": 500,
+    "m_fShadowScaleY": 700,
+    "m_fGageOffsetY": 290,
+    "m_fForceRespawnZposMin": 0.91,
+    "m_fForceRespawnZposMax": 0.94,
+    "m_SpeedRun": 140,
+    "m_fDamageUpFactor": 0,
+    "m_fDamageBackFactor": 0.5,
+    "m_bNoDamageDownState": true,
+    "m_SeeRange": 2000,
+    "m_SeeRangeMax": 2100,
+    "m_TargetNearRange": 1350,
+    "m_AttackedTargetTime": 1,
+    "m_bAttackedTarget": false,
+    "m_fBuffEffectScaleFactor": 1.5,
+    "m_listStaticBuffData": [
+      {
+        "m_BuffStrID": "BUFF_REAPER_M_RAILGUN_PASSIVE1"
+      }
+    ],
+    "m_listAttackStateData": [
+      {
+        "m_StateName": "USN_ATTACK1_START",
+        "m_fRangeMin": 300,
+        "m_fRangeMax": 1350
+      },
+      {
+        "m_StateName": "USN_ATTACK2",
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 300
+      },
+      {
+        "m_Condition": {
+          "m_NeedBuffStrID": "BUFF_REAPER_M_RAILGUN_PASSIVE_TRIGGER"
+        },
+        "m_StateName": "USN_PASSIVE",
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 3000
+      }
+    ],
+    "m_listSkillStateData": [
+      {
+        "m_Condition": {
+          "m_NeedBuffStrID": "BUFF_REAPER_M_RAILGUN_SKILL_TRIGGER"
+        },
+        "m_StateName": "USN_SKILL1"
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_DamagedChangeState": "USN_ASTAND",
+        "m_fAnimSpeed": 1.3,
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.23333333333333334,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashGap": 10.0,
+            "m_fCameraCrashTime": 0.2
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_TANK_START_BIG"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.4,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ELECTRIC"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6666666666666666,
+            "m_listSoundName": [
+              "FX_CUTSCEN_ENERGY_CHARGE"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_REAPER_M_CANNON_BATTLE_START_1",
+              "VOICE_UNIT_REAPER_M_CANNON_BATTLE_START_3",
+              "VOICE_UNIT_REAPER_M_CANNON_BATTLE_START_5"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_StateName": "USN_RUN",
+        "m_AnimName": "RUN",
+        "m_bAnimLoop": true,
+        "m_bRun": true,
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0,
+            "m_EffectName": "AB_FX_NKM_UNIT_DRONE_TANK_RUN",
+            "m_OffsetZ": 0,
+            "m_bStateEndStop": true,
+            "m_AnimName": "BASE"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1_START",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK1_START",
+        "m_bAnimLoop": false,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimEndChangeState": "USN_ATTACK1",
+        "m_fAnimSpeed": 1.5,
+        "m_listNKMEventBuff": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_REAPER_M_RAILGUN_SKILL_TRIGGER",
+            "m_StateEndRemove": true
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_MECHANIC_CANNON_ATTACK"
+            ],
+            "m_b3D": false,
+            "m_bLoop": false,
+            "m_PlayRate": 1.0,
+            "m_bStopSound": false
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimName": "ATTACK1_LOOP",
+        "m_fAnimSpeed": 1.3,
+        "m_bAnimLoop": true,
+        "m_bSeeTarget": true,
+        "m_StateTimeChangeStateTime": 21,
+        "m_StateTimeChangeState": "USN_ATTACK1_END",
+        "m_TargetLostOrDieStateDurationTime": 0.5,
+        "m_TargetLostOrDieState": "USN_ATTACK1_END",
+        "m_TargetDistOverChangeStateDist": 1370.0,
+        "m_TargetDistOverChangeState": "USN_ATTACK1_END",
+        "m_bNoMove": true,
+        "m_listNKMEventBuff": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_REAPER_M_RAILGUN_SKILL_TRIGGER",
+            "m_StateEndRemove": true
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.9,
+            "m_fEventTimeMax": 1.0,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1450.0,
+            "m_bHitAir": false,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_NKM_MOB_ELITE_EVENT_NANAHARA2_REAPER_M_RAILGUN_ATTACK1"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.16666666666666666,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ELECTRIC_ATTACK_SMALL"
+            ],
+            "m_b3D": false,
+            "m_bLoop": false,
+            "m_PlayRate": 1.0,
+            "m_bStopSound": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8333333333333334,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_03"
+            ],
+            "m_bStopSound": false
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1_END",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK1_END",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.5,
+        "m_AnimEndChangeState": "USN_ASTAND"
+      },
+      {
+        "m_StateName": "USN_ATTACK2",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK2",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_StateCoolTime": 10,
+        "m_AnimEndChangeState": "USN_ATTACK1",
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.7333333333333333,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashGap": 10.0,
+            "m_fCameraCrashTime": 0.2
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.7333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_EARTHQUAKE"
+            ]
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.7333333333333333,
+            "m_fEventTimeMax": 0.7666666666666667,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 300.0,
+            "m_bHitAir": false,
+            "m_bCleanHit": false,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_NKM_MOB_ELITE_EVENT_NANAHARA2_REAPER_M_RAILGUN_ATTACK2"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.3,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_AnimEndChangeState": "USN_PASSIVE",
+        "m_StateCoolTime": 25,
+        "m_listNKMEventEffect": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_EffectName": "AB_FX_CAST_SKILL",
+            "m_AnimName": "BASE",
+            "m_OffsetX": 0.0,
+            "m_OffsetY": 130,
+            "m_fScaleFactor": 60.0
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_REAPER_M_RAILGUN_PASSIVE_TRIGGER",
+            "m_BuffLevel": 4
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.5,
+            "m_DEName": "DE_NKM_MOB_ELITE_EVENT_NANAHARA2_REAPER_M_RAILGUN_SKILL1_DUMMY",
+            "m_bTargetPos": true
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.9,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ONESHOT_FIRE_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_REAPER_M_CANNON_BATTLE_ACTIVE_3",
+              "VOICE_UNIT_REAPER_M_CANNON_BATTLE_ACTIVE_4",
+              "VOICE_UNIT_REAPER_M_CANNON_BATTLE_ACTIVE_5",
+              "VOICE_UNIT_REAPER_M_CANNON_BATTLE_ACTIVE_7"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PASSIVE",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "PASSIVE",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.3,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_AnimEndChangeState": "USN_ATTACK1",
+        "m_listNKMEventBuff": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_REAPER_M_RAILGUN_PASSIVE_TRIGGER",
+            "m_BuffRemove": true
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.1666666666666667,
+            "m_fEventTimeMax": 1.1666666666666667,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 3000.0,
+            "m_bHitAir": false,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_NKM_MOB_ELITE_EVENT_NANAHARA2_REAPER_M_RAILGUN_PASSIVE_LV5"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.16666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ELECTRIC_12"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.1,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_16"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_REAPER_M_CANNON_BATTLE_PASSIVE_2",
+              "VOICE_UNIT_REAPER_M_CANNON_BATTLE_PASSIVE_3",
+              "VOICE_UNIT_REAPER_M_CANNON_BATTLE_PASSIVE_5"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_bAnimLoop": false,
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.025,
+            "m_bStateEndTime": false,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MECHANIC_TANK_DAMAGE_DIE"
+            ],
+            "m_bStopSound": false
+          },
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_REAPER_M_CANNON_BATTLE_DEATH_1",
+              "VOICE_UNIT_REAPER_M_CANNON_BATTLE_DEATH_2",
+              "VOICE_UNIT_REAPER_M_CANNON_BATTLE_DEATH_3"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_bAnimLoop": false,
+        "m_bShowGage": false,
+        "m_listNKMEventDissolve": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.0,
+            "m_fDissolve": 1.5,
+            "m_fTrackTime": 1.8
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

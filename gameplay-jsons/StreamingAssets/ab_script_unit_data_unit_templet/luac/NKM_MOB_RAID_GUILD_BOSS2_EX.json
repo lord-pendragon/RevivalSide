@@ -1,0 +1,233 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_RAID_GUILD_BOSS2_EX.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 2,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_MOB_RAID_GUILD_BOSS_S2_E"
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_SKILL2",
+          "m_listNKMEventRespawn": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_UnitStrID": "NKM_MOB_ELITE_GUILD_TYRANT_DEFFENDER_EX",
+              "m_MaxCount": 2,
+              "m_fOffsetX": -900
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.26666666666666666,
+              "m_UnitStrID": "NKM_MOB_ELITE_GUILD_TYRANT_DEFFENDER_EX",
+              "m_MaxCount": 2,
+              "m_fOffsetX": -450
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.26666666666666666,
+              "m_UnitStrID": "NKM_MOB_ELITE_GUILD_TYRANT_DEFFENDER_EX_RIGHT",
+              "m_MaxCount": 2,
+              "m_fOffsetX": 450
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_UnitStrID": "NKM_MOB_ELITE_GUILD_TYRANT_DEFFENDER_EX_RIGHT",
+              "m_MaxCount": 2,
+              "m_fOffsetX": 900
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL2_LOOP",
+          "m_DangerCharge": {
+            "m_fChargeTime": 14,
+            "m_CancelHitCount": 140,
+            "m_SuccessState": "USN_SKILL2_SUCCESS",
+            "m_CancelState": "USN_SKILL2_CANCEL"
+          }
+        },
+        {
+          "m_StateName": "USN_SKILL2_CANCEL",
+          "m_listNKMEventChangeState": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_ChangeState": "USN_EVENT_DIE",
+              "m_TargetUnitID": 220329
+            },
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_ChangeState": "USN_EVENT_DIE",
+              "m_TargetUnitID": 220331
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PHASECHANGE_READY",
+          "m_listNKMEventChangeState": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_ChangeState": "USN_EVENT_DIE",
+              "m_TargetUnitID": 220329
+            },
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_ChangeState": "USN_EVENT_DIE",
+              "m_TargetUnitID": 220331
+            },
+            {
+              "m_fEventTime": 3.966666666666667,
+              "m_ChangeState": "USN_PHASECHANGE"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_HYPER1",
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 3.8333333333333335,
+              "m_fEventTimeMax": 4.166666666666667,
+              "m_fRangeMin": -700,
+              "m_fRangeMax": 700,
+              "m_AttackUnitCount": 99,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_BASIC_GUILD2_HYPER1",
+              "m_bForceCritical": true,
+              "m_bTrueDamage": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 4.666666666666667,
+              "m_fEventTimeMax": 5.0,
+              "m_fRangeMin": -2000,
+              "m_fRangeMax": 2000,
+              "m_AttackUnitCount": 99,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_BASIC_GUILD2_HYPER1",
+              "m_bForceCritical": true,
+              "m_bTrueDamage": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_MOB_RAID_GUILD_BOSS_S2_E",
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_SKILL2",
+        "m_listNKMEventRespawn": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_UnitStrID": "NKM_MOB_ELITE_GUILD_TYRANT_DEFFENDER_EX",
+            "m_MaxCount": 2,
+            "m_fOffsetX": -900
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.26666666666666666,
+            "m_UnitStrID": "NKM_MOB_ELITE_GUILD_TYRANT_DEFFENDER_EX",
+            "m_MaxCount": 2,
+            "m_fOffsetX": -450
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.26666666666666666,
+            "m_UnitStrID": "NKM_MOB_ELITE_GUILD_TYRANT_DEFFENDER_EX_RIGHT",
+            "m_MaxCount": 2,
+            "m_fOffsetX": 450
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_UnitStrID": "NKM_MOB_ELITE_GUILD_TYRANT_DEFFENDER_EX_RIGHT",
+            "m_MaxCount": 2,
+            "m_fOffsetX": 900
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL2_LOOP",
+        "m_DangerCharge": {
+          "m_fChargeTime": 14,
+          "m_CancelHitCount": 140,
+          "m_SuccessState": "USN_SKILL2_SUCCESS",
+          "m_CancelState": "USN_SKILL2_CANCEL"
+        }
+      },
+      {
+        "m_StateName": "USN_SKILL2_CANCEL",
+        "m_listNKMEventChangeState": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_ChangeState": "USN_EVENT_DIE",
+            "m_TargetUnitID": 220329
+          },
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_ChangeState": "USN_EVENT_DIE",
+            "m_TargetUnitID": 220331
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PHASECHANGE_READY",
+        "m_listNKMEventChangeState": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_ChangeState": "USN_EVENT_DIE",
+            "m_TargetUnitID": 220329
+          },
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_ChangeState": "USN_EVENT_DIE",
+            "m_TargetUnitID": 220331
+          },
+          {
+            "m_fEventTime": 3.966666666666667,
+            "m_ChangeState": "USN_PHASECHANGE"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_HYPER1",
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 3.8333333333333335,
+            "m_fEventTimeMax": 4.166666666666667,
+            "m_fRangeMin": -700,
+            "m_fRangeMax": 700,
+            "m_AttackUnitCount": 99,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_BASIC_GUILD2_HYPER1",
+            "m_bForceCritical": true,
+            "m_bTrueDamage": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 4.666666666666667,
+            "m_fEventTimeMax": 5.0,
+            "m_fRangeMin": -2000,
+            "m_fRangeMax": 2000,
+            "m_AttackUnitCount": 99,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_BASIC_GUILD2_HYPER1",
+            "m_bForceCritical": true,
+            "m_bTrueDamage": true
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

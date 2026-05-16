@@ -1,0 +1,287 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_NORMAL_HORIZON_DRONE_E.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 22,
+  "records": [
+    {
+      "__key": "m_UnitSizeX",
+      "value": 120
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 120
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_NKC_TEAM_COLOR_TYPE",
+      "value": "NTCT_ONLY_SHADOW"
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 400
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 500
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.5
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.5
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": false
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 500
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 250
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 2000
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 2200
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 10
+    },
+    {
+      "__key": "m_AttackedTargetTime",
+      "value": 1
+    },
+    {
+      "__key": "m_bAttackedTarget",
+      "value": false
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": false
+    },
+    {
+      "__key": "m_bNoDamageBackSpeed",
+      "value": true
+    },
+    {
+      "__key": "m_bNoMove",
+      "value": true
+    },
+    {
+      "__key": "m_bImmuneStun",
+      "value": true
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 0.03333333333333333
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "ASTART",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_StateTimeChangeState": "USN_ASTAND",
+          "m_StateTimeChangeStateTime": {
+            "__unparsed_expr": "L3_1 / 30"
+          },
+          "m_SuperArmorLevel": "NSAL_HYPER"
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_StateName": "USN_RUN",
+          "m_AnimName": "RUN",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 0.5,
+          "m_bRun": true,
+          "m_SuperArmorLevel": "NSAL_HYPER"
+        },
+        {
+          "m_StateName": "USN_ASTAND",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": true,
+          "m_bForceNoTargeted": true,
+          "m_listNKMEventHeal": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.3333333333333333,
+              "m_fHealRate": 0.25,
+              "m_fRangeMin": -400.0,
+              "m_fRangeMax": 400.0,
+              "m_bEnableSelfHeal": false,
+              "m_MaxCount": 99
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_DEName": "DE_NKM_MOB_NORMAL_HORIZON_DRONE_BUFF",
+              "m_bTargetPos": false,
+              "m_bShipSkillPos": false,
+              "m_bIgnoreTarget": false,
+              "m_bIgnoreNoTarget": false,
+              "m_OffsetY": 350
+            }
+          ],
+          "m_listNKMEventDie": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.5
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_STUN",
+          "m_AnimName": "DAMAGE_STUN",
+          "m_bAnimLoop": true,
+          "m_bStunState": true
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_fAnimSpeed": 2,
+          "m_bAnimLoop": false,
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE"
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_bAnimLoop": false,
+          "m_bShowGage": false
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_UnitSizeX": 120,
+    "m_UnitSizeY": 120,
+    "m_SpriteScale": 1.0,
+    "m_NKC_TEAM_COLOR_TYPE": "NTCT_ONLY_SHADOW",
+    "m_fShadowScaleX": 400,
+    "m_fShadowScaleY": 500,
+    "m_fForceRespawnZposMin": 0.5,
+    "m_fForceRespawnZposMax": 0.5,
+    "m_bShowGage": false,
+    "m_fGageOffsetY": 500,
+    "m_SpeedRun": 250,
+    "m_SeeRange": 2000,
+    "m_SeeRangeMax": 2200,
+    "m_TargetNearRange": 10,
+    "m_AttackedTargetTime": 1,
+    "m_bAttackedTarget": false,
+    "m_bUseMotionBlur": false,
+    "m_bNoDamageBackSpeed": true,
+    "m_bNoMove": true,
+    "m_bImmuneStun": true,
+    "m_fDieCompleteTime": 0.03333333333333333,
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "ASTART",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_StateTimeChangeState": "USN_ASTAND",
+        "m_StateTimeChangeStateTime": {
+          "__unparsed_expr": "L3_1 / 30"
+        },
+        "m_SuperArmorLevel": "NSAL_HYPER"
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_StateName": "USN_RUN",
+        "m_AnimName": "RUN",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 0.5,
+        "m_bRun": true,
+        "m_SuperArmorLevel": "NSAL_HYPER"
+      },
+      {
+        "m_StateName": "USN_ASTAND",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": true,
+        "m_bForceNoTargeted": true,
+        "m_listNKMEventHeal": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.3333333333333333,
+            "m_fHealRate": 0.25,
+            "m_fRangeMin": -400.0,
+            "m_fRangeMax": 400.0,
+            "m_bEnableSelfHeal": false,
+            "m_MaxCount": 99
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_DEName": "DE_NKM_MOB_NORMAL_HORIZON_DRONE_BUFF",
+            "m_bTargetPos": false,
+            "m_bShipSkillPos": false,
+            "m_bIgnoreTarget": false,
+            "m_bIgnoreNoTarget": false,
+            "m_OffsetY": 350
+          }
+        ],
+        "m_listNKMEventDie": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.5
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_STUN",
+        "m_AnimName": "DAMAGE_STUN",
+        "m_bAnimLoop": true,
+        "m_bStunState": true
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_fAnimSpeed": 2,
+        "m_bAnimLoop": false,
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE"
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_bAnimLoop": false,
+        "m_bShowGage": false
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

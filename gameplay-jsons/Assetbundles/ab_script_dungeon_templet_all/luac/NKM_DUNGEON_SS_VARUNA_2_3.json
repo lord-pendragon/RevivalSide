@@ -1,0 +1,282 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_VARUNA_2_3.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 3,
+  "records": [
+    {
+      "__key": "m_fCostSpeedRateA",
+      "value": 2.0
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_FOX_VEHICLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 73,
+            "m_fEventTimeGap": 5,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_FOX_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 73,
+            "m_fEventTimeGap": 5,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_FOX_RPG",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 73,
+            "m_fEventTimeGap": 5,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_FOX_MORTAR",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 73,
+            "m_fEventTimeGap": 5,
+            "m_fEventPos": 0.3
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_FOX_HOWITZER",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 73,
+            "m_fEventTimeGap": 5,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_WAVE_FRONTBAY_AXE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 73,
+            "m_fEventTimeGap": 5,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_WAVE_FRONTBAY_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 73,
+            "m_fEventTimeGap": 5,
+            "m_fEventPos": 0.4
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonWave",
+      "value": [
+        {
+          "m_WaveID": 1,
+          "m_fNextWavetime": 75,
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_BOSS_EVENT_VARUNA_WHALE_N",
+              "m_bShowGage": true,
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0,
+                "m_fEventPos": 0.0
+              },
+              "m_AddStatData": {
+                "m_StatValue": {
+                  "NST_EXTRA_ADJUST_DAMAGE_RECEIVE": -10.0
+                }
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+                "m_fEventTimeStart": 0,
+                "m_fEventPos": 0.25,
+                "m_fEventTimeGap": 3
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+                "m_fEventTimeStart": 5,
+                "m_fEventPos": 0.2,
+                "m_fEventTimeGap": 2
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_RANGER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+                "m_fEventTimeStart": 7,
+                "m_fEventPos": 0.1,
+                "m_fEventTimeGap": 6
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_RANGER",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+                "m_fEventTimeStart": 9,
+                "m_fEventPos": 0.0,
+                "m_fEventTimeGap": 6
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fCostSpeedRateA": 2.0,
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_FOX_VEHICLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 73,
+          "m_fEventTimeGap": 5,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_FOX_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 73,
+          "m_fEventTimeGap": 5,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_FOX_RPG",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 73,
+          "m_fEventTimeGap": 5,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_FOX_MORTAR",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 73,
+          "m_fEventTimeGap": 5,
+          "m_fEventPos": 0.3
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_CHALLENGE_FOX_HOWITZER",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 73,
+          "m_fEventTimeGap": 5,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_WAVE_FRONTBAY_AXE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 73,
+          "m_fEventTimeGap": 5,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_WAVE_FRONTBAY_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 73,
+          "m_fEventTimeGap": 5,
+          "m_fEventPos": 0.4
+        }
+      }
+    ],
+    "m_listDungeonWave": [
+      {
+        "m_WaveID": 1,
+        "m_fNextWavetime": 75,
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_BOSS_EVENT_VARUNA_WHALE_N",
+            "m_bShowGage": true,
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0,
+              "m_fEventPos": 0.0
+            },
+            "m_AddStatData": {
+              "m_StatValue": {
+                "NST_EXTRA_ADJUST_DAMAGE_RECEIVE": -10.0
+              }
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+              "m_fEventTimeStart": 0,
+              "m_fEventPos": 0.25,
+              "m_fEventTimeGap": 3
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+              "m_fEventTimeStart": 5,
+              "m_fEventPos": 0.2,
+              "m_fEventTimeGap": 2
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_RANGER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+              "m_fEventTimeStart": 7,
+              "m_fEventPos": 0.1,
+              "m_fEventTimeGap": 6
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_RANGER",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+              "m_fEventTimeStart": 9,
+              "m_fEventPos": 0.0,
+              "m_fEventTimeGap": 6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

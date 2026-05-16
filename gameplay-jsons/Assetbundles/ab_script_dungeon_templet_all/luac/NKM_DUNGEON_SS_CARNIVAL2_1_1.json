@@ -1,0 +1,261 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_CARNIVAL2_1_1.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 2,
+  "records": [
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_UNIT_SECURITY_S_AGENT",
+          "m_UnitLevel": 110,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.1,
+            "m_fEventTimeGap": 15
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonWave",
+      "value": [
+        {
+          "m_WaveID": 1,
+          "m_NextWaveID": 2,
+          "m_fNextWavetime": 30,
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_ELITE_EVENT_COMMON_DRUM",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0.3,
+                "m_fEventPos": 0.4
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_ELITE_EVENT_COMMON_VIOLIN",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0.6,
+                "m_fEventPos": 0.2
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_ELITE_EVENT_COMMON_BASS",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0.9,
+                "m_fEventPos": 0.1
+              }
+            }
+          ]
+        },
+        {
+          "m_WaveID": 2,
+          "m_NextWaveID": 3,
+          "m_fNextWavetime": 30,
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_ELITE_EVENT_COMMON_DRUM",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0,
+                "m_fEventPos": 0.4
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_ELITE_EVENT_COMMON_DRUM",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0.1,
+                "m_fEventPos": 0.4
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_ELITE_EVENT_COMMON_VIOLIN",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0.3,
+                "m_fEventPos": 0.2
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_ELITE_EVENT_COMMON_BASS",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0.6,
+                "m_fEventPos": 0.1
+              }
+            }
+          ]
+        },
+        {
+          "m_WaveID": 3,
+          "m_fNextWavetime": 180,
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_ELITE_EVENT_COMMON_DRUM",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0,
+                "m_fEventPos": 0.4
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_ELITE_EVENT_COMMON_VIOLIN",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0.3,
+                "m_fEventPos": 0.2
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_ELITE_EVENT_COMMON_BASS",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0.6,
+                "m_fEventPos": 0.1
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_ELITE_EVENT_COMMON_BASS",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 0.6,
+                "m_fEventPos": 0.1
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_UNIT_SECURITY_S_AGENT",
+        "m_UnitLevel": 110,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventPos": 0.1,
+          "m_fEventTimeGap": 15
+        }
+      }
+    ],
+    "m_listDungeonWave": [
+      {
+        "m_WaveID": 1,
+        "m_NextWaveID": 2,
+        "m_fNextWavetime": 30,
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_ELITE_EVENT_COMMON_DRUM",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0.3,
+              "m_fEventPos": 0.4
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_ELITE_EVENT_COMMON_VIOLIN",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0.6,
+              "m_fEventPos": 0.2
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_ELITE_EVENT_COMMON_BASS",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0.9,
+              "m_fEventPos": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "m_WaveID": 2,
+        "m_NextWaveID": 3,
+        "m_fNextWavetime": 30,
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_ELITE_EVENT_COMMON_DRUM",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0,
+              "m_fEventPos": 0.4
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_ELITE_EVENT_COMMON_DRUM",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0.1,
+              "m_fEventPos": 0.4
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_ELITE_EVENT_COMMON_VIOLIN",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0.3,
+              "m_fEventPos": 0.2
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_ELITE_EVENT_COMMON_BASS",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0.6,
+              "m_fEventPos": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "m_WaveID": 3,
+        "m_fNextWavetime": 180,
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_ELITE_EVENT_COMMON_DRUM",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0,
+              "m_fEventPos": 0.4
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_ELITE_EVENT_COMMON_VIOLIN",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0.3,
+              "m_fEventPos": 0.2
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_ELITE_EVENT_COMMON_BASS",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0.6,
+              "m_fEventPos": 0.1
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_ELITE_EVENT_COMMON_BASS",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 0.6,
+              "m_fEventPos": 0.1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

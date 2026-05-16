@@ -1,0 +1,165 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_RAID_BOSS_3_LV.130.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 2
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_RAID_COMMON_RAID_BOSS_3_S"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.1
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_RAID_COMMON_RAID_ELITE_3_1",
+          "m_EventRespawnUnitTag": "BOSS_START",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.3,
+            "m_fEventPos": 0.55
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_RAID_COMMON_RAID_ELITE_3_2",
+          "m_EventRespawnUnitTag": "BOSS_START",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 14,
+            "m_fEventPos": 0.35
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_RAID_COMMON_RAID_ELITE_3_1",
+          "m_EventRespawnUnitTag": "BOSS_START",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 28,
+            "m_fEventPos": 0.15
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamB",
+      "value": [
+        {
+          "m_dungeonEventType": "CHANGE_CAMERA",
+          "m_EventActionStrValue": "m_fCamSize = 500; m_fCamSizeMax = 512;",
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_STATE",
+          "m_EventActionValue": 230579,
+          "m_EventActionStrValue": "USN_START2",
+          "m_fEventDelay": 2,
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_EventDieUnitTag": "BOSS_START",
+            "m_EventDieUnitTagCount": 3
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_RAID_COMMON_RAID_BOSS_3_S",
+          "m_EventConditionValue2": "USN_START2",
+          "m_dungeonEventType": "CHANGE_CAMERA",
+          "m_EventActionStrValue": "m_fCamSize = 750; m_fCamSizeMax = 3000;",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 2,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_RAID_COMMON_RAID_BOSS_3_S",
+    "m_fBossPosZ": 0.1,
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_RAID_COMMON_RAID_ELITE_3_1",
+        "m_EventRespawnUnitTag": "BOSS_START",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.3,
+          "m_fEventPos": 0.55
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_RAID_COMMON_RAID_ELITE_3_2",
+        "m_EventRespawnUnitTag": "BOSS_START",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 14,
+          "m_fEventPos": 0.35
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_RAID_COMMON_RAID_ELITE_3_1",
+        "m_EventRespawnUnitTag": "BOSS_START",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 28,
+          "m_fEventPos": 0.15
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamB": [
+      {
+        "m_dungeonEventType": "CHANGE_CAMERA",
+        "m_EventActionStrValue": "m_fCamSize = 500; m_fCamSizeMax = 512;",
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_STATE",
+        "m_EventActionValue": 230579,
+        "m_EventActionStrValue": "USN_START2",
+        "m_fEventDelay": 2,
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1,
+          "m_EventDieUnitTag": "BOSS_START",
+          "m_EventDieUnitTagCount": 3
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_RAID_COMMON_RAID_BOSS_3_S",
+        "m_EventConditionValue2": "USN_START2",
+        "m_dungeonEventType": "CHANGE_CAMERA",
+        "m_EventActionStrValue": "m_fCamSize = 750; m_fCamSizeMax = 3000;",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

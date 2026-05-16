@@ -1,0 +1,526 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_PRIDE_5_2.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 9,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.7
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_HORIZON_ZODIAC_CHARLOTTE_H"
+    },
+    {
+      "__key": "m_BossUnitChangeName",
+      "value": "SI_MOB_NAME_SHADOW_C_ZODIAC_CHARLOTTE"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_UnitEffect": "SHADOW"
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_NORMAL_COMMON_ZODIAC_ARIUS_ALLY",
+          "m_EventConditionValue2": "USN_START",
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 2485021,
+          "m_bPause": true,
+          "m_fEventDelay": 0,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.0
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_NORMAL_COMMON_ZODIAC_ARIUS_ALLY",
+          "m_EventConditionValue2": "USN_START",
+          "m_fEventDelay": 1,
+          "m_dungeonEventType": "CHANGE_BGM",
+          "m_EventActionStrValue": "BATTLE_NORMAL_06",
+          "m_EventID": 1,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1.0
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_NORMAL_COMMON_ZODIAC_ARIUS_ALLY",
+          "m_EventConditionValue2": "USN_START",
+          "m_fEventDelay": 2,
+          "m_dungeonEventType": "ADD_EVENTTAG",
+          "m_EventActionStrValue": "ZODIAC_WIN",
+          "m_EventActionValue": 1,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_NORMAL_COMMON_ZODIAC_ARIUS_ALLY",
+          "m_EventConditionValue2": "USN_START",
+          "m_fEventDelay": 2,
+          "m_dungeonEventType": "SET_UNIT_STATE",
+          "m_EventActionValue": 210577,
+          "m_EventActionStrValue": "USN_HYPER1",
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_MOB_NORMAL_COMMON_ZODIAC_ARIUS_ALLY",
+          "m_EventConditionValue2": "USN_HYPER1",
+          "m_fEventDelay": 1,
+          "m_dungeonEventType": "SET_UNIT_STATE",
+          "m_EventActionValue": 1086,
+          "m_EventActionStrValue": "USN_HYPER1",
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_UNIT_C_ZODIAC_YANG_HANSOL",
+          "m_EventConditionValue2": "USN_HYPER1",
+          "m_fEventDelay": 1,
+          "m_dungeonEventType": "SET_UNIT_STATE",
+          "m_EventActionValue": 1089,
+          "m_EventActionStrValue": "USN_HYPER_SKILL1",
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_UNIT_C_ZODIAC_LIV",
+          "m_EventConditionValue2": "USN_HYPER_SKILL1",
+          "m_fEventDelay": 1,
+          "m_dungeonEventType": "SET_UNIT_STATE",
+          "m_EventActionValue": 1088,
+          "m_EventActionStrValue": "USN_HYPER_SKILL1",
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "FORCE_WIN",
+          "m_EventActionValue": 0,
+          "m_EventCondition": "UNIT_STATE_END",
+          "m_EventConditionValue1": "NKM_UNIT_C_ZODIAC_PIONE",
+          "m_EventConditionValue2": "USN_HYPER_SKILL1",
+          "m_fEventDelay": 0,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_EventTag": "ZODIAC_WIN",
+            "m_EventTagCount": 1
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_UNIT_C_ZODIAC_YANG_HANSOL",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventPos": 0.0
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 10.0,
+              "NST_ATK": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_C_ZODIAC_LIV",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 10.0,
+              "NST_ATK": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_C_ZODIAC_PIONE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 10.0,
+              "NST_ATK": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_ZODIAC_ARIUS_ALLY",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 13,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 10.0,
+              "NST_ATK": 1.5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_HORIZON_ZODIAC_PIONE",
+          "m_ChangeUnitName": "SI_MOB_BOSS_EVENT_ALICE_HARMONY_C_BASS",
+          "m_UnitEffect": "SHADOW",
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.0,
+              "NST_HP": 2.0
+            }
+          },
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 7,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_ZODIAC_LIV",
+          "m_ChangeUnitName": "SI_MOB_BOSS_EVENT_ALICE_HARMONY_C_BASS",
+          "m_UnitEffect": "SHADOW",
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.0,
+              "NST_HP": 1.5
+            }
+          },
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 0,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_ZODIAC_YANG_HANSOL",
+          "m_ChangeUnitName": "SI_MOB_BOSS_EVENT_ALICE_HARMONY_C_BASS",
+          "m_UnitEffect": "SHADOW",
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.0,
+              "NST_HP": 2.0
+            }
+          },
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 5,
+            "m_fEventPos": 0.4
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_ZODIAC_ARIUS",
+          "m_ChangeUnitName": "SI_MOB_BOSS_EVENT_ALICE_HARMONY_C_BASS",
+          "m_UnitEffect": "SHADOW",
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.0,
+              "NST_HP": 1.5
+            }
+          },
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventTimeStart": 3,
+            "m_fEventPos": 0.2
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 0.7,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_HORIZON_ZODIAC_CHARLOTTE_H",
+    "m_BossUnitChangeName": "SI_MOB_NAME_SHADOW_C_ZODIAC_CHARLOTTE",
+    "m_fBossPosZ": 0.6,
+    "m_BossRespawnUnitTemplet": {
+      "m_UnitEffect": "SHADOW"
+    },
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_NORMAL_COMMON_ZODIAC_ARIUS_ALLY",
+        "m_EventConditionValue2": "USN_START",
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 2485021,
+        "m_bPause": true,
+        "m_fEventDelay": 0,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.0
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_NORMAL_COMMON_ZODIAC_ARIUS_ALLY",
+        "m_EventConditionValue2": "USN_START",
+        "m_fEventDelay": 1,
+        "m_dungeonEventType": "CHANGE_BGM",
+        "m_EventActionStrValue": "BATTLE_NORMAL_06",
+        "m_EventID": 1,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 1.0
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_NORMAL_COMMON_ZODIAC_ARIUS_ALLY",
+        "m_EventConditionValue2": "USN_START",
+        "m_fEventDelay": 2,
+        "m_dungeonEventType": "ADD_EVENTTAG",
+        "m_EventActionStrValue": "ZODIAC_WIN",
+        "m_EventActionValue": 1,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_NORMAL_COMMON_ZODIAC_ARIUS_ALLY",
+        "m_EventConditionValue2": "USN_START",
+        "m_fEventDelay": 2,
+        "m_dungeonEventType": "SET_UNIT_STATE",
+        "m_EventActionValue": 210577,
+        "m_EventActionStrValue": "USN_HYPER1",
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_MOB_NORMAL_COMMON_ZODIAC_ARIUS_ALLY",
+        "m_EventConditionValue2": "USN_HYPER1",
+        "m_fEventDelay": 1,
+        "m_dungeonEventType": "SET_UNIT_STATE",
+        "m_EventActionValue": 1086,
+        "m_EventActionStrValue": "USN_HYPER1",
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_UNIT_C_ZODIAC_YANG_HANSOL",
+        "m_EventConditionValue2": "USN_HYPER1",
+        "m_fEventDelay": 1,
+        "m_dungeonEventType": "SET_UNIT_STATE",
+        "m_EventActionValue": 1089,
+        "m_EventActionStrValue": "USN_HYPER_SKILL1",
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_UNIT_C_ZODIAC_LIV",
+        "m_EventConditionValue2": "USN_HYPER_SKILL1",
+        "m_fEventDelay": 1,
+        "m_dungeonEventType": "SET_UNIT_STATE",
+        "m_EventActionValue": 1088,
+        "m_EventActionStrValue": "USN_HYPER_SKILL1",
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "FORCE_WIN",
+        "m_EventActionValue": 0,
+        "m_EventCondition": "UNIT_STATE_END",
+        "m_EventConditionValue1": "NKM_UNIT_C_ZODIAC_PIONE",
+        "m_EventConditionValue2": "USN_HYPER_SKILL1",
+        "m_fEventDelay": 0,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_EventTag": "ZODIAC_WIN",
+          "m_EventTagCount": 1
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_UNIT_C_ZODIAC_YANG_HANSOL",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventPos": 0.0
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 10.0,
+            "NST_ATK": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_C_ZODIAC_LIV",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 10.0,
+            "NST_ATK": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_C_ZODIAC_PIONE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 10.0,
+            "NST_ATK": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_ZODIAC_ARIUS_ALLY",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 13,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 10.0,
+            "NST_ATK": 1.5
+          }
+        }
+      }
+    ],
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_HORIZON_ZODIAC_PIONE",
+        "m_ChangeUnitName": "SI_MOB_BOSS_EVENT_ALICE_HARMONY_C_BASS",
+        "m_UnitEffect": "SHADOW",
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.0,
+            "NST_HP": 2.0
+          }
+        },
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 7,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_ZODIAC_LIV",
+        "m_ChangeUnitName": "SI_MOB_BOSS_EVENT_ALICE_HARMONY_C_BASS",
+        "m_UnitEffect": "SHADOW",
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.0,
+            "NST_HP": 1.5
+          }
+        },
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 0,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_ZODIAC_YANG_HANSOL",
+        "m_ChangeUnitName": "SI_MOB_BOSS_EVENT_ALICE_HARMONY_C_BASS",
+        "m_UnitEffect": "SHADOW",
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.0,
+            "NST_HP": 2.0
+          }
+        },
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 5,
+          "m_fEventPos": 0.4
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_ZODIAC_ARIUS",
+        "m_ChangeUnitName": "SI_MOB_BOSS_EVENT_ALICE_HARMONY_C_BASS",
+        "m_UnitEffect": "SHADOW",
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.0,
+            "NST_HP": 1.5
+          }
+        },
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventTimeStart": 3,
+          "m_fEventPos": 0.2
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

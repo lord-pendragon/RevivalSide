@@ -1,0 +1,141 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_VARUNA_1_1.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 6
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.8
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_ELITE_COMMON_SCAVENGER_S_HAMMER"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_bShowGage": false,
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 0.7
+        },
+        "m_StatValue": {
+          "NST_MOVE_SPEED_RATE": -0.4
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_SCAVENGER_S_CUTLASS",
+          "m_bShowGage": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventPos": 0.3,
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 30
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.0,
+              "NST_HP": 1.0,
+              "NST_DEF": 1.0,
+              "NST_CRITICAL": 1.0,
+              "NST_HIT": 1.0,
+              "NST_EVADE": 1.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_SCAVENGER_S_CUTLASS",
+          "m_bShowGage": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+            "m_fEventPos": 0.2,
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeEnd": 30
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.0,
+              "NST_HP": 1.0,
+              "NST_DEF": 1.0,
+              "NST_CRITICAL": 1.0,
+              "NST_HIT": 1.0,
+              "NST_EVADE": 1.0
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 6,
+    "m_fCostSpeedRateB": 0.8,
+    "m_BossUnitStrID": "NKM_MOB_ELITE_COMMON_SCAVENGER_S_HAMMER",
+    "m_fBossPosZ": 0.6,
+    "m_BossRespawnUnitTemplet": {
+      "m_bShowGage": false,
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 0.7
+        },
+        "m_StatValue": {
+          "NST_MOVE_SPEED_RATE": -0.4
+        }
+      }
+    },
+    "m_listDungeonDeck": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_SCAVENGER_S_CUTLASS",
+        "m_bShowGage": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventPos": 0.3,
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 30
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.0,
+            "NST_HP": 1.0,
+            "NST_DEF": 1.0,
+            "NST_CRITICAL": 1.0,
+            "NST_HIT": 1.0,
+            "NST_EVADE": 1.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_SCAVENGER_S_CUTLASS",
+        "m_bShowGage": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DECK",
+          "m_fEventPos": 0.2,
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeEnd": 30
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.0,
+            "NST_HP": 1.0,
+            "NST_DEF": 1.0,
+            "NST_CRITICAL": 1.0,
+            "NST_HIT": 1.0,
+            "NST_EVADE": 1.0
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

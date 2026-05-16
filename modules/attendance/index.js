@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { findGameplayTableFile } = require("../gameplay-jsons");
 const { createAdminRewardPosts } = require("../admin");
 const {
   writeString,
@@ -443,29 +444,15 @@ function normalizeAttendanceTab(record, rewardsByGroup) {
 function attendanceTabTablePath() {
   return (
     process.env.CS_ATTENDANCE_TAB_TABLE_PATH ||
-    findFirstExistingPath([
-      path.join(ROOT_DIR, "gameplay-tables-json", "StreamingAssets", "ab_script", "luac", "LUA_ATTENDANCE_TAB_TEMPLET.json"),
-      path.join(ROOT_DIR, "gameplay-tables-json", "Assetbundles", "ab_script", "luac", "LUA_ATTENDANCE_TAB_TEMPLET.json"),
-      path.join(ROOT_DIR, "gameplay-jsons", "StreamingAssets", "ab_script", "luac", "LUA_ATTENDANCE_TAB_TEMPLET.json"),
-      path.join(ROOT_DIR, "gameplay-jsons", "Assetbundles", "ab_script", "luac", "LUA_ATTENDANCE_TAB_TEMPLET.json"),
-    ])
+    findGameplayTableFile("ab_script", "LUA_ATTENDANCE_TAB_TEMPLET.json", { rootDir: ROOT_DIR })
   );
 }
 
 function attendanceRewardTablePath() {
   return (
     process.env.CS_ATTENDANCE_REWARD_TABLE_PATH ||
-    findFirstExistingPath([
-      path.join(ROOT_DIR, "gameplay-tables-json", "StreamingAssets", "ab_script", "luac", "LUA_ATTENDANCE_REWARD_TEMPLET.json"),
-      path.join(ROOT_DIR, "gameplay-tables-json", "Assetbundles", "ab_script", "luac", "LUA_ATTENDANCE_REWARD_TEMPLET.json"),
-      path.join(ROOT_DIR, "gameplay-jsons", "StreamingAssets", "ab_script", "luac", "LUA_ATTENDANCE_REWARD_TEMPLET.json"),
-      path.join(ROOT_DIR, "gameplay-jsons", "Assetbundles", "ab_script", "luac", "LUA_ATTENDANCE_REWARD_TEMPLET.json"),
-    ])
+    findGameplayTableFile("ab_script", "LUA_ATTENDANCE_REWARD_TEMPLET.json", { rootDir: ROOT_DIR })
   );
-}
-
-function findFirstExistingPath(paths) {
-  return paths.find((candidate) => fs.existsSync(candidate)) || paths[0];
 }
 
 function readRecords(filePath) {

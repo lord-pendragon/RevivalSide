@@ -1,0 +1,757 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_ELITE_EVENT_ALPHA_C_SPEAR.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 24,
+  "records": [
+    {
+      "__key": "m_UnitSizeX",
+      "value": 200
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 280
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 350
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 150
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 150
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.31
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.41
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 0
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 400
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 1200
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 1300
+    },
+    {
+      "__key": "m_AttackedTargetTime",
+      "value": 1
+    },
+    {
+      "__key": "m_bAttackedTarget",
+      "value": false
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": true
+    },
+    {
+      "__key": "m_fDamageUpFactor",
+      "value": 0
+    },
+    {
+      "__key": "m_bNoMove",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageBackSpeed",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageDownState",
+      "value": true
+    },
+    {
+      "__key": "m_bImmuneStun",
+      "value": true
+    },
+    {
+      "__key": "m_SeeTarget",
+      "value": false
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1"
+        }
+      ]
+    },
+    {
+      "__key": "m_listPhaseChangeData",
+      "value": [
+        {
+          "m_TargetPhase": 1,
+          "m_fChangeConditionHPRate": 0.7,
+          "m_ChangeStateName": "USN_PHASECHANGE"
+        },
+        {
+          "m_TargetPhase": 1,
+          "m_fChangeConditionTime": 20,
+          "m_ChangeStateName": "USN_PHASECHANGE"
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_StateName": "USN_START",
+          "m_AnimName": "START",
+          "m_bAnimLoop": false,
+          "m_bShowGage": false,
+          "m_bForceRightLeftDependTeam": true,
+          "m_fAnimSpeed": 1.5,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventInvincible": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_fEventTimeMax": 2.0
+            }
+          ],
+          "m_listNKMEventMove": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_OffsetX": 300,
+              "m_MoveTime": 0.03333333333333333,
+              "m_bLandMove": true,
+              "m_MoveTrackingType": "TDT_NORMAL"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_15"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_START_1",
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_START_3",
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_START_5",
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_START_6"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+          "m_StateName": "USN_ASTAND",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": true,
+          "m_bForceRightLeftDependTeam": true
+        },
+        {
+          "m_StateName": "USN_PHASECHANGE",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_bForceRightLeftDependTeam": true,
+          "m_bInvincibleState": true,
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_listNKMEventEffect": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_EffectName": "AB_FX_CMN_CHARGE",
+              "m_AnimName": "BASE",
+              "m_fScaleFactor": 1.15,
+              "m_OffsetY": 250,
+              "m_OffsetX": 0
+            }
+          ],
+          "m_NKMEventUnitChange": {
+            "m_fEventTime": 0.03333333333333333,
+            "m_UnitStrID": "NKM_MOB_ELITE_EVENT_ALPHA_C_SPEAR_RUN"
+          }
+        },
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_bForceRightLeftDependTeam": true,
+          "m_listNKMEventAnimSpeed": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_fAnimSpeed": 2.0
+            },
+            {
+              "m_fEventTime": 0.5666666666666667,
+              "m_fAnimSpeed": 1.5
+            },
+            {
+              "m_fEventTime": 1.0,
+              "m_fAnimSpeed": 1.0
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8333333333333334,
+              "m_EffectName": "AB_FX_UNIT_ALPHA_C_SPEAR_ATTACK1",
+              "m_AnimName": "BASE",
+              "m_bStateEndStop": true,
+              "m_fScaleFactor": 1.0,
+              "m_OffsetY": 170,
+              "m_OffsetX": 0,
+              "m_UseMasterAnimSpeed": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.8,
+              "m_EffectName": "AB_FX_UNIT_ALPHA_C_SPEAR_HIT",
+              "m_AnimName": "BASE",
+              "m_bStateEndStop": true,
+              "m_fScaleFactor": 0.6,
+              "m_OffsetY": 160,
+              "m_OffsetX": 250
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.9333333333333333,
+              "m_EffectName": "AB_FX_UNIT_ALPHA_C_SPEAR_HIT",
+              "m_AnimName": "BASE",
+              "m_bStateEndStop": true,
+              "m_fScaleFactor": 1.2,
+              "m_OffsetY": 160,
+              "m_OffsetX": 500
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.6666666666666666,
+              "m_fEventTimeMax": 1.0,
+              "m_fRangeMin": -300.0,
+              "m_fRangeMax": 500.0,
+              "m_bHitAir": false,
+              "m_bDamageSpeedDependRight": true,
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_NKM_MOB_EVENT_ALPHA_C_SPEAR_ATTACK1"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWING_SMALL_06"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.7666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_SMASH_BIG_02"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.33,
+              "m_listSoundName": [
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_ATTACK_10",
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_ATTACK_15",
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_ATTACK_17"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_A",
+          "m_AnimName": "DAMAGE_A",
+          "m_bAnimLoop": false,
+          "m_bForceRightLeftDependTeam": true,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_4",
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_11",
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_13",
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_16",
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_17"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_B",
+          "m_AnimName": "DAMAGE_A",
+          "m_bAnimLoop": false,
+          "m_bForceRightLeftDependTeam": true,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_4",
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_11",
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_13",
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_16",
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_17"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_AIR_UP",
+          "m_AnimName": "DAMAGE_AIR_UP",
+          "m_bAnimLoop": false,
+          "m_bForceRightLeftDependTeam": true,
+          "m_SpeedY0NegativeChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_4",
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_11",
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_13",
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_16",
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_17"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_bAnimLoop": false,
+          "m_bForceRightLeftDependTeam": true,
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+          "m_AnimEndChangeState": "USN_DAMAGE_STAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_4",
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_11",
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_13",
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_16",
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_17"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_bAnimLoop": false,
+          "m_bShowGage": false,
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DEATH_1",
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DEATH_6",
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DEATH_7",
+                "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DEATH_10"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_UnitSizeX": 200,
+    "m_UnitSizeY": 280,
+    "m_SpriteScale": 1.0,
+    "m_fGageOffsetY": 350,
+    "m_fShadowScaleX": 150,
+    "m_fShadowScaleY": 150,
+    "m_fForceRespawnZposMin": 0.31,
+    "m_fForceRespawnZposMax": 0.41,
+    "m_SpeedRun": 0,
+    "m_TargetNearRange": 400,
+    "m_SeeRange": 1200,
+    "m_SeeRangeMax": 1300,
+    "m_AttackedTargetTime": 1,
+    "m_bAttackedTarget": false,
+    "m_bUseMotionBlur": true,
+    "m_fDamageUpFactor": 0,
+    "m_bNoMove": true,
+    "m_bNoDamageBackSpeed": true,
+    "m_bNoDamageDownState": true,
+    "m_bImmuneStun": true,
+    "m_SeeTarget": false,
+    "m_listAttackStateData": [
+      {
+        "m_StateName": "USN_ATTACK1"
+      }
+    ],
+    "m_listPhaseChangeData": [
+      {
+        "m_TargetPhase": 1,
+        "m_fChangeConditionHPRate": 0.7,
+        "m_ChangeStateName": "USN_PHASECHANGE"
+      },
+      {
+        "m_TargetPhase": 1,
+        "m_fChangeConditionTime": 20,
+        "m_ChangeStateName": "USN_PHASECHANGE"
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_StateName": "USN_START",
+        "m_AnimName": "START",
+        "m_bAnimLoop": false,
+        "m_bShowGage": false,
+        "m_bForceRightLeftDependTeam": true,
+        "m_fAnimSpeed": 1.5,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventInvincible": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_fEventTimeMax": 2.0
+          }
+        ],
+        "m_listNKMEventMove": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_OffsetX": 300,
+            "m_MoveTime": 0.03333333333333333,
+            "m_bLandMove": true,
+            "m_MoveTrackingType": "TDT_NORMAL"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_15"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_START_1",
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_START_3",
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_START_5",
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_START_6"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+        "m_StateName": "USN_ASTAND",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": true,
+        "m_bForceRightLeftDependTeam": true
+      },
+      {
+        "m_StateName": "USN_PHASECHANGE",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_bForceRightLeftDependTeam": true,
+        "m_bInvincibleState": true,
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_listNKMEventEffect": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_EffectName": "AB_FX_CMN_CHARGE",
+            "m_AnimName": "BASE",
+            "m_fScaleFactor": 1.15,
+            "m_OffsetY": 250,
+            "m_OffsetX": 0
+          }
+        ],
+        "m_NKMEventUnitChange": {
+          "m_fEventTime": 0.03333333333333333,
+          "m_UnitStrID": "NKM_MOB_ELITE_EVENT_ALPHA_C_SPEAR_RUN"
+        }
+      },
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_bForceRightLeftDependTeam": true,
+        "m_listNKMEventAnimSpeed": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_fAnimSpeed": 2.0
+          },
+          {
+            "m_fEventTime": 0.5666666666666667,
+            "m_fAnimSpeed": 1.5
+          },
+          {
+            "m_fEventTime": 1.0,
+            "m_fAnimSpeed": 1.0
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8333333333333334,
+            "m_EffectName": "AB_FX_UNIT_ALPHA_C_SPEAR_ATTACK1",
+            "m_AnimName": "BASE",
+            "m_bStateEndStop": true,
+            "m_fScaleFactor": 1.0,
+            "m_OffsetY": 170,
+            "m_OffsetX": 0,
+            "m_UseMasterAnimSpeed": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.8,
+            "m_EffectName": "AB_FX_UNIT_ALPHA_C_SPEAR_HIT",
+            "m_AnimName": "BASE",
+            "m_bStateEndStop": true,
+            "m_fScaleFactor": 0.6,
+            "m_OffsetY": 160,
+            "m_OffsetX": 250
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.9333333333333333,
+            "m_EffectName": "AB_FX_UNIT_ALPHA_C_SPEAR_HIT",
+            "m_AnimName": "BASE",
+            "m_bStateEndStop": true,
+            "m_fScaleFactor": 1.2,
+            "m_OffsetY": 160,
+            "m_OffsetX": 500
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.6666666666666666,
+            "m_fEventTimeMax": 1.0,
+            "m_fRangeMin": -300.0,
+            "m_fRangeMax": 500.0,
+            "m_bHitAir": false,
+            "m_bDamageSpeedDependRight": true,
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_NKM_MOB_EVENT_ALPHA_C_SPEAR_ATTACK1"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWING_SMALL_06"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.7666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_SMASH_BIG_02"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.33,
+            "m_listSoundName": [
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_ATTACK_10",
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_ATTACK_15",
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_ATTACK_17"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_A",
+        "m_AnimName": "DAMAGE_A",
+        "m_bAnimLoop": false,
+        "m_bForceRightLeftDependTeam": true,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_4",
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_11",
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_13",
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_16",
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_17"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_B",
+        "m_AnimName": "DAMAGE_A",
+        "m_bAnimLoop": false,
+        "m_bForceRightLeftDependTeam": true,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_4",
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_11",
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_13",
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_16",
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_17"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_AIR_UP",
+        "m_AnimName": "DAMAGE_AIR_UP",
+        "m_bAnimLoop": false,
+        "m_bForceRightLeftDependTeam": true,
+        "m_SpeedY0NegativeChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_4",
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_11",
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_13",
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_16",
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_17"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_bAnimLoop": false,
+        "m_bForceRightLeftDependTeam": true,
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+        "m_AnimEndChangeState": "USN_DAMAGE_STAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_4",
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_11",
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_13",
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_16",
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DAMAGE_17"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_bAnimLoop": false,
+        "m_bShowGage": false,
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DEATH_1",
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DEATH_6",
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DEATH_7",
+              "VOICE_UNIT_ALPHA_C_SPEAR_BATTLE_DEATH_10"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

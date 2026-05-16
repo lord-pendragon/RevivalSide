@@ -1,0 +1,783 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_UNIT_OPR_ANASTASIA_SUMMON.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 24,
+  "records": [
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.5
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.5
+    },
+    {
+      "__key": "m_fForceRespawnXpos",
+      "value": 0.0
+    },
+    {
+      "__key": "m_UnitSizeX",
+      "value": 120
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 120
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.1
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": false
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 300
+    },
+    {
+      "__key": "m_NKC_TEAM_COLOR_TYPE",
+      "value": "NTCT_NO"
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 0
+    },
+    {
+      "__key": "m_fAirHigh",
+      "value": 275
+    },
+    {
+      "__key": "m_bNoMove",
+      "value": true
+    },
+    {
+      "__key": "m_SeeTarget",
+      "value": false
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 3000
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 3000
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 3200
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 1.0
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": false
+    },
+    {
+      "__key": "m_fBuffEffectScaleFactor",
+      "value": 1.0
+    },
+    {
+      "__key": "m_bNoDamageBackSpeed",
+      "value": true
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "BUFF_OPR_ANASTASIA_VER2_SUMMON",
+              "m_BuffOverlapCount": [
+                5,
+                999
+              ]
+            }
+          ],
+          "m_BuffStrID": "BUFF_OPR_ANASTASIA_VER2_SUMMON_MAX",
+          "m_BuffLevel": 1,
+          "m_fRebuffTime": 0.1
+        }
+      ]
+    },
+    {
+      "__key": "m_dicReaction",
+      "value": [
+        {
+          "m_Name": "REACTION_OPR_ANASTASIA_BUFF",
+          "m_EventType": "RESPAWN",
+          "m_ReactionCondition": [
+            {
+              "Type": "Ally"
+            },
+            {
+              "Type": "UnitStyle",
+              "m_Type": [
+                "NUST_MECHANIC"
+              ]
+            }
+          ],
+          "m_RequireCount": 1,
+          "m_TriggerTarget": "MASTER",
+          "m_Trigger": "TRIGGER_BUFF",
+          "m_bImmediate": true
+        }
+      ]
+    },
+    {
+      "__key": "m_dicTriggerSet",
+      "value": [
+        {
+          "m_Name": "TRIGGER_DIE",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "RESTART",
+          "m_listNKMEventDie": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "SkillLevel",
+                  "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                  "m_SkillLevel": [
+                    1,
+                    1
+                  ]
+                }
+              ],
+              "m_fEventTime": 17,
+              "m_bImmediateDie": true
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "SkillLevel",
+                  "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                  "m_SkillLevel": [
+                    2,
+                    2
+                  ]
+                }
+              ],
+              "m_fEventTime": 18,
+              "m_bImmediateDie": true
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "SkillLevel",
+                  "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                  "m_SkillLevel": [
+                    3,
+                    3
+                  ]
+                }
+              ],
+              "m_fEventTime": 19,
+              "m_bImmediateDie": true
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "SkillLevel",
+                  "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                  "m_SkillLevel": [
+                    4,
+                    4
+                  ]
+                }
+              ],
+              "m_fEventTime": 20,
+              "m_bImmediateDie": true
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "SkillLevel",
+                  "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                  "m_SkillLevel": [
+                    5,
+                    5
+                  ]
+                }
+              ],
+              "m_fEventTime": 21,
+              "m_bImmediateDie": true
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "SkillLevel",
+                  "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                  "m_SkillLevel": [
+                    6,
+                    6
+                  ]
+                }
+              ],
+              "m_fEventTime": 22,
+              "m_bImmediateDie": true
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "SkillLevel",
+                  "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                  "m_SkillLevel": [
+                    7,
+                    7
+                  ]
+                }
+              ],
+              "m_fEventTime": 23,
+              "m_bImmediateDie": true
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "SkillLevel",
+                  "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                  "m_SkillLevel": [
+                    8,
+                    99
+                  ]
+                }
+              ],
+              "m_fEventTime": 24,
+              "m_bImmediateDie": true
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_BUFF",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "RESTART",
+          "m_listNKMEventBuff": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "SkillLevel",
+                  "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                  "m_SkillLevel": [
+                    1,
+                    1
+                  ]
+                }
+              ],
+              "m_BuffStrID": "BUFF_OPR_ANASTASIA_VER2_SUMMON",
+              "m_BuffTimeLevel": 1,
+              "m_BuffStatLevel": 1
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "SkillLevel",
+                  "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                  "m_SkillLevel": [
+                    2,
+                    2
+                  ]
+                }
+              ],
+              "m_BuffStrID": "BUFF_OPR_ANASTASIA_VER2_SUMMON",
+              "m_BuffTimeLevel": 2,
+              "m_BuffStatLevel": 2
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "SkillLevel",
+                  "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                  "m_SkillLevel": [
+                    3,
+                    3
+                  ]
+                }
+              ],
+              "m_BuffStrID": "BUFF_OPR_ANASTASIA_VER2_SUMMON",
+              "m_BuffTimeLevel": 3,
+              "m_BuffStatLevel": 3
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "SkillLevel",
+                  "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                  "m_SkillLevel": [
+                    4,
+                    4
+                  ]
+                }
+              ],
+              "m_BuffStrID": "BUFF_OPR_ANASTASIA_VER2_SUMMON",
+              "m_BuffTimeLevel": 4,
+              "m_BuffStatLevel": 4
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "SkillLevel",
+                  "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                  "m_SkillLevel": [
+                    5,
+                    5
+                  ]
+                }
+              ],
+              "m_BuffStrID": "BUFF_OPR_ANASTASIA_VER2_SUMMON",
+              "m_BuffTimeLevel": 5,
+              "m_BuffStatLevel": 5
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "SkillLevel",
+                  "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                  "m_SkillLevel": [
+                    6,
+                    6
+                  ]
+                }
+              ],
+              "m_BuffStrID": "BUFF_OPR_ANASTASIA_VER2_SUMMON",
+              "m_BuffTimeLevel": 6,
+              "m_BuffStatLevel": 6
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "SkillLevel",
+                  "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                  "m_SkillLevel": [
+                    7,
+                    7
+                  ]
+                }
+              ],
+              "m_BuffStrID": "BUFF_OPR_ANASTASIA_VER2_SUMMON",
+              "m_BuffTimeLevel": 7,
+              "m_BuffStatLevel": 7
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "SkillLevel",
+                  "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                  "m_SkillLevel": [
+                    8,
+                    99
+                  ]
+                }
+              ],
+              "m_BuffStrID": "BUFF_OPR_ANASTASIA_VER2_SUMMON",
+              "m_BuffTimeLevel": 8,
+              "m_BuffStatLevel": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_START",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_AnimName": "ASTART",
+          "m_fAnimSpeed": 0.75,
+          "m_listNKMEventAttack": {},
+          "m_listNKMEventTrigger": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_TargetTrigger": "TRIGGER_DIE"
+            }
+          ],
+          "m_listNKMEventReaction": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_Reaction": "REACTION_OPR_ANASTASIA_BUFF"
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+          "m_StateName": "USN_ASTAND",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 0.75
+        },
+        {
+          "m_StateName": "USN_RUN",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_AnimName": "RUN",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 1.15,
+          "m_bRun": true
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fForceRespawnZposMin": 0.5,
+    "m_fForceRespawnZposMax": 0.5,
+    "m_fForceRespawnXpos": 0.0,
+    "m_UnitSizeX": 120,
+    "m_UnitSizeY": 120,
+    "m_SpriteScale": 1.1,
+    "m_bShowGage": false,
+    "m_fGageOffsetY": 300,
+    "m_NKC_TEAM_COLOR_TYPE": "NTCT_NO",
+    "m_SpeedRun": 0,
+    "m_fAirHigh": 275,
+    "m_bNoMove": true,
+    "m_SeeTarget": false,
+    "m_TargetNearRange": 3000,
+    "m_SeeRange": 3000,
+    "m_SeeRangeMax": 3200,
+    "m_fDieCompleteTime": 1.0,
+    "m_bUseMotionBlur": false,
+    "m_fBuffEffectScaleFactor": 1.0,
+    "m_bNoDamageBackSpeed": true,
+    "m_listStaticBuffData": [
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_OPR_ANASTASIA_VER2_SUMMON",
+            "m_BuffOverlapCount": [
+              5,
+              999
+            ]
+          }
+        ],
+        "m_BuffStrID": "BUFF_OPR_ANASTASIA_VER2_SUMMON_MAX",
+        "m_BuffLevel": 1,
+        "m_fRebuffTime": 0.1
+      }
+    ],
+    "m_dicReaction": [
+      {
+        "m_Name": "REACTION_OPR_ANASTASIA_BUFF",
+        "m_EventType": "RESPAWN",
+        "m_ReactionCondition": [
+          {
+            "Type": "Ally"
+          },
+          {
+            "Type": "UnitStyle",
+            "m_Type": [
+              "NUST_MECHANIC"
+            ]
+          }
+        ],
+        "m_RequireCount": 1,
+        "m_TriggerTarget": "MASTER",
+        "m_Trigger": "TRIGGER_BUFF",
+        "m_bImmediate": true
+      }
+    ],
+    "m_dicTriggerSet": [
+      {
+        "m_Name": "TRIGGER_DIE",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "RESTART",
+        "m_listNKMEventDie": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "SkillLevel",
+                "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                "m_SkillLevel": [
+                  1,
+                  1
+                ]
+              }
+            ],
+            "m_fEventTime": 17,
+            "m_bImmediateDie": true
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "SkillLevel",
+                "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                "m_SkillLevel": [
+                  2,
+                  2
+                ]
+              }
+            ],
+            "m_fEventTime": 18,
+            "m_bImmediateDie": true
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "SkillLevel",
+                "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                "m_SkillLevel": [
+                  3,
+                  3
+                ]
+              }
+            ],
+            "m_fEventTime": 19,
+            "m_bImmediateDie": true
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "SkillLevel",
+                "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                "m_SkillLevel": [
+                  4,
+                  4
+                ]
+              }
+            ],
+            "m_fEventTime": 20,
+            "m_bImmediateDie": true
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "SkillLevel",
+                "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                "m_SkillLevel": [
+                  5,
+                  5
+                ]
+              }
+            ],
+            "m_fEventTime": 21,
+            "m_bImmediateDie": true
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "SkillLevel",
+                "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                "m_SkillLevel": [
+                  6,
+                  6
+                ]
+              }
+            ],
+            "m_fEventTime": 22,
+            "m_bImmediateDie": true
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "SkillLevel",
+                "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                "m_SkillLevel": [
+                  7,
+                  7
+                ]
+              }
+            ],
+            "m_fEventTime": 23,
+            "m_bImmediateDie": true
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "SkillLevel",
+                "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                "m_SkillLevel": [
+                  8,
+                  99
+                ]
+              }
+            ],
+            "m_fEventTime": 24,
+            "m_bImmediateDie": true
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_BUFF",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "RESTART",
+        "m_listNKMEventBuff": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "SkillLevel",
+                "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                "m_SkillLevel": [
+                  1,
+                  1
+                ]
+              }
+            ],
+            "m_BuffStrID": "BUFF_OPR_ANASTASIA_VER2_SUMMON",
+            "m_BuffTimeLevel": 1,
+            "m_BuffStatLevel": 1
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "SkillLevel",
+                "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                "m_SkillLevel": [
+                  2,
+                  2
+                ]
+              }
+            ],
+            "m_BuffStrID": "BUFF_OPR_ANASTASIA_VER2_SUMMON",
+            "m_BuffTimeLevel": 2,
+            "m_BuffStatLevel": 2
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "SkillLevel",
+                "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                "m_SkillLevel": [
+                  3,
+                  3
+                ]
+              }
+            ],
+            "m_BuffStrID": "BUFF_OPR_ANASTASIA_VER2_SUMMON",
+            "m_BuffTimeLevel": 3,
+            "m_BuffStatLevel": 3
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "SkillLevel",
+                "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                "m_SkillLevel": [
+                  4,
+                  4
+                ]
+              }
+            ],
+            "m_BuffStrID": "BUFF_OPR_ANASTASIA_VER2_SUMMON",
+            "m_BuffTimeLevel": 4,
+            "m_BuffStatLevel": 4
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "SkillLevel",
+                "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                "m_SkillLevel": [
+                  5,
+                  5
+                ]
+              }
+            ],
+            "m_BuffStrID": "BUFF_OPR_ANASTASIA_VER2_SUMMON",
+            "m_BuffTimeLevel": 5,
+            "m_BuffStatLevel": 5
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "SkillLevel",
+                "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                "m_SkillLevel": [
+                  6,
+                  6
+                ]
+              }
+            ],
+            "m_BuffStrID": "BUFF_OPR_ANASTASIA_VER2_SUMMON",
+            "m_BuffTimeLevel": 6,
+            "m_BuffStatLevel": 6
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "SkillLevel",
+                "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                "m_SkillLevel": [
+                  7,
+                  7
+                ]
+              }
+            ],
+            "m_BuffStrID": "BUFF_OPR_ANASTASIA_VER2_SUMMON",
+            "m_BuffTimeLevel": 7,
+            "m_BuffStatLevel": 7
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "SkillLevel",
+                "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+                "m_SkillLevel": [
+                  8,
+                  99
+                ]
+              }
+            ],
+            "m_BuffStrID": "BUFF_OPR_ANASTASIA_VER2_SUMMON",
+            "m_BuffTimeLevel": 8,
+            "m_BuffStatLevel": 8
+          }
+        ]
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_START",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_AnimName": "ASTART",
+        "m_fAnimSpeed": 0.75,
+        "m_listNKMEventAttack": {},
+        "m_listNKMEventTrigger": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_TargetTrigger": "TRIGGER_DIE"
+          }
+        ],
+        "m_listNKMEventReaction": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_Reaction": "REACTION_OPR_ANASTASIA_BUFF"
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+        "m_StateName": "USN_ASTAND",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 0.75
+      },
+      {
+        "m_StateName": "USN_RUN",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_AnimName": "RUN",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 1.15,
+        "m_bRun": true
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

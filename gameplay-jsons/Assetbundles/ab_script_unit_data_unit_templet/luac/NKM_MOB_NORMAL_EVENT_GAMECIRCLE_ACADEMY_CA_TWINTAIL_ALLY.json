@@ -1,0 +1,2939 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_NORMAL_EVENT_GAMECIRCLE_ACADEMY_CA_TWINTAIL_ALLY.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 26,
+  "records": [
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.21
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.3
+    },
+    {
+      "__key": "m_UnitSizeX",
+      "value": 120
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 280
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": true
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 280
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 150
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 150
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 380
+    },
+    {
+      "__key": "m_SeeTarget",
+      "value": true
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 150
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 800
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 1000
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 2.6666666666666665
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": true
+    },
+    {
+      "__key": "m_fBuffEffectScaleFactor",
+      "value": 1.0
+    },
+    {
+      "__key": "m_listFixedStatusEffect",
+      "value": [
+        "NUSE_IMMUNE_CC"
+      ]
+    },
+    {
+      "__key": "m_listFixedStatusImmune",
+      "value": [
+        "NUSE_SILENCE"
+      ]
+    },
+    {
+      "__key": "m_listTriggerRepeatData",
+      "value": [
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "EventVariable",
+              "m_Name": "PASSIVE_RESTART",
+              "m_Value": [
+                1,
+                1
+              ]
+            },
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "BUFF_UNIT_ACADEMY_CA_TWINTAIL_PASSIVE_DAMAGE_REDUCE",
+              "m_BuffOverlapCount": [
+                3,
+                99
+              ],
+              "Inverse": true
+            }
+          ],
+          "m_TriggerName": "PASSIVE_LV5",
+          "m_fRepeatTime": 0.1
+        }
+      ]
+    },
+    {
+      "__key": "m_listConditionMacro",
+      "value": [
+        {
+          "m_Name": "IS_PASSIVE_COUNT_EXIST",
+          "1": {
+            "Type": "EventVariable",
+            "m_Name": "VAR_PASSIVE_COUNT",
+            "m_Value": [
+              1,
+              99
+            ]
+          }
+        },
+        {
+          "m_Name": "IS_PASSIVE_COUNT_EXIST_NOT",
+          "1": {
+            "Type": "EventVariable",
+            "m_Name": "VAR_PASSIVE_COUNT",
+            "m_Value": [
+              1,
+              99
+            ],
+            "Inverse": true
+          }
+        },
+        {
+          "m_Name": "IS_SKILL_COUNT_EXIST",
+          "1": {
+            "Type": "EventVariable",
+            "m_Name": "VAR_SKILL_COUNT",
+            "m_Value": [
+              1,
+              99
+            ]
+          }
+        },
+        {
+          "m_Name": "IS_SKILL_COUNT_EXIST_NOT",
+          "1": {
+            "Type": "EventVariable",
+            "m_Name": "VAR_SKILL_COUNT",
+            "m_Value": [
+              1,
+              99
+            ],
+            "Inverse": true
+          }
+        },
+        {
+          "m_Name": "IS_HYPER_COUNT_EXIST",
+          "1": {
+            "Type": "EventVariable",
+            "m_Name": "VAR_HYPER_COUNT",
+            "m_Value": [
+              1,
+              99
+            ]
+          }
+        },
+        {
+          "m_Name": "IS_HYPER_COUNT_EXIST_NOT",
+          "1": {
+            "Type": "EventVariable",
+            "m_Name": "VAR_HYPER_COUNT",
+            "m_Value": [
+              1,
+              99
+            ],
+            "Inverse": true
+          }
+        },
+        {
+          "m_Name": "IS_SKILL_STEP_ONE",
+          "1": {
+            "Type": "EventVariable",
+            "m_Name": "SKILL_STEP",
+            "m_Value": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "m_Name": "IS_SKILL_STEP_TWO",
+          "1": {
+            "Type": "EventVariable",
+            "m_Name": "SKILL_STEP",
+            "m_Value": [
+              2,
+              3
+            ]
+          }
+        },
+        {
+          "m_Name": "IS_SKILL_STEP_THREE",
+          "1": {
+            "Type": "EventVariable",
+            "m_Name": "SKILL_STEP",
+            "m_Value": [
+              4,
+              99
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_dicTriggerSet",
+      "value": [
+        {
+          "m_Name": "TRIGGER_SETUP_VAR",
+          "m_listNKMEventVariable": [
+            {
+              "m_Type": "SET",
+              "m_Name": "VAR_PASSIVE_COUNT",
+              "m_Value": 0
+            },
+            {
+              "m_Type": "SET",
+              "m_Name": "VAR_SKILL_COUNT",
+              "m_Value": 0
+            },
+            {
+              "m_Type": "SET",
+              "m_Name": "VAR_HYPER_COUNT",
+              "m_Value": 0
+            },
+            {
+              "m_Type": "SET",
+              "m_Name": "VAR_MOVE_COUNT",
+              "m_Value": 0
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_PASSIVE_COUNT_UP",
+          "m_listNKMEventVariable": [
+            {
+              "m_Type": "ADD",
+              "m_Name": "VAR_PASSIVE_COUNT",
+              "m_Value": 1
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "TRIGGER_MOB_NORMAL_EVENT_GAMECIRCLE_ACADEMY_C_TWINTAIL_PASSIVE",
+              "m_Overlap": 1
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_SKILL_COUNT_UP",
+          "m_listNKMEventVariable": [
+            {
+              "m_Type": "ADD",
+              "m_Name": "VAR_SKILL_COUNT",
+              "m_Value": 1
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "TRIGGER_MOB_NORMAL_EVENT_GAMECIRCLE_ACADEMY_C_TWINTAIL_SKILL",
+              "m_Overlap": 1
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_HYPER_COUNT_UP",
+          "m_listNKMEventVariable": [
+            {
+              "m_Type": "ADD",
+              "m_Name": "VAR_HYPER_COUNT",
+              "m_Value": 1
+            }
+          ],
+          "m_listNKMEventChangeState": [
+            {
+              "m_ConditionV2": [
+                "IS_HYPER_COUNT_EXIST_NOT"
+              ],
+              "m_ChangeState": "USN_HYPER1"
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "TRIGGER_MOB_NORMAL_EVENT_GAMECIRCLE_ACADEMY_C_TWINTAIL_HYPER",
+              "m_Overlap": 1
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_MOVE_COUNT_UP",
+          "m_listNKMEventVariable": [
+            {
+              "m_Type": "SET",
+              "m_Name": "VAR_MOVE_COUNT",
+              "m_Value": 1
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "TRIGGER_MOB_NORMAL_EVENT_GAMECIRCLE_ACADEMY_C_TWINTAIL_MOVE",
+              "m_Overlap": 1
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_PASSIVE_COUNT_DOWN",
+          "m_listNKMEventVariable": [
+            {
+              "m_Type": "ADD",
+              "m_Name": "VAR_PASSIVE_COUNT",
+              "m_Value": -1
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "TRIGGER_MOB_NORMAL_EVENT_GAMECIRCLE_ACADEMY_C_TWINTAIL_PASSIVE",
+              "m_Overlap": -1
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_SKILL_COUNT_DOWN",
+          "m_listNKMEventVariable": [
+            {
+              "m_Type": "ADD",
+              "m_Name": "VAR_SKILL_COUNT",
+              "m_Value": -1
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "TRIGGER_MOB_NORMAL_EVENT_GAMECIRCLE_ACADEMY_C_TWINTAIL_SKILL",
+              "m_Overlap": -1
+            }
+          ]
+        },
+        {
+          "m_Name": "TRIGGER_HYPER_COUNT_DOWN",
+          "m_listNKMEventVariable": [
+            {
+              "m_Type": "ADD",
+              "m_Name": "VAR_HYPER_COUNT",
+              "m_Value": -1
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "TRIGGER_MOB_NORMAL_EVENT_GAMECIRCLE_ACADEMY_C_TWINTAIL_HYPER",
+              "m_Overlap": -1
+            }
+          ]
+        },
+        {
+          "m_Name": "PASSIVE_LV5",
+          "m_bAnimTime": false,
+          "m_bStopOnStateChange": false,
+          "m_DuplicateMode": "RESTART",
+          "m_fEndTime": 40,
+          "m_listNKMEventBuff": [
+            {
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_UNIT_ACADEMY_CA_TWINTAIL_PASSIVE_DAMAGE_REDUCE",
+              "m_Overlap": 1
+            }
+          ],
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": 0,
+              "m_Type": "SET",
+              "m_Name": "PASSIVE_RESTART",
+              "m_Value": 0
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_Type": "SET",
+              "m_Name": "PASSIVE_RESTART",
+              "m_Value": 1
+            }
+          ]
+        },
+        {
+          "m_Name": "IRONWALL_REMOVE",
+          "m_listNKMEventVariable": [
+            {
+              "m_Type": "ADD",
+              "m_Name": "IRONWALL_NUMBER_LIMIT",
+              "m_Value": 1
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_BuffStrID": "BUFF_UNIT_ACADEMY_CA_TWINTAIL_PASSIVE_IRONWALL_CHECK",
+              "m_BuffRemove": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_BuffStrID": "BUFF_UNIT_ACADEMY_CA_TWINTAIL_PASSIVE_SUPERARMOR"
+        }
+      ]
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_ConditionV2": [
+            "IS_PASSIVE_COUNT_EXIST_NOT",
+            "IS_SKILL_COUNT_EXIST_NOT",
+            "IS_HYPER_COUNT_EXIST_NOT"
+          ],
+          "m_StateName": "USN_ATTACK1"
+        },
+        {
+          "m_ConditionV2": [
+            "IS_PASSIVE_COUNT_EXIST",
+            "IS_SKILL_COUNT_EXIST_NOT",
+            "IS_HYPER_COUNT_EXIST_NOT"
+          ],
+          "m_StateName": "USN_PASSIVE"
+        },
+        {
+          "m_ConditionV2": [
+            "IS_SKILL_COUNT_EXIST",
+            "IS_HYPER_COUNT_EXIST_NOT",
+            "IS_SKILL_STEP_ONE"
+          ],
+          "m_StateName": "USN_SKILL1"
+        },
+        {
+          "m_ConditionV2": [
+            "IS_SKILL_COUNT_EXIST",
+            "IS_HYPER_COUNT_EXIST_NOT",
+            "IS_SKILL_STEP_TWO"
+          ],
+          "m_StateName": "USN_SKILL2"
+        },
+        {
+          "m_ConditionV2": [
+            "IS_SKILL_COUNT_EXIST",
+            "IS_HYPER_COUNT_EXIST_NOT",
+            "IS_SKILL_STEP_THREE"
+          ],
+          "m_StateName": "USN_SKILL3"
+        },
+        {
+          "m_ConditionV2": [
+            "IS_HYPER_COUNT_EXIST"
+          ],
+          "m_StateName": "USN_HYPER1"
+        }
+      ]
+    },
+    {
+      "__key": "m_listHitFeedBack",
+      "value": [
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "BUFF_UNIT_ACADEMY_CA_TWINTAIL_PASSIVE_IRONWALL",
+              "m_bIgnore": true
+            },
+            {
+              "Type": "EventVariable",
+              "m_Name": "IRONWALL_NUMBER_LIMIT",
+              "m_Value": [
+                11,
+                99
+              ],
+              "Inverse": true
+            }
+          ],
+          "m_HitCount": 24,
+          "m_BuffStrID": "BUFF_UNIT_ACADEMY_CA_TWINTAIL_PASSIVE_IRONWALL",
+          "m_BuffTimeLevel": 3,
+          "m_BuffStatLevel": 5,
+          "m_bStartAnyTime": true,
+          "m_TargetTrigger": "IRONWALL_REMOVE"
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "Buff",
+              "m_BuffStrID": "BUFF_UNIT_ACADEMY_CA_TWINTAIL_PASSIVE_IRONWALL",
+              "m_bIgnore": true
+            },
+            {
+              "Type": "EventVariable",
+              "m_Name": "IRONWALL_NUMBER_LIMIT",
+              "m_Value": [
+                11,
+                99
+              ],
+              "Inverse": true
+            }
+          ],
+          "m_HitCount": 1,
+          "m_BuffStrID": "BUFF_UNIT_ACADEMY_CA_TWINTAIL_PASSIVE_IRONWALL_CHECK",
+          "m_bStartAnyTime": true
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_START",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_bShowGage": false,
+          "m_DamagedChangeState": "USN_ASTAND",
+          "m_AnimName": "START",
+          "m_fAnimSpeed": 1.0,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventInvincible": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_fEventTimeMax": 3.6666666666666665
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.7333333333333334,
+              "m_EffectName": "AB_FX_AWAKEN_SPAWN_HUD",
+              "m_AnimName": "BASE",
+              "m_BoneName": "BIP01_SPINE",
+              "m_bHold": true,
+              "m_fScaleFactor": 1.0
+            }
+          ],
+          "m_listNKMEventVariable": [
+            {
+              "m_bStateEndTime": true,
+              "m_Type": "SET",
+              "m_Name": "SECOND_START",
+              "m_Value": 1
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "IRONWALL_NUMBER_LIMIT",
+              "m_Value": 0
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "EventVariable",
+                  "m_Name": "SECOND_START",
+                  "m_Value": [
+                    1,
+                    99
+                  ]
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_UNIT_ACADEMY_CA_TWINTAIL_PASSIVE_DAMAGE_REDUCE",
+              "m_Overlap": 1
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_DELTA_CA_KYLE_AP_PASSIVE_STACK",
+              "m_BuffStatLevel": 200,
+              "m_BuffTimeLevel": 999
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_DELTA_KYLE_AP_SKILL",
+              "m_BuffStatLevel": 40,
+              "m_BuffTimeLevel": 999
+            }
+          ],
+          "m_listNKMEventTrigger": [
+            {
+              "m_TargetTrigger": "TRIGGER_SETUP_VAR"
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_TargetTrigger": "PASSIVE_LV5"
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_DEName": "DE_UNIT_ACADEMY_CA_TWINTAIL_START",
+              "m_OffsetX": -250,
+              "m_OffsetY": 0,
+              "m_OffsetZ": 0,
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventStopTime": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_StopTimeIndex": "NSTI_SKILL",
+              "m_fStopTime": 4.333333333333333,
+              "m_bStopEnemyOnly": false,
+              "m_bMyStop": false,
+              "m_bSummoneeStop": false,
+              "m_fRange": 6000
+            }
+          ],
+          "m_listNKMEventCameraMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_fEventTimeMax": 0.6666666666666666,
+              "m_bForce": true,
+              "m_fPosXOffset": 800,
+              "m_fPosYOffset": 150,
+              "m_fZoom": -200,
+              "m_fMoveTrackingTime": 0.5,
+              "m_fZoomTrackingTime": 0.5
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.6666666666666666,
+              "m_fEventTimeMax": 1.6666666666666667,
+              "m_bForce": true,
+              "m_fPosXOffset": 500,
+              "m_fPosYOffset": 150,
+              "m_fZoom": 0,
+              "m_fMoveTrackingTime": 1.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.6666666666666667,
+              "m_fEventTimeMax": 5.0,
+              "m_bForce": true,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 150,
+              "m_fZoom": 0,
+              "m_fMoveTrackingTime": 0.5,
+              "m_fZoomTrackingTime": 0.5
+            }
+          ],
+          "m_listNKMEventFadeWorld": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.03333333333333333,
+              "m_fEventTimeMax": 3.1666666666666665,
+              "m_fColorR": 0.3,
+              "m_fColorG": 0.1,
+              "m_fColorB": 0.0,
+              "m_fMapColorKeepTime": 0.2,
+              "m_fMapColorReturnTime": 0.2
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.7666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG_12"
+              ]
+            },
+            {
+              "m_fEventTime": 1.6,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_START_1"
+              ]
+            },
+            {
+              "m_fEventTime": 1.7333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_AWAKEN_HUD"
+              ]
+            },
+            {
+              "m_fEventTime": 2.3333333333333335,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_START_2"
+              ]
+            },
+            {
+              "m_fEventTime": 2.7333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_START_3"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_START_1",
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_START_2",
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_START_3",
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_START_5"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.5,
+              "m_fEventTimeMax": 0.6666666666666666,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 300.0,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_NKM_UNIT_ACADEMY_CA_TWINTAIL_ATTACK1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.8333333333333334,
+              "m_fEventTimeMax": 1.0,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 300.0,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_NKM_UNIT_ACADEMY_CA_TWINTAIL_ATTACK1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.3333333333333333,
+              "m_fEventTimeMax": 1.5,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 300.0,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_NKM_UNIT_ACADEMY_CA_TWINTAIL_ATTACK1"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.5,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_ATTACK_1"
+              ]
+            },
+            {
+              "m_fEventTime": 0.8333333333333334,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_ATTACK_2"
+              ]
+            },
+            {
+              "m_fEventTime": 1.2333333333333334,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_ATTACK_3"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.3333333333333333,
+              "m_PlayRate": 0.33,
+              "m_bVoice": true,
+              "m_listSoundName": [
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ATTACK_1",
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ATTACK_2",
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ATTACK_4",
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ATTACK_5"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_PASSIVE",
+          "m_AnimName": "PASSIVE1",
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_bSkillCutIn": true,
+          "m_SkillCutInName": "SI_UNIT_SKILL_NAME_ACADEMY_CA_TWINTAIL_PASSIVE",
+          "m_listNKMEventTrigger": [
+            {
+              "m_TargetTrigger": "TRIGGER_PASSIVE_COUNT_DOWN"
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.0,
+              "m_fEventTimeMax": 1.5,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 700,
+              "m_bHitAir": false,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_NKM_UNIT_ACADEMY_CA_TWINTAIL_PASSIVE1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.0,
+              "m_fEventTimeMax": 1.5,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 700,
+              "m_bHitAir": false,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_NKM_UNIT_ACADEMY_CA_TWINTAIL_PASSIVE1_HOLD"
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_EffectName": "AB_FX_UNIT_ACADEMY_CA_TWINTAIL_PASSIVE1",
+              "m_AnimName": "BASE",
+              "m_fScaleFactor": 25.0,
+              "m_OffsetX": -75,
+              "m_OffsetY": 0
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_fEventTimeMax": 2.3333333333333335,
+              "m_fColorR": 0.5,
+              "m_fColorG": 0.5,
+              "m_fColorB": 1.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_PASSIVE_1"
+              ]
+            },
+            {
+              "m_fEventTime": 1.0666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_PASSIVE_2"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_PASSIVE_2",
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_PASSIVE_3",
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_PASSIVE_5"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_bSkillCutIn": true,
+          "m_SkillCutInName": "SI_UNIT_SKILL_NAME_ACADEMY_CA_TWINTAIL_SKILL",
+          "m_AnimName": "SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventTrigger": [
+            {
+              "m_TargetTrigger": "TRIGGER_SKILL_COUNT_DOWN"
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_EffectName": "AB_FX_CAST_SKILL",
+              "m_AnimName": "BASE",
+              "m_BoneName": "BIP01_SPINE1",
+              "m_fScaleFactor": 30.0,
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.8666666666666667,
+              "m_fEventTimeMax": 2.3333333333333335,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 400.0,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_NKM_UNIT_ACADEMY_CA_TWINTAIL_SKILL1",
+              "m_bDamageSpeedDependRight": true
+            }
+          ],
+          "m_listNKMEventVariable": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_Type": "ADD",
+              "m_Name": "SKILL_STEP",
+              "m_Value": 1
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_fEventTimeMax": 4.666666666666667,
+              "m_fColorR": 0.5,
+              "m_fColorG": 0.5,
+              "m_fColorB": 1.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ]
+            },
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_ACTIVE_1"
+              ]
+            },
+            {
+              "m_fEventTime": 1.6,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_ACTIVE_2-1"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_PlayRate": 0.7,
+              "m_bVoice": true,
+              "m_listSoundName": [
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ACTIVE_1",
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ACTIVE_2",
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ACTIVE_4"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL2",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_bSkillCutIn": true,
+          "m_SkillCutInName": "SI_UNIT_SKILL_NAME_ACADEMY_CA_TWINTAIL_SKILL",
+          "m_AnimName": "SKILL2",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventTrigger": [
+            {
+              "m_TargetTrigger": "TRIGGER_SKILL_COUNT_DOWN"
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_EffectName": "AB_FX_CAST_SKILL",
+              "m_AnimName": "BASE",
+              "m_BoneName": "BIP01_SPINE1",
+              "m_fScaleFactor": 30.0,
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.8666666666666667,
+              "m_fEventTimeMax": 2.3333333333333335,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 650.0,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_NKM_UNIT_ACADEMY_CA_TWINTAIL_SKILL2",
+              "m_bDamageSpeedDependRight": true
+            }
+          ],
+          "m_listNKMEventVariable": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_Type": "ADD",
+              "m_Name": "SKILL_STEP",
+              "m_Value": 1
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_fEventTimeMax": 4.666666666666667,
+              "m_fColorR": 0.5,
+              "m_fColorG": 0.5,
+              "m_fColorB": 1.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ]
+            },
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_ACTIVE_1"
+              ]
+            },
+            {
+              "m_fEventTime": 1.6,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_ACTIVE_2-2"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_PlayRate": 0.7,
+              "m_bVoice": true,
+              "m_listSoundName": [
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ACTIVE_1",
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ACTIVE_2",
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ACTIVE_4"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL3",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_bSkillCutIn": true,
+          "m_SkillCutInName": "SI_UNIT_SKILL_NAME_ACADEMY_CA_TWINTAIL_SKILL",
+          "m_AnimName": "SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventTrigger": [
+            {
+              "m_TargetTrigger": "TRIGGER_SKILL_COUNT_DOWN"
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_EffectName": "AB_FX_CAST_SKILL",
+              "m_AnimName": "BASE",
+              "m_BoneName": "BIP01_SPINE1",
+              "m_fScaleFactor": 30.0,
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.8666666666666667,
+              "m_fEventTimeMax": 2.3333333333333335,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 900.0,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_NKM_UNIT_ACADEMY_CA_TWINTAIL_SKILL3",
+              "m_bDamageSpeedDependRight": true
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_fEventTimeMax": 4.666666666666667,
+              "m_fColorR": 0.5,
+              "m_fColorG": 0.5,
+              "m_fColorB": 1.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ]
+            },
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_ACTIVE_1"
+              ]
+            },
+            {
+              "m_fEventTime": 1.1666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_ACTIVE_2-3"
+              ]
+            },
+            {
+              "m_fEventTime": 2.2,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_ACTIVE_2-4"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_PlayRate": 0.7,
+              "m_bVoice": true,
+              "m_listSoundName": [
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ACTIVE_1",
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ACTIVE_2",
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ACTIVE_4"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_HYPER1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_bSkillCutIn": true,
+          "m_SkillCutInName": "SI_UNIT_SKILL_NAME_ACADEMY_CA_TWINTAIL_HYPER",
+          "m_bSeeMoreEnemy": true,
+          "m_bShowGage": false,
+          "m_AnimName": "HYPER_SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventTrigger": [
+            {
+              "m_fEventTime": 4.0,
+              "m_TargetTrigger": "TRIGGER_HYPER_COUNT_DOWN"
+            }
+          ],
+          "m_listNKMEventInvincible": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_fEventTimeMax": 5.0
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.6666666666666665,
+              "m_DEName": "DE_UNIT_ACADEMY_CA_TWINTAIL_HYPER_DUMMY",
+              "m_bHold": true,
+              "m_FollowType": "TDT_INVALID"
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.6666666666666665,
+              "m_BuffStrID": "DEBUFF_UNIT_ACADEMY_CA_TWINTAIL_HYPER",
+              "m_BuffTimeLevel": 15,
+              "m_BuffStatLevel": 4
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HYPER_ATTACK_START"
+              ]
+            },
+            {
+              "m_fEventTime": 0.5,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_HYPER_1"
+              ]
+            },
+            {
+              "m_fEventTime": 1.8666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_60"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_PlayRate": 1.0,
+              "m_bVoice": true,
+              "m_listSoundName": [
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ACTIVE_5",
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_START_4",
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_PASSIVE_1",
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_PASSIVE_4"
+              ]
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_EffectName": "AB_FX_CAST_HYPER",
+              "m_AnimName": "BASE",
+              "m_OffsetX": 0,
+              "m_OffsetY": 140,
+              "m_fScaleFactor": 30.0
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_fEventTimeMax": 4.666666666666667,
+              "m_fColorR": 1.0,
+              "m_fColorG": 0.5,
+              "m_fColorB": 0.5
+            }
+          ],
+          "m_listNKMEventCameraMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_fEventTimeMax": 1.6666666666666667,
+              "m_fPosXOffset": -200,
+              "m_fPosYOffset": 150,
+              "m_fZoom": -200,
+              "m_fMoveTrackingTime": 0.1,
+              "m_fZoomTrackingTime": 0.1,
+              "m_fCameraRadius": 0.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.6666666666666667,
+              "m_fEventTimeMax": 2.6666666666666665,
+              "m_fPosXOffset": 400,
+              "m_fPosYOffset": 200,
+              "m_fZoom": -75,
+              "m_fMoveTrackingTime": 0.5,
+              "m_fZoomTrackingTime": 0.5,
+              "m_fCameraRadius": 0.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.6666666666666665,
+              "m_fEventTimeMax": 3.3333333333333335,
+              "m_fPosXOffset": 400,
+              "m_fPosYOffset": 0,
+              "m_fZoom": 0,
+              "m_fMoveTrackingTime": 0.1,
+              "m_fZoomTrackingTime": 0.1,
+              "m_fCameraRadius": 0.0
+            }
+          ],
+          "m_listNKMEventFadeWorld": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_fEventTimeMax": 2.6666666666666665,
+              "m_fColorR": 0.0,
+              "m_fColorG": 0.0,
+              "m_fColorB": 0.0,
+              "m_fMapColorKeepTime": 0.3333333333333333,
+              "m_fMapColorReturnTime": 0.03333333333333333
+            }
+          ],
+          "m_listNKMEventStopTime": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_StopTimeIndex": "NSTI_SKILL",
+              "m_fStopTime": 2.6666666666666665,
+              "m_bStopEnemyOnly": false,
+              "m_bMyStop": false,
+              "m_fRange": 3000
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 4.0,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 25.0,
+              "m_fCameraCrashTime": 0.8333333333333334
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_A",
+          "m_AnimName": "DAMAGE_A",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_DAMAGE_2"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_B",
+          "m_AnimName": "DAMAGE_B",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_DAMAGE_2"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_AIR_UP",
+          "m_AnimName": "DAMAGE_AIR_UP",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_DAMAGE_4"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+          "m_AnimEndChangeState": "USN_DAMAGE_STAND",
+          "m_FootOnLandChangeState": "",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_DAMAGE_4"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventDEStateChange": [
+            {
+              "m_DamageEffectID": "DE_UNIT_ACADEMY_CA_TWINTAIL_HYPER_DUMMY",
+              "m_ChangeState": "DES_END"
+            }
+          ],
+          "m_listNKMEventDissolve": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.1666666666666665,
+              "m_fDissolve": 1.0,
+              "m_fTrackTime": 0.4666666666666667
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.3,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_EXPLOSION_FIRE_BIG"
+              ]
+            },
+            {
+              "m_fEventTime": 1.9333333333333333,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_CARTOON_03"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_DEATH_1",
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_DEATH_2",
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_DEATH_3",
+                "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_DEATH_4"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fForceRespawnZposMin": 0.21,
+    "m_fForceRespawnZposMax": 0.3,
+    "m_UnitSizeX": 120,
+    "m_UnitSizeY": 280,
+    "m_SpriteScale": 1.0,
+    "m_bShowGage": true,
+    "m_fGageOffsetY": 280,
+    "m_fShadowScaleX": 150,
+    "m_fShadowScaleY": 150,
+    "m_SpeedRun": 380,
+    "m_SeeTarget": true,
+    "m_TargetNearRange": 150,
+    "m_SeeRange": 800,
+    "m_SeeRangeMax": 1000,
+    "m_fDieCompleteTime": 2.6666666666666665,
+    "m_bUseMotionBlur": true,
+    "m_fBuffEffectScaleFactor": 1.0,
+    "m_listFixedStatusEffect": [
+      "NUSE_IMMUNE_CC"
+    ],
+    "m_listFixedStatusImmune": [
+      "NUSE_SILENCE"
+    ],
+    "m_listTriggerRepeatData": [
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "EventVariable",
+            "m_Name": "PASSIVE_RESTART",
+            "m_Value": [
+              1,
+              1
+            ]
+          },
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_UNIT_ACADEMY_CA_TWINTAIL_PASSIVE_DAMAGE_REDUCE",
+            "m_BuffOverlapCount": [
+              3,
+              99
+            ],
+            "Inverse": true
+          }
+        ],
+        "m_TriggerName": "PASSIVE_LV5",
+        "m_fRepeatTime": 0.1
+      }
+    ],
+    "m_listConditionMacro": [
+      {
+        "m_Name": "IS_PASSIVE_COUNT_EXIST",
+        "1": {
+          "Type": "EventVariable",
+          "m_Name": "VAR_PASSIVE_COUNT",
+          "m_Value": [
+            1,
+            99
+          ]
+        }
+      },
+      {
+        "m_Name": "IS_PASSIVE_COUNT_EXIST_NOT",
+        "1": {
+          "Type": "EventVariable",
+          "m_Name": "VAR_PASSIVE_COUNT",
+          "m_Value": [
+            1,
+            99
+          ],
+          "Inverse": true
+        }
+      },
+      {
+        "m_Name": "IS_SKILL_COUNT_EXIST",
+        "1": {
+          "Type": "EventVariable",
+          "m_Name": "VAR_SKILL_COUNT",
+          "m_Value": [
+            1,
+            99
+          ]
+        }
+      },
+      {
+        "m_Name": "IS_SKILL_COUNT_EXIST_NOT",
+        "1": {
+          "Type": "EventVariable",
+          "m_Name": "VAR_SKILL_COUNT",
+          "m_Value": [
+            1,
+            99
+          ],
+          "Inverse": true
+        }
+      },
+      {
+        "m_Name": "IS_HYPER_COUNT_EXIST",
+        "1": {
+          "Type": "EventVariable",
+          "m_Name": "VAR_HYPER_COUNT",
+          "m_Value": [
+            1,
+            99
+          ]
+        }
+      },
+      {
+        "m_Name": "IS_HYPER_COUNT_EXIST_NOT",
+        "1": {
+          "Type": "EventVariable",
+          "m_Name": "VAR_HYPER_COUNT",
+          "m_Value": [
+            1,
+            99
+          ],
+          "Inverse": true
+        }
+      },
+      {
+        "m_Name": "IS_SKILL_STEP_ONE",
+        "1": {
+          "Type": "EventVariable",
+          "m_Name": "SKILL_STEP",
+          "m_Value": [
+            0,
+            1
+          ]
+        }
+      },
+      {
+        "m_Name": "IS_SKILL_STEP_TWO",
+        "1": {
+          "Type": "EventVariable",
+          "m_Name": "SKILL_STEP",
+          "m_Value": [
+            2,
+            3
+          ]
+        }
+      },
+      {
+        "m_Name": "IS_SKILL_STEP_THREE",
+        "1": {
+          "Type": "EventVariable",
+          "m_Name": "SKILL_STEP",
+          "m_Value": [
+            4,
+            99
+          ]
+        }
+      }
+    ],
+    "m_dicTriggerSet": [
+      {
+        "m_Name": "TRIGGER_SETUP_VAR",
+        "m_listNKMEventVariable": [
+          {
+            "m_Type": "SET",
+            "m_Name": "VAR_PASSIVE_COUNT",
+            "m_Value": 0
+          },
+          {
+            "m_Type": "SET",
+            "m_Name": "VAR_SKILL_COUNT",
+            "m_Value": 0
+          },
+          {
+            "m_Type": "SET",
+            "m_Name": "VAR_HYPER_COUNT",
+            "m_Value": 0
+          },
+          {
+            "m_Type": "SET",
+            "m_Name": "VAR_MOVE_COUNT",
+            "m_Value": 0
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_PASSIVE_COUNT_UP",
+        "m_listNKMEventVariable": [
+          {
+            "m_Type": "ADD",
+            "m_Name": "VAR_PASSIVE_COUNT",
+            "m_Value": 1
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "TRIGGER_MOB_NORMAL_EVENT_GAMECIRCLE_ACADEMY_C_TWINTAIL_PASSIVE",
+            "m_Overlap": 1
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_SKILL_COUNT_UP",
+        "m_listNKMEventVariable": [
+          {
+            "m_Type": "ADD",
+            "m_Name": "VAR_SKILL_COUNT",
+            "m_Value": 1
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "TRIGGER_MOB_NORMAL_EVENT_GAMECIRCLE_ACADEMY_C_TWINTAIL_SKILL",
+            "m_Overlap": 1
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_HYPER_COUNT_UP",
+        "m_listNKMEventVariable": [
+          {
+            "m_Type": "ADD",
+            "m_Name": "VAR_HYPER_COUNT",
+            "m_Value": 1
+          }
+        ],
+        "m_listNKMEventChangeState": [
+          {
+            "m_ConditionV2": [
+              "IS_HYPER_COUNT_EXIST_NOT"
+            ],
+            "m_ChangeState": "USN_HYPER1"
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "TRIGGER_MOB_NORMAL_EVENT_GAMECIRCLE_ACADEMY_C_TWINTAIL_HYPER",
+            "m_Overlap": 1
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_MOVE_COUNT_UP",
+        "m_listNKMEventVariable": [
+          {
+            "m_Type": "SET",
+            "m_Name": "VAR_MOVE_COUNT",
+            "m_Value": 1
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "TRIGGER_MOB_NORMAL_EVENT_GAMECIRCLE_ACADEMY_C_TWINTAIL_MOVE",
+            "m_Overlap": 1
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_PASSIVE_COUNT_DOWN",
+        "m_listNKMEventVariable": [
+          {
+            "m_Type": "ADD",
+            "m_Name": "VAR_PASSIVE_COUNT",
+            "m_Value": -1
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "TRIGGER_MOB_NORMAL_EVENT_GAMECIRCLE_ACADEMY_C_TWINTAIL_PASSIVE",
+            "m_Overlap": -1
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_SKILL_COUNT_DOWN",
+        "m_listNKMEventVariable": [
+          {
+            "m_Type": "ADD",
+            "m_Name": "VAR_SKILL_COUNT",
+            "m_Value": -1
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "TRIGGER_MOB_NORMAL_EVENT_GAMECIRCLE_ACADEMY_C_TWINTAIL_SKILL",
+            "m_Overlap": -1
+          }
+        ]
+      },
+      {
+        "m_Name": "TRIGGER_HYPER_COUNT_DOWN",
+        "m_listNKMEventVariable": [
+          {
+            "m_Type": "ADD",
+            "m_Name": "VAR_HYPER_COUNT",
+            "m_Value": -1
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "TRIGGER_MOB_NORMAL_EVENT_GAMECIRCLE_ACADEMY_C_TWINTAIL_HYPER",
+            "m_Overlap": -1
+          }
+        ]
+      },
+      {
+        "m_Name": "PASSIVE_LV5",
+        "m_bAnimTime": false,
+        "m_bStopOnStateChange": false,
+        "m_DuplicateMode": "RESTART",
+        "m_fEndTime": 40,
+        "m_listNKMEventBuff": [
+          {
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_UNIT_ACADEMY_CA_TWINTAIL_PASSIVE_DAMAGE_REDUCE",
+            "m_Overlap": 1
+          }
+        ],
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": 0,
+            "m_Type": "SET",
+            "m_Name": "PASSIVE_RESTART",
+            "m_Value": 0
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_Type": "SET",
+            "m_Name": "PASSIVE_RESTART",
+            "m_Value": 1
+          }
+        ]
+      },
+      {
+        "m_Name": "IRONWALL_REMOVE",
+        "m_listNKMEventVariable": [
+          {
+            "m_Type": "ADD",
+            "m_Name": "IRONWALL_NUMBER_LIMIT",
+            "m_Value": 1
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_BuffStrID": "BUFF_UNIT_ACADEMY_CA_TWINTAIL_PASSIVE_IRONWALL_CHECK",
+            "m_BuffRemove": true
+          }
+        ]
+      }
+    ],
+    "m_listStaticBuffData": [
+      {
+        "m_BuffStrID": "BUFF_UNIT_ACADEMY_CA_TWINTAIL_PASSIVE_SUPERARMOR"
+      }
+    ],
+    "m_listAttackStateData": [
+      {
+        "m_ConditionV2": [
+          "IS_PASSIVE_COUNT_EXIST_NOT",
+          "IS_SKILL_COUNT_EXIST_NOT",
+          "IS_HYPER_COUNT_EXIST_NOT"
+        ],
+        "m_StateName": "USN_ATTACK1"
+      },
+      {
+        "m_ConditionV2": [
+          "IS_PASSIVE_COUNT_EXIST",
+          "IS_SKILL_COUNT_EXIST_NOT",
+          "IS_HYPER_COUNT_EXIST_NOT"
+        ],
+        "m_StateName": "USN_PASSIVE"
+      },
+      {
+        "m_ConditionV2": [
+          "IS_SKILL_COUNT_EXIST",
+          "IS_HYPER_COUNT_EXIST_NOT",
+          "IS_SKILL_STEP_ONE"
+        ],
+        "m_StateName": "USN_SKILL1"
+      },
+      {
+        "m_ConditionV2": [
+          "IS_SKILL_COUNT_EXIST",
+          "IS_HYPER_COUNT_EXIST_NOT",
+          "IS_SKILL_STEP_TWO"
+        ],
+        "m_StateName": "USN_SKILL2"
+      },
+      {
+        "m_ConditionV2": [
+          "IS_SKILL_COUNT_EXIST",
+          "IS_HYPER_COUNT_EXIST_NOT",
+          "IS_SKILL_STEP_THREE"
+        ],
+        "m_StateName": "USN_SKILL3"
+      },
+      {
+        "m_ConditionV2": [
+          "IS_HYPER_COUNT_EXIST"
+        ],
+        "m_StateName": "USN_HYPER1"
+      }
+    ],
+    "m_listHitFeedBack": [
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_UNIT_ACADEMY_CA_TWINTAIL_PASSIVE_IRONWALL",
+            "m_bIgnore": true
+          },
+          {
+            "Type": "EventVariable",
+            "m_Name": "IRONWALL_NUMBER_LIMIT",
+            "m_Value": [
+              11,
+              99
+            ],
+            "Inverse": true
+          }
+        ],
+        "m_HitCount": 24,
+        "m_BuffStrID": "BUFF_UNIT_ACADEMY_CA_TWINTAIL_PASSIVE_IRONWALL",
+        "m_BuffTimeLevel": 3,
+        "m_BuffStatLevel": 5,
+        "m_bStartAnyTime": true,
+        "m_TargetTrigger": "IRONWALL_REMOVE"
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "Buff",
+            "m_BuffStrID": "BUFF_UNIT_ACADEMY_CA_TWINTAIL_PASSIVE_IRONWALL",
+            "m_bIgnore": true
+          },
+          {
+            "Type": "EventVariable",
+            "m_Name": "IRONWALL_NUMBER_LIMIT",
+            "m_Value": [
+              11,
+              99
+            ],
+            "Inverse": true
+          }
+        ],
+        "m_HitCount": 1,
+        "m_BuffStrID": "BUFF_UNIT_ACADEMY_CA_TWINTAIL_PASSIVE_IRONWALL_CHECK",
+        "m_bStartAnyTime": true
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_START",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_bShowGage": false,
+        "m_DamagedChangeState": "USN_ASTAND",
+        "m_AnimName": "START",
+        "m_fAnimSpeed": 1.0,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventInvincible": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_fEventTimeMax": 3.6666666666666665
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.7333333333333334,
+            "m_EffectName": "AB_FX_AWAKEN_SPAWN_HUD",
+            "m_AnimName": "BASE",
+            "m_BoneName": "BIP01_SPINE",
+            "m_bHold": true,
+            "m_fScaleFactor": 1.0
+          }
+        ],
+        "m_listNKMEventVariable": [
+          {
+            "m_bStateEndTime": true,
+            "m_Type": "SET",
+            "m_Name": "SECOND_START",
+            "m_Value": 1
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "IRONWALL_NUMBER_LIMIT",
+            "m_Value": 0
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "EventVariable",
+                "m_Name": "SECOND_START",
+                "m_Value": [
+                  1,
+                  99
+                ]
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_UNIT_ACADEMY_CA_TWINTAIL_PASSIVE_DAMAGE_REDUCE",
+            "m_Overlap": 1
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_DELTA_CA_KYLE_AP_PASSIVE_STACK",
+            "m_BuffStatLevel": 200,
+            "m_BuffTimeLevel": 999
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_DELTA_KYLE_AP_SKILL",
+            "m_BuffStatLevel": 40,
+            "m_BuffTimeLevel": 999
+          }
+        ],
+        "m_listNKMEventTrigger": [
+          {
+            "m_TargetTrigger": "TRIGGER_SETUP_VAR"
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_TargetTrigger": "PASSIVE_LV5"
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_DEName": "DE_UNIT_ACADEMY_CA_TWINTAIL_START",
+            "m_OffsetX": -250,
+            "m_OffsetY": 0,
+            "m_OffsetZ": 0,
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventStopTime": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_StopTimeIndex": "NSTI_SKILL",
+            "m_fStopTime": 4.333333333333333,
+            "m_bStopEnemyOnly": false,
+            "m_bMyStop": false,
+            "m_bSummoneeStop": false,
+            "m_fRange": 6000
+          }
+        ],
+        "m_listNKMEventCameraMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_fEventTimeMax": 0.6666666666666666,
+            "m_bForce": true,
+            "m_fPosXOffset": 800,
+            "m_fPosYOffset": 150,
+            "m_fZoom": -200,
+            "m_fMoveTrackingTime": 0.5,
+            "m_fZoomTrackingTime": 0.5
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.6666666666666666,
+            "m_fEventTimeMax": 1.6666666666666667,
+            "m_bForce": true,
+            "m_fPosXOffset": 500,
+            "m_fPosYOffset": 150,
+            "m_fZoom": 0,
+            "m_fMoveTrackingTime": 1.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.6666666666666667,
+            "m_fEventTimeMax": 5.0,
+            "m_bForce": true,
+            "m_fPosXOffset": 0,
+            "m_fPosYOffset": 150,
+            "m_fZoom": 0,
+            "m_fMoveTrackingTime": 0.5,
+            "m_fZoomTrackingTime": 0.5
+          }
+        ],
+        "m_listNKMEventFadeWorld": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.03333333333333333,
+            "m_fEventTimeMax": 3.1666666666666665,
+            "m_fColorR": 0.3,
+            "m_fColorG": 0.1,
+            "m_fColorB": 0.0,
+            "m_fMapColorKeepTime": 0.2,
+            "m_fMapColorReturnTime": 0.2
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.7666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG_12"
+            ]
+          },
+          {
+            "m_fEventTime": 1.6,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_START_1"
+            ]
+          },
+          {
+            "m_fEventTime": 1.7333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_AWAKEN_HUD"
+            ]
+          },
+          {
+            "m_fEventTime": 2.3333333333333335,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_START_2"
+            ]
+          },
+          {
+            "m_fEventTime": 2.7333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_START_3"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_START_1",
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_START_2",
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_START_3",
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_START_5"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.5,
+            "m_fEventTimeMax": 0.6666666666666666,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 300.0,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_NKM_UNIT_ACADEMY_CA_TWINTAIL_ATTACK1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.8333333333333334,
+            "m_fEventTimeMax": 1.0,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 300.0,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_NKM_UNIT_ACADEMY_CA_TWINTAIL_ATTACK1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.3333333333333333,
+            "m_fEventTimeMax": 1.5,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 300.0,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_NKM_UNIT_ACADEMY_CA_TWINTAIL_ATTACK1"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.5,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_ATTACK_1"
+            ]
+          },
+          {
+            "m_fEventTime": 0.8333333333333334,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_ATTACK_2"
+            ]
+          },
+          {
+            "m_fEventTime": 1.2333333333333334,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_ATTACK_3"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.3333333333333333,
+            "m_PlayRate": 0.33,
+            "m_bVoice": true,
+            "m_listSoundName": [
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ATTACK_1",
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ATTACK_2",
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ATTACK_4",
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ATTACK_5"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_PASSIVE",
+        "m_AnimName": "PASSIVE1",
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_bSkillCutIn": true,
+        "m_SkillCutInName": "SI_UNIT_SKILL_NAME_ACADEMY_CA_TWINTAIL_PASSIVE",
+        "m_listNKMEventTrigger": [
+          {
+            "m_TargetTrigger": "TRIGGER_PASSIVE_COUNT_DOWN"
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.0,
+            "m_fEventTimeMax": 1.5,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 700,
+            "m_bHitAir": false,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_NKM_UNIT_ACADEMY_CA_TWINTAIL_PASSIVE1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.0,
+            "m_fEventTimeMax": 1.5,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 700,
+            "m_bHitAir": false,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_NKM_UNIT_ACADEMY_CA_TWINTAIL_PASSIVE1_HOLD"
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_EffectName": "AB_FX_UNIT_ACADEMY_CA_TWINTAIL_PASSIVE1",
+            "m_AnimName": "BASE",
+            "m_fScaleFactor": 25.0,
+            "m_OffsetX": -75,
+            "m_OffsetY": 0
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_fEventTimeMax": 2.3333333333333335,
+            "m_fColorR": 0.5,
+            "m_fColorG": 0.5,
+            "m_fColorB": 1.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_PASSIVE_1"
+            ]
+          },
+          {
+            "m_fEventTime": 1.0666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_PASSIVE_2"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_PASSIVE_2",
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_PASSIVE_3",
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_PASSIVE_5"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_bSkillCutIn": true,
+        "m_SkillCutInName": "SI_UNIT_SKILL_NAME_ACADEMY_CA_TWINTAIL_SKILL",
+        "m_AnimName": "SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventTrigger": [
+          {
+            "m_TargetTrigger": "TRIGGER_SKILL_COUNT_DOWN"
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_EffectName": "AB_FX_CAST_SKILL",
+            "m_AnimName": "BASE",
+            "m_BoneName": "BIP01_SPINE1",
+            "m_fScaleFactor": 30.0,
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.8666666666666667,
+            "m_fEventTimeMax": 2.3333333333333335,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 400.0,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_NKM_UNIT_ACADEMY_CA_TWINTAIL_SKILL1",
+            "m_bDamageSpeedDependRight": true
+          }
+        ],
+        "m_listNKMEventVariable": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_Type": "ADD",
+            "m_Name": "SKILL_STEP",
+            "m_Value": 1
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_fEventTimeMax": 4.666666666666667,
+            "m_fColorR": 0.5,
+            "m_fColorG": 0.5,
+            "m_fColorB": 1.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ]
+          },
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_ACTIVE_1"
+            ]
+          },
+          {
+            "m_fEventTime": 1.6,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_ACTIVE_2-1"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_PlayRate": 0.7,
+            "m_bVoice": true,
+            "m_listSoundName": [
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ACTIVE_1",
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ACTIVE_2",
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ACTIVE_4"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL2",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_bSkillCutIn": true,
+        "m_SkillCutInName": "SI_UNIT_SKILL_NAME_ACADEMY_CA_TWINTAIL_SKILL",
+        "m_AnimName": "SKILL2",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventTrigger": [
+          {
+            "m_TargetTrigger": "TRIGGER_SKILL_COUNT_DOWN"
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_EffectName": "AB_FX_CAST_SKILL",
+            "m_AnimName": "BASE",
+            "m_BoneName": "BIP01_SPINE1",
+            "m_fScaleFactor": 30.0,
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.8666666666666667,
+            "m_fEventTimeMax": 2.3333333333333335,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 650.0,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_NKM_UNIT_ACADEMY_CA_TWINTAIL_SKILL2",
+            "m_bDamageSpeedDependRight": true
+          }
+        ],
+        "m_listNKMEventVariable": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_Type": "ADD",
+            "m_Name": "SKILL_STEP",
+            "m_Value": 1
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_fEventTimeMax": 4.666666666666667,
+            "m_fColorR": 0.5,
+            "m_fColorG": 0.5,
+            "m_fColorB": 1.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ]
+          },
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_ACTIVE_1"
+            ]
+          },
+          {
+            "m_fEventTime": 1.6,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_ACTIVE_2-2"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_PlayRate": 0.7,
+            "m_bVoice": true,
+            "m_listSoundName": [
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ACTIVE_1",
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ACTIVE_2",
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ACTIVE_4"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL3",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_bSkillCutIn": true,
+        "m_SkillCutInName": "SI_UNIT_SKILL_NAME_ACADEMY_CA_TWINTAIL_SKILL",
+        "m_AnimName": "SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventTrigger": [
+          {
+            "m_TargetTrigger": "TRIGGER_SKILL_COUNT_DOWN"
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_EffectName": "AB_FX_CAST_SKILL",
+            "m_AnimName": "BASE",
+            "m_BoneName": "BIP01_SPINE1",
+            "m_fScaleFactor": 30.0,
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.8666666666666667,
+            "m_fEventTimeMax": 2.3333333333333335,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 900.0,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_NKM_UNIT_ACADEMY_CA_TWINTAIL_SKILL3",
+            "m_bDamageSpeedDependRight": true
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_fEventTimeMax": 4.666666666666667,
+            "m_fColorR": 0.5,
+            "m_fColorG": 0.5,
+            "m_fColorB": 1.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ]
+          },
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_ACTIVE_1"
+            ]
+          },
+          {
+            "m_fEventTime": 1.1666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_ACTIVE_2-3"
+            ]
+          },
+          {
+            "m_fEventTime": 2.2,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_ACTIVE_2-4"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_PlayRate": 0.7,
+            "m_bVoice": true,
+            "m_listSoundName": [
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ACTIVE_1",
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ACTIVE_2",
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ACTIVE_4"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_HYPER1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_bSkillCutIn": true,
+        "m_SkillCutInName": "SI_UNIT_SKILL_NAME_ACADEMY_CA_TWINTAIL_HYPER",
+        "m_bSeeMoreEnemy": true,
+        "m_bShowGage": false,
+        "m_AnimName": "HYPER_SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventTrigger": [
+          {
+            "m_fEventTime": 4.0,
+            "m_TargetTrigger": "TRIGGER_HYPER_COUNT_DOWN"
+          }
+        ],
+        "m_listNKMEventInvincible": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_fEventTimeMax": 5.0
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.6666666666666665,
+            "m_DEName": "DE_UNIT_ACADEMY_CA_TWINTAIL_HYPER_DUMMY",
+            "m_bHold": true,
+            "m_FollowType": "TDT_INVALID"
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.6666666666666665,
+            "m_BuffStrID": "DEBUFF_UNIT_ACADEMY_CA_TWINTAIL_HYPER",
+            "m_BuffTimeLevel": 15,
+            "m_BuffStatLevel": 4
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HYPER_ATTACK_START"
+            ]
+          },
+          {
+            "m_fEventTime": 0.5,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_ACADEMY_CA_TWINTAIL_HYPER_1"
+            ]
+          },
+          {
+            "m_fEventTime": 1.8666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_60"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_PlayRate": 1.0,
+            "m_bVoice": true,
+            "m_listSoundName": [
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_ACTIVE_5",
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_START_4",
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_PASSIVE_1",
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_PASSIVE_4"
+            ]
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_EffectName": "AB_FX_CAST_HYPER",
+            "m_AnimName": "BASE",
+            "m_OffsetX": 0,
+            "m_OffsetY": 140,
+            "m_fScaleFactor": 30.0
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_fEventTimeMax": 4.666666666666667,
+            "m_fColorR": 1.0,
+            "m_fColorG": 0.5,
+            "m_fColorB": 0.5
+          }
+        ],
+        "m_listNKMEventCameraMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_fEventTimeMax": 1.6666666666666667,
+            "m_fPosXOffset": -200,
+            "m_fPosYOffset": 150,
+            "m_fZoom": -200,
+            "m_fMoveTrackingTime": 0.1,
+            "m_fZoomTrackingTime": 0.1,
+            "m_fCameraRadius": 0.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.6666666666666667,
+            "m_fEventTimeMax": 2.6666666666666665,
+            "m_fPosXOffset": 400,
+            "m_fPosYOffset": 200,
+            "m_fZoom": -75,
+            "m_fMoveTrackingTime": 0.5,
+            "m_fZoomTrackingTime": 0.5,
+            "m_fCameraRadius": 0.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.6666666666666665,
+            "m_fEventTimeMax": 3.3333333333333335,
+            "m_fPosXOffset": 400,
+            "m_fPosYOffset": 0,
+            "m_fZoom": 0,
+            "m_fMoveTrackingTime": 0.1,
+            "m_fZoomTrackingTime": 0.1,
+            "m_fCameraRadius": 0.0
+          }
+        ],
+        "m_listNKMEventFadeWorld": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_fEventTimeMax": 2.6666666666666665,
+            "m_fColorR": 0.0,
+            "m_fColorG": 0.0,
+            "m_fColorB": 0.0,
+            "m_fMapColorKeepTime": 0.3333333333333333,
+            "m_fMapColorReturnTime": 0.03333333333333333
+          }
+        ],
+        "m_listNKMEventStopTime": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_StopTimeIndex": "NSTI_SKILL",
+            "m_fStopTime": 2.6666666666666665,
+            "m_bStopEnemyOnly": false,
+            "m_bMyStop": false,
+            "m_fRange": 3000
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 4.0,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 25.0,
+            "m_fCameraCrashTime": 0.8333333333333334
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_A",
+        "m_AnimName": "DAMAGE_A",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_DAMAGE_2"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_B",
+        "m_AnimName": "DAMAGE_B",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_DAMAGE_2"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_AIR_UP",
+        "m_AnimName": "DAMAGE_AIR_UP",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_DAMAGE_3",
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_DAMAGE_4"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+        "m_AnimEndChangeState": "USN_DAMAGE_STAND",
+        "m_FootOnLandChangeState": "",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_DAMAGE_3",
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_DAMAGE_4"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventDEStateChange": [
+          {
+            "m_DamageEffectID": "DE_UNIT_ACADEMY_CA_TWINTAIL_HYPER_DUMMY",
+            "m_ChangeState": "DES_END"
+          }
+        ],
+        "m_listNKMEventDissolve": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.1666666666666665,
+            "m_fDissolve": 1.0,
+            "m_fTrackTime": 0.4666666666666667
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.3,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_EXPLOSION_FIRE_BIG"
+            ]
+          },
+          {
+            "m_fEventTime": 1.9333333333333333,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_CARTOON_03"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_DEATH_1",
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_DEATH_2",
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_DEATH_3",
+              "VOICE_UNIT_ACADEMY_CA_TWINTAIL_BATTLE_DEATH_4"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

@@ -1,0 +1,925 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_EX.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 4,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_N"
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_BuffStrID": "BUFF_BOSS_FIERCE_MODERATOR_TYPE_AB_COMMON"
+        },
+        {
+          "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_EX_ATK"
+        }
+      ]
+    },
+    {
+      "__key": "m_listPhaseChangeData",
+      "value": [
+        {
+          "m_Condition": {
+            "m_IgnoreBuffStrID": "BUFF_BOSS_FIERCE_MODERATOR_TYPE_AB_PHASE_ASPD_UP",
+            "m_IgnoreBuffOverlapCount": [
+              1,
+              2
+            ]
+          },
+          "m_TargetPhase": 1,
+          "m_fChangeConditionTime": 45,
+          "m_ChangeStateName": "USN_PATTERN1_READY"
+        },
+        {
+          "m_Condition": {
+            "m_IgnoreBuffStrID": "BUFF_BOSS_FIERCE_MODERATOR_TYPE_AB_PHASE_ASPD_UP",
+            "m_IgnoreBuffOverlapCount": [
+              2,
+              2
+            ]
+          },
+          "m_TargetPhase": 2,
+          "m_fChangeConditionTime": 90,
+          "m_ChangeStateName": "USN_PATTERN2_READY"
+        },
+        {
+          "m_TargetPhase": 3,
+          "m_fChangeConditionHPRate": 0.3,
+          "m_ChangeStateName": "USN_PHASE2_READY"
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_RUN",
+          "m_listNKMEventText": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 4,
+              "m_Text": "SI_BATTLE_MOB_BOSS_FIERCE_MODERATOR_TYPE_AB_ASTAND"
+            }
+          ],
+          "m_DangerCharge": {
+            "m_fChargeTime": 8,
+            "m_SuccessState": "USN_PATTERN1_READY2",
+            "m_CancelState": "USN_PATTERN1_READY2"
+          }
+        },
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.8,
+              "m_fEventTimeMax": 1.1333333333333333,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 550,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 3,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK1"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK2_NEAR",
+          "m_listNKMEventAttack": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2",
+                  "m_bIgnore": true
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.4666666666666667,
+              "m_fEventTimeMax": 0.6333333333333333,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1400,
+              "m_bDamageSpeedDependRight": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 1,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2",
+                  "m_bIgnore": true
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.9,
+              "m_fEventTimeMax": 1.0666666666666667,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1400,
+              "m_bDamageSpeedDependRight": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 1,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2"
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.4666666666666667,
+              "m_fEventTimeMax": 0.5666666666666667,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1400,
+              "m_bDamageSpeedDependRight": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 2,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2"
+                }
+              ],
+              "m_ConditionTargetV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "DEBUFF_BOSS_FIERCE_MODERATOR_TYPE_B_HP_DOWN"
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.6,
+              "m_fEventTimeMax": 0.7,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1400,
+              "m_bDamageSpeedDependRight": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 2,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2"
+                }
+              ],
+              "m_ConditionTargetV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "DEBUFF_BOSS_FIERCE_MODERATOR_TYPE_B_HP_DOWN"
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.7333333333333333,
+              "m_fEventTimeMax": 0.8333333333333334,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1400,
+              "m_bDamageSpeedDependRight": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 2,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2"
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.9,
+              "m_fEventTimeMax": 1.0,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1400,
+              "m_bDamageSpeedDependRight": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 2,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2"
+                }
+              ],
+              "m_ConditionTargetV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "DEBUFF_BOSS_FIERCE_MODERATOR_TYPE_B_HP_DOWN"
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.0333333333333334,
+              "m_fEventTimeMax": 1.1333333333333333,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1400,
+              "m_bDamageSpeedDependRight": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 2,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2"
+                }
+              ],
+              "m_ConditionTargetV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "DEBUFF_BOSS_FIERCE_MODERATOR_TYPE_B_HP_DOWN"
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.1666666666666667,
+              "m_fEventTimeMax": 1.2666666666666666,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1400,
+              "m_bDamageSpeedDependRight": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 2,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK2_FAR",
+          "m_listNKMEventAttack": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2",
+                  "m_bIgnore": true
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.4666666666666667,
+              "m_fEventTimeMax": 0.6333333333333333,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1400,
+              "m_bDamageSpeedDependRight": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 1,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2",
+                  "m_bIgnore": true
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.9,
+              "m_fEventTimeMax": 1.0666666666666667,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1400,
+              "m_bDamageSpeedDependRight": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 1,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2"
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.4666666666666667,
+              "m_fEventTimeMax": 0.5666666666666667,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1400,
+              "m_bDamageSpeedDependRight": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 2,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2"
+                }
+              ],
+              "m_ConditionTargetV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "DEBUFF_BOSS_FIERCE_MODERATOR_TYPE_B_HP_DOWN"
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.6,
+              "m_fEventTimeMax": 0.7,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1400,
+              "m_bDamageSpeedDependRight": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 2,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2"
+                }
+              ],
+              "m_ConditionTargetV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "DEBUFF_BOSS_FIERCE_MODERATOR_TYPE_B_HP_DOWN"
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.7333333333333333,
+              "m_fEventTimeMax": 0.8333333333333334,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1400,
+              "m_bDamageSpeedDependRight": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 2,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2"
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.9,
+              "m_fEventTimeMax": 1.0,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1400,
+              "m_bDamageSpeedDependRight": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 2,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2"
+                }
+              ],
+              "m_ConditionTargetV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "DEBUFF_BOSS_FIERCE_MODERATOR_TYPE_B_HP_DOWN"
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.0333333333333334,
+              "m_fEventTimeMax": 1.1333333333333333,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1400,
+              "m_bDamageSpeedDependRight": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 2,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2"
+                }
+              ],
+              "m_ConditionTargetV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "DEBUFF_BOSS_FIERCE_MODERATOR_TYPE_B_HP_DOWN"
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.1666666666666667,
+              "m_fEventTimeMax": 1.2666666666666666,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 1400,
+              "m_bDamageSpeedDependRight": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 2,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.16666666666666666,
+              "m_BuffStrID": "BUFF_BOSS_FIERCE_MODERATOR_TYPE_AB_DISPEL"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.16666666666666666,
+              "m_BuffStrID": "BUFF_BOSS_FIERCE_MODERATOR_TYPE_B_SCAN_COOL_UP",
+              "m_BuffLevel": 30
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "Buff",
+                  "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_1"
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.16666666666666666,
+              "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_FORCE_HIT",
+              "m_BuffTimeLevel": 15
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_N",
+    "m_listStaticBuffData": [
+      {
+        "m_BuffStrID": "BUFF_BOSS_FIERCE_MODERATOR_TYPE_AB_COMMON"
+      },
+      {
+        "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_EX_ATK"
+      }
+    ],
+    "m_listPhaseChangeData": [
+      {
+        "m_Condition": {
+          "m_IgnoreBuffStrID": "BUFF_BOSS_FIERCE_MODERATOR_TYPE_AB_PHASE_ASPD_UP",
+          "m_IgnoreBuffOverlapCount": [
+            1,
+            2
+          ]
+        },
+        "m_TargetPhase": 1,
+        "m_fChangeConditionTime": 45,
+        "m_ChangeStateName": "USN_PATTERN1_READY"
+      },
+      {
+        "m_Condition": {
+          "m_IgnoreBuffStrID": "BUFF_BOSS_FIERCE_MODERATOR_TYPE_AB_PHASE_ASPD_UP",
+          "m_IgnoreBuffOverlapCount": [
+            2,
+            2
+          ]
+        },
+        "m_TargetPhase": 2,
+        "m_fChangeConditionTime": 90,
+        "m_ChangeStateName": "USN_PATTERN2_READY"
+      },
+      {
+        "m_TargetPhase": 3,
+        "m_fChangeConditionHPRate": 0.3,
+        "m_ChangeStateName": "USN_PHASE2_READY"
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_RUN",
+        "m_listNKMEventText": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 4,
+            "m_Text": "SI_BATTLE_MOB_BOSS_FIERCE_MODERATOR_TYPE_AB_ASTAND"
+          }
+        ],
+        "m_DangerCharge": {
+          "m_fChargeTime": 8,
+          "m_SuccessState": "USN_PATTERN1_READY2",
+          "m_CancelState": "USN_PATTERN1_READY2"
+        }
+      },
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.8,
+            "m_fEventTimeMax": 1.1333333333333333,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 550,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 3,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK1"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK2_NEAR",
+        "m_listNKMEventAttack": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2",
+                "m_bIgnore": true
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.4666666666666667,
+            "m_fEventTimeMax": 0.6333333333333333,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1400,
+            "m_bDamageSpeedDependRight": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 1,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2",
+                "m_bIgnore": true
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.9,
+            "m_fEventTimeMax": 1.0666666666666667,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1400,
+            "m_bDamageSpeedDependRight": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 1,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2"
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.4666666666666667,
+            "m_fEventTimeMax": 0.5666666666666667,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1400,
+            "m_bDamageSpeedDependRight": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 2,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2"
+              }
+            ],
+            "m_ConditionTargetV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "DEBUFF_BOSS_FIERCE_MODERATOR_TYPE_B_HP_DOWN"
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.6,
+            "m_fEventTimeMax": 0.7,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1400,
+            "m_bDamageSpeedDependRight": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 2,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2"
+              }
+            ],
+            "m_ConditionTargetV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "DEBUFF_BOSS_FIERCE_MODERATOR_TYPE_B_HP_DOWN"
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.7333333333333333,
+            "m_fEventTimeMax": 0.8333333333333334,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1400,
+            "m_bDamageSpeedDependRight": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 2,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2"
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.9,
+            "m_fEventTimeMax": 1.0,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1400,
+            "m_bDamageSpeedDependRight": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 2,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2"
+              }
+            ],
+            "m_ConditionTargetV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "DEBUFF_BOSS_FIERCE_MODERATOR_TYPE_B_HP_DOWN"
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.0333333333333334,
+            "m_fEventTimeMax": 1.1333333333333333,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1400,
+            "m_bDamageSpeedDependRight": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 2,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2"
+              }
+            ],
+            "m_ConditionTargetV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "DEBUFF_BOSS_FIERCE_MODERATOR_TYPE_B_HP_DOWN"
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.1666666666666667,
+            "m_fEventTimeMax": 1.2666666666666666,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1400,
+            "m_bDamageSpeedDependRight": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 2,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK2_FAR",
+        "m_listNKMEventAttack": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2",
+                "m_bIgnore": true
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.4666666666666667,
+            "m_fEventTimeMax": 0.6333333333333333,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1400,
+            "m_bDamageSpeedDependRight": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 1,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2",
+                "m_bIgnore": true
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.9,
+            "m_fEventTimeMax": 1.0666666666666667,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1400,
+            "m_bDamageSpeedDependRight": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 1,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2"
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.4666666666666667,
+            "m_fEventTimeMax": 0.5666666666666667,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1400,
+            "m_bDamageSpeedDependRight": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 2,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2"
+              }
+            ],
+            "m_ConditionTargetV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "DEBUFF_BOSS_FIERCE_MODERATOR_TYPE_B_HP_DOWN"
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.6,
+            "m_fEventTimeMax": 0.7,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1400,
+            "m_bDamageSpeedDependRight": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 2,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2"
+              }
+            ],
+            "m_ConditionTargetV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "DEBUFF_BOSS_FIERCE_MODERATOR_TYPE_B_HP_DOWN"
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.7333333333333333,
+            "m_fEventTimeMax": 0.8333333333333334,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1400,
+            "m_bDamageSpeedDependRight": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 2,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2"
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.9,
+            "m_fEventTimeMax": 1.0,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1400,
+            "m_bDamageSpeedDependRight": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 2,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2"
+              }
+            ],
+            "m_ConditionTargetV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "DEBUFF_BOSS_FIERCE_MODERATOR_TYPE_B_HP_DOWN"
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.0333333333333334,
+            "m_fEventTimeMax": 1.1333333333333333,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1400,
+            "m_bDamageSpeedDependRight": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 2,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_2"
+              }
+            ],
+            "m_ConditionTargetV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "DEBUFF_BOSS_FIERCE_MODERATOR_TYPE_B_HP_DOWN"
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.1666666666666667,
+            "m_fEventTimeMax": 1.2666666666666666,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 1400,
+            "m_bDamageSpeedDependRight": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 2,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FIERCE_MODERATOR_TYPE_B_ATTACK2"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.16666666666666666,
+            "m_BuffStrID": "BUFF_BOSS_FIERCE_MODERATOR_TYPE_AB_DISPEL"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.16666666666666666,
+            "m_BuffStrID": "BUFF_BOSS_FIERCE_MODERATOR_TYPE_B_SCAN_COOL_UP",
+            "m_BuffLevel": 30
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "Buff",
+                "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_1"
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.16666666666666666,
+            "m_BuffStrID": "BUFF_FIERCE_PENALTY_BOSS_MODERATOR_TYPE_B_FORCE_HIT",
+            "m_BuffTimeLevel": 15
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

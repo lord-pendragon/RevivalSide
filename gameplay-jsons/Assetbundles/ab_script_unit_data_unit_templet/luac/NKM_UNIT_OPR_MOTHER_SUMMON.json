@@ -1,0 +1,556 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_UNIT_OPR_MOTHER_SUMMON.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 23,
+  "records": [
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.5
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.5
+    },
+    {
+      "__key": "m_UnitSizeX",
+      "value": 120
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 120
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.1
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": false
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 300
+    },
+    {
+      "__key": "m_NKC_TEAM_COLOR_TYPE",
+      "value": "NTCT_NO"
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 0
+    },
+    {
+      "__key": "m_fAirHigh",
+      "value": 275
+    },
+    {
+      "__key": "m_bNoMove",
+      "value": true
+    },
+    {
+      "__key": "m_SeeTarget",
+      "value": false
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 3000
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 3000
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 3200
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 1.0
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": false
+    },
+    {
+      "__key": "m_fBuffEffectScaleFactor",
+      "value": 1.0
+    },
+    {
+      "__key": "m_bNoDamageBackSpeed",
+      "value": true
+    },
+    {
+      "__key": "m_listTriggerRepeatData",
+      "value": [
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "SkillLevel",
+              "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+              "m_SkillLevel": [
+                1,
+                1
+              ]
+            }
+          ],
+          "m_TriggerName": "SUMMON_PG_TONFA",
+          "m_fRepeatTime": 15.5
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "SkillLevel",
+              "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+              "m_SkillLevel": [
+                2,
+                2
+              ]
+            }
+          ],
+          "m_TriggerName": "SUMMON_PG_TONFA",
+          "m_fRepeatTime": 14
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "SkillLevel",
+              "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+              "m_SkillLevel": [
+                3,
+                3
+              ]
+            }
+          ],
+          "m_TriggerName": "SUMMON_PG_TONFA",
+          "m_fRepeatTime": 12.5
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "SkillLevel",
+              "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+              "m_SkillLevel": [
+                4,
+                4
+              ]
+            }
+          ],
+          "m_TriggerName": "SUMMON_PG_TONFA",
+          "m_fRepeatTime": 11
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "SkillLevel",
+              "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+              "m_SkillLevel": [
+                5,
+                5
+              ]
+            }
+          ],
+          "m_TriggerName": "SUMMON_PG_TONFA",
+          "m_fRepeatTime": 9.5
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "SkillLevel",
+              "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+              "m_SkillLevel": [
+                6,
+                6
+              ]
+            }
+          ],
+          "m_TriggerName": "SUMMON_PG_TONFA",
+          "m_fRepeatTime": 8
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "SkillLevel",
+              "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+              "m_SkillLevel": [
+                7,
+                7
+              ]
+            }
+          ],
+          "m_TriggerName": "SUMMON_PG_TONFA",
+          "m_fRepeatTime": 6.5
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "SkillLevel",
+              "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+              "m_SkillLevel": [
+                8,
+                8
+              ]
+            }
+          ],
+          "m_TriggerName": "SUMMON_PG_TONFA",
+          "m_fRepeatTime": 5
+        }
+      ]
+    },
+    {
+      "__key": "m_dicTriggerSet",
+      "value": [
+        {
+          "m_Name": "SUMMON_PG_TONFA",
+          "m_listNKMEventRespawn": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_UnitStrID": "NKM_UNIT_OPR_PG_TONFA",
+              "m_MaxCount": 99,
+              "m_bUseMasterData": true,
+              "m_bUseMasterLevel": true
+            }
+          ]
+        },
+        {
+          "m_Name": "SUMMON_PG_TONFA_DIE",
+          "m_bAnimTime": false,
+          "m_DuplicateMode": "PARALLEL",
+          "m_listNKMEventBuff": [
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "PVE"
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_OPR_MOTHER_VER2_PG_TONFA_DIE_PVE",
+              "m_Overlap": 1
+            },
+            {
+              "m_ConditionV2": [
+                {
+                  "Type": "PVP"
+                }
+              ],
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_OPR_MOTHER_VER2_PG_TONFA_DIE_PVP",
+              "m_Overlap": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_dicReaction",
+      "value": [
+        {
+          "m_Name": "TRIGGER_PG_TONFA_DIE",
+          "m_EventType": "UNIT_DEAD",
+          "m_RequireCount": 1,
+          "m_bImmediate": true,
+          "m_Trigger": "SUMMON_PG_TONFA_DIE",
+          "m_ReactionCondition": [
+            {
+              "Type": "Ally"
+            },
+            {
+              "Type": "UnitID",
+              "m_UnitID": [
+                "NKM_UNIT_OPR_PG_TONFA"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_START",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_SuperArmorLevel": "NSAL_SUPER",
+          "m_AnimName": "ASTART",
+          "m_fAnimSpeed": 1.0,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventReaction": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_Reaction": "TRIGGER_PG_TONFA_DIE"
+            }
+          ],
+          "m_listNKMEventTrigger": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_TargetTrigger": "SUMMON_PG_TONFA"
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+          "m_StateName": "USN_ASTAND",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": true,
+          "m_listNKMEventDie": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 179.33333333333334
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fForceRespawnZposMin": 0.5,
+    "m_fForceRespawnZposMax": 0.5,
+    "m_UnitSizeX": 120,
+    "m_UnitSizeY": 120,
+    "m_SpriteScale": 1.1,
+    "m_bShowGage": false,
+    "m_fGageOffsetY": 300,
+    "m_NKC_TEAM_COLOR_TYPE": "NTCT_NO",
+    "m_SpeedRun": 0,
+    "m_fAirHigh": 275,
+    "m_bNoMove": true,
+    "m_SeeTarget": false,
+    "m_TargetNearRange": 3000,
+    "m_SeeRange": 3000,
+    "m_SeeRangeMax": 3200,
+    "m_fDieCompleteTime": 1.0,
+    "m_bUseMotionBlur": false,
+    "m_fBuffEffectScaleFactor": 1.0,
+    "m_bNoDamageBackSpeed": true,
+    "m_listTriggerRepeatData": [
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "SkillLevel",
+            "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+            "m_SkillLevel": [
+              1,
+              1
+            ]
+          }
+        ],
+        "m_TriggerName": "SUMMON_PG_TONFA",
+        "m_fRepeatTime": 15.5
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "SkillLevel",
+            "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+            "m_SkillLevel": [
+              2,
+              2
+            ]
+          }
+        ],
+        "m_TriggerName": "SUMMON_PG_TONFA",
+        "m_fRepeatTime": 14
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "SkillLevel",
+            "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+            "m_SkillLevel": [
+              3,
+              3
+            ]
+          }
+        ],
+        "m_TriggerName": "SUMMON_PG_TONFA",
+        "m_fRepeatTime": 12.5
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "SkillLevel",
+            "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+            "m_SkillLevel": [
+              4,
+              4
+            ]
+          }
+        ],
+        "m_TriggerName": "SUMMON_PG_TONFA",
+        "m_fRepeatTime": 11
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "SkillLevel",
+            "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+            "m_SkillLevel": [
+              5,
+              5
+            ]
+          }
+        ],
+        "m_TriggerName": "SUMMON_PG_TONFA",
+        "m_fRepeatTime": 9.5
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "SkillLevel",
+            "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+            "m_SkillLevel": [
+              6,
+              6
+            ]
+          }
+        ],
+        "m_TriggerName": "SUMMON_PG_TONFA",
+        "m_fRepeatTime": 8
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "SkillLevel",
+            "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+            "m_SkillLevel": [
+              7,
+              7
+            ]
+          }
+        ],
+        "m_TriggerName": "SUMMON_PG_TONFA",
+        "m_fRepeatTime": 6.5
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "SkillLevel",
+            "m_SkillStrID": "NKM_UNIT_OPR_SUMMON_ATTACK",
+            "m_SkillLevel": [
+              8,
+              8
+            ]
+          }
+        ],
+        "m_TriggerName": "SUMMON_PG_TONFA",
+        "m_fRepeatTime": 5
+      }
+    ],
+    "m_dicTriggerSet": [
+      {
+        "m_Name": "SUMMON_PG_TONFA",
+        "m_listNKMEventRespawn": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_UnitStrID": "NKM_UNIT_OPR_PG_TONFA",
+            "m_MaxCount": 99,
+            "m_bUseMasterData": true,
+            "m_bUseMasterLevel": true
+          }
+        ]
+      },
+      {
+        "m_Name": "SUMMON_PG_TONFA_DIE",
+        "m_bAnimTime": false,
+        "m_DuplicateMode": "PARALLEL",
+        "m_listNKMEventBuff": [
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "PVE"
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_OPR_MOTHER_VER2_PG_TONFA_DIE_PVE",
+            "m_Overlap": 1
+          },
+          {
+            "m_ConditionV2": [
+              {
+                "Type": "PVP"
+              }
+            ],
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_OPR_MOTHER_VER2_PG_TONFA_DIE_PVP",
+            "m_Overlap": 1
+          }
+        ]
+      }
+    ],
+    "m_dicReaction": [
+      {
+        "m_Name": "TRIGGER_PG_TONFA_DIE",
+        "m_EventType": "UNIT_DEAD",
+        "m_RequireCount": 1,
+        "m_bImmediate": true,
+        "m_Trigger": "SUMMON_PG_TONFA_DIE",
+        "m_ReactionCondition": [
+          {
+            "Type": "Ally"
+          },
+          {
+            "Type": "UnitID",
+            "m_UnitID": [
+              "NKM_UNIT_OPR_PG_TONFA"
+            ]
+          }
+        ]
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_START",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_SuperArmorLevel": "NSAL_SUPER",
+        "m_AnimName": "ASTART",
+        "m_fAnimSpeed": 1.0,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventReaction": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_Reaction": "TRIGGER_PG_TONFA_DIE"
+          }
+        ],
+        "m_listNKMEventTrigger": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_TargetTrigger": "SUMMON_PG_TONFA"
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ASTAND",
+        "m_StateName": "USN_ASTAND",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": true,
+        "m_listNKMEventDie": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 179.33333333333334
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

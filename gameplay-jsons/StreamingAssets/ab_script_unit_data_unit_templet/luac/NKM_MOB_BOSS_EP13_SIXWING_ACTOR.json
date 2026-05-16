@@ -1,0 +1,4848 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_BOSS_EP13_SIXWING_ACTOR.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 31,
+  "records": [
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.31
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.4
+    },
+    {
+      "__key": "m_UnitSizeX",
+      "value": 140
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 320
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": false
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 200
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 200
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 200
+    },
+    {
+      "__key": "m_bNoRun",
+      "value": true
+    },
+    {
+      "__key": "m_SeeTarget",
+      "value": true
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 850
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 3000
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 3100
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 2.3333333333333335
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": true
+    },
+    {
+      "__key": "m_fBuffEffectScaleFactor",
+      "value": 1.0
+    },
+    {
+      "__key": "m_bNoDamageStopTime",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageDownState",
+      "value": true
+    },
+    {
+      "__key": "m_fDamageUpFactor",
+      "value": 0.0
+    },
+    {
+      "__key": "m_fDamageBackFactor",
+      "value": 0.0
+    },
+    {
+      "__key": "m_bNoDamageState",
+      "value": true
+    },
+    {
+      "__key": "m_bNoBackTarget",
+      "value": true
+    },
+    {
+      "__key": "m_listFixedStatusEffect",
+      "value": [
+        "NUSE_IMMUNE_CC",
+        "NUSE_IMMUNE_ATTACK_SLOW",
+        "NUSE_IMMUNE_SKILL_COOLTIME_DAMAGE"
+      ]
+    },
+    {
+      "__key": "m_listConditionMacro",
+      "value": [
+        {
+          "m_Name": "IS_HAS_TARGET_NOT",
+          "1": {
+            "Type": "UnitCount",
+            "m_Range": [
+              0,
+              850
+            ],
+            "m_TargetConditionV2": [
+              {
+                "Type": "Enemy"
+              },
+              {
+                "Type": "Boss",
+                "Inverse": true
+              }
+            ],
+            "m_Count": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "m_Name": "IS_PASSIVE_STACK_0",
+          "1": {
+            "Type": "EventVariable",
+            "m_Name": "VAR_PASSIVE_TRIGGER",
+            "m_Value": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "m_Name": "IS_PASSIVE_STACK_0_NOT",
+          "1": {
+            "Type": "EventVariable",
+            "m_Name": "VAR_PASSIVE_TRIGGER",
+            "m_Value": [
+              0,
+              0
+            ],
+            "Inverse": true
+          }
+        },
+        {
+          "m_Name": "IS_PHASECHANGE_ING_NOT",
+          "1": {
+            "Type": "EventVariable",
+            "m_Name": "VAR_PHASECHANGE_ING",
+            "m_Value": [
+              1,
+              1
+            ],
+            "Inverse": true
+          }
+        },
+        {
+          "m_Name": "IS_APPLY_SILENCE",
+          "1": {
+            "Type": "StatusEffect",
+            "m_StatusEffect": "NUSE_SILENCE"
+          }
+        },
+        {
+          "m_Name": "IS_APPLY_SILENCE_NOT",
+          "1": {
+            "Type": "StatusEffect",
+            "m_StatusEffect": "NUSE_SILENCE",
+            "Inverse": true
+          }
+        },
+        {
+          "m_Name": "IS_PHASECHANGE_CHECK_ON",
+          "1": {
+            "Type": "EventVariable",
+            "m_Name": "VAR_PHASECHANGE_CHECK",
+            "m_Value": [
+              1,
+              1
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_ConditionV2": [
+            "IS_PHASECHANGE_ING_NOT"
+          ],
+          "m_StateName": "USN_ATTACK1",
+          "m_bTargetLandOnly": true,
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 900
+        },
+        {
+          "m_ConditionV2": [
+            "IS_PASSIVE_STACK_0_NOT",
+            "IS_PHASECHANGE_CHECK_ON",
+            "IS_PHASECHANGE_ING_NOT"
+          ],
+          "m_StateName": "USN_PASSIVE1_UP_ALTER",
+          "m_bNoTarget": true
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "EventVariable",
+              "m_Name": "VAR_PHASECHANGE_ING",
+              "m_Value": [
+                1,
+                1
+              ]
+            },
+            {
+              "Type": "EventVariable",
+              "m_Name": "VAR_PHASECHANGE_ANIM_1",
+              "m_Value": [
+                1,
+                1
+              ],
+              "Inverse": true
+            }
+          ],
+          "m_StateName": "USN_PHASECHANGE1_START",
+          "m_bNoTarget": true
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "EventVariable",
+              "m_Name": "VAR_PHASECHANGE_ANIM_1",
+              "m_Value": [
+                1,
+                1
+              ]
+            },
+            {
+              "Type": "EventVariable",
+              "m_Name": "VAR_PHASECHANGE_MOVE",
+              "m_Value": [
+                1,
+                1
+              ],
+              "Inverse": true
+            }
+          ],
+          "m_StateName": "USN_PHASECHANGE1_ING1",
+          "m_bNoTarget": true
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "EventVariable",
+              "m_Name": "VAR_PHASECHANGE_ANIM_2",
+              "m_Value": [
+                1,
+                1
+              ]
+            }
+          ],
+          "m_StateName": "USN_PHASECHANGE1_ING2",
+          "m_bNoTarget": true
+        },
+        {
+          "m_ConditionV2": [
+            {
+              "Type": "EventVariable",
+              "m_Name": "VAR_PHASECHANGE_ANIM_3",
+              "m_Value": [
+                1,
+                1
+              ]
+            }
+          ],
+          "m_StateName": "USN_PHASECHANGE1_END",
+          "m_bNoTarget": true
+        }
+      ]
+    },
+    {
+      "__key": "m_listAirAttackStateData",
+      "value": [
+        {
+          "m_ConditionV2": [
+            "IS_PHASECHANGE_ING_NOT"
+          ],
+          "m_StateName": "USN_ATTACK1_AIR",
+          "m_bTargetAirOnly": true,
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 900
+        }
+      ]
+    },
+    {
+      "__key": "m_listSkillStateData",
+      "value": [
+        {
+          "m_ConditionV2": [
+            "IS_PHASECHANGE_ING_NOT"
+          ],
+          "m_StateName": "USN_SKILL1",
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 900,
+          "m_fStartCool": 1.0
+        }
+      ]
+    },
+    {
+      "__key": "m_listHyperSkillStateData",
+      "value": [
+        {
+          "m_ConditionV2": [
+            "IS_PHASECHANGE_ING_NOT"
+          ],
+          "m_StateName": "USN_HYPER1",
+          "m_bNoTarget": true,
+          "m_fStartCool": 1.0
+        }
+      ]
+    },
+    {
+      "__key": "m_listPhaseChangeData",
+      "value": [
+        {
+          "m_TargetPhase": 1,
+          "m_fChangeConditionTime": 90,
+          "m_ChangeStateName": "USN_PHASECHANGE1_START"
+        },
+        {
+          "m_TargetPhase": 1,
+          "m_fChangeConditionHPRate": 0.3,
+          "m_ChangeStateName": "USN_PHASECHANGE1_START"
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_START",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_bShowGage": false,
+          "m_bInvincibleState": true,
+          "m_AnimName": "START",
+          "m_fAnimSpeed": 1.0,
+          "m_bForceLeft": true,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_PASSIVE_TRIGGER",
+              "m_Value": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_PHASECHANGE_ING",
+              "m_Value": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_PHASECHANGE_CHECK",
+              "m_Value": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_PHASECHANGE_MOVE",
+              "m_Value": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_PHASECHANGE_ANIM_1",
+              "m_Value": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_PHASECHANGE_ANIM_2",
+              "m_Value": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_PHASECHANGE_ANIM_3",
+              "m_Value": 0
+            }
+          ],
+          "m_listNKMEventFadeWorld": [
+            {
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_fEventTimeMax": 5.0,
+              "m_fColorR": 0.03,
+              "m_fColorG": 0.03,
+              "m_fColorB": 0.03,
+              "m_fMapColorKeepTime": 0.16666666666666666,
+              "m_fMapColorReturnTime": 1.0
+            }
+          ],
+          "m_listNKMEventCameraMove": [
+            {
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_fEventTimeMax": 0.03333333333333333,
+              "m_bForce": true,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 100,
+              "m_fZoom": -200,
+              "m_fMoveTrackingTime": 0.03333333333333333,
+              "m_fZoomTrackingTime": 0.03333333333333333
+            },
+            {
+              "m_fEventTimeMin": 0.06666666666666667,
+              "m_fEventTimeMax": 2.6666666666666665,
+              "m_bForce": true,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 300,
+              "m_fZoom": -50,
+              "m_fMoveTrackingTime": 3.0,
+              "m_fZoomTrackingTime": 3.0
+            },
+            {
+              "m_fEventTimeMin": 2.6666666666666665,
+              "m_fEventTimeMax": 4.0,
+              "m_bForce": true,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 150,
+              "m_fZoom": -50,
+              "m_fMoveTrackingTime": 3.0,
+              "m_fZoomTrackingTime": 3.0
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 3.933333333333333,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashGap": 8,
+              "m_fCameraCrashTime": 1.0
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_fEventTime": 1.3333333333333333,
+              "m_EffectName": "AB_FX_AWAKEN_SPAWN_HUD",
+              "m_OffsetX": 0,
+              "m_OffsetY": 170,
+              "m_AnimName": "BASE",
+              "m_fScaleFactor": 1.0,
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_START_1"
+              ]
+            },
+            {
+              "m_fEventTime": 1.3333333333333333,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_AWAKEN_HUD"
+              ]
+            },
+            {
+              "m_fEventTime": 2.933333333333333,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_START_2"
+              ]
+            },
+            {
+              "m_fEventTime": 4.133333333333334,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_START_3"
+              ]
+            },
+            {
+              "m_fEventTime": 4.733333333333333,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_START_4"
+              ]
+            },
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_START_1",
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_START_2",
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_START_3",
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_START_5"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_RUN",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_AnimName": "RUN",
+          "m_fAnimSpeed": 1.0,
+          "m_bAnimLoop": true,
+          "m_bRun": false,
+          "m_bForceLeft": true,
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.4,
+              "m_fLocalVol": 0.3,
+              "m_listSoundName": [
+                "FX_COMBAT_FOOT_STEP"
+              ]
+            },
+            {
+              "m_fEventTime": 1.1,
+              "m_fLocalVol": 0.3,
+              "m_listSoundName": [
+                "FX_COMBAT_FOOT_STEP"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimName": "ATTACK1",
+          "m_fAnimSpeed": 1.0,
+          "m_bForceLeft": true,
+          "m_listNKMEventChangeState": [
+            {
+              "m_ConditionV2": [
+                "IS_APPLY_SILENCE",
+                "IS_PHASECHANGE_ING_NOT"
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_ChangeState": "USN_PASSIVE1"
+            },
+            {
+              "m_ConditionV2": [
+                "IS_PASSIVE_STACK_0_NOT",
+                "IS_PHASECHANGE_ING_NOT"
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_ChangeState": "USN_PASSIVE1"
+            },
+            {
+              "m_ConditionV2": [
+                "IS_HAS_TARGET_NOT",
+                "IS_PHASECHANGE_CHECK_ON",
+                "IS_PHASECHANGE_ING_NOT"
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_ChangeState": "USN_PASSIVE1"
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_fEventTimeMin": 1.1,
+              "m_fEventTimeMax": 1.3,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 950.0,
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_ATTACK1"
+            },
+            {
+              "m_fEventTimeMin": 1.3333333333333333,
+              "m_fEventTimeMax": 1.5333333333333334,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 950.0,
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_ATTACK1"
+            },
+            {
+              "m_fEventTimeMin": 1.8333333333333333,
+              "m_fEventTimeMax": 2.3333333333333335,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 950.0,
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_ATTACK1"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_fLocalVol": 0.3,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_74"
+              ]
+            },
+            {
+              "m_fEventTime": 0.1,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_06"
+              ]
+            },
+            {
+              "m_fEventTime": 0.8333333333333334,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+              ]
+            },
+            {
+              "m_fEventTime": 0.9666666666666667,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+              ]
+            },
+            {
+              "m_fEventTime": 1.1,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+              ]
+            },
+            {
+              "m_fEventTime": 1.5,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_CUTSCEN_SNAP_CLEAR_REVERB"
+              ]
+            },
+            {
+              "m_fEventTime": 1.5,
+              "m_fLocalVol": 0.4,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_ATTACK_1"
+              ]
+            },
+            {
+              "m_fEventTime": 2.0,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_EXPLOSION_ENERGY_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.5,
+              "m_listSoundName": [
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_ATTACK_1",
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_ATTACK_4",
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_ATTACK_5",
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_ATTACK_6"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1_AIR",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimName": "ATTACK1",
+          "m_fAnimSpeed": 1.0,
+          "m_bForceLeft": true,
+          "m_listNKMEventChangeState": [
+            {
+              "m_ConditionV2": [
+                "IS_APPLY_SILENCE",
+                "IS_PHASECHANGE_ING_NOT"
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_ChangeState": "USN_PASSIVE1"
+            },
+            {
+              "m_ConditionV2": [
+                "IS_PASSIVE_STACK_0_NOT",
+                "IS_PHASECHANGE_ING_NOT"
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_ChangeState": "USN_PASSIVE1"
+            },
+            {
+              "m_ConditionV2": [
+                "IS_HAS_TARGET_NOT",
+                "IS_PHASECHANGE_CHECK_ON",
+                "IS_PHASECHANGE_ING_NOT"
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_ChangeState": "USN_PASSIVE1"
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_fEventTimeMin": 1.1,
+              "m_fEventTimeMax": 1.3,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 950.0,
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_ATTACK1"
+            },
+            {
+              "m_fEventTimeMin": 1.3333333333333333,
+              "m_fEventTimeMax": 1.5333333333333334,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 950.0,
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_ATTACK1"
+            },
+            {
+              "m_fEventTimeMin": 1.8333333333333333,
+              "m_fEventTimeMax": 2.3333333333333335,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 950.0,
+              "m_AttackUnitCount": 2,
+              "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_ATTACK1"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_fLocalVol": 0.3,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_74"
+              ]
+            },
+            {
+              "m_fEventTime": 0.1,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_06"
+              ]
+            },
+            {
+              "m_fEventTime": 0.8333333333333334,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+              ]
+            },
+            {
+              "m_fEventTime": 0.9666666666666667,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+              ]
+            },
+            {
+              "m_fEventTime": 1.1,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+              ]
+            },
+            {
+              "m_fEventTime": 1.5,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_CUTSCEN_SNAP_CLEAR_REVERB"
+              ]
+            },
+            {
+              "m_fEventTime": 1.5,
+              "m_fLocalVol": 0.4,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_ATTACK_1"
+              ]
+            },
+            {
+              "m_fEventTime": 2.0,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_EXPLOSION_ENERGY_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.5,
+              "m_listSoundName": [
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_ATTACK_1",
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_ATTACK_4",
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_ATTACK_5",
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_ATTACK_6"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PASSIVE1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimName": "PASSIVE1",
+          "m_fAnimSpeed": 1.0,
+          "m_bForceLeft": true,
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_listNKMEventVariable": [
+            {
+              "m_ConditionV2": [
+                "IS_PASSIVE_STACK_0_NOT"
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_Type": "ADD",
+              "m_Name": "VAR_PASSIVE_TRIGGER",
+              "m_Value": -1
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_DEName": "DE_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1",
+              "m_OffsetX": 225,
+              "m_OffsetY": 0
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTimeMin": 3.0,
+              "m_fEventTimeMax": 3.3333333333333335,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_bHitBossUnit": false,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1500.0,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1"
+            },
+            {
+              "m_ConditionTargetV2": [
+                {
+                  "Type": "Boss"
+                }
+              ],
+              "m_bAnimTime": false,
+              "m_fEventTimeMin": 3.0,
+              "m_fEventTimeMax": 3.3333333333333335,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1500.0,
+              "m_AttackUnitCount": 99,
+              "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1_SHIP"
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 1.0,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 5.0,
+              "m_fCameraCrashTime": 0.5
+            },
+            {
+              "m_fEventTime": 2.6666666666666665,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 5.0,
+              "m_fCameraCrashTime": 0.3333333333333333
+            },
+            {
+              "m_fEventTime": 3.1,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 10.0,
+              "m_fCameraCrashTime": 0.5
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.9333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_25"
+              ]
+            },
+            {
+              "m_fEventTime": 0.9333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_66"
+              ]
+            },
+            {
+              "m_fEventTime": 1.7333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_1"
+              ]
+            },
+            {
+              "m_fEventTime": 2.566666666666667,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_2"
+              ]
+            },
+            {
+              "m_fEventTime": 2.6666666666666665,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_02"
+              ]
+            },
+            {
+              "m_fEventTime": 2.7333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+              ]
+            },
+            {
+              "m_fEventTime": 2.7666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 3.066666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_3"
+              ]
+            },
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_PASSIVE_1"
+              ]
+            },
+            {
+              "m_fEventTime": 3.1666666666666665,
+              "m_bVoice": true,
+              "m_PlayRate": 0.5,
+              "m_listSoundName": [
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_PASSIVE_5"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PASSIVE1_UP",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimName": "PASSIVE1",
+          "m_fAnimSpeed": 1.0,
+          "m_bForceLeft": true,
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_listNKMEventVariable": [
+            {
+              "m_ConditionV2": [
+                "IS_PASSIVE_STACK_0_NOT"
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_Type": "ADD",
+              "m_Name": "VAR_PASSIVE_TRIGGER",
+              "m_Value": -1
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_DEName": "DE_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1",
+              "m_OffsetX": 225,
+              "m_OffsetY": 0
+            },
+            {
+              "m_fEventTime": 3.033333333333333,
+              "m_DEName": "DE_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1",
+              "m_OffsetX": -1550,
+              "m_OffsetY": 0,
+              "m_bFlipRight": true
+            },
+            {
+              "m_fEventTime": 3.033333333333333,
+              "m_DEName": "DE_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1_DUMMY",
+              "m_OffsetX": -1600,
+              "m_OffsetY": 0,
+              "m_bFlipRight": true
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTimeMin": 3.0,
+              "m_fEventTimeMax": 3.3333333333333335,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_bHitBossUnit": false,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1500.0,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1"
+            }
+          ],
+          "m_listNKMEventAnimSpeed": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.0,
+              "m_fAnimSpeed": 0.08
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.3333333333333335,
+              "m_fAnimSpeed": 0.3
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.4,
+              "m_fAnimSpeed": 0.6
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.466666666666667,
+              "m_fAnimSpeed": 1.0
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 1.0,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 5.0,
+              "m_fCameraCrashTime": 0.5
+            },
+            {
+              "m_fEventTime": 2.6666666666666665,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 5.0,
+              "m_fCameraCrashTime": 0.3333333333333333
+            },
+            {
+              "m_fEventTime": 3.1,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 10.0,
+              "m_fCameraCrashTime": 0.5
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.9333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_25"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.9333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_66"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 1.7333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_1"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 2.566666666666667,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_2"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 2.6666666666666665,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_02"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 2.7333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 2.7666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 3.066666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_3"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 4.466666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_1"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 5.6,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_2"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 5.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_02"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 5.766666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 5.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 6.1,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_3"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_PASSIVE_1"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 2.8666666666666667,
+              "m_bVoice": true,
+              "m_PlayRate": 0.5,
+              "m_listSoundName": [
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_PASSIVE_5"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 3.066666666666667,
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_PASSIVE_4"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 5.9,
+              "m_bVoice": true,
+              "m_PlayRate": 0.5,
+              "m_listSoundName": [
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_PASSIVE_6"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PASSIVE1_UP_ALTER",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimName": "PASSIVE1",
+          "m_fAnimSpeed": 1.0,
+          "m_bForceLeft": true,
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_listNKMEventVariable": [
+            {
+              "m_ConditionV2": [
+                "IS_PASSIVE_STACK_0_NOT"
+              ],
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_Type": "ADD",
+              "m_Name": "VAR_PASSIVE_TRIGGER",
+              "m_Value": -1
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_DEName": "DE_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1",
+              "m_OffsetX": 225,
+              "m_OffsetY": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_DEName": "DE_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1",
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.05
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L13_1 / 30"
+              },
+              "m_DEName": "DE_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1_DUMMY",
+              "m_OffsetX": -50,
+              "m_OffsetY": 0,
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.025
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTimeMin": 3.0,
+              "m_fEventTimeMax": 3.3333333333333335,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_bHitBossUnit": false,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1500.0,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1"
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 1.0,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 5.0,
+              "m_fCameraCrashTime": 0.5
+            },
+            {
+              "m_fEventTime": 2.6666666666666665,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 5.0,
+              "m_fCameraCrashTime": 0.3333333333333333
+            },
+            {
+              "m_fEventTime": 3.1,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 10.0,
+              "m_fCameraCrashTime": 0.5
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.9333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_25"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.9333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_66"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 1.7333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_1"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 2.566666666666667,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_2"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 2.6666666666666665,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_02"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 2.7333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 2.7666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 3.066666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_3"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_PASSIVE_1"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 3.1666666666666665,
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_PASSIVE_4"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_bSkillCutIn": true,
+          "m_AnimName": "SKILL1",
+          "m_fAnimSpeed": 1.0,
+          "m_bForceLeft": true,
+          "m_StateCoolTime": 11,
+          "m_listNKMEventAttack": [
+            {
+              "m_fEventTimeMin": 1.1666666666666667,
+              "m_fEventTimeMax": 1.4,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1100.0,
+              "m_bHitBossUnit": false,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_SKILL1_DEBUFF"
+            },
+            {
+              "m_fEventTimeMin": 1.4333333333333333,
+              "m_fEventTimeMax": 1.6333333333333333,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1100.0,
+              "m_bHitBossUnit": false,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_SKILL1"
+            },
+            {
+              "m_fEventTimeMin": 2.5,
+              "m_fEventTimeMax": 2.8333333333333335,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1100.0,
+              "m_bHitBossUnit": false,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_SKILL1_UP"
+            },
+            {
+              "m_fEventTimeMin": 2.9,
+              "m_fEventTimeMax": 3.2333333333333334,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1100.0,
+              "m_bHitBossUnit": false,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_SKILL1_END"
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_EffectName": "AB_FX_CAST_SKILL",
+              "m_AnimName": "BASE",
+              "m_OffsetX": 10.0,
+              "m_OffsetY": 170,
+              "m_fScaleFactor": 30.0
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 1.1666666666666667,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 6.0,
+              "m_fCameraCrashTime": 0.6666666666666666
+            },
+            {
+              "m_fEventTime": 2.5,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 12.0,
+              "m_fCameraCrashTime": 0.8333333333333334
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 2.0,
+              "m_fColorR": 0.5,
+              "m_fColorG": 0.5,
+              "m_fColorB": 1.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ]
+            },
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_SKILL_1"
+              ]
+            },
+            {
+              "m_fEventTime": 1.0333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+              ]
+            },
+            {
+              "m_fEventTime": 1.1666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+              ]
+            },
+            {
+              "m_fEventTime": 1.2,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_15"
+              ]
+            },
+            {
+              "m_fEventTime": 1.4,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+              ]
+            },
+            {
+              "m_fEventTime": 1.4333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_15"
+              ]
+            },
+            {
+              "m_fEventTime": 2.2666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_02"
+              ]
+            },
+            {
+              "m_fEventTime": 2.3333333333333335,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_02"
+              ]
+            },
+            {
+              "m_fEventTime": 2.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG_09"
+              ]
+            },
+            {
+              "m_fEventTime": 2.533333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_12"
+              ]
+            },
+            {
+              "m_fEventTime": 2.6,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG_09"
+              ]
+            },
+            {
+              "m_fEventTime": 2.6333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_12"
+              ]
+            },
+            {
+              "m_fEventTime": 2.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG_09"
+              ]
+            },
+            {
+              "m_fEventTime": 2.7333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_12"
+              ]
+            },
+            {
+              "m_fEventTime": 2.8666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG_08"
+              ]
+            },
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_ACTIVE_1",
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_ACTIVE_2",
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_ACTIVE_5"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_HYPER1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_bShowGage": false,
+          "m_bAnimLoop": false,
+          "m_AnimName": "HYPER_SKILL1",
+          "m_fAnimSpeed": 1.0,
+          "m_bForceLeft": true,
+          "m_StateCoolTime": 56,
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L13_1 / 30"
+              },
+              "m_Type": "ADD",
+              "m_Name": "VAR_PASSIVE_TRIGGER",
+              "m_Value": 1
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_BuffStrID": "DEBUFF_UNIT_SIXWING_CA_ACTOR_HYPER1_DAMAGE_REDUCE",
+              "m_BuffStatLevel": 9,
+              "m_fRange": 6000,
+              "m_bEnemy": true
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_fEventTimeMin": 2.1666666666666665,
+              "m_fEventTimeMax": 2.6666666666666665,
+              "m_fRangeMin": -3000.0,
+              "m_fRangeMax": 3000.0,
+              "m_bHitBossUnit": false,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_HYPER1"
+            },
+            {
+              "m_fEventTimeMin": 3.033333333333333,
+              "m_fEventTimeMax": 3.533333333333333,
+              "m_fRangeMin": -3000.0,
+              "m_fRangeMax": 3000.0,
+              "m_bHitBossUnit": false,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_HYPER1"
+            },
+            {
+              "m_fEventTimeMin": 4.0,
+              "m_fEventTimeMax": 4.5,
+              "m_fRangeMin": -3000.0,
+              "m_fRangeMax": 3000.0,
+              "m_bHitBossUnit": false,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_HYPER1"
+            },
+            {
+              "m_fEventTimeMin": 5.0,
+              "m_fEventTimeMax": 5.5,
+              "m_fRangeMin": -3000.0,
+              "m_fRangeMax": 3000.0,
+              "m_bHitBossUnit": false,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_HYPER1"
+            }
+          ],
+          "m_listNKMEventInvincible": [
+            {
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L14_1 / 30"
+              },
+              "m_fEventTimeMax": 5.333333333333333
+            }
+          ],
+          "m_listNKMEventFadeWorld": [
+            {
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L13_1 / 30"
+              },
+              "m_fEventTimeMax": 5.0,
+              "m_fColorR": 0.0,
+              "m_fColorG": 0.0,
+              "m_fColorB": 0.0,
+              "m_fMapColorKeepTime": 1,
+              "m_fMapColorReturnTime": 2
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L14_1 / 30"
+              },
+              "m_fEventTimeMax": 6.0,
+              "m_fColorR": 1.0,
+              "m_fColorG": 0.5,
+              "m_fColorB": 0.5
+            }
+          ],
+          "m_listNKMEventCameraMove": [
+            {
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L13_1 / 30"
+              },
+              "m_fEventTimeMax": 0.6666666666666666,
+              "m_bForce": true,
+              "m_fPosXOffset": -200,
+              "m_fPosYOffset": 170,
+              "m_fZoom": -200,
+              "m_fMoveTrackingTime": 0.3333333333333333,
+              "m_fZoomTrackingTime": 0.3333333333333333
+            },
+            {
+              "m_fEventTimeMin": 0.6666666666666666,
+              "m_fEventTimeMax": 3.033333333333333,
+              "m_bForce": true,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 300,
+              "m_fZoom": 0,
+              "m_fMoveTrackingTime": 3.0,
+              "m_fZoomTrackingTime": 1.0
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 2.1666666666666665,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 1250,
+              "m_fCameraCrashGap": 5,
+              "m_fCameraCrashTime": 0.3333333333333333
+            },
+            {
+              "m_fEventTime": 3.033333333333333,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 2000,
+              "m_fCameraCrashGap": 8,
+              "m_fCameraCrashTime": 0.3333333333333333
+            },
+            {
+              "m_fEventTime": 4.0,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 3000,
+              "m_fCameraCrashGap": 10,
+              "m_fCameraCrashTime": 0.3333333333333333
+            },
+            {
+              "m_fEventTime": 5.0,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 3000,
+              "m_fCameraCrashGap": 5,
+              "m_fCameraCrashTime": 1.0
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L13_1 / 30"
+              },
+              "m_EffectName": "AB_FX_CAST_HYPER",
+              "m_AnimName": "BASE",
+              "m_fScaleFactor": 30.0,
+              "m_BoneName": "BIP01_SPINE1",
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L13_1 / 30"
+              },
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HYPER_ATTACK_START"
+              ]
+            },
+            {
+              "m_fEventTime": 0.2,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_HYPER_1"
+              ]
+            },
+            {
+              "m_fEventTime": 2.1666666666666665,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_HYPER_2"
+              ]
+            },
+            {
+              "m_fEventTime": 3.033333333333333,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_HYPER_3"
+              ]
+            },
+            {
+              "m_fEventTime": 4.0,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_HYPER_4"
+              ]
+            },
+            {
+              "m_fEventTime": 4.666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_HYPER_5"
+              ]
+            },
+            {
+              "m_fEventTime": 5.833333333333333,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_HYPER_6"
+              ]
+            },
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_HYPER_1",
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_HYPER_2",
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_HYPER_3",
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_HYPER_4",
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_HYPER_5"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PHASECHANGE1_START",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimName": "PASSIVE1",
+          "m_fAnimSpeed": 1.0,
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_bForceLeft": true,
+          "m_bInvincibleState": true,
+          "m_AnimTimeChangeStateTime": 3.8,
+          "m_AnimTimeChangeState": "USN_PHASECHANGE1_ING1",
+          "m_AnimEndChangeState": "USN_PHASECHANGE1_ING1",
+          "m_listNKMEventInvincible": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L15_1 / 30"
+              },
+              "m_fEventTimeMax": 33.3
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_fEventTimeMin": 3.5,
+              "m_fEventTimeMax": 3.8,
+              "m_fColorR": 0.5,
+              "m_fColorG": 0.5,
+              "m_fColorB": 1.0
+            }
+          ],
+          "m_listNKMEventVariable": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L14_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_PHASECHANGE_ING",
+              "m_Value": 1
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.7666666666666666,
+              "m_Type": "SET",
+              "m_Name": "VAR_PHASECHANGE_ANIM_1",
+              "m_Value": 1
+            }
+          ],
+          "m_listNKMEventFadeWorld": [
+            {
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L14_1 / 30"
+              },
+              "m_fEventTimeMax": 33.3,
+              "m_fColorR": 0.03,
+              "m_fColorG": 0.03,
+              "m_fColorB": 0.03,
+              "m_fMapColorKeepTime": 33.3
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L14_1 / 30"
+              },
+              "m_DEName": "DE_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1",
+              "m_OffsetX": 225,
+              "m_OffsetY": 0
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTimeMin": 3.0,
+              "m_fEventTimeMax": 3.3333333333333335,
+              "m_bHitLand": true,
+              "m_bHitAir": false,
+              "m_bHitBossUnit": false,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1500.0,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1"
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 1.0,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 5.0,
+              "m_fCameraCrashTime": 0.5
+            },
+            {
+              "m_fEventTime": 2.6666666666666665,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 5.0,
+              "m_fCameraCrashTime": 0.3333333333333333
+            },
+            {
+              "m_fEventTime": 3.1,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCameraCrashSpeed": -300.0,
+              "m_fCameraCrashAccel": 1000.0,
+              "m_fCameraCrashGap": 10.0,
+              "m_fCameraCrashTime": 0.5
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.9333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_25"
+              ]
+            },
+            {
+              "m_fEventTime": 0.9333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_66"
+              ]
+            },
+            {
+              "m_fEventTime": 1.7333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_1"
+              ]
+            },
+            {
+              "m_fEventTime": 2.566666666666667,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_2"
+              ]
+            },
+            {
+              "m_fEventTime": 2.6666666666666665,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_02"
+              ]
+            },
+            {
+              "m_fEventTime": 2.7333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+              ]
+            },
+            {
+              "m_fEventTime": 2.7666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL"
+              ]
+            },
+            {
+              "m_fEventTime": 3.066666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_3"
+              ]
+            },
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_PASSIVE_2"
+              ]
+            },
+            {
+              "m_fEventTime": 3.1666666666666665,
+              "m_bVoice": true,
+              "m_PlayRate": 0.5,
+              "m_listSoundName": [
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_PASSIVE_5"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PHASECHANGE1_ING1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_fAnimSpeed": 1.0,
+          "m_fAnimStartTime": 0.5666666666666667,
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_bForceLeft": true,
+          "m_bInvincibleState": true,
+          "m_AnimTimeChangeStateTime": 1.7666666666666666,
+          "m_AnimTimeChangeState": "USN_PHASECHANGE1_ING2",
+          "m_AnimEndChangeState": "USN_PHASECHANGE1_ING2",
+          "m_listNKMEventFadeWorld": [
+            {
+              "m_fEventTimeMin": 0.5666666666666667,
+              "m_fEventTimeMax": 1.7666666666666666,
+              "m_fColorR": 0.03,
+              "m_fColorG": 0.03,
+              "m_fColorB": 0.03,
+              "m_fMapColorKeepTime": 0.3333333333333333,
+              "m_fMapColorReturnTime": 0.6666666666666666
+            }
+          ],
+          "m_listNKMEventVariable": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L15_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_PHASECHANGE_ANIM_1",
+              "m_Value": 0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.7333333333333334,
+              "m_Type": "SET",
+              "m_Name": "VAR_PHASECHANGE_ANIM_2",
+              "m_Value": 1
+            }
+          ],
+          "m_listNKMEventInvincible": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L16_1 / 30"
+              },
+              "m_fEventTimeMax": 33.3
+            }
+          ],
+          "m_listNKMEventMove": [
+            {
+              "m_fEventTime": 1.7666666666666666,
+              "m_fMapPosFactor": 0.45,
+              "m_MoveTime": {
+                "__unparsed_expr": "L17_1 / 30"
+              },
+              "m_bLandMove": true,
+              "m_MoveTrackingType": "TDT_NORMAL"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_ACTIVE_3"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PHASECHANGE1_ING2",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimName": "PASSIVE1_SUB",
+          "m_fAnimSpeed": 1.0,
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_bForceLeft": true,
+          "m_bInvincibleState": true,
+          "m_AnimTimeChangeStateTime": 0.7666666666666667,
+          "m_AnimTimeChangeState": "USN_PHASECHANGE1_END",
+          "m_listNKMEventInvincible": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L17_1 / 30"
+              },
+              "m_fEventTimeMax": 33.3
+            }
+          ],
+          "m_listNKMEventVariable": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L16_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_PHASECHANGE_ANIM_2",
+              "m_Value": 0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.7333333333333333,
+              "m_Type": "SET",
+              "m_Name": "VAR_PHASECHANGE_ANIM_3",
+              "m_Value": 1
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L16_1 / 30"
+              },
+              "m_DEName": "DE_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1",
+              "m_OffsetX": 225,
+              "m_OffsetY": 0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L17_1 / 30"
+              },
+              "m_DEName": "DE_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1",
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.05
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L18_1 / 30"
+              },
+              "m_DEName": "DE_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1_DUMMY",
+              "m_OffsetX": -50,
+              "m_OffsetY": 0,
+              "m_bUseMapPos": true,
+              "m_fMapPosRate": 0.025
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_PASSIVE_3"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PHASECHANGE1_END",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimName": "PASSIVE1",
+          "m_fAnimSpeed": 1.0,
+          "m_fAnimStartTime": 0.8,
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_bForceLeft": true,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventBuff": [
+            {
+              "m_bStateEndTime": true,
+              "m_BuffStrID": "BUFF_MOB_BOSS_EP13_SIXWING_ACTOR_PHASECHANGE1",
+              "m_BuffStatLevel": 50
+            }
+          ],
+          "m_listNKMEventVariable": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L17_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_PHASECHANGE_ANIM_3",
+              "m_Value": 0
+            },
+            {
+              "m_bStateEndTime": true,
+              "m_Type": "SET",
+              "m_Name": "VAR_PHASECHANGE_ING",
+              "m_Value": 0
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L19_1 / 30"
+              },
+              "m_Type": "SET",
+              "m_Name": "VAR_PHASECHANGE_CHECK",
+              "m_Value": 1
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 3.0,
+              "m_fEventTimeMax": 3.3333333333333335,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_bHitBossUnit": false,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1500.0,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1"
+            }
+          ],
+          "m_listNKMEventAnimSpeed": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.2333333333333334,
+              "m_fAnimSpeed": 0.2
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.3333333333333335,
+              "m_fAnimSpeed": 0.3
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.4,
+              "m_fAnimSpeed": 0.6
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.466666666666667,
+              "m_fAnimSpeed": 1.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.9333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_25"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.9333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_66"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 1.7333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_1"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 2.566666666666667,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_2"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 2.6666666666666665,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_02"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 2.7333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 2.7666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 3.066666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_3"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 4.466666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_1"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 5.6,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_2"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 5.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_02"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 5.766666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 5.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 6.1,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_3"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 3.1666666666666665,
+              "m_bVoice": true,
+              "m_PlayRate": 0.5,
+              "m_listSoundName": [
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_PASSIVE_6"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 3.3666666666666667,
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_ACTIVE_4"
+              ]
+            },
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 6.2,
+              "m_bVoice": true,
+              "m_PlayRate": 0.5,
+              "m_listSoundName": [
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_PASSIVE_5"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_A",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_AnimName": "DAMAGE_A",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L18_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DAMAGE_4"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_B",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_AnimName": "DAMAGE_B",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L19_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DAMAGE_4"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_AIR_UP",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_AnimName": "DAMAGE_AIR_UP",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L20_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DAMAGE_4"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L21_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DAMAGE_4"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L22_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DEATH_1",
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DEATH_2",
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DEATH_3",
+                "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DEATH_4"
+              ]
+            }
+          ],
+          "m_listNKMEventDissolve": [
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_fDissolve": 1.0,
+              "m_fTrackTime": 2.0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fForceRespawnZposMin": 0.31,
+    "m_fForceRespawnZposMax": 0.4,
+    "m_UnitSizeX": 140,
+    "m_UnitSizeY": 320,
+    "m_SpriteScale": 1.0,
+    "m_bShowGage": false,
+    "m_fShadowScaleX": 200,
+    "m_fShadowScaleY": 200,
+    "m_SpeedRun": 200,
+    "m_bNoRun": true,
+    "m_SeeTarget": true,
+    "m_TargetNearRange": 850,
+    "m_SeeRange": 3000,
+    "m_SeeRangeMax": 3100,
+    "m_fDieCompleteTime": 2.3333333333333335,
+    "m_bUseMotionBlur": true,
+    "m_fBuffEffectScaleFactor": 1.0,
+    "m_bNoDamageStopTime": true,
+    "m_bNoDamageDownState": true,
+    "m_fDamageUpFactor": 0.0,
+    "m_fDamageBackFactor": 0.0,
+    "m_bNoDamageState": true,
+    "m_bNoBackTarget": true,
+    "m_listFixedStatusEffect": [
+      "NUSE_IMMUNE_CC",
+      "NUSE_IMMUNE_ATTACK_SLOW",
+      "NUSE_IMMUNE_SKILL_COOLTIME_DAMAGE"
+    ],
+    "m_listConditionMacro": [
+      {
+        "m_Name": "IS_HAS_TARGET_NOT",
+        "1": {
+          "Type": "UnitCount",
+          "m_Range": [
+            0,
+            850
+          ],
+          "m_TargetConditionV2": [
+            {
+              "Type": "Enemy"
+            },
+            {
+              "Type": "Boss",
+              "Inverse": true
+            }
+          ],
+          "m_Count": [
+            0,
+            0
+          ]
+        }
+      },
+      {
+        "m_Name": "IS_PASSIVE_STACK_0",
+        "1": {
+          "Type": "EventVariable",
+          "m_Name": "VAR_PASSIVE_TRIGGER",
+          "m_Value": [
+            0,
+            0
+          ]
+        }
+      },
+      {
+        "m_Name": "IS_PASSIVE_STACK_0_NOT",
+        "1": {
+          "Type": "EventVariable",
+          "m_Name": "VAR_PASSIVE_TRIGGER",
+          "m_Value": [
+            0,
+            0
+          ],
+          "Inverse": true
+        }
+      },
+      {
+        "m_Name": "IS_PHASECHANGE_ING_NOT",
+        "1": {
+          "Type": "EventVariable",
+          "m_Name": "VAR_PHASECHANGE_ING",
+          "m_Value": [
+            1,
+            1
+          ],
+          "Inverse": true
+        }
+      },
+      {
+        "m_Name": "IS_APPLY_SILENCE",
+        "1": {
+          "Type": "StatusEffect",
+          "m_StatusEffect": "NUSE_SILENCE"
+        }
+      },
+      {
+        "m_Name": "IS_APPLY_SILENCE_NOT",
+        "1": {
+          "Type": "StatusEffect",
+          "m_StatusEffect": "NUSE_SILENCE",
+          "Inverse": true
+        }
+      },
+      {
+        "m_Name": "IS_PHASECHANGE_CHECK_ON",
+        "1": {
+          "Type": "EventVariable",
+          "m_Name": "VAR_PHASECHANGE_CHECK",
+          "m_Value": [
+            1,
+            1
+          ]
+        }
+      }
+    ],
+    "m_listAttackStateData": [
+      {
+        "m_ConditionV2": [
+          "IS_PHASECHANGE_ING_NOT"
+        ],
+        "m_StateName": "USN_ATTACK1",
+        "m_bTargetLandOnly": true,
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 900
+      },
+      {
+        "m_ConditionV2": [
+          "IS_PASSIVE_STACK_0_NOT",
+          "IS_PHASECHANGE_CHECK_ON",
+          "IS_PHASECHANGE_ING_NOT"
+        ],
+        "m_StateName": "USN_PASSIVE1_UP_ALTER",
+        "m_bNoTarget": true
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "EventVariable",
+            "m_Name": "VAR_PHASECHANGE_ING",
+            "m_Value": [
+              1,
+              1
+            ]
+          },
+          {
+            "Type": "EventVariable",
+            "m_Name": "VAR_PHASECHANGE_ANIM_1",
+            "m_Value": [
+              1,
+              1
+            ],
+            "Inverse": true
+          }
+        ],
+        "m_StateName": "USN_PHASECHANGE1_START",
+        "m_bNoTarget": true
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "EventVariable",
+            "m_Name": "VAR_PHASECHANGE_ANIM_1",
+            "m_Value": [
+              1,
+              1
+            ]
+          },
+          {
+            "Type": "EventVariable",
+            "m_Name": "VAR_PHASECHANGE_MOVE",
+            "m_Value": [
+              1,
+              1
+            ],
+            "Inverse": true
+          }
+        ],
+        "m_StateName": "USN_PHASECHANGE1_ING1",
+        "m_bNoTarget": true
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "EventVariable",
+            "m_Name": "VAR_PHASECHANGE_ANIM_2",
+            "m_Value": [
+              1,
+              1
+            ]
+          }
+        ],
+        "m_StateName": "USN_PHASECHANGE1_ING2",
+        "m_bNoTarget": true
+      },
+      {
+        "m_ConditionV2": [
+          {
+            "Type": "EventVariable",
+            "m_Name": "VAR_PHASECHANGE_ANIM_3",
+            "m_Value": [
+              1,
+              1
+            ]
+          }
+        ],
+        "m_StateName": "USN_PHASECHANGE1_END",
+        "m_bNoTarget": true
+      }
+    ],
+    "m_listAirAttackStateData": [
+      {
+        "m_ConditionV2": [
+          "IS_PHASECHANGE_ING_NOT"
+        ],
+        "m_StateName": "USN_ATTACK1_AIR",
+        "m_bTargetAirOnly": true,
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 900
+      }
+    ],
+    "m_listSkillStateData": [
+      {
+        "m_ConditionV2": [
+          "IS_PHASECHANGE_ING_NOT"
+        ],
+        "m_StateName": "USN_SKILL1",
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 900,
+        "m_fStartCool": 1.0
+      }
+    ],
+    "m_listHyperSkillStateData": [
+      {
+        "m_ConditionV2": [
+          "IS_PHASECHANGE_ING_NOT"
+        ],
+        "m_StateName": "USN_HYPER1",
+        "m_bNoTarget": true,
+        "m_fStartCool": 1.0
+      }
+    ],
+    "m_listPhaseChangeData": [
+      {
+        "m_TargetPhase": 1,
+        "m_fChangeConditionTime": 90,
+        "m_ChangeStateName": "USN_PHASECHANGE1_START"
+      },
+      {
+        "m_TargetPhase": 1,
+        "m_fChangeConditionHPRate": 0.3,
+        "m_ChangeStateName": "USN_PHASECHANGE1_START"
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_START",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_bShowGage": false,
+        "m_bInvincibleState": true,
+        "m_AnimName": "START",
+        "m_fAnimSpeed": 1.0,
+        "m_bForceLeft": true,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_PASSIVE_TRIGGER",
+            "m_Value": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_PHASECHANGE_ING",
+            "m_Value": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_PHASECHANGE_CHECK",
+            "m_Value": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_PHASECHANGE_MOVE",
+            "m_Value": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_PHASECHANGE_ANIM_1",
+            "m_Value": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_PHASECHANGE_ANIM_2",
+            "m_Value": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_PHASECHANGE_ANIM_3",
+            "m_Value": 0
+          }
+        ],
+        "m_listNKMEventFadeWorld": [
+          {
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_fEventTimeMax": 5.0,
+            "m_fColorR": 0.03,
+            "m_fColorG": 0.03,
+            "m_fColorB": 0.03,
+            "m_fMapColorKeepTime": 0.16666666666666666,
+            "m_fMapColorReturnTime": 1.0
+          }
+        ],
+        "m_listNKMEventCameraMove": [
+          {
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_fEventTimeMax": 0.03333333333333333,
+            "m_bForce": true,
+            "m_fPosXOffset": 0,
+            "m_fPosYOffset": 100,
+            "m_fZoom": -200,
+            "m_fMoveTrackingTime": 0.03333333333333333,
+            "m_fZoomTrackingTime": 0.03333333333333333
+          },
+          {
+            "m_fEventTimeMin": 0.06666666666666667,
+            "m_fEventTimeMax": 2.6666666666666665,
+            "m_bForce": true,
+            "m_fPosXOffset": 0,
+            "m_fPosYOffset": 300,
+            "m_fZoom": -50,
+            "m_fMoveTrackingTime": 3.0,
+            "m_fZoomTrackingTime": 3.0
+          },
+          {
+            "m_fEventTimeMin": 2.6666666666666665,
+            "m_fEventTimeMax": 4.0,
+            "m_bForce": true,
+            "m_fPosXOffset": 0,
+            "m_fPosYOffset": 150,
+            "m_fZoom": -50,
+            "m_fMoveTrackingTime": 3.0,
+            "m_fZoomTrackingTime": 3.0
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 3.933333333333333,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashGap": 8,
+            "m_fCameraCrashTime": 1.0
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_fEventTime": 1.3333333333333333,
+            "m_EffectName": "AB_FX_AWAKEN_SPAWN_HUD",
+            "m_OffsetX": 0,
+            "m_OffsetY": 170,
+            "m_AnimName": "BASE",
+            "m_fScaleFactor": 1.0,
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_START_1"
+            ]
+          },
+          {
+            "m_fEventTime": 1.3333333333333333,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_AWAKEN_HUD"
+            ]
+          },
+          {
+            "m_fEventTime": 2.933333333333333,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_START_2"
+            ]
+          },
+          {
+            "m_fEventTime": 4.133333333333334,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_START_3"
+            ]
+          },
+          {
+            "m_fEventTime": 4.733333333333333,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_START_4"
+            ]
+          },
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_START_1",
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_START_2",
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_START_3",
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_START_5"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_RUN",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_AnimName": "RUN",
+        "m_fAnimSpeed": 1.0,
+        "m_bAnimLoop": true,
+        "m_bRun": false,
+        "m_bForceLeft": true,
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.4,
+            "m_fLocalVol": 0.3,
+            "m_listSoundName": [
+              "FX_COMBAT_FOOT_STEP"
+            ]
+          },
+          {
+            "m_fEventTime": 1.1,
+            "m_fLocalVol": 0.3,
+            "m_listSoundName": [
+              "FX_COMBAT_FOOT_STEP"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimName": "ATTACK1",
+        "m_fAnimSpeed": 1.0,
+        "m_bForceLeft": true,
+        "m_listNKMEventChangeState": [
+          {
+            "m_ConditionV2": [
+              "IS_APPLY_SILENCE",
+              "IS_PHASECHANGE_ING_NOT"
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_ChangeState": "USN_PASSIVE1"
+          },
+          {
+            "m_ConditionV2": [
+              "IS_PASSIVE_STACK_0_NOT",
+              "IS_PHASECHANGE_ING_NOT"
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_ChangeState": "USN_PASSIVE1"
+          },
+          {
+            "m_ConditionV2": [
+              "IS_HAS_TARGET_NOT",
+              "IS_PHASECHANGE_CHECK_ON",
+              "IS_PHASECHANGE_ING_NOT"
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_ChangeState": "USN_PASSIVE1"
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_fEventTimeMin": 1.1,
+            "m_fEventTimeMax": 1.3,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 950.0,
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_ATTACK1"
+          },
+          {
+            "m_fEventTimeMin": 1.3333333333333333,
+            "m_fEventTimeMax": 1.5333333333333334,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 950.0,
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_ATTACK1"
+          },
+          {
+            "m_fEventTimeMin": 1.8333333333333333,
+            "m_fEventTimeMax": 2.3333333333333335,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 950.0,
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_ATTACK1"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_fLocalVol": 0.3,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_74"
+            ]
+          },
+          {
+            "m_fEventTime": 0.1,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_06"
+            ]
+          },
+          {
+            "m_fEventTime": 0.8333333333333334,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+            ]
+          },
+          {
+            "m_fEventTime": 0.9666666666666667,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+            ]
+          },
+          {
+            "m_fEventTime": 1.1,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+            ]
+          },
+          {
+            "m_fEventTime": 1.5,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_CUTSCEN_SNAP_CLEAR_REVERB"
+            ]
+          },
+          {
+            "m_fEventTime": 1.5,
+            "m_fLocalVol": 0.4,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_ATTACK_1"
+            ]
+          },
+          {
+            "m_fEventTime": 2.0,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_EXPLOSION_ENERGY_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.5,
+            "m_listSoundName": [
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_ATTACK_1",
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_ATTACK_4",
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_ATTACK_5",
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_ATTACK_6"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1_AIR",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimName": "ATTACK1",
+        "m_fAnimSpeed": 1.0,
+        "m_bForceLeft": true,
+        "m_listNKMEventChangeState": [
+          {
+            "m_ConditionV2": [
+              "IS_APPLY_SILENCE",
+              "IS_PHASECHANGE_ING_NOT"
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_ChangeState": "USN_PASSIVE1"
+          },
+          {
+            "m_ConditionV2": [
+              "IS_PASSIVE_STACK_0_NOT",
+              "IS_PHASECHANGE_ING_NOT"
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_ChangeState": "USN_PASSIVE1"
+          },
+          {
+            "m_ConditionV2": [
+              "IS_HAS_TARGET_NOT",
+              "IS_PHASECHANGE_CHECK_ON",
+              "IS_PHASECHANGE_ING_NOT"
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_ChangeState": "USN_PASSIVE1"
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_fEventTimeMin": 1.1,
+            "m_fEventTimeMax": 1.3,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 950.0,
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_ATTACK1"
+          },
+          {
+            "m_fEventTimeMin": 1.3333333333333333,
+            "m_fEventTimeMax": 1.5333333333333334,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 950.0,
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_ATTACK1"
+          },
+          {
+            "m_fEventTimeMin": 1.8333333333333333,
+            "m_fEventTimeMax": 2.3333333333333335,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 950.0,
+            "m_AttackUnitCount": 2,
+            "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_ATTACK1"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_fLocalVol": 0.3,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_74"
+            ]
+          },
+          {
+            "m_fEventTime": 0.1,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_06"
+            ]
+          },
+          {
+            "m_fEventTime": 0.8333333333333334,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+            ]
+          },
+          {
+            "m_fEventTime": 0.9666666666666667,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+            ]
+          },
+          {
+            "m_fEventTime": 1.1,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+            ]
+          },
+          {
+            "m_fEventTime": 1.5,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_CUTSCEN_SNAP_CLEAR_REVERB"
+            ]
+          },
+          {
+            "m_fEventTime": 1.5,
+            "m_fLocalVol": 0.4,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_ATTACK_1"
+            ]
+          },
+          {
+            "m_fEventTime": 2.0,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_EXPLOSION_ENERGY_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.5,
+            "m_listSoundName": [
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_ATTACK_1",
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_ATTACK_4",
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_ATTACK_5",
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_ATTACK_6"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PASSIVE1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimName": "PASSIVE1",
+        "m_fAnimSpeed": 1.0,
+        "m_bForceLeft": true,
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_listNKMEventVariable": [
+          {
+            "m_ConditionV2": [
+              "IS_PASSIVE_STACK_0_NOT"
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_Type": "ADD",
+            "m_Name": "VAR_PASSIVE_TRIGGER",
+            "m_Value": -1
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_DEName": "DE_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1",
+            "m_OffsetX": 225,
+            "m_OffsetY": 0
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTimeMin": 3.0,
+            "m_fEventTimeMax": 3.3333333333333335,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_bHitBossUnit": false,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1500.0,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1"
+          },
+          {
+            "m_ConditionTargetV2": [
+              {
+                "Type": "Boss"
+              }
+            ],
+            "m_bAnimTime": false,
+            "m_fEventTimeMin": 3.0,
+            "m_fEventTimeMax": 3.3333333333333335,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1500.0,
+            "m_AttackUnitCount": 99,
+            "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1_SHIP"
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 1.0,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 5.0,
+            "m_fCameraCrashTime": 0.5
+          },
+          {
+            "m_fEventTime": 2.6666666666666665,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 5.0,
+            "m_fCameraCrashTime": 0.3333333333333333
+          },
+          {
+            "m_fEventTime": 3.1,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 10.0,
+            "m_fCameraCrashTime": 0.5
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.9333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_25"
+            ]
+          },
+          {
+            "m_fEventTime": 0.9333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_66"
+            ]
+          },
+          {
+            "m_fEventTime": 1.7333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_1"
+            ]
+          },
+          {
+            "m_fEventTime": 2.566666666666667,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_2"
+            ]
+          },
+          {
+            "m_fEventTime": 2.6666666666666665,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_02"
+            ]
+          },
+          {
+            "m_fEventTime": 2.7333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+            ]
+          },
+          {
+            "m_fEventTime": 2.7666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 3.066666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_3"
+            ]
+          },
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_PASSIVE_1"
+            ]
+          },
+          {
+            "m_fEventTime": 3.1666666666666665,
+            "m_bVoice": true,
+            "m_PlayRate": 0.5,
+            "m_listSoundName": [
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_PASSIVE_5"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PASSIVE1_UP",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimName": "PASSIVE1",
+        "m_fAnimSpeed": 1.0,
+        "m_bForceLeft": true,
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_listNKMEventVariable": [
+          {
+            "m_ConditionV2": [
+              "IS_PASSIVE_STACK_0_NOT"
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_Type": "ADD",
+            "m_Name": "VAR_PASSIVE_TRIGGER",
+            "m_Value": -1
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_DEName": "DE_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1",
+            "m_OffsetX": 225,
+            "m_OffsetY": 0
+          },
+          {
+            "m_fEventTime": 3.033333333333333,
+            "m_DEName": "DE_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1",
+            "m_OffsetX": -1550,
+            "m_OffsetY": 0,
+            "m_bFlipRight": true
+          },
+          {
+            "m_fEventTime": 3.033333333333333,
+            "m_DEName": "DE_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1_DUMMY",
+            "m_OffsetX": -1600,
+            "m_OffsetY": 0,
+            "m_bFlipRight": true
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTimeMin": 3.0,
+            "m_fEventTimeMax": 3.3333333333333335,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_bHitBossUnit": false,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1500.0,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1"
+          }
+        ],
+        "m_listNKMEventAnimSpeed": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.0,
+            "m_fAnimSpeed": 0.08
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.3333333333333335,
+            "m_fAnimSpeed": 0.3
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.4,
+            "m_fAnimSpeed": 0.6
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.466666666666667,
+            "m_fAnimSpeed": 1.0
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 1.0,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 5.0,
+            "m_fCameraCrashTime": 0.5
+          },
+          {
+            "m_fEventTime": 2.6666666666666665,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 5.0,
+            "m_fCameraCrashTime": 0.3333333333333333
+          },
+          {
+            "m_fEventTime": 3.1,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 10.0,
+            "m_fCameraCrashTime": 0.5
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.9333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_25"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.9333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_66"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 1.7333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_1"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 2.566666666666667,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_2"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 2.6666666666666665,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_02"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 2.7333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 2.7666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 3.066666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_3"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 4.466666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_1"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 5.6,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_2"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 5.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_02"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 5.766666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 5.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 6.1,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_3"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_PASSIVE_1"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 2.8666666666666667,
+            "m_bVoice": true,
+            "m_PlayRate": 0.5,
+            "m_listSoundName": [
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_PASSIVE_5"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 3.066666666666667,
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_PASSIVE_4"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 5.9,
+            "m_bVoice": true,
+            "m_PlayRate": 0.5,
+            "m_listSoundName": [
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_PASSIVE_6"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PASSIVE1_UP_ALTER",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimName": "PASSIVE1",
+        "m_fAnimSpeed": 1.0,
+        "m_bForceLeft": true,
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_listNKMEventVariable": [
+          {
+            "m_ConditionV2": [
+              "IS_PASSIVE_STACK_0_NOT"
+            ],
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_Type": "ADD",
+            "m_Name": "VAR_PASSIVE_TRIGGER",
+            "m_Value": -1
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_DEName": "DE_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1",
+            "m_OffsetX": 225,
+            "m_OffsetY": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_DEName": "DE_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1",
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.05
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L13_1 / 30"
+            },
+            "m_DEName": "DE_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1_DUMMY",
+            "m_OffsetX": -50,
+            "m_OffsetY": 0,
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.025
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTimeMin": 3.0,
+            "m_fEventTimeMax": 3.3333333333333335,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_bHitBossUnit": false,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1500.0,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1"
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 1.0,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 5.0,
+            "m_fCameraCrashTime": 0.5
+          },
+          {
+            "m_fEventTime": 2.6666666666666665,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 5.0,
+            "m_fCameraCrashTime": 0.3333333333333333
+          },
+          {
+            "m_fEventTime": 3.1,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 10.0,
+            "m_fCameraCrashTime": 0.5
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.9333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_25"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.9333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_66"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 1.7333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_1"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 2.566666666666667,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_2"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 2.6666666666666665,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_02"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 2.7333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 2.7666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 3.066666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_3"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_PASSIVE_1"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 3.1666666666666665,
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_PASSIVE_4"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_bSkillCutIn": true,
+        "m_AnimName": "SKILL1",
+        "m_fAnimSpeed": 1.0,
+        "m_bForceLeft": true,
+        "m_StateCoolTime": 11,
+        "m_listNKMEventAttack": [
+          {
+            "m_fEventTimeMin": 1.1666666666666667,
+            "m_fEventTimeMax": 1.4,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1100.0,
+            "m_bHitBossUnit": false,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_SKILL1_DEBUFF"
+          },
+          {
+            "m_fEventTimeMin": 1.4333333333333333,
+            "m_fEventTimeMax": 1.6333333333333333,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1100.0,
+            "m_bHitBossUnit": false,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_SKILL1"
+          },
+          {
+            "m_fEventTimeMin": 2.5,
+            "m_fEventTimeMax": 2.8333333333333335,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1100.0,
+            "m_bHitBossUnit": false,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_SKILL1_UP"
+          },
+          {
+            "m_fEventTimeMin": 2.9,
+            "m_fEventTimeMax": 3.2333333333333334,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1100.0,
+            "m_bHitBossUnit": false,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_SKILL1_END"
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_EffectName": "AB_FX_CAST_SKILL",
+            "m_AnimName": "BASE",
+            "m_OffsetX": 10.0,
+            "m_OffsetY": 170,
+            "m_fScaleFactor": 30.0
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 1.1666666666666667,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 6.0,
+            "m_fCameraCrashTime": 0.6666666666666666
+          },
+          {
+            "m_fEventTime": 2.5,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 12.0,
+            "m_fCameraCrashTime": 0.8333333333333334
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 2.0,
+            "m_fColorR": 0.5,
+            "m_fColorG": 0.5,
+            "m_fColorB": 1.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ]
+          },
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_SKILL_1"
+            ]
+          },
+          {
+            "m_fEventTime": 1.0333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+            ]
+          },
+          {
+            "m_fEventTime": 1.1666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+            ]
+          },
+          {
+            "m_fEventTime": 1.2,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_15"
+            ]
+          },
+          {
+            "m_fEventTime": 1.4,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG"
+            ]
+          },
+          {
+            "m_fEventTime": 1.4333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_15"
+            ]
+          },
+          {
+            "m_fEventTime": 2.2666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_02"
+            ]
+          },
+          {
+            "m_fEventTime": 2.3333333333333335,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_02"
+            ]
+          },
+          {
+            "m_fEventTime": 2.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG_09"
+            ]
+          },
+          {
+            "m_fEventTime": 2.533333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_12"
+            ]
+          },
+          {
+            "m_fEventTime": 2.6,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG_09"
+            ]
+          },
+          {
+            "m_fEventTime": 2.6333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_12"
+            ]
+          },
+          {
+            "m_fEventTime": 2.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG_09"
+            ]
+          },
+          {
+            "m_fEventTime": 2.7333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_12"
+            ]
+          },
+          {
+            "m_fEventTime": 2.8666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG_08"
+            ]
+          },
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_ACTIVE_1",
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_ACTIVE_2",
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_ACTIVE_5"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_HYPER1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_bShowGage": false,
+        "m_bAnimLoop": false,
+        "m_AnimName": "HYPER_SKILL1",
+        "m_fAnimSpeed": 1.0,
+        "m_bForceLeft": true,
+        "m_StateCoolTime": 56,
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L13_1 / 30"
+            },
+            "m_Type": "ADD",
+            "m_Name": "VAR_PASSIVE_TRIGGER",
+            "m_Value": 1
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_BuffStrID": "DEBUFF_UNIT_SIXWING_CA_ACTOR_HYPER1_DAMAGE_REDUCE",
+            "m_BuffStatLevel": 9,
+            "m_fRange": 6000,
+            "m_bEnemy": true
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_fEventTimeMin": 2.1666666666666665,
+            "m_fEventTimeMax": 2.6666666666666665,
+            "m_fRangeMin": -3000.0,
+            "m_fRangeMax": 3000.0,
+            "m_bHitBossUnit": false,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_HYPER1"
+          },
+          {
+            "m_fEventTimeMin": 3.033333333333333,
+            "m_fEventTimeMax": 3.533333333333333,
+            "m_fRangeMin": -3000.0,
+            "m_fRangeMax": 3000.0,
+            "m_bHitBossUnit": false,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_HYPER1"
+          },
+          {
+            "m_fEventTimeMin": 4.0,
+            "m_fEventTimeMax": 4.5,
+            "m_fRangeMin": -3000.0,
+            "m_fRangeMax": 3000.0,
+            "m_bHitBossUnit": false,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_HYPER1"
+          },
+          {
+            "m_fEventTimeMin": 5.0,
+            "m_fEventTimeMax": 5.5,
+            "m_fRangeMin": -3000.0,
+            "m_fRangeMax": 3000.0,
+            "m_bHitBossUnit": false,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_HYPER1"
+          }
+        ],
+        "m_listNKMEventInvincible": [
+          {
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L14_1 / 30"
+            },
+            "m_fEventTimeMax": 5.333333333333333
+          }
+        ],
+        "m_listNKMEventFadeWorld": [
+          {
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L13_1 / 30"
+            },
+            "m_fEventTimeMax": 5.0,
+            "m_fColorR": 0.0,
+            "m_fColorG": 0.0,
+            "m_fColorB": 0.0,
+            "m_fMapColorKeepTime": 1,
+            "m_fMapColorReturnTime": 2
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L14_1 / 30"
+            },
+            "m_fEventTimeMax": 6.0,
+            "m_fColorR": 1.0,
+            "m_fColorG": 0.5,
+            "m_fColorB": 0.5
+          }
+        ],
+        "m_listNKMEventCameraMove": [
+          {
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L13_1 / 30"
+            },
+            "m_fEventTimeMax": 0.6666666666666666,
+            "m_bForce": true,
+            "m_fPosXOffset": -200,
+            "m_fPosYOffset": 170,
+            "m_fZoom": -200,
+            "m_fMoveTrackingTime": 0.3333333333333333,
+            "m_fZoomTrackingTime": 0.3333333333333333
+          },
+          {
+            "m_fEventTimeMin": 0.6666666666666666,
+            "m_fEventTimeMax": 3.033333333333333,
+            "m_bForce": true,
+            "m_fPosXOffset": 0,
+            "m_fPosYOffset": 300,
+            "m_fZoom": 0,
+            "m_fMoveTrackingTime": 3.0,
+            "m_fZoomTrackingTime": 1.0
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 2.1666666666666665,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 1250,
+            "m_fCameraCrashGap": 5,
+            "m_fCameraCrashTime": 0.3333333333333333
+          },
+          {
+            "m_fEventTime": 3.033333333333333,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 2000,
+            "m_fCameraCrashGap": 8,
+            "m_fCameraCrashTime": 0.3333333333333333
+          },
+          {
+            "m_fEventTime": 4.0,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 3000,
+            "m_fCameraCrashGap": 10,
+            "m_fCameraCrashTime": 0.3333333333333333
+          },
+          {
+            "m_fEventTime": 5.0,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 3000,
+            "m_fCameraCrashGap": 5,
+            "m_fCameraCrashTime": 1.0
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L13_1 / 30"
+            },
+            "m_EffectName": "AB_FX_CAST_HYPER",
+            "m_AnimName": "BASE",
+            "m_fScaleFactor": 30.0,
+            "m_BoneName": "BIP01_SPINE1",
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L13_1 / 30"
+            },
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HYPER_ATTACK_START"
+            ]
+          },
+          {
+            "m_fEventTime": 0.2,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_HYPER_1"
+            ]
+          },
+          {
+            "m_fEventTime": 2.1666666666666665,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_HYPER_2"
+            ]
+          },
+          {
+            "m_fEventTime": 3.033333333333333,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_HYPER_3"
+            ]
+          },
+          {
+            "m_fEventTime": 4.0,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_HYPER_4"
+            ]
+          },
+          {
+            "m_fEventTime": 4.666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_HYPER_5"
+            ]
+          },
+          {
+            "m_fEventTime": 5.833333333333333,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_HYPER_6"
+            ]
+          },
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_HYPER_1",
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_HYPER_2",
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_HYPER_3",
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_HYPER_4",
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_HYPER_5"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PHASECHANGE1_START",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimName": "PASSIVE1",
+        "m_fAnimSpeed": 1.0,
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_bForceLeft": true,
+        "m_bInvincibleState": true,
+        "m_AnimTimeChangeStateTime": 3.8,
+        "m_AnimTimeChangeState": "USN_PHASECHANGE1_ING1",
+        "m_AnimEndChangeState": "USN_PHASECHANGE1_ING1",
+        "m_listNKMEventInvincible": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L15_1 / 30"
+            },
+            "m_fEventTimeMax": 33.3
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_fEventTimeMin": 3.5,
+            "m_fEventTimeMax": 3.8,
+            "m_fColorR": 0.5,
+            "m_fColorG": 0.5,
+            "m_fColorB": 1.0
+          }
+        ],
+        "m_listNKMEventVariable": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L14_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_PHASECHANGE_ING",
+            "m_Value": 1
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.7666666666666666,
+            "m_Type": "SET",
+            "m_Name": "VAR_PHASECHANGE_ANIM_1",
+            "m_Value": 1
+          }
+        ],
+        "m_listNKMEventFadeWorld": [
+          {
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L14_1 / 30"
+            },
+            "m_fEventTimeMax": 33.3,
+            "m_fColorR": 0.03,
+            "m_fColorG": 0.03,
+            "m_fColorB": 0.03,
+            "m_fMapColorKeepTime": 33.3
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L14_1 / 30"
+            },
+            "m_DEName": "DE_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1",
+            "m_OffsetX": 225,
+            "m_OffsetY": 0
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTimeMin": 3.0,
+            "m_fEventTimeMax": 3.3333333333333335,
+            "m_bHitLand": true,
+            "m_bHitAir": false,
+            "m_bHitBossUnit": false,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1500.0,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1"
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 1.0,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 5.0,
+            "m_fCameraCrashTime": 0.5
+          },
+          {
+            "m_fEventTime": 2.6666666666666665,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 5.0,
+            "m_fCameraCrashTime": 0.3333333333333333
+          },
+          {
+            "m_fEventTime": 3.1,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCameraCrashSpeed": -300.0,
+            "m_fCameraCrashAccel": 1000.0,
+            "m_fCameraCrashGap": 10.0,
+            "m_fCameraCrashTime": 0.5
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.9333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_25"
+            ]
+          },
+          {
+            "m_fEventTime": 0.9333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_66"
+            ]
+          },
+          {
+            "m_fEventTime": 1.7333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_1"
+            ]
+          },
+          {
+            "m_fEventTime": 2.566666666666667,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_2"
+            ]
+          },
+          {
+            "m_fEventTime": 2.6666666666666665,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_02"
+            ]
+          },
+          {
+            "m_fEventTime": 2.7333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+            ]
+          },
+          {
+            "m_fEventTime": 2.7666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL"
+            ]
+          },
+          {
+            "m_fEventTime": 3.066666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_3"
+            ]
+          },
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_PASSIVE_2"
+            ]
+          },
+          {
+            "m_fEventTime": 3.1666666666666665,
+            "m_bVoice": true,
+            "m_PlayRate": 0.5,
+            "m_listSoundName": [
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_PASSIVE_5"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PHASECHANGE1_ING1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_fAnimSpeed": 1.0,
+        "m_fAnimStartTime": 0.5666666666666667,
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_bForceLeft": true,
+        "m_bInvincibleState": true,
+        "m_AnimTimeChangeStateTime": 1.7666666666666666,
+        "m_AnimTimeChangeState": "USN_PHASECHANGE1_ING2",
+        "m_AnimEndChangeState": "USN_PHASECHANGE1_ING2",
+        "m_listNKMEventFadeWorld": [
+          {
+            "m_fEventTimeMin": 0.5666666666666667,
+            "m_fEventTimeMax": 1.7666666666666666,
+            "m_fColorR": 0.03,
+            "m_fColorG": 0.03,
+            "m_fColorB": 0.03,
+            "m_fMapColorKeepTime": 0.3333333333333333,
+            "m_fMapColorReturnTime": 0.6666666666666666
+          }
+        ],
+        "m_listNKMEventVariable": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L15_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_PHASECHANGE_ANIM_1",
+            "m_Value": 0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.7333333333333334,
+            "m_Type": "SET",
+            "m_Name": "VAR_PHASECHANGE_ANIM_2",
+            "m_Value": 1
+          }
+        ],
+        "m_listNKMEventInvincible": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L16_1 / 30"
+            },
+            "m_fEventTimeMax": 33.3
+          }
+        ],
+        "m_listNKMEventMove": [
+          {
+            "m_fEventTime": 1.7666666666666666,
+            "m_fMapPosFactor": 0.45,
+            "m_MoveTime": {
+              "__unparsed_expr": "L17_1 / 30"
+            },
+            "m_bLandMove": true,
+            "m_MoveTrackingType": "TDT_NORMAL"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_ACTIVE_3"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PHASECHANGE1_ING2",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimName": "PASSIVE1_SUB",
+        "m_fAnimSpeed": 1.0,
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_bForceLeft": true,
+        "m_bInvincibleState": true,
+        "m_AnimTimeChangeStateTime": 0.7666666666666667,
+        "m_AnimTimeChangeState": "USN_PHASECHANGE1_END",
+        "m_listNKMEventInvincible": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L17_1 / 30"
+            },
+            "m_fEventTimeMax": 33.3
+          }
+        ],
+        "m_listNKMEventVariable": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L16_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_PHASECHANGE_ANIM_2",
+            "m_Value": 0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.7333333333333333,
+            "m_Type": "SET",
+            "m_Name": "VAR_PHASECHANGE_ANIM_3",
+            "m_Value": 1
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L16_1 / 30"
+            },
+            "m_DEName": "DE_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1",
+            "m_OffsetX": 225,
+            "m_OffsetY": 0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L17_1 / 30"
+            },
+            "m_DEName": "DE_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1",
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.05
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L18_1 / 30"
+            },
+            "m_DEName": "DE_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1_DUMMY",
+            "m_OffsetX": -50,
+            "m_OffsetY": 0,
+            "m_bUseMapPos": true,
+            "m_fMapPosRate": 0.025
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_PASSIVE_3"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PHASECHANGE1_END",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimName": "PASSIVE1",
+        "m_fAnimSpeed": 1.0,
+        "m_fAnimStartTime": 0.8,
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_bForceLeft": true,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventBuff": [
+          {
+            "m_bStateEndTime": true,
+            "m_BuffStrID": "BUFF_MOB_BOSS_EP13_SIXWING_ACTOR_PHASECHANGE1",
+            "m_BuffStatLevel": 50
+          }
+        ],
+        "m_listNKMEventVariable": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L17_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_PHASECHANGE_ANIM_3",
+            "m_Value": 0
+          },
+          {
+            "m_bStateEndTime": true,
+            "m_Type": "SET",
+            "m_Name": "VAR_PHASECHANGE_ING",
+            "m_Value": 0
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L19_1 / 30"
+            },
+            "m_Type": "SET",
+            "m_Name": "VAR_PHASECHANGE_CHECK",
+            "m_Value": 1
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 3.0,
+            "m_fEventTimeMax": 3.3333333333333335,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_bHitBossUnit": false,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1500.0,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_MOB_BOSS_EP13_SIXWING_ACTOR_PASSIVE1"
+          }
+        ],
+        "m_listNKMEventAnimSpeed": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.2333333333333334,
+            "m_fAnimSpeed": 0.2
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.3333333333333335,
+            "m_fAnimSpeed": 0.3
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.4,
+            "m_fAnimSpeed": 0.6
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.466666666666667,
+            "m_fAnimSpeed": 1.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.9333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_25"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.9333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_66"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 1.7333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_1"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 2.566666666666667,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_2"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 2.6666666666666665,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_02"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 2.7333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 2.7666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 3.066666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_3"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 4.466666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_1"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 5.6,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_2"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 5.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_02"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 5.766666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_10"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 5.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 6.1,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_CA_ACTOR_PASSIVE_3"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 3.1666666666666665,
+            "m_bVoice": true,
+            "m_PlayRate": 0.5,
+            "m_listSoundName": [
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_PASSIVE_6"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 3.3666666666666667,
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_ACTIVE_4"
+            ]
+          },
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 6.2,
+            "m_bVoice": true,
+            "m_PlayRate": 0.5,
+            "m_listSoundName": [
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_PASSIVE_5"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_A",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_AnimName": "DAMAGE_A",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L18_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DAMAGE_3",
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DAMAGE_4"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_B",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_AnimName": "DAMAGE_B",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L19_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DAMAGE_3",
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DAMAGE_4"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_AIR_UP",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_AnimName": "DAMAGE_AIR_UP",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L20_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DAMAGE_3",
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DAMAGE_4"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L21_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DAMAGE_3",
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DAMAGE_4"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L22_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DEATH_1",
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DEATH_2",
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DEATH_3",
+              "VOICE_UNIT_SIXWING_CA_ACTOR_BATTLE_DEATH_4"
+            ]
+          }
+        ],
+        "m_listNKMEventDissolve": [
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_fDissolve": 1.0,
+            "m_fTrackTime": 2.0
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

@@ -1,0 +1,127 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_MAIN_BATTLE_EP9_5_2_2.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 2.0
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EVENT_ALPHA_C_LEEJIN"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.8
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 2.9,
+          "NST_HIT": 2,
+          "NST_DEF": 2,
+          "NST_HP": 2.7
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_JESSICA",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 4,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.25
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 2,
+              "NST_HIT": 1.6,
+              "NST_DEF": 1.6,
+              "NST_HP": 1.8
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_CHARLIE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 4,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.4
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.6,
+              "NST_HIT": 2,
+              "NST_DEF": 2,
+              "NST_HP": 2.4
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 2.0,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EVENT_ALPHA_C_LEEJIN",
+    "m_fBossPosZ": 0.8,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 2.9,
+          "NST_HIT": 2,
+          "NST_DEF": 2,
+          "NST_HP": 2.7
+        }
+      }
+    },
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_JESSICA",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 4,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.25
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2,
+            "NST_HIT": 1.6,
+            "NST_DEF": 1.6,
+            "NST_HP": 1.8
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_CHALLENGE_CHARLIE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 4,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.4
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.6,
+            "NST_HIT": 2,
+            "NST_DEF": 2,
+            "NST_HP": 2.4
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

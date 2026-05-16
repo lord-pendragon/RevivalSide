@@ -1,0 +1,414 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_EXPLORE_BATTLE_BOSS_S2_EX.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.0
+    },
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EVENT_WAVE_OMEN"
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_dungeonEventType": "FORCE_WIN",
+          "m_EventActionValue": 1,
+          "m_bPause": false,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 299.5
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonDeck"
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER",
+          "m_EventRespawnUnitTag": "SET1",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 0.5,
+            "m_fEventTimeEnd": 300,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": 1.1,
+              "NST_HIT": -1000000,
+              "NST_EVADE": -1000000
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_SCOURGE",
+          "m_EventRespawnUnitTag": "SET1",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 0.5,
+            "m_fEventTimeEnd": 300,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": 1.1,
+              "NST_HIT": -1000000,
+              "NST_EVADE": -1000000
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_WRAITH",
+          "m_EventRespawnUnitTag": "SET2",
+          "m_NKMDungeonEventTiming": {
+            "m_EventDieUnitTag": "SET1",
+            "m_EventDieUnitTagCount": 30,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 1,
+            "m_fEventTimeEnd": 300,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": 1.1,
+              "NST_HIT": -1000000,
+              "NST_EVADE": -1000000
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_FLOATER",
+          "m_EventRespawnUnitTag": "SET2",
+          "m_NKMDungeonEventTiming": {
+            "m_EventDieUnitTag": "SET1",
+            "m_EventDieUnitTagCount": 30,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 1,
+            "m_fEventTimeEnd": 300,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": 1.1,
+              "NST_HIT": -1000000,
+              "NST_EVADE": -1000000
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_NEEDLER",
+          "m_EventRespawnUnitTag": "SET3",
+          "m_NKMDungeonEventTiming": {
+            "m_EventDieUnitTag": "SET2",
+            "m_EventDieUnitTagCount": 30,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 2,
+            "m_fEventTimeEnd": 300,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": 1.1,
+              "NST_HIT": -1000000,
+              "NST_EVADE": -1000000
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_BITER",
+          "m_EventRespawnUnitTag": "SET3",
+          "m_NKMDungeonEventTiming": {
+            "m_EventDieUnitTag": "SET2",
+            "m_EventDieUnitTagCount": 30,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 2,
+            "m_fEventTimeEnd": 300,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": 1.1,
+              "NST_HIT": -1000000,
+              "NST_EVADE": -1000000
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_RANGER",
+          "m_EventRespawnUnitTag": "SET4",
+          "m_NKMDungeonEventTiming": {
+            "m_EventDieUnitTag": "SET3",
+            "m_EventDieUnitTagCount": 20,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 10,
+            "m_fEventTimeEnd": 300,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": 1.1,
+              "NST_HIT": -1000000,
+              "NST_EVADE": -1000000
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_STUNNER",
+          "m_EventRespawnUnitTag": "SET4",
+          "m_NKMDungeonEventTiming": {
+            "m_EventDieUnitTag": "SET3",
+            "m_EventDieUnitTagCount": 20,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 10,
+            "m_fEventTimeEnd": 300,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": 1.1,
+              "NST_HIT": -1000000,
+              "NST_EVADE": -1000000
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_DEMOLISHER",
+          "m_EventRespawnUnitTag": "SET4",
+          "m_NKMDungeonEventTiming": {
+            "m_EventDieUnitTag": "SET3",
+            "m_EventDieUnitTagCount": 20,
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 10,
+            "m_fEventTimeEnd": 300,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatValue": {
+              "NST_MAIN_STAT_RATE": 1.1,
+              "NST_HIT": -1000000,
+              "NST_EVADE": -1000000
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fCostSpeedRateB": 1.0,
+    "m_fStartCost": 10,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EVENT_WAVE_OMEN",
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_dungeonEventType": "FORCE_WIN",
+        "m_EventActionValue": 1,
+        "m_bPause": false,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 299.5
+        }
+      }
+    ],
+    "m_listDungeonDeck": {},
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_NEEDLER",
+        "m_EventRespawnUnitTag": "SET1",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 0.5,
+          "m_fEventTimeEnd": 300,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.1,
+            "NST_HIT": -1000000,
+            "NST_EVADE": -1000000
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_SCOURGE",
+        "m_EventRespawnUnitTag": "SET1",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 0.5,
+          "m_fEventTimeEnd": 300,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.1,
+            "NST_HIT": -1000000,
+            "NST_EVADE": -1000000
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_WRAITH",
+        "m_EventRespawnUnitTag": "SET2",
+        "m_NKMDungeonEventTiming": {
+          "m_EventDieUnitTag": "SET1",
+          "m_EventDieUnitTagCount": 30,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 1,
+          "m_fEventTimeEnd": 300,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.1,
+            "NST_HIT": -1000000,
+            "NST_EVADE": -1000000
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_FLOATER",
+        "m_EventRespawnUnitTag": "SET2",
+        "m_NKMDungeonEventTiming": {
+          "m_EventDieUnitTag": "SET1",
+          "m_EventDieUnitTagCount": 30,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 1,
+          "m_fEventTimeEnd": 300,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.1,
+            "NST_HIT": -1000000,
+            "NST_EVADE": -1000000
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_NEEDLER",
+        "m_EventRespawnUnitTag": "SET3",
+        "m_NKMDungeonEventTiming": {
+          "m_EventDieUnitTag": "SET2",
+          "m_EventDieUnitTagCount": 30,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 2,
+          "m_fEventTimeEnd": 300,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.1,
+            "NST_HIT": -1000000,
+            "NST_EVADE": -1000000
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_BITER",
+        "m_EventRespawnUnitTag": "SET3",
+        "m_NKMDungeonEventTiming": {
+          "m_EventDieUnitTag": "SET2",
+          "m_EventDieUnitTagCount": 30,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 2,
+          "m_fEventTimeEnd": 300,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.1,
+            "NST_HIT": -1000000,
+            "NST_EVADE": -1000000
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_RANGER",
+        "m_EventRespawnUnitTag": "SET4",
+        "m_NKMDungeonEventTiming": {
+          "m_EventDieUnitTag": "SET3",
+          "m_EventDieUnitTagCount": 20,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 10,
+          "m_fEventTimeEnd": 300,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.1,
+            "NST_HIT": -1000000,
+            "NST_EVADE": -1000000
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_STUNNER",
+        "m_EventRespawnUnitTag": "SET4",
+        "m_NKMDungeonEventTiming": {
+          "m_EventDieUnitTag": "SET3",
+          "m_EventDieUnitTagCount": 20,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 10,
+          "m_fEventTimeEnd": 300,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.1,
+            "NST_HIT": -1000000,
+            "NST_EVADE": -1000000
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_ELITE_BASIC_DEMOLISHER",
+        "m_EventRespawnUnitTag": "SET4",
+        "m_NKMDungeonEventTiming": {
+          "m_EventDieUnitTag": "SET3",
+          "m_EventDieUnitTagCount": 20,
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 10,
+          "m_fEventTimeEnd": 300,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.1,
+            "NST_HIT": -1000000,
+            "NST_EVADE": -1000000
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

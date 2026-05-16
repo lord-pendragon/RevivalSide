@@ -1,0 +1,370 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_MONSTER_BOSS_BASIC_FAIL_VALENTINE_H.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 3,
+  "records": [
+    {
+      "__key": "m_listPhaseChangeData",
+      "value": [
+        {
+          "m_TargetPhase": 1,
+          "m_fChangeConditionHPRate": 0.7,
+          "m_ChangeStateName": "USN_PATTERN1"
+        }
+      ]
+    },
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_MONSTER_BOSS_BASIC_FAIL_VALENTINE_N"
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_listNKMEventRespawn": [
+            {
+              "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_FAIL_MINI_VALENTINE_H"
+            },
+            {
+              "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_FAIL_MINI_VALENTINE_H"
+            },
+            {
+              "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_FAIL_MINI_VALENTINE_H"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PATTERN1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 3,
+          "m_bSkillCutIn": true,
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_listNKMEventInvincible": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_fEventTimeMax": 1.0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ]
+            }
+          ],
+          "m_listNKMEventMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_OffsetX": -100,
+              "m_MoveTime": 1.0,
+              "m_bTargetUnit": false,
+              "m_bLandMove": true,
+              "m_bOffsetDependMe": true,
+              "m_MoveTrackingType": "TDT_SLOWER"
+            }
+          ],
+          "m_AnimEndChangeState": "USN_PATTERN1_LOOP"
+        },
+        {
+          "m_StateName": "USN_PATTERN1_LOOP",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "SKILL1_LOOP_2",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 1.0,
+          "m_bSkillCutIn": true,
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_StateTimeChangeState": "USN_ASTAND",
+          "m_StateTimeChangeStateTime": 3.0,
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_DEName": "DE_NKM_MONSTER_BOSS_BASIC_FAIL_BOSS_VALENTINE_PATTERN1",
+              "m_bTargetPos": false,
+              "m_bShipSkillPos": false,
+              "m_bIgnoreTarget": true,
+              "m_bIgnoreNoTarget": false,
+              "m_OffsetX": 70,
+              "m_OffsetY": 380,
+              "m_fAddRotate": 0
+            },
+            {
+              "m_fEventTime": 0.43333333333333335,
+              "m_DEName": "DE_NKM_MONSTER_BOSS_BASIC_FAIL_BOSS_VALENTINE_PATTERN1_2",
+              "m_bTargetPos": false,
+              "m_bShipSkillPos": false,
+              "m_bIgnoreTarget": true,
+              "m_bIgnoreNoTarget": false,
+              "m_OffsetX": 70,
+              "m_OffsetY": 380,
+              "m_fAddRotate": 0
+            },
+            {
+              "m_fEventTime": 0.8333333333333334,
+              "m_DEName": "DE_NKM_MONSTER_BOSS_BASIC_FAIL_BOSS_VALENTINE_PATTERN1_3",
+              "m_bTargetPos": false,
+              "m_bShipSkillPos": false,
+              "m_bIgnoreTarget": true,
+              "m_bIgnoreNoTarget": false,
+              "m_OffsetX": 70,
+              "m_OffsetY": 380,
+              "m_fAddRotate": 0
+            },
+            {
+              "m_fEventTime": 1.2333333333333334,
+              "m_DEName": "DE_NKM_MONSTER_BOSS_BASIC_FAIL_BOSS_VALENTINE_PATTERN1_4",
+              "m_bTargetPos": false,
+              "m_bShipSkillPos": false,
+              "m_bIgnoreTarget": true,
+              "m_bIgnoreNoTarget": false,
+              "m_OffsetX": 70,
+              "m_OffsetY": 380,
+              "m_fAddRotate": 0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_FALL_SKILL_START"
+              ],
+              "m_bStopSound": true
+            }
+          ],
+          "m_listNKMEventMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_OffsetX": -100,
+              "m_MoveTime": 1.0,
+              "m_bTargetUnit": false,
+              "m_bLandMove": true,
+              "m_bOffsetDependMe": true,
+              "m_MoveTrackingType": "TDT_SLOWER"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PATTERN_END",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "SKILL1_END",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1,
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_77"
+              ]
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.16666666666666666,
+              "m_fEventTimeMax": 0.5,
+              "m_fRangeMin": -1000.0,
+              "m_fRangeMax": 1000.0,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FAIL_BOSS_VALENTINE_SKILL1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_listPhaseChangeData": [
+      {
+        "m_TargetPhase": 1,
+        "m_fChangeConditionHPRate": 0.7,
+        "m_ChangeStateName": "USN_PATTERN1"
+      }
+    ],
+    "BASE_UNIT_STR_ID": "NKM_MONSTER_BOSS_BASIC_FAIL_VALENTINE_N",
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_listNKMEventRespawn": [
+          {
+            "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_FAIL_MINI_VALENTINE_H"
+          },
+          {
+            "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_FAIL_MINI_VALENTINE_H"
+          },
+          {
+            "m_UnitStrID": "NKM_MONSTER_NORMAL_BASIC_FAIL_MINI_VALENTINE_H"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PATTERN1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 3,
+        "m_bSkillCutIn": true,
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_listNKMEventInvincible": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_fEventTimeMax": 1.0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ]
+          }
+        ],
+        "m_listNKMEventMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_OffsetX": -100,
+            "m_MoveTime": 1.0,
+            "m_bTargetUnit": false,
+            "m_bLandMove": true,
+            "m_bOffsetDependMe": true,
+            "m_MoveTrackingType": "TDT_SLOWER"
+          }
+        ],
+        "m_AnimEndChangeState": "USN_PATTERN1_LOOP"
+      },
+      {
+        "m_StateName": "USN_PATTERN1_LOOP",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "SKILL1_LOOP_2",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 1.0,
+        "m_bSkillCutIn": true,
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_StateTimeChangeState": "USN_ASTAND",
+        "m_StateTimeChangeStateTime": 3.0,
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_DEName": "DE_NKM_MONSTER_BOSS_BASIC_FAIL_BOSS_VALENTINE_PATTERN1",
+            "m_bTargetPos": false,
+            "m_bShipSkillPos": false,
+            "m_bIgnoreTarget": true,
+            "m_bIgnoreNoTarget": false,
+            "m_OffsetX": 70,
+            "m_OffsetY": 380,
+            "m_fAddRotate": 0
+          },
+          {
+            "m_fEventTime": 0.43333333333333335,
+            "m_DEName": "DE_NKM_MONSTER_BOSS_BASIC_FAIL_BOSS_VALENTINE_PATTERN1_2",
+            "m_bTargetPos": false,
+            "m_bShipSkillPos": false,
+            "m_bIgnoreTarget": true,
+            "m_bIgnoreNoTarget": false,
+            "m_OffsetX": 70,
+            "m_OffsetY": 380,
+            "m_fAddRotate": 0
+          },
+          {
+            "m_fEventTime": 0.8333333333333334,
+            "m_DEName": "DE_NKM_MONSTER_BOSS_BASIC_FAIL_BOSS_VALENTINE_PATTERN1_3",
+            "m_bTargetPos": false,
+            "m_bShipSkillPos": false,
+            "m_bIgnoreTarget": true,
+            "m_bIgnoreNoTarget": false,
+            "m_OffsetX": 70,
+            "m_OffsetY": 380,
+            "m_fAddRotate": 0
+          },
+          {
+            "m_fEventTime": 1.2333333333333334,
+            "m_DEName": "DE_NKM_MONSTER_BOSS_BASIC_FAIL_BOSS_VALENTINE_PATTERN1_4",
+            "m_bTargetPos": false,
+            "m_bShipSkillPos": false,
+            "m_bIgnoreTarget": true,
+            "m_bIgnoreNoTarget": false,
+            "m_OffsetX": 70,
+            "m_OffsetY": 380,
+            "m_fAddRotate": 0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_FALL_SKILL_START"
+            ],
+            "m_bStopSound": true
+          }
+        ],
+        "m_listNKMEventMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_OffsetX": -100,
+            "m_MoveTime": 1.0,
+            "m_bTargetUnit": false,
+            "m_bLandMove": true,
+            "m_bOffsetDependMe": true,
+            "m_MoveTrackingType": "TDT_SLOWER"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PATTERN_END",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "SKILL1_END",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1,
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_77"
+            ]
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.16666666666666666,
+            "m_fEventTimeMax": 0.5,
+            "m_fRangeMin": -1000.0,
+            "m_fRangeMax": 1000.0,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_BASIC_FAIL_BOSS_VALENTINE_SKILL1"
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

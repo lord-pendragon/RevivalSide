@@ -1,0 +1,119 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_CARNIVAL_R_3_3.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 5
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0.5
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MONSTER_BOSS_BASIC_MINISTRA_ADMIN_N"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.5
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatValue": {
+          "NST_ATK": -3700,
+          "NST_DEF": -200,
+          "NST_HP": -130000
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_BOSS_EP1_MINISTRA_MOVE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 2.0,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatValue": {
+              "NST_ATK": -2100,
+              "NST_DEF": -200,
+              "NST_HP": -130000
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MONSTER_BOSS_BASIC_MINISTRA_S",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 2.0,
+            "m_fEventPos": 0.25
+          },
+          "m_AddStatData": {
+            "m_StatValue": {
+              "NST_ATK": -8000,
+              "NST_DEF": -700,
+              "NST_EVADE": -300,
+              "NST_HP": -270000
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 5,
+    "m_fCostSpeedRateB": 0.5,
+    "m_BossUnitStrID": "NKM_MONSTER_BOSS_BASIC_MINISTRA_ADMIN_N",
+    "m_fBossPosZ": 0.5,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatValue": {
+          "NST_ATK": -3700,
+          "NST_DEF": -200,
+          "NST_HP": -130000
+        }
+      }
+    },
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_BOSS_EP1_MINISTRA_MOVE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 2.0,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatValue": {
+            "NST_ATK": -2100,
+            "NST_DEF": -200,
+            "NST_HP": -130000
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MONSTER_BOSS_BASIC_MINISTRA_S",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 2.0,
+          "m_fEventPos": 0.25
+        },
+        "m_AddStatData": {
+          "m_StatValue": {
+            "NST_ATK": -8000,
+            "NST_DEF": -700,
+            "NST_EVADE": -300,
+            "NST_HP": -270000
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

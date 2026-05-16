@@ -1,0 +1,288 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_MAIN_BATTLE_EP12_1_1_HM.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.0
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EP12_REAPER_SA_COMMANDER"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.0
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_bShowGage": false,
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 7.0,
+          "NST_DEF": 0.7,
+          "NST_HP": 1.5
+        },
+        "m_StatValue": {
+          "NST_MAIN_STAT_RATE": 1.0
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonDeck",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 2.0
+        },
+        "m_StatValue": {
+          "NST_MAIN_STAT_RATE": 1.5
+        }
+      },
+      "1": {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHIELD",
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_DEF": 1.5,
+            "NST_HP": 2.0
+          }
+        },
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 5,
+          "m_fEventPos": 0.0
+        }
+      },
+      "2": {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 5,
+          "m_fEventPos": 0.0
+        }
+      },
+      "3": {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 5,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.0
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "m_listDungeonUnitRespawnB": {
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0
+          },
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.5
+          }
+        },
+        "1": {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHIELD",
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_DEF": 1.5,
+              "NST_HP": 2.0
+            }
+          },
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.25
+          }
+        },
+        "2": {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 2,
+            "m_fEventPos": 0.15
+          }
+        },
+        "3": {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 4,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          }
+        },
+        "4": {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHIELD",
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_DEF": 1.5,
+              "NST_HP": 2.0
+            }
+          },
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 13,
+            "m_fEventPos": 0.25
+          }
+        },
+        "5": {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 15.3,
+            "m_fEventPos": 0.15
+          }
+        },
+        "6": {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 18.3,
+            "m_fEventPos": 0.1
+          }
+        }
+      }
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 1.0,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EP12_REAPER_SA_COMMANDER",
+    "m_fBossPosZ": 0.0,
+    "m_BossRespawnUnitTemplet": {
+      "m_bShowGage": false,
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 7.0,
+          "NST_DEF": 0.7,
+          "NST_HP": 1.5
+        },
+        "m_StatValue": {
+          "NST_MAIN_STAT_RATE": 1.0
+        }
+      }
+    },
+    "m_listDungeonDeck": {
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 2.0
+        },
+        "m_StatValue": {
+          "NST_MAIN_STAT_RATE": 1.5
+        }
+      },
+      "1": {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHIELD",
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_DEF": 1.5,
+            "NST_HP": 2.0
+          }
+        },
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 5,
+          "m_fEventPos": 0.0
+        }
+      },
+      "2": {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_RIFLE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 5,
+          "m_fEventPos": 0.0
+        }
+      },
+      "3": {
+        "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHOTGUN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 5,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.0
+        }
+      }
+    },
+    "m_listDungeonUnitRespawnB": {
+      "m_listDungeonUnitRespawnB": {
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 2.0
+          },
+          "m_StatValue": {
+            "NST_MAIN_STAT_RATE": 1.5
+          }
+        },
+        "1": {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHIELD",
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_DEF": 1.5,
+              "NST_HP": 2.0
+            }
+          },
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventPos": 0.25
+          }
+        },
+        "2": {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 2,
+            "m_fEventPos": 0.15
+          }
+        },
+        "3": {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHOTGUN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 4,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          }
+        },
+        "4": {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_SHIELD",
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_DEF": 1.5,
+              "NST_HP": 2.0
+            }
+          },
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 13,
+            "m_fEventPos": 0.25
+          }
+        },
+        "5": {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 15.3,
+            "m_fEventPos": 0.15
+          }
+        },
+        "6": {
+          "m_UnitStrID": "NKM_MOB_NORMAL_EVENT_NANAHARA2_RIFLE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 18.3,
+            "m_fEventPos": 0.1
+          }
+        }
+      }
+    }
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

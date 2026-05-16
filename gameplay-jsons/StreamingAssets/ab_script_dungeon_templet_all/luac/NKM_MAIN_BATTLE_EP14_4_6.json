@@ -1,0 +1,190 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_MAIN_BATTLE_EP14_4_6.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EP14_CORRUPTED_TIGER_H"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_BossRespawnUnitTemplet",
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 1.0,
+          "NST_DEF": 0.8,
+          "NST_HP": 1.6,
+          "NST_EVADE": 0.4,
+          "NST_HIT": 0.3,
+          "NST_CRITICAL": 0.4
+        },
+        "m_StatValue": {
+          "NST_MAIN_STAT_RATE": 1.0
+        }
+      }
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnA",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_BOSS_EP14_ADMIN_CA_CLOUD_ALLY",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.6,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_ATK": 1.0,
+              "NST_DEF": 10.0,
+              "NST_HP": 0.5,
+              "NST_EVADE": 1.0,
+              "NST_HIT": 1.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+          "m_EventConditionNumValue": 50,
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 10164611,
+          "m_bPause": true,
+          "m_fEventDelay": 1.0,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_STATE",
+          "m_EventActionValue": 230676,
+          "m_EventActionStrValue": "USN_HYPER1_STORY",
+          "m_bPause": false,
+          "m_fEventDelay": 3.0,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_EventTag": "HYPER_ON",
+            "m_EventTagCount": 1
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamB",
+      "value": [
+        {
+          "m_EventCondition": "UNIT_STATE_START",
+          "m_EventConditionValue1": "NKM_MOB_BOSS_EP14_CORRUPTED_TIGER_H",
+          "m_EventConditionValue2": "USN_PHASECHANGE1_STORY",
+          "m_dungeonEventType": "SET_EVENTTAG",
+          "m_EventActionStrValue": "HYPER_ON",
+          "m_EventActionValue": 1,
+          "m_bPause": false,
+          "m_fEventDelay": 0.0,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EP14_CORRUPTED_TIGER_H",
+    "m_fBossPosZ": 0.6,
+    "m_BossRespawnUnitTemplet": {
+      "m_AddStatData": {
+        "m_StatFactor": {
+          "NST_ATK": 1.0,
+          "NST_DEF": 0.8,
+          "NST_HP": 1.6,
+          "NST_EVADE": 0.4,
+          "NST_HIT": 0.3,
+          "NST_CRITICAL": 0.4
+        },
+        "m_StatValue": {
+          "NST_MAIN_STAT_RATE": 1.0
+        }
+      }
+    },
+    "m_listDungeonUnitRespawnA": [
+      {
+        "m_UnitStrID": "NKM_MOB_BOSS_EP14_ADMIN_CA_CLOUD_ALLY",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.6,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_ATK": 1.0,
+            "NST_DEF": 10.0,
+            "NST_HP": 0.5,
+            "NST_EVADE": 1.0,
+            "NST_HIT": 1.0
+          }
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+        "m_EventConditionNumValue": 50,
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 10164611,
+        "m_bPause": true,
+        "m_fEventDelay": 1.0,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_STATE",
+        "m_EventActionValue": 230676,
+        "m_EventActionStrValue": "USN_HYPER1_STORY",
+        "m_bPause": false,
+        "m_fEventDelay": 3.0,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_EventTag": "HYPER_ON",
+          "m_EventTagCount": 1
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamB": [
+      {
+        "m_EventCondition": "UNIT_STATE_START",
+        "m_EventConditionValue1": "NKM_MOB_BOSS_EP14_CORRUPTED_TIGER_H",
+        "m_EventConditionValue2": "USN_PHASECHANGE1_STORY",
+        "m_dungeonEventType": "SET_EVENTTAG",
+        "m_EventActionStrValue": "HYPER_ON",
+        "m_EventActionValue": 1,
+        "m_bPause": false,
+        "m_fEventDelay": 0.0,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

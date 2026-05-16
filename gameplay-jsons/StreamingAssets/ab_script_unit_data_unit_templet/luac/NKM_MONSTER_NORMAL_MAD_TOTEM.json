@@ -1,0 +1,115 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_MONSTER_NORMAL_MAD_TOTEM.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 4,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_MONSTER_NORMAL_BASIC_TOTEM_N"
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 130
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_BuffStrID": "BUFF_MAD_TOTEM_RANGE",
+          "m_BuffLevel": 1
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_START",
+          "m_listNKMEventBuff": [
+            {
+              "m_BuffStrID": "BUFF_MAD_TOTEM_SKILL",
+              "m_bMyTeam": true,
+              "m_bEnemy": false
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_EffectName": "AB_FX_BUFF_START_BLUE"
+            },
+            {
+              "m_EffectName": "AB_FX_BUFF_MAP_BLUE"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_listNKMEventBuff": [
+            {
+              "m_BuffStrID": "BUFF_MAD_TOTEM_SKILL",
+              "m_bMyTeam": true,
+              "m_bEnemy": false
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_EffectName": "AB_FX_BUFF_START_BLUE"
+            },
+            {
+              "m_EffectName": "AB_FX_BUFF_MAP_BLUE"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_MONSTER_NORMAL_BASIC_TOTEM_N",
+    "m_SpeedRun": 130,
+    "m_listStaticBuffData": [
+      {
+        "m_BuffStrID": "BUFF_MAD_TOTEM_RANGE",
+        "m_BuffLevel": 1
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_START",
+        "m_listNKMEventBuff": [
+          {
+            "m_BuffStrID": "BUFF_MAD_TOTEM_SKILL",
+            "m_bMyTeam": true,
+            "m_bEnemy": false
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_EffectName": "AB_FX_BUFF_START_BLUE"
+          },
+          {
+            "m_EffectName": "AB_FX_BUFF_MAP_BLUE"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_listNKMEventBuff": [
+          {
+            "m_BuffStrID": "BUFF_MAD_TOTEM_SKILL",
+            "m_bMyTeam": true,
+            "m_bEnemy": false
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_EffectName": "AB_FX_BUFF_START_BLUE"
+          },
+          {
+            "m_EffectName": "AB_FX_BUFF_MAP_BLUE"
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

@@ -1,0 +1,251 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_DUNGEON_SS_ACADEMY_1_1.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 2,
+  "records": [
+    {
+      "__key": "m_listDungeonEventTempletTeamB",
+      "value": [
+        {
+          "m_dungeonEventType": "GAME_EVENT",
+          "m_EventID": 2351011,
+          "m_fEventDelay": 2,
+          "m_bPause": true,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0.0,
+            "m_EventDieUnitTag": "ALLY",
+            "m_EventDieUnitTagCount": 1
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonWave",
+      "value": [
+        {
+          "m_WaveID": 1,
+          "m_NextWaveID": 2,
+          "m_fNextWavetime": 180,
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_NANAHARA_CRIMINAL",
+              "m_ChangeUnitName": "SI_MOB_NAME_BOSS_ACADEMY_CRIMINAL",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 2,
+                "m_fEventPos": 0.4
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_NANAHARA_CRIMINAL",
+              "m_ChangeUnitName": "SI_MOB_NAME_BOSS_ACADEMY_CRIMINAL",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 2.3,
+                "m_fEventPos": 0.3
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_NANAHARA_CRIMINAL",
+              "m_ChangeUnitName": "SI_MOB_NAME_BOSS_ACADEMY_CRIMINAL",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 2.6,
+                "m_fEventPos": 0.2
+              }
+            }
+          ]
+        },
+        {
+          "m_WaveID": 2,
+          "m_NextWaveID": 3,
+          "m_fNextWavetime": 180,
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_NANAHARA_CRIMINAL",
+              "m_ChangeUnitName": "SI_MOB_NAME_BOSS_ACADEMY_CRIMINAL",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 2,
+                "m_fEventPos": 0.4
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_NANAHARA_CRIMINAL",
+              "m_ChangeUnitName": "SI_MOB_NAME_BOSS_ACADEMY_CRIMINAL",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 2.3,
+                "m_fEventPos": 0.3
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_NANAHARA_CRIMINAL",
+              "m_ChangeUnitName": "SI_MOB_NAME_BOSS_ACADEMY_CRIMINAL",
+              "m_EventRespawnUnitTag": "ALLY",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 2.6,
+                "m_fEventPos": 0.2
+              }
+            }
+          ]
+        },
+        {
+          "m_WaveID": 3,
+          "m_fNextWavetime": 180,
+          "m_listDungeonUnitRespawnB": [
+            {
+              "m_UnitStrID": "NKM_MOB_ELITE_ACADEMY_CRIMINAL_HEAVY",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 1,
+                "m_fEventPos": 0.4
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_NANAHARA_CRIMINAL",
+              "m_ChangeUnitName": "SI_MOB_NAME_BOSS_ACADEMY_CRIMINAL",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 2.3,
+                "m_fEventPos": 0.3
+              }
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_NANAHARA_CRIMINAL",
+              "m_ChangeUnitName": "SI_MOB_NAME_BOSS_ACADEMY_CRIMINAL",
+              "m_NKMDungeonEventTiming": {
+                "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+                "m_fEventTimeStart": 2.6,
+                "m_fEventPos": 0.2
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_listDungeonEventTempletTeamB": [
+      {
+        "m_dungeonEventType": "GAME_EVENT",
+        "m_EventID": 2351011,
+        "m_fEventDelay": 2,
+        "m_bPause": true,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0.0,
+          "m_EventDieUnitTag": "ALLY",
+          "m_EventDieUnitTagCount": 1
+        }
+      }
+    ],
+    "m_listDungeonWave": [
+      {
+        "m_WaveID": 1,
+        "m_NextWaveID": 2,
+        "m_fNextWavetime": 180,
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_NANAHARA_CRIMINAL",
+            "m_ChangeUnitName": "SI_MOB_NAME_BOSS_ACADEMY_CRIMINAL",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 2,
+              "m_fEventPos": 0.4
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_NANAHARA_CRIMINAL",
+            "m_ChangeUnitName": "SI_MOB_NAME_BOSS_ACADEMY_CRIMINAL",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 2.3,
+              "m_fEventPos": 0.3
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_NANAHARA_CRIMINAL",
+            "m_ChangeUnitName": "SI_MOB_NAME_BOSS_ACADEMY_CRIMINAL",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 2.6,
+              "m_fEventPos": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "m_WaveID": 2,
+        "m_NextWaveID": 3,
+        "m_fNextWavetime": 180,
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_NANAHARA_CRIMINAL",
+            "m_ChangeUnitName": "SI_MOB_NAME_BOSS_ACADEMY_CRIMINAL",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 2,
+              "m_fEventPos": 0.4
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_NANAHARA_CRIMINAL",
+            "m_ChangeUnitName": "SI_MOB_NAME_BOSS_ACADEMY_CRIMINAL",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 2.3,
+              "m_fEventPos": 0.3
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_NANAHARA_CRIMINAL",
+            "m_ChangeUnitName": "SI_MOB_NAME_BOSS_ACADEMY_CRIMINAL",
+            "m_EventRespawnUnitTag": "ALLY",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 2.6,
+              "m_fEventPos": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "m_WaveID": 3,
+        "m_fNextWavetime": 180,
+        "m_listDungeonUnitRespawnB": [
+          {
+            "m_UnitStrID": "NKM_MOB_ELITE_ACADEMY_CRIMINAL_HEAVY",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 1,
+              "m_fEventPos": 0.4
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_NANAHARA_CRIMINAL",
+            "m_ChangeUnitName": "SI_MOB_NAME_BOSS_ACADEMY_CRIMINAL",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 2.3,
+              "m_fEventPos": 0.3
+            }
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_NANAHARA_CRIMINAL",
+            "m_ChangeUnitName": "SI_MOB_NAME_BOSS_ACADEMY_CRIMINAL",
+            "m_NKMDungeonEventTiming": {
+              "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+              "m_fEventTimeStart": 2.6,
+              "m_fEventPos": 0.2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

@@ -1,0 +1,406 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DIVE_BATTLE_11_RANKER01.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 5,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 10
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.0
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_SHIP_H_TEMPEST_6"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 1.0
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_UNIT_BORDER_SA_HORSE",
+          "m_UnitEffect": "SHADOW",
+          "m_bForceMonster": true,
+          "m_bReactor": true,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 18,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 2.55,
+              "NST_ATK": 10.5,
+              "NST_DEF": 2.55,
+              "NST_SKILL_COOL_TIME_REDUCE_RATE": 30.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_C_ADMIN_GREATSWORD_RB",
+          "m_UnitEffect": "SHADOW",
+          "m_bForceMonster": true,
+          "m_bReactor": true,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 0.1,
+            "m_fEventTimeGap": 9,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 2.55,
+              "NST_ATK": 10.2,
+              "NST_DEF": 2.55,
+              "NST_SKILL_COOL_TIME_REDUCE_RATE": 30.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_S_ESPR_PILE_RA",
+          "m_UnitEffect": "SHADOW",
+          "m_bForceMonster": true,
+          "m_bReactor": true,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 1.5,
+            "m_fEventTimeGap": 6,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 2.55,
+              "NST_ATK": 10.2,
+              "NST_DEF": 2.55,
+              "NST_SKILL_COOL_TIME_REDUCE_RATE": 30.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_BORDER_S_HUNTER",
+          "m_UnitEffect": "SHADOW",
+          "m_bForceMonster": true,
+          "m_bReactor": true,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 4.5,
+            "m_fEventTimeGap": 6,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 2.55,
+              "NST_ATK": 10.2,
+              "NST_DEF": 2.55,
+              "NST_SKILL_COOL_TIME_REDUCE_RATE": 30.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_ESPR_S_DOCTOR",
+          "m_UnitEffect": "SHADOW",
+          "m_bForceMonster": true,
+          "m_bReactor": true,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 9,
+            "m_fEventTimeGap": 9,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 2.55,
+              "NST_ATK": 10.2,
+              "NST_DEF": 2.55,
+              "NST_SKILL_COOL_TIME_REDUCE_RATE": 30.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_C_POLICE_LEE_YUMI",
+          "m_UnitEffect": "SHADOW",
+          "m_bForceMonster": true,
+          "m_bReactor": true,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 13.5,
+            "m_fEventTimeGap": 9,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 2.55,
+              "NST_ATK": 10.2,
+              "NST_DEF": 2.55,
+              "NST_SKILL_COOL_TIME_REDUCE_RATE": 30.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_ADMIN_CA_ARTILLERY",
+          "m_UnitEffect": "SHADOW",
+          "m_bForceMonster": true,
+          "m_bReactor": true,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 22.5,
+            "m_fEventTimeGap": 18,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 2.55,
+              "NST_ATK": 10.2,
+              "NST_DEF": 2.55,
+              "NST_SKILL_COOL_TIME_REDUCE_RATE": 30.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_DELTA_CA_KYLE_AP",
+          "m_UnitEffect": "SHADOW",
+          "m_bForceMonster": true,
+          "m_bReactor": true,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 31.5,
+            "m_fEventTimeGap": 18,
+            "m_fEventTimeEnd": 180,
+            "m_fEventPos": 0.1
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 2.55,
+              "NST_ATK": 10.2,
+              "NST_DEF": 2.55,
+              "NST_SKILL_COOL_TIME_REDUCE_RATE": 30.0
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 10,
+    "m_fCostSpeedRateB": 1.0,
+    "m_BossUnitStrID": "NKM_SHIP_H_TEMPEST_6",
+    "m_fBossPosZ": 1.0,
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_UNIT_BORDER_SA_HORSE",
+        "m_UnitEffect": "SHADOW",
+        "m_bForceMonster": true,
+        "m_bReactor": true,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 18,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 2.55,
+            "NST_ATK": 10.5,
+            "NST_DEF": 2.55,
+            "NST_SKILL_COOL_TIME_REDUCE_RATE": 30.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_C_ADMIN_GREATSWORD_RB",
+        "m_UnitEffect": "SHADOW",
+        "m_bForceMonster": true,
+        "m_bReactor": true,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 0.1,
+          "m_fEventTimeGap": 9,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 2.55,
+            "NST_ATK": 10.2,
+            "NST_DEF": 2.55,
+            "NST_SKILL_COOL_TIME_REDUCE_RATE": 30.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_S_ESPR_PILE_RA",
+        "m_UnitEffect": "SHADOW",
+        "m_bForceMonster": true,
+        "m_bReactor": true,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 1.5,
+          "m_fEventTimeGap": 6,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 2.55,
+            "NST_ATK": 10.2,
+            "NST_DEF": 2.55,
+            "NST_SKILL_COOL_TIME_REDUCE_RATE": 30.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_BORDER_S_HUNTER",
+        "m_UnitEffect": "SHADOW",
+        "m_bForceMonster": true,
+        "m_bReactor": true,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 4.5,
+          "m_fEventTimeGap": 6,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 2.55,
+            "NST_ATK": 10.2,
+            "NST_DEF": 2.55,
+            "NST_SKILL_COOL_TIME_REDUCE_RATE": 30.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_ESPR_S_DOCTOR",
+        "m_UnitEffect": "SHADOW",
+        "m_bForceMonster": true,
+        "m_bReactor": true,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 9,
+          "m_fEventTimeGap": 9,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 2.55,
+            "NST_ATK": 10.2,
+            "NST_DEF": 2.55,
+            "NST_SKILL_COOL_TIME_REDUCE_RATE": 30.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_C_POLICE_LEE_YUMI",
+        "m_UnitEffect": "SHADOW",
+        "m_bForceMonster": true,
+        "m_bReactor": true,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 13.5,
+          "m_fEventTimeGap": 9,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 2.55,
+            "NST_ATK": 10.2,
+            "NST_DEF": 2.55,
+            "NST_SKILL_COOL_TIME_REDUCE_RATE": 30.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_ADMIN_CA_ARTILLERY",
+        "m_UnitEffect": "SHADOW",
+        "m_bForceMonster": true,
+        "m_bReactor": true,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 22.5,
+          "m_fEventTimeGap": 18,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 2.55,
+            "NST_ATK": 10.2,
+            "NST_DEF": 2.55,
+            "NST_SKILL_COOL_TIME_REDUCE_RATE": 30.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_DELTA_CA_KYLE_AP",
+        "m_UnitEffect": "SHADOW",
+        "m_bForceMonster": true,
+        "m_bReactor": true,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 31.5,
+          "m_fEventTimeGap": 18,
+          "m_fEventTimeEnd": 180,
+          "m_fEventPos": 0.1
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 2.55,
+            "NST_ATK": 10.2,
+            "NST_DEF": 2.55,
+            "NST_SKILL_COOL_TIME_REDUCE_RATE": 30.0
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

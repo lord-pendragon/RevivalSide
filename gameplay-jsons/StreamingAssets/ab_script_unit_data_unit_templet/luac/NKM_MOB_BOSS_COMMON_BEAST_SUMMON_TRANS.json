@@ -1,0 +1,67 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_BOSS_COMMON_BEAST_SUMMON_TRANS.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 2,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_MONSTER_BOSS_BASIC_BEAST_SUMMON_N"
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_listNKMEventAttack": [
+            {
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_TRANS_BEAST_SUMMON_ATTACK1"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_listNKMEventRespawn": [
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER_TRANS"
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_STUNNER_TRANS"
+            },
+            {
+              "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_FLOATER_TRANS"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_MONSTER_BOSS_BASIC_BEAST_SUMMON_N",
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_listNKMEventAttack": [
+          {
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_TRANS_BEAST_SUMMON_ATTACK1"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_listNKMEventRespawn": [
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_BITER_TRANS"
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_STUNNER_TRANS"
+          },
+          {
+            "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_FLOATER_TRANS"
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

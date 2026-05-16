@@ -1,0 +1,3635 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_BOSS_SPORTS_ALT_CA_SEO_YOON_CM.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 42,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_UNIT_BASE_BOSS_MOVE"
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.4
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.5
+    },
+    {
+      "__key": "m_UnitSizeX",
+      "value": 120
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 250
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_SpriteOffsetX",
+      "value": 0
+    },
+    {
+      "__key": "m_SpriteOffsetY",
+      "value": 0
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": true
+    },
+    {
+      "__key": "m_fGageOffsetX",
+      "value": 0
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 320
+    },
+    {
+      "__key": "m_NKC_TEAM_COLOR_TYPE",
+      "value": "NTCT_FULL"
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 200
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 200
+    },
+    {
+      "__key": "m_fShadowOffsetX",
+      "value": 0
+    },
+    {
+      "__key": "m_fShadowOffsetY",
+      "value": 0
+    },
+    {
+      "__key": "m_bNoMove",
+      "value": false
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 290
+    },
+    {
+      "__key": "m_fAirHigh",
+      "value": 0
+    },
+    {
+      "__key": "m_fGAccel",
+      "value": 2000
+    },
+    {
+      "__key": "m_fMaxGSpeed",
+      "value": -3000
+    },
+    {
+      "__key": "m_SeeTarget",
+      "value": true
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 850
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 1350
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 1500
+    },
+    {
+      "__key": "m_bTargetNoChange",
+      "value": false
+    },
+    {
+      "__key": "m_bNoBackTarget",
+      "value": false
+    },
+    {
+      "__key": "m_bAttackedTarget",
+      "value": true
+    },
+    {
+      "__key": "m_AttackedTargetTime",
+      "value": 1.0
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 2.0
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": true
+    },
+    {
+      "__key": "m_fBuffEffectScaleFactor",
+      "value": 1.0
+    },
+    {
+      "__key": "m_bImmuneStun",
+      "value": true
+    },
+    {
+      "__key": "m_fDamageUpFactor",
+      "value": 0.0
+    },
+    {
+      "__key": "m_fDamageBackFactor",
+      "value": 0.1
+    },
+    {
+      "__key": "m_listPhaseChangeData",
+      "value": [
+        {
+          "m_TargetPhase": 1,
+          "m_fChangeConditionHPRate": 0.7,
+          "m_ChangeStateName": "USN_PHASECHANGE1"
+        },
+        {
+          "m_TargetPhase": 2,
+          "m_fChangeConditionHPRate": 0.4,
+          "m_ChangeStateName": "USN_PHASECHANGE1"
+        }
+      ]
+    },
+    {
+      "__key": "m_listAccumStateChangePack",
+      "value": [
+        {
+          "m_listAccumStateChange": [
+            {
+              "m_listAccumStateName": [
+                "USN_ATTACK1",
+                "USN_ATTACK1_AIR",
+                "USN_SKILL1",
+                "USN_HYPER_SKILL1"
+              ],
+              "m_AccumCount": 3,
+              "m_TargetStateName": "USN_PASSIVE1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1"
+        }
+      ]
+    },
+    {
+      "__key": "m_listAirAttackStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1_AIR"
+        }
+      ]
+    },
+    {
+      "__key": "m_listSkillStateData",
+      "value": [
+        {
+          "m_StateName": "USN_SKILL1"
+        }
+      ]
+    },
+    {
+      "__key": "m_listHyperSkillStateData",
+      "value": [
+        {
+          "m_StateName": "USN_HYPER_SKILL1",
+          "m_fStartCool": 0.7,
+          "m_fRangeMax": 1000
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_START",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_AnimName": "START2",
+          "m_DamagedChangeState": "USN_ASTAND",
+          "m_bShowGage": false,
+          "m_listNKMEventAnimSpeed": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_fAnimSpeed": 1.0
+            },
+            {
+              "m_fEventTime": 1.0,
+              "m_fAnimSpeed": 1.2
+            }
+          ],
+          "m_listNKMEventFadeWorld": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.03333333333333333,
+              "m_fEventTimeMax": 2.6666666666666665,
+              "m_fColorR": 0.3,
+              "m_fColorG": 0.0,
+              "m_fColorB": 0.3,
+              "m_fMapColorKeepTime": 0.1,
+              "m_fMapColorReturnTime": 4.0
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bDamageSpeedDependRight": true,
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 3.3333333333333335,
+              "m_fEventTimeMax": 3.6666666666666665,
+              "m_fRangeMin": -1000,
+              "m_fRangeMax": 1000,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 99,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_SPORTS_ALT_CA_SEO_YOON_START"
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_EffectName": "AB_FX_AWAKEN_SPAWN_HUD",
+              "m_OffsetX": 0,
+              "m_OffsetY": 75,
+              "m_AnimName": "BASE",
+              "m_fScaleFactor": 1.0
+            }
+          ],
+          "m_listNKMEventInvincible": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_fEventTimeMax": 4.5
+            }
+          ],
+          "m_listNKMEventStopTime": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.16666666666666666,
+              "m_StopTimeIndex": "NSTI_SKILL",
+              "m_fStopTime": 4.0,
+              "m_bStopEnemyOnly": false,
+              "m_bMyStop": false,
+              "m_fRange": 3000
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_fLocalVol": 1.0,
+              "m_fFocusRange": 1200.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ONLY_AWAKEN_HUD"
+              ]
+            },
+            {
+              "m_fEventTime": 0.1,
+              "m_fLocalVol": 0.6,
+              "m_fFocusRange": 1200.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_ROCK_BIG_02"
+              ]
+            },
+            {
+              "m_fEventTime": 1.0,
+              "m_fLocalVol": 1.0,
+              "m_fFocusRange": 1200.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_WHOOSH_04"
+              ]
+            },
+            {
+              "m_fEventTime": 1.6666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_fFocusRange": 1200.0,
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_KNIGHT_HYPER_ATTACK_START"
+              ]
+            },
+            {
+              "m_fEventTime": 1.9,
+              "m_fLocalVol": 1.0,
+              "m_fFocusRange": 1200.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ELECTRIC"
+              ]
+            },
+            {
+              "m_fEventTime": 3.3333333333333335,
+              "m_fLocalVol": 1.0,
+              "m_fFocusRange": 1200.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG_03"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.6666666666666667,
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_START_1",
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_START_2"
+              ]
+            }
+          ],
+          "m_listNKMEventCameraMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_fEventTimeMax": 1.1666666666666667,
+              "m_bForce": true,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 100,
+              "m_fZoom": -200,
+              "m_fMoveTrackingTime": 0.16666666666666666,
+              "m_fZoomTrackingTime": 0.16666666666666666
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.1666666666666667,
+              "m_fEventTimeMax": 1.8333333333333333,
+              "m_bForce": true,
+              "m_fPosXOffset": -125,
+              "m_fPosYOffset": 325,
+              "m_fZoom": -175,
+              "m_fMoveTrackingTime": 0.6666666666666666,
+              "m_fZoomTrackingTime": 0.6666666666666666
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.8333333333333333,
+              "m_fEventTimeMax": 3.3333333333333335,
+              "m_bForce": true,
+              "m_fPosXOffset": 250,
+              "m_fPosYOffset": 300,
+              "m_fZoom": -200,
+              "m_fMoveTrackingTime": 3.3333333333333335,
+              "m_fZoomTrackingTime": 1.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 3.3333333333333335,
+              "m_fEventTimeMax": 4.333333333333333,
+              "m_bForce": true,
+              "m_fPosXOffset": 250,
+              "m_fPosYOffset": 300,
+              "m_fZoom": 100,
+              "m_fMoveTrackingTime": 0.3333333333333333,
+              "m_fZoomTrackingTime": 0.16666666666666666
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_RUN",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_AnimName": "RUN",
+          "m_fAnimSpeed": 1.0,
+          "m_bAnimLoop": true,
+          "m_bRun": true
+        },
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK1",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_listNKMEventAnimSpeed": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_fAnimSpeed": 1.5
+            },
+            {
+              "m_fEventTime": 0.5,
+              "m_fAnimSpeed": 2.5
+            },
+            {
+              "m_fEventTime": 3.1666666666666665,
+              "m_fAnimSpeed": 1.4
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bDamageSpeedDependRight": true,
+              "m_fEventTimeMin": 0.6666666666666666,
+              "m_fEventTimeMax": 2.0,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 900,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 1,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_SPORTS_ALT_CA_SEO_YOON_ATTACK1"
+            },
+            {
+              "m_bDamageSpeedDependRight": true,
+              "m_fEventTimeMin": 2.0,
+              "m_fEventTimeMax": 3.0,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 900,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 1,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_SPORTS_ALT_CA_SEO_YOON_ATTACK1"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_68"
+              ],
+              "m_fLocalVol": 0.6,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_GUN_RELOAD_SMALL_03"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 0.7666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_GUN_FIRE_SMALL_02"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 1.0333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_GUN_FIRE_SMALL_02"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 1.6,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_GUN_FIRE_SMALL_02"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 2.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_GUN_FIRE_SMALL_02"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 0.6666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MINIGUN_FIRE"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 1.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MINIGUN_FIRE"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 2.6666666666666665,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MINIGUN_FIRE"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 3.1666666666666665,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MOVEMENT_07"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 3.3333333333333335,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_09"
+              ],
+              "m_fLocalVol": 0.5,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.3,
+              "m_listSoundName": [
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_1",
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_2",
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_3"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1_AIR",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK1_AIR",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_listNKMEventAnimSpeed": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L8_1 / 30"
+              },
+              "m_fAnimSpeed": 1.0
+            },
+            {
+              "m_fEventTime": 0.5,
+              "m_fAnimSpeed": 2.5
+            },
+            {
+              "m_fEventTime": 3.1666666666666665,
+              "m_fAnimSpeed": 1.0
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bDamageSpeedDependRight": true,
+              "m_fEventTimeMin": 0.6666666666666666,
+              "m_fEventTimeMax": 2.0,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 900,
+              "m_bHitLand": false,
+              "m_AttackUnitCount": 1,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_SPORTS_ALT_CA_SEO_YOON_ATTACK1"
+            },
+            {
+              "m_bDamageSpeedDependRight": true,
+              "m_fEventTimeMin": 2.0,
+              "m_fEventTimeMax": 3.0,
+              "m_fRangeMin": 0,
+              "m_fRangeMax": 900,
+              "m_bHitLand": false,
+              "m_AttackUnitCount": 1,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_SPORTS_ALT_CA_SEO_YOON_ATTACK1"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_68"
+              ],
+              "m_fLocalVol": 0.6,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_GUN_RELOAD_SMALL_03"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 0.7666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_GUN_FIRE_SMALL_02"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 1.0333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_GUN_FIRE_SMALL_02"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 1.6,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_GUN_FIRE_SMALL_02"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 2.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_GUN_FIRE_SMALL_02"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 0.6666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MINIGUN_FIRE"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 1.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MINIGUN_FIRE"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 2.6666666666666665,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MINIGUN_FIRE"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 3.1666666666666665,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MOVEMENT_07"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 3.3333333333333335,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_09"
+              ],
+              "m_fLocalVol": 0.5,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.3,
+              "m_listSoundName": [
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_1",
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_2",
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_3"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PASSIVE1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "SKILL2",
+          "m_StateCoolTime": 15.0,
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.3333333333333335,
+              "m_BuffStrID": "BUFF_NKM_UNIT_ALT_CA_SEO_YOON_PHASE_UP",
+              "m_BuffLevel": 5,
+              "m_bMyTeam": false
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.3333333333333335,
+              "m_BuffStrID": "BUFF_NKM_UNIT_ALT_CA_SEO_YOON_PHASE_UP",
+              "m_BuffLevel": 5,
+              "m_bMyTeam": true,
+              "m_fRange": 6000
+            }
+          ],
+          "m_listNKMEventAnimSpeed": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_fAnimSpeed": 2.5
+            },
+            {
+              "m_fEventTime": 0.7666666666666667,
+              "m_fAnimSpeed": 2.0
+            },
+            {
+              "m_fEventTime": 2.466666666666667,
+              "m_fAnimSpeed": 1.0
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.0,
+              "m_fEventTimeMax": 3.0,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1000.0,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 99,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_SPORTS_ALT_CA_SEO_YOON_SKILL2"
+            }
+          ],
+          "m_listNKMEventRespawn": [
+            {
+              "m_fEventTime": 3.0,
+              "m_UnitStrID": "NKM_MOB_NORMAL_SPORTS_ALT_CA_SEO_YOON_SUMMON",
+              "m_MaxCount": 4,
+              "m_fOffsetX": -200,
+              "m_bMaxCountReRespawn": true
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 1.0,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 2000,
+              "m_fCameraCrashGap": 3,
+              "m_fCameraCrashTime": 1.3333333333333333
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_56"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 0.4,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_68"
+              ],
+              "m_fLocalVol": 0.7,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 0.5666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_68"
+              ],
+              "m_fLocalVol": 0.7,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 0.6666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_MONSTER_MINISTRA_SHADOW_HYPER_ATTACK_LAST"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MINIGUN_FIRE"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 1.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 1.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MINIGUN_FIRE"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 1.8333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 2.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MINIGUN_FIRE"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 2.3333333333333335,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 2.6666666666666665,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_56"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 2.8333333333333335,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_51"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.4,
+              "m_listSoundName": [
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ACTIVE_2",
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_2",
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_4"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.0,
+              "m_bVoice": true,
+              "m_PlayRate": 0.4,
+              "m_listSoundName": [
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ACTIVE_1",
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_2",
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_5"
+              ]
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.3333333333333333,
+              "m_EffectName": "AB_FX_DE_NKM_MONSTER_BOSS_REPLACER_SEO_YOON_ATTACK1",
+              "m_fScaleFactor": 0.7,
+              "m_OffsetX": -75,
+              "m_OffsetY": 270,
+              "m_AnimName": "BASE"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.8333333333333333,
+              "m_EffectName": "AB_FX_DE_NKM_MONSTER_BOSS_REPLACER_SEO_YOON_ATTACK1",
+              "m_fScaleFactor": 0.7,
+              "m_OffsetX": -75,
+              "m_OffsetY": 270,
+              "m_AnimName": "BASE"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.3333333333333335,
+              "m_EffectName": "AB_FX_DE_NKM_MONSTER_BOSS_REPLACER_SEO_YOON_ATTACK1",
+              "m_fScaleFactor": 0.7,
+              "m_OffsetX": -75,
+              "m_OffsetY": 270,
+              "m_AnimName": "BASE"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_PHASECHANGE1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "PASSIVE",
+          "m_StateCoolTime": 15.0,
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_fAnimSpeed": 1.5,
+          "m_bShowGage": false,
+          "m_bForceRight": true,
+          "m_bForceRightLeftDependTeam": true,
+          "m_listNKMEventRespawn": [
+            {
+              "m_fEventTime": 3.0,
+              "m_UnitStrID": "NKM_MOB_NORMAL_SPORTS_ALT_CA_SEO_YOON_SUMMON",
+              "m_MaxCount": 2,
+              "m_fOffsetX": -200,
+              "m_bMaxCountReRespawn": true
+            }
+          ],
+          "m_listNKMEventMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.8333333333333333,
+              "m_bTargetUnit": false,
+              "m_OffsetX": -600,
+              "m_OffsetJumpYPos": 0,
+              "m_MoveTime": 0.16666666666666666,
+              "m_bLandMove": true,
+              "m_bOffsetDependMe": true,
+              "m_MoveTrackingType": "TDT_FASTER"
+            }
+          ],
+          "m_listNKMEventAnimSpeed": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_fAnimSpeed": 3.0
+            },
+            {
+              "m_fEventTime": 1.8333333333333333,
+              "m_fAnimSpeed": 3.2
+            },
+            {
+              "m_fEventTime": 3.033333333333333,
+              "m_fAnimSpeed": 2.0
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_fEventTimeMax": 10.0,
+              "m_fColorR": 0.3,
+              "m_fColorG": 0.3,
+              "m_fColorB": 0.3
+            }
+          ],
+          "m_listNKMEventInvincible": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_fEventTimeMax": 3.0
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 1.0,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 1250,
+              "m_fCameraCrashGap": 8,
+              "m_fCameraCrashTime": 0.3333333333333333
+            },
+            {
+              "m_fEventTime": 3.0,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 1250,
+              "m_fCameraCrashGap": 15,
+              "m_fCameraCrashTime": 0.6
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bDamageSpeedDependRight": true,
+              "m_fEventTimeMin": 1.0,
+              "m_fEventTimeMax": 1.6666666666666667,
+              "m_fRangeMin": -500,
+              "m_fRangeMax": 500,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 99,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_SPORTS_ALT_CA_SEO_YOON_PASSIVE1"
+            },
+            {
+              "m_bDamageSpeedDependRight": true,
+              "m_fEventTimeMin": 3.0,
+              "m_fEventTimeMax": 3.6666666666666665,
+              "m_fRangeMin": -750,
+              "m_fRangeMax": 750,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 99,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_SPORTS_ALT_CA_SEO_YOON_PASSIVE1_END"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L10_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_59"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_11"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 1.3333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_20"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 3.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_ROCK_BIG_02"
+              ],
+              "m_fLocalVol": 0.7,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 3.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_17"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 3.6666666666666665,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_52"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_PASSIVE_1",
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_5",
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_7"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "SKILL1",
+          "m_StateCoolTime": 15.0,
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_bSkillCutIn": true,
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 100,
+              "m_fColorR": 0.5,
+              "m_fColorG": 0.5,
+              "m_fColorB": 1.0
+            }
+          ],
+          "m_listNKMEventAnimSpeed": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_fAnimSpeed": 8.0
+            },
+            {
+              "m_fEventTime": 1.8333333333333333,
+              "m_fAnimSpeed": 6
+            },
+            {
+              "m_fEventTime": 2.066666666666667,
+              "m_fAnimSpeed": 2.0
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 1.6,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 1250,
+              "m_fCameraCrashGap": 4,
+              "m_fCameraCrashTime": 0.2
+            },
+            {
+              "m_fEventTime": 3.033333333333333,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 1250,
+              "m_fCameraCrashGap": 8,
+              "m_fCameraCrashTime": 0.5
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bDamageSpeedDependRight": true,
+              "m_fEventTimeMin": 3.0,
+              "m_fEventTimeMax": 3.3333333333333335,
+              "m_fRangeMin": -300,
+              "m_fRangeMax": 1000,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 10,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_SPORTS_ALT_CA_SEO_YOON_SKILL1"
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.0,
+              "m_DEName": "DE_NKM_UNIT_ALT_CA_SEO_YOON_SKILL2",
+              "m_fAddRotate": -7,
+              "m_OffsetX": 120,
+              "m_OffsetY": 0
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_08"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 1.4666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_09"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 1.5666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG_05"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 2.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_09"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 2.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_10"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 2.8333333333333335,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_09"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 2.933333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG_03"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_PASSIVE_2",
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_PASSIVE_3"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.0,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_4",
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_5",
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_7"
+              ]
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_EffectName": "AB_FX_CAST_SKILL",
+              "m_fScaleFactor": 30.0,
+              "m_OffsetX": -25,
+              "m_OffsetY": 210,
+              "m_AnimName": "BASE"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_HYPER_SKILL1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "HYPER_SKILL1",
+          "m_StateCoolTime": 30.0,
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_bShowGage": false,
+          "m_fAnimSpeed": 1.2,
+          "m_listNKMEventRespawn": [
+            {
+              "m_fEventTime": 3.8333333333333335,
+              "m_UnitStrID": "NKM_MOB_NORMAL_SPORTS_ALT_CA_SEO_YOON_SUMMON",
+              "m_MaxCount": 1,
+              "m_fOffsetX": -250,
+              "m_bMaxCountReRespawn": true
+            }
+          ],
+          "m_listNKMEventAnimSpeed": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_fAnimSpeed": 1.5
+            },
+            {
+              "m_fEventTime": 1.8333333333333333,
+              "m_fAnimSpeed": 1.0
+            },
+            {
+              "m_fEventTime": 4.666666666666667,
+              "m_fAnimSpeed": 0.9
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0,
+              "m_fEventTimeMax": 100,
+              "m_fColorR": 0.1,
+              "m_fColorG": 0.5,
+              "m_fColorB": 0.5
+            }
+          ],
+          "m_listNKMEventInvincible": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_fEventTimeMax": 3.8333333333333335
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fScaleFactor": 30.0,
+              "m_fEventTime": 0.03333333333333333,
+              "m_EffectName": "AB_FX_CAST_HYPER",
+              "m_OffsetX": -10,
+              "m_OffsetY": 210,
+              "m_AnimName": "BASE"
+            }
+          ],
+          "m_listNKMEventColor": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.6666666666666667,
+              "m_fColorR": 0.15,
+              "m_fColorG": 0.15,
+              "m_fColorB": 0.15,
+              "m_fTrackTime": 0.16666666666666666,
+              "m_fColorTime": 0.16666666666666666
+            }
+          ],
+          "m_listNKMEventMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 1.8666666666666667,
+              "m_bTargetUnit": false,
+              "m_OffsetX": 0,
+              "m_OffsetJumpYPos": 100,
+              "m_MoveTime": 0.5,
+              "m_bLandMove": false,
+              "m_bOffsetDependMe": true,
+              "m_MoveTrackingType": "TDT_NORMAL"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.3666666666666667,
+              "m_bTargetUnit": false,
+              "m_OffsetX": 0,
+              "m_OffsetJumpYPos": 0,
+              "m_MoveTime": 1.9666666666666666,
+              "m_bLandMove": false,
+              "m_bOffsetDependMe": true,
+              "m_MoveTrackingType": "TDT_NORMAL"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 4.333333333333333,
+              "m_bTargetUnit": false,
+              "m_OffsetX": 0,
+              "m_OffsetJumpYPos": -100,
+              "m_MoveTime": 0.26666666666666666,
+              "m_bLandMove": false,
+              "m_bOffsetDependMe": true,
+              "m_MoveTrackingType": "TDT_FASTER"
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 4.333333333333333,
+              "m_DEName": "DE_NKM_UNIT_ALT_CA_SEO_YOON_HYPER1_A",
+              "m_OffsetX": 200,
+              "m_OffsetY": 0,
+              "m_fAddRotate": 0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 4.666666666666667,
+              "m_DEName": "DE_NKM_UNIT_ALT_CA_SEO_YOON_HYPER1_B",
+              "m_OffsetX": 900,
+              "m_OffsetY": 0,
+              "m_fAddRotate": 0
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bDamageSpeedDependRight": true,
+              "m_fEventTimeMin": 3.8333333333333335,
+              "m_fEventTimeMax": 4.166666666666667,
+              "m_fRangeMin": -100,
+              "m_fRangeMax": 1800,
+              "m_bHitLand": true,
+              "m_bHitAir": true,
+              "m_AttackTargetUnit": false,
+              "m_AttackUnitCount": 8,
+              "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+              "m_DamageTempletName": "DT_NKM_MOB_SPORTS_ALT_CA_SEO_YOON_HYPER1_START"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HYPER_ATTACK_START"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 9999.0
+            },
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L13_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_08"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG_05"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_09"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 0.6666666666666666,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_BIG_05"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 1.1666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_WIND_02"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 9999.0
+            },
+            {
+              "m_fEventTime": 1.2333333333333334,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_16"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 9999.0
+            },
+            {
+              "m_fEventTime": 1.6666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_DARK_11"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 9999.0
+            },
+            {
+              "m_fEventTime": 2.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_74"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 9999.0
+            },
+            {
+              "m_fEventTime": 3.3333333333333335,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWORD_SLASH_SMALL_09"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 3.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_21"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 9999.0
+            },
+            {
+              "m_fEventTime": 3.8333333333333335,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_WIND"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 9999.0
+            },
+            {
+              "m_fEventTime": 3.933333333333333,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_SLASH_BIG"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 9999.0
+            },
+            {
+              "m_fEventTime": 4.166666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HIT_EXPLOSION_FIRE_BIG"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 9999.0
+            },
+            {
+              "m_fEventTime": 4.166666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_COFFIN_LASER_MAIN_EXPLOSION"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 9999.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_HYPER_1",
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_HYPER_2",
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_9"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.8,
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_4",
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_5"
+              ]
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 1.3333333333333333,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 9999,
+              "m_fCameraCrashGap": 5,
+              "m_fCameraCrashTime": 0.16666666666666666
+            },
+            {
+              "m_fEventTime": 3.8333333333333335,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 9999,
+              "m_fCameraCrashGap": 20,
+              "m_fCameraCrashTime": 0.5
+            }
+          ],
+          "m_listNKMEventCameraMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.1,
+              "m_fEventTimeMax": 1.1666666666666667,
+              "m_fPosXOffset": -150,
+              "m_fPosYOffset": 150,
+              "m_fZoom": -100,
+              "m_fFocusBlur": 0.0,
+              "m_fMoveTrackingTime": 0.1,
+              "m_fZoomTrackingTime": 0.1,
+              "m_fCameraRadius": 9999.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.1666666666666667,
+              "m_fEventTimeMax": 1.8333333333333333,
+              "m_fPosXOffset": -100,
+              "m_fPosYOffset": 100,
+              "m_fZoom": -150,
+              "m_fFocusBlur": 0.0,
+              "m_fMoveTrackingTime": 0.16666666666666666,
+              "m_fZoomTrackingTime": 0.16666666666666666,
+              "m_fCameraRadius": 9999.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.8333333333333333,
+              "m_fEventTimeMax": 3.1666666666666665,
+              "m_fPosXOffset": -100,
+              "m_fPosYOffset": 150,
+              "m_fZoom": -150,
+              "m_fFocusBlur": 0.0,
+              "m_fMoveTrackingTime": 0.16666666666666666,
+              "m_fZoomTrackingTime": 0.16666666666666666,
+              "m_fCameraRadius": 9999.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 3.1666666666666665,
+              "m_fEventTimeMax": 3.8333333333333335,
+              "m_fPosXOffset": -100,
+              "m_fPosYOffset": 150,
+              "m_fZoom": -50,
+              "m_fFocusBlur": 0.0,
+              "m_fMoveTrackingTime": 1.0,
+              "m_fZoomTrackingTime": 2.0,
+              "m_fCameraRadius": 9999.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 3.8333333333333335,
+              "m_fEventTimeMax": 4.333333333333333,
+              "m_fPosXOffset": 600,
+              "m_fPosYOffset": 150,
+              "m_fZoom": -100,
+              "m_fFocusBlur": 0.0,
+              "m_fMoveTrackingTime": 0.16666666666666666,
+              "m_fZoomTrackingTime": 0.16666666666666666,
+              "m_fCameraRadius": 9999.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 4.333333333333333,
+              "m_fEventTimeMax": 5.0,
+              "m_fPosXOffset": 600,
+              "m_fPosYOffset": 150,
+              "m_fZoom": 150,
+              "m_fFocusBlur": 0.1,
+              "m_fMoveTrackingTime": 1.0,
+              "m_fZoomTrackingTime": 1.0,
+              "m_fCameraRadius": 9999.0
+            }
+          ],
+          "m_listNKMEventStopTime": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L12_1 / 30"
+              },
+              "m_StopTimeIndex": "NSTI_SKILL",
+              "m_fStopTime": 1.3333333333333333,
+              "m_bStopEnemyOnly": false,
+              "m_bMyStop": false,
+              "m_fRange": 1500
+            }
+          ],
+          "m_listNKMEventFadeWorld": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.03333333333333333,
+              "m_fEventTimeMax": 1.8333333333333333,
+              "m_fColorR": 0.8,
+              "m_fColorG": 0.0,
+              "m_fColorB": 0.8,
+              "m_fMapColorKeepTime": 2.0,
+              "m_fMapColorReturnTime": 2.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.8333333333333333,
+              "m_fEventTimeMax": 3.0,
+              "m_fColorR": 0.0,
+              "m_fColorG": 0.0,
+              "m_fColorB": 0.0,
+              "m_fMapColorKeepTime": 2.0,
+              "m_fMapColorReturnTime": 1.8333333333333333
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_A",
+          "m_AnimName": "DAMAGE_A",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DAMAGE_3"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_B",
+          "m_AnimName": "DAMAGE_B",
+          "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DAMAGE_3"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_AIR_UP",
+          "m_AnimName": "DAMAGE_AIR_UP",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DAMAGE_3"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_AnimName": "DAMAGE_DOWN",
+          "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L16_1 / 30"
+              },
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_52"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_FOOT_STEP"
+              ],
+              "m_fLocalVol": 1.0,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_fEventTime": 1.0666666666666667,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_ELECTRIC_04"
+              ],
+              "m_fLocalVol": 0.4,
+              "m_PlayRate": 1.0,
+              "m_fFocusRange": 1200.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DAMAGE_3"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+          "m_AnimName": "DAMAGE_DIE",
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DEATH_1",
+                "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DEATH_2"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_UNIT_BASE_BOSS_MOVE",
+    "m_fForceRespawnZposMin": 0.4,
+    "m_fForceRespawnZposMax": 0.5,
+    "m_UnitSizeX": 120,
+    "m_UnitSizeY": 250,
+    "m_SpriteScale": 1.0,
+    "m_SpriteOffsetX": 0,
+    "m_SpriteOffsetY": 0,
+    "m_bShowGage": true,
+    "m_fGageOffsetX": 0,
+    "m_fGageOffsetY": 320,
+    "m_NKC_TEAM_COLOR_TYPE": "NTCT_FULL",
+    "m_fShadowScaleX": 200,
+    "m_fShadowScaleY": 200,
+    "m_fShadowOffsetX": 0,
+    "m_fShadowOffsetY": 0,
+    "m_bNoMove": false,
+    "m_SpeedRun": 290,
+    "m_fAirHigh": 0,
+    "m_fGAccel": 2000,
+    "m_fMaxGSpeed": -3000,
+    "m_SeeTarget": true,
+    "m_TargetNearRange": 850,
+    "m_SeeRange": 1350,
+    "m_SeeRangeMax": 1500,
+    "m_bTargetNoChange": false,
+    "m_bNoBackTarget": false,
+    "m_bAttackedTarget": true,
+    "m_AttackedTargetTime": 1.0,
+    "m_fDieCompleteTime": 2.0,
+    "m_bUseMotionBlur": true,
+    "m_fBuffEffectScaleFactor": 1.0,
+    "m_bImmuneStun": true,
+    "m_fDamageUpFactor": 0.0,
+    "m_fDamageBackFactor": 0.1,
+    "m_listPhaseChangeData": [
+      {
+        "m_TargetPhase": 1,
+        "m_fChangeConditionHPRate": 0.7,
+        "m_ChangeStateName": "USN_PHASECHANGE1"
+      },
+      {
+        "m_TargetPhase": 2,
+        "m_fChangeConditionHPRate": 0.4,
+        "m_ChangeStateName": "USN_PHASECHANGE1"
+      }
+    ],
+    "m_listAccumStateChangePack": [
+      {
+        "m_listAccumStateChange": [
+          {
+            "m_listAccumStateName": [
+              "USN_ATTACK1",
+              "USN_ATTACK1_AIR",
+              "USN_SKILL1",
+              "USN_HYPER_SKILL1"
+            ],
+            "m_AccumCount": 3,
+            "m_TargetStateName": "USN_PASSIVE1"
+          }
+        ]
+      }
+    ],
+    "m_listAttackStateData": [
+      {
+        "m_StateName": "USN_ATTACK1"
+      }
+    ],
+    "m_listAirAttackStateData": [
+      {
+        "m_StateName": "USN_ATTACK1_AIR"
+      }
+    ],
+    "m_listSkillStateData": [
+      {
+        "m_StateName": "USN_SKILL1"
+      }
+    ],
+    "m_listHyperSkillStateData": [
+      {
+        "m_StateName": "USN_HYPER_SKILL1",
+        "m_fStartCool": 0.7,
+        "m_fRangeMax": 1000
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_START",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_AnimName": "START2",
+        "m_DamagedChangeState": "USN_ASTAND",
+        "m_bShowGage": false,
+        "m_listNKMEventAnimSpeed": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_fAnimSpeed": 1.0
+          },
+          {
+            "m_fEventTime": 1.0,
+            "m_fAnimSpeed": 1.2
+          }
+        ],
+        "m_listNKMEventFadeWorld": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.03333333333333333,
+            "m_fEventTimeMax": 2.6666666666666665,
+            "m_fColorR": 0.3,
+            "m_fColorG": 0.0,
+            "m_fColorB": 0.3,
+            "m_fMapColorKeepTime": 0.1,
+            "m_fMapColorReturnTime": 4.0
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bDamageSpeedDependRight": true,
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 3.3333333333333335,
+            "m_fEventTimeMax": 3.6666666666666665,
+            "m_fRangeMin": -1000,
+            "m_fRangeMax": 1000,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 99,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_SPORTS_ALT_CA_SEO_YOON_START"
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_EffectName": "AB_FX_AWAKEN_SPAWN_HUD",
+            "m_OffsetX": 0,
+            "m_OffsetY": 75,
+            "m_AnimName": "BASE",
+            "m_fScaleFactor": 1.0
+          }
+        ],
+        "m_listNKMEventInvincible": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_fEventTimeMax": 4.5
+          }
+        ],
+        "m_listNKMEventStopTime": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.16666666666666666,
+            "m_StopTimeIndex": "NSTI_SKILL",
+            "m_fStopTime": 4.0,
+            "m_bStopEnemyOnly": false,
+            "m_bMyStop": false,
+            "m_fRange": 3000
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_fLocalVol": 1.0,
+            "m_fFocusRange": 1200.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ONLY_AWAKEN_HUD"
+            ]
+          },
+          {
+            "m_fEventTime": 0.1,
+            "m_fLocalVol": 0.6,
+            "m_fFocusRange": 1200.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_ROCK_BIG_02"
+            ]
+          },
+          {
+            "m_fEventTime": 1.0,
+            "m_fLocalVol": 1.0,
+            "m_fFocusRange": 1200.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_WHOOSH_04"
+            ]
+          },
+          {
+            "m_fEventTime": 1.6666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_fFocusRange": 1200.0,
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_KNIGHT_HYPER_ATTACK_START"
+            ]
+          },
+          {
+            "m_fEventTime": 1.9,
+            "m_fLocalVol": 1.0,
+            "m_fFocusRange": 1200.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ELECTRIC"
+            ]
+          },
+          {
+            "m_fEventTime": 3.3333333333333335,
+            "m_fLocalVol": 1.0,
+            "m_fFocusRange": 1200.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG_03"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.6666666666666667,
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_START_1",
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_START_2"
+            ]
+          }
+        ],
+        "m_listNKMEventCameraMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_fEventTimeMax": 1.1666666666666667,
+            "m_bForce": true,
+            "m_fPosXOffset": 0,
+            "m_fPosYOffset": 100,
+            "m_fZoom": -200,
+            "m_fMoveTrackingTime": 0.16666666666666666,
+            "m_fZoomTrackingTime": 0.16666666666666666
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.1666666666666667,
+            "m_fEventTimeMax": 1.8333333333333333,
+            "m_bForce": true,
+            "m_fPosXOffset": -125,
+            "m_fPosYOffset": 325,
+            "m_fZoom": -175,
+            "m_fMoveTrackingTime": 0.6666666666666666,
+            "m_fZoomTrackingTime": 0.6666666666666666
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.8333333333333333,
+            "m_fEventTimeMax": 3.3333333333333335,
+            "m_bForce": true,
+            "m_fPosXOffset": 250,
+            "m_fPosYOffset": 300,
+            "m_fZoom": -200,
+            "m_fMoveTrackingTime": 3.3333333333333335,
+            "m_fZoomTrackingTime": 1.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 3.3333333333333335,
+            "m_fEventTimeMax": 4.333333333333333,
+            "m_bForce": true,
+            "m_fPosXOffset": 250,
+            "m_fPosYOffset": 300,
+            "m_fZoom": 100,
+            "m_fMoveTrackingTime": 0.3333333333333333,
+            "m_fZoomTrackingTime": 0.16666666666666666
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_RUN",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_AnimName": "RUN",
+        "m_fAnimSpeed": 1.0,
+        "m_bAnimLoop": true,
+        "m_bRun": true
+      },
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK1",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_listNKMEventAnimSpeed": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_fAnimSpeed": 1.5
+          },
+          {
+            "m_fEventTime": 0.5,
+            "m_fAnimSpeed": 2.5
+          },
+          {
+            "m_fEventTime": 3.1666666666666665,
+            "m_fAnimSpeed": 1.4
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bDamageSpeedDependRight": true,
+            "m_fEventTimeMin": 0.6666666666666666,
+            "m_fEventTimeMax": 2.0,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 900,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 1,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_SPORTS_ALT_CA_SEO_YOON_ATTACK1"
+          },
+          {
+            "m_bDamageSpeedDependRight": true,
+            "m_fEventTimeMin": 2.0,
+            "m_fEventTimeMax": 3.0,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 900,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 1,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_SPORTS_ALT_CA_SEO_YOON_ATTACK1"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_68"
+            ],
+            "m_fLocalVol": 0.6,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_GUN_RELOAD_SMALL_03"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 0.7666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_GUN_FIRE_SMALL_02"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 1.0333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_GUN_FIRE_SMALL_02"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 1.6,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_GUN_FIRE_SMALL_02"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 2.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_GUN_FIRE_SMALL_02"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 0.6666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MINIGUN_FIRE"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 1.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MINIGUN_FIRE"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 2.6666666666666665,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MINIGUN_FIRE"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 3.1666666666666665,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MOVEMENT_07"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 3.3333333333333335,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_09"
+            ],
+            "m_fLocalVol": 0.5,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.3,
+            "m_listSoundName": [
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_1",
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_2",
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_3"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1_AIR",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK1_AIR",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_listNKMEventAnimSpeed": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L8_1 / 30"
+            },
+            "m_fAnimSpeed": 1.0
+          },
+          {
+            "m_fEventTime": 0.5,
+            "m_fAnimSpeed": 2.5
+          },
+          {
+            "m_fEventTime": 3.1666666666666665,
+            "m_fAnimSpeed": 1.0
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bDamageSpeedDependRight": true,
+            "m_fEventTimeMin": 0.6666666666666666,
+            "m_fEventTimeMax": 2.0,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 900,
+            "m_bHitLand": false,
+            "m_AttackUnitCount": 1,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_SPORTS_ALT_CA_SEO_YOON_ATTACK1"
+          },
+          {
+            "m_bDamageSpeedDependRight": true,
+            "m_fEventTimeMin": 2.0,
+            "m_fEventTimeMax": 3.0,
+            "m_fRangeMin": 0,
+            "m_fRangeMax": 900,
+            "m_bHitLand": false,
+            "m_AttackUnitCount": 1,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_SPORTS_ALT_CA_SEO_YOON_ATTACK1"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_68"
+            ],
+            "m_fLocalVol": 0.6,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_GUN_RELOAD_SMALL_03"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 0.7666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_GUN_FIRE_SMALL_02"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 1.0333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_GUN_FIRE_SMALL_02"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 1.6,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_GUN_FIRE_SMALL_02"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 2.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_GUN_FIRE_SMALL_02"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 0.6666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MINIGUN_FIRE"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 1.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MINIGUN_FIRE"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 2.6666666666666665,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MINIGUN_FIRE"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 3.1666666666666665,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MOVEMENT_07"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 3.3333333333333335,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_09"
+            ],
+            "m_fLocalVol": 0.5,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.3,
+            "m_listSoundName": [
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_1",
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_2",
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_3"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PASSIVE1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "SKILL2",
+        "m_StateCoolTime": 15.0,
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.3333333333333335,
+            "m_BuffStrID": "BUFF_NKM_UNIT_ALT_CA_SEO_YOON_PHASE_UP",
+            "m_BuffLevel": 5,
+            "m_bMyTeam": false
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.3333333333333335,
+            "m_BuffStrID": "BUFF_NKM_UNIT_ALT_CA_SEO_YOON_PHASE_UP",
+            "m_BuffLevel": 5,
+            "m_bMyTeam": true,
+            "m_fRange": 6000
+          }
+        ],
+        "m_listNKMEventAnimSpeed": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_fAnimSpeed": 2.5
+          },
+          {
+            "m_fEventTime": 0.7666666666666667,
+            "m_fAnimSpeed": 2.0
+          },
+          {
+            "m_fEventTime": 2.466666666666667,
+            "m_fAnimSpeed": 1.0
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.0,
+            "m_fEventTimeMax": 3.0,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1000.0,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 99,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_SPORTS_ALT_CA_SEO_YOON_SKILL2"
+          }
+        ],
+        "m_listNKMEventRespawn": [
+          {
+            "m_fEventTime": 3.0,
+            "m_UnitStrID": "NKM_MOB_NORMAL_SPORTS_ALT_CA_SEO_YOON_SUMMON",
+            "m_MaxCount": 4,
+            "m_fOffsetX": -200,
+            "m_bMaxCountReRespawn": true
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 1.0,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 2000,
+            "m_fCameraCrashGap": 3,
+            "m_fCameraCrashTime": 1.3333333333333333
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_56"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 0.4,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_68"
+            ],
+            "m_fLocalVol": 0.7,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 0.5666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_68"
+            ],
+            "m_fLocalVol": 0.7,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 0.6666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_MONSTER_MINISTRA_SHADOW_HYPER_ATTACK_LAST"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MINIGUN_FIRE"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 1.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 1.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MINIGUN_FIRE"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 1.8333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 2.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MINIGUN_FIRE"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 2.3333333333333335,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_SMALL_02"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 2.6666666666666665,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_56"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 2.8333333333333335,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_51"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.4,
+            "m_listSoundName": [
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ACTIVE_2",
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_2",
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_4"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.0,
+            "m_bVoice": true,
+            "m_PlayRate": 0.4,
+            "m_listSoundName": [
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ACTIVE_1",
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_2",
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_5"
+            ]
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.3333333333333333,
+            "m_EffectName": "AB_FX_DE_NKM_MONSTER_BOSS_REPLACER_SEO_YOON_ATTACK1",
+            "m_fScaleFactor": 0.7,
+            "m_OffsetX": -75,
+            "m_OffsetY": 270,
+            "m_AnimName": "BASE"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.8333333333333333,
+            "m_EffectName": "AB_FX_DE_NKM_MONSTER_BOSS_REPLACER_SEO_YOON_ATTACK1",
+            "m_fScaleFactor": 0.7,
+            "m_OffsetX": -75,
+            "m_OffsetY": 270,
+            "m_AnimName": "BASE"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.3333333333333335,
+            "m_EffectName": "AB_FX_DE_NKM_MONSTER_BOSS_REPLACER_SEO_YOON_ATTACK1",
+            "m_fScaleFactor": 0.7,
+            "m_OffsetX": -75,
+            "m_OffsetY": 270,
+            "m_AnimName": "BASE"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_PHASECHANGE1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "PASSIVE",
+        "m_StateCoolTime": 15.0,
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_fAnimSpeed": 1.5,
+        "m_bShowGage": false,
+        "m_bForceRight": true,
+        "m_bForceRightLeftDependTeam": true,
+        "m_listNKMEventRespawn": [
+          {
+            "m_fEventTime": 3.0,
+            "m_UnitStrID": "NKM_MOB_NORMAL_SPORTS_ALT_CA_SEO_YOON_SUMMON",
+            "m_MaxCount": 2,
+            "m_fOffsetX": -200,
+            "m_bMaxCountReRespawn": true
+          }
+        ],
+        "m_listNKMEventMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.8333333333333333,
+            "m_bTargetUnit": false,
+            "m_OffsetX": -600,
+            "m_OffsetJumpYPos": 0,
+            "m_MoveTime": 0.16666666666666666,
+            "m_bLandMove": true,
+            "m_bOffsetDependMe": true,
+            "m_MoveTrackingType": "TDT_FASTER"
+          }
+        ],
+        "m_listNKMEventAnimSpeed": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_fAnimSpeed": 3.0
+          },
+          {
+            "m_fEventTime": 1.8333333333333333,
+            "m_fAnimSpeed": 3.2
+          },
+          {
+            "m_fEventTime": 3.033333333333333,
+            "m_fAnimSpeed": 2.0
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_fEventTimeMax": 10.0,
+            "m_fColorR": 0.3,
+            "m_fColorG": 0.3,
+            "m_fColorB": 0.3
+          }
+        ],
+        "m_listNKMEventInvincible": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_fEventTimeMax": 3.0
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 1.0,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 1250,
+            "m_fCameraCrashGap": 8,
+            "m_fCameraCrashTime": 0.3333333333333333
+          },
+          {
+            "m_fEventTime": 3.0,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 1250,
+            "m_fCameraCrashGap": 15,
+            "m_fCameraCrashTime": 0.6
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bDamageSpeedDependRight": true,
+            "m_fEventTimeMin": 1.0,
+            "m_fEventTimeMax": 1.6666666666666667,
+            "m_fRangeMin": -500,
+            "m_fRangeMax": 500,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 99,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_SPORTS_ALT_CA_SEO_YOON_PASSIVE1"
+          },
+          {
+            "m_bDamageSpeedDependRight": true,
+            "m_fEventTimeMin": 3.0,
+            "m_fEventTimeMax": 3.6666666666666665,
+            "m_fRangeMin": -750,
+            "m_fRangeMax": 750,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 99,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_SPORTS_ALT_CA_SEO_YOON_PASSIVE1_END"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L10_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_59"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_11"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 1.3333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_20"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 3.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_ROCK_BIG_02"
+            ],
+            "m_fLocalVol": 0.7,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 3.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_17"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 3.6666666666666665,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_52"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_PASSIVE_1",
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_5",
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_7"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "SKILL1",
+        "m_StateCoolTime": 15.0,
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_bSkillCutIn": true,
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 100,
+            "m_fColorR": 0.5,
+            "m_fColorG": 0.5,
+            "m_fColorB": 1.0
+          }
+        ],
+        "m_listNKMEventAnimSpeed": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_fAnimSpeed": 8.0
+          },
+          {
+            "m_fEventTime": 1.8333333333333333,
+            "m_fAnimSpeed": 6
+          },
+          {
+            "m_fEventTime": 2.066666666666667,
+            "m_fAnimSpeed": 2.0
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 1.6,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 1250,
+            "m_fCameraCrashGap": 4,
+            "m_fCameraCrashTime": 0.2
+          },
+          {
+            "m_fEventTime": 3.033333333333333,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 1250,
+            "m_fCameraCrashGap": 8,
+            "m_fCameraCrashTime": 0.5
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bDamageSpeedDependRight": true,
+            "m_fEventTimeMin": 3.0,
+            "m_fEventTimeMax": 3.3333333333333335,
+            "m_fRangeMin": -300,
+            "m_fRangeMax": 1000,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 10,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_SPORTS_ALT_CA_SEO_YOON_SKILL1"
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.0,
+            "m_DEName": "DE_NKM_UNIT_ALT_CA_SEO_YOON_SKILL2",
+            "m_fAddRotate": -7,
+            "m_OffsetX": 120,
+            "m_OffsetY": 0
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_08"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 1.4666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_09"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 1.5666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG_05"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 2.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_09"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 2.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_10"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 2.8333333333333335,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_09"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 2.933333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG_03"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_PASSIVE_2",
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_PASSIVE_3"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.0,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_4",
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_5",
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_7"
+            ]
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_EffectName": "AB_FX_CAST_SKILL",
+            "m_fScaleFactor": 30.0,
+            "m_OffsetX": -25,
+            "m_OffsetY": 210,
+            "m_AnimName": "BASE"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_HYPER_SKILL1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "HYPER_SKILL1",
+        "m_StateCoolTime": 30.0,
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_bShowGage": false,
+        "m_fAnimSpeed": 1.2,
+        "m_listNKMEventRespawn": [
+          {
+            "m_fEventTime": 3.8333333333333335,
+            "m_UnitStrID": "NKM_MOB_NORMAL_SPORTS_ALT_CA_SEO_YOON_SUMMON",
+            "m_MaxCount": 1,
+            "m_fOffsetX": -250,
+            "m_bMaxCountReRespawn": true
+          }
+        ],
+        "m_listNKMEventAnimSpeed": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_fAnimSpeed": 1.5
+          },
+          {
+            "m_fEventTime": 1.8333333333333333,
+            "m_fAnimSpeed": 1.0
+          },
+          {
+            "m_fEventTime": 4.666666666666667,
+            "m_fAnimSpeed": 0.9
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0,
+            "m_fEventTimeMax": 100,
+            "m_fColorR": 0.1,
+            "m_fColorG": 0.5,
+            "m_fColorB": 0.5
+          }
+        ],
+        "m_listNKMEventInvincible": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_fEventTimeMax": 3.8333333333333335
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fScaleFactor": 30.0,
+            "m_fEventTime": 0.03333333333333333,
+            "m_EffectName": "AB_FX_CAST_HYPER",
+            "m_OffsetX": -10,
+            "m_OffsetY": 210,
+            "m_AnimName": "BASE"
+          }
+        ],
+        "m_listNKMEventColor": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.6666666666666667,
+            "m_fColorR": 0.15,
+            "m_fColorG": 0.15,
+            "m_fColorB": 0.15,
+            "m_fTrackTime": 0.16666666666666666,
+            "m_fColorTime": 0.16666666666666666
+          }
+        ],
+        "m_listNKMEventMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 1.8666666666666667,
+            "m_bTargetUnit": false,
+            "m_OffsetX": 0,
+            "m_OffsetJumpYPos": 100,
+            "m_MoveTime": 0.5,
+            "m_bLandMove": false,
+            "m_bOffsetDependMe": true,
+            "m_MoveTrackingType": "TDT_NORMAL"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.3666666666666667,
+            "m_bTargetUnit": false,
+            "m_OffsetX": 0,
+            "m_OffsetJumpYPos": 0,
+            "m_MoveTime": 1.9666666666666666,
+            "m_bLandMove": false,
+            "m_bOffsetDependMe": true,
+            "m_MoveTrackingType": "TDT_NORMAL"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 4.333333333333333,
+            "m_bTargetUnit": false,
+            "m_OffsetX": 0,
+            "m_OffsetJumpYPos": -100,
+            "m_MoveTime": 0.26666666666666666,
+            "m_bLandMove": false,
+            "m_bOffsetDependMe": true,
+            "m_MoveTrackingType": "TDT_FASTER"
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 4.333333333333333,
+            "m_DEName": "DE_NKM_UNIT_ALT_CA_SEO_YOON_HYPER1_A",
+            "m_OffsetX": 200,
+            "m_OffsetY": 0,
+            "m_fAddRotate": 0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 4.666666666666667,
+            "m_DEName": "DE_NKM_UNIT_ALT_CA_SEO_YOON_HYPER1_B",
+            "m_OffsetX": 900,
+            "m_OffsetY": 0,
+            "m_fAddRotate": 0
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bDamageSpeedDependRight": true,
+            "m_fEventTimeMin": 3.8333333333333335,
+            "m_fEventTimeMax": 4.166666666666667,
+            "m_fRangeMin": -100,
+            "m_fRangeMax": 1800,
+            "m_bHitLand": true,
+            "m_bHitAir": true,
+            "m_AttackTargetUnit": false,
+            "m_AttackUnitCount": 8,
+            "m_NKM_DAMAGE_TARGET_TYPE": "NDTT_ENEMY",
+            "m_DamageTempletName": "DT_NKM_MOB_SPORTS_ALT_CA_SEO_YOON_HYPER1_START"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HYPER_ATTACK_START"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 9999.0
+          },
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L13_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_08"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG_05"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_09"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 0.6666666666666666,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_BIG_05"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 1.1666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_WIND_02"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 9999.0
+          },
+          {
+            "m_fEventTime": 1.2333333333333334,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_16"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 9999.0
+          },
+          {
+            "m_fEventTime": 1.6666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_DARK_11"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 9999.0
+          },
+          {
+            "m_fEventTime": 2.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_74"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 9999.0
+          },
+          {
+            "m_fEventTime": 3.3333333333333335,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWORD_SLASH_SMALL_09"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 3.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ENERGY_ATTACK_BIG_21"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 9999.0
+          },
+          {
+            "m_fEventTime": 3.8333333333333335,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_WIND"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 9999.0
+          },
+          {
+            "m_fEventTime": 3.933333333333333,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_SLASH_BIG"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 9999.0
+          },
+          {
+            "m_fEventTime": 4.166666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HIT_EXPLOSION_FIRE_BIG"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 9999.0
+          },
+          {
+            "m_fEventTime": 4.166666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_COFFIN_LASER_MAIN_EXPLOSION"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 9999.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_HYPER_1",
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_HYPER_2",
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_9"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.8,
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_4",
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_ATTACK_5"
+            ]
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 1.3333333333333333,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 9999,
+            "m_fCameraCrashGap": 5,
+            "m_fCameraCrashTime": 0.16666666666666666
+          },
+          {
+            "m_fEventTime": 3.8333333333333335,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 9999,
+            "m_fCameraCrashGap": 20,
+            "m_fCameraCrashTime": 0.5
+          }
+        ],
+        "m_listNKMEventCameraMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.1,
+            "m_fEventTimeMax": 1.1666666666666667,
+            "m_fPosXOffset": -150,
+            "m_fPosYOffset": 150,
+            "m_fZoom": -100,
+            "m_fFocusBlur": 0.0,
+            "m_fMoveTrackingTime": 0.1,
+            "m_fZoomTrackingTime": 0.1,
+            "m_fCameraRadius": 9999.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.1666666666666667,
+            "m_fEventTimeMax": 1.8333333333333333,
+            "m_fPosXOffset": -100,
+            "m_fPosYOffset": 100,
+            "m_fZoom": -150,
+            "m_fFocusBlur": 0.0,
+            "m_fMoveTrackingTime": 0.16666666666666666,
+            "m_fZoomTrackingTime": 0.16666666666666666,
+            "m_fCameraRadius": 9999.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.8333333333333333,
+            "m_fEventTimeMax": 3.1666666666666665,
+            "m_fPosXOffset": -100,
+            "m_fPosYOffset": 150,
+            "m_fZoom": -150,
+            "m_fFocusBlur": 0.0,
+            "m_fMoveTrackingTime": 0.16666666666666666,
+            "m_fZoomTrackingTime": 0.16666666666666666,
+            "m_fCameraRadius": 9999.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 3.1666666666666665,
+            "m_fEventTimeMax": 3.8333333333333335,
+            "m_fPosXOffset": -100,
+            "m_fPosYOffset": 150,
+            "m_fZoom": -50,
+            "m_fFocusBlur": 0.0,
+            "m_fMoveTrackingTime": 1.0,
+            "m_fZoomTrackingTime": 2.0,
+            "m_fCameraRadius": 9999.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 3.8333333333333335,
+            "m_fEventTimeMax": 4.333333333333333,
+            "m_fPosXOffset": 600,
+            "m_fPosYOffset": 150,
+            "m_fZoom": -100,
+            "m_fFocusBlur": 0.0,
+            "m_fMoveTrackingTime": 0.16666666666666666,
+            "m_fZoomTrackingTime": 0.16666666666666666,
+            "m_fCameraRadius": 9999.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 4.333333333333333,
+            "m_fEventTimeMax": 5.0,
+            "m_fPosXOffset": 600,
+            "m_fPosYOffset": 150,
+            "m_fZoom": 150,
+            "m_fFocusBlur": 0.1,
+            "m_fMoveTrackingTime": 1.0,
+            "m_fZoomTrackingTime": 1.0,
+            "m_fCameraRadius": 9999.0
+          }
+        ],
+        "m_listNKMEventStopTime": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L12_1 / 30"
+            },
+            "m_StopTimeIndex": "NSTI_SKILL",
+            "m_fStopTime": 1.3333333333333333,
+            "m_bStopEnemyOnly": false,
+            "m_bMyStop": false,
+            "m_fRange": 1500
+          }
+        ],
+        "m_listNKMEventFadeWorld": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.03333333333333333,
+            "m_fEventTimeMax": 1.8333333333333333,
+            "m_fColorR": 0.8,
+            "m_fColorG": 0.0,
+            "m_fColorB": 0.8,
+            "m_fMapColorKeepTime": 2.0,
+            "m_fMapColorReturnTime": 2.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.8333333333333333,
+            "m_fEventTimeMax": 3.0,
+            "m_fColorR": 0.0,
+            "m_fColorG": 0.0,
+            "m_fColorB": 0.0,
+            "m_fMapColorKeepTime": 2.0,
+            "m_fMapColorReturnTime": 1.8333333333333333
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_A",
+        "m_AnimName": "DAMAGE_A",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DAMAGE_3"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_B",
+        "m_AnimName": "DAMAGE_B",
+        "m_FootOffLandChangeState": "USN_DAMAGE_AIR_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DAMAGE_3"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_AIR_UP",
+        "m_AnimName": "DAMAGE_AIR_UP",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DAMAGE_3"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DAMAGE",
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_AnimName": "DAMAGE_DOWN",
+        "m_AnimEndDyingState": "USN_DAMAGE_DIE",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L16_1 / 30"
+            },
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_52"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_FOOT_STEP"
+            ],
+            "m_fLocalVol": 1.0,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_fEventTime": 1.0666666666666667,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_ELECTRIC_04"
+            ],
+            "m_fLocalVol": 0.4,
+            "m_PlayRate": 1.0,
+            "m_fFocusRange": 1200.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DAMAGE_3"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_DIE",
+        "m_AnimName": "DAMAGE_DIE",
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DEATH_1",
+              "VOICE_UNIT_ALT_CA_SEO_YOON_BATTLE_DEATH_2"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

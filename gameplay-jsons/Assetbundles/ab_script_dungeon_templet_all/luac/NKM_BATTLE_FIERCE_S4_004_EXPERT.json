@@ -1,0 +1,254 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_dungeon_templet_all\\luac\\NKM_BATTLE_FIERCE_S4_004_EXPERT.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 7,
+  "records": [
+    {
+      "__key": "m_fStartCost",
+      "value": 5
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 1.0
+    },
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_FIERCE_REAPER_COMMANDER_EX"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_REAPER_COMMANDER_WALL",
+          "m_EventRespawnUnitTag": "WALL_DIE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventPos": 0.5
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_REAPER_COMMANDER_SIEGE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_EventDieUnitTag": "WALL_DIE",
+            "m_EventDieUnitTagCount": 1,
+            "m_fEventTimeStart": 0,
+            "m_fEventPos": 0.0
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_REAPER_COMMANDER_HYPER_SUMMON",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_EventDieUnitTag": "WALL_DIE",
+            "m_EventDieUnitTagCount": 1,
+            "m_fEventTimeStart": 0,
+            "m_fEventPos": 0.2
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_REAPER_COMMANDER_SIEGE",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_EventTag": "HPRATE_UNDER_50_DELAY",
+            "m_EventTagCount": 1,
+            "m_fEventTimeStart": 0,
+            "m_fEventPos": 0.0
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_REAPER_COMMANDER_HYPER_SUMMON2",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_EventTag": "HPRATE_UNDER_50",
+            "m_EventTagCount": 1,
+            "m_fEventTimeStart": 0,
+            "m_fEventPos": 0.3
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamA",
+      "value": [
+        {
+          "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+          "m_EventConditionNumValue": 50,
+          "m_dungeonEventType": "SET_EVENTTAG",
+          "m_EventActionStrValue": "HPRATE_UNDER_50",
+          "m_EventActionValue": 1,
+          "m_bPause": true,
+          "m_fEventDelay": 0,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        },
+        {
+          "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+          "m_EventConditionNumValue": 50,
+          "m_dungeonEventType": "SET_EVENTTAG",
+          "m_EventActionStrValue": "HPRATE_UNDER_50_DELAY",
+          "m_EventActionValue": 1,
+          "m_bPause": true,
+          "m_fEventDelay": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0
+          }
+        }
+      ]
+    },
+    {
+      "__key": "m_listDungeonEventTempletTeamB",
+      "value": [
+        {
+          "m_dungeonEventType": "SET_UNIT_STATE",
+          "m_EventActionValue": 230706,
+          "m_EventActionStrValue": "USN_HYPER_SKILL1_HP_50",
+          "m_bPause": false,
+          "m_fEventDelay": 0,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_EventTag": "HPRATE_UNDER_50",
+            "m_EventTagCount": 1
+          }
+        },
+        {
+          "m_dungeonEventType": "SET_UNIT_STATE",
+          "m_EventActionValue": 230706,
+          "m_EventActionStrValue": "USN_HYPER_SKILL1",
+          "m_bPause": false,
+          "m_fEventDelay": 0,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+            "m_fEventTimeStart": 0,
+            "m_EventDieUnitTag": "WALL_DIE",
+            "m_EventDieUnitTagCount": 1
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_fStartCost": 5,
+    "m_fCostSpeedRateB": 1.0,
+    "m_BossUnitStrID": "NKM_MOB_BOSS_FIERCE_REAPER_COMMANDER_EX",
+    "m_fBossPosZ": 0.6,
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_REAPER_COMMANDER_WALL",
+        "m_EventRespawnUnitTag": "WALL_DIE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventPos": 0.5
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_REAPER_COMMANDER_SIEGE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_EventDieUnitTag": "WALL_DIE",
+          "m_EventDieUnitTagCount": 1,
+          "m_fEventTimeStart": 0,
+          "m_fEventPos": 0.0
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_REAPER_COMMANDER_HYPER_SUMMON",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_EventDieUnitTag": "WALL_DIE",
+          "m_EventDieUnitTagCount": 1,
+          "m_fEventTimeStart": 0,
+          "m_fEventPos": 0.2
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_REAPER_COMMANDER_SIEGE",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_EventTag": "HPRATE_UNDER_50_DELAY",
+          "m_EventTagCount": 1,
+          "m_fEventTimeStart": 0,
+          "m_fEventPos": 0.0
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_FIERCE_REAPER_COMMANDER_HYPER_SUMMON2",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_EventTag": "HPRATE_UNDER_50",
+          "m_EventTagCount": 1,
+          "m_fEventTimeStart": 0,
+          "m_fEventPos": 0.3
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamA": [
+      {
+        "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+        "m_EventConditionNumValue": 50,
+        "m_dungeonEventType": "SET_EVENTTAG",
+        "m_EventActionStrValue": "HPRATE_UNDER_50",
+        "m_EventActionValue": 1,
+        "m_bPause": true,
+        "m_fEventDelay": 0,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      },
+      {
+        "m_EventCondition": "ENEMY_BOSS_HP_RATE_LESS",
+        "m_EventConditionNumValue": 50,
+        "m_dungeonEventType": "SET_EVENTTAG",
+        "m_EventActionStrValue": "HPRATE_UNDER_50_DELAY",
+        "m_EventActionValue": 1,
+        "m_bPause": true,
+        "m_fEventDelay": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0
+        }
+      }
+    ],
+    "m_listDungeonEventTempletTeamB": [
+      {
+        "m_dungeonEventType": "SET_UNIT_STATE",
+        "m_EventActionValue": 230706,
+        "m_EventActionStrValue": "USN_HYPER_SKILL1_HP_50",
+        "m_bPause": false,
+        "m_fEventDelay": 0,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_EventTag": "HPRATE_UNDER_50",
+          "m_EventTagCount": 1
+        }
+      },
+      {
+        "m_dungeonEventType": "SET_UNIT_STATE",
+        "m_EventActionValue": 230706,
+        "m_EventActionStrValue": "USN_HYPER_SKILL1",
+        "m_bPause": false,
+        "m_fEventDelay": 0,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_ONE_TIME",
+          "m_fEventTimeStart": 0,
+          "m_EventDieUnitTag": "WALL_DIE",
+          "m_EventDieUnitTagCount": 1
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

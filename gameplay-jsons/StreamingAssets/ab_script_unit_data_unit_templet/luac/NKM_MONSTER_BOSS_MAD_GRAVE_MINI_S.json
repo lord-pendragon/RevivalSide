@@ -1,0 +1,115 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_MONSTER_BOSS_MAD_GRAVE_MINI_S.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 2,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_MONSTER_BOSS_BASIC_GRAVE_MINI_N"
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_listNKMEventAttack": [
+            {
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_MAD_GRAVE_MINI_ATTACK1"
+            },
+            {
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_MAD_GRAVE_MINI_ATTACK1"
+            },
+            {
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_MAD_GRAVE_MINI_ATTACK1"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_listNKMEventAttack": [
+            {
+              "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_MAD_GRAVE_MINI_SKILL1"
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_fEventTime": 0.8333333333333334,
+              "m_DEName": "DE_NKM_MONSTER_BOSS_MAD_GRAVE_MIST",
+              "m_OffsetX": 400,
+              "m_OffsetY": 0,
+              "m_bStateEndStop": false,
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_fEventTime": 0.8333333333333334,
+              "m_BuffStrID": "BUFF_MONSTER_MAD_GRAVE_MINI",
+              "m_BuffLevel": 1
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+          "m_StateName": "USN_RUN",
+          "m_AnimName": "ASTAND",
+          "m_bAnimLoop": true,
+          "m_bRun": true
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_MONSTER_BOSS_BASIC_GRAVE_MINI_N",
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_listNKMEventAttack": [
+          {
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_MAD_GRAVE_MINI_ATTACK1"
+          },
+          {
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_MAD_GRAVE_MINI_ATTACK1"
+          },
+          {
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_MAD_GRAVE_MINI_ATTACK1"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_listNKMEventAttack": [
+          {
+            "m_DamageTempletName": "DT_NKM_MONSTER_BOSS_MAD_GRAVE_MINI_SKILL1"
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_fEventTime": 0.8333333333333334,
+            "m_DEName": "DE_NKM_MONSTER_BOSS_MAD_GRAVE_MIST",
+            "m_OffsetX": 400,
+            "m_OffsetY": 0,
+            "m_bStateEndStop": false,
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_fEventTime": 0.8333333333333334,
+            "m_BuffStrID": "BUFF_MONSTER_MAD_GRAVE_MINI",
+            "m_BuffLevel": 1
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_MOVE",
+        "m_StateName": "USN_RUN",
+        "m_AnimName": "ASTAND",
+        "m_bAnimLoop": true,
+        "m_bRun": true
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

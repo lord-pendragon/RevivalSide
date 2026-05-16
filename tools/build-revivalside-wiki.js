@@ -1,16 +1,14 @@
 const fs = require("fs");
 const path = require("path");
 const { statTypeValue } = require("../modules/packet-codec");
+const { getGameplayTableRoots } = require("../modules/gameplay-jsons");
 
 const ROOT_DIR = path.resolve(__dirname, "..");
 const WIKI_DATA_DIR = path.join(ROOT_DIR, "wiki", "data");
 const OUTPUT_PATH = path.join(WIKI_DATA_DIR, "assets.json");
 const EXTRACTED_ASSET_ROOT = path.join(ROOT_DIR, "extracted-assets", "all");
 
-const TABLE_ROOTS = [
-  path.join(ROOT_DIR, "gameplay-tables-json", "Assetbundles"),
-  path.join(ROOT_DIR, "gameplay-tables-json", "StreamingAssets"),
-];
+const TABLE_ROOTS = getGameplayTableRoots({ rootDir: ROOT_DIR });
 
 const ID_FIELD_PRIORITY = [
   "ID",

@@ -1,0 +1,174 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_warfare_map_templet_all\\luac\\WARFARE_EVENT_WANTED1_2_3.lua",
+  "rootName": "NKMWarfareMapTemplet",
+  "recordCount": 17,
+  "records": [
+    {
+      "__key": "m_MapSizeX",
+      "value": 5
+    },
+    {
+      "__key": "m_MapSizeY",
+      "value": 3
+    },
+    {
+      "__key": "NKMWarfareTile0",
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    {
+      "__key": "NKMWarfareTile1",
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    {
+      "__key": "NKMWarfareTile2",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_DungeonStrID": "NKM_DUNGEON_EVENT_WANTED1_2_1_A_HM",
+      "m_bFlagDungeon": true,
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_DEFENSE",
+      "m_BattleConditionStrID": "BC_WANTED_01_COND"
+    },
+    {
+      "__key": "NKMWarfareTile3",
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    {
+      "__key": "NKMWarfareTile4",
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    {
+      "__key": "NKMWarfareTile5",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_NKM_WARFARE_SPAWN_POINT_TYPE": "NWSPT_DIVE",
+      "m_BattleConditionStrID": "BC_WANTED_01_COND"
+    },
+    {
+      "__key": "NKMWarfareTile6",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_DungeonStrID": "NKM_DUNGEON_EVENT_WANTED1_2_1_B_HM",
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_NEAREST_ATK",
+      "m_BattleConditionStrID": "BC_WANTED_01_COND"
+    },
+    {
+      "__key": "NKMWarfareTile7",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_NEAREST_ATK",
+      "m_BattleConditionStrID": "BC_WANTED_01_COND",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 20
+      }
+    },
+    {
+      "__key": "NKMWarfareTile8",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_DungeonStrID": "NKM_DUNGEON_EVENT_WANTED1_2_1_B_HM",
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_NEAREST_ATK",
+      "m_BattleConditionStrID": "BC_WANTED_01_COND"
+    },
+    {
+      "__key": "NKMWarfareTile9",
+      "m_TileType": "NWMTT_NORMAL",
+      "m_NKM_WARFARE_SPAWN_POINT_TYPE": "NWSPT_DIVE",
+      "m_BattleConditionStrID": "BC_WANTED_01_COND"
+    },
+    {
+      "__key": "NKMWarfareTile10",
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    {
+      "__key": "NKMWarfareTile11",
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    {
+      "__key": "NKMWarfareTile12",
+      "m_TileType": "NWMTT_RESUPPLY",
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_DEFENSE",
+      "m_BattleConditionStrID": "BC_WANTED_01_COND"
+    },
+    {
+      "__key": "NKMWarfareTile13",
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    {
+      "__key": "NKMWarfareTile14",
+      "m_TileType": "NWMTT_DISABLE"
+    }
+  ],
+  "root": {
+    "m_MapSizeX": 5,
+    "m_MapSizeY": 3,
+    "NKMWarfareTile0": {
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    "NKMWarfareTile1": {
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    "NKMWarfareTile2": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_DungeonStrID": "NKM_DUNGEON_EVENT_WANTED1_2_1_A_HM",
+      "m_bFlagDungeon": true,
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_DEFENSE",
+      "m_BattleConditionStrID": "BC_WANTED_01_COND"
+    },
+    "NKMWarfareTile3": {
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    "NKMWarfareTile4": {
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    "NKMWarfareTile5": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_NKM_WARFARE_SPAWN_POINT_TYPE": "NWSPT_DIVE",
+      "m_BattleConditionStrID": "BC_WANTED_01_COND"
+    },
+    "NKMWarfareTile6": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_DungeonStrID": "NKM_DUNGEON_EVENT_WANTED1_2_1_B_HM",
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_NEAREST_ATK",
+      "m_BattleConditionStrID": "BC_WANTED_01_COND"
+    },
+    "NKMWarfareTile7": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_NEAREST_ATK",
+      "m_BattleConditionStrID": "BC_WANTED_01_COND",
+      "TileChange": {
+        "Condition": "WFC_PHASE",
+        "Value": 0,
+        "Type": "NWNTT_CHEST",
+        "Rate": 20
+      }
+    },
+    "NKMWarfareTile8": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_DungeonStrID": "NKM_DUNGEON_EVENT_WANTED1_2_1_B_HM",
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_NEAREST_ATK",
+      "m_BattleConditionStrID": "BC_WANTED_01_COND"
+    },
+    "NKMWarfareTile9": {
+      "m_TileType": "NWMTT_NORMAL",
+      "m_NKM_WARFARE_SPAWN_POINT_TYPE": "NWSPT_DIVE",
+      "m_BattleConditionStrID": "BC_WANTED_01_COND"
+    },
+    "NKMWarfareTile10": {
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    "NKMWarfareTile11": {
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    "NKMWarfareTile12": {
+      "m_TileType": "NWMTT_RESUPPLY",
+      "m_NKM_WARFARE_ENEMY_ACTION_TYPE": "NWEAT_DEFENSE",
+      "m_BattleConditionStrID": "BC_WANTED_01_COND"
+    },
+    "NKMWarfareTile13": {
+      "m_TileType": "NWMTT_DISABLE"
+    },
+    "NKMWarfareTile14": {
+      "m_TileType": "NWMTT_DISABLE"
+    }
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

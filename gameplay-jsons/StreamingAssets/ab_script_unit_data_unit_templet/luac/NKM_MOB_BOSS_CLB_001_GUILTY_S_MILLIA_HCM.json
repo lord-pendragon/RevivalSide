@@ -1,0 +1,3094 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_unit_data_unit_templet\\luac\\NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM.lua",
+  "rootName": "NKMUnitTemplet",
+  "recordCount": 31,
+  "records": [
+    {
+      "__key": "BASE_UNIT_STR_ID",
+      "value": "NKM_UNIT_BASE_BOSS_MOVE"
+    },
+    {
+      "__key": "m_fForceRespawnZposMin",
+      "value": 0.2
+    },
+    {
+      "__key": "m_fForceRespawnZposMax",
+      "value": 0.4
+    },
+    {
+      "__key": "m_UnitSizeX",
+      "value": 100
+    },
+    {
+      "__key": "m_UnitSizeY",
+      "value": 270
+    },
+    {
+      "__key": "m_SpriteScale",
+      "value": 1.0
+    },
+    {
+      "__key": "m_bShowGage",
+      "value": true
+    },
+    {
+      "__key": "m_fGageOffsetY",
+      "value": 300
+    },
+    {
+      "__key": "m_fShadowScaleX",
+      "value": 170
+    },
+    {
+      "__key": "m_fShadowScaleY",
+      "value": 170
+    },
+    {
+      "__key": "m_SpeedRun",
+      "value": 300
+    },
+    {
+      "__key": "m_SeeTarget",
+      "value": true
+    },
+    {
+      "__key": "m_TargetNearRange",
+      "value": 800
+    },
+    {
+      "__key": "m_SeeRange",
+      "value": 3000
+    },
+    {
+      "__key": "m_SeeRangeMax",
+      "value": 3000
+    },
+    {
+      "__key": "m_fDieCompleteTime",
+      "value": 1.8
+    },
+    {
+      "__key": "m_bUseMotionBlur",
+      "value": true
+    },
+    {
+      "__key": "m_fBuffEffectScaleFactor",
+      "value": 1.0
+    },
+    {
+      "__key": "m_bImmuneStun",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageStopTime",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageState",
+      "value": true
+    },
+    {
+      "__key": "m_bNoDamageDownState",
+      "value": true
+    },
+    {
+      "__key": "m_fDamageUpFactor",
+      "value": 0.0
+    },
+    {
+      "__key": "m_fDamageBackFactor",
+      "value": 0.3
+    },
+    {
+      "__key": "m_listStaticBuffData",
+      "value": [
+        {
+          "m_BuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_HCM_COMMON"
+        }
+      ]
+    },
+    {
+      "__key": "m_listPhaseChangeData",
+      "value": [
+        {
+          "m_TargetPhase": 1,
+          "m_fChangeConditionHPRate": 0.5,
+          "m_ChangeStateName": "USN_BACK"
+        },
+        {
+          "m_Condition": {
+            "m_NeedBuffStrID": "BUFF_MOB_BOSS_CLB_001_TAG_TRIGGER"
+          },
+          "m_TargetPhase": 2,
+          "m_ChangeStateName": "USN_REGAME",
+          "m_listChangeCoolTime": [
+            {
+              "m_StateName": "USN_HYPER1",
+              "m_fCoolTime": 1.0
+            }
+          ]
+        },
+        {
+          "m_Condition": {
+            "m_IgnoreBuffStrID": "BUFF_MOB_BOSS_CLB_001_TAG_TRIGGER"
+          },
+          "m_TargetPhase": 2,
+          "m_fChangeConditionTime": 120.0,
+          "m_ChangeStateName": "USN_REGAME",
+          "m_listChangeCoolTime": [
+            {
+              "m_StateName": "USN_HYPER1",
+              "m_fCoolTime": 1.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__key": "m_listAttackStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 800
+        }
+      ]
+    },
+    {
+      "__key": "m_listAirAttackStateData",
+      "value": [
+        {
+          "m_StateName": "USN_ATTACK1_AIR",
+          "m_fRangeMin": 0,
+          "m_fRangeMax": 800
+        }
+      ]
+    },
+    {
+      "__key": "m_listSkillStateData",
+      "value": [
+        {
+          "m_Condition": {
+            "m_IgnoreBuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_SKILL"
+          },
+          "m_StateName": "USN_SKILL1",
+          "m_fRangeMax": 1000
+        }
+      ]
+    },
+    {
+      "__key": "m_listHyperSkillStateData",
+      "value": [
+        {
+          "m_StateName": "USN_HYPER1",
+          "m_fStartCool": 0.7,
+          "m_fRangeMax": 1000
+        }
+      ]
+    },
+    {
+      "__key": "m_dicNKMUnitState",
+      "value": [
+        {
+          "m_StateName": "USN_WAITING",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ASTAND",
+          "m_fAnimSpeed": 1.0,
+          "m_bAnimLoop": true,
+          "m_bNoMove": true,
+          "m_bForceLeft": true,
+          "m_bForceNoTargeted": true,
+          "m_listNKMEventInvincible": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_fEventTimeMax": 6.666666666666667
+            }
+          ],
+          "m_listNKMEventDissolve": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L5_1 / 30"
+              },
+              "m_fDissolve": 0,
+              "m_fTrackTime": 0.1
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_BACK",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "DODGE",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_AnimEndChangeState": "USN_WAITING",
+          "m_bNoAI": true,
+          "m_bForceLeft": true,
+          "m_listNKMEventDispel": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_bDebuff": true,
+              "m_fRange": 10,
+              "m_MaxCount": 1,
+              "m_bDeleteInfinity": false
+            }
+          ],
+          "m_listNKMEventRespawn": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_UnitStrID": "NKM_MOB_BOSS_CLB_001_GUILTY_C_RAMLETHAL_HCM",
+              "m_MaxCount": 1,
+              "m_bMaxCountReRespawn": true
+            }
+          ],
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_EffectName": "AB_FX_CMN_RECALL",
+              "m_AnimName": "BASE",
+              "m_BoneName": "root",
+              "m_fScaleFactor": 0.8,
+              "m_bHold": false
+            }
+          ],
+          "m_listNKMEventDissolve": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.5,
+              "m_fDissolve": 1,
+              "m_fTrackTime": 0.1
+            }
+          ],
+          "m_listNKMEventInvincible": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L6_1 / 30"
+              },
+              "m_fEventTimeMax": 3.3
+            }
+          ],
+          "m_listNKMEventMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bTargetUnit": false,
+              "m_bOffsetDependMe": true,
+              "m_OffsetX": -100,
+              "m_MoveTime": 0.6
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6,
+              "m_bTargetUnit": false,
+              "m_bOffsetDependMe": true,
+              "m_fMapPosFactor": 0.01,
+              "m_MoveTime": 0.1
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_REGAME",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_bShowGage": false,
+          "m_StateCoolTime": 54,
+          "m_AnimName": "HYPER_SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.0,
+              "m_fEventTimeMax": 2.3333333333333335,
+              "m_fRangeMin": -300,
+              "m_fRangeMax": 300,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_HYPER1",
+              "m_bDamageSpeedDependRight": true,
+              "m_bForceCritical": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.6666666666666665,
+              "m_fEventTimeMax": 3.0,
+              "m_fRangeMin": -500,
+              "m_fRangeMax": 500,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_HYPER1_END",
+              "m_bDamageSpeedDependRight": true,
+              "m_bForceCritical": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 3.0,
+              "m_fEventTimeMax": 3.3333333333333335,
+              "m_fRangeMin": -500,
+              "m_fRangeMax": 500,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_HYPER1_END",
+              "m_bDamageSpeedDependRight": true,
+              "m_bForceCritical": true
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_fEventTimeMax": 4.166666666666667,
+              "m_fColorR": 1.0,
+              "m_fColorG": 0.5,
+              "m_fColorB": 0.5
+            }
+          ],
+          "m_listNKMEventInvincible": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_fEventTimeMax": 2.6666666666666665
+            }
+          ],
+          "m_listNKMEventMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.0,
+              "m_OffsetX": 200,
+              "m_OffsetJumpYPos": 0.0,
+              "m_MoveTime": 1.0,
+              "m_bLandMove": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.533333333333333,
+              "m_bTargetUnit": true,
+              "m_OffsetX": 250,
+              "m_OffsetJumpYPos": 0.0,
+              "m_MoveTime": 0.13333333333333333,
+              "m_bLandMove": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 3.2333333333333334,
+              "m_OffsetX": -700,
+              "m_OffsetJumpYPos": 0.0,
+              "m_MoveTime": 0.03333333333333333,
+              "m_bLandMove": true,
+              "m_bDependMyShip": true
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HYPER_GUILTY"
+              ]
+            },
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_fLocalVol": 0.4,
+              "m_listSoundName": [
+                "FX_COMBAT_GUILTY_S_MILLIA_HYPER1_1"
+              ]
+            },
+            {
+              "m_fEventTime": 1.8333333333333333,
+              "m_fLocalVol": 0.4,
+              "m_listSoundName": [
+                "FX_COMBAT_GUILTY_S_MILLIA_HYPER1_2"
+              ]
+            },
+            {
+              "m_fEventTime": 2.5,
+              "m_fLocalVol": 0.4,
+              "m_listSoundName": [
+                "FX_COMBAT_GUILTY_S_MILLIA_HYPER1_3"
+              ]
+            },
+            {
+              "m_fEventTime": 3.2333333333333334,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_GUILTY_S_MILLIA_HYPER1_4"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_HYPER_1",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_HYPER_2",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_HYPER_3"
+              ]
+            }
+          ],
+          "m_listNKMEventCameraMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L7_1 / 30"
+              },
+              "m_fEventTimeMax": 1.1666666666666667,
+              "m_fPosXOffset": -250,
+              "m_fPosYOffset": 150,
+              "m_fZoom": -175,
+              "m_fMoveTrackingTime": 0.1,
+              "m_fZoomTrackingTime": 0.1
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.1666666666666667,
+              "m_fEventTimeMax": 2.0,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 200,
+              "m_fZoom": -100,
+              "m_fMoveTrackingTime": 0.5,
+              "m_fZoomTrackingTime": 0.5
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.0,
+              "m_fEventTimeMax": 2.5,
+              "m_fPosXOffset": 200,
+              "m_fPosYOffset": 700,
+              "m_fZoom": -150,
+              "m_fMoveTrackingTime": 1.0,
+              "m_fZoomTrackingTime": 1.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.5,
+              "m_fEventTimeMax": 3.2666666666666666,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 0,
+              "m_fZoom": -150,
+              "m_fMoveTrackingTime": 0.2,
+              "m_fZoomTrackingTime": 0.2
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 3.2666666666666666,
+              "m_fEventTimeMax": 3.8333333333333335,
+              "m_fPosXOffset": 200,
+              "m_fPosYOffset": 0,
+              "m_fZoom": 0,
+              "m_fMoveTrackingTime": 0.5,
+              "m_fZoomTrackingTime": 0.5
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 1.4,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 1250,
+              "m_fCameraCrashGap": 8,
+              "m_fCameraCrashTime": 0.3333333333333333
+            },
+            {
+              "m_fEventTime": 2.6666666666666665,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 1250,
+              "m_fCameraCrashGap": 15,
+              "m_fCameraCrashTime": 0.6666666666666666
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_START",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+          "m_bShowGage": false,
+          "m_DamagedChangeState": "USN_ASTAND",
+          "m_AnimName": "START",
+          "m_fAnimSpeed": 1.0,
+          "m_AnimEndChangeState": "USN_ASTAND",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_FOOT_STEP"
+              ]
+            },
+            {
+              "m_fEventTime": 0.5,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_FOOT_STEP"
+              ]
+            },
+            {
+              "m_fEventTime": 1.6666666666666667,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_52"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_bVoice": true,
+              "m_PlayRate": 1.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_START_1",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_START_6",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_START_7",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_START_8"
+              ]
+            }
+          ]
+        },
+        {
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_StateName": "USN_PASSIVE",
+          "m_AnimName": "PASSIVE",
+          "m_fAnimSpeed": 1.0,
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_bShowGage": false,
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.3333333333333333,
+              "m_fEventTimeMax": 0.6666666666666666,
+              "m_fRangeMin": -400.0,
+              "m_fRangeMax": 400.0,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 3,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_PASSIVE",
+              "m_bForceHit": true,
+              "m_bDamageSpeedDependRight": true
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_COMMON_FORCEHIT",
+              "m_StateEndRemove": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_PASSIVE"
+            }
+          ],
+          "m_listNKMEventInvincible": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L9_1 / 30"
+              },
+              "m_fEventTimeMax": 1.0
+            }
+          ],
+          "m_listNKMEventSpeedY": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.3333333333333333,
+              "m_fEventTimeMax": 0.5333333333333333,
+              "m_SpeedY": 1.0
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 1250,
+              "m_fCameraCrashGap": 8,
+              "m_fCameraCrashTime": 0.3333333333333333
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.3333333333333333,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_56"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_PASSIVE_1",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_PASSIVE_2",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_PASSIVE_3"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimEndChangeState": "USN_ATTACK1_LOOP",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.8333333333333334,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWING_SMALL_10"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.33,
+              "m_listSoundName": [
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_7",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_8",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_9",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_10",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_11"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1_LOOP",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK1_LOOP",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_StateTimeChangeStateTime": 4,
+          "m_StateTimeChangeState": "USN_ATTACK1_PASSIVE",
+          "m_TargetLostOrDieStateDurationTime": 0.5,
+          "m_TargetLostOrDieState": "USN_ATTACK1_END",
+          "m_TargetDistOverChangeStateDist": 950,
+          "m_TargetDistOverChangeState": "USN_ATTACK1_END",
+          "m_AirTargetThisFrameChangeState": "USN_ATTACK1_AIR_LOOP",
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.03333333333333333,
+              "m_fEventTimeMax": 0.4,
+              "m_fRangeMin": -3000.0,
+              "m_fRangeMax": 3000.0,
+              "m_bHitAir": true,
+              "m_AttackUnitCount": 99,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_UNIT_CHECK",
+              "m_listNKM_UNIT_STYLE_TYPE": [
+                "NUST_COUNTER",
+                "NUST_SOLDIER",
+                "NUST_MECHANIC",
+                "NUST_CORRUPTED"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.03333333333333333,
+              "m_fEventTimeMax": 0.4,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1000.0,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_ATTACK1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.4,
+              "m_fEventTimeMax": 0.8,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1000.0,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_ATTACK1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.8,
+              "m_fEventTimeMax": 1.2,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1000.0,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_ATTACK1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.2,
+              "m_fEventTimeMax": 1.6,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1000.0,
+              "m_bHitAir": false,
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_ATTACK1"
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L11_1 / 30"
+              },
+              "m_BuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_SKILL",
+              "m_StateEndRemove": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6666666666666666,
+              "m_BuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_UNIT_CHECK",
+              "m_BuffRemove": true
+            }
+          ],
+          "m_listNKMEventChangeState": [
+            {
+              "m_Condition": {
+                "m_NeedBuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_UNIT_CHECK",
+                "m_NeedBuffOverlapCount": [
+                  5,
+                  5
+                ]
+              },
+              "m_fEventTime": 0.4,
+              "m_ChangeState": "USN_HYPER1"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_fLocalVol": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+              ]
+            },
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_fLocalVol": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+              ]
+            },
+            {
+              "m_fEventTime": 0.3,
+              "m_fLocalVol": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+              ]
+            },
+            {
+              "m_fEventTime": 0.43333333333333335,
+              "m_fLocalVol": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+              ]
+            },
+            {
+              "m_fEventTime": 0.5666666666666667,
+              "m_fLocalVol": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+              ]
+            },
+            {
+              "m_fEventTime": 0.7,
+              "m_fLocalVol": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+              ]
+            },
+            {
+              "m_fEventTime": 0.8333333333333334,
+              "m_fLocalVol": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+              ]
+            },
+            {
+              "m_fEventTime": 0.9666666666666667,
+              "m_fLocalVol": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+              ]
+            },
+            {
+              "m_fEventTime": 1.1,
+              "m_fLocalVol": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+              ]
+            },
+            {
+              "m_fEventTime": 1.1,
+              "m_fLocalVol": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+              ]
+            },
+            {
+              "m_fEventTime": 1.2333333333333334,
+              "m_fLocalVol": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+              ]
+            },
+            {
+              "m_fEventTime": 1.3666666666666667,
+              "m_fLocalVol": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_1",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_2",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_3",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_4",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_5",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_6"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1_PASSIVE",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK1_END",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.25,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_UNIT_CHECK",
+              "m_BuffRemove": true
+            }
+          ],
+          "m_listNKMEventChangeState": [
+            {
+              "m_Condition": {
+                "m_IgnoreBuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_PASSIVE",
+                "m_IgnoreBuffOverlapCount": [
+                  5,
+                  5
+                ]
+              },
+              "m_fEventTime": 0.3333333333333333,
+              "m_ChangeState": "USN_PASSIVE"
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1_END",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK1_END",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.25,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_UNIT_CHECK",
+              "m_BuffRemove": true
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1_AIR",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_AnimEndChangeState": "USN_ATTACK1_AIR_LOOP",
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.8333333333333334,
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SWING_SMALL_10"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.33,
+              "m_listSoundName": [
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_7",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_8",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_9",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_10",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_11"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1_AIR_LOOP",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK1_LOOP",
+          "m_bAnimLoop": true,
+          "m_fAnimSpeed": 1.0,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_StateTimeChangeStateTime": 4,
+          "m_StateTimeChangeState": "USN_ATTACK1_PASSIVE",
+          "m_TargetLostOrDieStateDurationTime": 1,
+          "m_TargetLostOrDieState": "USN_ATTACK1_AIR_END",
+          "m_TargetDistOverChangeStateDist": 950,
+          "m_TargetDistOverChangeState": "USN_ATTACK1_AIR_END",
+          "m_LandTargetThisFrameChangeState": "USN_ATTACK1_LOOP",
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.03333333333333333,
+              "m_fEventTimeMax": 0.4,
+              "m_fRangeMin": -3000.0,
+              "m_fRangeMax": 3000.0,
+              "m_bHitAir": true,
+              "m_AttackUnitCount": 99,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_UNIT_CHECK",
+              "m_listNKM_UNIT_STYLE_TYPE": [
+                "NUST_COUNTER",
+                "NUST_SOLDIER",
+                "NUST_MECHANIC",
+                "NUST_CORRUPTED"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.03333333333333333,
+              "m_fEventTimeMax": 0.4,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1000.0,
+              "m_bHitLand": false,
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_ATTACK1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.4,
+              "m_fEventTimeMax": 0.8,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1000.0,
+              "m_bHitLand": false,
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_ATTACK1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 0.8,
+              "m_fEventTimeMax": 1.2,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1000.0,
+              "m_bHitLand": false,
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_ATTACK1"
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.2,
+              "m_fEventTimeMax": 1.5,
+              "m_fRangeMin": 0.0,
+              "m_fRangeMax": 1000.0,
+              "m_bHitLand": false,
+              "m_AttackUnitCount": 1,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_ATTACK1"
+            }
+          ],
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": {
+                "__unparsed_expr": "L15_1 / 30"
+              },
+              "m_BuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_SKILL",
+              "m_StateEndRemove": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.6666666666666666,
+              "m_BuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_UNIT_CHECK",
+              "m_BuffRemove": true
+            }
+          ],
+          "m_listNKMEventChangeState": [
+            {
+              "m_Condition": {
+                "m_NeedBuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_UNIT_CHECK",
+                "m_NeedBuffOverlapCount": [
+                  5,
+                  5
+                ]
+              },
+              "m_fEventTime": 0.4,
+              "m_ChangeState": "USN_HYPER1"
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_fLocalVol": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+              ]
+            },
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_fLocalVol": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+              ]
+            },
+            {
+              "m_fEventTime": 0.3,
+              "m_fLocalVol": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+              ]
+            },
+            {
+              "m_fEventTime": 0.43333333333333335,
+              "m_fLocalVol": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+              ]
+            },
+            {
+              "m_fEventTime": 0.5666666666666667,
+              "m_fLocalVol": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+              ]
+            },
+            {
+              "m_fEventTime": 0.7,
+              "m_fLocalVol": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+              ]
+            },
+            {
+              "m_fEventTime": 0.8333333333333334,
+              "m_fLocalVol": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+              ]
+            },
+            {
+              "m_fEventTime": 0.9666666666666667,
+              "m_fLocalVol": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+              ]
+            },
+            {
+              "m_fEventTime": 1.1,
+              "m_fLocalVol": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+              ]
+            },
+            {
+              "m_fEventTime": 1.1,
+              "m_fLocalVol": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+              ]
+            },
+            {
+              "m_fEventTime": 1.2333333333333334,
+              "m_fLocalVol": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+              ]
+            },
+            {
+              "m_fEventTime": 1.3666666666666667,
+              "m_fLocalVol": 0.8,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_1",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_2",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_3",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_4",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_5",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_6"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_ATTACK1_AIR_END",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_AnimName": "ATTACK1_END",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.25,
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_UNIT_CHECK",
+              "m_BuffRemove": true
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_SKILL1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_SKILL",
+          "m_StateCoolTime": 26,
+          "m_bShowGage": false,
+          "m_AnimName": "SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventEffect": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": {
+                "__unparsed_expr": "L17_1 / 30"
+              },
+              "m_EffectName": "AB_FX_CAST_SKILL",
+              "m_AnimName": "BASE",
+              "m_BoneName": "BIP01_SPINE1",
+              "m_fScaleFactor": 30.0,
+              "m_bHold": true
+            }
+          ],
+          "m_listNKMEventDamageEffect": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.9333333333333333,
+              "m_DEName": "DE_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_SKILL1",
+              "m_OffsetX": 55,
+              "m_OffsetY": 150
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.0,
+              "m_fEventTimeMax": 4.666666666666667,
+              "m_fColorR": 0.5,
+              "m_fColorG": 0.5,
+              "m_fColorB": 1.0
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 0.9333333333333333,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 1250,
+              "m_fCameraCrashGap": 8,
+              "m_fCameraCrashTime": 0.5
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": {
+                "__unparsed_expr": "L17_1 / 30"
+              },
+              "m_fLocalVol": 1.0,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_SKILL_START"
+              ]
+            },
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_MAGIC_SPELL_29"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.3333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ACTIVE_1",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ACTIVE_2",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ACTIVE_3"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_HYPER1",
+          "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+          "m_NKM_SKILL_TYPE": "NST_ATTACK",
+          "m_SuperArmorLevel": "NSAL_HYPER",
+          "m_bShowGage": false,
+          "m_StateCoolTime": 54,
+          "m_AnimName": "HYPER_SKILL1",
+          "m_bAnimLoop": false,
+          "m_fAnimSpeed": 1.0,
+          "m_listNKMEventBuff": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_BuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_UNIT_CHECK",
+              "m_BuffRemove": true
+            }
+          ],
+          "m_listNKMEventAttack": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.0,
+              "m_fEventTimeMax": 2.3333333333333335,
+              "m_fRangeMin": -300,
+              "m_fRangeMax": 300,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_HYPER1",
+              "m_bDamageSpeedDependRight": true,
+              "m_bForceCritical": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.6666666666666665,
+              "m_fEventTimeMax": 3.0,
+              "m_fRangeMin": -600,
+              "m_fRangeMax": 600,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_HYPER1_END",
+              "m_bDamageSpeedDependRight": true,
+              "m_bForceCritical": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 3.0,
+              "m_fEventTimeMax": 3.3333333333333335,
+              "m_fRangeMin": -600,
+              "m_fRangeMax": 600,
+              "m_AttackUnitCount": 4,
+              "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_HYPER1_END",
+              "m_bDamageSpeedDependRight": true,
+              "m_bForceCritical": true
+            }
+          ],
+          "m_listNKMEventMotionBlur": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L18_1 / 30"
+              },
+              "m_fEventTimeMax": 4.166666666666667,
+              "m_fColorR": 1.0,
+              "m_fColorG": 0.5,
+              "m_fColorB": 0.5
+            }
+          ],
+          "m_listNKMEventInvincible": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L18_1 / 30"
+              },
+              "m_fEventTimeMax": 2.6666666666666665
+            }
+          ],
+          "m_listNKMEventMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.0,
+              "m_OffsetX": 200,
+              "m_OffsetJumpYPos": 0.0,
+              "m_MoveTime": 1.0,
+              "m_bLandMove": true
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 2.533333333333333,
+              "m_OffsetX": 350,
+              "m_OffsetJumpYPos": 0.0,
+              "m_MoveTime": 0.13333333333333333,
+              "m_bLandMove": true
+            }
+          ],
+          "m_listNKMEventSound": [
+            {
+              "m_fEventTime": 0.03333333333333333,
+              "m_fLocalVol": 0.7,
+              "m_listSoundName": [
+                "FX_COMBAT_ALL_HYPER_GUILTY"
+              ]
+            },
+            {
+              "m_fEventTime": 0.16666666666666666,
+              "m_fLocalVol": 0.4,
+              "m_listSoundName": [
+                "FX_COMBAT_GUILTY_S_MILLIA_HYPER1_1"
+              ]
+            },
+            {
+              "m_fEventTime": 1.8333333333333333,
+              "m_fLocalVol": 0.4,
+              "m_listSoundName": [
+                "FX_COMBAT_GUILTY_S_MILLIA_HYPER1_2"
+              ]
+            },
+            {
+              "m_fEventTime": 2.5,
+              "m_fLocalVol": 0.4,
+              "m_listSoundName": [
+                "FX_COMBAT_GUILTY_S_MILLIA_HYPER1_3"
+              ]
+            },
+            {
+              "m_fEventTime": 3.2333333333333334,
+              "m_fLocalVol": 0.5,
+              "m_listSoundName": [
+                "FX_COMBAT_GUILTY_S_MILLIA_HYPER1_4"
+              ]
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.5,
+              "m_bVoice": true,
+              "m_PlayRate": 1.0,
+              "m_listSoundName": [
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_HYPER_1",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_HYPER_2",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_HYPER_3"
+              ]
+            }
+          ],
+          "m_listNKMEventCameraMove": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L18_1 / 30"
+              },
+              "m_fEventTimeMax": 1.1666666666666667,
+              "m_fPosXOffset": -250,
+              "m_fPosYOffset": 150,
+              "m_fZoom": -175,
+              "m_fMoveTrackingTime": 0.1,
+              "m_fZoomTrackingTime": 0.1
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 1.1666666666666667,
+              "m_fEventTimeMax": 2.0,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 200,
+              "m_fZoom": -100,
+              "m_fMoveTrackingTime": 0.5,
+              "m_fZoomTrackingTime": 0.5
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.0,
+              "m_fEventTimeMax": 2.5,
+              "m_fPosXOffset": 200,
+              "m_fPosYOffset": 700,
+              "m_fZoom": -150,
+              "m_fMoveTrackingTime": 1.0,
+              "m_fZoomTrackingTime": 1.0
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 2.5,
+              "m_fEventTimeMax": 3.2666666666666666,
+              "m_fPosXOffset": 0,
+              "m_fPosYOffset": 0,
+              "m_fZoom": -150,
+              "m_fMoveTrackingTime": 0.2,
+              "m_fZoomTrackingTime": 0.2
+            },
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": 3.2666666666666666,
+              "m_fEventTimeMax": 3.8333333333333335,
+              "m_fPosXOffset": 200,
+              "m_fPosYOffset": 0,
+              "m_fZoom": 0,
+              "m_fMoveTrackingTime": 0.5,
+              "m_fZoomTrackingTime": 0.5
+            }
+          ],
+          "m_listNKMEventCameraCrash": [
+            {
+              "m_fEventTime": 1.4,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 1250,
+              "m_fCameraCrashGap": 8,
+              "m_fCameraCrashTime": 0.3333333333333333
+            },
+            {
+              "m_fEventTime": 2.6666666666666665,
+              "m_CameraCrashType": "NCCT_UP_DOWN",
+              "m_fCrashRadius": 1250,
+              "m_fCameraCrashGap": 15,
+              "m_fCameraCrashTime": 0.6666666666666666
+            }
+          ],
+          "m_listNKMEventFadeWorld": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTimeMin": {
+                "__unparsed_expr": "L19_1 / 30"
+              },
+              "m_fEventTimeMax": 4.166666666666667,
+              "m_fColorR": 0.0,
+              "m_fColorG": 0.0,
+              "m_fColorB": 0.0,
+              "m_fMapColorKeepTime": 0.3333333333333333,
+              "m_fMapColorReturnTime": 0.3333333333333333
+            }
+          ],
+          "m_listNKMEventStopTime": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_StopTimeIndex": "NSTI_SKILL",
+              "m_fStopTime": 1.0,
+              "m_bStopEnemyOnly": false,
+              "m_bMyStop": false,
+              "m_fRange": 1200
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_STUN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": false,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.75,
+              "m_listSoundName": [
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_STUN_1",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_STUN_2",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_STUN_3"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_A",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_4",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_5",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_6"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_B",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_4",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_5",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_6"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_AIR_UP",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_4",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_5",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_6"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DOWN",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.25,
+              "m_listSoundName": [
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_1",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_2",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_3",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_4",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_5",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_6"
+              ]
+            }
+          ]
+        },
+        {
+          "m_StateName": "USN_DAMAGE_DIE",
+          "m_listNKMEventSound": [
+            {
+              "m_bAnimTime": true,
+              "m_fEventTime": 0.03333333333333333,
+              "m_bVoice": true,
+              "m_PlayRate": 0.7,
+              "m_listSoundName": [
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DEATH_1",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DEATH_2",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DEATH_3",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DEATH_4",
+                "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DEATH_5"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root": {
+    "BASE_UNIT_STR_ID": "NKM_UNIT_BASE_BOSS_MOVE",
+    "m_fForceRespawnZposMin": 0.2,
+    "m_fForceRespawnZposMax": 0.4,
+    "m_UnitSizeX": 100,
+    "m_UnitSizeY": 270,
+    "m_SpriteScale": 1.0,
+    "m_bShowGage": true,
+    "m_fGageOffsetY": 300,
+    "m_fShadowScaleX": 170,
+    "m_fShadowScaleY": 170,
+    "m_SpeedRun": 300,
+    "m_SeeTarget": true,
+    "m_TargetNearRange": 800,
+    "m_SeeRange": 3000,
+    "m_SeeRangeMax": 3000,
+    "m_fDieCompleteTime": 1.8,
+    "m_bUseMotionBlur": true,
+    "m_fBuffEffectScaleFactor": 1.0,
+    "m_bImmuneStun": true,
+    "m_bNoDamageStopTime": true,
+    "m_bNoDamageState": true,
+    "m_bNoDamageDownState": true,
+    "m_fDamageUpFactor": 0.0,
+    "m_fDamageBackFactor": 0.3,
+    "m_listStaticBuffData": [
+      {
+        "m_BuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_HCM_COMMON"
+      }
+    ],
+    "m_listPhaseChangeData": [
+      {
+        "m_TargetPhase": 1,
+        "m_fChangeConditionHPRate": 0.5,
+        "m_ChangeStateName": "USN_BACK"
+      },
+      {
+        "m_Condition": {
+          "m_NeedBuffStrID": "BUFF_MOB_BOSS_CLB_001_TAG_TRIGGER"
+        },
+        "m_TargetPhase": 2,
+        "m_ChangeStateName": "USN_REGAME",
+        "m_listChangeCoolTime": [
+          {
+            "m_StateName": "USN_HYPER1",
+            "m_fCoolTime": 1.0
+          }
+        ]
+      },
+      {
+        "m_Condition": {
+          "m_IgnoreBuffStrID": "BUFF_MOB_BOSS_CLB_001_TAG_TRIGGER"
+        },
+        "m_TargetPhase": 2,
+        "m_fChangeConditionTime": 120.0,
+        "m_ChangeStateName": "USN_REGAME",
+        "m_listChangeCoolTime": [
+          {
+            "m_StateName": "USN_HYPER1",
+            "m_fCoolTime": 1.0
+          }
+        ]
+      }
+    ],
+    "m_listAttackStateData": [
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 800
+      }
+    ],
+    "m_listAirAttackStateData": [
+      {
+        "m_StateName": "USN_ATTACK1_AIR",
+        "m_fRangeMin": 0,
+        "m_fRangeMax": 800
+      }
+    ],
+    "m_listSkillStateData": [
+      {
+        "m_Condition": {
+          "m_IgnoreBuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_SKILL"
+        },
+        "m_StateName": "USN_SKILL1",
+        "m_fRangeMax": 1000
+      }
+    ],
+    "m_listHyperSkillStateData": [
+      {
+        "m_StateName": "USN_HYPER1",
+        "m_fStartCool": 0.7,
+        "m_fRangeMax": 1000
+      }
+    ],
+    "m_dicNKMUnitState": [
+      {
+        "m_StateName": "USN_WAITING",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ASTAND",
+        "m_fAnimSpeed": 1.0,
+        "m_bAnimLoop": true,
+        "m_bNoMove": true,
+        "m_bForceLeft": true,
+        "m_bForceNoTargeted": true,
+        "m_listNKMEventInvincible": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_fEventTimeMax": 6.666666666666667
+          }
+        ],
+        "m_listNKMEventDissolve": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L5_1 / 30"
+            },
+            "m_fDissolve": 0,
+            "m_fTrackTime": 0.1
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_BACK",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "DODGE",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_AnimEndChangeState": "USN_WAITING",
+        "m_bNoAI": true,
+        "m_bForceLeft": true,
+        "m_listNKMEventDispel": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_bDebuff": true,
+            "m_fRange": 10,
+            "m_MaxCount": 1,
+            "m_bDeleteInfinity": false
+          }
+        ],
+        "m_listNKMEventRespawn": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_UnitStrID": "NKM_MOB_BOSS_CLB_001_GUILTY_C_RAMLETHAL_HCM",
+            "m_MaxCount": 1,
+            "m_bMaxCountReRespawn": true
+          }
+        ],
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_EffectName": "AB_FX_CMN_RECALL",
+            "m_AnimName": "BASE",
+            "m_BoneName": "root",
+            "m_fScaleFactor": 0.8,
+            "m_bHold": false
+          }
+        ],
+        "m_listNKMEventDissolve": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.5,
+            "m_fDissolve": 1,
+            "m_fTrackTime": 0.1
+          }
+        ],
+        "m_listNKMEventInvincible": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L6_1 / 30"
+            },
+            "m_fEventTimeMax": 3.3
+          }
+        ],
+        "m_listNKMEventMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bTargetUnit": false,
+            "m_bOffsetDependMe": true,
+            "m_OffsetX": -100,
+            "m_MoveTime": 0.6
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6,
+            "m_bTargetUnit": false,
+            "m_bOffsetDependMe": true,
+            "m_fMapPosFactor": 0.01,
+            "m_MoveTime": 0.1
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_REGAME",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_bShowGage": false,
+        "m_StateCoolTime": 54,
+        "m_AnimName": "HYPER_SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.0,
+            "m_fEventTimeMax": 2.3333333333333335,
+            "m_fRangeMin": -300,
+            "m_fRangeMax": 300,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_HYPER1",
+            "m_bDamageSpeedDependRight": true,
+            "m_bForceCritical": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.6666666666666665,
+            "m_fEventTimeMax": 3.0,
+            "m_fRangeMin": -500,
+            "m_fRangeMax": 500,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_HYPER1_END",
+            "m_bDamageSpeedDependRight": true,
+            "m_bForceCritical": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 3.0,
+            "m_fEventTimeMax": 3.3333333333333335,
+            "m_fRangeMin": -500,
+            "m_fRangeMax": 500,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_HYPER1_END",
+            "m_bDamageSpeedDependRight": true,
+            "m_bForceCritical": true
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_fEventTimeMax": 4.166666666666667,
+            "m_fColorR": 1.0,
+            "m_fColorG": 0.5,
+            "m_fColorB": 0.5
+          }
+        ],
+        "m_listNKMEventInvincible": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_fEventTimeMax": 2.6666666666666665
+          }
+        ],
+        "m_listNKMEventMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.0,
+            "m_OffsetX": 200,
+            "m_OffsetJumpYPos": 0.0,
+            "m_MoveTime": 1.0,
+            "m_bLandMove": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.533333333333333,
+            "m_bTargetUnit": true,
+            "m_OffsetX": 250,
+            "m_OffsetJumpYPos": 0.0,
+            "m_MoveTime": 0.13333333333333333,
+            "m_bLandMove": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 3.2333333333333334,
+            "m_OffsetX": -700,
+            "m_OffsetJumpYPos": 0.0,
+            "m_MoveTime": 0.03333333333333333,
+            "m_bLandMove": true,
+            "m_bDependMyShip": true
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HYPER_GUILTY"
+            ]
+          },
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_fLocalVol": 0.4,
+            "m_listSoundName": [
+              "FX_COMBAT_GUILTY_S_MILLIA_HYPER1_1"
+            ]
+          },
+          {
+            "m_fEventTime": 1.8333333333333333,
+            "m_fLocalVol": 0.4,
+            "m_listSoundName": [
+              "FX_COMBAT_GUILTY_S_MILLIA_HYPER1_2"
+            ]
+          },
+          {
+            "m_fEventTime": 2.5,
+            "m_fLocalVol": 0.4,
+            "m_listSoundName": [
+              "FX_COMBAT_GUILTY_S_MILLIA_HYPER1_3"
+            ]
+          },
+          {
+            "m_fEventTime": 3.2333333333333334,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_GUILTY_S_MILLIA_HYPER1_4"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_HYPER_1",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_HYPER_2",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_HYPER_3"
+            ]
+          }
+        ],
+        "m_listNKMEventCameraMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L7_1 / 30"
+            },
+            "m_fEventTimeMax": 1.1666666666666667,
+            "m_fPosXOffset": -250,
+            "m_fPosYOffset": 150,
+            "m_fZoom": -175,
+            "m_fMoveTrackingTime": 0.1,
+            "m_fZoomTrackingTime": 0.1
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.1666666666666667,
+            "m_fEventTimeMax": 2.0,
+            "m_fPosXOffset": 0,
+            "m_fPosYOffset": 200,
+            "m_fZoom": -100,
+            "m_fMoveTrackingTime": 0.5,
+            "m_fZoomTrackingTime": 0.5
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.0,
+            "m_fEventTimeMax": 2.5,
+            "m_fPosXOffset": 200,
+            "m_fPosYOffset": 700,
+            "m_fZoom": -150,
+            "m_fMoveTrackingTime": 1.0,
+            "m_fZoomTrackingTime": 1.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.5,
+            "m_fEventTimeMax": 3.2666666666666666,
+            "m_fPosXOffset": 0,
+            "m_fPosYOffset": 0,
+            "m_fZoom": -150,
+            "m_fMoveTrackingTime": 0.2,
+            "m_fZoomTrackingTime": 0.2
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 3.2666666666666666,
+            "m_fEventTimeMax": 3.8333333333333335,
+            "m_fPosXOffset": 200,
+            "m_fPosYOffset": 0,
+            "m_fZoom": 0,
+            "m_fMoveTrackingTime": 0.5,
+            "m_fZoomTrackingTime": 0.5
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 1.4,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 1250,
+            "m_fCameraCrashGap": 8,
+            "m_fCameraCrashTime": 0.3333333333333333
+          },
+          {
+            "m_fEventTime": 2.6666666666666665,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 1250,
+            "m_fCameraCrashGap": 15,
+            "m_fCameraCrashTime": 0.6666666666666666
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_START",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_START",
+        "m_bShowGage": false,
+        "m_DamagedChangeState": "USN_ASTAND",
+        "m_AnimName": "START",
+        "m_fAnimSpeed": 1.0,
+        "m_AnimEndChangeState": "USN_ASTAND",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_FOOT_STEP"
+            ]
+          },
+          {
+            "m_fEventTime": 0.5,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_FOOT_STEP"
+            ]
+          },
+          {
+            "m_fEventTime": 1.6666666666666667,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_52"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_bVoice": true,
+            "m_PlayRate": 1.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_START_1",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_START_6",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_START_7",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_START_8"
+            ]
+          }
+        ]
+      },
+      {
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_StateName": "USN_PASSIVE",
+        "m_AnimName": "PASSIVE",
+        "m_fAnimSpeed": 1.0,
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_bShowGage": false,
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.3333333333333333,
+            "m_fEventTimeMax": 0.6666666666666666,
+            "m_fRangeMin": -400.0,
+            "m_fRangeMax": 400.0,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 3,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_PASSIVE",
+            "m_bForceHit": true,
+            "m_bDamageSpeedDependRight": true
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_COMMON_FORCEHIT",
+            "m_StateEndRemove": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_PASSIVE"
+          }
+        ],
+        "m_listNKMEventInvincible": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L9_1 / 30"
+            },
+            "m_fEventTimeMax": 1.0
+          }
+        ],
+        "m_listNKMEventSpeedY": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.3333333333333333,
+            "m_fEventTimeMax": 0.5333333333333333,
+            "m_SpeedY": 1.0
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 1250,
+            "m_fCameraCrashGap": 8,
+            "m_fCameraCrashTime": 0.3333333333333333
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.3333333333333333,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_56"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_PASSIVE_1",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_PASSIVE_2",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_PASSIVE_3"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimEndChangeState": "USN_ATTACK1_LOOP",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.8333333333333334,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWING_SMALL_10"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.33,
+            "m_listSoundName": [
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_7",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_8",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_9",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_10",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_11"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1_LOOP",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK1_LOOP",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_StateTimeChangeStateTime": 4,
+        "m_StateTimeChangeState": "USN_ATTACK1_PASSIVE",
+        "m_TargetLostOrDieStateDurationTime": 0.5,
+        "m_TargetLostOrDieState": "USN_ATTACK1_END",
+        "m_TargetDistOverChangeStateDist": 950,
+        "m_TargetDistOverChangeState": "USN_ATTACK1_END",
+        "m_AirTargetThisFrameChangeState": "USN_ATTACK1_AIR_LOOP",
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.03333333333333333,
+            "m_fEventTimeMax": 0.4,
+            "m_fRangeMin": -3000.0,
+            "m_fRangeMax": 3000.0,
+            "m_bHitAir": true,
+            "m_AttackUnitCount": 99,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_UNIT_CHECK",
+            "m_listNKM_UNIT_STYLE_TYPE": [
+              "NUST_COUNTER",
+              "NUST_SOLDIER",
+              "NUST_MECHANIC",
+              "NUST_CORRUPTED"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.03333333333333333,
+            "m_fEventTimeMax": 0.4,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1000.0,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_ATTACK1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.4,
+            "m_fEventTimeMax": 0.8,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1000.0,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_ATTACK1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.8,
+            "m_fEventTimeMax": 1.2,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1000.0,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_ATTACK1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.2,
+            "m_fEventTimeMax": 1.6,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1000.0,
+            "m_bHitAir": false,
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_ATTACK1"
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L11_1 / 30"
+            },
+            "m_BuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_SKILL",
+            "m_StateEndRemove": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6666666666666666,
+            "m_BuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_UNIT_CHECK",
+            "m_BuffRemove": true
+          }
+        ],
+        "m_listNKMEventChangeState": [
+          {
+            "m_Condition": {
+              "m_NeedBuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_UNIT_CHECK",
+              "m_NeedBuffOverlapCount": [
+                5,
+                5
+              ]
+            },
+            "m_fEventTime": 0.4,
+            "m_ChangeState": "USN_HYPER1"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_fLocalVol": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+            ]
+          },
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_fLocalVol": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+            ]
+          },
+          {
+            "m_fEventTime": 0.3,
+            "m_fLocalVol": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+            ]
+          },
+          {
+            "m_fEventTime": 0.43333333333333335,
+            "m_fLocalVol": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+            ]
+          },
+          {
+            "m_fEventTime": 0.5666666666666667,
+            "m_fLocalVol": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+            ]
+          },
+          {
+            "m_fEventTime": 0.7,
+            "m_fLocalVol": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+            ]
+          },
+          {
+            "m_fEventTime": 0.8333333333333334,
+            "m_fLocalVol": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+            ]
+          },
+          {
+            "m_fEventTime": 0.9666666666666667,
+            "m_fLocalVol": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+            ]
+          },
+          {
+            "m_fEventTime": 1.1,
+            "m_fLocalVol": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+            ]
+          },
+          {
+            "m_fEventTime": 1.1,
+            "m_fLocalVol": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+            ]
+          },
+          {
+            "m_fEventTime": 1.2333333333333334,
+            "m_fLocalVol": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+            ]
+          },
+          {
+            "m_fEventTime": 1.3666666666666667,
+            "m_fLocalVol": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_1",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_2",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_3",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_4",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_5",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_6"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1_PASSIVE",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK1_END",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.25,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_UNIT_CHECK",
+            "m_BuffRemove": true
+          }
+        ],
+        "m_listNKMEventChangeState": [
+          {
+            "m_Condition": {
+              "m_IgnoreBuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_PASSIVE",
+              "m_IgnoreBuffOverlapCount": [
+                5,
+                5
+              ]
+            },
+            "m_fEventTime": 0.3333333333333333,
+            "m_ChangeState": "USN_PASSIVE"
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1_END",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK1_END",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.25,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_UNIT_CHECK",
+            "m_BuffRemove": true
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1_AIR",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_AnimEndChangeState": "USN_ATTACK1_AIR_LOOP",
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.8333333333333334,
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SWING_SMALL_10"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.33,
+            "m_listSoundName": [
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_7",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_8",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_9",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_10",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_11"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1_AIR_LOOP",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK1_LOOP",
+        "m_bAnimLoop": true,
+        "m_fAnimSpeed": 1.0,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_StateTimeChangeStateTime": 4,
+        "m_StateTimeChangeState": "USN_ATTACK1_PASSIVE",
+        "m_TargetLostOrDieStateDurationTime": 1,
+        "m_TargetLostOrDieState": "USN_ATTACK1_AIR_END",
+        "m_TargetDistOverChangeStateDist": 950,
+        "m_TargetDistOverChangeState": "USN_ATTACK1_AIR_END",
+        "m_LandTargetThisFrameChangeState": "USN_ATTACK1_LOOP",
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.03333333333333333,
+            "m_fEventTimeMax": 0.4,
+            "m_fRangeMin": -3000.0,
+            "m_fRangeMax": 3000.0,
+            "m_bHitAir": true,
+            "m_AttackUnitCount": 99,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_UNIT_CHECK",
+            "m_listNKM_UNIT_STYLE_TYPE": [
+              "NUST_COUNTER",
+              "NUST_SOLDIER",
+              "NUST_MECHANIC",
+              "NUST_CORRUPTED"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.03333333333333333,
+            "m_fEventTimeMax": 0.4,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1000.0,
+            "m_bHitLand": false,
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_ATTACK1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.4,
+            "m_fEventTimeMax": 0.8,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1000.0,
+            "m_bHitLand": false,
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_ATTACK1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 0.8,
+            "m_fEventTimeMax": 1.2,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1000.0,
+            "m_bHitLand": false,
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_ATTACK1"
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.2,
+            "m_fEventTimeMax": 1.5,
+            "m_fRangeMin": 0.0,
+            "m_fRangeMax": 1000.0,
+            "m_bHitLand": false,
+            "m_AttackUnitCount": 1,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_ATTACK1"
+          }
+        ],
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": {
+              "__unparsed_expr": "L15_1 / 30"
+            },
+            "m_BuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_SKILL",
+            "m_StateEndRemove": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.6666666666666666,
+            "m_BuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_UNIT_CHECK",
+            "m_BuffRemove": true
+          }
+        ],
+        "m_listNKMEventChangeState": [
+          {
+            "m_Condition": {
+              "m_NeedBuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_UNIT_CHECK",
+              "m_NeedBuffOverlapCount": [
+                5,
+                5
+              ]
+            },
+            "m_fEventTime": 0.4,
+            "m_ChangeState": "USN_HYPER1"
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_fLocalVol": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+            ]
+          },
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_fLocalVol": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+            ]
+          },
+          {
+            "m_fEventTime": 0.3,
+            "m_fLocalVol": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+            ]
+          },
+          {
+            "m_fEventTime": 0.43333333333333335,
+            "m_fLocalVol": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+            ]
+          },
+          {
+            "m_fEventTime": 0.5666666666666667,
+            "m_fLocalVol": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+            ]
+          },
+          {
+            "m_fEventTime": 0.7,
+            "m_fLocalVol": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+            ]
+          },
+          {
+            "m_fEventTime": 0.8333333333333334,
+            "m_fLocalVol": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+            ]
+          },
+          {
+            "m_fEventTime": 0.9666666666666667,
+            "m_fLocalVol": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+            ]
+          },
+          {
+            "m_fEventTime": 1.1,
+            "m_fLocalVol": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+            ]
+          },
+          {
+            "m_fEventTime": 1.1,
+            "m_fLocalVol": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+            ]
+          },
+          {
+            "m_fEventTime": 1.2333333333333334,
+            "m_fLocalVol": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+            ]
+          },
+          {
+            "m_fEventTime": 1.3666666666666667,
+            "m_fLocalVol": 0.8,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_DAGGER_STING_SMALL_03"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_1",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_2",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_3",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_4",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_5",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ATTACK_6"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_ATTACK1_AIR_END",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_AnimName": "ATTACK1_END",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.25,
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_UNIT_CHECK",
+            "m_BuffRemove": true
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_SKILL1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_SKILL",
+        "m_StateCoolTime": 26,
+        "m_bShowGage": false,
+        "m_AnimName": "SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventEffect": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": {
+              "__unparsed_expr": "L17_1 / 30"
+            },
+            "m_EffectName": "AB_FX_CAST_SKILL",
+            "m_AnimName": "BASE",
+            "m_BoneName": "BIP01_SPINE1",
+            "m_fScaleFactor": 30.0,
+            "m_bHold": true
+          }
+        ],
+        "m_listNKMEventDamageEffect": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.9333333333333333,
+            "m_DEName": "DE_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_SKILL1",
+            "m_OffsetX": 55,
+            "m_OffsetY": 150
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.0,
+            "m_fEventTimeMax": 4.666666666666667,
+            "m_fColorR": 0.5,
+            "m_fColorG": 0.5,
+            "m_fColorB": 1.0
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 0.9333333333333333,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 1250,
+            "m_fCameraCrashGap": 8,
+            "m_fCameraCrashTime": 0.5
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": {
+              "__unparsed_expr": "L17_1 / 30"
+            },
+            "m_fLocalVol": 1.0,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_SKILL_START"
+            ]
+          },
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_MAGIC_SPELL_29"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.3333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ACTIVE_1",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ACTIVE_2",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_ACTIVE_3"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_HYPER1",
+        "m_NKM_UNIT_STATE_TYPE": "NUST_ATTACK",
+        "m_NKM_SKILL_TYPE": "NST_ATTACK",
+        "m_SuperArmorLevel": "NSAL_HYPER",
+        "m_bShowGage": false,
+        "m_StateCoolTime": 54,
+        "m_AnimName": "HYPER_SKILL1",
+        "m_bAnimLoop": false,
+        "m_fAnimSpeed": 1.0,
+        "m_listNKMEventBuff": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_BuffStrID": "BUFF_MOB_BOSS_CLB_001_GUILTY_UNIT_CHECK",
+            "m_BuffRemove": true
+          }
+        ],
+        "m_listNKMEventAttack": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.0,
+            "m_fEventTimeMax": 2.3333333333333335,
+            "m_fRangeMin": -300,
+            "m_fRangeMax": 300,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_HYPER1",
+            "m_bDamageSpeedDependRight": true,
+            "m_bForceCritical": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.6666666666666665,
+            "m_fEventTimeMax": 3.0,
+            "m_fRangeMin": -600,
+            "m_fRangeMax": 600,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_HYPER1_END",
+            "m_bDamageSpeedDependRight": true,
+            "m_bForceCritical": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 3.0,
+            "m_fEventTimeMax": 3.3333333333333335,
+            "m_fRangeMin": -600,
+            "m_fRangeMax": 600,
+            "m_AttackUnitCount": 4,
+            "m_DamageTempletName": "DT_NKM_MOB_BOSS_CLB_001_GUILTY_S_MILLIA_HCM_HYPER1_END",
+            "m_bDamageSpeedDependRight": true,
+            "m_bForceCritical": true
+          }
+        ],
+        "m_listNKMEventMotionBlur": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L18_1 / 30"
+            },
+            "m_fEventTimeMax": 4.166666666666667,
+            "m_fColorR": 1.0,
+            "m_fColorG": 0.5,
+            "m_fColorB": 0.5
+          }
+        ],
+        "m_listNKMEventInvincible": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L18_1 / 30"
+            },
+            "m_fEventTimeMax": 2.6666666666666665
+          }
+        ],
+        "m_listNKMEventMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.0,
+            "m_OffsetX": 200,
+            "m_OffsetJumpYPos": 0.0,
+            "m_MoveTime": 1.0,
+            "m_bLandMove": true
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 2.533333333333333,
+            "m_OffsetX": 350,
+            "m_OffsetJumpYPos": 0.0,
+            "m_MoveTime": 0.13333333333333333,
+            "m_bLandMove": true
+          }
+        ],
+        "m_listNKMEventSound": [
+          {
+            "m_fEventTime": 0.03333333333333333,
+            "m_fLocalVol": 0.7,
+            "m_listSoundName": [
+              "FX_COMBAT_ALL_HYPER_GUILTY"
+            ]
+          },
+          {
+            "m_fEventTime": 0.16666666666666666,
+            "m_fLocalVol": 0.4,
+            "m_listSoundName": [
+              "FX_COMBAT_GUILTY_S_MILLIA_HYPER1_1"
+            ]
+          },
+          {
+            "m_fEventTime": 1.8333333333333333,
+            "m_fLocalVol": 0.4,
+            "m_listSoundName": [
+              "FX_COMBAT_GUILTY_S_MILLIA_HYPER1_2"
+            ]
+          },
+          {
+            "m_fEventTime": 2.5,
+            "m_fLocalVol": 0.4,
+            "m_listSoundName": [
+              "FX_COMBAT_GUILTY_S_MILLIA_HYPER1_3"
+            ]
+          },
+          {
+            "m_fEventTime": 3.2333333333333334,
+            "m_fLocalVol": 0.5,
+            "m_listSoundName": [
+              "FX_COMBAT_GUILTY_S_MILLIA_HYPER1_4"
+            ]
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.5,
+            "m_bVoice": true,
+            "m_PlayRate": 1.0,
+            "m_listSoundName": [
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_HYPER_1",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_HYPER_2",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_HYPER_3"
+            ]
+          }
+        ],
+        "m_listNKMEventCameraMove": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L18_1 / 30"
+            },
+            "m_fEventTimeMax": 1.1666666666666667,
+            "m_fPosXOffset": -250,
+            "m_fPosYOffset": 150,
+            "m_fZoom": -175,
+            "m_fMoveTrackingTime": 0.1,
+            "m_fZoomTrackingTime": 0.1
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 1.1666666666666667,
+            "m_fEventTimeMax": 2.0,
+            "m_fPosXOffset": 0,
+            "m_fPosYOffset": 200,
+            "m_fZoom": -100,
+            "m_fMoveTrackingTime": 0.5,
+            "m_fZoomTrackingTime": 0.5
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.0,
+            "m_fEventTimeMax": 2.5,
+            "m_fPosXOffset": 200,
+            "m_fPosYOffset": 700,
+            "m_fZoom": -150,
+            "m_fMoveTrackingTime": 1.0,
+            "m_fZoomTrackingTime": 1.0
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 2.5,
+            "m_fEventTimeMax": 3.2666666666666666,
+            "m_fPosXOffset": 0,
+            "m_fPosYOffset": 0,
+            "m_fZoom": -150,
+            "m_fMoveTrackingTime": 0.2,
+            "m_fZoomTrackingTime": 0.2
+          },
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": 3.2666666666666666,
+            "m_fEventTimeMax": 3.8333333333333335,
+            "m_fPosXOffset": 200,
+            "m_fPosYOffset": 0,
+            "m_fZoom": 0,
+            "m_fMoveTrackingTime": 0.5,
+            "m_fZoomTrackingTime": 0.5
+          }
+        ],
+        "m_listNKMEventCameraCrash": [
+          {
+            "m_fEventTime": 1.4,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 1250,
+            "m_fCameraCrashGap": 8,
+            "m_fCameraCrashTime": 0.3333333333333333
+          },
+          {
+            "m_fEventTime": 2.6666666666666665,
+            "m_CameraCrashType": "NCCT_UP_DOWN",
+            "m_fCrashRadius": 1250,
+            "m_fCameraCrashGap": 15,
+            "m_fCameraCrashTime": 0.6666666666666666
+          }
+        ],
+        "m_listNKMEventFadeWorld": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTimeMin": {
+              "__unparsed_expr": "L19_1 / 30"
+            },
+            "m_fEventTimeMax": 4.166666666666667,
+            "m_fColorR": 0.0,
+            "m_fColorG": 0.0,
+            "m_fColorB": 0.0,
+            "m_fMapColorKeepTime": 0.3333333333333333,
+            "m_fMapColorReturnTime": 0.3333333333333333
+          }
+        ],
+        "m_listNKMEventStopTime": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_StopTimeIndex": "NSTI_SKILL",
+            "m_fStopTime": 1.0,
+            "m_bStopEnemyOnly": false,
+            "m_bMyStop": false,
+            "m_fRange": 1200
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_STUN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": false,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.75,
+            "m_listSoundName": [
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_STUN_1",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_STUN_2",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_STUN_3"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_A",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_3",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_4",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_5",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_6"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_B",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_3",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_4",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_5",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_6"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_AIR_UP",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_3",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_4",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_5",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_6"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DOWN",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.25,
+            "m_listSoundName": [
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_1",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_2",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_3",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_4",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_5",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DAMAGE_6"
+            ]
+          }
+        ]
+      },
+      {
+        "m_StateName": "USN_DAMAGE_DIE",
+        "m_listNKMEventSound": [
+          {
+            "m_bAnimTime": true,
+            "m_fEventTime": 0.03333333333333333,
+            "m_bVoice": true,
+            "m_PlayRate": 0.7,
+            "m_listSoundName": [
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DEATH_1",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DEATH_2",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DEATH_3",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DEATH_4",
+              "VOICE_UNIT_GUILTY_S_MILLIA_BATTLE_DEATH_5"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}

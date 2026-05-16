@@ -1,0 +1,837 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\StreamingAssets\\ab_script_dungeon_templet_all\\luac\\NKM_DEFENCE_DUNGEON_BATTLE_17.lua",
+  "rootName": "NKMDungeonTemplet",
+  "recordCount": 6,
+  "records": [
+    {
+      "__key": "m_BossUnitStrID",
+      "value": "NKM_MOB_BOSS_EVENT_WAVE_OMEN"
+    },
+    {
+      "__key": "m_fBossPosZ",
+      "value": 0.6
+    },
+    {
+      "__key": "m_listValidLand",
+      "value": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "__key": "m_fStartCost",
+      "value": 0
+    },
+    {
+      "__key": "m_fCostSpeedRateB",
+      "value": 0
+    },
+    {
+      "__key": "m_listDungeonUnitRespawnB",
+      "value": [
+        {
+          "m_UnitStrID": "NKM_MOB_BOSS_EVENT_WAVE_OMEN",
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeGap": 1,
+            "m_fEventPos": 0.01
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_REPLACER_SHIELD_NOGROUP",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 60,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.6,
+              "NST_ATK": 2.1,
+              "NST_DEF": 0.6,
+              "NST_EVADE": 0.6
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_REPLACER_SHOTGUN_NOGROUP",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 60,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.6,
+              "NST_ATK": 2.1,
+              "NST_DEF": 0.6,
+              "NST_EVADE": 0.6
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_REPLACER_SHOTGUN_NOGROUP",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeEnd": 60,
+            "m_fEventPos": 0.01
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.6,
+              "NST_ATK": 2.1,
+              "NST_DEF": 0.6,
+              "NST_EVADE": 0.6
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_REPLACER_RIFLE_NOGROUP",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 0,
+            "m_fEventTimeEnd": 60,
+            "m_fEventPos": 0.06
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.6,
+              "NST_ATK": 2.1,
+              "NST_DEF": 0.6,
+              "NST_EVADE": 0.6
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_REPLACER_RIFLE_NOGROUP",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 1,
+            "m_fEventTimeEnd": 60,
+            "m_fEventPos": 0.09
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.6,
+              "NST_ATK": 2.1,
+              "NST_DEF": 0.6,
+              "NST_EVADE": 0.6
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_REPLACER_RIFLE_NOGROUP",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 2,
+            "m_fEventTimeEnd": 60,
+            "m_fEventPos": 0.12
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.6,
+              "NST_ATK": 2.1,
+              "NST_DEF": 0.6,
+              "NST_EVADE": 0.6
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_REPLACER_RIFLE_NOGROUP",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 3,
+            "m_fEventTimeEnd": 60,
+            "m_fEventPos": 0.15
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.6,
+              "NST_ATK": 2.1,
+              "NST_DEF": 0.6,
+              "NST_EVADE": 0.6
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_REPLACER_SHIELD_IRONWALL",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 60,
+            "m_fEventPos": 0.3
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.6,
+              "NST_ATK": 2.1,
+              "NST_DEF": 0.6,
+              "NST_EVADE": 0.6
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_REPLACER_SHOTGUN_NOGROUP",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 60,
+            "m_fEventPos": 0.01
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.6,
+              "NST_ATK": 2.1,
+              "NST_DEF": 0.6,
+              "NST_EVADE": 0.6
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_REPLACER_RIFLE_NOGROUP",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 60,
+            "m_fEventPos": 0.06
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.6,
+              "NST_ATK": 2.1,
+              "NST_DEF": 0.6,
+              "NST_EVADE": 0.6
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_REPLACER_RIFLE_NOGROUP",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 60,
+            "m_fEventPos": 0.09
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.6,
+              "NST_ATK": 2.1,
+              "NST_DEF": 0.6,
+              "NST_EVADE": 0.6
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_REPLACER_RIFLE_NOGROUP",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 60,
+            "m_fEventPos": 0.06
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.6,
+              "NST_ATK": 2.1,
+              "NST_DEF": 0.6,
+              "NST_EVADE": 0.6
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_REPLACER_RIFLE_NOGROUP",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 60,
+            "m_fEventPos": 0.09
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.6,
+              "NST_ATK": 2.0,
+              "NST_DEF": 0.7,
+              "NST_EVADE": 0.6
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_REPLACER_SNIPER_NOGROUP",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 60,
+            "m_fEventPos": 0.01
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.6,
+              "NST_ATK": 2.1,
+              "NST_DEF": 0.6,
+              "NST_EVADE": 0.6
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_REPLACER_SHOTGUN_NOGROUP",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 60,
+            "m_fEventPos": 0.2
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.9,
+              "NST_ATK": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_REPLACER_RIFLE_NOGROUP",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 60,
+            "m_fEventPos": 0.12
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.9,
+              "NST_ATK": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_REPLACER_RIFLE_NOGROUP",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 60,
+            "m_fEventPos": 0.15
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.9,
+              "NST_ATK": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_REPLACER_RIFLE_NOGROUP",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 60,
+            "m_fEventPos": 0.12
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.9,
+              "NST_ATK": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_COMMON_REPLACER_RIFLE_NOGROUP",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 60,
+            "m_fEventPos": 0.15
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.9,
+              "NST_ATK": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_REPLACER_SNIPER_NOGROUP",
+          "m_UnitLevel": 80,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+            "m_fEventTimeStart": 60,
+            "m_fEventPos": 0.01
+          },
+          "m_AddStatData": {
+            "m_StatFactor": {
+              "NST_HP": 0.9,
+              "NST_ATK": 2.0
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_ZODIAC_CA_CHARLOTTE",
+          "m_UnitLevel": 110,
+          "m_UnitEffect": "SHADOW",
+          "m_bForceMonster": true,
+          "m_bReactor": false,
+          "m_TacticUpdateLevel": 6,
+          "m_SkillLevel": 5,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 30,
+            "m_fEventTimeGap": 20,
+            "m_fEventPos": 0.01
+          },
+          "m_AddStatData": {
+            "m_StatValue": {
+              "NST_DAMAGE_REDUCE_RATE": 1.5,
+              "NST_CC_RESIST_RATE": 0.7
+            },
+            "m_StatFactor": {
+              "NST_HP": 1.5
+            }
+          }
+        },
+        {
+          "m_UnitStrID": "NKM_UNIT_ROOT_CA_HUNTRESS",
+          "m_UnitLevel": 110,
+          "m_UnitEffect": "SHADOW",
+          "m_bReactor": false,
+          "m_TacticUpdateLevel": 6,
+          "m_NKMDungeonEventTiming": {
+            "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+            "m_fEventTimeStart": 90,
+            "m_fEventTimeGap": 20,
+            "m_fEventPos": 0.01
+          },
+          "m_AddStatData": {
+            "m_StatValue": {
+              "NST_DAMAGE_REDUCE_RATE": 1.5,
+              "NST_CC_RESIST_RATE": 0.7
+            },
+            "m_StatFactor": {
+              "NST_HP": 2.5,
+              "NST_ATK": 2.1,
+              "NST_DEF": 3.5,
+              "NST_EVADE": 1.5
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "root": {
+    "m_BossUnitStrID": "NKM_MOB_BOSS_EVENT_WAVE_OMEN",
+    "m_fBossPosZ": 0.6,
+    "m_listValidLand": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "m_fStartCost": 0,
+    "m_fCostSpeedRateB": 0,
+    "m_listDungeonUnitRespawnB": [
+      {
+        "m_UnitStrID": "NKM_MOB_BOSS_EVENT_WAVE_OMEN",
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeGap": 1,
+          "m_fEventPos": 0.01
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_REPLACER_SHIELD_NOGROUP",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 60,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.6,
+            "NST_ATK": 2.1,
+            "NST_DEF": 0.6,
+            "NST_EVADE": 0.6
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_REPLACER_SHOTGUN_NOGROUP",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 60,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.6,
+            "NST_ATK": 2.1,
+            "NST_DEF": 0.6,
+            "NST_EVADE": 0.6
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_REPLACER_SHOTGUN_NOGROUP",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeEnd": 60,
+          "m_fEventPos": 0.01
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.6,
+            "NST_ATK": 2.1,
+            "NST_DEF": 0.6,
+            "NST_EVADE": 0.6
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_REPLACER_RIFLE_NOGROUP",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 0,
+          "m_fEventTimeEnd": 60,
+          "m_fEventPos": 0.06
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.6,
+            "NST_ATK": 2.1,
+            "NST_DEF": 0.6,
+            "NST_EVADE": 0.6
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_REPLACER_RIFLE_NOGROUP",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 1,
+          "m_fEventTimeEnd": 60,
+          "m_fEventPos": 0.09
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.6,
+            "NST_ATK": 2.1,
+            "NST_DEF": 0.6,
+            "NST_EVADE": 0.6
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_REPLACER_RIFLE_NOGROUP",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 2,
+          "m_fEventTimeEnd": 60,
+          "m_fEventPos": 0.12
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.6,
+            "NST_ATK": 2.1,
+            "NST_DEF": 0.6,
+            "NST_EVADE": 0.6
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_NORMAL_COMMON_REPLACER_RIFLE_NOGROUP",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 3,
+          "m_fEventTimeEnd": 60,
+          "m_fEventPos": 0.15
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.6,
+            "NST_ATK": 2.1,
+            "NST_DEF": 0.6,
+            "NST_EVADE": 0.6
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_REPLACER_SHIELD_IRONWALL",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 60,
+          "m_fEventPos": 0.3
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.6,
+            "NST_ATK": 2.1,
+            "NST_DEF": 0.6,
+            "NST_EVADE": 0.6
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_REPLACER_SHOTGUN_NOGROUP",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 60,
+          "m_fEventPos": 0.01
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.6,
+            "NST_ATK": 2.1,
+            "NST_DEF": 0.6,
+            "NST_EVADE": 0.6
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_REPLACER_RIFLE_NOGROUP",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 60,
+          "m_fEventPos": 0.06
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.6,
+            "NST_ATK": 2.1,
+            "NST_DEF": 0.6,
+            "NST_EVADE": 0.6
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_REPLACER_RIFLE_NOGROUP",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 60,
+          "m_fEventPos": 0.09
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.6,
+            "NST_ATK": 2.1,
+            "NST_DEF": 0.6,
+            "NST_EVADE": 0.6
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_REPLACER_RIFLE_NOGROUP",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 60,
+          "m_fEventPos": 0.06
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.6,
+            "NST_ATK": 2.1,
+            "NST_DEF": 0.6,
+            "NST_EVADE": 0.6
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_REPLACER_RIFLE_NOGROUP",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 60,
+          "m_fEventPos": 0.09
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.6,
+            "NST_ATK": 2.0,
+            "NST_DEF": 0.7,
+            "NST_EVADE": 0.6
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_REPLACER_SNIPER_NOGROUP",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 60,
+          "m_fEventPos": 0.01
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.6,
+            "NST_ATK": 2.1,
+            "NST_DEF": 0.6,
+            "NST_EVADE": 0.6
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_REPLACER_SHOTGUN_NOGROUP",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 60,
+          "m_fEventPos": 0.2
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.9,
+            "NST_ATK": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_REPLACER_RIFLE_NOGROUP",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 60,
+          "m_fEventPos": 0.12
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.9,
+            "NST_ATK": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_REPLACER_RIFLE_NOGROUP",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 60,
+          "m_fEventPos": 0.15
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.9,
+            "NST_ATK": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_REPLACER_RIFLE_NOGROUP",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 60,
+          "m_fEventPos": 0.12
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.9,
+            "NST_ATK": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_COMMON_REPLACER_RIFLE_NOGROUP",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 60,
+          "m_fEventPos": 0.15
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.9,
+            "NST_ATK": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_MOB_ELITE_DEFENCE_REPLACER_SNIPER_NOGROUP",
+        "m_UnitLevel": 80,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_TIME",
+          "m_fEventTimeStart": 60,
+          "m_fEventPos": 0.01
+        },
+        "m_AddStatData": {
+          "m_StatFactor": {
+            "NST_HP": 0.9,
+            "NST_ATK": 2.0
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_ZODIAC_CA_CHARLOTTE",
+        "m_UnitLevel": 110,
+        "m_UnitEffect": "SHADOW",
+        "m_bForceMonster": true,
+        "m_bReactor": false,
+        "m_TacticUpdateLevel": 6,
+        "m_SkillLevel": 5,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 30,
+          "m_fEventTimeGap": 20,
+          "m_fEventPos": 0.01
+        },
+        "m_AddStatData": {
+          "m_StatValue": {
+            "NST_DAMAGE_REDUCE_RATE": 1.5,
+            "NST_CC_RESIST_RATE": 0.7
+          },
+          "m_StatFactor": {
+            "NST_HP": 1.5
+          }
+        }
+      },
+      {
+        "m_UnitStrID": "NKM_UNIT_ROOT_CA_HUNTRESS",
+        "m_UnitLevel": 110,
+        "m_UnitEffect": "SHADOW",
+        "m_bReactor": false,
+        "m_TacticUpdateLevel": 6,
+        "m_NKMDungeonEventTiming": {
+          "m_NKM_DUNGEON_EVENT_TYPE": "NDET_DIE_AFTER_TIME",
+          "m_fEventTimeStart": 90,
+          "m_fEventTimeGap": 20,
+          "m_fEventPos": 0.01
+        },
+        "m_AddStatData": {
+          "m_StatValue": {
+            "NST_DAMAGE_REDUCE_RATE": 1.5,
+            "NST_CC_RESIST_RATE": 0.7
+          },
+          "m_StatFactor": {
+            "NST_HP": 2.5,
+            "NST_ATK": 2.1,
+            "NST_DEF": 3.5,
+            "NST_EVADE": 1.5
+          }
+        }
+      }
+    ]
+  },
+  "unsupportedCount": 0,
+  "unsupported": []
+}
