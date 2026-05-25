@@ -37,6 +37,7 @@ const {
   getAllEmoticonIds,
 } = require("../game-data");
 const { validateEquipCustomSubstats } = require("../equipment");
+const worldMap = require("../world-map");
 
 const PACKETS = Object.freeze({
   POST_LIST_REQ: 1614,
@@ -157,6 +158,21 @@ function createAdminHandler(packetId, name) {
         );
       }
       for (const notice of result.notices || []) sendServerNotice(ctx, socket, notice.packetId, notice.payload, notice.label);
+      if (result.worldMapRefresh) {
+        worldMap.sendRaidSnapshotData(ctx, socket, user, {
+          now: ctx && typeof ctx.dateTimeBinaryNow === "function" ? ctx.dateTimeBinaryNow() : undefined,
+          includeWorldMap: true,
+          worldMapLabel: "admin-world-map-data",
+          label: "admin-raid-list",
+          detailLabel: "admin-raid-detail",
+          coopLabel: "admin-raid-coop-list",
+          resultLabel: "admin-raid-results",
+          eventCancelLabel: "admin-raid-event-clear",
+          cancelCityIds: result.cancelCityIds,
+          detailRaidUids: result.raidDetailUids,
+          includeEmpty: true,
+        });
+      }
       persistUserDb(ctx);
       return true;
     },
@@ -223,6 +239,8 @@ function privateChatAck(ctx, user, request) {
   const notices = [
     { packetId: PACKETS.PRIVATE_CHAT_NOT, payload: buildPrivateChatNot(userMessage), label: "private-chat-self" },
   ];
+  let worldMapRefresh = false;
+  let worldMapRefreshOptions = null;
   if (targetUid === ADMIN_UID || isAdminCommand(messageText)) {
     const result = handleAdminCommand(ctx, user, messageText);
     const replyText = result.reply || "Command handled.";
@@ -231,11 +249,19 @@ function privateChatAck(ctx, user, request) {
     if (result.createdPosts > 0) {
       notices.push({ packetId: PACKETS.POST_ARRIVE_NOT, payload: writeSignedVarInt(result.createdPosts), label: "post-arrive" });
     }
+    worldMapRefresh = Boolean(result.worldMapRefresh);
+    worldMapRefreshOptions = {
+      cancelCityIds: result.cancelCityIds,
+      raidDetailUids: result.raidDetailUids,
+    };
   }
   return {
     packetId: PACKETS.PRIVATE_CHAT_ACK,
     payload: Buffer.concat([writeSignedVarInt(0), writeSignedVarLong(toBigInt(userMessage.messageUid))]),
     notices,
+    worldMapRefresh,
+    cancelCityIds: worldMapRefreshOptions && worldMapRefreshOptions.cancelCityIds,
+    raidDetailUids: worldMapRefreshOptions && worldMapRefreshOptions.raidDetailUids,
   };
 }
 
@@ -279,6 +305,23 @@ function handleAdminCommand(ctx, user, messageText) {
   if (command === "clear") {
     return clearAdminInbox(user);
   }
+  if (command === "raid" || command === "spawnraid" || command === "raidspawn") {
+    return handleRaidSpawnCommand(ctx, user, tokens);
+  }
+  if (command === "sephira" || command === "spawnsephira") {
+    return handleSephiraSpawnCommand(ctx, user, tokens);
+  }
+  if (command === "killraid" || command === "raidkill") {
+    return handleRaidKillCommand(ctx, user, tokens);
+  }
+  if (command === "spawn" && String(tokens[0] || "").toLowerCase() === "raid") {
+    tokens.shift();
+    return handleRaidSpawnCommand(ctx, user, tokens);
+  }
+  if (command === "spawn" && String(tokens[0] || "").toLowerCase() === "sephira") {
+    tokens.shift();
+    return handleSephiraSpawnCommand(ctx, user, tokens);
+  }
   if (command !== "give" && command !== "grant" && command !== "mail") {
     return { reply: `Unknown admin command: ${command}\n${adminHelpText()}`, createdPosts: 0 };
   }
@@ -294,6 +337,195 @@ function handleAdminCommand(ctx, user, messageText) {
     reply: `Queued ${parsed.rewards.length} reward line${parsed.rewards.length === 1 ? "" : "s"} in ${posts.length} inbox mail${posts.length === 1 ? "" : "s"}. Open Mail to claim.`,
     createdPosts: posts.length,
   };
+}
+
+function handleRaidSpawnCommand(ctx, user, tokens) {
+  const subcommand = String(tokens && tokens[0] || "").trim().toLowerCase();
+  if (subcommand === "clear" || subcommand === "reset" || subcommand === "delete") {
+    return handleRaidClearCommand(user, tokens.slice(1));
+  }
+  if (subcommand === "sephira") {
+    return handleSephiraSpawnCommand(ctx, user, tokens.slice(1));
+  }
+  if (subcommand === "kill" || subcommand === "defeat" || subcommand === "complete") {
+    return handleRaidKillCommand(ctx, user, tokens.slice(1));
+  }
+  const parsed = parseRaidSpawnCommand(tokens);
+  if (!parsed.ok) return { reply: parsed.error, createdPosts: 0 };
+  const result = worldMap.spawnAdminRaid(user, {
+    level: parsed.level,
+    branch: parsed.branch,
+    durationHours: parsed.durationHours,
+    now: ctx && typeof ctx.dateTimeBinaryNow === "function" ? ctx.dateTimeBinaryNow() : undefined,
+  });
+  if (!result.ok) return { reply: result.error || "Raid spawn failed.", createdPosts: 0 };
+  const levelText =
+    result.actualLevel === result.requestedLevel
+      ? `level ${result.actualLevel}`
+      : `level ${result.actualLevel} (closest to requested level ${result.requestedLevel})`;
+  const familyText = result.raidFamily ? ` ${result.raidFamily}` : "";
+  const replacedText = result.replacedRaidUID !== "0" ? ` Replaced raid ${result.replacedRaidUID}.` : "";
+  console.log(
+    `[admin:raid] spawned raidUID=${result.raid.raidUID} branch=${result.city.cityID} level=${result.actualLevel} family=${result.raidFamily || ""} stageID=${result.stageID} eventID=${result.eventID}`
+  );
+  return {
+    reply: `Spawned ${levelText}${familyText} raid ${result.raid.raidUID} on branch ${result.city.cityID}. Stage ${result.stageID}, event ${result.eventID}.${replacedText}`,
+    createdPosts: 0,
+    worldMapRefresh: true,
+    raidDetailUids: [result.raid.raidUID],
+  };
+}
+
+function handleSephiraSpawnCommand(ctx, user, tokens) {
+  const parsed = parseRaidBranchCommand(tokens, { defaultBranch: 1, allowDuration: true });
+  if (!parsed.ok) return { reply: parsed.error, createdPosts: 0 };
+  const result = worldMap.spawnSephiraRaid(user, {
+    branch: parsed.branch,
+    durationHours: parsed.durationHours,
+    now: ctx && typeof ctx.dateTimeBinaryNow === "function" ? ctx.dateTimeBinaryNow() : undefined,
+  });
+  if (!result.ok) return { reply: result.error || "Sephira raid spawn failed.", createdPosts: 0 };
+  const levelText =
+    result.actualLevel === result.requestedLevel
+      ? `level ${result.actualLevel}`
+      : `level ${result.actualLevel} (Sephira requested level ${result.requestedLevel})`;
+  const replacedText = result.replacedRaidUID !== "0" ? ` Replaced raid ${result.replacedRaidUID}.` : "";
+  console.log(
+    `[admin:raid] spawned sephira raidUID=${result.raid.raidUID} branch=${result.city.cityID} level=${result.actualLevel} stageID=${result.stageID} eventID=${result.eventID}`
+  );
+  return {
+    reply: `Spawned Sephira ${levelText} raid ${result.raid.raidUID} on branch ${result.city.cityID}. Stage ${result.stageID}, event ${result.eventID}.${replacedText}`,
+    createdPosts: 0,
+    worldMapRefresh: true,
+    raidDetailUids: [result.raid.raidUID],
+  };
+}
+
+function handleRaidKillCommand(ctx, user, tokens) {
+  const parsed = parseRaidBranchCommand(tokens, { defaultBranch: 0 });
+  if (!parsed.ok) return { reply: parsed.error, createdPosts: 0 };
+  const result = worldMap.killRaidInBranch(user, {
+    branch: parsed.branch,
+    now: ctx && typeof ctx.dateTimeBinaryNow === "function" ? ctx.dateTimeBinaryNow() : undefined,
+  });
+  if (!result.ok) return { reply: result.error || "Raid kill failed.", createdPosts: 0 };
+  console.log(`[admin:raid] killed raidUID=${result.raidUID} branch=${result.branch} stageID=${result.stageID} damage=${result.damage || 0}`);
+  return {
+    reply: `Killed raid boss ${result.raidUID} on branch ${result.branch}. Stage ${result.stageID}.`,
+    createdPosts: 0,
+    worldMapRefresh: true,
+  };
+}
+
+function handleRaidClearCommand(user, tokens) {
+  const includeResults = (Array.isArray(tokens) ? tokens : []).some((token) => {
+    const value = String(token || "").trim().toLowerCase();
+    return value === "all" || value === "results" || value === "completed";
+  });
+  const result = worldMap.clearActiveRaids(user, { includeResults });
+  console.log(`[admin:raid] cleared count=${result.clearedCount} includeResults=${includeResults ? 1 : 0}`);
+  return {
+    reply: `Cleared ${result.clearedCount} ${includeResults ? "raid" : "active raid"}${result.clearedCount === 1 ? "" : "s"}.`,
+    createdPosts: 0,
+    worldMapRefresh: true,
+    cancelCityIds: result.clearedCityIds,
+  };
+}
+
+function parseRaidBranchCommand(tokens, options = {}) {
+  const values = {};
+  const positional = [];
+  const input = Array.isArray(tokens) ? tokens : [];
+  for (let index = 0; index < input.length; index += 1) {
+    const raw = String(input[index] || "").trim();
+    if (!raw) continue;
+    const eqIndex = raw.indexOf("=");
+    if (eqIndex > 0) {
+      const key = normalizeRaidSpawnKey(raw.slice(0, eqIndex));
+      const value = raw.slice(eqIndex + 1);
+      if (key) values[key] = value;
+      else positional.push(raw);
+      continue;
+    }
+
+    const key = normalizeRaidSpawnKey(raw);
+    if (key && index + 1 < input.length) {
+      values[key] = input[index + 1];
+      index += 1;
+      continue;
+    }
+    if (!["help", "?"].includes(raw.toLowerCase())) positional.push(raw);
+  }
+
+  if (input.some((token) => ["help", "?"].includes(String(token || "").toLowerCase()))) {
+    return { ok: false, error: raidHelpText() };
+  }
+
+  const branch = parseAdminPositiveInt(values.branch != null ? values.branch : positional[0]);
+  const durationHours = options.allowDuration ? parseAdminPositiveInt(values.duration || values.hours) : 0;
+  const defaultBranch = parseAdminPositiveInt(options.defaultBranch);
+  if (!branch && !defaultBranch) return { ok: false, error: raidHelpText() };
+  return {
+    ok: true,
+    branch: branch || defaultBranch,
+    durationHours: durationHours || undefined,
+  };
+}
+
+function parseRaidSpawnCommand(tokens) {
+  const values = {};
+  const positional = [];
+  const input = Array.isArray(tokens) ? tokens : [];
+  for (let index = 0; index < input.length; index += 1) {
+    const raw = String(input[index] || "").trim();
+    if (!raw) continue;
+    const eqIndex = raw.indexOf("=");
+    if (eqIndex > 0) {
+      const key = normalizeRaidSpawnKey(raw.slice(0, eqIndex));
+      const value = raw.slice(eqIndex + 1);
+      if (key) values[key] = value;
+      else positional.push(raw);
+      continue;
+    }
+
+    const key = normalizeRaidSpawnKey(raw);
+    if (key && index + 1 < input.length) {
+      values[key] = input[index + 1];
+      index += 1;
+      continue;
+    }
+    if (!["help", "?"].includes(raw.toLowerCase())) positional.push(raw);
+  }
+
+  if (input.some((token) => ["help", "?"].includes(String(token || "").toLowerCase()))) {
+    return { ok: false, error: raidHelpText() };
+  }
+
+  const level = parseAdminPositiveInt(values.level != null ? values.level : positional[0]);
+  const branch = parseAdminPositiveInt(values.branch != null ? values.branch : positional[1]);
+  const durationHours = parseAdminPositiveInt(values.duration || values.hours);
+  if (!level) return { ok: false, error: raidHelpText() };
+  return {
+    ok: true,
+    level,
+    branch: branch || 1,
+    durationHours: durationHours || undefined,
+  };
+}
+
+function normalizeRaidSpawnKey(value) {
+  const key = String(value || "").trim().toLowerCase().replace(/^--?/, "").replace(/[_-]/g, "");
+  if (["level", "lvl", "lv", "raidlevel"].includes(key)) return "level";
+  if (["branch", "branchnumber", "branchid", "city", "cityid"].includes(key)) return "branch";
+  if (["duration", "durationhours", "hours", "hour"].includes(key)) return "duration";
+  return "";
+}
+
+function parseAdminPositiveInt(value) {
+  const text = String(value == null ? "" : value).trim().replace(/,/g, "");
+  if (!text) return 0;
+  const number = Number(text);
+  return Number.isFinite(number) && number > 0 ? Math.trunc(number) : 0;
 }
 
 function parseGiveCommand(tokens, user = null) {
@@ -1518,14 +1750,46 @@ function adminHelpText() {
     "/give emoticon <id>",
     "/give all items|units|trophies|ships|operators|gears|skins|emoticons [count]",
     "/give everything [count]",
+    "/raid level <level> branch <branch>",
+    "/sephira branch <branch>",
+    "/raid kill branch <branch>",
+    "/raid clear [all]",
     "/clear",
     "Rewards are delivered to Mail and granted when claimed.",
   ].join("\n");
 }
 
+function raidHelpText() {
+  return [
+    "Raid command:",
+    "/raid level <level> branch <branch>",
+    "/raid <level> <branch>",
+    "/raid sephira branch <branch>",
+    "/sephira branch <branch>",
+    "/raid kill branch <branch>",
+    "/killraid branch <branch>",
+    "/raid clear [all]",
+    "Examples: /raid level 30 branch 2, /admin raid lv=70 branch=4, /sephira branch 3, /raid kill branch 3",
+  ].join("\n");
+}
+
 function isAdminCommand(message) {
   const text = String(message || "").trim().toLowerCase();
-  return text.startsWith("/admin") || text.startsWith("/give") || text.startsWith("/grant") || text.startsWith("/mail") || text.startsWith("/clear") || text === "/help";
+  return (
+    text.startsWith("/admin") ||
+    text.startsWith("/give") ||
+    text.startsWith("/grant") ||
+    text.startsWith("/mail") ||
+    text.startsWith("/raid") ||
+    text.startsWith("/spawnraid") ||
+    text.startsWith("/raidspawn") ||
+    text.startsWith("/sephira") ||
+    text.startsWith("/spawnsephira") ||
+    text.startsWith("/killraid") ||
+    text.startsWith("/raidkill") ||
+    text.startsWith("/clear") ||
+    text === "/help"
+  );
 }
 
 function tokenizeCommand(input) {

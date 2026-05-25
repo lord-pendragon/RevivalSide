@@ -12,7 +12,9 @@ module.exports = {
       presetListAck(user),
       "equip-preset-list"
     );
-    if (ctx.capturedGameFlow) ctx.skipCapturedGameThroughPacketId(socket, ctx.constants.EQUIP_PRESET_LIST_ACK);
+    if (socket.session && socket.session.gameReplay && ctx.capturedGameFlow) {
+      ctx.skipCapturedGameThroughPacketId(socket, ctx.constants.EQUIP_PRESET_LIST_ACK);
+    }
     return true;
   },
 };

@@ -15,6 +15,7 @@ const {
   writeSignedVarLong,
   writeString,
 } = require("../packet-codec");
+const { addMissionTrackingCondition, completeMissionTracking, makeMissionTracking } = require("../mission-tracking");
 
 const COUNTERCASE_UNLOCK_REQ = 1204;
 const COUNTERCASE_UNLOCK_ACK = 1205;
@@ -56,8 +57,11 @@ function createSimulationHandlers() {
         const payload = buildCounterCaseUnlockAckPayload(user, state.dungeonID);
         console.log(`[simulation:COUNTERCASE_UNLOCK_REQ] ACK packetId=${COUNTERCASE_UNLOCK_ACK} dungeonID=${state.dungeonID}`);
         send(ctx, socket, packet, COUNTERCASE_UNLOCK_ACK, payload, "countercase-unlock");
-        track(ctx, user, "COUNTER_CASE_OPEN", 1, { dungeonId: state.dungeonID, value: state.dungeonID });
-        track(ctx, user, "COUNTER_CASE_OPENED", 1, { dungeonId: state.dungeonID, value: state.dungeonID });
+        const missionTracking = mergeTrackings(
+          track(ctx, user, "COUNTER_CASE_OPEN", 1, { dungeonId: state.dungeonID, value: state.dungeonID }),
+          track(ctx, user, "COUNTER_CASE_OPENED", 1, { dungeonId: state.dungeonID, value: state.dungeonID })
+        );
+        completeMissionTracking(ctx, socket, user, missionTracking, { label: "countercase-mission-update" });
         persist(ctx);
         return true;
       },
@@ -75,7 +79,9 @@ function createSimulationHandlers() {
           )} b=${String(req.playerUserUidB)}`
         );
         send(ctx, socket, packet, START_SIMULATED_PVP_TEST_ACK, payload, "simulated-pvp-test");
-        track(ctx, user, "PVP_PLAY_ASYNC", 1, { value: 1 });
+        completeMissionTracking(ctx, socket, user, track(ctx, user, "PVP_PLAY_ASYNC", 1, { value: 1 }), {
+          label: "simulated-pvp-mission-update",
+        });
         persist(ctx);
         return true;
       },
@@ -333,10 +339,21 @@ function persist(ctx) {
 }
 
 function track(ctx, user, condition, amount, details = {}) {
-  if (!ctx || typeof ctx.trackMissionEvent !== "function") return;
+  if (!ctx || typeof ctx.trackMissionEvent !== "function") return null;
   const now = ctx.dateTimeBinaryNow ? ctx.dateTimeBinaryNow() : undefined;
-  ctx.trackMissionEvent(user, condition, amount, { now, ...details });
-  if (typeof ctx.refreshMissionProgress === "function") ctx.refreshMissionProgress(user, { now, conditions: [condition] });
+  const tracking = makeMissionTracking(now);
+  const tracked = ctx.trackMissionEvent(user, condition, amount, { now, ...details });
+  addMissionTrackingCondition(tracking, condition, tracked);
+  return tracking;
+}
+
+function mergeTrackings(...trackings) {
+  const merged = makeMissionTracking(trackings.find((tracking) => tracking && tracking.now) && trackings.find((tracking) => tracking && tracking.now).now);
+  for (const tracking of trackings) {
+    if (!tracking || !tracking.conditions) continue;
+    for (const condition of tracking.conditions) merged.conditions.add(condition);
+  }
+  return merged;
 }
 
 function makeGameUid() {

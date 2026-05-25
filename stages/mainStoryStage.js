@@ -513,6 +513,18 @@ function syncEpisode1CompatState(user) {
   });
 }
 
+function isClearOnlyStoryStage(stage) {
+  return Boolean(stage && (stage.cutsceneOnly || stage.tutorial));
+}
+
+function storyMissionResultForStage(stage, previousClear, existing, key, fallback = true) {
+  if (isClearOnlyStoryStage(stage)) return false;
+  // The local server treats PvE wins as immediate full-medal clears. Older
+  // builds could persist false/false for normal stages; repair those forward
+  // instead of letting stale data keep the operation UI at one star.
+  return true;
+}
+
 function repairRewardedMainStoryClears(user) {
   const cursors =
     user && user.localStageRewardCursors && typeof user.localStageRewardCursors === "object" ? user.localStageRewardCursors : {};
@@ -527,18 +539,8 @@ function repairRewardedMainStoryClears(user) {
     if (!previousClear && !previousPlay && existing.completed !== true && rewardClearCount <= 0) continue;
 
     const completedAt = existing.completedAt || new Date().toISOString();
-    const missionResult1 =
-      previousClear && typeof previousClear.missionResult1 === "boolean"
-        ? previousClear.missionResult1
-        : typeof existing.missionResult1 === "boolean"
-          ? existing.missionResult1
-          : true;
-    const missionResult2 =
-      previousClear && typeof previousClear.missionResult2 === "boolean"
-        ? previousClear.missionResult2
-        : typeof existing.missionResult2 === "boolean"
-          ? existing.missionResult2
-          : true;
+    const missionResult1 = storyMissionResultForStage(stage, previousClear, existing, "missionResult1", true);
+    const missionResult2 = storyMissionResultForStage(stage, previousClear, existing, "missionResult2", true);
     user.dungeonClear[dungeonKey] = {
       ...(previousClear || {}),
       dungeonId: stage.dungeonID,
@@ -585,16 +587,12 @@ function copyStoryProgressAlias(user, alias) {
     if (values.some((value) => value === false)) return false;
     return true;
   };
-  const missionResult1 = mergeAliasMissionResult(
-    toClear.missionResult1,
-    fromClear && fromClear.missionResult1,
-    fromState && fromState.missionResult1
-  );
-  const missionResult2 = mergeAliasMissionResult(
-    toClear.missionResult2,
-    fromClear && fromClear.missionResult2,
-    fromState && fromState.missionResult2
-  );
+  const missionResult1 = isClearOnlyStoryStage(toStage)
+    ? false
+    : mergeAliasMissionResult(toClear.missionResult1, fromClear && fromClear.missionResult1, fromState && fromState.missionResult1);
+  const missionResult2 = isClearOnlyStoryStage(toStage)
+    ? false
+    : mergeAliasMissionResult(toClear.missionResult2, fromClear && fromClear.missionResult2, fromState && fromState.missionResult2);
 
   user.dungeonClear[toDungeonKey] = {
     ...toClear,
@@ -629,8 +627,8 @@ function backfillCompletedMainStoryStageState(user, stage, state) {
     ...previousClear,
     dungeonId: Number(previousClear.dungeonId || stage.dungeonID),
     stageId: Number(previousClear.stageId || stage.stageId),
-    missionResult1: previousClear.missionResult1 === true || state.missionResult1 !== false,
-    missionResult2: previousClear.missionResult2 === true || state.missionResult2 !== false,
+    missionResult1: isClearOnlyStoryStage(stage) ? false : true,
+    missionResult2: isClearOnlyStoryStage(stage) ? false : true,
     clearedAt: completedAt,
   };
 
@@ -699,8 +697,16 @@ function ensureMainStoryState(user) {
       completed,
       completedAt: completed ? existing.completedAt || (clear && clear.clearedAt) || "" : "",
       bestClearTimeSec: completed ? Number(existing.bestClearTimeSec || (play && play.bestClearTimeSec) || 0) : 0,
-      missionResult1: completed ? (clear ? clear.missionResult1 !== false : existing.missionResult1 !== false) : false,
-      missionResult2: completed ? (clear ? clear.missionResult2 !== false : existing.missionResult2 !== false) : false,
+      missionResult1: completed
+        ? isClearOnlyStoryStage(stage)
+          ? false
+          : true
+        : false,
+      missionResult2: completed
+        ? isClearOnlyStoryStage(stage)
+          ? false
+          : true
+        : false,
     };
     user.mainStory.stages[String(stage.stageId)] = stageState;
     if (completed) backfillCompletedMainStoryStageState(user, stage, stageState);
@@ -732,21 +738,27 @@ function recordMainStoryDungeonClearForUser(user, dungeonId, stageId, battleStat
     battleState && battleState.missionResults && typeof battleState.missionResults === "object"
       ? battleState.missionResults
       : battleState || {};
+  const clearOnlyStage = isClearOnlyStoryStage(stage);
   const forceMissionSuccess =
-    options.forceMissionSuccess === true ||
-    (battleState && (battleState.forceMissionSuccess === true || battleState.ForceMissionSuccess === true));
+    !clearOnlyStage &&
+    (options.forceMissionSuccess === true ||
+      (battleState && (battleState.forceMissionSuccess === true || battleState.ForceMissionSuccess === true)));
   const missionResult1 =
-    previousClear.missionResult1 === true ||
-    forceMissionSuccess ||
-    missionResults.missionResult1 === true ||
-    missionResults.MissionResult1 === true ||
-    (missionResults.missionResult1 !== false && missionResults.MissionResult1 !== false);
+    clearOnlyStage
+      ? false
+      : previousClear.missionResult1 === true ||
+        forceMissionSuccess ||
+        missionResults.missionResult1 === true ||
+        missionResults.MissionResult1 === true ||
+        (missionResults.missionResult1 !== false && missionResults.MissionResult1 !== false);
   const missionResult2 =
-    previousClear.missionResult2 === true ||
-    forceMissionSuccess ||
-    missionResults.missionResult2 === true ||
-    missionResults.MissionResult2 === true ||
-    (missionResults.missionResult2 !== false && missionResults.MissionResult2 !== false);
+    clearOnlyStage
+      ? false
+      : previousClear.missionResult2 === true ||
+        forceMissionSuccess ||
+        missionResults.missionResult2 === true ||
+        missionResults.MissionResult2 === true ||
+        (missionResults.missionResult2 !== false && missionResults.MissionResult2 !== false);
   const previousStagePlay = user.stagePlayData[String(resolvedStageId)] || {};
   const clearTimeCandidates = [Number(previousStagePlay.bestClearTimeSec || 0), bestClearTimeSec].filter((value) => value > 0);
   const bestRecordedClearTimeSec = clearTimeCandidates.length > 0 ? Math.min(...clearTimeCandidates) : bestClearTimeSec;
@@ -771,8 +783,8 @@ function recordMainStoryDungeonClearForUser(user, dungeonId, stageId, battleStat
     state.completed = true;
     state.completedAt = state.completedAt || new Date().toISOString();
     state.bestClearTimeSec = bestRecordedClearTimeSec;
-    state.missionResult1 = state.missionResult1 === true || missionResult1;
-    state.missionResult2 = state.missionResult2 === true || missionResult2;
+    state.missionResult1 = clearOnlyStage ? false : state.missionResult1 === true || missionResult1;
+    state.missionResult2 = clearOnlyStage ? false : state.missionResult2 === true || missionResult2;
   }
   ensureMainStoryState(user);
   if (typeof options.save === "function") options.save();

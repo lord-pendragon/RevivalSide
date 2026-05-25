@@ -31,6 +31,7 @@ const {
 const { grantUnit, grantOperator, grantUnitFromPiece, getPieceRequirement } = require("../unit");
 const { grantRewardByType, createEmptyReward, mergeReward } = require("../reward");
 const { spendMiscItem, toBigInt } = require("../inventory");
+const { addMissionTrackingCondition, completeMissionTracking, makeMissionTracking, queueMissionTracking } = require("../mission-tracking");
 
 const PACKETS = Object.freeze({
   CONTRACT_REQ: 2800,
@@ -75,11 +76,12 @@ function createContractHandler(packetId, name) {
       const request = decodeRequest(ctx, packetId, packet.payload);
       const response = buildContractResponse(ctx, user, packetId, request);
       if (!response) return false;
-      trackContractMission(ctx, user, packetId, request);
+      const missionTracking = trackContractMission(ctx, user, packetId, request);
       console.log(`[contract:${name}] ACK packetId=${response.packetId} ${formatRequest(request)}`);
       ctx.sendResponse(socket, packet.sequence, response.packetId, () =>
         ctx.buildEncryptedPacket(packet.sequence, response.packetId, response.payload)
       );
+      completeMissionTracking(ctx, socket, user, missionTracking, { label: "contract-mission-update" });
       persistUserDb(ctx);
       return true;
     },
@@ -87,14 +89,12 @@ function createContractHandler(packetId, name) {
 }
 
 function trackContractMission(ctx, user, packetId, request = {}) {
-  if (!ctx || typeof ctx.trackMissionEvent !== "function") return;
+  if (!ctx || typeof ctx.trackMissionEvent !== "function") return null;
   const nowValue = now(ctx);
-  let changed = false;
-  const changedConditions = new Set();
+  const tracking = makeMissionTracking(nowValue);
   const track = (condition, amount = 1, details = {}) => {
     const tracked = ctx.trackMissionEvent(user, condition, amount, { now: nowValue, ...details });
-    if (tracked) changedConditions.add(condition);
-    changed = tracked || changed;
+    addMissionTrackingCondition(tracking, condition, tracked);
   };
   switch (packetId) {
     case PACKETS.CONTRACT_REQ:
@@ -108,9 +108,7 @@ function trackContractMission(ctx, user, packetId, request = {}) {
     default:
       break;
   }
-  if (changed && typeof ctx.refreshMissionProgress === "function") {
-    ctx.refreshMissionProgress(user, { now: nowValue, conditions: Array.from(changedConditions) });
-  }
+  return tracking;
 }
 
 function trackResourceSpend(ctx, user, itemId, amount) {
@@ -119,15 +117,15 @@ function trackResourceSpend(ctx, user, itemId, amount) {
   const numericAmount = Math.max(0, Math.trunc(Number(amount || 0) || 0));
   if (numericItemId <= 0 || numericAmount <= 0) return;
   const nowValue = now(ctx);
+  const tracking = makeMissionTracking(nowValue);
   const changed = ctx.trackMissionEvent(user, "USE_RESOURCE", numericAmount, {
     now: nowValue,
     itemId: numericItemId,
     resourceId: numericItemId,
     value: numericItemId,
   });
-  if (changed && typeof ctx.refreshMissionProgress === "function") {
-    ctx.refreshMissionProgress(user, { now: nowValue, conditions: ["USE_RESOURCE"] });
-  }
+  addMissionTrackingCondition(tracking, "USE_RESOURCE", changed);
+  queueMissionTracking(ctx, tracking);
 }
 
 function buildContractResponse(ctx, user, packetId, request) {

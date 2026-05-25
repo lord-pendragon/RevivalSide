@@ -110,6 +110,14 @@ function writeObjectMapInt(entries) {
   ]);
 }
 
+function writeObjectMapByte(entries) {
+  const list = Array.isArray(entries) ? entries : [];
+  return Buffer.concat([
+    writeVarInt(list.length),
+    ...list.flatMap(([key, payload]) => [writeByte(Number(key) || 0), writeNullableObject(payload)]),
+  ]);
+}
+
 function writeIntList(values) {
   const list = Array.isArray(values) ? values : [];
   return Buffer.concat([writeVarInt(list.length), ...list.map((value) => writeSignedVarInt(Number(value) || 0))]);
@@ -183,11 +191,21 @@ function buildEquipItemData(equip) {
 
 function buildEquipTuningCandidateData(candidate) {
   const data = candidate || {};
+  const option1 = data.option1 != null ? data.option1 : data.statType1 != null ? data.statType1 : "NST_RANDOM";
+  const option2 = data.option2 != null ? data.option2 : data.statType2 != null ? data.statType2 : "NST_RANDOM";
   return Buffer.concat([
     writeSignedVarLong(toBigInt(data.equipUid || 0)),
-    writeSignedVarInt(statTypeValue(data.option1 || data.statType1)),
-    writeSignedVarInt(statTypeValue(data.option2 || data.statType2)),
+    writeSignedVarInt(statTypeValue(option1)),
+    writeSignedVarInt(statTypeValue(option2)),
     writeSignedVarInt(Number(data.setOptionId || 0) || 0),
+  ]);
+}
+
+function buildResetCountData(resetCount) {
+  const data = resetCount || {};
+  return Buffer.concat([
+    writeSignedVarInt(Number(data.groupId || 0) || 0),
+    writeSignedVarInt(Number(data.count || 0) || 0),
   ]);
 }
 
@@ -275,6 +293,16 @@ function buildMoldItemData(mold) {
   return Buffer.concat([
     writeSignedVarInt(Number(data.moldId != null ? data.moldId : data.m_MoldID || 0) || 0),
     writeSignedVarLong(toBigInt(data.count != null ? data.count : data.m_Count || 0)),
+  ]);
+}
+
+function buildCraftSlotData(slot) {
+  const data = slot || {};
+  return Buffer.concat([
+    writeByte(Number(data.index != null ? data.index : data.Index || 0) || 0),
+    writeSignedVarInt(Number(data.moldId != null ? data.moldId : data.MoldID || 0) || 0),
+    writeSignedVarInt(Number(data.count != null ? data.count : data.Count || 0) || 0),
+    writeInt64LE(toBigInt(data.completeDate != null ? data.completeDate : data.CompleteDate || 0)),
   ]);
 }
 
@@ -676,6 +704,17 @@ const NKM_STAT_TYPE = Object.freeze({
   NST_EVADE_FACTOR: 10005,
 });
 
+const NKM_STAT_TYPE_NAME = Object.freeze(
+  Object.fromEntries(Object.entries(NKM_STAT_TYPE).map(([name, value]) => [value, name]))
+);
+
+function statTypeName(value) {
+  if (typeof value === "string" && !/^-?\d+$/.test(value.trim())) return value;
+  const numeric = Number(value);
+  if (!Number.isFinite(numeric)) return "";
+  return NKM_STAT_TYPE_NAME[Math.trunc(numeric)] || "";
+}
+
 module.exports = {
   writeString,
   writeBool,
@@ -694,11 +733,13 @@ module.exports = {
   writeNullableObjectList,
   writeObjectMapLong,
   writeObjectMapInt,
+  writeObjectMapByte,
   writeIntList,
   writeLongArray,
   buildEquipItemStatData,
   buildEquipItemData,
   buildEquipTuningCandidateData,
+  buildResetCountData,
   buildPotentialOptionCandidateData,
   buildEquipPresetData,
   buildDeckIndexData,
@@ -707,6 +748,7 @@ module.exports = {
   buildItemMiscData,
   buildRewardUnitExpData,
   buildMoldItemData,
+  buildCraftSlotData,
   buildBingoTileData,
   buildShipCmdSlotData,
   buildShipCmdModuleData,
@@ -727,6 +769,7 @@ module.exports = {
   readSignedVarIntList,
   readSignedVarLongList,
   readString,
+  statTypeName,
   statTypeValue,
   toBigInt,
 };

@@ -70,7 +70,9 @@ function createMissionTrackingHydratedAckHandler(packetId, conditions, options =
 function trackHydratedMissionConditions(ctx, socket, conditions) {
   const user = socket && socket.session && socket.session.user;
   if (!user || !ctx || typeof ctx.trackMissionEvent !== "function") return;
-  const now = ctx.dateTimeBinaryNow ? ctx.dateTimeBinaryNow() : dateTimeBinaryNow();
+  const clock = ctx.getMissionClockOptions ? ctx.getMissionClockOptions() : { now: ctx.dateTimeBinaryNow ? ctx.dateTimeBinaryNow() : dateTimeBinaryNow() };
+  const now = clock.now;
+  const eventDateKey = clock.eventDateKey || "";
   const changedConditions = new Set();
   for (const condition of Array.isArray(conditions) ? conditions : [conditions]) {
     const normalized = String(condition || "").trim();
@@ -78,18 +80,22 @@ function trackHydratedMissionConditions(ctx, socket, conditions) {
     if (ctx.trackMissionEvent(user, normalized, 1, { now })) changedConditions.add(normalized);
   }
   if (changedConditions.size > 0 && typeof ctx.refreshMissionProgress === "function") {
-    ctx.refreshMissionProgress(user, { now, conditions: Array.from(changedConditions) });
-    sendHydratedMissionUpdate(ctx, socket, user, now);
+    ctx.refreshMissionProgress(user, { now, eventDateKey, conditions: Array.from(changedConditions) });
+    sendHydratedMissionUpdate(ctx, socket, user, now, Array.from(changedConditions), eventDateKey);
     if (ctx.config && ctx.config.USE_LOCAL_USER_DB && typeof ctx.saveUserDb === "function") ctx.saveUserDb();
   }
 }
 
-function sendHydratedMissionUpdate(ctx, socket, user, now) {
+function sendHydratedMissionUpdate(ctx, socket, user, now, conditions = [], eventDateKey = "") {
+  if (ctx && typeof ctx.sendMissionUpdateForTabs === "function") {
+    ctx.sendMissionUpdateForTabs(socket, user, [2, 3], { now, eventDateKey, conditions, label: "mission-update" });
+    return;
+  }
   if (!ctx || typeof ctx.sendServerGamePacket !== "function" || !socket || !socket.session || !socket.session.gameReplay) return;
   const seen = new Set();
   const missions = [];
   for (const tabId of [2, 3]) {
-    for (const [, mission] of buildMissionDataEntries(user, { tabId, now })) {
+    for (const [, mission] of buildMissionDataEntries(user, { tabId, now, eventDateKey, conditions })) {
       const key = `${Number(mission.groupId || 0)}:${Number(mission.missionID || 0)}`;
       if (seen.has(key)) continue;
       seen.add(key);

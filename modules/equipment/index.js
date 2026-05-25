@@ -1,16 +1,38 @@
-const { dateTimeBinaryNow, toBigInt } = require("../packet-codec");
+const { dateTimeBinaryNow, statTypeName, toBigInt } = require("../packet-codec");
 const {
   getEquipTemplet,
   getAllEquipIds,
+  getEquipEnchantFeedExp,
+  getEquipEnchantMaterials,
+  getEquipEnchantRequiredExp,
+  getEquipMoldTemplet,
+  getEquipPotentialOptionRecords,
+  getEquipPrecisionWeightRecords,
   getEquipRandomStatRecords,
   getAllEquipRandomStatRecords,
   getEquipSetOptionIds,
+  getEquipUpgradeTemplet,
+  getMaxEquipEnchantLevel,
+  getMoldRewardRecords,
   getRandomEquipId,
+  getRelicRerollCountFactor,
 } = require("../game-data");
-const { ensureInventory } = require("../inventory");
+const { ensureInventory, grantMiscItem, spendMiscItem } = require("../inventory");
 const { ensureArmy } = require("../unit");
 
 const DEFAULT_NEXT_EQUIP_UID = 9100000000000001n;
+const TICKS_AT_UNIX_EPOCH = 621355968000000000n;
+const MAX_CRAFT_SLOTS = 5;
+const DEFAULT_UNLOCKED_CRAFT_SLOTS = 1;
+const CRAFT_SLOT_UNLOCK_ITEM_ID = 101;
+const CRAFT_SLOT_UNLOCK_COST = 300;
+const CREDIT_ITEM_ID = 1;
+const TUNING_MATERIAL_ITEM_ID = 1013;
+const TUNING_BONUS_RESET_GROUP_ID = 1013;
+const SET_BONUS_RESET_GROUP_ID = 1035;
+const TUNING_BONUS_MAX_COUNT = 100;
+const DEFAULT_PRECISION_WEIGHT_ID = 10000;
+const ENCHANT_CREDIT_PER_EXP = 8;
 const DEFAULT_STAT_TYPES = Object.freeze([
   "NST_ATK",
   "NST_HP",
@@ -24,6 +46,18 @@ const EQUIP_POSITION_INDEX = Object.freeze({
   IEP_DEFENCE: 1,
   IEP_ACC: 2,
   IEP_ACC2: 3,
+});
+const EQUIP_PRESET_TYPE = Object.freeze({
+  INVALID: 0,
+  NONE: 1,
+  COUNTER: 2,
+  SOLDIER: 3,
+  MECHANIC: 4,
+});
+const EQUIP_PRESET_TYPE_BY_STYLE = Object.freeze({
+  NUST_COUNTER: EQUIP_PRESET_TYPE.COUNTER,
+  NUST_SOLDIER: EQUIP_PRESET_TYPE.SOLDIER,
+  NUST_MECHANIC: EQUIP_PRESET_TYPE.MECHANIC,
 });
 
 function ensureEquipInventory(user) {
@@ -60,6 +94,129 @@ function getEquipItem(user, equipUid) {
   return equip;
 }
 
+function ensureCraftData(user) {
+  user.craft = user.craft && typeof user.craft === "object" ? user.craft : {};
+  user.craft.molds = user.craft.molds && typeof user.craft.molds === "object" ? user.craft.molds : {};
+  user.craft.slots = user.craft.slots && typeof user.craft.slots === "object" ? user.craft.slots : {};
+
+  for (const [key, value] of Object.entries(user.craft.molds)) {
+    const mold = normalizeMoldItem(value, key);
+    if (!mold) {
+      delete user.craft.molds[key];
+      continue;
+    }
+    if (String(key) !== String(mold.moldId)) delete user.craft.molds[key];
+    user.craft.molds[String(mold.moldId)] = mold;
+  }
+
+  for (const [key, value] of Object.entries(user.craft.slots)) {
+    const slot = normalizeCraftSlot(value, key);
+    if (!slot || slot.index < 1 || slot.index > MAX_CRAFT_SLOTS) {
+      delete user.craft.slots[key];
+      continue;
+    }
+    if (String(key) !== String(slot.index)) delete user.craft.slots[key];
+    user.craft.slots[String(slot.index)] = slot;
+  }
+
+  for (let index = 1; index <= DEFAULT_UNLOCKED_CRAFT_SLOTS; index += 1) {
+    if (!user.craft.slots[String(index)]) user.craft.slots[String(index)] = createEmptyCraftSlot(index);
+  }
+  return user.craft;
+}
+
+function getMoldItems(user) {
+  return Object.values(ensureCraftData(user).molds)
+    .map((mold) => normalizeMoldItem(mold))
+    .filter(Boolean)
+    .sort((a, b) => a.moldId - b.moldId);
+}
+
+function getCraftSlots(user) {
+  return Object.values(ensureCraftData(user).slots)
+    .map((slot) => normalizeCraftSlot(slot))
+    .filter(Boolean)
+    .sort((a, b) => a.index - b.index);
+}
+
+function grantMoldItem(user, moldId, count = 1) {
+  const moldTemplet = getEquipMoldTemplet(moldId);
+  const numericMoldId = Number(moldId);
+  if (!moldTemplet || !Number.isInteger(numericMoldId) || numericMoldId <= 0) return null;
+  const craft = ensureCraftData(user);
+  const key = String(numericMoldId);
+  const existing = normalizeMoldItem(craft.molds[key], key) || { moldId: numericMoldId, count: "0" };
+  existing.count = (toBigInt(existing.count) + toBigInt(count, 0n)).toString();
+  craft.molds[key] = existing;
+  return existing;
+}
+
+function startCraft(user, slotIndex, moldId, count = 1, options = {}) {
+  const craft = ensureCraftData(user);
+  const slot = ensureCraftSlot(user, slotIndex);
+  const moldTemplet = getEquipMoldTemplet(moldId);
+  const craftCount = Math.max(1, Math.trunc(Number(count) || 1));
+  const moldCount = toBigInt((craft.molds[String(moldId)] || {}).count, 0n);
+  const isPermanent = moldTemplet && moldTemplet.m_bPermanent === true;
+  if (!slot || !moldTemplet) return null;
+  if (!isPermanent && moldCount > 0n) {
+    const next = moldCount - BigInt(craftCount);
+    craft.molds[String(moldId)] = { moldId: Number(moldId), count: (next > 0n ? next : 0n).toString() };
+  }
+  const costs = spendMiscCosts(user, getMoldMaterialCosts(moldTemplet, craftCount), options);
+  slot.moldId = Number(moldId);
+  slot.count = craftCount;
+  slot.completeDate = (dateTimeTicksNow() + BigInt(Math.max(0, Number(moldTemplet.m_Time || 0)) * 60 * 10000000)).toString();
+  craft.slots[String(slot.index)] = slot;
+  return { slot, costItems: costs };
+}
+
+function completeCraft(user, slotIndex, options = {}) {
+  const craft = ensureCraftData(user);
+  const slot = ensureCraftSlot(user, slotIndex);
+  if (!slot || Number(slot.moldId || 0) <= 0) return { slot, reward: createEmptyEquipReward(), extraCostItem: null };
+  const reward = createMoldReward(user, slot.moldId, slot.count, options);
+  const completedSlot = createEmptyCraftSlot(slot.index);
+  craft.slots[String(slot.index)] = completedSlot;
+  return { slot: completedSlot, reward, extraCostItem: null };
+}
+
+function instantCraft(user, moldId, count = 1, options = {}) {
+  const moldTemplet = getEquipMoldTemplet(moldId);
+  const craftCount = Math.max(1, Math.trunc(Number(count) || 1));
+  if (!moldTemplet) return { moldId: Number(moldId || 0), moldCount: craftCount, reward: createEmptyEquipReward(), costItems: [] };
+  const craft = ensureCraftData(user);
+  if (moldTemplet.m_bPermanent !== true) {
+    const key = String(Number(moldId));
+    const existing = normalizeMoldItem(craft.molds[key], key) || { moldId: Number(moldId), count: "0" };
+    existing.count = (toBigInt(existing.count) - BigInt(craftCount) > 0n ? toBigInt(existing.count) - BigInt(craftCount) : 0n).toString();
+    craft.molds[key] = existing;
+  }
+  const costItems = spendMiscCosts(user, getMoldMaterialCosts(moldTemplet, craftCount), options);
+  const reward = createMoldReward(user, moldId, craftCount, options);
+  return { moldId: Number(moldId), moldCount: craftCount, reward, costItems };
+}
+
+function instantCompleteCraft(user, slotIndex, options = {}) {
+  const cost = spendMiscItem(user, 1012, 1, { regDate: options.regDate });
+  const result = completeCraft(user, slotIndex, options);
+  result.extraCostItem = cost;
+  return result;
+}
+
+function unlockCraftSlot(user, options = {}) {
+  const craft = ensureCraftData(user);
+  for (let index = 1; index <= MAX_CRAFT_SLOTS; index += 1) {
+    if (!craft.slots[String(index)]) {
+      const cost = spendMiscItem(user, CRAFT_SLOT_UNLOCK_ITEM_ID, CRAFT_SLOT_UNLOCK_COST, { regDate: options.regDate });
+      const slot = createEmptyCraftSlot(index);
+      craft.slots[String(index)] = slot;
+      return { slot, costItems: cost ? [cost] : [] };
+    }
+  }
+  return { slot: null, costItems: [] };
+}
+
 function grantEquipItem(user, equipId, options = {}) {
   if (!user) return null;
   let numericEquipId = Number(equipId);
@@ -86,13 +243,21 @@ function createEquipData(equipId, equipUid, options = {}) {
   const templet = getEquipTemplet(equipId) || {};
   const customMainStat = normalizeCustomMainStat(options.customMainStat);
   const customSubstats = normalizeCustomSubstats(options.customSubstats);
+  const cursor = Number(options.cursor || 0);
+  const precision1 = normalizePrecision(
+    options.precision != null ? options.precision : rollInitialPrecision(templet, 1, { ...options, equipUid, cursor })
+  );
+  const precision2 = normalizePrecision(
+    options.precision2 != null ? options.precision2 : rollInitialPrecision(templet, 2, { ...options, equipUid, cursor: cursor + 1 })
+  );
   const stats = [customMainStat ? buildCustomMainStat(templet, customMainStat) : defaultMainStat(templet, options)];
   for (let slot = 1; slot <= 2; slot += 1) {
     const groupId = slot === 1 ? templet.m_StatGroupID : templet.m_StatGroupID_2;
+    const precision = slot === 1 ? precision1 : precision2;
     const custom = customSubstats.find((entry) => Number(entry.slot) === slot);
     const rolled = custom
-      ? buildCustomSubstat(groupId, custom, { overrideUnsupportedSubstats: options.overrideUnsupportedSubstats })
-      : rollStatFromGroup(groupId, options.cursor || 0);
+      ? buildCustomSubstat(groupId, custom, { overrideUnsupportedSubstats: options.overrideUnsupportedSubstats, precision })
+      : rollStatFromGroup(groupId, cursor + slot - 1, precision);
     if (rolled) stats.push(rolled);
   }
   while (stats.length < 3) stats.push(rollFallbackStat(stats.length + Number(options.cursor || 0)));
@@ -105,8 +270,8 @@ function createEquipData(equipId, equipUid, options = {}) {
     enchantExp: Number(options.enchantExp || 0),
     stats,
     locked: Boolean(options.locked),
-    precision: Number(options.precision != null ? options.precision : 100),
-    precision2: Number(options.precision2 != null ? options.precision2 : 100),
+    precision: precision1,
+    precision2: precision2,
     setOptionId: Number(options.setOptionId || pickSetOptionId(templet, options.cursor || 0)),
     imprintUnitId: Number(options.imprintUnitId || 0),
     potentialOptions: options.potentialOptions || buildDefaultPotentialOptions(templet),
@@ -178,49 +343,79 @@ function lockEquipItem(user, equipUid, isLock) {
 function enchantEquipItem(user, equipUid, consumeEquipUids = [], options = {}) {
   const equip = getEquipItem(user, equipUid);
   if (!equip) return null;
-  const consumed = removeEquipItems(user, consumeEquipUids);
-  const addLevel = Math.max(1, Number(options.levels || consumed.length || 1));
-  equip.enchantLevel = Math.min(10, Number(equip.enchantLevel || 0) + addLevel);
-  equip.enchantExp = Number(equip.enchantExp || 0);
+  const materialEquips = (Array.isArray(consumeEquipUids) ? consumeEquipUids : [])
+    .map((uid) => getEquipItem(user, uid))
+    .filter((item) => item && String(item.equipUid) !== String(equip.equipUid));
+  let addedExp = materialEquips.reduce((total, item) => total + getEquipFeedExpForItem(item), 0);
+  const miscItems = normalizeMiscItemList(options.miscItems || []);
+  for (const item of miscItems) addedExp += getMiscEnchantExp(item.itemId) * item.count;
+  const targetLevel = Number(options.targetLevel || 0);
+  if (targetLevel > Number(equip.enchantLevel || 0) && addedExp <= 0) {
+    addedExp = getNeededEnchantExp(equip, targetLevel);
+  }
+
+  const costItems = [];
+  for (const item of miscItems) {
+    const spent = spendMiscItem(user, item.itemId, item.count, { regDate: options.regDate });
+    if (spent) costItems.push(spent);
+  }
+  if (addedExp > 0) {
+    const credit = spendMiscItem(user, CREDIT_ITEM_ID, addedExp * ENCHANT_CREDIT_PER_EXP, { regDate: options.regDate });
+    if (credit) costItems.push(credit);
+  }
+
+  const consumed = removeEquipItems(user, materialEquips.map((item) => item.equipUid));
+  applyEquipEnchantExp(equip, addedExp);
   ensureEquipInventory(user).equips[equip.equipUid] = equip;
   markInventoryTouched(user.inventory);
-  return { equip, consumed };
+  return { equip, consumed, costItems };
 }
 
-function rollEquipPrecision(user, equipUid, optionId = 0) {
-  const equip = getEquipItem(user, equipUid);
-  if (!equip) return null;
-  const slot = normalizeOptionSlot(optionId);
-  const next = Math.min(100, Number(slot === 2 ? equip.precision2 : equip.precision) + 10);
-  if (slot === 2) equip.precision2 = next;
-  else equip.precision = next;
-  ensureEquipInventory(user).equips[equip.equipUid] = equip;
-  markInventoryTouched(user.inventory);
-  return { equip, precision: next };
-}
-
-function rollEquipSubstat(user, equipUid, optionId = 0, forcedStatType = null) {
+function rollEquipPrecision(user, equipUid, optionId = 0, options = {}) {
   const equip = getEquipItem(user, equipUid);
   if (!equip) return null;
   const templet = getEquipTemplet(equip.itemEquipId) || {};
   const slot = normalizeOptionSlot(optionId);
+  const current = Number(slot === 2 ? equip.precision2 : equip.precision) || 0;
+  const outcome = current >= 100 ? { refineResult: 0, precision: current } : rollPrecisionOutcome(user, equip, slot, current);
+  const costItems = current >= 100 ? [] : spendMiscCosts(user, getPrecisionCosts(templet), options);
+  const next = normalizePrecision(outcome.precision);
+  if (slot === 2) equip.precision2 = next;
+  else equip.precision = next;
+  updateStatValueForPrecision(equip, slot);
+  ensureEquipInventory(user).equips[equip.equipUid] = equip;
+  markInventoryTouched(user.inventory);
+  return { equip, precision: next, costItems, refineResult: outcome.refineResult };
+}
+
+function rollEquipSubstat(user, equipUid, optionId = 0, forcedStatType = null, options = {}) {
+  const equip = getEquipItem(user, equipUid);
+  if (!equip) return null;
+  const templet = getEquipTemplet(equip.itemEquipId) || {};
+  const costItems = forcedStatType ? [] : spendMiscCosts(user, getRandomStatCosts(templet), options);
+  const slot = normalizeOptionSlot(optionId);
   const groupId = slot === 2 ? templet.m_StatGroupID_2 : templet.m_StatGroupID;
+  const precision = getPrecisionForSlot(equip, slot);
+  const currentType = equip.stats && equip.stats[slot] && equip.stats[slot].type;
   const cursor = Number(user.localEquipStatCursor || 0);
   user.localEquipStatCursor = cursor + 1;
   const rolled = forcedStatType
-    ? statForType(forcedStatType, groupId)
-    : rollStatFromGroup(groupId, cursor) || rollFallbackStat(cursor);
+    ? statForType(forcedStatType, groupId, null, precision)
+    : rollStatFromGroup(groupId, cursor, precision, currentType) || rollFallbackStat(cursor);
   equip.tuningCandidate = {
     equipUid: equip.equipUid,
-    option1: slot === 1 ? rolled.type : (equip.stats[1] && equip.stats[1].type) || "NST_HP",
-    option2: slot === 2 ? rolled.type : (equip.stats[2] && equip.stats[2].type) || "NST_ATK",
-    setOptionId: Number(equip.setOptionId || 0),
+    option1: slot === 1 ? rolled.type : "NST_RANDOM",
+    option2: slot === 2 ? rolled.type : "NST_RANDOM",
+    setOptionId: 0,
     slot,
     stat: rolled,
   };
+  const resetCount = forcedStatType
+    ? setEquipResetCount(user, TUNING_BONUS_RESET_GROUP_ID, 0)
+    : incrementEquipResetCount(user, TUNING_BONUS_RESET_GROUP_ID, TUNING_BONUS_MAX_COUNT);
   ensureEquipInventory(user).equips[equip.equipUid] = equip;
   markInventoryTouched(user.inventory);
-  return { equip, candidate: equip.tuningCandidate };
+  return { equip, candidate: equip.tuningCandidate, costItems, resetCount };
 }
 
 function validateEquipCustomSubstats(equipId, customSubstats = [], options = {}) {
@@ -246,45 +441,56 @@ function confirmEquipSubstat(user, equipUid, optionId = 0) {
   const equip = getEquipItem(user, equipUid);
   if (!equip) return null;
   const candidate = equip.tuningCandidate || null;
-  if (candidate && candidate.stat) {
+  if (candidate) {
     const slot = normalizeOptionSlot(optionId || candidate.slot || 1);
+    const candidateType = slot === 2 ? candidate.option2 : candidate.option1;
+    const normalizedCandidateType = normalizeStatType(candidateType);
+    const stat =
+      candidate.stat ||
+      (normalizedCandidateType && normalizedCandidateType !== "NST_RANDOM"
+        ? statForType(normalizedCandidateType, getStatGroupIdForSlot(equip, slot), null, getPrecisionForSlot(equip, slot))
+        : null);
     equip.stats = normalizeStats(equip.stats);
-    equip.stats[slot] = candidate.stat;
+    if (stat) equip.stats[slot] = stat;
   }
   equip.tuningCandidate = null;
   ensureEquipInventory(user).equips[equip.equipUid] = equip;
   markInventoryTouched(user.inventory);
-  return { equip, candidate };
+  return { equip, candidate: emptyTuningCandidate() };
 }
 
 function cancelEquipTuning(user) {
   const inventory = ensureEquipInventory(user);
-  let candidate = null;
   for (const equip of Object.values(inventory.equips)) {
     if (equip && equip.tuningCandidate) {
-      candidate = equip.tuningCandidate;
       equip.tuningCandidate = null;
     }
   }
   markInventoryTouched(inventory);
-  return candidate || { equipUid: 0, option1: 0, option2: 0, setOptionId: 0 };
+  return emptyTuningCandidate();
 }
 
-function rollSetOption(user, equipUid, forcedSetOptionId = null) {
+function rollSetOption(user, equipUid, forcedSetOptionId = null, options = {}) {
   const equip = getEquipItem(user, equipUid);
   if (!equip) return null;
   const templet = getEquipTemplet(equip.itemEquipId) || {};
-  const setOptionId = Number(forcedSetOptionId || pickSetOptionId(templet, Number(user.localEquipSetCursor || 0)));
+  const costItems = forcedSetOptionId || options.free ? [] : spendMiscCosts(user, getRandomSetCosts(templet), options);
+  const setOptionId = Number(forcedSetOptionId || pickSetOptionId(templet, Number(user.localEquipSetCursor || 0), equip.setOptionId));
   user.localEquipSetCursor = Number(user.localEquipSetCursor || 0) + 1;
   equip.tuningCandidate = {
     equipUid: equip.equipUid,
-    option1: (equip.stats[1] && equip.stats[1].type) || "NST_HP",
-    option2: (equip.stats[2] && equip.stats[2].type) || "NST_ATK",
+    option1: "NST_RANDOM",
+    option2: "NST_RANDOM",
     setOptionId,
   };
+  const resetCount = options.skipResetCount
+    ? null
+    : forcedSetOptionId
+      ? setEquipResetCount(user, SET_BONUS_RESET_GROUP_ID, 0)
+      : incrementEquipResetCount(user, SET_BONUS_RESET_GROUP_ID, TUNING_BONUS_MAX_COUNT);
   ensureEquipInventory(user).equips[equip.equipUid] = equip;
   markInventoryTouched(user.inventory);
-  return { equip, setOptionId, candidate: equip.tuningCandidate };
+  return { equip, setOptionId, candidate: equip.tuningCandidate, costItems, resetCount };
 }
 
 function confirmSetOption(user, equipUid, setOptionId = null) {
@@ -296,7 +502,7 @@ function confirmSetOption(user, equipUid, setOptionId = null) {
   equip.tuningCandidate = null;
   ensureEquipInventory(user).equips[equip.equipUid] = equip;
   markInventoryTouched(user.inventory);
-  return { equip, setOptionId: nextSetId, candidate };
+  return { equip, setOptionId: nextSetId, candidate: emptyTuningCandidate() };
 }
 
 function imprintEquip(user, equipUid, unitId) {
@@ -308,10 +514,28 @@ function imprintEquip(user, equipUid, unitId) {
   return equip;
 }
 
-function openPotentialSocket(user, equipUid, socketIndex) {
+function upgradeEquipItem(user, equipUid, consumeEquipUids = [], options = {}) {
+  const equip = getEquipItem(user, equipUid);
+  if (!equip) return null;
+  const upgrade = getEquipUpgradeTemplet(equip.itemEquipId);
+  if (!upgrade) return { equip, consumed: [], costItems: [] };
+  const costItems = spendMiscCosts(user, getUpgradeMiscCosts(upgrade), options);
+  const consumed = removeUpgradeEquipMaterials(user, upgrade, consumeEquipUids);
+  const previousStats = normalizeStats(equip.stats);
+  equip.itemEquipId = Number(upgrade.UpgradeEquipID || equip.itemEquipId);
+  equip.stats = migrateStatsForNewTemplet(previousStats, getEquipTemplet(equip.itemEquipId) || {}, equip);
+  equip.potentialOptions = buildDefaultPotentialOptions(getEquipTemplet(equip.itemEquipId) || {});
+  ensureEquipInventory(user).equips[equip.equipUid] = equip;
+  markInventoryTouched(user.inventory);
+  return { equip, consumed, costItems };
+}
+
+function openPotentialSocket(user, equipUid, socketIndex, options = {}) {
   const equip = getEquipItem(user, equipUid);
   if (!equip) return null;
   const index = Math.max(0, Math.min(2, Number(socketIndex || 0)));
+  const templet = getEquipTemplet(equip.itemEquipId) || {};
+  const costItems = spendMiscCosts(user, getSocketOpenCosts(templet, index), options);
   equip.potentialOptions = Array.isArray(equip.potentialOptions) ? equip.potentialOptions : [];
   if (!equip.potentialOptions.length) equip.potentialOptions.push(buildDefaultPotentialOption(equip));
   const option = equip.potentialOptions[0];
@@ -319,24 +543,40 @@ function openPotentialSocket(user, equipUid, socketIndex) {
   if (!option.sockets[index]) option.sockets[index] = { statValue: 0.01 * (index + 1), precision: 50 };
   ensureEquipInventory(user).equips[equip.equipUid] = equip;
   markInventoryTouched(user.inventory);
-  return equip;
+  return { equip, costItems };
 }
 
-function rollPotentialOption(user, equipUid, socketIndex) {
+function rollPotentialOption(user, equipUid, socketIndex, options = {}) {
   const equip = getEquipItem(user, equipUid);
   if (!equip) return null;
   const index = Math.max(0, Math.min(2, Number(socketIndex || 0)));
-  const precision = 50 + ((Number(user.localEquipPotentialCursor || 0) * 7) % 51);
-  user.localEquipPotentialCursor = Number(user.localEquipPotentialCursor || 0) + 1;
+  const templet = getEquipTemplet(equip.itemEquipId) || {};
+  const costItems = spendMiscCosts(user, getPotentialRerollCosts(templet, equip, index), options);
+  const cursor = Number(user.localEquipPotentialCursor || 0);
+  user.localEquipPotentialCursor = cursor + 1;
+  const optionSeed = pickPotentialOptionRecord(templet, equip, index, cursor, 100);
+  const precisionWeightId = Number(optionSeed && optionSeed.precisionWeightId) || DEFAULT_PRECISION_WEIGHT_ID;
+  const precision = rollIncreasingPrecisionFromTable(
+    precisionWeightId,
+    getPotentialSocketPrecision(equip, index),
+    equip.equipUid,
+    equip.itemEquipId,
+    index,
+    cursor,
+    "potential"
+  );
+  const optionRecord = pickPotentialOptionRecord(templet, equip, index, cursor, precision) || optionSeed;
   equip.potentialCandidate = {
     equipUid: equip.equipUid,
     precision,
     socketIndex: index,
     accumulateCount: 0,
+    statType: optionRecord && optionRecord.statType,
+    statValue: optionRecord && optionRecord.statValue,
   };
   ensureEquipInventory(user).equips[equip.equipUid] = equip;
   markInventoryTouched(user.inventory);
-  return { equip, candidate: equip.potentialCandidate };
+  return { equip, candidate: equip.potentialCandidate, costItems };
 }
 
 function confirmPotentialOption(user, equipUid, socketIndex) {
@@ -349,7 +589,11 @@ function confirmPotentialOption(user, equipUid, socketIndex) {
     if (!equip.potentialOptions.length) equip.potentialOptions.push(buildDefaultPotentialOption(equip));
     const option = equip.potentialOptions[0];
     option.sockets = normalizeFixedArray(option.sockets, 3, null);
-    option.sockets[index] = { statValue: Number(candidate.precision || 0) / 10000, precision: Number(candidate.precision || 0) };
+    if (candidate.statType) option.statType = candidate.statType;
+    option.sockets[index] = {
+      statValue: Number(candidate.statValue != null ? candidate.statValue : Number(candidate.precision || 0) / 10000),
+      precision: Number(candidate.precision || 0),
+    };
     option.precisionChangeCount = Number(option.precisionChangeCount || 0) + 1;
   }
   equip.potentialCandidate = null;
@@ -367,7 +611,7 @@ function addEquipPresets(user, count) {
   const addCount = Math.max(1, Number(count || 1));
   for (let i = 0; i < addCount; i += 1) {
     const nextIndex = inventory.equipPresets.length;
-    inventory.equipPresets.push({ presetIndex: nextIndex, presetType: 0, presetName: "", equipUids: [0, 0, 0, 0] });
+    inventory.equipPresets.push({ presetIndex: nextIndex, presetType: EQUIP_PRESET_TYPE.NONE, presetName: "", equipUids: [0, 0, 0, 0] });
   }
   normalizeEquipPresets(inventory);
   markInventoryTouched(inventory);
@@ -378,7 +622,7 @@ function ensureEquipPreset(user, presetIndex) {
   const inventory = ensureEquipInventory(user);
   const index = Math.max(0, Number(presetIndex || 0));
   while (inventory.equipPresets.length <= index) {
-    inventory.equipPresets.push({ presetIndex: inventory.equipPresets.length, presetType: 0, presetName: "", equipUids: [0, 0, 0, 0] });
+    inventory.equipPresets.push({ presetIndex: inventory.equipPresets.length, presetType: EQUIP_PRESET_TYPE.NONE, presetName: "", equipUids: [0, 0, 0, 0] });
   }
   normalizeEquipPresets(inventory);
   return inventory.equipPresets[index];
@@ -392,35 +636,52 @@ function setEquipPresetName(user, presetIndex, name) {
 }
 
 function registerEquipPreset(user, presetIndex, position, equipUid) {
+  const inventory = ensureEquipInventory(user);
   const preset = ensureEquipPreset(user, presetIndex);
   const slot = normalizePosition(position);
   preset.equipUids = normalizeFixedArray(preset.equipUids, 4, 0);
-  preset.equipUids[slot] = String(toBigInt(equipUid));
-  markInventoryTouched(user.inventory);
+  const key = normalizePresetEquipUid(inventory, equipUid);
+  preset.equipUids[slot] = key;
+  preset.presetType = inferEquipPresetType(inventory, preset.equipUids);
+  markInventoryTouched(inventory);
   return preset;
 }
 
 function registerEquipPresetFromUnit(user, unitUid, presetIndex) {
+  const inventory = ensureEquipInventory(user);
   const army = ensureArmy(user);
   const unit = getUnitByUid(army, unitUid);
   const preset = ensureEquipPreset(user, presetIndex);
-  preset.equipUids = normalizeFixedArray(unit ? unit.equipItemUids : [], 4, 0);
-  markInventoryTouched(user.inventory);
+  preset.equipUids = sanitizePresetEquipUids(inventory, unit ? unit.equipItemUids : []);
+  preset.presetType = inferEquipPresetType(inventory, preset.equipUids);
+  markInventoryTouched(inventory);
   return preset;
 }
 
 function applyEquipPreset(user, presetIndex, unitUid) {
+  const inventory = ensureEquipInventory(user);
   const preset = ensureEquipPreset(user, presetIndex);
+  preset.equipUids = sanitizePresetEquipUids(inventory, preset.equipUids);
+  preset.presetType = inferEquipPresetType(inventory, preset.equipUids);
   const update = { unitUid: String(toBigInt(unitUid)), equipUids: normalizeFixedArray(preset.equipUids, 4, 0) };
   const army = ensureArmy(user);
   const unit = getUnitByUid(army, unitUid);
   if (unit) {
+    unit.equipItemUids = normalizeFixedArray(unit.equipItemUids, 4, 0);
     for (let index = 0; index < 4; index += 1) {
-      const equipUid = preset.equipUids[index];
-      if (toBigInt(equipUid) > 0n) equipItemToUnit(user, unitUid, equipUid, index);
+      const equipUid = update.equipUids[index];
+      if (toBigInt(equipUid) > 0n) {
+        equipItemToUnit(user, unitUid, equipUid, index);
+      } else {
+        const currentUnit = getUnitByUid(ensureArmy(user), unitUid);
+        const currentEquipUid = currentUnit && Array.isArray(currentUnit.equipItemUids) ? currentUnit.equipItemUids[index] : 0;
+        if (toBigInt(currentEquipUid || 0) > 0n) unequipItem(user, currentEquipUid);
+      }
     }
-    update.equipUids = normalizeFixedArray(unit.equipItemUids, 4, 0);
+    const updatedUnit = getUnitByUid(ensureArmy(user), unitUid);
+    update.equipUids = normalizeFixedArray(updatedUnit ? updatedUnit.equipItemUids : [], 4, 0);
   }
+  markInventoryTouched(inventory);
   return update;
 }
 
@@ -428,8 +689,12 @@ function clearEquipPresets(user, presetIndices) {
   const indices = new Set((Array.isArray(presetIndices) ? presetIndices : []).map(Number));
   const inventory = ensureEquipInventory(user);
   for (const preset of inventory.equipPresets) {
-    if (indices.has(Number(preset.presetIndex))) preset.equipUids = [0, 0, 0, 0];
+    if (indices.has(Number(preset.presetIndex))) {
+      preset.equipUids = [0, 0, 0, 0];
+      preset.presetType = EQUIP_PRESET_TYPE.NONE;
+    }
   }
+  normalizeEquipPresets(inventory);
   markInventoryTouched(inventory);
   return inventory.equipPresets.slice();
 }
@@ -448,6 +713,271 @@ function changeEquipPresetIndices(user, changes) {
   normalizeEquipPresets(inventory);
   markInventoryTouched(inventory);
   return inventory.equipPresets.slice();
+}
+
+function applyEquipEnchantExp(equip, addedExp) {
+  const templet = getEquipTemplet(equip.itemEquipId) || {};
+  const tier = Number(templet.m_NKM_ITEM_TIER || 1);
+  const grade = templet.m_NKM_ITEM_GRADE || "NIG_N";
+  const maxLevel = Math.min(Number(templet.m_MaxEnchantLevel || 10) || 10, getMaxEquipEnchantLevel(tier) || 10, 10);
+  let level = Math.max(0, Number(equip.enchantLevel || 0) || 0);
+  let exp = Math.max(0, Number(equip.enchantExp || 0) || 0) + Math.max(0, Math.trunc(Number(addedExp) || 0));
+  while (level < maxLevel) {
+    const required = getEquipEnchantRequiredExp(tier, level, grade);
+    if (!Number.isFinite(required) || required <= 0 || exp < required) break;
+    exp -= required;
+    level += 1;
+  }
+  if (level >= maxLevel) exp = 0;
+  equip.enchantLevel = level;
+  equip.enchantExp = exp;
+  return equip;
+}
+
+function getNeededEnchantExp(equip, targetLevel) {
+  const templet = getEquipTemplet(equip.itemEquipId) || {};
+  const tier = Number(templet.m_NKM_ITEM_TIER || 1);
+  const grade = templet.m_NKM_ITEM_GRADE || "NIG_N";
+  const maxLevel = Math.min(Number(templet.m_MaxEnchantLevel || 10) || 10, getMaxEquipEnchantLevel(tier) || 10, 10);
+  const target = Math.max(0, Math.min(maxLevel, Math.trunc(Number(targetLevel) || 0)));
+  let needed = -Math.max(0, Number(equip.enchantExp || 0) || 0);
+  for (let level = Math.max(0, Number(equip.enchantLevel || 0) || 0); level < target; level += 1) {
+    const required = getEquipEnchantRequiredExp(tier, level, grade);
+    if (!Number.isFinite(required) || required <= 0) break;
+    needed += required;
+  }
+  return Math.max(0, needed);
+}
+
+function getEquipFeedExpForItem(equip) {
+  if (!equip) return 0;
+  return getEquipEnchantFeedExp(equip.itemEquipId, equip.enchantLevel);
+}
+
+function getMiscEnchantExp(itemId) {
+  const material = getEquipEnchantMaterials().find((entry) => Number(entry.itemId) === Number(itemId));
+  return material ? Number(material.exp || 0) : 0;
+}
+
+function normalizeMiscItemList(items) {
+  return (Array.isArray(items) ? items : [])
+    .map((item) => ({
+      itemId: Number(item && (item.itemId != null ? item.itemId : item.m_ItemMiscID || item.ItemID || 0)) || 0,
+      count: Math.max(0, Math.trunc(Number(item && (item.count != null ? item.count : item.Count || 0)) || 0)),
+    }))
+    .filter((item) => item.itemId > 0 && item.count > 0);
+}
+
+function spendMiscCosts(user, costs, options = {}) {
+  const paid = [];
+  for (const cost of mergeCosts(costs)) {
+    const spent = spendMiscItem(user, cost.itemId, cost.count, { regDate: options.regDate });
+    if (spent) paid.push(spent);
+  }
+  return paid;
+}
+
+function mergeCosts(costs) {
+  const byItem = new Map();
+  for (const cost of Array.isArray(costs) ? costs : []) {
+    const itemId = Number(cost && cost.itemId);
+    const count = Math.max(0, Math.trunc(Number(cost && cost.count) || 0));
+    if (!Number.isInteger(itemId) || itemId <= 0 || count <= 0) continue;
+    byItem.set(itemId, (byItem.get(itemId) || 0) + count);
+  }
+  return Array.from(byItem.entries()).map(([itemId, count]) => ({ itemId, count }));
+}
+
+function getPrecisionCosts(templet) {
+  return [
+    { itemId: CREDIT_ITEM_ID, count: Number(templet && templet.m_PrecisionReqResource) || 0 },
+    { itemId: TUNING_MATERIAL_ITEM_ID, count: Number(templet && templet.m_PrecisionReqItem) || 0 },
+  ];
+}
+
+function getRandomStatCosts(templet) {
+  return [
+    { itemId: CREDIT_ITEM_ID, count: Number(templet && templet.m_RandomStatReqResource) || 0 },
+    { itemId: TUNING_MATERIAL_ITEM_ID, count: Number(templet && templet.m_RandomStatReqItem) || 0 },
+  ];
+}
+
+function getRandomSetCosts(templet) {
+  return [
+    { itemId: CREDIT_ITEM_ID, count: Number(templet && templet.m_RandomSetReqResource) || 0 },
+    { itemId: Number(templet && templet.m_RandomSetReqItemID) || 0, count: Number(templet && templet.m_RandomSetReqItemValue) || 0 },
+  ];
+}
+
+function getUpgradeMiscCosts(upgrade) {
+  const costs = [{ itemId: CREDIT_ITEM_ID, count: Number(upgrade && upgrade.UpgradeReqResource) || 0 }];
+  for (let index = 1; index <= 10; index += 1) {
+    if (String(upgrade && upgrade[`Material${index}_ItemType`] || "") !== "RT_MISC") continue;
+    costs.push({
+      itemId: Number(upgrade[`Material${index}_ItemID`] || 0),
+      count: Number(upgrade[`Material${index}_ItemCount`] || 0),
+    });
+  }
+  return costs;
+}
+
+function removeUpgradeEquipMaterials(user, upgrade, consumeEquipUids = []) {
+  const wanted = [];
+  for (let index = 1; index <= 10; index += 1) {
+    if (String(upgrade && upgrade[`Material${index}_ItemType`] || "") !== "RT_EQUIP") continue;
+    const equipId = Number(upgrade[`Material${index}_ItemID`] || 0);
+    const count = Math.max(1, Number(upgrade[`Material${index}_ItemCount`] || 1));
+    for (let i = 0; i < count; i += 1) wanted.push(equipId);
+  }
+  const selected = [];
+  const requested = Array.isArray(consumeEquipUids) ? consumeEquipUids.map((uid) => String(toBigInt(uid))) : [];
+  for (const equipId of wanted) {
+    const match =
+      requested.find((uid) => {
+        const equip = getEquipItem(user, uid);
+        return equip && Number(equip.itemEquipId) === equipId && !selected.includes(uid);
+      }) ||
+      getEquipItems(user)
+        .filter((equip) => Number(equip.itemEquipId) === equipId && String(equip.ownerUnitUid) === "-1" && !equip.locked)
+        .map((equip) => equip.equipUid)
+        .find((uid) => !selected.includes(uid));
+    if (match) selected.push(match);
+  }
+  return removeEquipItems(user, selected);
+}
+
+function migrateStatsForNewTemplet(previousStats, templet, equip = null) {
+  const stats = [defaultMainStat(templet, {})];
+  const substats = normalizeStats(previousStats).slice(1, 3);
+  for (let index = 0; index < 2; index += 1) {
+    const previous = substats[index];
+    const groupId = index === 0 ? templet.m_StatGroupID : templet.m_StatGroupID_2;
+    stats.push(statForType(previous && previous.type, groupId, null, getPrecisionForSlot(equip, index + 1)) || rollFallbackStat(index + 1));
+  }
+  return normalizeStats(stats);
+}
+
+function updateStatValueForPrecision(equip, slot) {
+  const templet = getEquipTemplet(equip.itemEquipId) || {};
+  equip.stats = normalizeStats(equip.stats);
+  const groupId = slot === 2 ? templet.m_StatGroupID_2 : templet.m_StatGroupID;
+  const current = equip.stats[slot];
+  const next = statForType(current && current.type, groupId, null, getPrecisionForSlot(equip, slot));
+  if (next) equip.stats[slot] = next;
+}
+
+function getSocketOpenCosts(templet, socketIndex) {
+  const index = Math.max(0, Math.min(2, Number(socketIndex || 0)));
+  const costs = [];
+  const resource = Number(templet && templet[`Socket${index + 1}_ReqResource`] || 0);
+  const itemId = Number(templet && templet[`Socket${index + 1}_OpenItemID`] || 0);
+  const itemCount = Number(templet && templet[`Socket${index + 1}_OpenCount`] || 0);
+  if (resource > 0) costs.push({ itemId: CREDIT_ITEM_ID, count: resource });
+  if (itemId > 0 && itemCount > 0) costs.push({ itemId, count: itemCount });
+  return costs;
+}
+
+function getPotentialRerollCosts(templet, equip, _socketIndex) {
+  const changeCount = ((equip.potentialOptions || [])[0] || {}).precisionChangeCount || 0;
+  const base = Number(templet && templet.m_RelicRerollReqResource) || 0;
+  const factor = Number(templet && templet.m_RelicRerollReqResourceFactor) || 0;
+  const countFactor = getRelicRerollCountFactor();
+  const multiplier = changeCount > 0 && factor > 0
+    ? Math.round(factor * Math.pow(changeCount, countFactor) * 100) / 100
+    : 1;
+  const credit = changeCount > 0 ? Math.trunc(base * multiplier) : base;
+  return [
+    { itemId: CREDIT_ITEM_ID, count: credit },
+    { itemId: Number(templet && templet.m_RelicRerollReqItemID) || 0, count: Number(templet && templet.m_RelicRerollReqItemValue) || 0 },
+  ];
+}
+
+function pickPotentialOptionRecord(templet, equip, socketIndex, cursor = 0, precision = 100) {
+  const groupId = Number((templet && (templet.potentialOptionGroupId || templet.m_PotentialOptionGroupID)) || 0);
+  const records = getEquipPotentialOptionRecords(groupId);
+  if (!records.length) return null;
+  const record = records[Math.abs(Number(cursor) || 0) % records.length];
+  const socket = Math.max(1, Math.min(3, Number(socketIndex || 0) + 1));
+  const min = Number(record[`Socket${socket}_MinStat`] != null ? record[`Socket${socket}_MinStat`] : record[`Socket${socket}_MinStatRate`] || 0);
+  const max = Number(record[`Socket${socket}_MaxStat`] != null ? record[`Socket${socket}_MaxStat`] : record[`Socket${socket}_MaxStatRate`] != null ? record[`Socket${socket}_MaxStatRate`] : min || 0);
+  const statType = record[`Socket${socket}_StatType`] || record.Socket1_StatType || (equip.stats && equip.stats[1] && equip.stats[1].type) || "NST_HP";
+  return {
+    precisionWeightId: Number(record.PrecisionWeightId || record.FirstPrecisionWeightId || 0),
+    statType,
+    statValue: calcSubstatValue(statType, min, max, precision),
+  };
+}
+
+function getMoldMaterialCosts(moldTemplet, count = 1) {
+  const costs = [];
+  const multiplier = Math.max(1, Math.trunc(Number(count) || 1));
+  for (let index = 1; index <= 4; index += 1) {
+    if (String(moldTemplet && moldTemplet[`m_MaterialType${index}`] || "") !== "RT_MISC") continue;
+    costs.push({
+      itemId: Number(moldTemplet[`m_MaterialID${index}`] || 0),
+      count: Number(moldTemplet[`m_MaterialValue${index}`] || 0) * multiplier,
+    });
+  }
+  return costs;
+}
+
+function createMoldReward(user, moldId, count = 1, options = {}) {
+  const reward = createEmptyEquipReward();
+  const moldTemplet = getEquipMoldTemplet(moldId);
+  const records = getMoldRewardRecords(Number(moldTemplet && moldTemplet.m_RewardGroupID) || 0);
+  const craftCount = Math.max(1, Math.trunc(Number(count) || 1));
+  for (let index = 0; index < craftCount; index += 1) {
+    const record = records.length ? records[(Number(options.cursor || 0) + index) % records.length] : null;
+    const type = String(record && record.m_RewardType || "");
+    const id = Number(record && record.m_RewardID || 0);
+    if (type === "RT_EQUIP" && id > 0) {
+      const equip = grantEquipItem(user, id, { cursor: index, regDate: options.regDate });
+      if (equip) reward.equips.push(equip);
+    } else if (type === "RT_MISC" && id > 0) {
+      const item = grantMiscItem(user, id, BigInt(Number(record.m_RewardValue || record.m_Quantity_Min || 1) || 1), 0n, { regDate: options.regDate });
+      if (item) reward.miscItems.push(item);
+    } else {
+      const equip = grantEquipItem(user, 0, { cursor: index, regDate: options.regDate });
+      if (equip) reward.equips.push(equip);
+    }
+  }
+  return reward;
+}
+
+function createEmptyEquipReward() {
+  return { miscItems: [], skinIds: [], emoticonIds: [], units: [], operators: [], equips: [], moldItems: [] };
+}
+
+function ensureCraftSlot(user, slotIndex) {
+  const craft = ensureCraftData(user);
+  const index = Math.max(1, Math.min(MAX_CRAFT_SLOTS, Number(slotIndex || 1) || 1));
+  if (!craft.slots[String(index)]) craft.slots[String(index)] = createEmptyCraftSlot(index);
+  return craft.slots[String(index)];
+}
+
+function createEmptyCraftSlot(index) {
+  return { index: Number(index) || 1, moldId: 0, count: 0, completeDate: "0" };
+}
+
+function normalizeMoldItem(value, fallbackMoldId = 0) {
+  if (!value || typeof value !== "object") return null;
+  const moldId = Number(value.moldId != null ? value.moldId : value.m_MoldID != null ? value.m_MoldID : fallbackMoldId);
+  if (!Number.isInteger(moldId) || moldId <= 0) return null;
+  return { moldId, count: toBigInt(value.count != null ? value.count : value.m_Count || 0).toString() };
+}
+
+function normalizeCraftSlot(value, fallbackIndex = 1) {
+  if (!value || typeof value !== "object") return null;
+  return {
+    index: Math.max(1, Math.min(MAX_CRAFT_SLOTS, Number(value.index != null ? value.index : value.Index != null ? value.Index : fallbackIndex) || 1)),
+    moldId: Number(value.moldId != null ? value.moldId : value.MoldID || 0) || 0,
+    count: Math.max(0, Number(value.count != null ? value.count : value.Count || 0) || 0),
+    completeDate: String(toBigInt(value.completeDate != null ? value.completeDate : value.CompleteDate || 0)),
+  };
+}
+
+function dateTimeTicksNow() {
+  return BigInt(Date.now()) * 10000n + TICKS_AT_UNIX_EPOCH;
 }
 
 function normalizeEquip(value) {
@@ -484,11 +1014,15 @@ function normalizeStats(stats) {
   return result;
 }
 
-function rollStatFromGroup(groupId, cursor = 0) {
-  const records = getEquipRandomStatRecords(groupId);
+function rollStatFromGroup(groupId, cursor = 0, precision = 100, exceptStatType = null) {
+  const normalizedExcept = normalizeStatType(exceptStatType);
+  const allRecords = getEquipRandomStatRecords(groupId);
+  const records = normalizedExcept && allRecords.length > 1
+    ? allRecords.filter((record) => normalizeStatType(record && record.m_StatType) !== normalizedExcept)
+    : allRecords;
   if (!records.length) return null;
   const record = records[Math.abs(Number(cursor) || 0) % records.length];
-  return statForType(record.m_StatType, groupId, record);
+  return statForType(record.m_StatType, groupId, record, precision);
 }
 
 function defaultMainStat(templet, options = {}) {
@@ -520,13 +1054,14 @@ function buildCustomMainStat(templet, mainStat) {
   };
 }
 
-function statForType(statType, _groupId = 0, record = null) {
-  const data = record || {};
-  const min = Number(data.m_MinStatValue != null ? data.m_MinStatValue : data.m_MinStat || 0.01);
-  const max = Number(data.m_MaxStatValue != null ? data.m_MaxStatValue : data.m_MaxStat || min || 0.01);
+function statForType(statType, groupId = 0, record = null, precision = 100) {
+  const normalized = normalizeStatType(statType);
+  const data = record || findStatRecord(groupId, normalized) || {};
+  const min = getRecordMinStatValue(data);
+  const max = getRecordMaxStatValue(data, min);
   return {
-    type: String(statType || "NST_HP"),
-    value: Number.isFinite(max) ? max : min,
+    type: normalized || "NST_HP",
+    value: calcSubstatValue(normalized || "NST_HP", min, max, precision),
     levelValue: 0,
   };
 }
@@ -560,7 +1095,7 @@ function buildCustomSubstat(groupId, substat, options = {}) {
   if (!record && options.overrideUnsupportedSubstats !== true) return null;
   const value = substat && substat.valueKind === "max"
     ? maxStatValueForType(statType, record)
-    : finiteNumber(substat && substat.value, maxStatValueForType(statType, record));
+    : finiteNumber(substat && substat.value, statForType(statType, groupId, record, options.precision).value);
   return {
     type: statType,
     value,
@@ -587,9 +1122,39 @@ function normalizeCustomSubstats(substats) {
 }
 
 function normalizeStatType(statType) {
+  if (typeof statType === "number" || /^-?\d+$/.test(String(statType || "").trim())) {
+    const name = statTypeName(statType);
+    if (name) return name;
+  }
   const text = String(statType || "").trim().toUpperCase();
   if (!text) return "";
   return text.startsWith("NST_") ? text : `NST_${text}`;
+}
+
+function emptyTuningCandidate() {
+  return { equipUid: "0", option1: "NST_RANDOM", option2: "NST_RANDOM", setOptionId: 0 };
+}
+
+function ensureEquipResetCounts(user) {
+  user.equipResetCounts = user.equipResetCounts && typeof user.equipResetCounts === "object" ? user.equipResetCounts : {};
+  return user.equipResetCounts;
+}
+
+function getEquipResetCount(user, groupId) {
+  const counts = ensureEquipResetCounts(user);
+  const value = Number(counts[String(groupId)] || 0);
+  return Number.isFinite(value) ? Math.max(0, Math.trunc(value)) : 0;
+}
+
+function setEquipResetCount(user, groupId, count) {
+  const normalized = Math.max(0, Math.trunc(Number(count) || 0));
+  ensureEquipResetCounts(user)[String(groupId)] = normalized;
+  return { groupId: Number(groupId) || 0, count: normalized };
+}
+
+function incrementEquipResetCount(user, groupId, maxCount) {
+  const next = Math.min(Math.max(0, Number(maxCount) || 0), getEquipResetCount(user, groupId) + 1);
+  return setEquipResetCount(user, groupId, next);
 }
 
 function normalizeSubstatSlot(slot) {
@@ -632,8 +1197,34 @@ function maxMainStatFieldForType(statType, fieldName) {
 
 function statMaxValue(record) {
   if (!record) return null;
-  const value = Number(record.m_MaxStatValue != null ? record.m_MaxStatValue : record.m_MaxStat);
+  const value = getRecordMaxStatValue(record, null);
   return Number.isFinite(value) ? value : null;
+}
+
+function getRecordMinStatValue(record) {
+  const value = Number(record && (record.m_MinStatValue != null ? record.m_MinStatValue : record.m_MinStat != null ? record.m_MinStat : 0.01));
+  return Number.isFinite(value) ? value : 0.01;
+}
+
+function getRecordMaxStatValue(record, fallback = 0.01) {
+  const value = Number(record && (record.m_MaxStatValue != null ? record.m_MaxStatValue : record.m_MaxStat != null ? record.m_MaxStat : fallback));
+  return Number.isFinite(value) ? value : fallback;
+}
+
+function calcSubstatValue(statType, min, max, precision) {
+  const normalizedPrecision = normalizePrecision(precision);
+  const ratio = normalizedPrecision / 100;
+  const minValue = Number.isFinite(Number(min)) ? Number(min) : 0;
+  const maxValue = Number.isFinite(Number(max)) ? Number(max) : minValue;
+  const raw = maxValue < 0 && minValue < 0
+    ? (minValue - maxValue) * ratio + maxValue
+    : (maxValue - minValue) * ratio + minValue;
+  if (isPercentStatType(statType)) return Math.trunc(raw * 10000) / 10000;
+  return Math.trunc(raw);
+}
+
+function isPercentStatType(statType) {
+  return normalizeStatType(statType).includes("RATE");
 }
 
 function finiteNumber(value, fallback = 0) {
@@ -643,13 +1234,14 @@ function finiteNumber(value, fallback = 0) {
 
 function rollFallbackStat(cursor = 0) {
   const type = DEFAULT_STAT_TYPES[Math.abs(Number(cursor) || 0) % DEFAULT_STAT_TYPES.length];
-  return { type, value: type.includes("RATE") ? 0.1 : 100, levelValue: 0 };
+  return { type, value: type.includes("RATE") ? 0.05 : 50, levelValue: 0 };
 }
 
-function pickSetOptionId(templet, cursor = 0) {
+function pickSetOptionId(templet, cursor = 0, exceptSetOptionId = 0) {
   const ids = getEquipSetOptionIds(templet);
   if (!ids.length) return 0;
-  return ids[Math.abs(Number(cursor) || 0) % ids.length];
+  const filtered = ids.length > 1 ? ids.filter((id) => Number(id) !== Number(exceptSetOptionId || 0)) : ids;
+  return filtered[Math.abs(Number(cursor) || 0) % filtered.length];
 }
 
 function buildDefaultPotentialOptions(templet) {
@@ -665,6 +1257,13 @@ function buildDefaultPotentialOption(equip) {
     sockets: [null, null, null],
     precisionChangeCount: 0,
   };
+}
+
+function getPotentialSocketPrecision(equip, socketIndex) {
+  const option = (Array.isArray(equip && equip.potentialOptions) ? equip.potentialOptions : [])[0] || {};
+  const sockets = Array.isArray(option.sockets) ? option.sockets : [];
+  const index = Math.max(0, Math.min(2, Number(socketIndex || 0)));
+  return normalizePrecision(sockets[index] && sockets[index].precision);
 }
 
 function inferEquipPosition(equip) {
@@ -683,6 +1282,85 @@ function normalizeOptionSlot(optionId) {
   const numeric = Number(optionId);
   if (numeric === 2) return 2;
   return 1;
+}
+
+function normalizePrecision(value) {
+  const numeric = Math.trunc(Number(value));
+  if (!Number.isFinite(numeric)) return 0;
+  return Math.max(0, Math.min(100, numeric));
+}
+
+function getPrecisionForSlot(equip, slot) {
+  return normalizePrecision(slot === 2 ? equip && equip.precision2 : equip && equip.precision);
+}
+
+function getStatGroupIdForSlot(equip, slot) {
+  const templet = getEquipTemplet(equip && equip.itemEquipId) || {};
+  return slot === 2 ? templet.m_StatGroupID_2 : templet.m_StatGroupID;
+}
+
+function rollInitialPrecision(templet, slot, options = {}) {
+  const groupId = slot === 2 ? templet.m_StatGroupID_2 : templet.m_StatGroupID;
+  const records = getEquipRandomStatRecords(groupId);
+  if (!records.length) return 0;
+  if (records.every((record) => getRecordMinStatValue(record) === getRecordMaxStatValue(record, getRecordMinStatValue(record)))) {
+    return 100;
+  }
+  const seed = hashPrecisionSeed(templet.m_ItemEquipID, options.equipUid, slot, options.cursor);
+  return 20 + (seed % 71);
+}
+
+function rollPrecisionOutcome(user, equip, slot, currentPrecision = 0) {
+  const cursor = Number(user.localEquipPrecisionCursor || 0);
+  user.localEquipPrecisionCursor = cursor + 1;
+  const current = normalizePrecision(currentPrecision);
+  const precision = rollIncreasingPrecisionFromTable(DEFAULT_PRECISION_WEIGHT_ID, current, equip && equip.equipUid, equip && equip.itemEquipId, slot, cursor);
+  return {
+    refineResult: getPrecisionRefineResult(current, precision),
+    precision,
+  };
+}
+
+function rollIncreasingPrecisionFromTable(weightId, currentPrecision, ...seedParts) {
+  const current = normalizePrecision(currentPrecision);
+  const candidates = getPrecisionWeightCandidates(weightId)
+    .filter((entry) => entry.precision > current);
+  if (!candidates.length) return current >= 100 ? 100 : normalizePrecision(current + 1);
+  const totalWeight = candidates.reduce((total, entry) => total + entry.weight, 0);
+  if (totalWeight <= 0) return candidates[candidates.length - 1].precision;
+  let roll = hashPrecisionSeed(weightId, current, ...seedParts) % totalWeight;
+  for (const entry of candidates) {
+    if (roll < entry.weight) return entry.precision;
+    roll -= entry.weight;
+  }
+  return candidates[candidates.length - 1].precision;
+}
+
+function getPrecisionWeightCandidates(weightId) {
+  return getEquipPrecisionWeightRecords(weightId)
+    .map((record) => ({
+      precision: normalizePrecision(record && record.Precision),
+      weight: Math.max(0, Math.trunc(Number(record && record.Weight) || 0)),
+    }))
+    .filter((entry) => entry.weight > 0)
+    .sort((a, b) => a.precision - b.precision);
+}
+
+function getPrecisionRefineResult(currentPrecision, nextPrecision) {
+  const delta = normalizePrecision(nextPrecision) - normalizePrecision(currentPrecision);
+  return delta >= 10 ? 1 : 0;
+}
+
+function hashPrecisionSeed(...parts) {
+  let hash = 2166136261;
+  for (const part of parts) {
+    const text = String(part == null ? "" : part);
+    for (let index = 0; index < text.length; index += 1) {
+      hash ^= text.charCodeAt(index);
+      hash = Math.imul(hash, 16777619) >>> 0;
+    }
+  }
+  return hash >>> 0;
 }
 
 function getUnitByUid(army, unitUid) {
@@ -719,16 +1397,45 @@ function allocateEquipUid(user) {
 function normalizeEquipPresets(inventory) {
   inventory.equipPresets = (Array.isArray(inventory.equipPresets) ? inventory.equipPresets : []).map((preset, index) => ({
     presetIndex: Number(preset && preset.presetIndex != null ? preset.presetIndex : index) || index,
-    presetType: Number(preset && preset.presetType || 0) || 0,
     presetName: String((preset && (preset.presetName || preset.name)) || ""),
-    equipUids: normalizeFixedArray(preset && preset.equipUids, 4, 0),
+    equipUids: sanitizePresetEquipUids(inventory, preset && preset.equipUids),
+  })).map((preset) => ({
+    ...preset,
+    presetType: inferEquipPresetType(inventory, preset.equipUids),
   }));
   if (!inventory.equipPresets.length) {
-    inventory.equipPresets.push({ presetIndex: 0, presetType: 0, presetName: "", equipUids: [0, 0, 0, 0] });
+    inventory.equipPresets.push({ presetIndex: 0, presetType: EQUIP_PRESET_TYPE.NONE, presetName: "", equipUids: [0, 0, 0, 0] });
   }
   inventory.equipPresets.forEach((preset, index) => {
     preset.presetIndex = index;
   });
+}
+
+function sanitizePresetEquipUids(inventory, values) {
+  const seen = new Set();
+  return normalizeFixedArray(values, 4, 0).map((uid) => {
+    const key = normalizePresetEquipUid(inventory, uid);
+    if (key === 0 || seen.has(key)) return 0;
+    seen.add(key);
+    return key;
+  });
+}
+
+function normalizePresetEquipUid(inventory, uid) {
+  const key = String(toBigInt(uid || 0));
+  return key !== "0" && inventory && inventory.equips && inventory.equips[key] ? key : 0;
+}
+
+function inferEquipPresetType(inventory, equipUids) {
+  for (const uid of normalizeFixedArray(equipUids, 4, 0)) {
+    const key = String(toBigInt(uid || 0));
+    const equip = key !== "0" && inventory && inventory.equips ? inventory.equips[key] : null;
+    if (!equip) continue;
+    const templet = getEquipTemplet(equip.itemEquipId) || {};
+    const presetType = EQUIP_PRESET_TYPE_BY_STYLE[String(templet.m_EquipUnitStyleType || "")];
+    if (presetType) return presetType;
+  }
+  return EQUIP_PRESET_TYPE.NONE;
 }
 
 function markInventoryTouched(inventory) {
@@ -745,6 +1452,15 @@ module.exports = {
   ensureEquipInventory,
   getEquipItems,
   getEquipItem,
+  ensureCraftData,
+  getMoldItems,
+  getCraftSlots,
+  grantMoldItem,
+  startCraft,
+  completeCraft,
+  instantCraft,
+  instantCompleteCraft,
+  unlockCraftSlot,
   grantEquipItem,
   createEquipData,
   validateEquipCustomSubstats,
@@ -760,6 +1476,7 @@ module.exports = {
   rollSetOption,
   confirmSetOption,
   imprintEquip,
+  upgradeEquipItem,
   openPotentialSocket,
   rollPotentialOption,
   confirmPotentialOption,

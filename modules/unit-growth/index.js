@@ -50,6 +50,7 @@ const {
 } = require("../game-data");
 const { spendMiscItem, getMiscItem, RESOURCE_ITEM_IDS } = require("../inventory");
 const collection = require("../collection");
+const { addMissionTrackingCondition, completeMissionTracking, makeMissionTracking } = require("../mission-tracking");
 
 const PACKETS = Object.freeze({
   ENHANCE_UNIT_REQ: 1400,
@@ -178,12 +179,13 @@ function handler(packetId, name, buildResponse) {
       const request = decodeRequest(ctx, packetId, packet.payload);
       const response = buildResponse(ctx, user, request);
       if (!response) return false;
-      trackUnitGrowthMission(ctx, user, packetId, request);
+      const missionTracking = trackUnitGrowthMission(ctx, user, packetId, request);
       console.log(`[unit-growth:${name}] ACK packetId=${response.packetId} ${formatRequest(request)}`);
       ctx.sendResponse(socket, packet.sequence, response.packetId, () =>
         ctx.buildEncryptedPacket(packet.sequence, response.packetId, response.payload)
       );
       sendUnitMissionCollectionUpdate(ctx, socket, user, packetId, request);
+      completeMissionTracking(ctx, socket, user, missionTracking, { label: "unit-growth-mission-update" });
       persistUserDb(ctx);
       return true;
     },
@@ -198,14 +200,12 @@ function sendUnitMissionCollectionUpdate(ctx, socket, user, packetId, request = 
 }
 
 function trackUnitGrowthMission(ctx, user, packetId, request = {}) {
-  if (!ctx || typeof ctx.trackMissionEvent !== "function") return;
+  if (!ctx || typeof ctx.trackMissionEvent !== "function") return null;
   const now = ctx.dateTimeBinaryNow ? ctx.dateTimeBinaryNow() : undefined;
-  let changed = false;
-  const changedConditions = new Set();
+  const tracking = makeMissionTracking(now);
   const track = (condition, amount = 1, details = {}) => {
     const tracked = ctx.trackMissionEvent(user, condition, amount, { now, ...details });
-    if (tracked) changedConditions.add(condition);
-    changed = tracked || changed;
+    addMissionTrackingCondition(tracking, condition, tracked);
   };
   const trackResourceSpend = (itemId, amount) => {
     const numericItemId = Number(itemId || 0);
@@ -227,6 +227,7 @@ function trackUnitGrowthMission(ctx, user, packetId, request = {}) {
       track("UNIT_GROWTH_TACTICAL", 1, { unitUid: request.unitUid });
       break;
     case PACKETS.UNIT_SKILL_UPGRADE_REQ:
+      track("UNIT_TRAINING", 1, { unitUid: request.unitUid, value: request.skillId });
       track("UNIT_GROWTH_SKILL_LEVEL_3", 1, { unitUid: request.unitUid, value: request.skillId });
       track("UNIT_GROWTH_SKILL_LEVEL_MAX", 1, { unitUid: request.unitUid, value: request.skillId });
       break;
@@ -257,9 +258,7 @@ function trackUnitGrowthMission(ctx, user, packetId, request = {}) {
       break;
   }
 
-  if (changed && typeof ctx.refreshMissionProgress === "function") {
-    ctx.refreshMissionProgress(user, { now, conditions: Array.from(changedConditions) });
-  }
+  return tracking;
 }
 
 function handleEnhanceUnit(_ctx, user, request) {

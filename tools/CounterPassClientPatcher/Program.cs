@@ -60,6 +60,7 @@ if (options.ApplyEventPassTempletFallback && PatchEventPassTempletFallback(modul
 if (options.ApplyLobbyEventPassSelfActivation && PatchLobbyEventPassSelfActivation(module)) patches.Add("lobby-event-pass-self-activation");
 if (options.ApplyLobbyCounterPassFallbackRegistration && PatchLobbyCounterPassFallbackRegistration(module)) patches.Add("lobby-counter-pass-fallback-registration");
 if (options.ApplyLobbyEventPassLayout && PatchLobbyEventPassLayout(module)) patches.Add("lobby-event-pass-layout");
+if (options.ApplyWorldMapRaidRefresh && PatchWorldMapRaidRefresh(module)) patches.Add("world-map-raid-refresh");
 var changed = patches.Count > 0;
 if (!changed)
 {
@@ -127,6 +128,7 @@ static int PrintStatus(string assemblyPath, string backupPath)
     Console.WriteLine($"[counter-pass-patch] lobby-event-pass-self-activation={HasLobbyEventPassSelfActivationPatch(module)}");
     Console.WriteLine($"[counter-pass-patch] lobby-counter-pass-fallback-registration={HasLobbyCounterPassFallbackRegistrationPatch(module)}");
     Console.WriteLine($"[counter-pass-patch] lobby-event-pass-layout={HasLobbyEventPassLayoutPatch(module)}");
+    Console.WriteLine($"[counter-pass-patch] world-map-raid-refresh={HasWorldMapRaidRefreshPatch(module)}");
     return 0;
 }
 
@@ -689,6 +691,239 @@ static MethodDefinition EnsureCounterPassMenuResolver(ModuleDefinition module, T
     return method;
 }
 
+static bool PatchWorldMapRaidRefresh(ModuleDefinition module)
+{
+    var changed = false;
+    var sender = EnsureWorldMapInfoSender(module, ref changed);
+    var sceneHandler = EnsureWorldMapInfoSceneHandler(module, ref changed);
+    EnsureWorldMapInfoAckHandler(module, sceneHandler, ref changed);
+
+    var sceneType = FindTypeDefinition(module, "NKC.NKC_SCEN_WORLDMAP")
+        ?? throw new InvalidOperationException("NKC.NKC_SCEN_WORLDMAP was not found.");
+    var method = sceneType.Methods.FirstOrDefault(item => item.Name == "ScenDataReq" && item.HasBody && item.Parameters.Count == 0)
+        ?? throw new InvalidOperationException("NKC_SCEN_WORLDMAP.ScenDataReq was not found.");
+
+    if (IsWorldMapScenDataReqPatched(method, sender)) return changed;
+
+    var baseScenDataReq = FindMethodReference(module, "NKC.NKC_SCEN_BASIC", "ScenDataReq", 0)
+        ?? throw new InvalidOperationException("NKC_SCEN_BASIC.ScenDataReq was not found.");
+
+    method.Body.Instructions.Clear();
+    method.Body.ExceptionHandlers.Clear();
+    method.Body.Variables.Clear();
+    method.Body.InitLocals = false;
+
+    var il = method.Body.GetILProcessor();
+    il.Append(il.Create(OpCodes.Ldarg_0));
+    il.Append(il.Create(OpCodes.Call, module.ImportReference(baseScenDataReq)));
+    il.Append(il.Create(OpCodes.Call, module.ImportReference(sender)));
+    il.Append(il.Create(OpCodes.Ret));
+    return true;
+}
+
+static bool HasWorldMapRaidRefreshPatch(ModuleDefinition module)
+{
+    var senderType = FindTypeDefinition(module, "NKC.NKCPacketSender");
+    var sender = senderType?.Methods.FirstOrDefault(item => item.Name == "Send_NKMPacket_WORLDMAP_INFO_REQ" && item.Parameters.Count == 0);
+    if (sender == null) return false;
+
+    var sceneType = FindTypeDefinition(module, "NKC.NKC_SCEN_WORLDMAP");
+    if (sceneType == null) return false;
+    var method = sceneType.Methods.FirstOrDefault(item => item.Name == "ScenDataReq" && item.HasBody && item.Parameters.Count == 0);
+    if (method == null || !IsWorldMapScenDataReqPatched(method, sender)) return false;
+
+    var sceneHandler = sceneType.Methods.FirstOrDefault(item => item.Name == "RevivalSideOnWorldMapInfoAck");
+    var lobbyHandlers = FindTypeDefinition(module, "NKC.PacketHandler.NKCPacketHandlersLobby");
+    var ackHandler = lobbyHandlers?.Methods.FirstOrDefault(item =>
+        item.Name == "OnRecv"
+        && item.Parameters.Count == 1
+        && item.Parameters[0].ParameterType.FullName == "ClientPacket.WorldMap.NKMPacket_WORLDMAP_INFO_ACK");
+    return sceneHandler != null && ackHandler != null;
+}
+
+static bool IsWorldMapScenDataReqPatched(MethodDefinition method, MethodReference sender)
+{
+    return method.Body.Instructions.Any(instruction =>
+        instruction.Operand is MethodReference methodReference
+        && methodReference.Name == sender.Name
+        && methodReference.DeclaringType.FullName == sender.DeclaringType.FullName);
+}
+
+static MethodDefinition EnsureWorldMapInfoSender(ModuleDefinition module, ref bool changed)
+{
+    var senderType = FindTypeDefinition(module, "NKC.NKCPacketSender")
+        ?? throw new InvalidOperationException("NKC.NKCPacketSender was not found.");
+    var existing = senderType.Methods.FirstOrDefault(method => method.Name == "Send_NKMPacket_WORLDMAP_INFO_REQ" && method.Parameters.Count == 0);
+    if (existing != null) return existing;
+
+    var reqType = FindTypeDefinition(module, "ClientPacket.WorldMap.NKMPacket_WORLDMAP_INFO_REQ")
+        ?? throw new InvalidOperationException("ClientPacket.WorldMap.NKMPacket_WORLDMAP_INFO_REQ was not found.");
+    var reqCtor = reqType.Methods.FirstOrDefault(method => method.IsConstructor && !method.IsStatic && method.Parameters.Count == 0)
+        ?? throw new InvalidOperationException("NKMPacket_WORLDMAP_INFO_REQ constructor was not found.");
+    var getScenManager = FindMethodReference(module, "NKC.NKCScenManager", "GetScenManager", 0)
+        ?? throw new InvalidOperationException("NKCScenManager.GetScenManager was not found.");
+    var getConnectGame = FindMethodReference(module, "NKC.NKCScenManager", "GetConnectGame", 0)
+        ?? throw new InvalidOperationException("NKCScenManager.GetConnectGame was not found.");
+    var send = FindMethodReference(module, "NKC.NKCConnectBase", "Send", 3)
+        ?? throw new InvalidOperationException("NKCConnectBase.Send was not found.");
+    var smallWaitBox = FindEnumConstant(module, "NKC.NKC_OPEN_WAIT_BOX_TYPE", "NOWBT_SMALL");
+
+    var method = new MethodDefinition(
+        "Send_NKMPacket_WORLDMAP_INFO_REQ",
+        MethodAttributes.Public | MethodAttributes.Static | MethodAttributes.HideBySig,
+        module.TypeSystem.Void);
+    method.Body.InitLocals = true;
+    var reqLocal = new VariableDefinition(module.ImportReference(reqType));
+    method.Body.Variables.Add(reqLocal);
+
+    var il = method.Body.GetILProcessor();
+    il.Append(il.Create(OpCodes.Newobj, module.ImportReference(reqCtor)));
+    il.Append(il.Create(OpCodes.Stloc, reqLocal));
+    il.Append(il.Create(OpCodes.Call, module.ImportReference(getScenManager)));
+    il.Append(il.Create(OpCodes.Callvirt, module.ImportReference(getConnectGame)));
+    il.Append(il.Create(OpCodes.Ldloc, reqLocal));
+    il.Append(CreateLoadInt(il, smallWaitBox));
+    il.Append(il.Create(OpCodes.Ldc_I4_1));
+    il.Append(il.Create(OpCodes.Callvirt, module.ImportReference(send)));
+    il.Append(il.Create(OpCodes.Pop));
+    il.Append(il.Create(OpCodes.Ret));
+
+    senderType.Methods.Add(method);
+    changed = true;
+    return method;
+}
+
+static MethodDefinition EnsureWorldMapInfoSceneHandler(ModuleDefinition module, ref bool changed)
+{
+    var sceneType = FindTypeDefinition(module, "NKC.NKC_SCEN_WORLDMAP")
+        ?? throw new InvalidOperationException("NKC.NKC_SCEN_WORLDMAP was not found.");
+    var existing = sceneType.Methods.FirstOrDefault(method =>
+        method.Name == "RevivalSideOnWorldMapInfoAck"
+        && method.Parameters.Count == 1
+        && method.Parameters[0].ParameterType.FullName == "ClientPacket.WorldMap.NKMPacket_WORLDMAP_INFO_ACK");
+    if (existing != null) return existing;
+
+    var ackType = FindTypeDefinition(module, "ClientPacket.WorldMap.NKMPacket_WORLDMAP_INFO_ACK")
+        ?? throw new InvalidOperationException("ClientPacket.WorldMap.NKMPacket_WORLDMAP_INFO_ACK was not found.");
+    var stateField = FindInheritedFieldReference(module, sceneType, "m_NKC_SCEN_STATE");
+    var dataReqWait = FindEnumConstant(module, "NKC.NKC_SCEN_STATE", "NSS_DATA_REQ_WAIT");
+    var baseWaitUpdate = FindMethodReference(module, "NKC.NKC_SCEN_BASIC", "ScenDataReqWaitUpdate", 0)
+        ?? throw new InvalidOperationException("NKC_SCEN_BASIC.ScenDataReqWaitUpdate was not found.");
+
+    var method = new MethodDefinition(
+        "RevivalSideOnWorldMapInfoAck",
+        MethodAttributes.Public | MethodAttributes.HideBySig,
+        module.TypeSystem.Void);
+    method.Parameters.Add(new ParameterDefinition("sPacket", ParameterAttributes.None, module.ImportReference(ackType)));
+
+    var il = method.Body.GetILProcessor();
+    var ret = il.Create(OpCodes.Ret);
+    il.Append(il.Create(OpCodes.Ldarg_0));
+    il.Append(il.Create(OpCodes.Ldfld, stateField));
+    il.Append(CreateLoadInt(il, dataReqWait));
+    il.Append(il.Create(OpCodes.Bne_Un_S, ret));
+    il.Append(il.Create(OpCodes.Ldarg_0));
+    il.Append(il.Create(OpCodes.Call, module.ImportReference(baseWaitUpdate)));
+    il.Append(ret);
+
+    sceneType.Methods.Add(method);
+    changed = true;
+    return method;
+}
+
+static MethodDefinition EnsureWorldMapInfoAckHandler(ModuleDefinition module, MethodDefinition sceneHandler, ref bool changed)
+{
+    var handlerType = FindTypeDefinition(module, "NKC.PacketHandler.NKCPacketHandlersLobby")
+        ?? throw new InvalidOperationException("NKC.PacketHandler.NKCPacketHandlersLobby was not found.");
+    var existing = handlerType.Methods.FirstOrDefault(method =>
+        method.Name == "OnRecv"
+        && method.Parameters.Count == 1
+        && method.Parameters[0].ParameterType.FullName == "ClientPacket.WorldMap.NKMPacket_WORLDMAP_INFO_ACK");
+    if (existing != null) return existing;
+
+    var ackType = FindTypeDefinition(module, "ClientPacket.WorldMap.NKMPacket_WORLDMAP_INFO_ACK")
+        ?? throw new InvalidOperationException("ClientPacket.WorldMap.NKMPacket_WORLDMAP_INFO_ACK was not found.");
+    var userType = FindTypeDefinition(module, "NKM.NKMUserData")
+        ?? throw new InvalidOperationException("NKM.NKMUserData was not found.");
+    var errorCodeField = ackType.Fields.FirstOrDefault(field => field.Name == "errorCode")
+        ?? throw new InvalidOperationException("NKMPacket_WORLDMAP_INFO_ACK.errorCode was not found.");
+    var worldMapDataField = ackType.Fields.FirstOrDefault(field => field.Name == "worldMapData")
+        ?? throw new InvalidOperationException("NKMPacket_WORLDMAP_INFO_ACK.worldMapData was not found.");
+    var worldMapType = worldMapDataField.FieldType.Resolve()
+        ?? throw new InvalidOperationException("NKMPacket_WORLDMAP_INFO_ACK.worldMapData type was not resolved.");
+    var userWorldMapField = userType.Fields.FirstOrDefault(field => field.Name == "m_WorldmapData")
+        ?? throw new InvalidOperationException("NKMUserData.m_WorldmapData was not found.");
+    var worldMapCtor = worldMapType.Methods.FirstOrDefault(method => method.IsConstructor && !method.IsStatic && method.Parameters.Count == 0)
+        ?? throw new InvalidOperationException("NKMWorldMapData constructor was not found.");
+    var checkError = FindMethodReference(module, "NKC.PacketHandler.NKCPacketHandlers", "Check_NKM_ERROR_CODE", 4)
+        ?? throw new InvalidOperationException("NKCPacketHandlers.Check_NKM_ERROR_CODE was not found.");
+    var currentUserData = FindMethodReference(module, "NKC.NKCScenManager", "CurrentUserData", 0)
+        ?? throw new InvalidOperationException("NKCScenManager.CurrentUserData was not found.");
+    var getScenManager = FindMethodReference(module, "NKC.NKCScenManager", "GetScenManager", 0)
+        ?? throw new InvalidOperationException("NKCScenManager.GetScenManager was not found.");
+    var getNowScenId = FindMethodReference(module, "NKC.NKCScenManager", "GetNowScenID", 0)
+        ?? throw new InvalidOperationException("NKCScenManager.GetNowScenID was not found.");
+    var getWorldMapScene = FindMethodReference(module, "NKC.NKCScenManager", "Get_NKC_SCEN_WORLDMAP", 0)
+        ?? throw new InvalidOperationException("NKCScenManager.Get_NKC_SCEN_WORLDMAP was not found.");
+    var worldMapSceneId = FindEnumConstant(module, "NKM.NKM_SCEN_ID", "NSI_WORLDMAP");
+
+    var method = new MethodDefinition(
+        "OnRecv",
+        MethodAttributes.Public | MethodAttributes.Static | MethodAttributes.HideBySig,
+        module.TypeSystem.Void);
+    method.Parameters.Add(new ParameterDefinition("sPacket", ParameterAttributes.None, module.ImportReference(ackType)));
+    method.Body.InitLocals = true;
+    var userLocal = new VariableDefinition(module.ImportReference(userType));
+    method.Body.Variables.Add(userLocal);
+
+    var il = method.Body.GetILProcessor();
+    var afterErrorCheck = il.Create(OpCodes.Nop);
+    var userOk = il.Create(OpCodes.Nop);
+    var worldMapOk = il.Create(OpCodes.Nop);
+    var ret = il.Create(OpCodes.Ret);
+
+    il.Append(il.Create(OpCodes.Ldarg_0));
+    il.Append(il.Create(OpCodes.Ldfld, module.ImportReference(errorCodeField)));
+    il.Append(il.Create(OpCodes.Ldc_I4_1));
+    il.Append(il.Create(OpCodes.Ldnull));
+    il.Append(CreateLoadInt(il, int.MinValue));
+    il.Append(il.Create(OpCodes.Call, module.ImportReference(checkError)));
+    il.Append(il.Create(OpCodes.Brtrue_S, afterErrorCheck));
+    il.Append(il.Create(OpCodes.Ret));
+    il.Append(afterErrorCheck);
+
+    il.Append(il.Create(OpCodes.Call, module.ImportReference(currentUserData)));
+    il.Append(il.Create(OpCodes.Stloc, userLocal));
+    il.Append(il.Create(OpCodes.Ldloc, userLocal));
+    il.Append(il.Create(OpCodes.Brtrue_S, userOk));
+    il.Append(il.Create(OpCodes.Ret));
+    il.Append(userOk);
+
+    il.Append(il.Create(OpCodes.Ldloc, userLocal));
+    il.Append(il.Create(OpCodes.Ldarg_0));
+    il.Append(il.Create(OpCodes.Ldfld, module.ImportReference(worldMapDataField)));
+    il.Append(il.Create(OpCodes.Dup));
+    il.Append(il.Create(OpCodes.Brtrue_S, worldMapOk));
+    il.Append(il.Create(OpCodes.Pop));
+    il.Append(il.Create(OpCodes.Newobj, module.ImportReference(worldMapCtor)));
+    il.Append(worldMapOk);
+    il.Append(il.Create(OpCodes.Stfld, module.ImportReference(userWorldMapField)));
+
+    il.Append(il.Create(OpCodes.Call, module.ImportReference(getScenManager)));
+    il.Append(il.Create(OpCodes.Callvirt, module.ImportReference(getNowScenId)));
+    il.Append(CreateLoadInt(il, worldMapSceneId));
+    il.Append(il.Create(OpCodes.Bne_Un_S, ret));
+    il.Append(il.Create(OpCodes.Call, module.ImportReference(getScenManager)));
+    il.Append(il.Create(OpCodes.Callvirt, module.ImportReference(getWorldMapScene)));
+    il.Append(il.Create(OpCodes.Ldarg_0));
+    il.Append(il.Create(OpCodes.Callvirt, module.ImportReference(sceneHandler)));
+    il.Append(ret);
+
+    handlerType.Methods.Add(method);
+    changed = true;
+    return method;
+}
+
 static FieldReference FindInheritedFieldReference(ModuleDefinition module, TypeDefinition type, string fieldName)
 {
     TypeDefinition? current = type;
@@ -891,7 +1126,8 @@ sealed record PatchOptions(
     bool ApplyEventPassTempletFallback,
     bool ApplyLobbyEventPassSelfActivation,
     bool ApplyLobbyCounterPassFallbackRegistration,
-    bool ApplyLobbyEventPassLayout)
+    bool ApplyLobbyEventPassLayout,
+    bool ApplyWorldMapRaidRefresh)
 {
     public static PatchOptions Parse(string[] args)
     {
@@ -912,7 +1148,9 @@ sealed record PatchOptions(
             ApplyEventPassTempletFallback: legacyAll || HasArg(args, "--include-template-fallback"),
             ApplyLobbyEventPassSelfActivation: envDrivenCounterPassPatch || legacyAll || HasArg(args, "--include-lobby-self-activation"),
             ApplyLobbyCounterPassFallbackRegistration: envDrivenCounterPassPatch || legacyAll || HasArg(args, "--include-lobby-fallback"),
-            ApplyLobbyEventPassLayout: HasArg(args, "--include-lobby-layout") && !HasArg(args, "--no-lobby-layout"));
+            ApplyLobbyEventPassLayout: HasArg(args, "--include-lobby-layout") && !HasArg(args, "--no-lobby-layout"),
+            ApplyWorldMapRaidRefresh: (envDrivenCounterPassPatch || legacyAll || HasArg(args, "--include-world-map-raid-refresh"))
+                && !HasArg(args, "--no-world-map-raid-refresh"));
     }
 
     private static bool HasArg(string[] args, string name)

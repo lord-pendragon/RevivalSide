@@ -133,8 +133,10 @@ internal sealed class CombatEngine
         {
             StageID = stage.StageId != 0 ? stage.StageId : req.StageID,
             DungeonID = stage.DungeonID != 0 ? stage.DungeonID : req.DungeonID,
+            RaidUID = stage.RaidUID != 0 ? stage.RaidUID : req.RaidUID,
+            RaidLevel = stage.RaidLevel != 0 ? stage.RaidLevel : req.RaidLevel,
             MapID = stage.MapID != 0 ? stage.MapID : MapIdForStageDungeon(stage.StageId != 0 ? stage.StageId : req.StageID, stage.DungeonID != 0 ? stage.DungeonID : req.DungeonID),
-            GameType = stage.GameType,
+            GameType = stage.GameType != 0 ? stage.GameType : req.GameType,
             MiscMode = stage.MiscMode ?? "",
             PalaceID = stage.PalaceID,
             FierceBossId = stage.FierceBossId,
@@ -181,7 +183,7 @@ internal sealed class CombatEngine
             HydrateStats(unit);
         }
 
-        ManagedCombatBridge.TryStart(options, data, dynamicGame, out var managedGameLoadAck, out var managedError);
+        ManagedCombatBridge.TryStart(options, data, dynamicGame, battleState, out var managedGameLoadAck, out var managedError);
         if (dynamicGame.ManagedCombat)
         {
             // Managed combat is the preferred path when the installed

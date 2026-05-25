@@ -22,8 +22,11 @@ const {
   toBigInt,
 } = require("../packet-codec");
 const { readGameplayTableRecords } = require("../gameplay-jsons");
+const { getRewardGroupRecords } = require("../game-data");
 const { grantMiscItem, getMiscItem, spendMiscItem } = require("../inventory");
 const { ensureArmy, getArmyUnits, buildPlayerDeckForGameLoad } = require("../unit");
+const { addMissionTrackingCondition, completeMissionTracking, makeMissionTracking } = require("../mission-tracking");
+const { createEmptyReward, grantRewardRecord, mergeReward } = require("../reward");
 
 const TICKS_AT_UNIX_EPOCH = 621355968000000000n;
 const DATE_TIME_LOCAL_MASK = 0x4000000000000000n;
@@ -45,15 +48,26 @@ const NEC_FAIL_INSUFFICIENT_CREDIT = 93;
 const NEC_FAIL_WORLDMAP_INVALID_CITY_ID = 149;
 const NEC_FAIL_WORLDMAP_FULL_AREA = 151;
 const NEC_FAIL_WORLDMAP_CITY_ALREADY_OPENED = 153;
+const NEC_FAIL_WORLDMAP_MISSION_DOING = 157;
+const NEC_FAIL_WORLDMAP_MISSION_NOT_DOING = 158;
+const NEC_FAIL_WORLDMAP_INVALID_MISSION_ID = 160;
+const NEC_FAIL_RAID_NOT_EXIST = 398;
+const NEC_FAIL_RAID_HAS_BEEN_DEFEATED = 399;
+const NEC_FAIL_RAID_EXCEEDED_TRY_COUNT = 401;
+const NEC_FAIL_RAID_NOT_ENDED = 404;
 
 const CITY_OPEN_CASH_COSTS = Object.freeze([0, 800, 2400, 4500, 8000, 12500]);
 const CITY_OPEN_CREDIT_COSTS = Object.freeze([0, 100000, 200000, 400000, 800000, 1600000]);
 const CITY_UNLOCK_LEVELS = Object.freeze([0, 1, 10, 25, 35, 45, 55]);
 const STRICT_BRANCH_UNLOCK_ERRORS = envFlagDefault(false, "CS_WORLDMAP_STRICT_BRANCH_UNLOCK");
+const RAID_FACILITY_BUILDING_ID = 21;
+const DECK_TYPE_RAID = 4;
 
 const WORLD_MAP_PACKET_IDS = [2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018, 2020, 2022, 2024];
 const DIVE_PACKET_IDS = [1206, 1208, 1210, 1212, 1215, 1217, 1249];
 const RAID_PACKET_IDS = [802, 885, 2200, 2202, 2204, 2206, 2208, 2210, 2212, 2214, 2217, 2219];
+const RAID_SNAPSHOT_PACKET_IDS = new Set([2000, 2012, 2014, 2024, 885, 2200, 2202, 2204, 2206, 2210, 2212, 2214, 2217, 2219]);
+const RAID_DISMISS_HISTORY_LIMIT = 200;
 
 let tableCache = null;
 
@@ -67,10 +81,25 @@ function createWorldMapHandlers() {
       const req = decodeRequest(ctx, packetId, packet.payload);
       if (packetId === 802) return handleRaidGameLoad(ctx, socket, packet, user, req, { now });
       const response = buildPacketResponse(user, packetId, req, { now });
+      const missionTracking = trackWorldMapMissionEvents(ctx, user, response.missionEvents, { now });
       console.log(`[world-map:${packetId}] ${describeRequest(packetId, req)} ACK packetId=${response.packetId}`);
       ctx.sendResponse(socket, packet.sequence, response.packetId, () =>
         ctx.buildEncryptedPacket(packet.sequence, response.packetId, response.payload)
       );
+      completeMissionTracking(ctx, socket, user, missionTracking, { label: "world-map-mission-update" });
+      if ((response.raidStateRefresh || RAID_SNAPSHOT_PACKET_IDS.has(packetId)) && typeof ctx.sendServerGamePacket === "function") {
+        sendRaidSnapshotData(ctx, socket, user, {
+          now,
+          includeWorldMap: packetId === 2200,
+          worldMapLabel: `world-map-${packetId}-world-map-data`,
+          label: `world-map-${packetId}-my-raid-list`,
+          detailLabel: `world-map-${packetId}-raid-detail`,
+          coopLabel: `world-map-${packetId}-raid-coop-list`,
+          resultLabel: `world-map-${packetId}-raid-result-list`,
+          eventCancelLabel: `world-map-${packetId}-raid-event-clear`,
+          includeEmpty: true,
+        });
+      }
       if (ctx.config && ctx.config.USE_LOCAL_USER_DB && typeof ctx.saveUserDb === "function") ctx.saveUserDb();
       return true;
     },
@@ -112,17 +141,34 @@ function buildPacketResponse(user, packetId, req, options = {}) {
     }
     case 2012: {
       const result = completeWorldMapMission(user, req.cityID, options);
-      return ack(2013, [
-        writeSignedVarInt(0),
-        writeSignedVarInt(result.city.cityID),
-        writeSignedVarInt(result.clearedMissionID),
-        writeSignedVarInt(result.city.level),
-        writeSignedVarInt(result.city.exp),
-        writeIntList(result.city.mission.stMissionIDList),
-        writeNullableObject(buildRewardData(result.reward || {})),
-        writeBool(result.isSuccess),
-        writeNullableObjectOrNull(result.worldMapEventGroup ? buildWorldMapEventGroupData(result.worldMapEventGroup) : null),
-      ]);
+      return ack(
+        2013,
+        [
+          writeSignedVarInt(result.errorCode || NEC_OK),
+          writeSignedVarInt(result.city.cityID),
+          writeSignedVarInt(result.clearedMissionID),
+          writeSignedVarInt(result.city.level),
+          writeSignedVarInt(result.city.exp),
+          writeIntList(result.city.mission.stMissionIDList),
+          writeNullableObject(buildRewardData(result.reward || {})),
+          writeBool(result.isSuccess),
+          writeNullableObject(buildWorldMapEventGroupData(result.worldMapEventGroup || null)),
+        ],
+        {
+          missionEvents: result.isSuccess
+            ? [
+                {
+                  condition: "WORLDMAP_MISSION_CLEAR",
+                  details: { cityId: result.city.cityID, missionId: result.clearedMissionID, value: result.clearedMissionID },
+                },
+                {
+                  condition: "WORLDMAP_MISSION_CLEARED",
+                  details: { cityId: result.city.cityID, missionId: result.clearedMissionID, value: result.clearedMissionID },
+                },
+              ]
+            : [],
+        }
+      );
     }
     case 2014: {
       const city = clearWorldMapEvent(user, req.cityID, options);
@@ -192,41 +238,91 @@ function buildPacketResponse(user, packetId, req, options = {}) {
     }
     case 1249: {
       const result = skipDive(user, req, options);
-      return ack(1250, [
-        writeSignedVarInt(0),
-        writeObjectList(result.rewards.map((reward) => writeNullableObject(buildRewardData(reward)))),
-        writeMiscItemList(result.costItems),
-        writeSignedVarInt(result.deletedEventCityId),
-      ]);
+      return ack(
+        1250,
+        [
+          writeSignedVarInt(0),
+          writeObjectList(result.rewards.map((reward) => writeNullableObject(buildRewardData(reward)))),
+          writeMiscItemList(result.costItems),
+          writeSignedVarInt(result.deletedEventCityId),
+        ],
+        {
+          missionEvents: [
+            { condition: "DIVE_CLEAR", amount: result.skipCount, details: { stageId: result.stageID, value: result.stageID } },
+            { condition: "DIVE_PLAY_RECORD", amount: result.skipCount, details: { stageId: result.stageID, value: result.stageID } },
+          ],
+        }
+      );
     }
     case 885: {
       const result = sweepRaid(user, req.raidUid, options);
-      return ack(886, [
-        writeSignedVarInt(0),
-        writeSignedVarLong(result.raidUid),
-        writeNullableObject(buildRaidBossResultData(result.bossResult)),
-        writeMiscItemList(result.costItems),
-        writeNullableObject(buildRaidDetailData(user, result.raid)),
-      ]);
+      if (!result.ok) {
+        return ack(886, [
+          writeSignedVarInt(result.errorCode || NEC_FAIL_RAID_NOT_EXIST),
+          writeSignedVarLong(toBigInt(req.raidUid || 0)),
+          writeNullObject(),
+          writeObjectList([]),
+          writeNullObject(),
+        ]);
+      }
+      return ack(
+        886,
+        [
+          writeSignedVarInt(0),
+          writeSignedVarLong(result.raidUid),
+          writeNullableObject(buildRaidBossResultData(result.bossResult)),
+          writeMiscItemList(result.costItems),
+          writeNullableObject(buildRaidDetailData(user, result.raid)),
+        ],
+        {
+          missionEvents: raidMissionEvents(result.raid),
+        }
+      );
     }
     case 2200:
       return ack(2201, [writeSignedVarInt(0), writeObjectList(getActiveRaids(user, options).map((raid) => writeNullableObject(buildMyRaidData(raid))))]);
     case 2202:
-      return ack(2203, [writeSignedVarInt(0), writeObjectList([])]);
+      return ack(2203, [writeSignedVarInt(0), writeObjectList(getCoopRaids(user, options).map((raid) => writeNullableObject(buildCoopRaidData(user, raid))))]);
     case 2204: {
-      const raid = getRaidByUid(user, req.raidUID, options) || ensureSoloRaid(user, 1, options);
-      raid.isCoop = false;
-      return ack(2205, [writeSignedVarInt(0), writeSignedVarLong(toBigInt(raid.raidUID)), writeObjectList([])]);
+      const raid = getActiveRaidByUid(user, req.raidUID, options);
+      if (!raid) {
+        const errorCode = getRaidResultByUid(user, req.raidUID, options) ? NEC_FAIL_RAID_HAS_BEEN_DEFEATED : NEC_FAIL_RAID_NOT_EXIST;
+        return ack(2205, [writeSignedVarInt(errorCode), writeSignedVarLong(toBigInt(req.raidUID || 0)), writeObjectList([])], {
+          raidStateRefresh: true,
+        });
+      }
+      const updated = setRaidCoop(user, raid.raidUID, true, options);
+      if (!updated) {
+        return ack(2205, [writeSignedVarInt(NEC_FAIL_RAID_NOT_EXIST), writeSignedVarLong(toBigInt(req.raidUID || 0)), writeObjectList([])], {
+          raidStateRefresh: true,
+        });
+      }
+      return ack(2205, [
+        writeSignedVarInt(0),
+        writeSignedVarLong(toBigInt(updated.raidUID)),
+        writeObjectList([writeNullableObject(buildRaidJoinData(user, updated))]),
+      ], {
+        raidStateRefresh: true,
+      });
     }
     case 2206:
-      return ack(2207, [writeSignedVarInt(0), writeObjectList([])]);
+      return ack(2207, [
+        writeSignedVarInt(0),
+        writeObjectList(setAllRaidsCoop(user, options).map((raid) => writeNullableObject(buildRaidDetailData(user, raid)))),
+      ]);
     case 2208: {
-      const raid = getRaidByUid(user, req.raidUID, options) || ensureSoloRaid(user, 1, options);
-      raid.isNew = false;
+      const raid = getRaidByUid(user, req.raidUID, options);
+      if (!raid) {
+        const result = getRaidResultByUid(user, req.raidUID, options);
+        if (result) return ack(2209, [writeSignedVarInt(0), writeNullableObject(buildRaidDetailData(user, result))]);
+        return ack(2209, [writeSignedVarInt(NEC_FAIL_RAID_NOT_EXIST), writeNullObject()]);
+      }
+      const state = ensureWorldMapState(user, options);
+      state.raids[String(toBigInt(raid.raidUID))] = normalizeRaidState(raid);
       return ack(2209, [writeSignedVarInt(0), writeNullableObject(buildRaidDetailData(user, raid))]);
     }
     case 2210:
-      return ack(2211, [writeSignedVarInt(0), writeObjectList(getRaidResults(user).map((raid) => writeNullableObject(buildRaidResultData(user, raid))))]);
+      return ack(2211, [writeSignedVarInt(0), writeObjectList(getRaidResults(user, options).map((raid) => writeNullableObject(buildRaidResultData(user, raid))))]);
     case 2212: {
       const result = acceptRaidResult(user, req.raidUID, options);
       return ack(2213, [
@@ -254,24 +350,44 @@ function buildPacketResponse(user, packetId, req, options = {}) {
   }
 }
 
-function ack(packetId, parts) {
-  return { packetId, payload: Buffer.concat(parts) };
+function ack(packetId, parts, metadata = {}) {
+  return { packetId, payload: Buffer.concat(parts), ...metadata };
 }
 
 function handleRaidGameLoad(ctx, socket, packet, user, req, options = {}) {
-  const raid = getRaidByUid(user, req.raidUID, options) || ensureSoloRaid(user, firstCityId(), options);
-  const raidTemplet = getRaidTemplet(raid.stageID);
+  const raid = resolveRaidForGameLoad(user, req.raidUID, options);
+  if (!raid) {
+    console.log(`[world-map:802] raidUID=${String(req.raidUID || 0)} not found; refusing default raid load`);
+    return sendRaidGameLoadError(ctx, socket, packet, req.raidUID, NEC_FAIL_RAID_NOT_EXIST, "not-found");
+  }
+  const raidTemplet = findRaidTemplet(raid.stageID);
+  if (!raidTemplet) {
+    console.log(`[world-map:802] raidUID=${raid.raidUID} stageID=${raid.stageID} has no client raid templet`);
+    return sendRaidGameLoadError(ctx, socket, packet, raid.raidUID, NEC_FAIL_RAID_NOT_EXIST, "missing-templet");
+  }
   const dungeonID = positiveInt(raidTemplet && raidTemplet.m_DungeonID) || raid.stageID;
+  const raidLevel = positiveInt(raidTemplet && raidTemplet.m_RaidLevel);
+  const gameUID = makeRaidGameUid();
+  const battleKey = makeRaidBattleKey(raid.raidUID, gameUID, raid.stageID, dungeonID);
+  const reservedAttempt = reserveRaidAttempt(user, raid.raidUID, { ...options, battleKey, gameUID });
+  if (!reservedAttempt.ok) {
+    console.log(`[world-map:802] raidUID=${raid.raidUID} attempt rejected error=${reservedAttempt.errorCode}`);
+    return sendRaidGameLoadError(ctx, socket, packet, raid.raidUID, reservedAttempt.errorCode || NEC_FAIL_RAID_EXCEEDED_TRY_COUNT, "attempt-rejected");
+  }
   const stageFromTables =
     ctx && typeof ctx.getGenericStageForRequest === "function"
       ? ctx.getGenericStageForRequest({ stageID: raid.stageID, dungeonID })
       : null;
+  const gameType = raidGameTypeForTemplet(raidTemplet, stageFromTables);
   const gameReq = {
-    stageID: Number((stageFromTables && stageFromTables.stageId) || raid.stageID),
+    stageID: Number(raid.stageID),
     dungeonID,
-    gameType: 12,
-    deckIndex: { deckType: 1, index: Number(req.selectDeckIndex || 0) || 0 },
+    gameType,
+    selectDeckIndex: Number(req.selectDeckIndex || 0) || 0,
+    deckIndex: { deckType: DECK_TYPE_RAID, index: Number(req.selectDeckIndex || 0) || 0 },
     raidUID: toBigInt(raid.raidUID),
+    raidLevel,
+    gameUID: String(gameUID),
     buffList: Array.isArray(req.buffList) ? req.buffList : [],
     isTryAssist: Boolean(req.isTryAssist),
     supportingUserUid: toBigInt(req.supportingUserUid || 0),
@@ -282,14 +398,17 @@ function handleRaidGameLoad(ctx, socket, packet, user, req, options = {}) {
     stageId: gameReq.stageID,
     dungeonID,
     mapID: Number(stageFromTables && stageFromTables.mapID) || 0,
-    gameType: 12,
+    gameType,
     tutorial: false,
     cutsceneOnly: false,
+    worldmapEventID: Number(raid.worldmapEventID || 0) || 0,
+    raidLevel,
     initialUnits: [],
     autoDeployUnits: [],
     initialRemainGameTime: 180,
     playerDeck,
     raidUID: String(raid.raidUID),
+    gameUID: String(gameUID),
   };
   if (socket.session && socket.session.gameReplay) {
     socket.session.gameReplay.lastGameLoadReq = {
@@ -301,18 +420,95 @@ function handleRaidGameLoad(ctx, socket, packet, user, req, options = {}) {
   if (ctx.config && ctx.config.DYNAMIC_BATTLE_MANAGER && typeof ctx.sendDynamicGameLoadAck === "function") {
     if (ctx.sendDynamicGameLoadAck(socket, gameReq, stage)) {
       console.log(`[world-map:802] raidUID=${raid.raidUID} stageID=${gameReq.stageID} dungeonID=${dungeonID} dynamic GAME_LOAD_ACK`);
+      sendRaidStateData(ctx, socket, user, {
+        now: options.now,
+        label: "raid-attempt-my-raid-list",
+        detailLabel: "raid-attempt-raid-detail",
+        coopLabel: "raid-attempt-raid-coop-list",
+        resultLabel: "raid-attempt-raid-result-list",
+        eventCancelLabel: "raid-attempt-raid-event-clear",
+        includeEmpty: true,
+      });
+      completeMissionTracking(ctx, socket, user, trackWorldMapMissionEvents(ctx, user, raidMissionEvents(raid), options), {
+        label: "raid-mission-update",
+      });
       return true;
     }
   }
   const payload =
     typeof ctx.buildGameLoadAck === "function"
-      ? ctx.buildGameLoadAck({ stageID: gameReq.stageID, dungeonID, mapID: stage.mapID, raidUID: toBigInt(raid.raidUID), gameType: 12 })
+      ? ctx.buildGameLoadAck({
+          stageID: gameReq.stageID,
+          dungeonID,
+          mapID: stage.mapID,
+          raidUID: toBigInt(raid.raidUID),
+          gameUID,
+          gameType,
+          raidLevel,
+          teamBLevelFix: raidLevel,
+        })
       : Buffer.concat([writeSignedVarInt(0), writeNullObject(), writeObjectList([])]);
   const ackPacketId = (ctx.constants && ctx.constants.GAME_LOAD_ACK) || 804;
   console.log(`[world-map:802] raidUID=${raid.raidUID} stageID=${gameReq.stageID} dungeonID=${dungeonID} ACK packetId=${ackPacketId}`);
   ctx.sendResponse(socket, packet.sequence, ackPacketId, () => ctx.buildEncryptedPacket(packet.sequence, ackPacketId, payload));
+  sendRaidStateData(ctx, socket, user, {
+    now: options.now,
+    label: "raid-attempt-my-raid-list",
+    detailLabel: "raid-attempt-raid-detail",
+    coopLabel: "raid-attempt-raid-coop-list",
+    resultLabel: "raid-attempt-raid-result-list",
+    eventCancelLabel: "raid-attempt-raid-event-clear",
+    includeEmpty: true,
+  });
+  completeMissionTracking(ctx, socket, user, trackWorldMapMissionEvents(ctx, user, raidMissionEvents(raid), options), {
+    label: "raid-mission-update",
+  });
   if (ctx.config && ctx.config.USE_LOCAL_USER_DB && typeof ctx.saveUserDb === "function") ctx.saveUserDb();
   return true;
+}
+
+function raidGameTypeForTemplet(raidTemplet, stageFromTables = null) {
+  const dungeonType = String(stageFromTables && stageFromTables.dungeonType || "").toUpperCase();
+  if (dungeonType === "NDT_RAID") return 8;
+  if (dungeonType === "NDT_SOLO_RAID") return 12;
+  const stageID = positiveInt(raidTemplet && raidTemplet.m_StageID);
+  const dungeonID = positiveInt(raidTemplet && raidTemplet.m_DungeonID);
+  return stageID > 0 && dungeonID > 0 && stageID !== dungeonID ? 8 : 12;
+}
+
+function sendRaidGameLoadError(ctx, socket, packet, raidUID, errorCode, reason) {
+  const payload = Buffer.concat([writeSignedVarInt(errorCode || NEC_FAIL_RAID_NOT_EXIST), writeNullObject(), writeObjectList([])]);
+  const ackPacketId = (ctx.constants && ctx.constants.GAME_LOAD_ACK) || 804;
+  console.log(`[world-map:802] raidUID=${String(raidUID || 0)} ${reason || "error"} ACK packetId=${ackPacketId} error=${errorCode}`);
+  ctx.sendResponse(socket, packet.sequence, ackPacketId, () => ctx.buildEncryptedPacket(packet.sequence, ackPacketId, payload));
+  return true;
+}
+
+function trackWorldMapMissionEvents(ctx, user, events, options = {}) {
+  if (!ctx || typeof ctx.trackMissionEvent !== "function") return null;
+  const eventList = Array.isArray(events) ? events : [];
+  if (!eventList.length) return null;
+  const now = options.now;
+  const tracking = makeMissionTracking(now);
+  for (const event of eventList) {
+    const condition = String(event && event.condition || "").trim();
+    if (!condition) continue;
+    const amount = Math.max(1, Number(event.amount || 1) || 1);
+    const tracked = ctx.trackMissionEvent(user, condition, amount, { now, ...((event && event.details) || {}) });
+    addMissionTrackingCondition(tracking, condition, tracked);
+  }
+  return tracking;
+}
+
+function raidMissionEvents(raid = {}) {
+  const stageId = positiveInt(raid.stageID);
+  const raidTemplet = getRaidTemplet(stageId);
+  const raidLevel = positiveInt(raidTemplet && raidTemplet.m_RaidLevel);
+  const details = { stageId, value: stageId, raidUid: raid.raidUID };
+  return [
+    { condition: "RAID_PLAY", details },
+    { condition: "RAID_PLAY_LEVEL_HIGH", details: { ...details, value: raidLevel || stageId } },
+  ];
 }
 
 function buildWorldMapData(user, options = {}) {
@@ -342,7 +538,7 @@ function buildWorldMapCityData(city) {
     writeSignedVarInt(normalized.exp),
     writeSignedVarInt(normalized.level),
     writeNullableObject(buildWorldMapMissionData(normalized.mission)),
-    writeNullableObjectOrNull(isActiveEventGroup(normalized.eventGroup) ? buildWorldMapEventGroupData(normalized.eventGroup) : null),
+    writeNullableObject(buildWorldMapEventGroupData(normalized.eventGroup)),
     writeObjectMapInt(buildingEntries),
   ]);
 }
@@ -439,6 +635,7 @@ function ensureWorldMapState(user, options = {}) {
       cities: {},
       raids: {},
       raidResults: {},
+      dismissedRaidUids: [],
       diveClearStages: [],
       diveHistoryStages: [],
       collectLastResetDate: String(binaryNow(options)),
@@ -452,9 +649,11 @@ function ensureWorldMapState(user, options = {}) {
   state.cities = state.cities && typeof state.cities === "object" ? state.cities : {};
   state.raids = state.raids && typeof state.raids === "object" ? state.raids : {};
   state.raidResults = state.raidResults && typeof state.raidResults === "object" ? state.raidResults : {};
+  state.dismissedRaidUids = normalizeRaidUidList(state.dismissedRaidUids);
   state.dive = state.dive && typeof state.dive === "object" ? state.dive : {};
   state.diveClearStages = uniquePositiveInts(state.diveClearStages);
   state.diveHistoryStages = uniquePositiveInts(state.diveHistoryStages);
+  state.pendingRaidEventClearCityIds = uniquePositiveInts(state.pendingRaidEventClearCityIds);
   state.collectLastResetDate = String(state.collectLastResetDate || binaryNow(options));
   state.nextUid = String(state.nextUid || defaultNextUid(user));
 
@@ -469,19 +668,54 @@ function refreshWorldMapState(user, options = {}) {
   const now = ticksNow(options);
   for (const city of Object.values(state.cities)) {
     normalizeCityState(city, city.cityID || 1);
-    if (isActiveEventGroup(city.eventGroup) && ticksFromDateTimeBinary(city.eventGroup.eventGroupEndDate) <= now) {
+    const eventRaidUid = toBigInt(city.eventGroup && city.eventGroup.eventUid);
+    const eventRaidKey = String(eventRaidUid);
+    if (eventRaidUid > 0n && isRaidDismissed(state, eventRaidKey)) {
+      queueRaidEventClearCity(state, city.cityID);
+      city.eventGroup = normalizeEventGroup(null);
+      continue;
+    }
+    if (eventRaidUid > 0n && state.raidResults[eventRaidKey]) {
+      queueRaidEventClearCity(state, city.cityID);
+      city.eventGroup = normalizeEventGroup(null);
+      continue;
+    }
+    const eventRaid = eventRaidUid > 0n && state.raids[eventRaidKey] ? normalizeRaidState(state.raids[eventRaidKey]) : null;
+    if (eventRaid && Number(eventRaid.curHP || 0) <= 0) {
+      state.raidResults[eventRaidKey] = normalizeRaidState({ ...eventRaid, accepted: false });
+      delete state.raids[eventRaidKey];
+      queueRaidEventClearCity(state, city.cityID);
+      city.eventGroup = normalizeEventGroup(null);
+      continue;
+    }
+    if (
+      isActiveEventGroup(city.eventGroup) &&
+      ticksFromDateTimeBinary(city.eventGroup.eventGroupEndDate) <= now &&
+      !state.raids[String(eventRaidUid)]
+    ) {
+      if (isUsableWorldMapRaidEvent(getWorldMapEventById(city.eventGroup.worldmapEventID))) queueRaidEventClearCity(state, city.cityID);
       city.eventGroup = normalizeEventGroup(null);
     }
     refreshCityMissionList(user, city, options);
   }
+  for (const raidUid of Object.keys(state.raidResults || {})) {
+    if (isRaidDismissed(state, raidUid)) delete state.raidResults[raidUid];
+  }
   for (const [raidUid, raid] of Object.entries(state.raids)) {
+    if (isRaidDismissed(state, raidUid)) {
+      delete state.raids[raidUid];
+      clearRaidEventGroupForUid(state, raidUid);
+      continue;
+    }
     const normalized = normalizeRaidState(raid);
-    if (toBigInt(normalized.expireDate) <= now || Number(normalized.curHP || 0) <= 0) {
+    if (toBigInt(normalized.expireDate) <= now && !isRaidReferencedByCity(state, raidUid)) {
       delete state.raids[raidUid];
     } else {
       state.raids[raidUid] = normalized;
     }
   }
+  repairMissingRaidEventGroups(state, options);
+  repairRaidEventLinks(state);
   return state;
 }
 
@@ -492,7 +726,9 @@ function ensureBareWorldMapState(user, options = {}) {
   state.cities = state.cities && typeof state.cities === "object" ? state.cities : {};
   state.raids = state.raids && typeof state.raids === "object" ? state.raids : {};
   state.raidResults = state.raidResults && typeof state.raidResults === "object" ? state.raidResults : {};
+  state.dismissedRaidUids = normalizeRaidUidList(state.dismissedRaidUids);
   state.dive = state.dive && typeof state.dive === "object" ? state.dive : {};
+  state.pendingRaidEventClearCityIds = uniquePositiveInts(state.pendingRaidEventClearCityIds);
   return state;
 }
 
@@ -562,6 +798,7 @@ function normalizeCityState(city, cityID) {
     data.buildings[String(id)] = normalizeBuildingState(value, id);
   }
   if (!data.buildings["1"]) data.buildings["1"] = normalizeBuildingState({ id: 1, level: 1 }, 1);
+  applyCityMissionExp(data, 0);
   return data;
 }
 
@@ -653,20 +890,40 @@ function completeWorldMapMission(user, cityID, options = {}) {
   const mission = getMissionById(missionID);
   const now = ticksNow(options);
   const completeTime = toBigInt(city.mission.completeTime || 0);
+  if (!missionID) {
+    return {
+      errorCode: NEC_FAIL_WORLDMAP_MISSION_NOT_DOING,
+      city,
+      clearedMissionID: 0,
+      reward: {},
+      isSuccess: false,
+      worldMapEventGroup: city.eventGroup,
+    };
+  }
+  if (!mission) {
+    return {
+      errorCode: NEC_FAIL_WORLDMAP_INVALID_MISSION_ID,
+      city,
+      clearedMissionID: missionID,
+      reward: {},
+      isSuccess: false,
+      worldMapEventGroup: city.eventGroup,
+    };
+  }
   const canComplete = missionID > 0 && (completeTime <= now || envFlagDefault(false, "CS_WORLDMAP_ALLOW_EARLY_COMPLETE"));
   if (!canComplete) {
     return {
+      errorCode: NEC_FAIL_WORLDMAP_MISSION_DOING,
       city,
-      clearedMissionID: missionID || 0,
+      clearedMissionID: missionID,
       reward: {},
       isSuccess: false,
-      worldMapEventGroup: isActiveEventGroup(city.eventGroup) ? city.eventGroup : null,
+      worldMapEventGroup: city.eventGroup,
     };
   }
 
   const reward = grantMissionReward(user, mission, options);
-  city.exp = Math.max(0, city.exp + (Number(mission && mission.m_RewardCityEXP) || 0));
-  city.level = computeCityLevel(city.cityID, city.exp);
+  applyCityMissionExp(city, Number(mission && mission.m_RewardCityEXP) || 0);
   city.mission.currentMissionID = 0;
   city.mission.completeTime = "0";
   city.mission.startDate = "0";
@@ -677,7 +934,7 @@ function completeWorldMapMission(user, cityID, options = {}) {
     clearedMissionID: missionID,
     reward,
     isSuccess: true,
-    worldMapEventGroup,
+    worldMapEventGroup: worldMapEventGroup || city.eventGroup,
   };
 }
 
@@ -706,39 +963,180 @@ function grantMissionReward(user, mission, options = {}) {
 function maybeSpawnRaidEvent(user, city, mission, options = {}) {
   const chanceFromEnv = process.env.CS_WORLDMAP_RAID_CHANCE;
   const tableChance = Number(mission && mission.m_WorldmapEventRatio) || 0;
-  const chance = chanceFromEnv == null ? (tableChance > 0 ? tableChance : 20) : Math.max(0, Number(chanceFromEnv) || 0);
+  const searchBonus = getCityBuildingStatValue(city, "CBS_RAID_SEARCH_RATE");
+  const chance = chanceFromEnv == null ? clampNumber(tableChance + searchBonus, 0, 100) : clampNumber(Number(chanceFromEnv) || 0, 0, 100);
   if (chance <= 0 && !envFlag("CS_WORLDMAP_FORCE_RAID")) return null;
   const seed = `${city.cityID}:${mission && mission.m_WorldmapMissionID}:${city.exp}:${dayKeyFromTicks(ticksNow(options))}`;
   const roll = hashString(seed) % 100;
   if (!envFlag("CS_WORLDMAP_FORCE_RAID") && roll >= chance) return null;
 
-  const tables = getTables();
-  const groupID = positiveInt(mission && mission.m_WorldmapEventGroup) || 1;
-  const candidates = tables.worldMapEventGroups.filter(
-    (row) => Number(row.GROUP_ID || 0) === groupID && String(row.WORLDMAP_EVENT_TYPE || "").toUpperCase() === "WET_RAID"
-  );
-  const event = candidates.length ? candidates[hashString(seed + ":event") % candidates.length] : tables.worldMapEventGroups[0] || null;
+  const selection = selectWorldMapRaidEvent(city, mission, seed);
+  const event = selection.event;
   const durationHours = Math.max(1, Number(event && event.EVENT_DURATION_TIME) || 6);
   const expireTicks = ticksNow(options) + BigInt(durationHours) * TICKS_PER_HOUR;
   const raid = ensureSoloRaid(user, city.cityID, {
     ...options,
     expireTicks,
-    worldmapEventID: positiveInt(event && event.EVENT_ID) || 2001001,
+    stageID: selection.stageID,
+    worldmapEventID: selection.eventID,
   });
   city.eventGroup = {
-    worldmapEventID: positiveInt(event && event.EVENT_ID) || 2001001,
+    worldmapEventID: selection.eventID,
     eventGroupEndDate: String(binaryFromTicks(expireTicks)),
     eventUid: String(raid.raidUID),
   };
   return city.eventGroup;
 }
 
+function spawnAdminRaid(user, options = {}) {
+  const requestedLevel = positiveInt(options.level || options.raidLevel || options.raidLvl || options.lv);
+  if (!requestedLevel) {
+    return { ok: false, error: "Raid level is required." };
+  }
+
+  const cityID = positiveInt(options.branch || options.branchID || options.cityID || options.city) || firstCityId();
+  if (!isKnownCityId(cityID)) {
+    return { ok: false, error: `Unknown world-map branch ${cityID}.` };
+  }
+  const state = ensureWorldMapState(user, options);
+  const city = ensureCityState(user, cityID, options);
+  const selection = selectWorldMapRaidEventByLevel(
+    requestedLevel,
+    `${cityID}:${requestedLevel}:${ticksNow(options)}:admin-raid`,
+    positiveInt(options.groupID || options.eventGroupID)
+  );
+  if (!selection.eventID || !selection.stageID) {
+    return { ok: false, error: `No usable raid event exists for level ${requestedLevel}.` };
+  }
+
+  const previousRaidUID = toBigInt(city.eventGroup && city.eventGroup.eventUid);
+  if (previousRaidUID > 0n) deleteRaidState(state, previousRaidUID);
+
+  const eventDurationHours = Math.max(1, Number(selection.event && selection.event.EVENT_DURATION_TIME) || 6);
+  const durationHours = Math.max(1, Number(options.durationHours || eventDurationHours) || eventDurationHours);
+  const expireTicks = ticksNow(options) + BigInt(durationHours) * TICKS_PER_HOUR;
+  const raid = ensureSoloRaid(user, cityID, {
+    ...options,
+    expireTicks,
+    stageID: selection.stageID,
+    worldmapEventID: selection.eventID,
+    adminSpawned: true,
+    requestedRaidLevel: requestedLevel,
+    raidFamily: selection.raidFamily || "",
+  });
+  raid.adminSpawned = true;
+  state.raids[String(toBigInt(raid.raidUID))] = normalizeRaidState(raid);
+  city.eventGroup = {
+    worldmapEventID: selection.eventID,
+    eventGroupEndDate: String(binaryFromTicks(expireTicks)),
+    eventUid: String(raid.raidUID),
+  };
+
+  return {
+    ok: true,
+    city,
+    raid: state.raids[String(toBigInt(raid.raidUID))],
+    event: selection.event,
+    eventID: selection.eventID,
+    stageID: selection.stageID,
+    requestedLevel,
+    actualLevel: selection.raidLevel,
+    exactLevel: selection.exactLevel,
+    raidFamily: selection.raidFamily || "",
+    replacedRaidUID: previousRaidUID > 0n ? String(previousRaidUID) : "0",
+    expireDate: city.eventGroup.eventGroupEndDate,
+  };
+}
+
+function spawnSephiraRaid(user, options = {}) {
+  return spawnAdminRaid(user, {
+    ...options,
+    level: positiveInt(options.level || options.raidLevel || options.raidLvl || options.lv) || 666,
+  });
+}
+
+function killRaidInBranch(user, options = {}) {
+  const cityID = positiveInt(options.branch || options.branchID || options.cityID || options.city);
+  if (!cityID) return { ok: false, error: "Branch is required." };
+  if (!isKnownCityId(cityID)) return { ok: false, error: `Unknown world-map branch ${cityID}.` };
+
+  const state = ensureWorldMapState(user, options);
+  const city = ensureCityState(user, cityID, options);
+  const eventRaidUid = toBigInt(city.eventGroup && city.eventGroup.eventUid);
+  let raid = eventRaidUid > 0n ? getActiveRaidByUid(user, eventRaidUid, options) : null;
+  if (!raid) {
+    raid = getActiveRaids(user, options)
+      .filter((entry) => positiveInt(entry && entry.cityID) === cityID)
+      .sort((left, right) => Number(toBigInt(right.expireDate || 0) - toBigInt(left.expireDate || 0)))[0] || null;
+  }
+  if (!raid) return { ok: false, error: `No active raid boss exists on branch ${cityID}.` };
+
+  const raidKey = String(toBigInt(raid.raidUID));
+  const result = recordRaidBattleResult(user, raid.raidUID, {
+    ...options,
+    win: true,
+    bossKilled: true,
+    damageRatio: 1,
+    skipRaidCost: true,
+    battleKey: `admin-kill:${cityID}:${raidKey}:${ticksNow(options)}`,
+  });
+  if (result.notFound) return { ok: false, error: `Raid ${raidKey} no longer exists on branch ${cityID}.` };
+
+  const resultRaid = state.raidResults && state.raidResults[raidKey] ? normalizeRaidState(state.raidResults[raidKey]) : normalizeRaidState(result.raid);
+  return {
+    ok: true,
+    city,
+    raid: resultRaid,
+    raidUID: raidKey,
+    stageID: resultRaid.stageID,
+    branch: cityID,
+    completed: Boolean(result.completed || Number(resultRaid.curHP || 0) <= 0),
+    win: Boolean(resultRaid.win || Number(resultRaid.curHP || 0) <= 0),
+    damage: result.bossResult && result.bossResult.damage,
+  };
+}
+
+function clearActiveRaids(user, options = {}) {
+  const state = ensureWorldMapState(user, options);
+  const includeResults = Boolean(options.includeResults);
+  const clearedRaidUids = new Set();
+  const clearedCityIds = new Set();
+  for (const [raidUid, raid] of Object.entries(state.raids || {})) {
+    const normalized = normalizeRaidState(raid);
+    const isResult = Boolean(state.raidResults && state.raidResults[raidUid]);
+    if (Number(normalized.curHP || 0) <= 0 || isResult) {
+      if (!includeResults) continue;
+      if (state.raidResults) delete state.raidResults[raidUid];
+    }
+    delete state.raids[raidUid];
+    markRaidDismissed(state, raidUid);
+    clearedRaidUids.add(String(toBigInt(raidUid)));
+  }
+  if (includeResults) {
+    for (const raidUid of Object.keys(state.raidResults || {})) {
+      delete state.raidResults[raidUid];
+      markRaidDismissed(state, raidUid);
+      clearedRaidUids.add(String(toBigInt(raidUid)));
+    }
+  }
+  for (const city of Object.values(state.cities || {})) {
+    const eventUid = String(toBigInt(city && city.eventGroup && city.eventGroup.eventUid));
+    if (clearedRaidUids.has(eventUid)) {
+      clearedCityIds.add(positiveInt(city && city.cityID));
+      queueRaidEventClearCity(state, city && city.cityID);
+      city.eventGroup = normalizeEventGroup(null);
+    }
+  }
+  return { clearedCount: clearedRaidUids.size, clearedRaidUids: Array.from(clearedRaidUids), clearedCityIds: Array.from(clearedCityIds).filter(Boolean) };
+}
+
 function clearWorldMapEvent(user, cityID, options = {}) {
+  const state = ensureWorldMapState(user, options);
   const city = ensureCityState(user, cityID, options);
   const eventUid = toBigInt(city.eventGroup && city.eventGroup.eventUid);
+  if (eventUid > 0n) deleteRaidState(state, eventUid);
+  else queueRaidEventClearCity(state, city.cityID);
   city.eventGroup = normalizeEventGroup(null);
-  const state = ensureWorldMapState(user, options);
-  if (eventUid > 0n) delete state.raids[String(eventUid)];
   return city;
 }
 
@@ -1019,7 +1417,7 @@ function skipDive(user, req, options = {}) {
   if (spent) costItems.push(spent);
   markDiveCleared(user, stageID, options);
   giveUpDive(user);
-  return { rewards, costItems, deletedEventCityId: 0 };
+  return { rewards, costItems, deletedEventCityId: 0, skipCount, stageID };
 }
 
 function grantDiveReward(user, templet, regDate) {
@@ -1152,12 +1550,24 @@ function buildDiveSlotWithIndexesData(slotWithIndexes) {
 function ensureSoloRaid(user, cityID, options = {}) {
   const state = ensureWorldMapState(user, options);
   const raidUid = String(options.raidUid ? toBigInt(options.raidUid) : nextWorldMapUid(user, options));
+  forgetDismissedRaid(state, raidUid);
   const existing = state.raids[raidUid];
-  if (existing) return normalizeRaidState(existing);
-  const stageID = chooseSoloRaidStage(cityID, options);
+  if (existing) {
+    const normalized = normalizeRaidState(existing);
+    const selectedStageID = positiveInt(options.stageID);
+    const selectedEventID = positiveInt(options.worldmapEventID);
+    if (selectedStageID || selectedEventID) applyRaidEventLink(normalized, selectedEventID || normalized.worldmapEventID, selectedStageID || normalized.stageID);
+    if (options.adminSpawned != null) normalized.adminSpawned = Boolean(options.adminSpawned);
+    if (options.requestedRaidLevel != null) normalized.requestedRaidLevel = positiveInt(options.requestedRaidLevel);
+    if (options.raidFamily != null) normalized.raidFamily = String(options.raidFamily || "");
+    state.raids[raidUid] = normalized;
+    return normalized;
+  }
+  const stageID = positiveInt(options.stageID) || chooseSoloRaidStage(cityID, options);
   const raidTemplet = getRaidTemplet(stageID);
-  const maxHP = Math.max(100000, Number(raidTemplet && raidTemplet.Raid_Damage_Basis) || 100000);
+  const maxHP = getRaidMaxHpForStage(stageID);
   const expireTicks = toBigInt(options.expireTicks || ticksNow(options) + 6n * TICKS_PER_HOUR);
+  const city = state.cities[String(positiveInt(cityID) || firstCityId())] || { cityID };
   const raid = normalizeRaidState({
     raidUID: raidUid,
     stageID,
@@ -1168,7 +1578,10 @@ function ensureSoloRaid(user, cityID, options = {}) {
     isNew: true,
     expireDate: String(expireTicks),
     seasonID: currentRaidSeasonId(options),
-    worldmapEventID: positiveInt(options.worldmapEventID) || 0,
+    worldmapEventID: positiveInt(options.worldmapEventID) || selectWorldMapRaidEvent(city, null, "", stageID).eventID,
+    adminSpawned: Boolean(options.adminSpawned),
+    requestedRaidLevel: positiveInt(options.requestedRaidLevel),
+    raidFamily: String(options.raidFamily || ""),
   });
   state.raids[raidUid] = raid;
   return raid;
@@ -1178,21 +1591,51 @@ function normalizeRaidState(raid) {
   const data = raid && typeof raid === "object" ? raid : {};
   const stageID = positiveInt(data.stageID) || chooseSoloRaidStage(1);
   const raidTemplet = getRaidTemplet(stageID);
-  const maxHP = Math.max(1, Number(data.maxHP || data.maxHp || (raidTemplet && raidTemplet.Raid_Damage_Basis) || 100000) || 100000);
+  const computedMaxHP = getRaidMaxHpForStage(stageID);
+  const basisMaxHP = Math.max(1, Number(raidTemplet && raidTemplet.Raid_Damage_Basis) || 100000);
+  const storedMaxHP = Math.max(0, Number(data.maxHP || data.maxHp || 0) || 0);
+  const shouldRescaleLegacyHp =
+    computedMaxHP > 0 &&
+    storedMaxHP > 0 &&
+    Math.abs(storedMaxHP - computedMaxHP) > 0.5 &&
+    (Math.abs(storedMaxHP - basisMaxHP) <= 0.5 || Math.abs(storedMaxHP - 100000) <= 0.5);
+  const maxHP = shouldRescaleLegacyHp || !storedMaxHP ? computedMaxHP : storedMaxHP;
+  const hpScale = shouldRescaleLegacyHp && storedMaxHP > 0 ? maxHP / storedMaxHP : 1;
+  const rawCurHP = data.curHP != null ? Number(data.curHP) : maxHP;
+  const curHP = Number.isFinite(rawCurHP) ? clampNumber(Math.round(rawCurHP * hpScale), 0, maxHP) : maxHP;
+  const damage = Math.round(Math.max(0, Number(data.damage || 0) || 0) * hpScale);
+  const lastBattleDamage = Math.round(Math.max(0, Number(data.lastBattleDamage || 0) || 0) * hpScale);
+  const battleHistory = shouldRescaleLegacyHp ? scaleRaidBattleHistory(data.battleHistory, hpScale) : normalizeRaidBattleHistory(data.battleHistory);
+  const inferredTryCount = Math.max(
+    0,
+    Number(data.tryCount || 0) || 0,
+    battleHistory.filter((entry) => entry && (entry.battleKey || entry.damage > 0)).length,
+    damage > 0 || lastBattleDamage > 0 ? 1 : 0
+  );
   return {
     raidUID: String(toBigInt(data.raidUID || data.raidUid || 0)),
     stageID,
     cityID: positiveInt(data.cityID) || firstCityId(),
-    curHP: Math.max(0, Number(data.curHP != null ? data.curHP : maxHP) || maxHP),
+    curHP,
     maxHP,
     isCoop: Boolean(data.isCoop),
     isNew: data.isNew !== false,
     expireDate: String(toBigInt(data.expireDate || 0)),
     seasonID: positiveInt(data.seasonID) || currentRaidSeasonId(),
-    damage: Math.max(0, Number(data.damage || 0) || 0),
-    tryCount: Math.max(0, Number(data.tryCount || 0) || 0),
+    damage,
+    lastBattleDamage,
+    battleHistory,
+    tryCount: inferredTryCount,
+    reservedBattleKeys: normalizeRaidBattleKeys(data.reservedBattleKeys || data.attemptBattleKeys),
+    lastAttemptKey: String(data.lastAttemptKey || ""),
     accepted: Boolean(data.accepted),
     worldmapEventID: positiveInt(data.worldmapEventID) || 0,
+    lastBattleKey: String(data.lastBattleKey || ""),
+    adminSpawned: Boolean(data.adminSpawned),
+    requestedRaidLevel: positiveInt(data.requestedRaidLevel || data.requestedLevel),
+    raidFamily: String(data.raidFamily || ""),
+    win: data.win != null ? Boolean(data.win) : curHP <= 0 && !Boolean(data.giveup),
+    giveup: Boolean(data.giveup),
   };
 }
 
@@ -1202,86 +1645,637 @@ function getActiveRaids(user, options = {}) {
   if (envFlagDefault(false, "CS_WORLDMAP_DEFAULT_SOLO_RAID") && !Object.keys(state.raids).length) {
     ensureSoloRaid(user, firstCityId(), options);
   }
-  return Object.values(state.raids).map(normalizeRaidState).filter((raid) => toBigInt(raid.expireDate) > ticksNow(options));
+  const now = ticksNow(options);
+  return Object.values(state.raids)
+    .map(normalizeRaidState)
+    .filter((raid) => Number(raid.curHP || 0) > 0)
+    .filter((raid) => !isRaidDismissed(state, raid.raidUID))
+    .filter((raid) => !(state.raidResults && state.raidResults[String(toBigInt(raid.raidUID))]))
+    .filter((raid) => toBigInt(raid.expireDate) > now || isRaidReferencedByCity(state, raid.raidUID));
 }
 
 function getRaidByUid(user, raidUID, options = {}) {
   const state = ensureWorldMapState(user, options);
+  refreshWorldMapState(user, options);
   const key = String(toBigInt(raidUID || 0));
+  if (isRaidDismissed(state, key)) return null;
+  if (state.raidResults && state.raidResults[key]) return null;
   return state.raids[key] ? normalizeRaidState(state.raids[key]) : null;
 }
 
-function sweepRaid(user, raidUID, options = {}) {
+function getActiveRaidByUid(user, raidUID, options = {}) {
   const state = ensureWorldMapState(user, options);
-  const raid = getRaidByUid(user, raidUID, options) || ensureSoloRaid(user, firstCityId(), options);
-  const initHp = Number(raid.curHP || raid.maxHP);
-  const damage = initHp;
-  raid.curHP = 0;
-  raid.damage = Number(raid.damage || 0) + damage;
-  raid.tryCount = Number(raid.tryCount || 0) + 1;
-  state.raidResults[String(raid.raidUID)] = normalizeRaidState({ ...raid, accepted: false });
-  delete state.raids[String(raid.raidUID)];
-  const raidTemplet = getRaidTemplet(raid.stageID);
-  const costItems = [];
-  const costItemId = positiveInt(raidTemplet && raidTemplet.m_StageReqItemID);
-  const costCount = Math.max(0, Number(raidTemplet && raidTemplet.m_StageReqItemCount) || 0);
-  if (costItemId > 0 && costCount > 0) {
-    const spent = spendMiscItem(user, costItemId, costCount, { regDate: String(binaryNow(options)) });
-    if (spent) costItems.push(spent);
+  refreshWorldMapState(user, options);
+  const key = String(toBigInt(raidUID || 0));
+  if (isRaidDismissed(state, key)) return null;
+  if (state.raidResults && state.raidResults[key]) return null;
+  const raid = state.raids[key] ? normalizeRaidState(state.raids[key]) : null;
+  return raid && Number(raid.curHP || 0) > 0 ? raid : null;
+}
+
+function getRaidResultByUid(user, raidUID, options = {}) {
+  const state = ensureWorldMapState(user, options);
+  const key = String(toBigInt(raidUID || 0));
+  if (isRaidDismissed(state, key)) return null;
+  return state.raidResults && state.raidResults[key] ? normalizeRaidState(state.raidResults[key]) : null;
+}
+
+function resolveRaidForGameLoad(user, raidUID, options = {}) {
+  const requestedUid = toBigInt(raidUID || 0);
+  const requested = requestedUid > 0n ? getActiveRaidByUid(user, requestedUid, options) : null;
+  if (requested) return requested;
+
+  if (requestedUid > 0n) {
+    const repaired = repairRaidFromCityEvent(user, requestedUid, options);
+    if (repaired && Number(repaired.curHP || 0) > 0) return repaired;
+    return null;
   }
+
+  const activeRaids = getActiveRaids(user, options).filter((raid) => Number(raid.curHP || 0) > 0);
+  if (activeRaids.length === 1) return activeRaids[0];
+  if (activeRaids.length > 1) {
+    return activeRaids
+      .slice()
+      .sort((left, right) => Number(toBigInt(right.expireDate || 0) - toBigInt(left.expireDate || 0)))[0];
+  }
+  return null;
+}
+
+function repairRaidFromCityEvent(user, raidUID, options = {}) {
+  const state = ensureWorldMapState(user, options);
+  const key = String(toBigInt(raidUID || 0));
+  if (isRaidDismissed(state, key)) {
+    clearRaidEventGroupForUid(state, key);
+    return null;
+  }
+  for (const city of Object.values(state.cities || {})) {
+    const eventGroup = city && city.eventGroup;
+    if (String(toBigInt(eventGroup && eventGroup.eventUid)) !== key) continue;
+    const event = getWorldMapEventById(eventGroup.worldmapEventID);
+    if (!isUsableWorldMapRaidEvent(event)) continue;
+    return ensureSoloRaid(user, city.cityID, {
+      ...options,
+      raidUid: key,
+      stageID: positiveInt(event.STAGE_ID),
+      worldmapEventID: positiveInt(event.EVENT_ID),
+      expireTicks: ticksFromDateTimeBinary(eventGroup.eventGroupEndDate) || ticksNow(options) + 3n * TICKS_PER_HOUR,
+    });
+  }
+  return null;
+}
+
+function sweepRaid(user, raidUID, options = {}) {
+  const raid = getActiveRaidByUid(user, raidUID, options);
+  if (!raid) {
+    return {
+      ok: false,
+      errorCode: getRaidResultByUid(user, raidUID, options) ? NEC_FAIL_RAID_HAS_BEEN_DEFEATED : NEC_FAIL_RAID_NOT_EXIST,
+      raidUid: toBigInt(raidUID || 0),
+    };
+  }
+  const result = recordRaidBattleResult(user, raidUID, { ...options, win: true, damageRatio: 1, battleKey: `sweep:${raidUID}:${ticksNow(options)}` });
+  const updatedRaid = result.raid;
   return {
-    raidUid: toBigInt(raid.raidUID),
-    raid,
+    ok: true,
+    raidUid: toBigInt(updatedRaid.raidUID),
+    raid: updatedRaid,
+    costItems: result.costItems,
+    bossResult: result.bossResult,
+  };
+}
+
+function reserveRaidAttempt(user, raidUID, options = {}) {
+  const state = ensureWorldMapState(user, options);
+  refreshWorldMapState(user, options);
+  const raidKey = String(toBigInt(raidUID || 0));
+  if (toBigInt(raidUID || 0) <= 0n || state.raidResults[raidKey]) {
+    return { ok: false, errorCode: getRaidResultByUid(user, raidUID, options) ? NEC_FAIL_RAID_HAS_BEEN_DEFEATED : NEC_FAIL_RAID_NOT_EXIST };
+  }
+  const raid = state.raids[raidKey] ? normalizeRaidState(state.raids[raidKey]) : null;
+  if (!raid || Number(raid.curHP || 0) <= 0) {
+    return { ok: false, errorCode: NEC_FAIL_RAID_NOT_EXIST };
+  }
+  const battleKey = String(options.battleKey || makeRaidBattleKey(raidKey, options.gameUID || options.gameUid, raid.stageID, raid.stageID));
+  if (battleKey && isRaidAttemptReserved(raid, battleKey)) {
+    return { ok: true, raid, duplicate: true };
+  }
+  const tryLimit = getRaidTryLimit(raid);
+  if (tryLimit > 0 && Number(raid.tryCount || 0) >= tryLimit) {
+    return { ok: false, errorCode: NEC_FAIL_RAID_EXCEEDED_TRY_COUNT, raid };
+  }
+  raid.tryCount = Math.max(0, Number(raid.tryCount || 0) || 0) + 1;
+  raid.lastAttemptKey = battleKey;
+  raid.reservedBattleKeys = appendRaidBattleKey(raid.reservedBattleKeys, battleKey);
+  raid.isNew = false;
+  state.raids[raidKey] = normalizeRaidState(raid);
+  return { ok: true, raid: state.raids[raidKey], duplicate: false };
+}
+
+function recordRaidBattleResult(user, raidUID, options = {}) {
+  const state = ensureWorldMapState(user, options);
+  refreshWorldMapState(user, options);
+  const requestedRaidUid = toBigInt(raidUID || 0);
+  const requestedRaidKey = String(requestedRaidUid);
+  if (requestedRaidUid > 0n && state.raidResults[requestedRaidKey]) {
+    const resultRaid = normalizeRaidState(state.raidResults[requestedRaidKey]);
+    clearRaidEventGroupForUid(state, requestedRaidKey);
+    delete state.raids[requestedRaidKey];
+    return {
+      raid: resultRaid,
+      costItems: [],
+      bossResult: buildRaidBossResultForState(resultRaid, 0),
+      completed: true,
+      duplicate: true,
+    };
+  }
+  let raid = requestedRaidUid > 0n ? getActiveRaidByUid(user, requestedRaidUid, options) : null;
+  if (!raid && requestedRaidUid <= 0n) {
+    const activeRaids = getActiveRaids(user, options).filter((activeRaid) => Number(activeRaid.curHP || 0) > 0);
+    if (activeRaids.length === 1) raid = activeRaids[0];
+  }
+  if (!raid) {
+    return {
+      raid: normalizeRaidState({ raidUID: requestedRaidUid, stageID: chooseSoloRaidStage(firstCityId()), curHP: 0, maxHP: 1 }),
+      costItems: [],
+      bossResult: { initHp: 0, curHP: 0, maxHp: 0, damage: 0 },
+      completed: false,
+      duplicate: true,
+      notFound: true,
+      errorCode: NEC_FAIL_RAID_NOT_EXIST,
+    };
+  }
+  const raidKey = String(toBigInt(raid.raidUID));
+  const battleKey = String(options.battleKey || options.gameUID || options.gameUid || "");
+  const existing = state.raids[raidKey] ? normalizeRaidState(state.raids[raidKey]) : raid;
+  const hpScale = applyRaidCombatHpScale(existing, options.battleState || options);
+  if (hpScale.changed) state.raids[raidKey] = normalizeRaidState(existing);
+  const win = options.win !== false && options.giveup !== true;
+  const duplicateBattle = Boolean(battleKey && existing.lastBattleKey === battleKey);
+  const reservedAttempt = Boolean(battleKey && isRaidAttemptReserved(existing, battleKey));
+  if (duplicateBattle) {
+    return {
+      raid: existing,
+      costItems: [],
+      bossResult: buildRaidBossResultForState(existing, 0),
+      completed: Number(existing.curHP || 0) <= 0,
+      duplicate: true,
+    };
+  }
+
+  const initHp = Math.max(0, Number(existing.curHP != null ? existing.curHP : existing.maxHP) || 0);
+  const maxHp = Math.max(1, Number(existing.maxHP || initHp || 100000) || 100000);
+  const damageInfo = resolveRaidBattleDamage(existing, options, { initHp, maxHp, win });
+  const damage = clampNumber(damageInfo.damage, 0, initHp);
+
+  existing.curHP = Math.max(0, initHp - damage);
+  existing.win = Boolean(win && existing.curHP <= 0);
+  existing.giveup = Boolean(options.giveup);
+  existing.damage = Math.max(0, Number(existing.damage || 0) || 0) + damage;
+  existing.lastBattleDamage = damage;
+  existing.tryCount = Math.max(0, Number(existing.tryCount || 0) || 0) + (reservedAttempt ? 0 : 1);
+  existing.isNew = false;
+  if (battleKey) existing.lastBattleKey = battleKey;
+  existing.battleHistory = appendRaidBattleHistory(existing.battleHistory, {
+    battleKey,
+    gameUID: String(options.gameUID || options.gameUid || ""),
+    at: String(binaryNow(options)),
+    damage,
+    initHp,
+    curHP: existing.curHP,
+    maxHp,
+    damageRatio: damageInfo.damageRatio,
+    combatDamage: damageInfo.combatDamage,
+    combatMaxHp: damageInfo.combatMaxHp,
+    combatCurHp: damageInfo.combatCurHp,
+    bossKilled: damageInfo.bossKilled,
+    tryAssist: Boolean(options.tryAssist),
+  });
+  const costItems = duplicateBattle ? [] : spendRaidAttemptCost(user, existing, options);
+  const normalized = normalizeRaidState(existing);
+  state.raids[raidKey] = normalized;
+  if (normalized.curHP <= 0) {
+    state.raidResults[raidKey] = normalizeRaidState({ ...normalized, accepted: false });
+    delete state.raids[raidKey];
+    clearRaidEventGroupForUid(state, raidKey);
+  }
+  updateRaidSeasonFromBattle(user, normalized, { ...options, damage });
+  return {
+    raid: normalized,
     costItems,
+    completed: normalized.curHP <= 0,
     bossResult: {
       initHp,
-      curHP: 0,
-      maxHp: Number(raid.maxHP || initHp),
+      curHP: Number(normalized.curHP || 0),
+      maxHp,
       damage,
     },
   };
 }
 
+function normalizeRaidBattleHistory(history) {
+  return (Array.isArray(history) ? history : [])
+    .map((entry) => {
+      const data = entry && typeof entry === "object" ? entry : {};
+      const damage = Math.max(0, Number(data.damage || 0) || 0);
+      return {
+        battleKey: String(data.battleKey || ""),
+        gameUID: String(data.gameUID || data.gameUid || ""),
+        at: String(data.at || data.regDate || "0"),
+        damage,
+        initHp: Math.max(0, Number(data.initHp || data.initHP || 0) || 0),
+        curHP: Math.max(0, Number(data.curHP || data.curHp || 0) || 0),
+        maxHp: Math.max(0, Number(data.maxHp || data.maxHP || 0) || 0),
+        damageRatio: clampNumber(data.damageRatio, 0, 1),
+        combatDamage: Math.max(0, Number(data.combatDamage || 0) || 0),
+        combatMaxHp: Math.max(0, Number(data.combatMaxHp || data.combatMaxHP || 0) || 0),
+        combatCurHp: Math.max(0, Number(data.combatCurHp || data.combatCurHP || 0) || 0),
+        bossKilled: Boolean(data.bossKilled),
+        tryAssist: Boolean(data.tryAssist),
+      };
+    })
+    .filter((entry) => entry.damage > 0 || entry.battleKey)
+    .slice(-25);
+}
+
+function appendRaidBattleHistory(history, entry) {
+  const normalized = normalizeRaidBattleHistory(history);
+  if (entry.battleKey && normalized.some((item) => item.battleKey === entry.battleKey)) return normalized;
+  return normalizeRaidBattleHistory([...normalized, entry]);
+}
+
+function normalizeRaidBattleKeys(keys) {
+  return (Array.isArray(keys) ? keys : [])
+    .map((key) => String(key || ""))
+    .filter(Boolean)
+    .slice(-25);
+}
+
+function appendRaidBattleKey(keys, battleKey) {
+  const key = String(battleKey || "");
+  const normalized = normalizeRaidBattleKeys(keys);
+  if (!key || normalized.includes(key)) return normalized;
+  return normalizeRaidBattleKeys([...normalized, key]);
+}
+
+function isRaidAttemptReserved(raid, battleKey) {
+  const key = String(battleKey || "");
+  if (!key || !raid || typeof raid !== "object") return false;
+  if (String(raid.lastAttemptKey || "") === key) return true;
+  return normalizeRaidBattleKeys(raid.reservedBattleKeys).includes(key);
+}
+
+function makeRaidBattleKey(raidUID, gameUID, stageID = 0, dungeonID = 0) {
+  const raidKey = String(toBigInt(raidUID || 0));
+  const gameKey = String(gameUID || "");
+  return `raid:${raidKey}:${gameKey || `${Number(stageID || 0)}:${Number(dungeonID || 0)}`}`;
+}
+
+function makeRaidGameUid() {
+  return BigInt(Date.now()) * 10000n + BigInt(process.pid % 10000);
+}
+
+function getRaidTryLimit(raid) {
+  const raidTemplet = getRaidTemplet(raid && raid.stageID);
+  return Math.max(0, Number(raidTemplet && raidTemplet.m_RaidTryCount) || 0);
+}
+
+function resolveRaidBattleDamage(raid, options = {}, context = {}) {
+  const battleState = options.battleState && typeof options.battleState === "object" ? options.battleState : {};
+  const initHp = Math.max(0, Number(context.initHp || raid.curHP || 0) || 0);
+  const maxHp = Math.max(1, Number(context.maxHp || raid.maxHP || initHp || 100000) || 100000);
+  const directDamage = firstFiniteNumber(options.damage, battleState.raidDamage, battleState.RaidDamage);
+  if (directDamage != null) {
+    const damage = clampNumber(directDamage, 0, initHp);
+    return {
+      damage,
+      damageRatio: maxHp > 0 ? damage / maxHp : 0,
+      bossKilled: damage >= initHp,
+    };
+  }
+
+  const combatDamage = firstFiniteNumber(
+    options.combatDamage,
+    battleState.raidBossDamage,
+    battleState.RaidBossDamage,
+    battleState.raidBoss && battleState.raidBoss.damage
+  );
+  const combatMaxHp = firstFiniteNumber(
+    options.combatMaxHp,
+    options.combatMaxHP,
+    battleState.raidBossMaxHp,
+    battleState.RaidBossMaxHp,
+    battleState.raidBossInitHp,
+    battleState.RaidBossInitHp,
+    battleState.raidBoss && (battleState.raidBoss.maxHp || battleState.raidBoss.maxHP)
+  );
+  const combatCurHp = firstFiniteNumber(
+    options.combatCurHp,
+    options.combatCurHP,
+    battleState.raidBossCurHp,
+    battleState.RaidBossCurHp,
+    battleState.raidBoss && (battleState.raidBoss.curHp || battleState.raidBoss.curHP)
+  );
+  let damageRatio = firstFiniteNumber(options.damageRatio, battleState.raidBossDamageRatio, battleState.RaidBossDamageRatio);
+  if (damageRatio == null && combatDamage != null && combatMaxHp != null && combatMaxHp > 0) {
+    damageRatio = combatDamage / combatMaxHp;
+  } else if (damageRatio == null && combatCurHp != null && combatMaxHp != null && combatMaxHp > 0) {
+    damageRatio = (combatMaxHp - combatCurHp) / combatMaxHp;
+  }
+
+  const bossKilled =
+    Boolean(options.bossKilled || battleState.raidBossKilled || battleState.RaidBossKilled) ||
+    (combatCurHp != null && combatCurHp <= 0);
+  if (damageRatio != null) {
+    const ratio = clampNumber(damageRatio, 0, 1);
+    const damage = bossKilled ? initHp : clampNumber(Math.round(maxHp * ratio), 0, initHp);
+    return { damage, damageRatio: ratio, combatDamage: combatDamage || 0, combatMaxHp: combatMaxHp || 0, combatCurHp: combatCurHp || 0, bossKilled };
+  }
+
+  if (bossKilled || (context.win && options.giveup !== true && options.legacyWinKills === true)) {
+    return { damage: initHp, damageRatio: maxHp > 0 ? initHp / maxHp : 1, bossKilled: true };
+  }
+
+  return { damage: 0, damageRatio: 0, bossKilled: false };
+}
+
+function syncRaidCombatHpFromBattleState(user, raidUID, battleState, options = {}) {
+  const state = ensureWorldMapState(user, options);
+  refreshWorldMapState(user, options);
+  const raidKey = String(toBigInt(raidUID || 0));
+  if (toBigInt(raidUID || 0) <= 0n) return { changed: false, raid: null, error: "invalid-raid-uid" };
+  if (state.raidResults && state.raidResults[raidKey]) {
+    return { changed: false, raid: normalizeRaidState(state.raidResults[raidKey]), result: true };
+  }
+  if (!state.raids || !state.raids[raidKey]) return { changed: false, raid: null, error: "raid-not-found" };
+
+  const raid = normalizeRaidState(state.raids[raidKey]);
+  const applied = applyRaidCombatHpScale(raid, battleState || options);
+  if (!applied.changed) return { changed: false, raid, snapshot: applied.snapshot };
+
+  state.raids[raidKey] = normalizeRaidState(raid);
+  return { changed: true, raid: state.raids[raidKey], snapshot: applied.snapshot };
+}
+
+function applyRaidCombatHpScale(raid, source = {}) {
+  const snapshot = readRaidCombatHpSnapshot(source);
+  const combatMaxHp = Math.max(0, Number(snapshot.maxHp || snapshot.initHp || 0) || 0);
+  if (!raid || combatMaxHp <= 0) return { changed: false, snapshot };
+
+  const previousMaxHp = Math.max(0, Number(raid.maxHP || raid.maxHp || 0) || 0);
+  const previousCurHp = Math.max(0, Number(raid.curHP != null ? raid.curHP : previousMaxHp) || 0);
+  const scale = previousMaxHp > 0 ? combatMaxHp / previousMaxHp : 1;
+  const currentRatio = previousMaxHp > 0 ? clampNumber(previousCurHp / previousMaxHp, 0, 1) : 1;
+  let changed = false;
+
+  if (Math.abs(previousMaxHp - combatMaxHp) > 0.5) {
+    raid.maxHP = combatMaxHp;
+    raid.curHP = clampNumber(Math.round(combatMaxHp * currentRatio), 0, combatMaxHp);
+    raid.damage = Math.round(Math.max(0, Number(raid.damage || 0) || 0) * scale);
+    raid.lastBattleDamage = Math.round(Math.max(0, Number(raid.lastBattleDamage || 0) || 0) * scale);
+    raid.battleHistory = scaleRaidBattleHistory(raid.battleHistory, scale);
+    changed = true;
+  } else if (Math.abs(Number(raid.maxHP || 0) - combatMaxHp) > 0.001) {
+    raid.maxHP = combatMaxHp;
+    changed = true;
+  }
+
+  if (raid.curHP > raid.maxHP) {
+    raid.curHP = raid.maxHP;
+    changed = true;
+  }
+
+  return { changed, snapshot };
+}
+
+function readRaidCombatHpSnapshot(source = {}) {
+  const data = source && typeof source === "object" ? source : {};
+  const battleState = data.battleState && typeof data.battleState === "object" ? data.battleState : data;
+  const nested = battleState.raidBoss && typeof battleState.raidBoss === "object" ? battleState.raidBoss : {};
+  const maxHp = firstFiniteNumber(
+    data.combatMaxHp,
+    data.combatMaxHP,
+    battleState.raidBossMaxHp,
+    battleState.RaidBossMaxHp,
+    nested.maxHp,
+    nested.maxHP
+  );
+  const initHp = firstFiniteNumber(
+    data.combatInitHp,
+    data.combatInitHP,
+    battleState.raidBossInitHp,
+    battleState.RaidBossInitHp,
+    nested.initHp,
+    nested.initHP,
+    maxHp
+  );
+  const curHp = firstFiniteNumber(
+    data.combatCurHp,
+    data.combatCurHP,
+    battleState.raidBossCurHp,
+    battleState.RaidBossCurHp,
+    nested.curHp,
+    nested.curHP
+  );
+  const damage = firstFiniteNumber(
+    data.combatDamage,
+    battleState.raidBossDamage,
+    battleState.RaidBossDamage,
+    nested.damage
+  );
+  const damageRatio = firstFiniteNumber(
+    data.damageRatio,
+    battleState.raidBossDamageRatio,
+    battleState.RaidBossDamageRatio,
+    nested.damageRatio
+  );
+  const killed = Boolean(data.bossKilled || battleState.raidBossKilled || battleState.RaidBossKilled || nested.killed);
+  return { maxHp, initHp, curHp, damage, damageRatio, killed };
+}
+
+function scaleRaidBattleHistory(history, scale) {
+  if (!Array.isArray(history) || !Number.isFinite(scale) || scale <= 0 || Math.abs(scale - 1) <= 0.0001) {
+    return normalizeRaidBattleHistory(history);
+  }
+  return normalizeRaidBattleHistory(
+    history.map((entry) => ({
+      ...entry,
+      damage: Math.round(Math.max(0, Number(entry && entry.damage || 0) || 0) * scale),
+      initHp: Math.round(Math.max(0, Number(entry && (entry.initHp || entry.initHP) || 0) || 0) * scale),
+      curHP: Math.round(Math.max(0, Number(entry && (entry.curHP || entry.curHp) || 0) || 0) * scale),
+      maxHp: Math.round(Math.max(0, Number(entry && (entry.maxHp || entry.maxHP) || 0) || 0) * scale),
+      combatDamage: Math.round(Math.max(0, Number(entry && entry.combatDamage || 0) || 0) * scale),
+      combatMaxHp: Math.round(Math.max(0, Number(entry && (entry.combatMaxHp || entry.combatMaxHP) || 0) || 0) * scale),
+      combatCurHp: Math.round(Math.max(0, Number(entry && (entry.combatCurHp || entry.combatCurHP) || 0) || 0) * scale),
+    }))
+  );
+}
+
+function firstFiniteNumber(...values) {
+  for (const value of values) {
+    const number = Number(value);
+    if (Number.isFinite(number)) return number;
+  }
+  return null;
+}
+
+function buildRaidBossResultForState(raid, damage = 0) {
+  const data = normalizeRaidState(raid);
+  return {
+    initHp: Number(data.curHP || 0),
+    curHP: Number(data.curHP || 0),
+    maxHp: Number(data.maxHP || 0),
+    damage: Math.max(0, Number(damage || 0) || 0),
+  };
+}
+
+function spendRaidAttemptCost(user, raid, options = {}) {
+  if (options.skipRaidCost || options.skipCost || options.adminKill) return [];
+  const raidTemplet = getRaidTemplet(raid.stageID);
+  const costItems = [];
+  const costItemId = positiveInt(raidTemplet && raidTemplet.m_StageReqItemID);
+  const rawCostCount = Math.max(0, Number(raidTemplet && raidTemplet.m_StageReqItemCount) || 0);
+  const city = getCityStateForRaid(user, raid, options);
+  const costReduction = getCityBuildingStatValue(city, "CBS_RAID_DEFENCE_COST_REDUCE_RATE");
+  const costCount = Math.max(0, Math.ceil(rawCostCount * Math.max(0, 100 - costReduction) / 100));
+  if (costItemId > 0 && costCount > 0) {
+    const spent = spendMiscItem(user, costItemId, costCount, { regDate: String(binaryNow(options)) });
+    if (spent) costItems.push(spent);
+  }
+  return costItems;
+}
+
+function updateRaidSeasonFromBattle(user, raid, options = {}) {
+  const season = ensureRaidSeasonState(user, options);
+  const damage = Math.max(0, Number(options.damage || raid.damage || 0) || 0);
+  season.highestDamage = Math.max(Number(season.highestDamage || 0) || 0, damage);
+  season.latestUpdateTime = String(binaryNow(options));
+  if (options.tryAssist) season.tryAssistCount += 1;
+}
+
 function getRaidResults(user, options = {}) {
   const state = ensureWorldMapState(user, options);
-  return Object.values(state.raidResults || {}).map(normalizeRaidState).filter((raid) => !raid.accepted);
+  return Object.values(state.raidResults || {})
+    .map(normalizeRaidState)
+    .filter((raid) => !raid.accepted && !isRaidDismissed(state, raid.raidUID));
+}
+
+function getCoopRaids(user, options = {}) {
+  return getActiveRaids(user, options).filter((raid) => raid.isCoop && Number(raid.curHP || 0) > 0);
+}
+
+function setRaidCoop(user, raidUID, isCoop = true, options = {}) {
+  const state = ensureWorldMapState(user, options);
+  const key = String(toBigInt(raidUID || 0));
+  if (isRaidDismissed(state, key)) return null;
+  const raid = state.raids[key] ? normalizeRaidState(state.raids[key]) : null;
+  if (!raid || Number(raid.curHP || 0) <= 0 || getRaidResultByUid(user, key, options)) return null;
+  raid.isCoop = Boolean(isCoop);
+  raid.isNew = false;
+  state.raids[String(raid.raidUID)] = raid;
+  return raid;
+}
+
+function setAllRaidsCoop(user, options = {}) {
+  return getActiveRaids(user, options)
+    .filter((raid) => Number(raid.curHP || 0) > 0)
+    .map((raid) => setRaidCoop(user, raid.raidUID, true, options))
+    .filter(Boolean);
 }
 
 function acceptRaidResult(user, raidUID, options = {}) {
   const state = ensureWorldMapState(user, options);
   const key = String(toBigInt(raidUID || 0));
   const raid = state.raidResults[key] ? normalizeRaidState(state.raidResults[key]) : null;
-  if (!raid) return { raidUid: toBigInt(raidUID || 0), reward: {}, rewardRaidPoint: 0 };
+  if (!raid) {
+    deleteRaidState(state, key);
+    return { raidUid: toBigInt(raidUID || 0), reward: {}, rewardRaidPoint: 0 };
+  }
   const result = grantRaidReward(user, raid, options);
-  state.raidResults[key].accepted = true;
-  delete state.raidResults[key];
+  const season = ensureRaidSeasonState(user, options);
+  season.monthlyPoint += Math.max(0, Number(result.rewardRaidPoint || 0) || 0);
+  season.latestUpdateTime = String(binaryNow(options));
+  deleteRaidState(state, key);
   return { raidUid: toBigInt(raid.raidUID), ...result };
 }
 
 function acceptAllRaidResults(user, options = {}) {
   const results = getRaidResults(user, options);
-  const reward = { miscItems: [] };
+  const reward = createEmptyReward();
   let rewardRaidPoint = 0;
   const raidUids = [];
   for (const raid of results) {
     const accepted = acceptRaidResult(user, raid.raidUID, options);
     raidUids.push(toBigInt(raid.raidUID));
     rewardRaidPoint += accepted.rewardRaidPoint;
-    reward.miscItems.push(...((accepted.reward && accepted.reward.miscItems) || []));
+    mergeReward(reward, accepted.reward);
   }
   return { raidUids, reward, rewardRaidPoint };
 }
 
 function grantRaidReward(user, raid, options = {}) {
   const raidTemplet = getRaidTemplet(raid.stageID);
-  const rewardRaidPoint = Math.max(0, Number(raidTemplet && raidTemplet.m_RewardRaidPoint_Victory) || Number(raid.stageID) || 0);
-  const miscItems = [];
-  const regDate = String(binaryNow(options));
-  const credit = grantMiscItem(user, ITEM_ID_CREDIT, Math.max(10000, Math.round(Number(raid.maxHP || 100000) / 5)), 0, { regDate });
-  const info = grantMiscItem(user, ITEM_ID_INFORMATION, Math.max(25, Math.round(Number(raid.maxHP || 100000) / 2000)), 0, { regDate });
-  if (credit) miscItems.push(credit);
-  if (info) miscItems.push(info);
-  return { reward: { miscItems }, rewardRaidPoint };
+  const victory = Number(raid.curHP || 0) <= 0;
+  const rewardRaidPoint = Math.max(
+    0,
+    Number(raidTemplet && (victory ? raidTemplet.m_RewardRaidPoint_Victory : raidTemplet.m_RewardRaidPoint_Fail)) || Number(raid.stageID) || 0
+  );
+  const reward = createEmptyReward();
+  const regDate = binaryNow(options);
+  const ctx = { dateTimeBinaryNow: () => regDate };
+  for (const groupId of raidRewardGroupIds(raidTemplet, victory)) {
+    const record = pickRaidRewardRecord(user, groupId);
+    if (!record) continue;
+    mergeReward(reward, grantRewardRecord(ctx, user, record, { regDate, source: "raid" }));
+  }
+
+  if (!hasRewardPayload(reward)) {
+    const credit = grantMiscItem(user, ITEM_ID_CREDIT, Math.max(10000, Math.round(Number(raid.maxHP || 100000) / 5)), 0, { regDate: String(regDate) });
+    const info = grantMiscItem(user, ITEM_ID_INFORMATION, Math.max(25, Math.round(Number(raid.maxHP || 100000) / 2000)), 0, { regDate: String(regDate) });
+    if (credit) reward.miscItems.push(credit);
+    if (info) reward.miscItems.push(info);
+  }
+
+  return { reward, rewardRaidPoint };
+}
+
+function raidRewardGroupIds(raidTemplet, victory) {
+  const prefix = victory ? "m_RewardRaidGroupID_Victory_" : "m_RewardRaidGroupID_Fail_";
+  const ids = [];
+  for (let index = 1; index <= 3; index += 1) {
+    const id = positiveInt(raidTemplet && raidTemplet[`${prefix}${index}`]);
+    if (id) ids.push(id);
+  }
+  return uniquePositiveIntsInOrder(ids);
+}
+
+function pickRaidRewardRecord(user, groupId) {
+  const rows = getRewardGroupRecords(groupId);
+  if (!rows.length) return null;
+  const totalWeight = rows.reduce((sum, row) => sum + Math.max(0, Number(row.m_Ratio || 1)), 0);
+  if (totalWeight <= 0) return rows[0];
+  const cursor = nextRaidRewardCursor(user, groupId) % totalWeight;
+  let target = cursor;
+  for (const row of rows) {
+    target -= Math.max(0, Number(row.m_Ratio || 1));
+    if (target < 0) return row;
+  }
+  return rows[0];
+}
+
+function nextRaidRewardCursor(user, groupId) {
+  const state = ensureBareWorldMapState(user);
+  state.rewardCursors = state.rewardCursors && typeof state.rewardCursors === "object" ? state.rewardCursors : {};
+  const key = `raid:${groupId}`;
+  const cursor = Math.max(0, Number(state.rewardCursors[key] || 0) || 0);
+  state.rewardCursors[key] = cursor + 1;
+  return cursor;
+}
+
+function hasRewardPayload(reward) {
+  if (!reward || typeof reward !== "object") return false;
+  return ["miscItems", "skinIds", "emoticonIds", "units", "operators", "equips", "moldItems"].some(
+    (key) => Array.isArray(reward[key]) && reward[key].length > 0
+  );
 }
 
 function buildMyRaidData(raid) {
@@ -1293,7 +2287,7 @@ function buildMyRaidData(raid) {
     writeFloatLE(data.curHP),
     writeFloatLE(data.maxHP),
     writeBool(Boolean(data.isCoop)),
-    writeBool(Boolean(data.isNew)),
+    writeBool(shouldShowRaidInWorldMapEventList(data)),
     writeSignedVarLong(toBigInt(data.expireDate)),
     writeSignedVarInt(data.seasonID),
   ]);
@@ -1310,11 +2304,193 @@ function buildRaidDetailData(user, raid) {
     writeFloatLE(data.curHP),
     writeFloatLE(data.maxHP),
     writeBool(Boolean(data.isCoop)),
-    writeBool(Boolean(data.isNew)),
+    writeBool(shouldShowRaidInWorldMapEventList(data)),
     writeSignedVarLong(toBigInt(data.expireDate)),
     writeObjectList([writeNullableObject(buildRaidJoinData(user, data))]),
     writeSignedVarInt(data.seasonID),
   ]);
+}
+
+function shouldShowRaidInWorldMapEventList(raid) {
+  const data = raid && typeof raid === "object" ? raid : {};
+  if (data.accepted) return false;
+  if (Number(data.curHP || 0) <= 0) return false;
+  return true;
+}
+
+function buildMyRaidListAckPayload(user, options = {}) {
+  return buildMyRaidListAckPayloadFromRaids(getActiveRaids(user, options));
+}
+
+function buildMyRaidListAckPayloadFromRaids(raids) {
+  return Buffer.concat([
+    writeSignedVarInt(0),
+    writeObjectList((Array.isArray(raids) ? raids : []).map((raid) => writeNullableObject(buildMyRaidData(raid)))),
+  ]);
+}
+
+function buildRaidDetailInfoAckPayload(user, raid) {
+  return Buffer.concat([writeSignedVarInt(0), writeNullableObject(buildRaidDetailData(user, raid))]);
+}
+
+function buildRaidResultListAckPayload(user, options = {}) {
+  return buildRaidResultListAckPayloadFromRaids(user, getRaidResults(user, options));
+}
+
+function buildRaidResultListAckPayloadFromRaids(user, raids) {
+  return Buffer.concat([
+    writeSignedVarInt(0),
+    writeObjectList((Array.isArray(raids) ? raids : []).map((raid) => writeNullableObject(buildRaidResultData(user, raid)))),
+  ]);
+}
+
+function buildCoopRaidListAckPayloadFromRaids(user, raids) {
+  return Buffer.concat([
+    writeSignedVarInt(0),
+    writeObjectList((Array.isArray(raids) ? raids : []).map((raid) => writeNullableObject(buildCoopRaidData(user, raid)))),
+  ]);
+}
+
+function buildWorldMapDataAckPayload(user, options = {}) {
+  return Buffer.concat([writeSignedVarInt(0), writeNullableObject(buildWorldMapData(user, options))]);
+}
+
+function buildWorldMapEventCancelAckPayload(cityID) {
+  return Buffer.concat([writeSignedVarInt(0), writeSignedVarInt(positiveInt(cityID))]);
+}
+
+function sendWorldMapData(ctx, socket, user, options = {}) {
+  if (!ctx || typeof ctx.sendServerGamePacket !== "function") return false;
+  ctx.sendServerGamePacket(socket, 2001, buildWorldMapDataAckPayload(user, options), options.label || "world-map-data");
+  if (ctx.config && ctx.config.USE_LOCAL_USER_DB && typeof ctx.saveUserDb === "function") ctx.saveUserDb();
+  return true;
+}
+
+function sendActiveRaidData(ctx, socket, user, options = {}) {
+  if (!ctx || typeof ctx.sendServerGamePacket !== "function") return false;
+  const raids = getActiveRaids(user, options);
+  if (!raids.length && !options.includeEmpty) return false;
+  ctx.sendServerGamePacket(socket, 2201, buildMyRaidListAckPayloadFromRaids(raids), options.label || "my-raid-list");
+  if (options.includeRaidDetails === true) {
+    for (const raid of raids) {
+      ctx.sendServerGamePacket(socket, 2209, buildRaidDetailInfoAckPayload(user, raid), options.detailLabel || "raid-detail-info");
+    }
+  }
+  if (ctx.config && ctx.config.USE_LOCAL_USER_DB && typeof ctx.saveUserDb === "function") ctx.saveUserDb();
+  return true;
+}
+
+function sendRaidResultData(ctx, socket, user, options = {}) {
+  if (!ctx || typeof ctx.sendServerGamePacket !== "function") return false;
+  const results = getRaidResults(user, options);
+  if (!results.length && !options.includeEmpty) return false;
+  ctx.sendServerGamePacket(socket, 2211, buildRaidResultListAckPayloadFromRaids(user, results), options.label || "raid-result-list");
+  if (ctx.config && ctx.config.USE_LOCAL_USER_DB && typeof ctx.saveUserDb === "function") ctx.saveUserDb();
+  return true;
+}
+
+function sendRaidStateData(ctx, socket, user, options = {}) {
+  return sendRaidSnapshotData(ctx, socket, user, options);
+}
+
+function getRaidSnapshot(user, options = {}) {
+  const state = ensureWorldMapState(user, options);
+  refreshWorldMapState(user, options);
+  const activeRaids = getActiveRaids(user, options);
+  const resultRaids = getRaidResults(user, options);
+  const coopRaids = activeRaids.filter((raid) => raid.isCoop && Number(raid.curHP || 0) > 0);
+  return { state, activeRaids, coopRaids, resultRaids };
+}
+
+function sendRaidSnapshotData(ctx, socket, user, options = {}) {
+  if (!ctx || typeof ctx.sendServerGamePacket !== "function") return false;
+  const snapshot = getRaidSnapshot(user, options);
+  const includeEmpty = options.includeEmpty !== false;
+  const sent = [];
+
+  if (options.includeWorldMap) {
+    ctx.sendServerGamePacket(socket, 2001, buildWorldMapDataAckPayload(user, options), options.worldMapLabel || "raid-snapshot-world-map-data");
+    sent.push(2001);
+  }
+
+  const activeRaidCityIds = new Set(snapshot.activeRaids.map((raid) => positiveInt(raid && raid.cityID)).filter(Boolean));
+  const completedRaidCityIds = snapshot.resultRaids
+    .map((raid) => positiveInt(raid && raid.cityID))
+    .filter((cityID) => cityID && !activeRaidCityIds.has(cityID));
+  const requestedClearCityIds = Array.isArray(options.cancelCityIds) ? options.cancelCityIds : [options.cancelCityIds];
+  const raidEventClearCityIds = takePendingRaidEventClearCityIds(snapshot.state, [...completedRaidCityIds, ...requestedClearCityIds])
+    .filter((cityID) => !activeRaidCityIds.has(cityID));
+  for (const cityID of raidEventClearCityIds) {
+    ctx.sendServerGamePacket(socket, 2015, buildWorldMapEventCancelAckPayload(cityID), options.eventCancelLabel || "raid-event-clear");
+    sent.push(2015);
+  }
+
+  if (includeEmpty || snapshot.activeRaids.length) {
+    ctx.sendServerGamePacket(socket, 2201, buildMyRaidListAckPayloadFromRaids(snapshot.activeRaids), options.label || "my-raid-list");
+    sent.push(2201);
+  }
+
+  const detailRaids = selectRaidDetailsForSnapshot(snapshot, options);
+  for (const raid of detailRaids) {
+    ctx.sendServerGamePacket(socket, 2209, buildRaidDetailInfoAckPayload(user, raid), options.detailLabel || "raid-detail-info");
+    sent.push(2209);
+  }
+
+  if (includeEmpty || snapshot.coopRaids.length) {
+    ctx.sendServerGamePacket(socket, 2203, buildCoopRaidListAckPayloadFromRaids(user, snapshot.coopRaids), options.coopLabel || "raid-coop-list");
+    sent.push(2203);
+  }
+
+  if (includeEmpty || snapshot.resultRaids.length) {
+    ctx.sendServerGamePacket(socket, 2211, buildRaidResultListAckPayloadFromRaids(user, snapshot.resultRaids), options.resultLabel || "raid-result-list");
+    sent.push(2211);
+  }
+
+  if (sent.length && ctx.config && ctx.config.USE_LOCAL_USER_DB && typeof ctx.saveUserDb === "function") ctx.saveUserDb();
+  return sent.length > 0;
+}
+
+function uniqueRaidsByUid(raids) {
+  const seen = new Set();
+  const result = [];
+  for (const raid of Array.isArray(raids) ? raids : []) {
+    const key = String(toBigInt(raid && raid.raidUID));
+    if (key === "0" || seen.has(key)) continue;
+    seen.add(key);
+    result.push(raid);
+  }
+  return result;
+}
+
+function selectRaidDetailsForSnapshot(snapshot, options = {}) {
+  if (options.includeRaidDetails === true) return uniqueRaidsByUid([...(snapshot.activeRaids || []), ...(snapshot.coopRaids || [])]);
+
+  const requested = normalizeDetailRaidUidList(options.detailRaidUids, options.detailRaidUid);
+  if (!requested.length) return [];
+
+  const requestedSet = new Set(requested);
+  return uniqueRaidsByUid([
+    ...(snapshot.activeRaids || []),
+    ...(snapshot.coopRaids || []),
+    ...(snapshot.resultRaids || []),
+  ]).filter((raid) => requestedSet.has(String(toBigInt(raid && raid.raidUID))));
+}
+
+function normalizeDetailRaidUidList(...values) {
+  const seen = new Set();
+  const result = [];
+  const queue = [];
+  for (const value of values) {
+    if (Array.isArray(value)) queue.push(...value);
+    else queue.push(value);
+  }
+  for (const value of queue) {
+    const key = String(toBigInt(value || 0));
+    if (key === "0" || seen.has(key)) continue;
+    seen.add(key);
+    result.push(key);
+  }
+  return result;
 }
 
 function buildRaidJoinData(user, raid) {
@@ -1330,8 +2506,8 @@ function buildRaidJoinData(user, raid) {
     writeSignedVarInt(Number(raid.tryCount || 0) || 0),
     writeNullObject(),
     writeBool(false),
-    writeSignedVarInt(Number(user && user.level) || 1),
-    writeSignedVarInt(0),
+    writeSignedVarInt(Math.max(1, Number(user && user.level) || 1)),
+    writeSignedVarInt(Number(user && (user.titleId || user.titleID) || 0) || 0),
   ]);
 }
 
@@ -1357,6 +2533,28 @@ function buildRaidResultData(user, raid) {
     writeFloatLE(Number(data.damage || data.maxHP) || 0),
     writeBool(false),
     writeSignedVarInt(data.seasonID),
+    writeNullObject(),
+    writeObjectList([writeNullableObject(buildRaidJoinData(user, data))]),
+  ]);
+}
+
+function buildCoopRaidData(user, raid) {
+  const data = normalizeRaidState(raid);
+  const mainUnit = getMainUnitForProfile(user);
+  return Buffer.concat([
+    writeSignedVarLong(toBigInt(data.raidUID)),
+    writeSignedVarInt(data.stageID),
+    writeSignedVarLong(toBigInt(user && user.userUid ? user.userUid : 0)),
+    writeSignedVarLong(toBigInt(user && user.friendCode ? user.friendCode : user && user.userUid ? user.userUid : 0)),
+    writeString(String((user && user.nickname) || "LocalAdmin")),
+    writeSignedVarInt(Number(mainUnit.unitId || 0) || 0),
+    writeSignedVarInt(Number(mainUnit.skinId || 0) || 0),
+    writeSignedVarInt(Number(mainUnit.tacticLevel || 0) || 0),
+    writeFloatLE(data.curHP),
+    writeFloatLE(data.maxHP),
+    writeSignedVarLong(toBigInt(data.expireDate)),
+    writeSignedVarInt(data.seasonID),
+    writeSignedVarInt(data.cityID),
     writeNullObject(),
     writeObjectList([writeNullableObject(buildRaidJoinData(user, data))]),
   ]);
@@ -1451,9 +2649,14 @@ function getTables() {
   const worldMapExp = readGameplayTableRecords("ab_script", "LUA_WORLDMAP_CITY_EXP_TABLE.json", { logLabel: "world-map" });
   const worldMapMissions = readGameplayTableRecords("ab_script", "LUA_WORLDMAP_MISSION_TEMPLET.json", { logLabel: "world-map" });
   const worldMapEventGroups = readGameplayTableRecords("ab_script", "LUA_WORLDMAP_EVENT_GROUP.json", { logLabel: "world-map" });
+  const dungeonTemplets = readGameplayTableRecords("ab_script_dungeon_templet", "LUA_DUNGEON_TEMPLET_BASE.json", { logLabel: "world-map" });
   const diveTemplets = readGameplayTableRecords("ab_script", "LUA_DIVE_TEMPLET.json", { logLabel: "world-map" });
   const raidTemplets = readGameplayTableRecords("ab_script", "LUA_RAID_TEMPLET.json", { logLabel: "world-map" });
   const raidSeasons = readGameplayTableRecords("ab_script", "LUA_RAID_SEASON_TEMPLET.json", { logLabel: "world-map" });
+  const unitStats = [
+    ...readGameplayTableRecords("ab_script_unit_data", "LUA_UNIT_STAT_TEMPLET.json", { logLabel: "world-map" }),
+    ...readGameplayTableRecords("ab_script_unit_data", "LUA_UNIT_STAT_TEMPLET2.json", { logLabel: "world-map" }),
+  ];
   tableCache = {
     worldMapCities,
     worldMapBuildings,
@@ -1461,12 +2664,17 @@ function getTables() {
     worldMapMissions,
     worldMapMissionsEnabled: worldMapMissions.filter((row) => row && row.m_bEnableMission === true),
     worldMapEventGroups,
+    dungeonTemplets,
     diveTemplets,
     raidTemplets,
     raidSeasons,
     missionsById: new Map(worldMapMissions.map((row) => [Number(row.m_WorldmapMissionID || 0), row])),
+    dungeonsById: new Map(dungeonTemplets.map((row) => [Number(row.m_DungeonID || 0), row])),
+    dungeonsByStrId: new Map(dungeonTemplets.map((row) => [String(row.m_DungeonStrID || ""), row]).filter(([key]) => key)),
     divesByStageId: new Map(diveTemplets.map((row) => [Number(row.STAGE_ID || 0), row])),
     raidsByStageId: new Map(raidTemplets.map((row) => [Number(row.m_StageID || 0), row])),
+    unitStatsByStrId: new Map(unitStats.map((row) => [String(row.m_UnitStrID || ""), row]).filter(([key]) => key)),
+    dungeonTempletRowsByFile: new Map(),
   };
   return tableCache;
 }
@@ -1544,12 +2752,112 @@ function getDiveTemplet(stageID) {
   return getTables().divesByStageId.get(Number(stageID || 0)) || getTables().diveTemplets[0] || null;
 }
 
+function findRaidTemplet(stageID) {
+  return getTables().raidsByStageId.get(Number(stageID || 0)) || null;
+}
+
 function getRaidTemplet(stageID) {
-  return getTables().raidsByStageId.get(Number(stageID || 0)) || getTables().raidTemplets[0] || null;
+  return findRaidTemplet(stageID) || getTables().raidTemplets[0] || null;
 }
 
 function getBuildingRow(buildID, level) {
   return getTables().worldMapBuildings.find((row) => Number(row.ID || 0) === Number(buildID || 0) && Number(row.LEVEL || 0) === Number(level || 0)) || null;
+}
+
+function getCityBuildingStatValue(city, statType) {
+  if (!city || !city.buildings || typeof city.buildings !== "object") return 0;
+  let total = 0;
+  for (const [key, building] of Object.entries(city.buildings)) {
+    const buildID = positiveInt(building && building.id) || positiveInt(key);
+    const level = positiveInt(building && building.level);
+    const row = getBuildingRow(buildID, level);
+    if (row && String(row.CITY_STAT_TYPE || "").toUpperCase() === String(statType || "").toUpperCase()) {
+      total += Number(row.CITY_STAT_VALUE || 0) || 0;
+    }
+  }
+  return total;
+}
+
+function getCityStateForRaid(user, raid, options = {}) {
+  const state = ensureWorldMapState(user, options);
+  const cityID = positiveInt(raid && raid.cityID);
+  return (cityID && state.cities && state.cities[String(cityID)]) || null;
+}
+
+function isRaidReferencedByCity(state, raidUID) {
+  const key = String(toBigInt(raidUID || 0));
+  const cities = state && state.cities && typeof state.cities === "object" ? state.cities : {};
+  return Object.values(cities).some((city) => String(toBigInt(city && city.eventGroup && city.eventGroup.eventUid)) === key);
+}
+
+function normalizeRaidUidList(values) {
+  const list = Array.isArray(values) ? values : [];
+  const seen = new Set();
+  const normalized = [];
+  for (const value of list) {
+    const key = String(toBigInt(value || 0));
+    if (key === "0" || seen.has(key)) continue;
+    seen.add(key);
+    normalized.push(key);
+  }
+  return normalized.slice(-RAID_DISMISS_HISTORY_LIMIT);
+}
+
+function isRaidDismissed(state, raidUID) {
+  const key = String(toBigInt(raidUID || 0));
+  if (!state || key === "0") return false;
+  state.dismissedRaidUids = normalizeRaidUidList(state.dismissedRaidUids);
+  return state.dismissedRaidUids.includes(key);
+}
+
+function markRaidDismissed(state, raidUID) {
+  const key = String(toBigInt(raidUID || 0));
+  if (!state || key === "0") return false;
+  state.dismissedRaidUids = normalizeRaidUidList([...(state.dismissedRaidUids || []), key]);
+  return true;
+}
+
+function forgetDismissedRaid(state, raidUID) {
+  const key = String(toBigInt(raidUID || 0));
+  if (!state || key === "0") return false;
+  state.dismissedRaidUids = normalizeRaidUidList((state.dismissedRaidUids || []).filter((value) => String(toBigInt(value || 0)) !== key));
+  return true;
+}
+
+function deleteRaidState(state, raidUID) {
+  const key = String(toBigInt(raidUID || 0));
+  if (!state || key === "0") return false;
+  const hadRaid = Boolean((state.raids && state.raids[key]) || (state.raidResults && state.raidResults[key]) || isRaidReferencedByCity(state, key));
+  if (state.raids) delete state.raids[key];
+  if (state.raidResults) delete state.raidResults[key];
+  clearRaidEventGroupForUid(state, key);
+  markRaidDismissed(state, key);
+  return hadRaid;
+}
+
+function clearRaidEventGroupForUid(state, raidUID) {
+  const key = String(toBigInt(raidUID || 0));
+  const cities = state && state.cities && typeof state.cities === "object" ? state.cities : {};
+  for (const city of Object.values(cities)) {
+    if (String(toBigInt(city && city.eventGroup && city.eventGroup.eventUid)) === key) {
+      queueRaidEventClearCity(state, city && city.cityID);
+      city.eventGroup = normalizeEventGroup(null);
+    }
+  }
+}
+
+function queueRaidEventClearCity(state, cityID) {
+  if (!state || typeof state !== "object") return;
+  const id = positiveInt(cityID);
+  if (!id) return;
+  state.pendingRaidEventClearCityIds = uniquePositiveInts([...(state.pendingRaidEventClearCityIds || []), id]);
+}
+
+function takePendingRaidEventClearCityIds(state, extraCityIds = []) {
+  if (!state || typeof state !== "object") return uniquePositiveInts(extraCityIds);
+  const result = uniquePositiveInts([...(state.pendingRaidEventClearCityIds || []), ...uniquePositiveInts(extraCityIds)]);
+  state.pendingRaidEventClearCityIds = [];
+  return result;
 }
 
 function getCityMaxLevel(cityID) {
@@ -1557,14 +2865,28 @@ function getCityMaxLevel(cityID) {
   return Math.max(1, Number(row && row.m_MaxLevel) || 10);
 }
 
-function computeCityLevel(cityID, exp) {
-  const maxLevel = getCityMaxLevel(cityID);
-  let level = 1;
-  for (const row of getTables().worldMapExp) {
-    const rowLevel = positiveInt(row.m_iLevel);
-    if (rowLevel > 0 && rowLevel <= maxLevel && Number(exp || 0) >= Number(row.m_iExpCumulated || 0)) level = Math.max(level, rowLevel);
+function applyCityMissionExp(city, addedExp) {
+  if (!city || typeof city !== "object") return city;
+  const maxLevel = getCityMaxLevel(city.cityID);
+  let level = clampPositiveInt(city.level, 1, maxLevel);
+  let exp = Math.max(0, Number(city.exp || 0) || 0) + Math.max(0, Number(addedExp || 0) || 0);
+
+  while (level < maxLevel) {
+    const required = getCityLevelExpRequired(level);
+    if (required <= 0 || exp < required) break;
+    exp -= required;
+    level += 1;
   }
-  return Math.max(1, Math.min(maxLevel, level));
+
+  if (level >= maxLevel && getCityLevelExpRequired(level) <= 0) exp = 0;
+  city.level = level;
+  city.exp = exp;
+  return city;
+}
+
+function getCityLevelExpRequired(level) {
+  const row = getTables().worldMapExp.find((entry) => Number(entry.m_iLevel || 0) === Number(level || 0));
+  return Math.max(0, Number(row && row.m_iExpRequired) || 0);
 }
 
 function missionPoolForCity(cityID) {
@@ -1572,12 +2894,346 @@ function missionPoolForCity(cityID) {
 }
 
 function chooseSoloRaidStage(cityID) {
+  const eventSelection = selectWorldMapRaidEvent(cityID);
+  if (eventSelection.stageID) return eventSelection.stageID;
   const raids = getTables().raidTemplets
     .filter((row) => Array.isArray(row.listContentsTagAllow) && row.listContentsTagAllow.includes("SINGLE_RAID"))
     .sort((a, b) => Number(a.m_StageID || 0) - Number(b.m_StageID || 0));
   if (!raids.length) return 11015;
   const index = Math.min(raids.length - 1, Math.max(0, Number(cityID || 1) - 1));
   return positiveInt(raids[index].m_StageID) || 11015;
+}
+
+function repairRaidEventLinks(state) {
+  if (!state || typeof state !== "object") return 0;
+  let repaired = 0;
+  const raids = state.raids && typeof state.raids === "object" ? state.raids : {};
+  const cities = state.cities && typeof state.cities === "object" ? state.cities : {};
+  for (const city of Object.values(cities)) {
+    const eventGroup = city && city.eventGroup;
+    if (!isActiveEventGroup(eventGroup)) continue;
+    const raidUid = String(toBigInt(eventGroup.eventUid || 0));
+    if (isRaidDismissed(state, raidUid)) {
+      delete raids[raidUid];
+      queueRaidEventClearCity(state, city && city.cityID);
+      city.eventGroup = normalizeEventGroup(null);
+      repaired += 1;
+      continue;
+    }
+    const raid = raids[raidUid] ? normalizeRaidState(raids[raidUid]) : null;
+    if (!raid) continue;
+    const event = getWorldMapEventById(eventGroup.worldmapEventID);
+    if (isCompatibleRaidEvent(event, raid.stageID) && (raid.adminSpawned || isRaidEventForBranchFacility(event, city))) {
+      raid.worldmapEventID = positiveInt(eventGroup.worldmapEventID);
+      raids[raidUid] = raid;
+      continue;
+    }
+    if (raid.adminSpawned) continue;
+    if (isUsableWorldMapRaidEvent(event) && isRaidEventForBranchFacility(event, city)) {
+      applyRaidEventLink(raid, eventGroup.worldmapEventID, event.STAGE_ID);
+      raids[raidUid] = raid;
+      repaired += 1;
+      continue;
+    }
+
+    const selection = selectWorldMapRaidEvent(city, null, `${city.cityID}:${raidUid}:repair`, raid.stageID);
+    if (!selection.eventID || !selection.stageID) continue;
+    eventGroup.worldmapEventID = selection.eventID;
+    applyRaidEventLink(raid, selection.eventID, selection.stageID);
+    raids[raidUid] = raid;
+    repaired += 1;
+  }
+  return repaired;
+}
+
+function repairMissingRaidEventGroups(state, options = {}) {
+  if (!state || typeof state !== "object") return 0;
+  let repaired = 0;
+  const raids = state.raids && typeof state.raids === "object" ? state.raids : {};
+  const cities = state.cities && typeof state.cities === "object" ? state.cities : {};
+  for (const [raidUid, raidState] of Object.entries(raids)) {
+    if (isRaidDismissed(state, raidUid)) {
+      delete raids[raidUid];
+      continue;
+    }
+    const raid = normalizeRaidState(raidState);
+    if (Number(raid.curHP || 0) <= 0) continue;
+    if (state.raidResults && state.raidResults[String(toBigInt(raidUid))]) continue;
+    if (isRaidReferencedByCity(state, raidUid)) continue;
+    const city = cities[String(positiveInt(raid.cityID))];
+    if (!city) continue;
+    const currentEventGroup = city.eventGroup || {};
+    if (isActiveEventGroup(currentEventGroup)) {
+      const currentEvent = getWorldMapEventById(currentEventGroup.worldmapEventID);
+      const currentRaidUid = String(toBigInt(currentEventGroup.eventUid));
+      if (!isUsableWorldMapRaidEvent(currentEvent) || raids[currentRaidUid]) continue;
+    }
+    const savedEvent = getWorldMapEventById(raid.worldmapEventID);
+    const selection =
+      isCompatibleRaidEvent(savedEvent, raid.stageID)
+        ? { eventID: positiveInt(raid.worldmapEventID), stageID: positiveInt(raid.stageID) }
+        : selectWorldMapRaidEvent(city, null, `${city.cityID}:${raidUid}:missing-event`, raid.stageID);
+    if (!selection.eventID) continue;
+    city.eventGroup = {
+      worldmapEventID: selection.eventID,
+      eventGroupEndDate: String(binaryFromTicks(toBigInt(raid.expireDate))),
+      eventUid: String(toBigInt(raid.raidUID)),
+    };
+    applyRaidEventLink(raid, selection.eventID, selection.stageID || raid.stageID);
+    raids[String(toBigInt(raid.raidUID))] = raid;
+    repaired += 1;
+  }
+  return repaired;
+}
+
+function applyRaidEventLink(raid, eventID, stageID) {
+  const selectedStageID = positiveInt(stageID);
+  const previousStageID = positiveInt(raid && raid.stageID);
+  raid.worldmapEventID = positiveInt(eventID);
+  if (!selectedStageID) return raid;
+  raid.stageID = selectedStageID;
+  if (previousStageID !== selectedStageID) {
+    const previousMaxHP = Math.max(0, Number(raid.maxHP || raid.maxHp || 0) || 0);
+    const currentHP = Number(raid.curHP);
+    const currentRatio = previousMaxHP > 0 && Number.isFinite(currentHP) ? clampNumber(currentHP / previousMaxHP, 0, 1) : 1;
+    const maxHP = getRaidMaxHpForStage(selectedStageID);
+    raid.maxHP = maxHP;
+    raid.curHP = Number.isFinite(currentHP) && currentHP <= 0 ? 0 : Math.max(1, Math.round(maxHP * currentRatio));
+  }
+  return raid;
+}
+
+function getRaidMaxHpForStage(stageID) {
+  const raidTemplet = getRaidTemplet(stageID);
+  const basisMaxHP = Math.max(100000, Number(raidTemplet && raidTemplet.Raid_Damage_Basis) || 100000);
+  const raidLevel = positiveInt(raidTemplet && raidTemplet.m_RaidLevel);
+  const bossUnitStrId = getRaidBossUnitStrId(raidTemplet);
+  const unitStat = bossUnitStrId ? getTables().unitStatsByStrId.get(bossUnitStrId) : null;
+  const baseHP = Number(unitStat && unitStat.m_StatData && unitStat.m_StatData.m_Stat && unitStat.m_StatData.m_Stat.NST_HP);
+  const perLevelHP = Number(unitStat && unitStat.m_StatData && unitStat.m_StatData.m_StatPerLevel && unitStat.m_StatData.m_StatPerLevel.NST_HP);
+  if (raidLevel > 0 && Number.isFinite(baseHP) && baseHP > 0) {
+    return Math.max(1, Math.round(baseHP + Math.max(0, raidLevel - 1) * (Number.isFinite(perLevelHP) ? perLevelHP : 0)));
+  }
+  return basisMaxHP;
+}
+
+function getRaidBossUnitStrId(raidTemplet) {
+  if (!raidTemplet || typeof raidTemplet !== "object") return "";
+  const tables = getTables();
+  const dungeonID = positiveInt(raidTemplet.m_DungeonID);
+  const dungeonStrID = String(raidTemplet.m_DungeonStrID || "");
+  const dungeon = (dungeonID > 0 && tables.dungeonsById.get(dungeonID)) || (dungeonStrID && tables.dungeonsByStrId.get(dungeonStrID)) || null;
+  const templetFileName = String(dungeon && dungeon.m_DungeonTempletFileName || "");
+  if (!templetFileName) return "";
+  const rows = getDungeonTempletRows(templetFileName);
+  const boss = rows.find((row) => row && row.__key === "m_BossUnitStrID");
+  return String((boss && boss.value) || "");
+}
+
+function getDungeonTempletRows(templetFileName) {
+  const name = String(templetFileName || "").trim();
+  if (!name) return [];
+  const tables = getTables();
+  const fileName = name.toLowerCase().endsWith(".json") ? name : `${name}.json`;
+  if (tables.dungeonTempletRowsByFile.has(fileName)) return tables.dungeonTempletRowsByFile.get(fileName);
+  let rows = [];
+  for (const directory of ["ab_script_dungeon_templet_all", "ab_script_dungeon_templet"]) {
+    rows = readGameplayTableRecords(directory, fileName, { logLabel: "world-map" });
+    if (rows.length) break;
+  }
+  tables.dungeonTempletRowsByFile.set(fileName, rows);
+  return rows;
+}
+
+function selectWorldMapRaidEvent(cityOrId = 1, mission = null, seed = "", preferredStageID = 0) {
+  const city = cityOrId && typeof cityOrId === "object" ? cityOrId : { cityID: cityOrId };
+  const cityID = positiveInt(city.cityID) || firstCityId();
+  const candidates = getWorldMapRaidEventCandidates(positiveInt(mission && mission.m_WorldmapEventGroup));
+  if (!candidates.length) {
+    return {
+      event: null,
+      eventID: 2001001,
+      stageID: positiveInt(preferredStageID) || 11015,
+    };
+  }
+
+  const preferred = positiveInt(preferredStageID);
+  const facilityLevel = getRaidFacilityLevel(city);
+  let pool = candidates.filter((row) => getRaidEventRequiredBuildingLevel(row, RAID_FACILITY_BUILDING_ID) === facilityLevel);
+  if (preferred && pool.length) {
+    const preferredPool = pool.filter((row) => positiveInt(row.STAGE_ID) === preferred);
+    if (preferredPool.length) pool = preferredPool;
+  }
+  if (!pool.length && facilityLevel > 0) {
+    pool = candidates.filter((row) => getRaidEventRequiredBuildingLevel(row, RAID_FACILITY_BUILDING_ID) <= facilityLevel);
+    if (preferred && pool.length) {
+      const preferredPool = pool.filter((row) => positiveInt(row.STAGE_ID) === preferred);
+      if (preferredPool.length) pool = preferredPool;
+    }
+  }
+  if (!pool.length) pool = candidates;
+  const event = pickWeightedRaidEvent(pool, seed || `${cityID}:${facilityLevel}:world-map-raid-event`);
+  return {
+    event,
+    eventID: positiveInt(event && event.EVENT_ID) || 2001001,
+    stageID: positiveInt(event && event.STAGE_ID) || preferred || 11015,
+  };
+}
+
+function selectWorldMapRaidEventByLevel(level, seed = "", groupID = 0) {
+  const requestedLevel = positiveInt(level);
+  if (requestedLevel >= 666) {
+    const sephira = selectSephiraRaidEvent(seed || `${requestedLevel}:sephira-raid-level`, groupID);
+    if (sephira.eventID && sephira.stageID) return sephira;
+    return { event: null, eventID: 0, stageID: 0, raidLevel: 0, exactLevel: false, raidFamily: "sephira" };
+  }
+
+  const candidates = getWorldMapRaidEventCandidates(groupID)
+    .map((event) => {
+      const stageID = positiveInt(event && event.STAGE_ID);
+      const raidTemplet = getRaidTemplet(stageID);
+      return {
+        event,
+        eventID: positiveInt(event && event.EVENT_ID),
+        stageID,
+        raidLevel: positiveInt(raidTemplet && raidTemplet.m_RaidLevel),
+      };
+    })
+    .filter((entry) => entry.eventID > 0 && entry.stageID > 0 && entry.raidLevel > 0);
+
+  if (!candidates.length) {
+    return { event: null, eventID: 0, stageID: 0, raidLevel: 0, exactLevel: false };
+  }
+
+  let pool = requestedLevel > 0 ? candidates.filter((entry) => entry.raidLevel === requestedLevel) : candidates;
+  let exactLevel = pool.length > 0;
+  if (!pool.length) {
+    const closestDelta = candidates.reduce(
+      (best, entry) => Math.min(best, Math.abs(entry.raidLevel - requestedLevel)),
+      Number.MAX_SAFE_INTEGER
+    );
+    pool = candidates.filter((entry) => Math.abs(entry.raidLevel - requestedLevel) === closestDelta);
+    exactLevel = false;
+  }
+
+  const event = pickWeightedRaidEvent(
+    pool.map((entry) => entry.event),
+    seed || `${requestedLevel}:admin-raid-level`
+  );
+  const selected = pool.find((entry) => entry.event === event) || pool[0];
+  return { ...selected, exactLevel };
+}
+
+function selectSephiraRaidEvent(seed = "", groupID = 0) {
+  const candidates = getWorldMapRaidEventCandidates(groupID)
+    .filter(isSephiraRaidEvent)
+    .map((event) => {
+      const stageID = positiveInt(event && event.STAGE_ID);
+      const raidTemplet = getRaidTemplet(stageID);
+      return {
+        event,
+        eventID: positiveInt(event && event.EVENT_ID),
+        stageID,
+        raidLevel: positiveInt(raidTemplet && raidTemplet.m_RaidLevel) || 666,
+        exactLevel: true,
+        raidFamily: "sephira",
+      };
+    })
+    .filter((entry) => entry.eventID > 0 && entry.stageID > 0);
+  if (!candidates.length) return { event: null, eventID: 0, stageID: 0, raidLevel: 0, exactLevel: false, raidFamily: "sephira" };
+  const event = pickWeightedRaidEvent(
+    candidates.map((entry) => entry.event),
+    seed || "sephira-raid"
+  );
+  return candidates.find((entry) => entry.event === event) || candidates[0];
+}
+
+function isSephiraRaidEvent(event) {
+  const stageID = positiveInt(event && event.STAGE_ID);
+  if (stageID >= 700000 && stageID < 701000) return true;
+  const text = [
+    event && event.WORLDMAP_EVENT_SD,
+    event && event.EVENT_PREFAB,
+    event && event.EVENT_BUNDLE,
+    getRaidTemplet(stageID) && getRaidTemplet(stageID).m_StageStrID,
+    getRaidTemplet(stageID) && getRaidTemplet(stageID).m_DungeonStrID,
+    getRaidTemplet(stageID) && getRaidTemplet(stageID).m_FaceCardName,
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toUpperCase();
+  return text.includes("RAID_BOSS_4") || text.includes("SEPHIRA");
+}
+
+function getWorldMapRaidEventCandidates(groupID = 0) {
+  const rows = getTables().worldMapEventGroups
+    .filter(isUsableWorldMapRaidEvent)
+    .filter((row) => {
+      const rowGroupID = positiveInt(row.GROUP_ID);
+      return groupID > 0 ? rowGroupID === groupID : rowGroupID === 1 || rowGroupID === 0;
+    })
+    .sort((left, right) => Number(left.EVENT_ID || 0) - Number(right.EVENT_ID || 0));
+  if (rows.length || groupID <= 0) return rows;
+  return getWorldMapRaidEventCandidates(0);
+}
+
+function getWorldMapEventById(eventID) {
+  const id = positiveInt(eventID);
+  if (!id) return null;
+  return getTables().worldMapEventGroups.find((row) => Number(row.EVENT_ID || 0) === id) || null;
+}
+
+function isCompatibleRaidEvent(event, stageID) {
+  if (!isUsableWorldMapRaidEvent(event)) return false;
+  if (positiveInt(event.STAGE_ID) !== positiveInt(stageID)) return false;
+  return true;
+}
+
+function isUsableWorldMapRaidEvent(event) {
+  if (!event || String(event.WORLDMAP_EVENT_TYPE || "").toUpperCase() !== "WET_RAID") return false;
+  if (Array.isArray(event.listContentsTagAllow) && event.listContentsTagAllow.includes("SINGLE_RAID")) return false;
+  if (Array.isArray(event.listContentsTagAllow) && event.listContentsTagAllow.includes("RAID_SEASON_DUMMY")) return false;
+  if (!String(event.WORLDMAP_EVENT_SD || "").startsWith("AB_UNIT_SD")) return false;
+  return Boolean(getTables().raidsByStageId.get(positiveInt(event.STAGE_ID)));
+}
+
+function isRaidEventForBranchFacility(event, city) {
+  return getRaidEventRequiredBuildingLevel(event, RAID_FACILITY_BUILDING_ID) === getRaidFacilityLevel(city);
+}
+
+function getRaidFacilityLevel(city) {
+  const explicit = positiveInt(process.env.CS_WORLDMAP_RAID_FACILITY_LEVEL);
+  if (explicit) return explicit;
+  const building = city && city.buildings && city.buildings[String(RAID_FACILITY_BUILDING_ID)];
+  return Math.max(0, Number(building && building.level) || 0);
+}
+
+function getRaidEventRequiredBuildingLevel(event, buildingID) {
+  const ids = parseCsvInts(event && event.REQ_BUILDING_ID);
+  const levels = parseCsvInts(event && event.REQ_BUILDING_LEVEL);
+  for (let index = 0; index < ids.length; index += 1) {
+    if (ids[index] === Number(buildingID)) return Math.max(0, Number(levels[index] || 0) || 0);
+  }
+  return 0;
+}
+
+function pickWeightedRaidEvent(rows, seed) {
+  const candidates = Array.isArray(rows) ? rows.filter(Boolean) : [];
+  if (!candidates.length) return null;
+  const total = candidates.reduce((sum, row) => sum + Math.max(1, Number(row.RATIO || row.ratio || 0) || 1), 0);
+  let roll = hashString(`${seed}:weighted-raid-event`) % Math.max(1, total);
+  for (const row of candidates) {
+    roll -= Math.max(1, Number(row.RATIO || row.ratio || 0) || 1);
+    if (roll < 0) return row;
+  }
+  return candidates[candidates.length - 1];
+}
+
+function parseCsvInts(value) {
+  if (Array.isArray(value)) return value.map(positiveInt).filter((entry) => entry >= 0);
+  const text = String(value == null ? "" : value).trim();
+  if (!text) return [];
+  return text.split(",").map((entry) => Math.max(0, Number(String(entry).trim()) || 0));
 }
 
 function currentRaidSeasonId() {
@@ -1777,6 +3433,12 @@ function clampBigInt(value, min, max) {
   return result;
 }
 
+function clampNumber(value, min, max) {
+  const numeric = Number(value);
+  if (!Number.isFinite(numeric)) return min;
+  return Math.max(min, Math.min(max, numeric));
+}
+
 function uniquePositiveInts(values) {
   return Array.from(new Set((Array.isArray(values) ? values : []).map((value) => positiveInt(value)).filter(Boolean))).sort((a, b) => a - b);
 }
@@ -1836,6 +3498,19 @@ module.exports = {
   buildActiveDiveGameData,
   buildDiveClearData,
   buildDiveHistoryData,
+  sendActiveRaidData,
+  sendRaidResultData,
+  sendRaidStateData,
+  sendRaidSnapshotData,
+  getRaidSnapshot,
+  sendWorldMapData,
+  recordRaidBattleResult,
+  syncRaidCombatHpFromBattleState,
+  reserveRaidAttempt,
+  spawnAdminRaid,
+  spawnSephiraRaid,
+  killRaidInBranch,
+  clearActiveRaids,
   hasWorldMapProgress,
   refreshWorldMapState,
   unlockCity,

@@ -12,12 +12,17 @@ public sealed class GameLoadReq
 {
     public int StageID { get; set; }
     public int DungeonID { get; set; }
+    public int GameType { get; set; }
+    public long RaidUID { get; set; }
+    public int RaidLevel { get; set; }
 }
 
 public sealed class StageData
 {
     public int StageId { get; set; }
     public int DungeonID { get; set; }
+    public long RaidUID { get; set; }
+    public int RaidLevel { get; set; }
     public int MapID { get; set; }
     public int GameType { get; set; }
     public string MiscMode { get; set; } = "";
@@ -83,6 +88,8 @@ public sealed class DynamicGameState
 {
     public int StageID { get; set; }
     public int DungeonID { get; set; }
+    public long RaidUID { get; set; }
+    public int RaidLevel { get; set; }
     public int MapID { get; set; }
     public int GameType { get; set; }
     public string MiscMode { get; set; } = "";
@@ -148,6 +155,12 @@ public sealed class BattleState
     public int DeployCount { get; set; }
     public bool Finished { get; set; }
     public bool Win { get; set; }
+    public double RaidBossInitHp { get; set; }
+    public double RaidBossCurHp { get; set; }
+    public double RaidBossMaxHp { get; set; }
+    public double RaidBossDamage { get; set; }
+    public double RaidBossDamageRatio { get; set; }
+    public bool RaidBossKilled { get; set; }
     public int? GameSpeedType { get; set; }
     public int? AutoSkillType { get; set; }
     public bool? AutoRespawnEnabled { get; set; }

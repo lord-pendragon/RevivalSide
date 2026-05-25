@@ -7,8 +7,8 @@ const { Worker } = require("worker_threads");
 // Thin process bridge to the C# combat host.
 //
 // The listener is still synchronous, so this bridge intentionally uses a
-// blocking request API. It is env-gated and falls back to the JS implementation
-// unless CS_CSHARP_COMBAT_HOST=1 is set.
+// blocking request API. Combat runtime traffic now requires the managed host;
+// callers decide whether a non-combat helper can use a lightweight fallback.
 
 function createCsharpCombatHost(options = {}) {
   const enabled = Boolean(options.enabled);

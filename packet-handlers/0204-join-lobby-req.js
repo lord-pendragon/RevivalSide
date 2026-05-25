@@ -1,6 +1,7 @@
 const { ensureLoginRewardPosts } = require("../modules/admin");
 const { buildAttendanceNotifyPayload, ensureAttendanceRewardPosts } = require("../modules/attendance");
 const { sendCounterPassLobbyNotifications } = require("../modules/event-pass");
+const worldMap = require("../modules/world-map");
 
 module.exports = {
   packetId: 204,
@@ -10,13 +11,26 @@ module.exports = {
     const user = ctx.findUserByAccessToken(joinReq.accessToken) || socket.session.user || ctx.createEphemeralUser();
     socket.session.user = user;
     if (ctx.config.USE_LOCAL_USER_DB && user.userUid) {
-      user.lastJoinAt = new Date().toISOString();
+      const missionClock = ctx.getMissionClockOptions
+        ? ctx.getMissionClockOptions()
+        : { now: ctx.dateTimeBinaryNow ? ctx.dateTimeBinaryNow() : undefined };
+      let loginMissionChanged = false;
+      try {
+        loginMissionChanged = ctx.recordMissionLogin ? ctx.recordMissionLogin(user, missionClock) : false;
+      } catch (error) {
+        console.log(`[mission-login] skipped join-lobby update: ${error && error.message ? error.message : error}`);
+      }
+      const serverNow = ctx.getServerNowDate ? ctx.getServerNowDate() : new Date();
+      user.lastJoinAt = serverNow.toISOString();
       const rewardPosts = ensureLoginRewardPosts(user);
-      const attendancePosts = ensureAttendanceRewardPosts(user);
+      const attendancePosts = ensureAttendanceRewardPosts(user, { now: serverNow, clockNow: serverNow });
       if (rewardPosts > 0 || attendancePosts > 0) {
         console.log(
           `[user-db] queued inbox rewards uid=${user.userUid} loginPosts=${rewardPosts} attendancePosts=${attendancePosts}`
         );
+      }
+      if (loginMissionChanged) {
+        console.log(`[user-db] login missions updated uid=${user.userUid} day=${String(missionClock.eventDateKey || "")}`);
       }
       ctx.saveUserDb();
     }
@@ -38,6 +52,7 @@ module.exports = {
           "join-lobby-local-progress"
         );
         sendCounterPassLobbyBootstrap(ctx, socket);
+        sendJoinLobbyRaidBootstrap(ctx, socket, user);
         if (typeof ctx.repairPostTutorialGuideMissionsForSocket === "function") {
           ctx.repairPostTutorialGuideMissionsForSocket(socket, {
             label: "join-lobby-post-tutorial-guide-mission-repair",
@@ -56,6 +71,7 @@ module.exports = {
         }
         ctx.sendCapturedGameThroughPacketId(socket, ctx.constants.JOIN_LOBBY_ACK, "join-lobby");
         sendCounterPassLobbyBootstrap(ctx, socket);
+        sendJoinLobbyRaidBootstrap(ctx, socket, user);
         if (typeof ctx.repairPostTutorialGuideMissionsForSocket === "function") {
           ctx.repairPostTutorialGuideMissionsForSocket(socket, {
             label: "join-lobby-post-tutorial-guide-mission-repair",
@@ -79,6 +95,7 @@ module.exports = {
       "join-lobby-local-progress"
     );
     sendCounterPassLobbyBootstrap(ctx, socket);
+    sendJoinLobbyRaidBootstrap(ctx, socket, user);
     if (typeof ctx.repairPostTutorialGuideMissionsForSocket === "function") {
       ctx.repairPostTutorialGuideMissionsForSocket(socket, {
         label: "join-lobby-post-tutorial-guide-mission-repair",
@@ -99,6 +116,28 @@ function sendCounterPassLobbyBootstrap(ctx, socket) {
   sendCounterPassLobbyNotifications(ctx, socket, "join-lobby-counter-pass");
 }
 
+function sendJoinLobbyRaidBootstrap(ctx, socket, user) {
+  if (!worldMap || typeof worldMap.sendRaidSnapshotData !== "function") return;
+  const options = ctx.getMissionClockOptions
+    ? ctx.getMissionClockOptions()
+    : { now: ctx.dateTimeBinaryNow ? ctx.dateTimeBinaryNow() : undefined };
+  try {
+    worldMap.sendRaidSnapshotData(ctx, socket, user, {
+      ...options,
+      includeWorldMap: true,
+      worldMapLabel: "join-lobby-world-map-data",
+      label: "join-lobby-my-raid-list",
+      detailLabel: "join-lobby-raid-detail",
+      coopLabel: "join-lobby-raid-coop-list",
+      resultLabel: "join-lobby-raid-result-list",
+      eventCancelLabel: "join-lobby-raid-event-clear",
+      includeEmpty: true,
+    });
+  } catch (error) {
+    console.log(`[join-lobby-raid] skipped bootstrap: ${error && error.message ? error.message : error}`);
+  }
+}
+
 function sendJoinLobbyBootTemplates(ctx, socket, replay, user) {
   ctx.sendCapturedGameTemplateRange(socket, 1, 1, "join-lobby-boot");
   ctx.sendServerGamePacket(
@@ -108,7 +147,8 @@ function sendJoinLobbyBootTemplates(ctx, socket, replay, user) {
     "join-lobby-boot-company-buff"
   );
   ctx.sendCapturedGameTemplateRange(socket, 3, 5, "join-lobby-boot");
-  const attendancePayload = buildAttendanceNotifyPayload(user, { consumePrompt: true });
+  const serverNow = ctx.getServerNowDate ? ctx.getServerNowDate() : new Date();
+  const attendancePayload = buildAttendanceNotifyPayload(user, { now: serverNow, clockNow: serverNow, consumePrompt: true });
   if (attendancePayload) {
     ctx.sendServerGamePacket(socket, 1640, attendancePayload, "attendance-not");
   }

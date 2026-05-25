@@ -15,10 +15,18 @@ module.exports = {
       socket.session.user = user;
       ctx.setLastEffectiveAccessToken(user.accessToken || "");
       ctx.prepareTutorialLogin(user);
-      ctx.recordMissionLogin(user, { now: ctx.dateTimeBinaryNow ? ctx.dateTimeBinaryNow() : undefined });
+      const missionClock = ctx.getMissionClockOptions
+        ? ctx.getMissionClockOptions()
+        : { now: ctx.dateTimeBinaryNow ? ctx.dateTimeBinaryNow() : undefined };
+      try {
+        ctx.recordMissionLogin(user, missionClock);
+      } catch (error) {
+        console.log(`[mission-login] skipped steam login update: ${error && error.message ? error.message : error}`);
+      }
       const cleanup = applyLocalAccountCleanup(user, ctx.config);
       const rewardPosts = ensureLoginRewardPosts(user);
-      const attendancePosts = ensureAttendanceRewardPosts(user);
+      const serverNow = ctx.getServerNowDate ? ctx.getServerNowDate() : new Date();
+      const attendancePosts = ensureAttendanceRewardPosts(user, { now: serverNow, clockNow: serverNow });
       ctx.saveUserDb();
       if (cleanup.changed) {
         console.log(

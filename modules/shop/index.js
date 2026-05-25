@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const { getGameplayTableFileCandidates } = require("../gameplay-jsons");
 const { getMiscItem, spendMiscItem, toBigInt } = require("../inventory");
-const { buildUnitData, buildOperatorData, buildEquipItemData } = require("../packet-codec");
+const { buildUnitData, buildOperatorData, buildEquipItemData, buildMoldItemData } = require("../packet-codec");
 const { grantRewardByType, mergeReward } = require("../reward");
 const {
   createEmptyReward,
@@ -15,6 +15,7 @@ const {
   markCompletedPurchase,
   makeLocalOrderId,
 } = require("../resource");
+const { addMissionTrackingCondition, completeMissionTracking, makeMissionTracking, queueMissionTracking } = require("../mission-tracking");
 
 const ROOT_DIR = path.resolve(__dirname, "..", "..");
 const DOTNET_TICKS_AT_UNIX_EPOCH = 621355968000000000n;
@@ -116,6 +117,7 @@ function createShopHandler(packetId, name) {
       ctx.sendResponse(socket, packet.sequence, response.packetId, () =>
         ctx.buildEncryptedPacket(packet.sequence, response.packetId, response.payload)
       );
+      completeMissionTracking(ctx, socket, getSessionUser(ctx), null, { label: "shop-mission-update" });
       return true;
     },
   };
@@ -920,12 +922,10 @@ function trackShopPurchaseMission(ctx, user, record, productId, productCount = 1
   if (!ctx || typeof ctx.trackMissionEvent !== "function") return;
   const count = Math.max(1, Number(productCount) || 1);
   const nowValue = ctx.dateTimeBinaryNow ? ctx.dateTimeBinaryNow() : undefined;
-  let changed = false;
-  const changedConditions = new Set();
+  const tracking = makeMissionTracking(nowValue);
   const track = (condition, amount, details) => {
     const tracked = ctx.trackMissionEvent(user, condition, amount, details);
-    if (tracked) changedConditions.add(condition);
-    changed = tracked || changed;
+    addMissionTrackingCondition(tracking, condition, tracked);
   };
   const details = { now: nowValue, shopId: Number(productId || (record && record.m_ProductID) || 0), value: Number(productId || 0) };
   track("SHOP_BUY", count, details);
@@ -942,9 +942,7 @@ function trackShopPurchaseMission(ctx, user, record, productId, productCount = 1
       });
     }
   }
-  if (changed && typeof ctx.refreshMissionProgress === "function") {
-    ctx.refreshMissionProgress(user, { now: nowValue, conditions: Array.from(changedConditions) });
-  }
+  queueMissionTracking(ctx, tracking);
 }
 
 function grantFallbackReward(ctx, multiplier = 1) {
@@ -969,6 +967,7 @@ function buildRewardData(ctx, reward) {
   const units = Array.isArray(data.units) ? data.units : [];
   const operators = Array.isArray(data.operators) ? data.operators : [];
   const equips = Array.isArray(data.equips) ? data.equips : [];
+  const moldItems = Array.isArray(data.moldItems) ? data.moldItems : [];
 
   return Buffer.concat([
     ctx.writeSignedVarInt(0), // userExp
@@ -978,7 +977,7 @@ function buildRewardData(ctx, reward) {
     writeObjectList(equips.map((equip) => writeNullableObject(buildEquipItemData(equip)))),
     writeObjectList([]), // unitExpDataList
     writeIntList(ctx, skinIds),
-    writeObjectList([]), // moldItemDataList
+    writeObjectList(moldItems.map((mold) => writeNullableObject(buildMoldItemData(mold)))), // moldItemDataList
     writeObjectList([]), // companyBuffDataList
     writeObjectList([]), // companyBuffDataList duplicate
     writeIntList(ctx, emoticonIds),

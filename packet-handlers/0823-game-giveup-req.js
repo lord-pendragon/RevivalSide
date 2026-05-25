@@ -12,7 +12,7 @@ module.exports = {
 
     const replay = socket.session && socket.session.gameReplay;
     if (!replay || !replay.dynamicGame) return true;
-    const battleState = replay.battleState || replay.battleSim || {};
+    const battleState = replay.battleState || {};
     battleState.finished = true;
     battleState.win = false;
     battleState.Win = false;
@@ -26,6 +26,7 @@ module.exports = {
     if (payload) {
       ctx.sendServerGamePacket(socket, ctx.constants.GAME_END_NOT, payload, "game-giveup-end");
     }
+    if (typeof ctx.sendRaidStateDataForSocket === "function") ctx.sendRaidStateDataForSocket(socket, "game-giveup-raid");
     if (typeof ctx.stopGameSyncTimers === "function") ctx.stopGameSyncTimers(socket);
     return true;
   },

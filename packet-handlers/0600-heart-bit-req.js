@@ -15,11 +15,7 @@ module.exports = {
         console.log("[capture-game] heartbeat before GAME_LOAD_COMPLETE_REQ; deferring combat sync until load complete");
         return true;
       }
-      if (ctx.config.DYNAMIC_BATTLE_MANAGER && replay.battleSim) {
-        ctx.sendServerGamePacket(socket, ctx.constants.HEART_BIT_ACK, ctx.writeSignedVarLong(time), "heart-bit");
-        return true;
-      }
-      if (ctx.config.DYNAMIC_BATTLE_MANAGER && replay.dynamicGame) {
+      if (ctx.config.DYNAMIC_BATTLE_MANAGER && replay.dynamicGame && replay.dynamicGame.managedCombat) {
         replay.syntheticGameTime = Math.max(4, Number(replay.syntheticGameTime || 4) + 0.5);
         ctx.sendServerGamePacket(socket, ctx.constants.HEART_BIT_ACK, ctx.writeSignedVarLong(time), "heart-bit");
         if (replay.pendingGameStartBootstrap) {
@@ -68,7 +64,7 @@ module.exports = {
       }
       return true;
     }
-    if (ctx.config.DYNAMIC_BATTLE_MANAGER && replay.dynamicGame) {
+    if (ctx.config.DYNAMIC_BATTLE_MANAGER && replay.dynamicGame && replay.dynamicGame.managedCombat) {
       ctx.sendServerGamePacket(socket, ctx.constants.HEART_BIT_ACK, ctx.writeSignedVarLong(time), "heart-bit");
       if (!replay.loadCompleteReceived) {
         console.log("[capture-game] heartbeat before GAME_LOAD_COMPLETE_REQ; deferring combat sync until load complete");

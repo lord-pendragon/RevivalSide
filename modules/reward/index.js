@@ -8,7 +8,7 @@ const {
   getMaxLimitBreakRank,
 } = require("../game-data");
 const { grantUnit, grantOperator } = require("../unit");
-const { grantEquipItem } = require("../equipment");
+const { grantEquipItem, grantMoldItem } = require("../equipment");
 
 const FALLBACK_RESOURCE_ITEM_ID = Number(process.env.CS_SHOP_FALLBACK_REWARD_ITEM_ID || 1);
 const FALLBACK_RESOURCE_COUNT = BigInt(process.env.CS_SHOP_FALLBACK_REWARD_COUNT || 1000);
@@ -24,13 +24,14 @@ function createEmptyReward() {
     units: [],
     operators: [],
     equips: [],
+    moldItems: [],
   };
 }
 
 function mergeReward(target, source) {
   const result = target || createEmptyReward();
   const incoming = source || createEmptyReward();
-  for (const key of ["miscItems", "skinIds", "emoticonIds", "units", "operators", "equips"]) {
+  for (const key of ["miscItems", "skinIds", "emoticonIds", "units", "operators", "equips", "moldItems"]) {
     if (!Array.isArray(result[key])) result[key] = [];
     if (Array.isArray(incoming[key])) result[key].push(...incoming[key]);
   }
@@ -75,6 +76,9 @@ function grantRewardByType(ctx, user, rewardType, rewardId, value = 1, freeValue
       const equip = grantEquipItem(user, id, { ...options, regDate, cursor: index });
       if (equip) reward.equips.push(equip);
     }
+  } else if (type === "RT_MOLD") {
+    const mold = grantMoldItem(user, id, count);
+    if (mold) reward.moldItems.push(mold);
   } else if (type === "RT_SKIN") {
     const skinId = grantSkin(user, id);
     if (skinId) reward.skinIds.push(skinId);

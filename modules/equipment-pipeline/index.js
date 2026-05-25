@@ -11,6 +11,8 @@ const {
   writeLongArray,
   buildEquipItemData,
   buildEquipTuningCandidateData,
+  buildResetCountData,
+  buildCraftSlotData,
   buildPotentialOptionCandidateData,
   buildEquipPresetData,
   buildEquipProfileInfoData,
@@ -40,9 +42,15 @@ const {
   rollSetOption,
   confirmSetOption,
   imprintEquip,
+  upgradeEquipItem,
   openPotentialSocket,
   rollPotentialOption,
   confirmPotentialOption,
+  startCraft,
+  completeCraft,
+  instantCraft,
+  instantCompleteCraft,
+  unlockCraftSlot,
   getEquipItems,
   getEquipPresets,
   addEquipPresets,
@@ -55,6 +63,7 @@ const {
 } = require("../equipment");
 const { grantMiscItem, spendMiscItem } = require("../inventory");
 const { grantRewardByType, createEmptyReward, grantChoiceItemReward } = require("../reward");
+const { addMissionTrackingCondition, completeMissionTracking, makeMissionTracking } = require("../mission-tracking");
 
 const EQUIP_PACKET_IDS = [
   1000, 1002, 1004, 1006, 1008, 1010, 1012, 1014, 1016, 1018,
@@ -72,11 +81,15 @@ function createEquipmentPipelineHandlers() {
       if (socket.session) socket.session.user = user;
       const request = decodeRequest(ctx, packetId, packet.payload);
       const response = buildResponse(ctx, user, packetId, request);
-      trackEquipmentMission(ctx, user, packetId, request);
+      const missionTracking = trackEquipmentMission(ctx, user, packetId, request);
       console.log(`[equipment:${packetId}] ACK packetId=${response.packetId} payloadSize=${response.payload.length}`);
       ctx.sendResponse(socket, packet.sequence, response.packetId, () =>
         ctx.buildEncryptedPacket(packet.sequence, response.packetId, response.payload)
       );
+      if (socket.session && socket.session.gameReplay && ctx.capturedGameFlow && typeof ctx.skipCapturedGameThroughPacketId === "function") {
+        ctx.skipCapturedGameThroughPacketId(socket, response.packetId);
+      }
+      completeMissionTracking(ctx, socket, user, missionTracking, { label: "equipment-mission-update" });
       if (ctx.config.USE_LOCAL_USER_DB) ctx.saveUserDb();
       return true;
     },
@@ -84,14 +97,12 @@ function createEquipmentPipelineHandlers() {
 }
 
 function trackEquipmentMission(ctx, user, packetId, request = {}) {
-  if (!ctx || typeof ctx.trackMissionEvent !== "function") return;
+  if (!ctx || typeof ctx.trackMissionEvent !== "function") return null;
   const nowValue = now(ctx);
-  let changed = false;
-  const changedConditions = new Set();
+  const tracking = makeMissionTracking(nowValue);
   const track = (condition, amount = 1, details = {}) => {
     const tracked = ctx.trackMissionEvent(user, condition, amount, { now: nowValue, ...details });
-    if (tracked) changedConditions.add(condition);
-    changed = tracked || changed;
+    addMissionTrackingCondition(tracking, condition, tracked);
   };
   const trackResourceSpend = (itemId, amount) => {
     const numericItemId = Number(itemId || 0);
@@ -134,9 +145,7 @@ function trackEquipmentMission(ctx, user, packetId, request = {}) {
       break;
   }
 
-  if (changed && typeof ctx.refreshMissionProgress === "function") {
-    ctx.refreshMissionProgress(user, { now: nowValue, conditions: Array.from(changedConditions) });
-  }
+  return tracking;
 }
 
 function buildResponse(ctx, user, packetId, req) {
@@ -152,12 +161,13 @@ function buildResponse(ctx, user, packetId, req) {
     case 1008:
       return randomBoxAck(ctx, user, req);
     case 1010:
-      return craftUnlockAck();
+      return craftUnlockAck(ctx, user);
     case 1012:
-      return craftStartAck(user, req);
+      return craftStartAck(ctx, user, req);
     case 1014:
+      return craftCompleteAck(ctx, user, req);
     case 1016:
-      return craftCompleteAck(user, req, packetId + 1);
+      return craftInstantCompleteAck(ctx, user, req);
     case 1018:
       return refineAck(user, req);
     case 1020:
@@ -201,7 +211,7 @@ function buildResponse(ctx, user, packetId, req) {
     case 1063:
       return enchantAck(user, req, 1064);
     case 1066:
-      return craftInstantAck(user, req);
+      return craftInstantAck(ctx, user, req);
     case 1068:
       return potentialRollAck(user, req);
     case 1070:
@@ -239,19 +249,24 @@ function equipItemAck(user, req) {
 }
 
 function enchantAck(user, req, packetId) {
-  const result = enchantEquipItem(user, req.equipItemUID, req.consumeEquipItemUIDList || req.equipItemUIDList || []);
+  const result = enchantEquipItem(user, req.equipItemUID, req.consumeEquipItemUIDList || req.equipItemUIDList || [], {
+    miscItems: req.miscItemList || [],
+    targetLevel: req.enchantLevel,
+  });
   const equip = result && result.equip;
-  return {
-    packetId,
-    payload: Buffer.concat([
-      writeSignedVarInt(0),
-      writeSignedVarLong(toBigInt(req.equipItemUID || 0)),
-      writeSignedVarInt(Number(equip && equip.enchantLevel) || 0),
-      writeSignedVarInt(Number(equip && equip.enchantExp) || 0),
-      writeLongArray(result ? result.consumed : []),
-      writeObjectList([]),
-    ]),
-  };
+  const common = [
+    writeSignedVarInt(0),
+    writeSignedVarLong(toBigInt(req.equipItemUID || 0)),
+    writeSignedVarInt(Number(equip && equip.enchantLevel) || 0),
+    writeSignedVarInt(Number(equip && equip.enchantExp) || 0),
+  ];
+  if (packetId === 1064) {
+    common.push(writeObjectList((result && result.costItems || []).map((item) => writeNullableObject(buildItemMiscData(item)))));
+  } else {
+    common.push(writeLongArray(result ? result.consumed : []));
+    common.push(writeObjectList((result && result.costItems || []).map((item) => writeNullableObject(buildItemMiscData(item)))));
+  }
+  return { packetId, payload: Buffer.concat(common) };
 }
 
 function lockAck(user, req) {
@@ -297,35 +312,52 @@ function randomBoxAck(ctx, user, req) {
   };
 }
 
-function craftUnlockAck() {
+function craftUnlockAck(ctx, user) {
+  const result = unlockCraftSlot(user, { regDate: now(ctx) });
   return {
     packetId: 1011,
-    payload: Buffer.concat([writeSignedVarInt(0), writeNullObject(), writeObjectList([])]),
-  };
-}
-
-function craftStartAck(_user, _req) {
-  return {
-    packetId: 1013,
-    payload: Buffer.concat([writeSignedVarInt(0), writeNullObject(), writeObjectList([]), writeNullObject()]),
-  };
-}
-
-function craftCompleteAck(user, req, packetId) {
-  const reward = createEmptyReward();
-  const count = Math.max(1, Number(req.count || 1));
-  for (let index = 0; index < count; index += 1) {
-    const equip = grantEquipItem(user, 0, { cursor: index });
-    if (equip) reward.equips.push(equip);
-  }
-  const extraCost = packetId === 1017 ? writeNullObject() : Buffer.alloc(0);
-  return {
-    packetId,
     payload: Buffer.concat([
       writeSignedVarInt(0),
+      writeNullableObjectOrNull(result && result.slot ? buildCraftSlotData(result.slot) : null),
+      writeObjectList((result && result.costItems || []).map((item) => writeNullableObject(buildItemMiscData(item)))),
+    ]),
+  };
+}
+
+function craftStartAck(ctx, user, req) {
+  const result = startCraft(user, req.index, req.moldID, req.count, { regDate: now(ctx) });
+  return {
+    packetId: 1013,
+    payload: Buffer.concat([
+      writeSignedVarInt(0),
+      writeNullableObjectOrNull(result && result.slot ? buildCraftSlotData(result.slot) : null),
+      writeObjectList((result && result.costItems || []).map((item) => writeNullableObject(buildItemMiscData(item)))),
       writeNullObject(),
-      extraCost,
-      writeNullableObject(buildRewardData(reward)),
+    ]),
+  };
+}
+
+function craftCompleteAck(ctx, user, req) {
+  const result = completeCraft(user, req.index, { regDate: now(ctx) });
+  return {
+    packetId: 1015,
+    payload: Buffer.concat([
+      writeSignedVarInt(0),
+      writeNullableObjectOrNull(result && result.slot ? buildCraftSlotData(result.slot) : null),
+      writeNullableObject(buildRewardData((result && result.reward) || createEmptyReward())),
+    ]),
+  };
+}
+
+function craftInstantCompleteAck(ctx, user, req) {
+  const result = instantCompleteCraft(user, req.index, { regDate: now(ctx) });
+  return {
+    packetId: 1017,
+    payload: Buffer.concat([
+      writeSignedVarInt(0),
+      writeNullableObjectOrNull(result && result.slot ? buildCraftSlotData(result.slot) : null),
+      writeNullableObjectOrNull(result && result.extraCostItem ? buildItemMiscData(result.extraCostItem) : null),
+      writeNullableObject(buildRewardData((result && result.reward) || createEmptyReward())),
     ]),
   };
 }
@@ -336,10 +368,10 @@ function refineAck(user, req) {
     packetId: 1019,
     payload: Buffer.concat([
       writeSignedVarInt(0),
-      writeSignedVarInt(0),
+      writeSignedVarInt(Number(result && result.refineResult) || 0),
       writeSignedVarInt(Number(result && result.precision) || 0),
       writeNullableObjectOrNull(result && result.equip ? buildEquipItemData(result.equip) : null),
-      writeObjectList([]),
+      writeObjectList((result && result.costItems || []).map((item) => writeNullableObject(buildItemMiscData(item)))),
     ]),
   };
 }
@@ -352,9 +384,9 @@ function statRollAck(user, req) {
       writeSignedVarInt(0),
       writeSignedVarInt(Number(req.equipOptionID || 0) || 0),
       writeNullableObjectOrNull(result && result.equip ? buildEquipItemData(result.equip) : null),
-      writeObjectList([]),
+      writeObjectList((result && result.costItems || []).map((item) => writeNullableObject(buildItemMiscData(item)))),
       writeNullableObject(buildEquipTuningCandidateData((result && result.candidate) || {})),
-      writeNullObject(),
+      writeNullableObject(buildResetCountData(result && result.resetCount)),
     ]),
   };
 }
@@ -379,7 +411,7 @@ function statBonusConfirmAck(user, req) {
     payload: Buffer.concat([
       writeSignedVarInt(0),
       writeNullableObjectOrNull(result && result.equip ? buildEquipItemData(result.equip) : rolled && rolled.equip ? buildEquipItemData(rolled.equip) : null),
-      writeNullObject(),
+      writeNullableObject(buildResetCountData(rolled && rolled.resetCount)),
     ]),
   };
 }
@@ -414,9 +446,9 @@ function setOptionRollAck(user, req) {
       writeSignedVarInt(0),
       writeSignedVarLong(toBigInt(req.equipUID || 0)),
       writeSignedVarInt(Number(result && result.setOptionId) || 0),
-      writeObjectList([]),
+      writeObjectList((result && result.costItems || []).map((item) => writeNullableObject(buildItemMiscData(item)))),
       writeNullableObject(buildEquipTuningCandidateData((result && result.candidate) || {})),
-      writeNullObject(),
+      writeNullableObject(buildResetCountData(result && result.resetCount)),
     ]),
   };
 }
@@ -435,6 +467,7 @@ function setOptionConfirmAck(user, req) {
 }
 
 function setOptionBonusConfirmAck(user, req) {
+  const rolled = rollSetOption(user, req.equipUid, req.setOptionId);
   const result = confirmSetOption(user, req.equipUid, req.setOptionId);
   return {
     packetId: 1033,
@@ -442,13 +475,13 @@ function setOptionBonusConfirmAck(user, req) {
       writeSignedVarInt(0),
       writeSignedVarLong(toBigInt(req.equipUid || 0)),
       writeSignedVarInt(Number(result && result.setOptionId) || 0),
-      writeNullObject(),
+      writeNullableObject(buildResetCountData((rolled && rolled.resetCount) || (result && result.resetCount))),
     ]),
   };
 }
 
 function firstSetOptionAck(user, req) {
-  const rolled = rollSetOption(user, req.equipUID);
+  const rolled = rollSetOption(user, req.equipUID, null, { free: true, skipResetCount: true });
   const result = confirmSetOption(user, req.equipUID, rolled && rolled.setOptionId);
   return {
     packetId: 1035,
@@ -538,26 +571,26 @@ function imprintAck(user, req) {
 }
 
 function upgradeAck(user, req) {
-  const result = enchantEquipItem(user, req.equipUid, req.consumeEquipItemUidList || [], { levels: 1 });
+  const result = upgradeEquipItem(user, req.equipUid, req.consumeEquipItemUidList || []);
   return {
     packetId: 1058,
     payload: Buffer.concat([
       writeSignedVarInt(0),
       writeNullableObjectOrNull(result && result.equip ? buildEquipItemData(result.equip) : null),
       writeLongArray(result ? result.consumed : []),
-      writeObjectList([]),
+      writeObjectList((result && result.costItems || []).map((item) => writeNullableObject(buildItemMiscData(item)))),
     ]),
   };
 }
 
 function openSocketAck(user, req) {
-  const equip = openPotentialSocket(user, req.equipUid, req.socketIndex);
+  const result = openPotentialSocket(user, req.equipUid, req.socketIndex);
   return {
     packetId: 1060,
     payload: Buffer.concat([
       writeSignedVarInt(0),
-      writeNullableObjectOrNull(equip ? buildEquipItemData(equip) : null),
-      writeObjectList([]),
+      writeNullableObjectOrNull(result && result.equip ? buildEquipItemData(result.equip) : null),
+      writeObjectList((result && result.costItems || []).map((item) => writeNullableObject(buildItemMiscData(item)))),
     ]),
   };
 }
@@ -573,21 +606,17 @@ function presetChangeIndexAck(user, req) {
   };
 }
 
-function craftInstantAck(user, req) {
-  const reward = createEmptyReward();
-  for (let index = 0; index < Math.max(1, Number(req.moldCount || 1)); index += 1) {
-    const equip = grantEquipItem(user, 0, { cursor: index });
-    if (equip) reward.equips.push(equip);
-  }
+function craftInstantAck(ctx, user, req) {
+  const result = instantCraft(user, req.moldId, req.moldCount, { regDate: now(ctx) });
   return {
     packetId: 1067,
     payload: Buffer.concat([
       writeSignedVarInt(0),
-      writeSignedVarInt(Number(req.moldId || 0) || 0),
-      writeSignedVarInt(Number(req.moldCount || 1) || 1),
-      writeObjectList([]),
+      writeSignedVarInt(Number((result && result.moldId) || req.moldId || 0) || 0),
+      writeSignedVarInt(Number((result && result.moldCount) || req.moldCount || 1) || 1),
+      writeObjectList((result && result.costItems || []).map((item) => writeNullableObject(buildItemMiscData(item)))),
       writeNullObject(),
-      writeNullableObject(buildRewardData(reward)),
+      writeNullableObject(buildRewardData((result && result.reward) || createEmptyReward())),
     ]),
   };
 }
@@ -598,7 +627,7 @@ function potentialRollAck(user, req) {
     packetId: 1069,
     payload: Buffer.concat([
       writeSignedVarInt(0),
-      writeObjectList([]),
+      writeObjectList((result && result.costItems || []).map((item) => writeNullableObject(buildItemMiscData(item)))),
       writeNullableObject(buildPotentialOptionCandidateData((result && result.candidate) || {})),
     ]),
   };
@@ -635,12 +664,19 @@ function presetClearAck(user, req) {
 function multipleEnchantAck(user, req) {
   const updated = [];
   const opened = [];
+  const costItems = [];
   for (const equipUid of req.equipItemUIDList || []) {
-    const result = enchantEquipItem(user, equipUid, [], { levels: Math.max(1, Number(req.enchantLevel || 1)) });
+    const result = enchantEquipItem(user, equipUid, [], {
+      miscItems: (req.equipMiscCostList && req.equipMiscCostList[String(toBigInt(equipUid))]) || [],
+      targetLevel: req.enchantLevel,
+    });
     if (result && result.equip) {
       updated.push(result.equip);
+      if (Array.isArray(result.costItems)) costItems.push(...result.costItems);
       if (req.openEquipSocket) {
-        openPotentialSocket(user, result.equip.equipUid, 0);
+        const openResult = openPotentialSocket(user, result.equip.equipUid, 0);
+        if (openResult && openResult.equip) updated[updated.length - 1] = openResult.equip;
+        if (openResult && Array.isArray(openResult.costItems)) costItems.push(...openResult.costItems);
         opened.push(result.equip.equipUid);
       }
     }
@@ -650,7 +686,7 @@ function multipleEnchantAck(user, req) {
     payload: Buffer.concat([
       writeSignedVarInt(0),
       writeObjectList(updated.map((equip) => writeNullableObject(buildEquipItemData(equip)))),
-      writeObjectList([]),
+      writeObjectList(costItems.map((item) => writeNullableObject(buildItemMiscData(item)))),
       writeLongArray(opened),
     ]),
   };
@@ -715,7 +751,7 @@ function decodeRequest(ctx, packetId, encryptedPayload) {
       case 1061:
         return { changeIndices: reader.presetIndexChanges() };
       case 1063:
-        return { equipItemUID: reader.long(), miscItemList: [] };
+        return { equipItemUID: reader.long(), miscItemList: reader.miscItemList() };
       case 1066:
         return { moldId: reader.int(), moldCount: reader.int() };
       case 1068:
@@ -724,7 +760,12 @@ function decodeRequest(ctx, packetId, encryptedPayload) {
       case 1074:
         return { presetIndices: reader.intList() };
       case 1076:
-        return { equipItemUIDList: reader.longList(), enchantLevel: 1, openEquipSocket: false };
+        return {
+          equipItemUIDList: reader.longList(),
+          equipMiscCostList: reader.equipMiscCostMap(),
+          enchantLevel: reader.short(),
+          openEquipSocket: reader.bool(),
+        };
       default:
         return {};
     }
@@ -746,6 +787,9 @@ function createReader(payload) {
       const read = readByte(payload, offset);
       offset = read.offset;
       return read.value;
+    },
+    short() {
+      return this.int();
     },
     int() {
       const read = readSignedVarInt(payload, offset);
@@ -772,11 +816,49 @@ function createReader(payload) {
       offset = read.offset;
       return read.value;
     },
+    unsignedCount() {
+      let result = 0;
+      let shift = 0;
+      while (shift < 32) {
+        if (offset >= payload.length) throw new Error("truncated varint");
+        const byte = payload.readUInt8(offset++);
+        result |= (byte & 0x7f) << shift;
+        if ((byte & 0x80) === 0) return result >>> 0;
+        shift += 7;
+      }
+      throw new Error("varint too long");
+    },
+    nullableMarker() {
+      if (offset >= payload.length) throw new Error("truncated nullable marker");
+      return payload.readUInt8(offset++) !== 0;
+    },
+    miscItemList() {
+      const count = this.unsignedCount();
+      const items = [];
+      for (let index = 0; index < count; index += 1) {
+        if (!this.nullableMarker()) continue;
+        items.push({ itemId: this.int(), count: this.int() });
+      }
+      return items;
+    },
+    equipMiscCostMap() {
+      const count = this.unsignedCount();
+      const map = {};
+      for (let index = 0; index < count; index += 1) {
+        const equipUid = this.long();
+        if (!this.nullableMarker()) {
+          map[String(toBigInt(equipUid))] = [];
+          continue;
+        }
+        map[String(toBigInt(equipUid))] = this.miscItemList();
+      }
+      return map;
+    },
     presetIndexChanges() {
-      const count = this.int();
+      const count = this.unsignedCount();
       const changes = [];
       for (let index = 0; index < count; index += 1) {
-        this.bool(); // nullable object marker
+        if (!this.bool()) continue; // nullable object marker
         changes.push({ from: this.int(), to: this.int() });
       }
       return changes;

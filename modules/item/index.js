@@ -9,6 +9,7 @@ const {
 const { getMiscItemTemplet } = require("../game-data");
 const { spendMiscItem } = require("../inventory");
 const { grantRewardByType, createEmptyReward, grantChoiceItemReward } = require("../reward");
+const { completeMissionTracking, makeMissionTracking, addMissionTrackingCondition } = require("../mission-tracking");
 
 const PACKETS = Object.freeze({
   RANDOM_ITEM_BOX_OPEN_REQ: 1007,
@@ -29,11 +30,12 @@ function createItemHandler(packetId, name) {
         packetId === PACKETS.RANDOM_ITEM_BOX_OPEN_REQ
           ? buildRandomItemBoxOpenAck(ctx, user, request)
           : buildChoiceItemUseAck(ctx, user, request);
-      trackItemUseMission(ctx, user, request);
+      const missionTracking = trackItemUseMission(ctx, user, request);
       console.log(`[item:${name}] ACK packetId=${response.packetId} itemId=${request.itemId || request.itemID || 0} count=${request.count || 1}`);
       ctx.sendResponse(socket, packet.sequence, response.packetId, () =>
         ctx.buildEncryptedPacket(packet.sequence, response.packetId, response.payload)
       );
+      completeMissionTracking(ctx, socket, user, missionTracking, { label: "item-mission-update" });
       if (ctx && (!ctx.config || ctx.config.USE_LOCAL_USER_DB) && typeof ctx.saveUserDb === "function") ctx.saveUserDb();
       return true;
     },
@@ -41,20 +43,20 @@ function createItemHandler(packetId, name) {
 }
 
 function trackItemUseMission(ctx, user, request = {}) {
-  if (!ctx || typeof ctx.trackMissionEvent !== "function") return;
+  if (!ctx || typeof ctx.trackMissionEvent !== "function") return null;
   const itemId = Number(request.itemId || request.itemID || 0);
   const count = Math.max(1, Number(request.count || 1) || 1);
-  if (itemId <= 0 || count <= 0) return;
+  if (itemId <= 0 || count <= 0) return null;
   const nowValue = now(ctx);
+  const tracking = makeMissionTracking(nowValue);
   const changed = ctx.trackMissionEvent(user, "USE_RESOURCE", count, {
     now: nowValue,
     itemId,
     resourceId: itemId,
     value: itemId,
   });
-  if (changed && typeof ctx.refreshMissionProgress === "function") {
-    ctx.refreshMissionProgress(user, { now: nowValue, conditions: ["USE_RESOURCE"] });
-  }
+  addMissionTrackingCondition(tracking, "USE_RESOURCE", changed);
+  return tracking;
 }
 
 function buildRandomItemBoxOpenAck(ctx, user, request) {

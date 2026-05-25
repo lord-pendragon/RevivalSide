@@ -1,4 +1,6 @@
+const path = require("path");
 const { dateTimeBinaryNow, toBigInt } = require("../packet-codec");
+const { readGameplayTableRecords } = require("../gameplay-jsons");
 const {
   getEquipTemplet,
   getMissionTemplet,
@@ -27,10 +29,13 @@ const DEFAULT_PROFILE_EMBLEM_SLOTS = Number(process.env.CS_PROFILE_EMBLEM_SLOTS 
 const ACHIEVEMENT_POINT_ITEM_ID = 202;
 const DAILY_MISSION_POINT_ID = 203;
 const WEEKLY_MISSION_POINT_ID = 204;
+const DAILY_MISSION_TAB_ID = 2;
+const WEEKLY_MISSION_TAB_ID = 3;
 const TICKS_AT_UNIX_EPOCH = 621355968000000000n;
 const DATE_TIME_TICKS_MASK = 0x3fffffffffffffffn;
-const MAX_CLAIM_ALL_PASSES = 512;
+const ROOT_DIR = path.resolve(__dirname, "..", "..");
 let missionIdsWithMultipleGroups = null;
+let missionStageCatalog = null;
 
 function ensureAccountProgress(user) {
   if (!user || typeof user !== "object") return user;
@@ -39,6 +44,12 @@ function ensureAccountProgress(user) {
   user.completedMissions =
     user.completedMissions && typeof user.completedMissions === "object" ? user.completedMissions : {};
   user.missionCounters = user.missionCounters && typeof user.missionCounters === "object" ? user.missionCounters : {};
+  user.missionPointResetKeys =
+    user.missionPointResetKeys && typeof user.missionPointResetKeys === "object" ? user.missionPointResetKeys : {};
+  user.missionLoginDaysByEvent =
+    user.missionLoginDaysByEvent && typeof user.missionLoginDaysByEvent === "object" && !Array.isArray(user.missionLoginDaysByEvent)
+      ? user.missionLoginDaysByEvent
+      : {};
   user.missionLoginDays = Array.isArray(user.missionLoginDays) ? user.missionLoginDays : [];
   user.dailyMissionPoint = nonNegativeInt(user.dailyMissionPoint);
   user.weeklyMissionPoint = nonNegativeInt(user.weeklyMissionPoint);
@@ -144,13 +155,13 @@ function getMissionRowForRequest(request = {}, user = null) {
   const tabId = Number(request.tabId || 0);
   const groupId = Number(request.groupId || request.group_id || 0);
   if (!Number.isInteger(missionID) || missionID <= 0) return null;
-  if (tabId <= 0 && groupId <= 0) {
+  if (tabId <= 0 && groupId <= 0 && !missionIdHasMultipleGroups(missionID)) {
     const direct = getMissionTemplet(missionID);
-    return direct && direct.m_Enabled !== false ? direct : null;
+    return missionRowEnabledForUser(user, direct) ? direct : null;
   }
 
-  const candidates = (tabId > 0 ? getMissionTempletsByTabId(tabId) : [getMissionTemplet(missionID)])
-    .filter((row) => row && Number(row.m_MissionID) === missionID && row.m_Enabled !== false);
+  const candidates = (tabId > 0 ? getMissionTempletsByTabId(tabId) : getMissionTemplets())
+    .filter((row) => row && Number(row.m_MissionID) === missionID && missionRowEnabledForUser(user, row));
   if (groupId > 0) {
     const grouped = candidates.find((row) => Number(row && row.m_MissionCounterGroupID) === groupId);
     if (grouped) return grouped;
@@ -237,14 +248,18 @@ function completeMissionRow(user, row, request = {}, options = {}) {
   ensureAccountProgress(user);
   const missionID = Number(row && row.m_MissionID || request.missionID || request.missionId || request.id || 0);
   if (!user || !Number.isInteger(missionID) || missionID <= 0 || !row) return emptyMissionResult(request);
-  const state = buildEvaluatedMissionState(user, row, { now: options.now });
+  const state = buildEvaluatedMissionState(user, row, { now: options.now, eventDateKey: options.eventDateKey });
   const forceTutorialComplete = isTutorialMissionRow(row);
   if (forceTutorialComplete && state.rewardClaimed !== true) {
     state.times = Math.max(Number(state.times || 0), missionTargetTimes(row));
     state.rewardReady = true;
     state.completedAt = state.completedAt || new Date().toISOString();
   }
-  if (state.rewardClaimed === true || (!forceTutorialComplete && Number(state.times || 0) < missionTargetTimes(row))) {
+  if (
+    state.rewardClaimed === true ||
+    (!forceTutorialComplete &&
+      (!missionRequirementSatisfied(user, row) || Number(state.times || 0) < missionTargetTimes(row)))
+  ) {
     return {
       missionID,
       tabId: state.tabId,
@@ -290,40 +305,46 @@ function completeAllMissionsForTab(user, tabId, options = {}) {
     return { missionIDs: [], reward: emptyReward(), tabId: numericTabId };
   }
 
-  refreshMissionProgress(user, { now: options.now, tabId: numericTabId });
-  const groupedRows = buildMissionRowsByGroupForTab(numericTabId);
+  refreshMissionProgress(user, { now: options.now, tabId: numericTabId, eventDateKey: options.eventDateKey });
+  const groupedRows = buildMissionRowsByGroupForTab(numericTabId, user);
+  const claimables = [];
   const missionIDs = [];
   const seenMissionKeys = new Set();
   const reward = emptyReward();
 
-  for (let pass = 0; pass < MAX_CLAIM_ALL_PASSES; pass += 1) {
-    let claimedThisPass = 0;
-    for (const group of groupedRows) {
-      for (let groupPass = 0; groupPass < group.rows.length; groupPass += 1) {
-        const claimable = findClaimableMissionInGroup(user, group, { now: options.now });
-        const claimKey = claimable ? `${Number(claimable.mission.missionID || 0)}:${Number(claimable.mission.groupId || 0)}` : "";
-        if (!claimable || seenMissionKeys.has(claimKey)) break;
-        const result = completeMissionRow(user, claimable.row, claimable.mission, options);
-        const missionID = Number(result.missionID || 0);
-        if (!missionID || result.changed !== true || seenMissionKeys.has(claimKey)) break;
-        group.cursor = claimable.index + 1;
-        seenMissionKeys.add(claimKey);
-        missionIDs.push(missionID);
-        mergeMissionReward(reward, result.reward);
-        claimedThisPass += 1;
-      }
+  for (const group of groupedRows) {
+    const claimable = findClaimableMissionInGroup(user, group, { now: options.now, eventDateKey: options.eventDateKey });
+    const claimKey = claimable ? missionClaimKey(claimable.mission) : "";
+    if (!claimable || !claimKey || seenMissionKeys.has(claimKey)) continue;
+    seenMissionKeys.add(claimKey);
+    claimables.push({ ...claimable, claimKey });
+  }
+
+  for (const claimable of claimables) {
+    const currentState = buildEvaluatedMissionState(user, claimable.row, { now: options.now, eventDateKey: options.eventDateKey });
+    if (
+      currentState.rewardClaimed === true ||
+      missionClaimKey(currentState) !== claimable.claimKey ||
+      !missionRequirementSatisfied(user, claimable.row) ||
+      Number(currentState.times || 0) < missionTargetTimes(claimable.row)
+    ) {
+      continue;
     }
-    if (claimedThisPass <= 0) break;
+    const result = completeMissionRow(user, claimable.row, currentState, options);
+    const missionID = Number(result.missionID || 0);
+    if (!missionID || result.changed !== true) continue;
+    missionIDs.push(missionID);
+    mergeMissionReward(reward, result.reward);
   }
 
   return { missionIDs, reward, tabId: numericTabId };
 }
 
-function buildMissionRowsByGroupForTab(tabId) {
+function buildMissionRowsByGroupForTab(tabId, user = null) {
   const numericTabId = Number(tabId || 0);
   const rowsByGroup = new Map();
   for (const row of getMissionTempletsByTabId(numericTabId)) {
-    if (!row || row.m_Enabled === false) continue;
+    if (!missionRowEnabledForUser(user, row)) continue;
     const groupId = Number(row.m_MissionCounterGroupID || row.m_MissionID || 0);
     if (!Number.isInteger(groupId) || groupId <= 0) continue;
     if (!rowsByGroup.has(groupId)) rowsByGroup.set(groupId, []);
@@ -339,7 +360,7 @@ function findClaimableMissionInGroup(user, group, options = {}) {
   const startIndex = Array.isArray(group) ? 0 : Math.max(0, Number(group.cursor || 0) || 0);
   for (let index = startIndex; index < rows.length; index += 1) {
     const row = rows[index];
-    const state = buildEvaluatedMissionState(user, row, { now: options.now });
+    const state = buildEvaluatedMissionState(user, row, { now: options.now, eventDateKey: options.eventDateKey });
     if (state.rewardClaimed === true) {
       if (!Array.isArray(group)) group.cursor = index + 1;
       continue;
@@ -390,14 +411,14 @@ function donateMissionItem(user, request = {}, options = {}) {
 
   const condition = normalizeMissionCondition(row.m_MissionCond);
   if (condition !== "DONATE_MISSION_ITEM") {
-    const mission = buildEvaluatedMissionState(user, row, { now: options.now });
+    const mission = buildEvaluatedMissionState(user, row, { now: options.now, eventDateKey: options.eventDateKey });
     return { missionID, itemId: 0, count: 0, costItems: [], mission };
   }
 
   const itemId = primaryMissionValue(row, 0);
   const requested = nonNegativeInt(request.count);
   if (!itemId || requested <= 0) {
-    const mission = buildEvaluatedMissionState(user, row, { now: options.now });
+    const mission = buildEvaluatedMissionState(user, row, { now: options.now, eventDateKey: options.eventDateKey });
     return { missionID, itemId, count: 0, costItems: [], mission };
   }
 
@@ -409,7 +430,7 @@ function donateMissionItem(user, request = {}, options = {}) {
   if (donated > 0) {
     trackMissionEvent(user, "DONATE_MISSION_ITEM", donated, { now: options.now, itemId, value: itemId });
   }
-  const mission = buildEvaluatedMissionState(user, row, { now: options.now });
+  const mission = buildEvaluatedMissionState(user, row, { now: options.now, eventDateKey: options.eventDateKey });
   return {
     missionID,
     tabId: mission.tabId,
@@ -427,7 +448,9 @@ function refreshMissionProgress(user, options = {}) {
   const filterTabId = Number(options.tabId || 0);
   const conditionFilter = normalizeMissionConditionFilter(options.conditions || options.condition);
   const rows = (filterTabId > 0 ? getMissionTempletsByTabId(filterTabId) : getMissionTemplets()).filter(
-    (row) => !conditionFilter.size || conditionFilter.has(normalizeMissionCondition(row && row.m_MissionCond))
+    (row) =>
+      missionRowEnabledForUser(user, row) &&
+      (!conditionFilter.size || conditionFilter.has(normalizeMissionCondition(row && row.m_MissionCond)))
   );
   const fullScan = filterTabId <= 0 && conditionFilter.size <= 0;
   const seen = new Set();
@@ -438,8 +461,8 @@ function refreshMissionProgress(user, options = {}) {
     const key = missionStorageKeyForRow(row) || String(missionID);
     seen.add(key);
     const existing = getStoredMissionState(user, row);
-    const state = buildEvaluatedMissionState(user, row, { now });
-    if (shouldPersistMissionState(state, existing)) {
+    const state = buildEvaluatedMissionState(user, row, { now, eventDateKey: options.eventDateKey });
+    if (shouldPersistMissionState(state, existing, row)) {
       setStoredMissionState(user, row, state);
     } else {
       delete user.completedMissions[key];
@@ -456,8 +479,13 @@ function refreshMissionProgress(user, options = {}) {
 }
 
 function buildEvaluatedMissionState(user, row, options = {}) {
+  ensureMissionPointPeriods(user, options.now);
   const state = ensureMissionState(user, row, options);
-  const progress = Math.max(Number(state.times || 0), evaluateMissionProgress(user, row, options));
+  const evaluatedProgress = evaluateMissionProgress(user, row, options);
+  const progress =
+    isPeriodicMission(row) && state.rewardClaimed !== true
+      ? evaluatedProgress
+      : Math.max(Number(state.times || 0), evaluatedProgress);
   state.times = progress;
   state.targetTimes = missionTargetTimes(row);
   state.rewardReady = progress >= state.targetTimes;
@@ -468,11 +496,11 @@ function buildEvaluatedMissionState(user, row, options = {}) {
   return state;
 }
 
-function shouldPersistMissionState(state, existing = {}) {
+function shouldPersistMissionState(state, existing = {}, row = null) {
   if (!state) return false;
   if (state.rewardClaimed === true || (state.isComplete === true && state.claimedAt)) return true;
   if (existing.rewardClaimed === true || (existing.isComplete === true && existing.claimedAt)) return true;
-  if (existing.isComplete === true) return true;
+  if (existing.isComplete === true && !isPeriodicMission(row)) return true;
   return false;
 }
 
@@ -481,11 +509,31 @@ function recordMissionLogin(user, options = {}) {
   const dayKey = localDayKey(options.now || Date.now());
   if (!dayKey) return false;
   user.missionLoginDays = Array.isArray(user.missionLoginDays) ? user.missionLoginDays : [];
-  if (user.missionLoginDays.includes(dayKey)) return false;
-  user.missionLoginDays.push(dayKey);
-  user.missionLoginDays = Array.from(new Set(user.missionLoginDays)).sort();
-  trackMissionEvent(user, "LOGIN_DAYS", 1, { now: options.now, uniqueKey: dayKey });
-  trackMissionEvent(user, "LOGIN_TIMES", 1, { now: options.now, uniqueKey: dayKey });
+  const globalAdded = !user.missionLoginDays.includes(dayKey);
+  if (globalAdded) {
+    user.missionLoginDays.push(dayKey);
+    user.missionLoginDays = Array.from(new Set(user.missionLoginDays)).sort();
+    trackMissionEvent(user, "LOGIN_DAYS", 1, { now: options.now, uniqueKey: dayKey });
+    trackMissionEvent(user, "LOGIN_TIMES", 1, { now: options.now, uniqueKey: dayKey });
+  }
+
+  const eventDateKey = normalizeEventDateKey(options.eventDateKey || options.eventDate || options.eventAnchorDate);
+  const eventAdded = eventDateKey ? addEventMissionLoginDay(user, eventDateKey, dayKey) : false;
+  return globalAdded || eventAdded;
+}
+
+function addEventMissionLoginDay(user, eventDateKey, dayKey) {
+  if (!eventDateKey || !dayKey) return false;
+  user.missionLoginDaysByEvent =
+    user.missionLoginDaysByEvent && typeof user.missionLoginDaysByEvent === "object" && !Array.isArray(user.missionLoginDaysByEvent)
+      ? user.missionLoginDaysByEvent
+      : {};
+  const days = Array.isArray(user.missionLoginDaysByEvent[eventDateKey])
+    ? user.missionLoginDaysByEvent[eventDateKey]
+    : [];
+  if (days.includes(dayKey)) return false;
+  days.push(dayKey);
+  user.missionLoginDaysByEvent[eventDateKey] = Array.from(new Set(days)).sort();
   return true;
 }
 
@@ -495,6 +543,7 @@ function trackMissionEvent(user, condition, amount = 1, details = {}) {
   if (!user || delta <= 0) return false;
   const normalized = normalizeMissionCondition(condition);
   if (!normalized) return false;
+  ensureMissionPointPeriods(user, details.now);
   let changed = false;
   for (const scope of ["total", currentDailyCounterKey(details.now), currentWeeklyCounterKey(details.now)]) {
     changed = incrementMissionCounter(user, scope, normalized, delta, details) || changed;
@@ -569,8 +618,8 @@ function evaluateMissionProgress(user, row, options = {}) {
   if (condition === "JUST_OPEN") return target;
   if (condition === "TUTORIAL") return isTutorialMissionComplete(user, row) ? target : 0;
   if (condition === "ACCOUNT_LEVEL") return Number(user && user.level) || 1;
-  if (condition === "LOGIN_DAYS") return countLoginDays(user, row, options.now);
-  if (condition === "LOGIN_TIMES") return countLoginDays(user, row, options.now) > 0 ? 1 : 0;
+  if (condition === "LOGIN_DAYS") return countLoginDays(user, row, options);
+  if (condition === "LOGIN_TIMES") return countLoginDays(user, row, options) > 0 ? 1 : 0;
   if (condition === "HAVE_DAILY_POINT") return Number(user.dailyMissionPoint || 0);
   if (condition === "HAVE_WEEKLY_POINT") return Number(user.weeklyMissionPoint || 0);
   if (condition === "ACHIEVEMENT_CLEAR" || condition === "ACHIEVEMENT_CLEARED") return countClaimedMissions(user, { tabId: 4 });
@@ -617,6 +666,13 @@ function evaluateDerivedMissionProgress(user, row, condition) {
       return countShipsAtLevel(user, primaryMissionValue(row, missionTargetTimes(row)));
     case "COLLECT_OPR_LEVEL":
       return countOperatorsAtLevel(user, primaryMissionValue(row, missionTargetTimes(row)));
+    case "DIVE_CLEAR":
+      if (isPeriodicMission(row)) return 0;
+      return countDiveClears(user, missionValueNumbers(row));
+    case "DIVE_PLAY_RECORD":
+      return countDiveHistory(user, missionValueNumbers(row));
+    case "DIVE_HIGHEST_CLEARED":
+      return hasDiveClearedAtLeast(user, primaryMissionValue(row, 0)) ? 1 : 0;
     case "UNIT_LIMITBREAK_CONFLUENCE":
       return sumUnitsByMinimumField(user, "limitBreakLevel", 1);
     case "UNIT_LIMITBREAK":
@@ -656,9 +712,92 @@ function evaluateDerivedMissionProgress(user, row, condition) {
 function getMissionScopedCounter(user, row, condition, now) {
   const scope = counterScopeForMission(row, now);
   const counters = user && user.missionCounters && user.missionCounters[scope] ? user.missionCounters[scope] : {};
+  if (condition === "DAILY_DUNGEON_PLAY") {
+    return getClassifiedMissionCounter(counters, condition, isDailySimulationCounterValue);
+  }
+  if (condition === "EC_SUPPLY_CLEAR" || condition === "EC_SUPPLY_CLEARED") {
+    return getClassifiedMissionCounter(counters, condition, isSupplyCounterValue);
+  }
   const values = missionValueNumbers(row);
   if (!values.length) return Number(counters[condition] || 0);
   return Math.max(...values.map((value) => Number(counters[`${condition}:${value}`] || 0)), 0);
+}
+
+function getClassifiedMissionCounter(counters, condition, classifier) {
+  const byDungeon = new Map();
+  for (const [key, rawValue] of Object.entries(counters || {})) {
+    if (!key.startsWith(`${condition}:`)) continue;
+    const id = Number(key.slice(condition.length + 1));
+    if (!Number.isInteger(id) || id <= 0 || !classifier(id)) continue;
+    const canonicalKey = canonicalMissionCounterStageKey(id);
+    byDungeon.set(canonicalKey, Math.max(Number(byDungeon.get(canonicalKey) || 0), Number(rawValue || 0)));
+  }
+  return Array.from(byDungeon.values()).reduce((total, value) => total + Math.max(0, Number(value) || 0), 0);
+}
+
+function canonicalMissionCounterStageKey(id) {
+  const catalog = loadMissionStageCatalog();
+  const stage = catalog.stageById.get(Number(id));
+  if (stage) {
+    const dungeon = catalog.dungeonByStrId.get(String(stage.m_StageBattleStrID || ""));
+    const dungeonId = Number(dungeon && dungeon.m_DungeonID);
+    if (Number.isInteger(dungeonId) && dungeonId > 0) return `d:${dungeonId}`;
+    return `s:${Number(id)}`;
+  }
+  return catalog.dungeonById.has(Number(id)) ? `d:${Number(id)}` : `u:${Number(id)}`;
+}
+
+function isDailySimulationCounterValue(id) {
+  const text = missionCounterStageText(id);
+  return text.includes("DAILY") && !text.includes("SUPPLY");
+}
+
+function isSupplyCounterValue(id) {
+  return missionCounterStageText(id).includes("SUPPLY");
+}
+
+function missionCounterStageText(id) {
+  const catalog = loadMissionStageCatalog();
+  const stage = catalog.stageById.get(Number(id));
+  if (stage) {
+    return [
+      stage.m_OpenTag,
+      stage.m_StageStrID,
+      stage.m_StageBattleStrID,
+      stage.m_StageDesc,
+    ]
+      .map((value) => String(value || "").toUpperCase())
+      .join(" ");
+  }
+  const dungeon = catalog.dungeonById.get(Number(id));
+  if (dungeon) {
+    return [dungeon.m_DungeonStrID, dungeon.m_DungeonType, dungeon.m_DungeonDesc]
+      .map((value) => String(value || "").toUpperCase())
+      .join(" ");
+  }
+  return "";
+}
+
+function loadMissionStageCatalog() {
+  if (missionStageCatalog) return missionStageCatalog;
+  const stageById = new Map();
+  const dungeonById = new Map();
+  const dungeonByStrId = new Map();
+  for (const row of readGameplayTableRecords("ab_script", "LUA_STAGE_TEMPLET.json", { rootDir: ROOT_DIR, logLabel: "mission-stage" })) {
+    const id = Number(row && row.m_StageID);
+    if (Number.isInteger(id) && id > 0 && !stageById.has(id)) stageById.set(id, row);
+  }
+  for (const row of readGameplayTableRecords("ab_script_dungeon_templet", "LUA_DUNGEON_TEMPLET_BASE.json", {
+    rootDir: ROOT_DIR,
+    logLabel: "mission-stage",
+  })) {
+    const id = Number(row && row.m_DungeonID);
+    if (Number.isInteger(id) && id > 0 && !dungeonById.has(id)) dungeonById.set(id, row);
+    const strId = String(row && row.m_DungeonStrID || "");
+    if (strId && !dungeonByStrId.has(strId)) dungeonByStrId.set(strId, row);
+  }
+  missionStageCatalog = { stageById, dungeonById, dungeonByStrId };
+  return missionStageCatalog;
 }
 
 function grantMissionRewards(user, row, options = {}) {
@@ -698,6 +837,7 @@ function grantMissionRewards(user, row, options = {}) {
 }
 
 function grantMissionPoint(user, pointId, value, reward, options = {}) {
+  ensureMissionPointPeriods(user, options.now);
   if (pointId === DAILY_MISSION_POINT_ID) {
     user.dailyMissionPoint = nonNegativeInt(user.dailyMissionPoint) + value;
     reward.dailyMissionPoint = Number(reward.dailyMissionPoint || 0) + value;
@@ -775,12 +915,21 @@ function buildMissionDataEntries(user, options = {}) {
   const result = new Map();
   const rowsByGroup = new Map();
   const filterTabId = Number(options.tabId || 0);
-  if (options.skipRefresh !== true) refreshMissionProgress(user, { now: options.now, tabId: filterTabId });
+  const conditionFilter = normalizeMissionConditionFilter(options.conditions || options.condition);
+  if (options.skipRefresh !== true) {
+    refreshMissionProgress(user, {
+      now: options.now,
+      tabId: filterTabId,
+      conditions: options.conditions || options.condition,
+      eventDateKey: options.eventDateKey,
+    });
+  }
   const sourceRows = filterTabId > 0 ? getMissionTempletsByTabId(filterTabId) : getMissionTemplets();
   for (const row of sourceRows) {
-    if (!row || row.m_Enabled === false) continue;
+    if (!missionRowEnabledForUser(user, row)) continue;
     if (filterTabId > 0 && Number(row.m_MissionTabId || 0) !== filterTabId) continue;
     if (filterTabId <= 0 && !shouldSerializeMissionTab(row)) continue;
+    if (conditionFilter.size && !conditionFilter.has(normalizeMissionCondition(row.m_MissionCond))) continue;
     const groupId = Number(row.m_MissionCounterGroupID || row.m_MissionID || 0);
     if (!Number.isInteger(groupId) || groupId <= 0) continue;
     if (!rowsByGroup.has(groupId)) rowsByGroup.set(groupId, []);
@@ -789,9 +938,9 @@ function buildMissionDataEntries(user, options = {}) {
 
   for (const [groupId, rows] of rowsByGroup.entries()) {
     rows.sort(compareMissionRows);
-    const row = selectSerializableMissionRow(user, rows, { now: options.now });
+    const row = selectSerializableMissionRow(user, rows, { now: options.now, eventDateKey: options.eventDateKey });
     if (!row) continue;
-    const state = buildEvaluatedMissionState(user, row, { now: options.now });
+    const state = buildEvaluatedMissionState(user, row, { now: options.now, eventDateKey: options.eventDateKey });
     if (!shouldSerializeMissionState(state, row)) continue;
     result.set(groupId, [groupId, state]);
   }
@@ -803,17 +952,23 @@ function selectSerializableMissionRow(user, rows, options = {}) {
   const candidates = Array.isArray(rows) ? rows : [];
   const active = candidates.find((row) => {
     if (!missionRequirementSatisfied(user, row)) return false;
-    const state = buildEvaluatedMissionState(user, row, { now: options.now });
+    const state = buildEvaluatedMissionState(user, row, { now: options.now, eventDateKey: options.eventDateKey });
     return state.rewardClaimed !== true;
   });
   if (active) return active;
 
   for (let index = candidates.length - 1; index >= 0; index -= 1) {
     const row = candidates[index];
-    const state = buildEvaluatedMissionState(user, row, { now: options.now });
+    const state = buildEvaluatedMissionState(user, row, { now: options.now, eventDateKey: options.eventDateKey });
     if (state.rewardClaimed === true || (state.isComplete === true && state.claimedAt)) return row;
   }
   return null;
+}
+
+function missionClaimKey(mission = {}) {
+  const missionID = Number(mission.missionID || mission.mission_id || 0);
+  const groupId = Number(mission.groupId || mission.group_id || missionID || 0);
+  return missionID > 0 && groupId > 0 ? `${missionID}:${groupId}` : "";
 }
 
 function getAchievePoint(user) {
@@ -923,24 +1078,190 @@ function localDayKey(now = Date.now()) {
   return toDate(now).toISOString().slice(0, 10);
 }
 
+function normalizeEventDateKey(value) {
+  if (value instanceof Date && !Number.isNaN(value.getTime())) return value.toISOString().slice(0, 10);
+  if (typeof value === "bigint") {
+    const date = dateFromDateTimeTicks(value);
+    return date ? date.toISOString().slice(0, 10) : "";
+  }
+  const text = String(value || "").trim();
+  if (/^\d{4}-\d{2}-\d{2}$/.test(text)) return text;
+  if (/^\d+$/.test(text)) {
+    const raw = BigInt(text);
+    const date = raw > 9000000000000000n ? dateFromDateTimeTicks(raw) : new Date(Number(raw));
+    return date instanceof Date && !Number.isNaN(date.getTime()) ? date.toISOString().slice(0, 10) : "";
+  }
+  const parsed = Date.parse(text);
+  return Number.isFinite(parsed) ? new Date(parsed).toISOString().slice(0, 10) : "";
+}
+
 function toDate(value) {
-  if (typeof value === "bigint") return new Date();
+  if (value instanceof Date && !Number.isNaN(value.getTime())) return value;
+  if (typeof value === "bigint") return dateFromDateTimeTicks(value) || new Date();
+  const text = String(value == null || value === "" ? "" : value);
+  if (/^\d+$/.test(text)) {
+    const raw = BigInt(text);
+    if (raw > 9000000000000000n) return dateFromDateTimeTicks(raw) || new Date();
+    const numericText = Number(text);
+    if (Number.isFinite(numericText) && numericText > 1000000000000) return new Date(numericText);
+  }
   const numeric = Number(value);
-  if (Number.isFinite(numeric) && numeric > 1000000000000) return new Date(numeric);
+  if (Number.isFinite(numeric) && numeric > 1000000000000 && numeric < 9000000000000000) return new Date(numeric);
   const parsed = Date.parse(String(value || ""));
   if (Number.isFinite(parsed)) return new Date(parsed);
   return new Date();
 }
 
-function countLoginDays(user, row, now = Date.now()) {
-  const days = Array.isArray(user && user.missionLoginDays) ? user.missionLoginDays : [];
+function dateFromDateTimeTicks(value) {
+  try {
+    const ticks = BigInt(value) & DATE_TIME_TICKS_MASK;
+    if (ticks <= TICKS_AT_UNIX_EPOCH) return null;
+    const ms = (ticks - TICKS_AT_UNIX_EPOCH) / 10000n;
+    const maxDateMs = 8640000000000000n;
+    if (ms < -maxDateMs || ms > maxDateMs) return null;
+    const date = new Date(Number(ms));
+    return Number.isNaN(date.getTime()) ? null : date;
+  } catch (_) {
+    return null;
+  }
+}
+
+function ensureMissionPointPeriods(user, now = Date.now()) {
+  if (!user || typeof user !== "object") return;
+  ensureAccountProgress(user);
+  syncMissionPointPeriod(user, {
+    keyName: "daily",
+    fieldName: "dailyMissionPoint",
+    pointId: DAILY_MISSION_POINT_ID,
+    tabId: DAILY_MISSION_TAB_ID,
+    resetKey: currentDailyCounterKey(now),
+  });
+  syncMissionPointPeriod(user, {
+    keyName: "weekly",
+    fieldName: "weeklyMissionPoint",
+    pointId: WEEKLY_MISSION_POINT_ID,
+    tabId: WEEKLY_MISSION_TAB_ID,
+    resetKey: currentWeeklyCounterKey(now),
+  });
+}
+
+function syncMissionPointPeriod(user, config) {
+  const keys = user.missionPointResetKeys;
+  const explicitKey = String(keys[config.keyName] || "");
+  const storedKey = explicitKey || inferMissionPointResetKey(user, config.tabId);
+  const resetChanged = Boolean(storedKey && storedKey !== config.resetKey);
+  if (!explicitKey || resetChanged) {
+    if (resetChanged) {
+      clearMissionCounterScope(user, config.resetKey);
+      clearUnclaimedMissionStatesForResetKey(user, config.tabId, config.resetKey);
+    }
+    user[config.fieldName] = rebuildMissionPointTotalForResetKey(user, config.pointId, config.resetKey);
+  }
+  keys[config.keyName] = config.resetKey;
+}
+
+function clearMissionCounterScope(user, resetKey) {
+  if (!user || !resetKey || !user.missionCounters || typeof user.missionCounters !== "object") return;
+  if (user.missionCounters[resetKey] && typeof user.missionCounters[resetKey] === "object") {
+    user.missionCounters[resetKey] = {};
+  }
+}
+
+function clearUnclaimedMissionStatesForResetKey(user, tabId, resetKey) {
+  if (!user || !resetKey || !user.completedMissions || typeof user.completedMissions !== "object") return;
+  for (const [key, mission] of Object.entries(user.completedMissions)) {
+    if (!mission || String(mission.resetKey || "") !== String(resetKey)) continue;
+    if (Number(mission.tabId || 0) !== Number(tabId || 0)) continue;
+    if (mission.rewardClaimed === true || (mission.isComplete === true && mission.claimedAt)) continue;
+    delete user.completedMissions[key];
+  }
+}
+
+function inferMissionPointResetKey(user, tabId) {
+  const prefix = tabId === WEEKLY_MISSION_TAB_ID ? "weekly:" : "daily:";
+  const keys = Object.values((user && user.completedMissions) || {})
+    .map((mission) => (mission && Number(mission.tabId || 0) === tabId ? String(mission.resetKey || "") : ""))
+    .filter((key) => key.startsWith(prefix))
+    .sort();
+  return keys.length ? keys[keys.length - 1] : "";
+}
+
+function rebuildMissionPointTotalForResetKey(user, pointId, resetKey) {
+  let total = 0;
+  for (const mission of Object.values((user && user.completedMissions) || {})) {
+    if (!mission || mission.resetKey !== resetKey) continue;
+    if (!(mission.rewardClaimed === true || (mission.isComplete === true && mission.claimedAt))) continue;
+    total += missionPointRewardValue(getMissionRowForState(mission), pointId);
+  }
+  return total;
+}
+
+function getMissionRowForState(mission = {}) {
+  const missionID = Number(mission.missionID || mission.missionId || mission.id || 0);
+  const groupId = Number(mission.groupId || mission.group_id || mission.missionGroupId || missionID || 0);
+  const direct = getMissionTemplet(missionID);
+  if (direct && (!groupId || missionGroupId(direct) === groupId)) return direct;
+  return getMissionTemplets().find((row) => Number(row && row.m_MissionID) === missionID && missionGroupId(row) === groupId) || direct;
+}
+
+function missionPointRewardValue(row, pointId) {
+  let total = 0;
+  for (let index = 1; index <= 3; index += 1) {
+    if (String(row && row[`m_RewardType_${index}`] || "") !== "RT_MISSION_POINT") continue;
+    if (Number(row && row[`m_RewardID_${index}`] || 0) !== Number(pointId)) continue;
+    total += Math.max(0, Number(row && row[`m_RewardValue_${index}`] || 0) || 0);
+  }
+  return total;
+}
+
+function countLoginDays(user, row, options = {}) {
+  const now = options.now || Date.now();
   const interval = String(row && row.m_ResetInterval || "NONE").trim().toUpperCase();
+  const eventDateKey = normalizeEventDateKey(options.eventDateKey || options.eventDate || options.eventAnchorDate);
+  const days =
+    eventDateKey && isEventLoginMissionRow(row) && interval !== "DAILY" && interval !== "WEEKLY"
+      ? getEventMissionLoginDays(user, eventDateKey)
+      : Array.isArray(user && user.missionLoginDays)
+        ? user.missionLoginDays
+        : [];
   if (interval === "DAILY") return days.includes(localDayKey(now)) ? 1 : 0;
   if (interval === "WEEKLY") {
     const week = currentWeeklyCounterKey(now);
     return days.filter((day) => currentWeeklyCounterKey(day) === week).length;
   }
+  if (eventDateKey && isEventLoginMissionRow(row)) return countLoginDaysThrough(days, now);
   return days.length || (user && user.createdAt ? 1 : 0);
+}
+
+function getEventMissionLoginDays(user, eventDateKey) {
+  const store =
+    user && user.missionLoginDaysByEvent && typeof user.missionLoginDaysByEvent === "object" && !Array.isArray(user.missionLoginDaysByEvent)
+      ? user.missionLoginDaysByEvent
+      : {};
+  const days = Array.isArray(store[eventDateKey]) ? store[eventDateKey] : [];
+  return days.filter((day) => normalizeEventDateKey(day));
+}
+
+function countLoginDaysThrough(days, now = Date.now()) {
+  const today = localDayKey(now);
+  return (Array.isArray(days) ? days : []).filter((day) => normalizeEventDateKey(day) && String(day) <= today).length;
+}
+
+function isEventLoginMissionRow(row) {
+  if (!row) return false;
+  const tab = getMissionTabTemplet(Number(row.m_MissionTabId || 0) || 0);
+  const fields = [
+    row.m_OpenTag,
+    row.m_DateStrID,
+    row.m_IntervalStrID,
+    row.m_EventDateStrID,
+    row.m_MissionTab,
+    tab && tab.m_OpenTag,
+    tab && tab.m_DateStrID,
+    tab && tab.m_MissionTab,
+    tab && tab.m_MissionTabDesc,
+  ];
+  return fields.some((value) => String(value || "").toUpperCase().includes("EVENT"));
 }
 
 function countClearedDungeons(user, ids = []) {
@@ -962,6 +1283,33 @@ function countOwnedMisc(user, itemIds = []) {
     const item = items.find((entry) => Number(entry.itemId) === Number(itemId));
     return total + Number(toBigInt(item && item.countFree) + toBigInt(item && item.countPaid));
   }, 0);
+}
+
+function countDiveClears(user, stageIds = []) {
+  const cleared = diveStageSet(user, "diveClearStages");
+  if (!stageIds.length) return cleared.size;
+  return stageIds.filter((stageId) => cleared.has(Number(stageId))).length;
+}
+
+function countDiveHistory(user, stageIds = []) {
+  const history = diveStageSet(user, "diveHistoryStages");
+  if (!stageIds.length) return history.size;
+  return stageIds.filter((stageId) => history.has(Number(stageId))).length;
+}
+
+function hasDiveClearedAtLeast(user, stageId) {
+  const target = Number(stageId || 0);
+  if (!target) return false;
+  for (const clearedStageId of diveStageSet(user, "diveClearStages")) {
+    if (Number(clearedStageId) >= target) return true;
+  }
+  return false;
+}
+
+function diveStageSet(user, field) {
+  const worldMap = user && user.worldMap && typeof user.worldMap === "object" ? user.worldMap : {};
+  const dive = worldMap.dive && typeof worldMap.dive === "object" ? worldMap.dive : {};
+  return numberSet([...(Array.isArray(worldMap[field]) ? worldMap[field] : []), ...(Array.isArray(dive[field]) ? dive[field] : [])]);
 }
 
 function countUnitsAtLevel(user, level, unitIds = []) {
@@ -1137,6 +1485,25 @@ function shouldSerializeMissionTab(row) {
   const allowedTags = Array.isArray(tab.listContentsTagAllow) ? tab.listContentsTagAllow : [];
   if (allowedTags.some((tag) => String(tag || "").toUpperCase() === "TAG_MISSION_NOT_USED")) return false;
   return true;
+}
+
+function missionRowEnabledForUser(user, row) {
+  if (!row || row.m_Enabled === false) return false;
+  const contentsTags = tagSet(user && user.contentsTags);
+  const allowTags = normalizeTags(row.listContentsTagAllow);
+  if (allowTags.length && contentsTags.size && !allowTags.some((tag) => contentsTags.has(tag))) return false;
+  const ignoreTags = normalizeTags(row.listContentsTagIgnore);
+  if (ignoreTags.length && contentsTags.size && ignoreTags.some((tag) => contentsTags.has(tag))) return false;
+  return true;
+}
+
+function normalizeTags(values) {
+  const source = Array.isArray(values) ? values : values ? [values] : [];
+  return source.map((tag) => String(tag || "").trim().toUpperCase()).filter(Boolean);
+}
+
+function tagSet(values) {
+  return new Set(normalizeTags(values));
 }
 
 function compareMissionRows(left, right) {

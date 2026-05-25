@@ -21,6 +21,7 @@ const DEFAULT_NEXT_UNIT_UID = 9000000000000001n;
 const UNIT_LIMIT_BREAK_MAX_LEVEL = 120;
 const DECK_TYPE_NORMAL = 1;
 const DECK_TYPE_DAILY = 3;
+const DECK_TYPE_RAID = 4;
 const DECK_TYPE_DIVE = 8;
 const DECK_TYPE_EXPLORE = 10;
 
@@ -100,10 +101,10 @@ function ensureDefaultLineup(user, options = {}) {
   };
   const deck = ensureDeck(user, deckIndex);
   let hasUnits = deckHasUnitUids(deck);
-  if (!hasUnits && deckIndex.deckType === DECK_TYPE_DAILY) {
+  if (!hasUnits && (deckIndex.deckType === DECK_TYPE_DAILY || deckIndex.deckType === DECK_TYPE_RAID)) {
     const normalDeck = getDeckSet(user.army, DECK_TYPE_NORMAL)[deck.index];
     if (deckHasUnitUids(normalDeck)) {
-      deck.unitUids = normalDeck.unitUids.slice();
+      deck.unitUids = normalizeFixedArray(normalDeck.unitUids, deck.unitUids.length, 0);
       deck.shipUid = normalDeck.shipUid;
       deck.operatorUid = normalDeck.operatorUid;
       deck.leaderIndex = normalDeck.leaderIndex;
@@ -142,6 +143,7 @@ function buildPlayerDeckForGameLoad(user, req = {}, options = {}) {
   const units = [];
   let leaderUnitUid = "0";
   let leaderIndex = Number(options.leaderIndex != null ? options.leaderIndex : deck.leaderIndex);
+  const hasExplicitLeaderIndex = Number.isInteger(leaderIndex) && leaderIndex >= 0;
 
   for (const assignment of unitSlotAssignments) {
     const slotIndex = assignment.slotIndex;
@@ -159,9 +161,13 @@ function buildPlayerDeckForGameLoad(user, req = {}, options = {}) {
 
   if (!units.length) return null;
   if (toBigInt(leaderUnitUid) <= 0n) {
-    leaderUnitUid = units[0].unitUid;
-    leaderIndex = units[0].slotIndex;
-    if (!allowedUnitSlots) deck.leaderIndex = leaderIndex;
+    if (allowedUnitSlots && hasExplicitLeaderIndex) {
+      leaderUnitUid = "0";
+    } else {
+      leaderUnitUid = units[0].unitUid;
+      leaderIndex = units[0].slotIndex;
+      if (!allowedUnitSlots) deck.leaderIndex = leaderIndex;
+    }
   }
 
   const requestedShipUid = toBigInt(options.shipUid || 0) > 0n ? String(toBigInt(options.shipUid)) : deck.shipUid;
@@ -257,6 +263,7 @@ function buildDeckUnitSlotAssignments(deck, allowedUnitSlots, explicitSlotUnitUi
 
 function resolveDeckIndexForGameLoad(user, req = {}) {
   const index = normalizeDeckIndex(req.selectDeckIndex || 0);
+  if (toBigInt(req.raidUID || req.raidUid || 0) > 0n) return { deckType: DECK_TYPE_RAID, index };
   if (Number(req.diveStageID || 0) > 0) return { deckType: DECK_TYPE_DIVE, index };
   if (Number(req.exploreID || 0) > 0) return { deckType: DECK_TYPE_EXPLORE, index };
 
@@ -1118,7 +1125,7 @@ function deckHasUnitUids(deck) {
 function rememberCombatDeck(user, deckIndex) {
   if (!user || !deckIndex) return;
   const deckType = normalizeDeckType(deckIndex.deckType);
-  if (![DECK_TYPE_NORMAL, DECK_TYPE_DAILY, DECK_TYPE_DIVE, DECK_TYPE_EXPLORE].includes(deckType)) return;
+  if (![DECK_TYPE_NORMAL, DECK_TYPE_DAILY, DECK_TYPE_RAID, DECK_TYPE_DIVE, DECK_TYPE_EXPLORE].includes(deckType)) return;
   const army = ensureArmy(user);
   army.lastCombatDeckIndex = {
     deckType,

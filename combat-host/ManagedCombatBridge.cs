@@ -26,6 +26,7 @@ internal static class ManagedCombatBridge
     private const int ManagedMaxCatchUpFrames = 3;
     private const int ManagedActionPrimeFrames = 1;
     private const int QuietGameSyncPayloadBytes = 64;
+    private const float ClientSyncLeadSeconds = 0.4f;
 
     private static readonly Dictionary<string, ManagedCombatSession> Sessions = new();
     private static readonly string[] LocalJoinLobbyFields =
@@ -670,6 +671,7 @@ internal static class ManagedCombatBridge
         HostOptions options,
         StartBattleData data,
         DynamicGameState dynamicGame,
+        BattleState? battleState,
         out HostPacket? gameLoadAck,
         out string? error)
     {
@@ -709,6 +711,11 @@ internal static class ManagedCombatBridge
             runtime.Invoke(server, "EndGame");
             runtime.Invoke(server, "Init");
             runtime.SetField(gameData, "m_GameUID", dynamicGame.GameUID);
+            if (dynamicGame.RaidUID > 0)
+            {
+                runtime.SetField(gameData, "m_RaidUID", dynamicGame.RaidUID);
+            }
+            runtime.ApplyRaidDifficulty(gameData, dynamicGame);
             if (dynamicGame.DungeonID > 0)
             {
                 runtime.SetField(gameData, "m_DungeonID", dynamicGame.DungeonID);
@@ -768,7 +775,9 @@ internal static class ManagedCombatBridge
             var setupPackets = runtime.DrainClientPackets($"managed-setup-{dynamicGame.GameUID}");
 
             var sessionId = dynamicGame.GameUID.ToString(CultureInfo.InvariantCulture);
-            Sessions[sessionId] = new ManagedCombatSession(sessionId, runtime, server, setupPackets);
+            var session = new ManagedCombatSession(sessionId, runtime, server, setupPackets);
+            session.CaptureRaidBossState(dynamicGame, battleState);
+            Sessions[sessionId] = session;
             dynamicGame.ManagedSessionId = sessionId;
             dynamicGame.ManagedCombat = true;
             return true;
@@ -833,6 +842,7 @@ internal static class ManagedCombatBridge
             // stream. Drain only one local-server frame here so phase 2+ scripts
             // see the same steady cadence they get during the battle loop.
             packets.AddRange(session.UpdateAndDrain(ManagedFrameDelta, 1));
+            session.CaptureRaidBossState(dynamicGame, battleState);
             var sync = LastPayload(packets, GameSync);
             response = new HostResponse
             {
@@ -1033,6 +1043,7 @@ internal static class ManagedCombatBridge
             var frames = Math.Clamp((int)Math.Ceiling(requestedDelta / ManagedFrameDelta), 1, ManagedMaxCatchUpFrames);
             var delta = Math.Min(requestedDelta, ManagedFrameDelta * frames);
             var packets = session.UpdateAndDrain(delta, frames);
+            session.CaptureRaidBossState(data.DynamicGame, data.BattleState);
             var sync = LastPayload(packets, GameSync);
 
             response = new HostResponse
@@ -1084,7 +1095,11 @@ internal static class ManagedCombatBridge
         private readonly ManagedRuntime runtime;
         private readonly object server;
         private readonly List<HostPacket> setupPackets;
+        private readonly MethodInfo forceSyncDataPackFlushThisFrame;
+        private readonly MethodInfo syncDataPackFlush;
         private bool finishStateFlushedWithGameEnd;
+        private float initialRemainGameTime = -1f;
+        private float playStartClientGameTime = -1f;
 
         public ManagedCombatSession(string sessionId, ManagedRuntime runtime, object server, List<HostPacket> setupPackets)
         {
@@ -1092,6 +1107,8 @@ internal static class ManagedCombatBridge
             this.runtime = runtime;
             this.server = server;
             this.setupPackets = setupPackets;
+            forceSyncDataPackFlushThisFrame = runtime.GetMethod(server.GetType(), "ForceSyncDataPackFlushThisFrame");
+            syncDataPackFlush = runtime.GetMethod(server.GetType(), "SyncDataPackFlush");
         }
 
         public bool Started { get; private set; }
@@ -1127,7 +1144,9 @@ internal static class ManagedCombatBridge
         public HostPacket BuildLoadCompleteAck()
         {
             var packet = runtime.Create("ClientPacket.Game.NKMPacket_GAME_LOAD_COMPLETE_ACK");
-            runtime.SetField(packet, "gameRuntimeData", runtime.Invoke(server, "GetGameRuntimeData"));
+            var runtimeData = runtime.Invoke(server, "GetGameRuntimeData");
+            initialRemainGameTime = ReadFloat(runtime.GetField(runtimeData!, "m_fRemainGameTime"), -1f);
+            runtime.SetField(packet, "gameRuntimeData", runtimeData);
             runtime.SetField(packet, "rewardMultiply", 1);
             return runtime.SerializePacket(packet, GameLoadCompleteAck, "managed-load-complete");
         }
@@ -1328,14 +1347,198 @@ internal static class ManagedCombatBridge
             {
                 runtime.Invoke(server, "Update", ScaleFrameDeltaForRuntimeSpeed(frameDelta));
                 var framePackets = runtime.DrainClientPackets($"managed-session-{sessionId}");
+                if (!framePackets.Any(packet => packet.PacketId == GameSync) && IsRuntimeInPlayState())
+                {
+                    framePackets.AddRange(FlushSyncDataPackAndDrain());
+                }
                 if (!finishStateFlushedWithGameEnd && framePackets.Any(packet => packet.PacketId == GameEnd))
                 {
                     finishStateFlushedWithGameEnd = true;
                     output.AddRange(FlushFinishStateSync());
                 }
-                output.AddRange(framePackets);
+                output.AddRange(NormalizeTimerSyncs(framePackets));
             }
             return output;
+        }
+
+        private List<HostPacket> FlushSyncDataPackAndDrain()
+        {
+            forceSyncDataPackFlushThisFrame.Invoke(server, []);
+            syncDataPackFlush.Invoke(server, []);
+            return runtime.DrainClientPackets($"managed-forced-sync-{sessionId}");
+        }
+
+        private List<HostPacket> NormalizeTimerSyncs(List<HostPacket> packets)
+        {
+            if (initialRemainGameTime <= 0)
+            {
+                return packets;
+            }
+
+            var output = new List<HostPacket>(packets.Count);
+            foreach (var packet in packets)
+            {
+                output.Add(packet.PacketId == GameSync ? NormalizeTimerSync(packet) : packet);
+            }
+            return output;
+        }
+
+        private HostPacket NormalizeTimerSync(HostPacket packet)
+        {
+            if (string.IsNullOrWhiteSpace(packet.PayloadBase64)) return packet;
+
+            try
+            {
+                var managedPacket = runtime.DeserializePacket(GameSync, Convert.FromBase64String(packet.PayloadBase64));
+                var pack = runtime.GetField(managedPacket, "gameSyncDataPack");
+                var syncItems = pack == null ? null : runtime.GetField(pack, "m_listGameSyncData");
+                if (syncItems is not IEnumerable enumerable) return packet;
+
+                var syncBases = enumerable.Cast<object>().ToList();
+                var firstPlayPacket = false;
+                if (playStartClientGameTime < 0f)
+                {
+                    foreach (var syncBase in syncBases)
+                    {
+                        if (!SyncBaseStartsPlay(syncBase)) continue;
+                        var baseGameTime = Math.Max(0f, ReadFloat(runtime.GetField(syncBase, "m_fGameTime"), 0f));
+                        playStartClientGameTime = baseGameTime + ClientSyncLeadSeconds;
+                        firstPlayPacket = true;
+                        break;
+                    }
+                }
+
+                var changed = false;
+                foreach (var syncBase in syncBases)
+                {
+                    var baseGameTime = Math.Max(0f, ReadFloat(runtime.GetField(syncBase, "m_fGameTime"), 0f));
+                    var clientGameTime = baseGameTime + ClientSyncLeadSeconds;
+                    var currentRemain = ReadFloat(runtime.GetField(syncBase, "m_fRemainGameTime"), initialRemainGameTime);
+                    var playElapsed = playStartClientGameTime < 0 || firstPlayPacket
+                        ? 0f
+                        : Math.Max(0f, clientGameTime - playStartClientGameTime);
+                    var normalizedRemain = Math.Max(0f, initialRemainGameTime - playElapsed);
+                    if (Math.Abs(normalizedRemain - currentRemain) > 0.001f)
+                    {
+                        runtime.SetField(syncBase, "m_fRemainGameTime", normalizedRemain);
+                        changed = true;
+                    }
+                }
+
+                return changed ? runtime.SerializePacket(managedPacket, GameSync, packet.Label ?? "managed-timer-sync") : packet;
+            }
+            catch
+            {
+                return packet;
+            }
+        }
+
+        private bool SyncBaseStartsPlay(object syncBase)
+        {
+            try
+            {
+                if (runtime.GetField(syncBase, "m_NKMGameSyncData_GameState") is not IEnumerable gameStates)
+                {
+                    return false;
+                }
+
+                return gameStates.Cast<object>().Any(gameState =>
+                    string.Equals(
+                        Convert.ToString(runtime.GetField(gameState, "m_NKM_GAME_STATE"), CultureInfo.InvariantCulture),
+                        "NGS_PLAY",
+                        StringComparison.Ordinal));
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private bool IsRuntimeInPlayState()
+        {
+            try
+            {
+                var runtimeData = runtime.Invoke(server, "GetGameRuntimeData");
+                var state = Convert.ToString(runtime.GetField(runtimeData!, "m_NKM_GAME_STATE"), CultureInfo.InvariantCulture) ?? "";
+                return string.Equals(state, "NGS_PLAY", StringComparison.Ordinal);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private static float ReadFloat(object? value, float fallback)
+        {
+            try
+            {
+                return Convert.ToSingle(value, CultureInfo.InvariantCulture);
+            }
+            catch
+            {
+                return fallback;
+            }
+        }
+
+        public void CaptureRaidBossState(DynamicGameState? dynamicGame, BattleState? battleState)
+        {
+            if (dynamicGame == null || battleState == null || dynamicGame.RaidUID <= 0) return;
+            var snapshot = ReadTeamBossSnapshot(teamA: false, battleState);
+            if (snapshot.MaxHp <= 0) return;
+
+            if (battleState.RaidBossInitHp <= 0)
+            {
+                battleState.RaidBossInitHp = snapshot.MaxHp;
+            }
+
+            var initHp = Math.Max(1, battleState.RaidBossInitHp);
+            var currentHp = Math.Clamp(snapshot.CurHp, 0, initHp);
+            var damage = Math.Clamp(initHp - currentHp, 0, initHp);
+            battleState.RaidBossCurHp = currentHp;
+            battleState.RaidBossMaxHp = snapshot.MaxHp;
+            battleState.RaidBossDamage = damage;
+            battleState.RaidBossDamageRatio = damage / initHp;
+            battleState.RaidBossKilled = currentHp <= 0;
+        }
+
+        private (float CurHp, float MaxHp) ReadTeamBossSnapshot(bool teamA, BattleState battleState)
+        {
+            try
+            {
+                var unit = FindTeamBossUnit(teamA, includePool: true);
+                if (unit == null)
+                {
+                    var fallbackMax = (float)Math.Max(0, battleState.RaidBossMaxHp > 0 ? battleState.RaidBossMaxHp : battleState.RaidBossInitHp);
+                    return fallbackMax > 0 ? (0f, fallbackMax) : (0f, 0f);
+                }
+
+                var currentHp = ReadFloat(runtime.Invoke(unit, "GetHP"), 0f);
+                var maxHp = ReadFloat(runtime.Invoke(unit, "GetMaxHP"), 0f);
+                return (Math.Max(0f, currentHp), Math.Max(0f, maxHp));
+            }
+            catch
+            {
+                return (0f, 0f);
+            }
+        }
+
+        private object? FindTeamBossUnit(bool teamA, bool includePool)
+        {
+            var gameData = runtime.Invoke(server, "GetGameData");
+            if (gameData == null) return null;
+            var teamData = runtime.GetField(gameData, teamA ? "m_NKMGameTeamDataA" : "m_NKMGameTeamDataB");
+            var mainShip = teamData == null ? null : runtime.GetField(teamData, "m_MainShip");
+            var gameUnitUids = mainShip == null ? null : runtime.GetField(mainShip, "m_listGameUnitUID");
+            if (gameUnitUids is not IEnumerable enumerable) return null;
+
+            foreach (var value in enumerable)
+            {
+                var gameUnitUid = Convert.ToInt16(value, CultureInfo.InvariantCulture);
+                var unit = runtime.Invoke(server, "GetUnit", gameUnitUid, true, includePool);
+                if (unit != null) return unit;
+            }
+
+            return null;
         }
 
         private float ScaleFrameDeltaForRuntimeSpeed(float frameDelta)
@@ -1543,7 +1746,9 @@ internal static class ManagedCombatBridge
             if (IsTutorialDungeon(dynamicGame.DungeonID)) return "NGT_TUTORIAL";
             return dynamicGame.GameType switch
             {
+                8 => "NGT_RAID",
                 9 => "NGT_CUTSCENE",
+                12 => "NGT_RAID_SOLO",
                 13 => "NGT_SHADOW_PALACE",
                 14 => "NGT_FIERCE",
                 15 => "NGT_PHASE",
@@ -1750,11 +1955,23 @@ internal static class ManagedCombatBridge
                 if (firstAddedUnitUid <= 0) firstAddedUnitUid = unitUid;
             }
 
-            var leaderUid = Convert.ToInt64(GetField(teamA, "m_LeaderUnitUID") ?? 0, CultureInfo.InvariantCulture);
-            if (leaderUid <= 0)
+            var existingLeaderUid = Convert.ToInt64(GetField(teamA, "m_LeaderUnitUID") ?? 0, CultureInfo.InvariantCulture);
+            var playerLeaderUid = ParseLong(playerDeck.LeaderUnitUid);
+            if (playerLeaderUid > 0 && usedPlayerUnitUids.Contains(playerLeaderUid))
             {
-                var playerLeaderUid = ParseLong(playerDeck.LeaderUnitUid);
-                SetField(teamA, "m_LeaderUnitUID", playerLeaderUid > 0 ? playerLeaderUid : firstAddedUnitUid);
+                SetField(teamA, "m_LeaderUnitUID", playerLeaderUid);
+            }
+            else
+            {
+                var eventDeckLeaderUid = GetEventDeckLeaderUnitUid(unitList, eventDeckSlotPositions, playerDeck.LeaderIndex);
+                if (eventDeckLeaderUid > 0)
+                {
+                    SetField(teamA, "m_LeaderUnitUID", eventDeckLeaderUid);
+                }
+                else if (existingLeaderUid <= 0 && firstAddedUnitUid > 0)
+                {
+                    SetField(teamA, "m_LeaderUnitUID", firstAddedUnitUid);
+                }
             }
 
             RefreshTeamDeck(gameData, teamA, resetDeck: true);
@@ -1794,6 +2011,28 @@ internal static class ManagedCombatBridge
                 generatedIndex++;
             }
             return positions;
+        }
+
+        private long GetEventDeckLeaderUnitUid(object unitList, Dictionary<int, int> eventDeckSlotPositions, int leaderIndex)
+        {
+            if (leaderIndex < 0 || !eventDeckSlotPositions.TryGetValue(leaderIndex, out var listIndex)) return 0;
+            if (listIndex < 0) return 0;
+
+            if (unitList is IList list)
+            {
+                if (listIndex >= list.Count) return 0;
+                var unit = list[listIndex];
+                return unit == null ? 0 : Convert.ToInt64(GetField(unit, "m_UnitUID") ?? 0, CultureInfo.InvariantCulture);
+            }
+
+            if (unitList is not IEnumerable units) return 0;
+            var index = 0;
+            foreach (var unit in units)
+            {
+                if (index == listIndex) return Convert.ToInt64(GetField(unit, "m_UnitUID") ?? 0, CultureInfo.InvariantCulture);
+                index++;
+            }
+            return 0;
         }
 
         private static bool EventDeckSlotCreatesPresetUnit(string slotType)
@@ -1902,6 +2141,11 @@ internal static class ManagedCombatBridge
             SetField(gameData, "m_GameUnitUIDIndex", (short)0);
             SetField(gameData, "m_bLocal", false);
             SetField(gameData, "m_DungeonID", dynamicGame.DungeonID);
+            if (dynamicGame.RaidUID > 0)
+            {
+                SetField(gameData, "m_RaidUID", dynamicGame.RaidUID);
+            }
+            ApplyRaidDifficulty(gameData, dynamicGame);
             SetField(gameData, "m_MapID", dynamicGame.MapID);
             SetField(gameData, "m_TeamASupply", (byte)2);
             SetField(gameData, "m_bBossDungeon", false);
@@ -2342,11 +2586,20 @@ internal static class ManagedCombatBridge
             {
                 $"errorCode={GetField(packet, "errorCode")}",
                 $"gameUID={GetField(gameData, "m_GameUID")} gameUnitUIDIndex={GetField(gameData, "m_GameUnitUIDIndex")} local={GetField(gameData, "m_bLocal")}",
-                $"gameType={GetField(gameData, "m_NKM_GAME_TYPE")} dungeonID={GetField(gameData, "m_DungeonID")} mapID={GetField(gameData, "m_MapID")} teamASupply={GetField(gameData, "m_TeamASupply")} doubleCostTime={GetField(gameData, "m_fDoubleCostTime")}",
+                $"gameType={GetField(gameData, "m_NKM_GAME_TYPE")} dungeonID={GetField(gameData, "m_DungeonID")} raidUID={GetField(gameData, "m_RaidUID")} mapID={GetField(gameData, "m_MapID")} teamASupply={GetField(gameData, "m_TeamASupply")} teamBLevelFix={GetField(gameData, "m_TeamBLevelFix")} doubleCostTime={GetField(gameData, "m_fDoubleCostTime")}",
                 $"teamA={DescribeTeam(GetField(gameData, "m_NKMGameTeamDataA"))}",
                 $"teamB={DescribeTeam(GetField(gameData, "m_NKMGameTeamDataB"))}"
             };
             return string.Join(Environment.NewLine, lines);
+        }
+
+        public void ApplyRaidDifficulty(object gameData, DynamicGameState dynamicGame)
+        {
+            if (dynamicGame.RaidUID <= 0 || dynamicGame.RaidLevel <= 0) return;
+            var gameType = dynamicGame.GameType;
+            if (gameType != 8 && gameType != 12) return;
+            SetField(gameData, "m_TeamBLevelFix", dynamicGame.RaidLevel);
+            SetField(gameData, "m_TeamBLevelAdd", 0);
         }
 
         public string DescribeGameSync(object packet)

@@ -40,13 +40,13 @@ function createMissionHandlers() {
       handle(ctx, socket, packet) {
         const user = getSocketUser(ctx, socket);
         const req = decodeMissionCompleteReq(ctx, packet.payload);
-        const now = ctx.dateTimeBinaryNow ? ctx.dateTimeBinaryNow() : undefined;
-        const result = completeMission(user, req, { now, ctx });
+        const clock = getMissionClockOptions(ctx);
+        const result = completeMission(user, req, { ...clock, ctx });
         console.log(
           `[mission] complete uid=${user.userUid || "(ephemeral)"} missionID=${result.missionID} tabId=${result.tabId} groupId=${result.groupId} exp=${result.reward.userExp} achievePoint=${result.reward.achievePoint} eventPassExp=${result.reward.eventPassExpDelta || 0}`
         );
         send(ctx, socket, packet, MISSION_COMPLETE_ACK, buildMissionCompleteAckPayload(req, result));
-        sendPostClaimMissionUpdate(ctx, socket, user, result, { now });
+        sendPostClaimMissionUpdate(ctx, socket, user, result, clock);
         persist(ctx);
         return true;
       },
@@ -57,13 +57,13 @@ function createMissionHandlers() {
       handle(ctx, socket, packet) {
         const user = getSocketUser(ctx, socket);
         const req = decodeMissionGetCompleteRewardReq(ctx, packet.payload);
-        const now = ctx.dateTimeBinaryNow ? ctx.dateTimeBinaryNow() : undefined;
-        const result = completeMission(user, req, { now, ctx });
+        const clock = getMissionClockOptions(ctx);
+        const result = completeMission(user, req, { ...clock, ctx });
         console.log(
           `[mission] get-complete-reward uid=${user.userUid || "(ephemeral)"} missionID=${result.missionID} tabId=${result.tabId} groupId=${result.groupId} exp=${result.reward.userExp} achievePoint=${result.reward.achievePoint} eventPassExp=${result.reward.eventPassExpDelta || 0}`
         );
         send(ctx, socket, packet, MISSION_GET_COMPLETE_REWARD_ACK, buildMissionGetCompleteRewardAckPayload(req, result));
-        sendPostClaimMissionUpdate(ctx, socket, user, result, { now });
+        sendPostClaimMissionUpdate(ctx, socket, user, result, clock);
         persist(ctx);
         return true;
       },
@@ -74,13 +74,13 @@ function createMissionHandlers() {
       handle(ctx, socket, packet) {
         const user = getSocketUser(ctx, socket);
         const tabId = decodeMissionCompleteAllReq(ctx, packet.payload).tabId;
-        const now = ctx.dateTimeBinaryNow ? ctx.dateTimeBinaryNow() : undefined;
-        const result = completeAllMissionsForTab(user, tabId, { now, ctx });
+        const clock = getMissionClockOptions(ctx);
+        const result = completeAllMissionsForTab(user, tabId, { ...clock, ctx });
         console.log(
           `[mission] complete-all uid=${user.userUid || "(ephemeral)"} tabId=${tabId} missions=${result.missionIDs.length} exp=${result.reward.userExp} achievePoint=${result.reward.achievePoint} eventPassExp=${result.reward.eventPassExpDelta || 0}`
         );
         send(ctx, socket, packet, MISSION_COMPLETE_ALL_ACK, buildMissionCompleteAllAckPayload(result));
-        sendPostClaimMissionUpdate(ctx, socket, user, result, { now, tabId });
+        sendPostClaimMissionUpdate(ctx, socket, user, result, { ...clock, tabId });
         persist(ctx);
         return true;
       },
@@ -91,7 +91,7 @@ function createMissionHandlers() {
       handle(ctx, socket, packet) {
         const user = getSocketUser(ctx, socket);
         const req = decodeRandomMissionChangeReq(ctx, packet.payload);
-        const mission = resolveMissionStateForReq(user, req, { now: ctx.dateTimeBinaryNow ? ctx.dateTimeBinaryNow() : undefined });
+        const mission = resolveMissionStateForReq(user, req, getMissionClockOptions(ctx));
         console.log(
           `[mission] random-change uid=${user.userUid || "(ephemeral)"} tabId=${req.tabId} missionID=${req.missionId} groupId=${mission ? mission.groupId : 0}`
         );
@@ -106,7 +106,7 @@ function createMissionHandlers() {
       handle(ctx, socket, packet) {
         const user = getSocketUser(ctx, socket);
         const req = decodeMissionGiveItemReq(ctx, packet.payload);
-        const result = donateMissionItem(user, req, { now: ctx.dateTimeBinaryNow ? ctx.dateTimeBinaryNow() : undefined, ctx });
+        const result = donateMissionItem(user, req, { ...getMissionClockOptions(ctx), ctx });
         console.log(
           `[mission] give-item uid=${user.userUid || "(ephemeral)"} missionID=${result.missionID} itemId=${result.itemId} count=${result.count}`
         );
@@ -262,10 +262,14 @@ function decodeMissionGiveItemReq(ctx, encryptedPayload) {
 function resolveMissionStateForReq(user, req, options = {}) {
   const missionId = Number(req && (req.missionID || req.missionId) || 0);
   const tabId = Number(req && req.tabId || 0);
-  const entries = buildMissionDataEntries(user, { tabId, now: options.now }).map(([, mission]) => mission);
+  const entries = buildMissionDataEntries(user, {
+    tabId,
+    now: options.now,
+    eventDateKey: options.eventDateKey,
+  }).map(([, mission]) => mission);
   const matched = entries.find((mission) => Number(mission.missionID) === missionId);
   if (matched) return matched;
-  return updateMissionProgress(user, { missionID: missionId, tabId }, { now: options.now, tabId });
+  return updateMissionProgress(user, { missionID: missionId, tabId }, { now: options.now, eventDateKey: options.eventDateKey, tabId });
 }
 
 function decrypt(ctx, payload) {
@@ -304,7 +308,11 @@ function buildPostClaimMissionUpdates(user, result = {}, options = {}) {
   const seen = new Set();
   const missions = [];
   for (const tabId of tabIds) {
-    for (const [, mission] of buildMissionDataEntries(user, { tabId, now: options.now })) {
+    for (const [, mission] of buildMissionDataEntries(user, {
+      tabId,
+      now: options.now,
+      eventDateKey: options.eventDateKey,
+    })) {
       const key = `${Number(mission.groupId || 0)}:${Number(mission.missionID || 0)}`;
       if (seen.has(key)) continue;
       seen.add(key);
@@ -312,6 +320,11 @@ function buildPostClaimMissionUpdates(user, result = {}, options = {}) {
     }
   }
   return missions;
+}
+
+function getMissionClockOptions(ctx) {
+  if (ctx && typeof ctx.getMissionClockOptions === "function") return ctx.getMissionClockOptions();
+  return { now: ctx && ctx.dateTimeBinaryNow ? ctx.dateTimeBinaryNow() : undefined, eventDateKey: "" };
 }
 
 function persist(ctx) {

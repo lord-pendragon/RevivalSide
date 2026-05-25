@@ -495,7 +495,7 @@ function grantCounterPassRewardRow(ctx, user, row, lane, reward) {
   mergeReward(
     reward,
     grantRewardByType(ctx, user, type, id, count, count, 0, {
-      regDate: ctx && typeof ctx.dateTimeBinaryNow === "function" ? ctx.dateTimeBinaryNow() : dateTimeBinaryForDate(new Date()),
+      regDate: ctx && typeof ctx.dateTimeBinaryNow === "function" ? ctx.dateTimeBinaryNow() : dateTimeBinaryForDate(currentServerDate(ctx)),
       expandPackages: true,
     })
   );
@@ -575,6 +575,10 @@ function nextMissionResetDate(date, missionType) {
 }
 
 function currentServerDate(ctx) {
+  if (ctx && typeof ctx.getServerNowDate === "function") {
+    const date = ctx.getServerNowDate();
+    if (date instanceof Date && !Number.isNaN(date.getTime())) return date;
+  }
   const date = ctx && ctx.eventManager && ctx.eventManager.config ? ctx.eventManager.config.eventDate : null;
   return date instanceof Date && !Number.isNaN(date.getTime()) ? date : new Date();
 }

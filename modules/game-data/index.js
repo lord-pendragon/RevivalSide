@@ -1,5 +1,6 @@
 const path = require("path");
-const { readGameplayTableRecords } = require("../gameplay-jsons");
+const fs = require("fs");
+const { findGameplayTableFile, readGameplayTableRecords } = require("../gameplay-jsons");
 
 const ROOT_DIR = path.resolve(__dirname, "..", "..");
 const DEFAULT_COUNTER_PASS_UNLOCK_DUNGEON_IDS = Object.freeze([1001421]);
@@ -111,11 +112,44 @@ function loadGameData() {
     if (Number.isInteger(equipId) && equipId > 0 && !equipById.has(equipId)) equipById.set(equipId, record);
   }
   const equipRandomStats = groupByNumber(readRecords("ab_script", "LUA_ITEM_EQUIP_RANDOM_STAT.json"), "m_StatGroupID");
+  const equipPrecisionWeights = groupByNumber(
+    readRecords("ab_script_item_templet", "LUA_ITEM_EQUIP_PRECISION_WEIGHT.json"),
+    "PrecisionWeightId"
+  );
   const equipSetOptions = new Map();
   for (const record of readRecords("ab_script_item_templet", "LUA_ITEM_EQUIP_SET_OPTION.json")) {
     const setId = Number(record && record.m_EquipSetID);
     if (Number.isInteger(setId) && setId > 0 && !equipSetOptions.has(setId)) equipSetOptions.set(setId, record);
   }
+  const equipEnchantExp = new Map();
+  for (const record of readRecords("ab_script_item_templet", "LUA_EQUIP_ENCHANT_EXP_TABLE.json")) {
+    const tier = Number(record && record.m_EquipTier);
+    const level = Number(record && record.m_EquipEnchantLevel);
+    if (Number.isInteger(tier) && tier > 0 && Number.isInteger(level) && level >= 0) {
+      equipEnchantExp.set(makeEquipEnchantExpKey(tier, level), record);
+    }
+  }
+  const equipMolds = new Map();
+  for (const record of readRecords("ab_script_item_templet", "LUA_ITEM_MOLD_TEMPLET.json")) {
+    const moldId = Number(record && record.m_MoldID);
+    if (Number.isInteger(moldId) && moldId > 0 && !equipMolds.has(moldId)) equipMolds.set(moldId, record);
+  }
+  const moldRewardGroups = groupByNumber(readRecords("ab_script_item_templet", "LUA_RANDOM_MOLD_BOX_CL.json"), "m_RewardGroupID");
+  const equipUpgradeByCoreId = new Map();
+  for (const record of readRecords("ab_script", "LUA_ITEM_EQUIP_UPGRADE.json")) {
+    const coreEquipId = Number(record && record.CoreEquipID);
+    if (Number.isInteger(coreEquipId) && coreEquipId > 0 && !equipUpgradeByCoreId.has(coreEquipId)) {
+      equipUpgradeByCoreId.set(coreEquipId, record);
+    }
+  }
+  const equipPotentialOptions = groupByNumber(readRecords("ab_script", "LUA_ITEM_EQUIP_POTENTIAL_OPTION.json"), "m_PotentialOptionGroupID");
+  const commonConst = readTableObject("ab_script", "LUA_COMMON_CONST.json");
+  const equipEnchantMaterials = normalizeEquipEnchantMaterials(
+    commonConst && commonConst.globals && commonConst.globals.EquipEnchantModule
+  );
+  const relicRerollCountFactor = Number(
+    commonConst && commonConst.globals && commonConst.globals.RelicReroll && commonConst.globals.RelicReroll.RelicRerollCountFactor
+  ) || 1.63;
 
   const eventDecks = new Map();
   for (const record of readRecords("ab_script", "LUA_EVENTDECK_TEMPLET.json")) {
@@ -242,7 +276,15 @@ function loadGameData() {
     miscContracts,
     equipById,
     equipRandomStats,
+    equipPrecisionWeights,
     equipSetOptions,
+    equipEnchantExp,
+    equipEnchantMaterials,
+    equipMolds,
+    moldRewardGroups,
+    equipUpgradeByCoreId,
+    equipPotentialOptions,
+    relicRerollCountFactor,
     eventDecks,
     skinById,
     emoticonById,
@@ -535,6 +577,10 @@ function getEquipRandomStatRecords(groupId) {
   return (loadGameData().equipRandomStats.get(Number(groupId)) || []).slice();
 }
 
+function getEquipPrecisionWeightRecords(weightId) {
+  return (loadGameData().equipPrecisionWeights.get(Number(weightId)) || []).slice();
+}
+
 function getAllEquipRandomStatRecords() {
   return Array.from(loadGameData().equipRandomStats.values()).flat().slice();
 }
@@ -553,6 +599,62 @@ function getEquipSetOption(setOptionId) {
 
 function getAllEquipSetOptionRecords() {
   return Array.from(loadGameData().equipSetOptions.values()).slice();
+}
+
+function getEquipEnchantExpRecord(tier, level) {
+  return loadGameData().equipEnchantExp.get(makeEquipEnchantExpKey(tier, level)) || null;
+}
+
+function getEquipEnchantRequiredExp(tier, level, grade) {
+  const record = getEquipEnchantExpRecord(tier, level);
+  if (!record) return -1;
+  const suffix = normalizeEquipGradeSuffix(grade);
+  const direct = Number(record[`m_ReqLevelupEXP_${suffix}`]);
+  if (Number.isFinite(direct) && direct >= 0) return direct;
+  return Number(record.m_ReqLevelupEXP_SSR || record.m_ReqLevelupEXP_SR || record.m_ReqLevelupEXP_R || record.m_ReqLevelupEXP_N || -1);
+}
+
+function getEquipEnchantFeedExp(equipId, enchantLevel = 0) {
+  const templet = getEquipTemplet(equipId);
+  if (!templet) return 0;
+  const expRecord = getEquipEnchantExpRecord(templet.m_NKM_ITEM_TIER, enchantLevel);
+  const bonusRate = Number(expRecord && expRecord.m_ReqEnchantFeedEXPBonusRate);
+  const feedExp = Number(templet.m_FeedEXP || 0);
+  return Math.max(0, Math.trunc(feedExp * (Number.isFinite(bonusRate) && bonusRate > 0 ? bonusRate : 1)));
+}
+
+function getMaxEquipEnchantLevel(tier) {
+  let level = 0;
+  while (getEquipEnchantExpRecord(tier, level)) level += 1;
+  return Math.max(0, level - 1);
+}
+
+function getEquipEnchantMaterials() {
+  return loadGameData().equipEnchantMaterials.slice();
+}
+
+function getEquipMoldTemplet(moldId) {
+  return loadGameData().equipMolds.get(Number(moldId)) || null;
+}
+
+function getAllEquipMoldTemplets() {
+  return Array.from(loadGameData().equipMolds.values()).slice();
+}
+
+function getMoldRewardRecords(groupId) {
+  return (loadGameData().moldRewardGroups.get(Number(groupId)) || []).slice();
+}
+
+function getEquipUpgradeTemplet(coreEquipId) {
+  return loadGameData().equipUpgradeByCoreId.get(Number(coreEquipId)) || null;
+}
+
+function getEquipPotentialOptionRecords(groupId) {
+  return (loadGameData().equipPotentialOptions.get(Number(groupId)) || []).slice();
+}
+
+function getRelicRerollCountFactor() {
+  return Number(loadGameData().relicRerollCountFactor || 1.63) || 1.63;
 }
 
 function getEventDeckTemplet(eventDeckId) {
@@ -856,6 +958,29 @@ function mergeItemCosts(costs) {
     .sort((a, b) => a.itemId - b.itemId);
 }
 
+function makeEquipEnchantExpKey(tier, level) {
+  return `${Number(tier) || 0}:${Number(level) || 0}`;
+}
+
+function normalizeEquipGradeSuffix(grade) {
+  const text = String(grade || "").toUpperCase();
+  if (text.includes("SSR")) return "SSR";
+  if (text.includes("SR")) return "SR";
+  if (text.includes("R")) return "R";
+  return "N";
+}
+
+function normalizeEquipEnchantMaterials(moduleConst) {
+  const materials = Array.isArray(moduleConst && moduleConst.Materials) ? moduleConst.Materials : [];
+  return materials
+    .map((entry, index) => ({
+      index,
+      itemId: Number(entry && entry.ItemId) || 0,
+      exp: Math.max(0, Math.trunc(Number(entry && entry.Exp) || 0)),
+    }))
+    .filter((entry) => entry.itemId > 0 && entry.exp > 0);
+}
+
 function groupByNumber(records, key) {
   const map = new Map();
   for (const record of records) {
@@ -869,6 +994,17 @@ function groupByNumber(records, key) {
 
 function readRecords(directory, fileName) {
   return readGameplayTableRecords(directory, fileName, { rootDir: ROOT_DIR, logLabel: "game-data" });
+}
+
+function readTableObject(directory, fileName) {
+  const filePath = findGameplayTableFile(directory, fileName, { rootDir: ROOT_DIR });
+  if (!filePath || !fs.existsSync(filePath)) return null;
+  try {
+    return JSON.parse(fs.readFileSync(filePath, "utf8"));
+  } catch (err) {
+    console.log(`[game-data] failed to load ${filePath}: ${err.message}`);
+    return null;
+  }
 }
 
 function readMissionRecords(directory, fileName) {
@@ -909,10 +1045,22 @@ module.exports = {
   getAllEquipIds,
   getRandomEquipId,
   getEquipRandomStatRecords,
+  getEquipPrecisionWeightRecords,
   getAllEquipRandomStatRecords,
   getEquipSetOptionIds,
   getEquipSetOption,
   getAllEquipSetOptionRecords,
+  getEquipEnchantExpRecord,
+  getEquipEnchantRequiredExp,
+  getEquipEnchantFeedExp,
+  getMaxEquipEnchantLevel,
+  getEquipEnchantMaterials,
+  getEquipMoldTemplet,
+  getAllEquipMoldTemplets,
+  getMoldRewardRecords,
+  getEquipUpgradeTemplet,
+  getEquipPotentialOptionRecords,
+  getRelicRerollCountFactor,
   getEventDeckTemplet,
   getEventDeckUnitSlotTypes,
   getEventDeckFreeUnitSlots,

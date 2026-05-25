@@ -48,16 +48,11 @@ function createCombatHandler(options = {}) {
     capturedRespawnUnitPools: options.capturedRespawnUnitPools,
     parseCapturedGameSyncPayload: options.parseCapturedGameSyncPayload,
     extractGameLoadUnitPools: options.extractGameLoadUnitPools,
-    dynamicBattleGameUnitGroups: config.DYNAMIC_BATTLE_GAME_UNIT_GROUPS,
-    makeDynamicGameUid: options.makeDynamicGameUid,
-    mapIdForStageDungeon: options.mapIdForStageDungeon,
   });
   const deployHandler = createDeployHandler({
     tick: tickEngine,
-    syncBuilder,
     combatStateId: options.combatStateId,
     defaultDeployedUnitHp: options.defaultDeployedUnitHp,
-    dynamicBattleGameUnitGroups: config.DYNAMIC_BATTLE_GAME_UNIT_GROUPS,
   });
 
   function startBattle(initialData) {
@@ -71,10 +66,7 @@ function createCombatHandler(options = {}) {
         gameUID: String(gameUID),
         gameLoadAckPayloadBase64: initialData.gameLoadAckPayloadBase64 || "",
       });
-      if (response.ok && response.dynamicGame && response.battleState) {
-        if (response.error && !response.dynamicGame.managedCombat) {
-          warnCsharpFallback(response.error);
-        }
+      if (response.ok && response.dynamicGame && response.battleState && response.dynamicGame.managedCombat && response.payload) {
         initialData.replay.dynamicGame = response.dynamicGame;
         initialData.replay.battleState = response.battleState;
         initialData.replay.dynamicGame.gameUID = gameUID;
@@ -82,14 +74,15 @@ function createCombatHandler(options = {}) {
         initialData.replay.battleState.gameUID = gameUID;
         initialData.replay.tutorialReplayPhase = "dynamic";
         initialData.replay.syntheticGameTime = Number(response.battleState.gameTime || 4);
-        initialData.replay.battleSim = null;
         initialData.replay.dynamicBattleResultSent = false;
         initialData.replay.managedGameLoadAckPayload = response.payload || null;
         return response.dynamicGame;
       }
-      warnCsharpFallback(response.error);
+      warnCsharpFallback(response.error || "managed local server did not return GAME_LOAD_ACK");
+      return null;
     }
-    return stateManager.startBattle(initialData);
+    warnCsharpFallback("C# combat host disabled");
+    return null;
   }
 
   function attachGameLoadUnitPools(replay, activeStage, payload) {
@@ -124,12 +117,11 @@ function createCombatHandler(options = {}) {
       }
       if (replay.dynamicGame && replay.dynamicGame.managedCombat) {
         console.log(`[combat-host] managed deploy failed: ${summarizeHostError(response.error)}`);
-        disableManagedCombat(replay.dynamicGame, response.error);
-        return deployHandler.handleDeploy(request.replay, request.req);
+        return { handled: false, error: response.error || "managed deploy failed" };
       }
       warnCsharpFallback(response.error);
     }
-    return deployHandler.handleDeploy(request.replay, request.req);
+    return { handled: false };
   }
 
   function handlePause(request = {}) {
@@ -217,7 +209,7 @@ function createCombatHandler(options = {}) {
       }
       warnCsharpFallback(response.error);
     }
-    return syncBuilder.buildGameSync(data, { continueBattleStateUnits: tickEngine.continueBattleStateUnits });
+    return null;
   }
 
   function buildSyncPackets(data = {}) {
@@ -243,20 +235,11 @@ function createCombatHandler(options = {}) {
       }
       if (data.dynamicGame && data.dynamicGame.managedCombat) {
         console.log(`[combat-host] managed sync packets failed: ${summarizeHostError(response.error)}`);
-        disableManagedCombat(data.dynamicGame, response.error);
-        const fallbackPayload = buildSync({
-          ...data,
-          delta: data.delta == null ? defaultDelta : Number(data.delta),
-          skipSimulation: Boolean(data.skipSimulation),
-        });
-        if (fallbackPayload) {
-          return [{ packetId: constants.NPT_GAME_SYNC_DATA_PACK_NOT, payload: fallbackPayload, label: "dynamic-game-sync" }];
-        }
         return [];
       }
       warnCsharpFallback(response.error);
     }
-    return [{ packetId: constants.NPT_GAME_SYNC_DATA_PACK_NOT, payload: buildSync(data), label: "dynamic-game-sync" }];
+    return [];
   }
 
   function buildInitialSync(replay) {
@@ -271,7 +254,7 @@ function createCombatHandler(options = {}) {
       }
       warnCsharpFallback(response.error);
     }
-    return syncBuilder.buildInitialBattleSync(replay, { continueBattleStateUnits: tickEngine.continueBattleStateUnits });
+    return null;
   }
 
   function buildInitialPackets(replay) {
@@ -297,7 +280,7 @@ function createCombatHandler(options = {}) {
       }
       warnCsharpFallback(response.error);
     }
-    return [{ packetId: constants.NPT_GAME_SYNC_DATA_PACK_NOT, payload: buildInitialSync(replay), label: "dynamic-game-sync" }];
+    return [];
   }
 
   function buildRespawnAck(data = {}) {
@@ -414,7 +397,7 @@ function createCombatHandler(options = {}) {
         console.log("[battle-manager] managed combat emitted GAME_END_NOT; stopped sync loop");
         return { running: false, sent: outboundPackets.length > 0 };
       }
-      const finishedState = replay.battleState && replay.battleState.finished ? replay.battleState : replay.battleSim;
+      const finishedState = replay.battleState && replay.battleState.finished ? replay.battleState : null;
       if (finishedState && finishedState.finished && !replay.dynamicBattleResultSent) {
         replay.dynamicBattleResultSent = true;
         if (replay.dynamicBattleTimer) clearInterval(replay.dynamicBattleTimer);
@@ -448,10 +431,11 @@ function createCombatHandler(options = {}) {
       const delta = managedCombat
         ? clampValue(elapsedSeconds, 0.001, defaultSyncDelta(replay.dynamicGame) * 3)
         : clampValue(elapsedSeconds, 0.001, 0.25);
-      const packets =
-        replay.battleState && replay.dynamicGame
-          ? buildSyncPackets({ dynamicGame: replay.dynamicGame, battleState: replay.battleState, delta })
-          : [{ packetId: constants.NPT_GAME_SYNC_DATA_PACK_NOT, payload: buildBattleSimSyncPayload(replay, delta), label: "battle-manager-sync" }];
+      if (!replay.battleState || !replay.dynamicGame || !replay.dynamicGame.managedCombat) {
+        console.log("[battle-manager] managed combat state unavailable; JS simulator fallback is disabled");
+        return { running: false, sent: false };
+      }
+      const packets = buildSyncPackets({ dynamicGame: replay.dynamicGame, battleState: replay.battleState, delta });
       return sendPumpedPackets(packets, pumpOptions);
     };
     for (let index = 0; index < primeFrames; index += 1) {
@@ -504,145 +488,6 @@ function createCombatHandler(options = {}) {
     return { win: Boolean(state.win), gameTime: Number(state.gameTime || 0), state };
   }
 
-  function buildBattleSimSyncPayload(replay, delta) {
-    const sim = deployHandler.initBattleSimulator(replay);
-    if (sim.finished && sim.finishSent) {
-      return buildSync({ gameTime: sim.gameTime, absoluteGameTime: sim.absoluteGameTime, baseEntries: [] });
-    }
-
-    sim.tick += 1;
-    sim.gameTime += delta;
-    sim.absoluteGameTime += delta;
-    sim.remainGameTime = Math.max(0, sim.remainGameTime - delta);
-    sim.respawnCostA1 = tickEngine.clamp(sim.respawnCostA1 + delta * 0.8, 0, 10);
-    sim.respawnCostB1 = tickEngine.clamp(sim.respawnCostB1 + delta * 0.8, 0, 10);
-
-    const livePlayers = sim.units.filter((unit) => unit.team === 1 && unit.alive);
-    for (const unit of livePlayers) advanceBattleUnit(sim, unit, delta);
-
-    settleBattleOutcome(sim);
-
-    const visibleUnits = sim.units
-      .filter((unit) => unit.alive || unit.playState === 2)
-      .map((unit) => {
-        const respawn = unit.respawn;
-        unit.respawn = false;
-        const speedSign = unit.right ? 1 : -1;
-        return {
-          ...unit,
-          respawn,
-          hp: Math.max(0, unit.hp),
-          speedX: Math.abs(unit.speedCurrent || 0),
-          savedPosX: unit.x,
-          right: unit.right,
-          targetUID: unit.targetUID || 0,
-          playState: unit.playState == null ? 1 : unit.playState,
-          damageSpeedXNegative: speedSign < 0,
-        };
-      });
-
-    for (const unit of sim.units) {
-      if (unit.playState === 2) {
-        unit.dyingFrames = (unit.dyingFrames || 0) + 1;
-        if (unit.dyingFrames >= 2 && !unit.deadSynced) {
-          unit.deadSynced = true;
-          unit.playState = 0;
-          sim.pendingDieUnitUIDs.push(unit.gameUnitUID);
-        }
-      }
-    }
-
-    const base = syncBuilder.buildGameSyncDataBase({
-      gameTime: sim.gameTime,
-      remainGameTime: sim.remainGameTime,
-      respawnCostA1: sim.respawnCostA1,
-      respawnCostB1: sim.respawnCostB1,
-      respawnCostAssistA1: sim.respawnCostAssistA1,
-      respawnCostAssistB1: sim.respawnCostAssistB1,
-      usedRespawnCostA1: sim.usedRespawnCostA1,
-      usedRespawnCostB1: sim.usedRespawnCostB1,
-      gameSpeedType: sim.gameSpeedType == null ? replay.dynamicGame && replay.dynamicGame.gameSpeedType : sim.gameSpeedType,
-      autoSkillTypeA: sim.autoSkillType == null ? replay.dynamicGame && replay.dynamicGame.autoSkillType : sim.autoSkillType,
-      dieUnits: sim.pendingDieUnitUIDs.length ? [sim.pendingDieUnitUIDs.splice(0)] : [],
-      units: visibleUnits,
-      decks: sim.pendingDeckSyncs.splice(0),
-      gameStates: sim.pendingGameStates.splice(0),
-    });
-
-    if (sim.tick % 10 === 0 && !sim.finished) {
-      const players = sim.units.filter((unit) => unit.team === 1 && unit.alive).length;
-      console.log(`[battle-manager] t=${sim.gameTime.toFixed(1)} players=${players} targetHp=${sim.targetHp.toFixed(0)}`);
-    }
-
-    return buildSync({ gameTime: sim.gameTime, absoluteGameTime: sim.absoluteGameTime, baseEntries: [base] });
-  }
-
-  function advanceBattleUnit(sim, unit, delta) {
-    if (unit.spawnGrace > 0) {
-      unit.spawnGrace = Math.max(0, unit.spawnGrace - delta);
-      tickEngine.setBattleUnitState(unit, 13);
-      unit.speedCurrent = 0;
-      return;
-    }
-
-    unit.attackTimer = Math.max(0, Number(unit.attackTimer || 0) - delta);
-    unit.attackStateTime = Math.max(0, Number(unit.attackStateTime || 0) - delta);
-    const target = sim.targetHp > 0 ? { gameUnitUID: sim.targetUID, x: sim.targetX } : null;
-    unit.targetUID = target ? target.gameUnitUID : 0;
-    if (!target) {
-      unit.speedCurrent = 0;
-      tickEngine.setBattleUnitState(unit, 12);
-      return;
-    }
-
-    const dir = target.x >= unit.x ? 1 : -1;
-    unit.right = dir >= 0;
-    const distance = Math.abs(target.x - unit.x);
-    if (distance > unit.attackRange) {
-      const step = Math.min(unit.speedX * delta, distance - unit.attackRange);
-      unit.speedCurrent = dir * unit.speedX;
-      unit.x += dir * step;
-      tickEngine.setBattleUnitState(unit, 13);
-      unit.hitDone = false;
-      return;
-    }
-
-    unit.speedCurrent = 0;
-    if (unit.attackTimer <= 0) {
-      unit.attackTimer = unit.attackCooldown;
-      unit.attackStateTime = Math.max(unit.hitFrame + 0.1, unit.attackCooldown * 0.55);
-      unit.hitDone = false;
-      tickEngine.setBattleUnitState(unit, 45);
-    }
-
-    if (!unit.hitDone && unit.attackCooldown - unit.attackTimer >= unit.hitFrame) {
-      unit.hitDone = true;
-      sim.targetHp = Math.max(0, sim.targetHp - unit.attackDamage);
-    }
-
-    if (unit.attackStateTime <= 0 && unit.attackTimer > 0) {
-      tickEngine.setBattleUnitState(unit, 12);
-    }
-  }
-
-  function settleBattleOutcome(sim) {
-    if (sim.finished) return;
-    const livePlayers = sim.units.filter((unit) => unit.team === 1 && unit.alive);
-    if (sim.targetHp <= 0 || livePlayers.some((unit) => unit.x >= 1460)) {
-      finishBattle(sim, true);
-    } else if (sim.remainGameTime <= 0 || (sim.playerUnitCount > 0 && livePlayers.length === 0)) {
-      finishBattle(sim, false);
-    }
-  }
-
-  function finishBattle(sim, win) {
-    sim.finished = true;
-    sim.finishSent = true;
-    sim.win = Boolean(win);
-    sim.gameState = 4;
-    sim.pendingGameStates.push({ state: 4, winTeam: win ? 1 : 3, waveId: sim.waveId });
-  }
-
   function deployStageLineup(replay) {
     if (csharpHost.enabled && replay && replay.battleState && replay.dynamicGame) {
       const response = csharpHost.request("deployStageLineup", {
@@ -655,7 +500,7 @@ function createCombatHandler(options = {}) {
       }
       warnCsharpFallback(response.error);
     }
-    return stateManager.deployStageLineup(replay);
+    return [];
   }
 
   function applyHostState(replay, response) {
@@ -686,19 +531,11 @@ function createCombatHandler(options = {}) {
     deployHandler.deployRuntimeBattleUnit(replay, req);
   }
 
-  function disableManagedCombat(dynamicGame, error) {
-    if (!dynamicGame || !dynamicGame.managedCombat) return;
-    dynamicGame.managedCombat = false;
-    dynamicGame.managedSessionId = "";
-    dynamicGame.managedDisabledReason = summarizeHostError(error);
-    console.log(`[combat-host] switched to fallback sync after managed error: ${dynamicGame.managedDisabledReason}`);
-  }
-
   function warnCsharpFallback(error) {
     if (csharpWarningPrinted) return;
     csharpWarningPrinted = true;
     console.log(
-      `[combat-host] managed CounterSide local server unavailable; using fallback combat host${
+      `[combat-host] managed CounterSide local server unavailable; JS combat simulator fallback disabled${
         error ? `: ${summarizeHostError(error)}` : ""
       }`
     );
@@ -736,7 +573,6 @@ function createCombatHandler(options = {}) {
     normalizeJoinLobbyAck,
     buildGameEndNot: syncBuilder.buildGameEndNot,
     buildSyntheticGameSyncPayload,
-    initBattleSimulator: deployHandler.initBattleSimulator,
     startBattleLoop,
     isFinished,
     getResult,
@@ -744,7 +580,6 @@ function createCombatHandler(options = {}) {
     attachGameLoadUnitPools,
     describeRuntimeGameUnitPools: stateManager.describeRuntimeGameUnitPools,
     transitionTutorialReplayToDynamic,
-    buildBattleSimSyncPayload,
   };
 }
 

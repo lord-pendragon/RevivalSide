@@ -15,7 +15,6 @@ module.exports = {
       officialCaptureExhaustedLogged: false,
       dynamicBattleResultSent: false,
       lastRespawnReq: null,
-      battleSim: null,
     };
     if (user) {
       socket.session.user = user;

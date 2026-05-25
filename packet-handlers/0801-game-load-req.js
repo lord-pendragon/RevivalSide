@@ -66,7 +66,9 @@ module.exports = {
             : ""
         }units=${playerDeck.units
           .map((unit) => `${unit.slotIndex}:${unit.unitId}/${unit.unitUid}`)
-          .join(",")} ship=${playerDeck.shipUnitId}/${playerDeck.shipUid} operator=${playerDeck.operatorId}/${playerDeck.operatorUid}`
+          .join(",")} leader=${playerDeck.leaderIndex}:${playerDeck.leaderUnitUid} ship=${playerDeck.shipUnitId}/${
+          playerDeck.shipUid
+        } operator=${playerDeck.operatorId}/${playerDeck.operatorUid}`
       );
     } else if (stage && usesEventDeck) {
       console.log(`[game-load] eventDeck=${stage.eventDeckId || stage.EventDeckId} stageID=${stage.stageId} dungeonID=${stage.dungeonID}`);
