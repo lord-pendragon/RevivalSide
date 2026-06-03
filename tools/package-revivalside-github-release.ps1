@@ -7,10 +7,15 @@ param(
   [switch]$SkipUniversalBuild,
   [switch]$SkipPayloadArchive,
   [switch]$KeepArchive,
+  [switch]$UseExistingArchive,
   [switch]$Upload
 )
 
 $ErrorActionPreference = "Stop"
+
+if ($SkipPayloadArchive -and $UseExistingArchive) {
+  throw "-SkipPayloadArchive cannot be combined with -UseExistingArchive."
+}
 
 $root = Resolve-Path (Join-Path $PSScriptRoot "..")
 $rootPath = $root.Path
@@ -154,7 +159,7 @@ if (-not (Test-Path -LiteralPath $payloadDir -PathType Container)) {
   throw "Payload folder was not found: $payloadDir"
 }
 
-if (Test-Path -LiteralPath $outputPath) {
+if ((Test-Path -LiteralPath $outputPath) -and -not $UseExistingArchive) {
   Remove-Item -LiteralPath $outputPath -Recurse -Force
 }
 New-Item -ItemType Directory -Force -Path $outputPath | Out-Null
@@ -174,10 +179,37 @@ if (-not $SkipPayloadArchive) {
   $archiveName = "RevivalSidePayload-$ReleaseTag.zip"
   $partPrefix = $archiveName
   $archivePath = Join-Path $outputPath $archiveName
-  New-PayloadZip $payloadDir $archivePath
+  $chunkSizeBytes = [long]$ChunkSizeMB * 1MB
+
+  if ($UseExistingArchive) {
+    if (-not (Test-Path -LiteralPath $archivePath -PathType Leaf)) {
+      throw "Existing payload archive was not found: $archivePath"
+    }
+    Write-Host "Reusing existing payload archive: $archivePath"
+  }
+  else {
+    New-PayloadZip $payloadDir $archivePath
+  }
+
   $archiveItem = Get-Item -LiteralPath $archivePath
   $archiveSha256 = Get-FileSha256 $archivePath
-  $chunks = Split-File $archivePath $outputPath $partPrefix ([long]$ChunkSizeMB * 1MB)
+  Get-ChildItem -LiteralPath $outputPath -File -Filter "$partPrefix.part*" -ErrorAction SilentlyContinue |
+    Remove-Item -Force
+
+  if ($archiveItem.Length -le $chunkSizeBytes) {
+    Write-Host ("Using single archive asset {0} ({1:N2} MB)" -f $archiveName, ($archiveItem.Length / 1MB))
+    $chunks = @(
+      [ordered]@{
+        name = $archiveName
+        size = $archiveItem.Length
+        sha256 = $archiveSha256
+      }
+    )
+  }
+  else {
+    $chunks = Split-File $archivePath $outputPath $partPrefix $chunkSizeBytes
+  }
+
   $manifest = [ordered]@{
     schemaVersion = 1
     payloadId = "revivalside-$ReleaseTag-$($archiveSha256.Substring(0, 12))"
@@ -187,7 +219,7 @@ if (-not $SkipPayloadArchive) {
     chunks = $chunks
   }
   $manifest | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath (Join-Path $outputPath $manifestAssetName) -Encoding UTF8
-  if (-not $KeepArchive) { Remove-Item -LiteralPath $archivePath -Force }
+  if ($archiveItem.Length -gt $chunkSizeBytes -and -not $KeepArchive) { Remove-Item -LiteralPath $archivePath -Force }
 }
 
 @"
