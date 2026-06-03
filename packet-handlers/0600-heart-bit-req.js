@@ -8,6 +8,16 @@ module.exports = {
 
     const replay = socket.session.gameReplay;
     replay.heartbeatCount += 1;
+    if (ctx.isTutorialCapturedBootstrapActive(socket)) {
+      if (!replay.loadCompleteReceived) {
+        ctx.sendServerGamePacket(socket, ctx.constants.HEART_BIT_ACK, ctx.writeSignedVarLong(time), "heart-bit");
+        ctx.sendStaminaChargeNotifications(socket, "heart-bit-charge-item");
+        console.log("[capture-game] heartbeat before GAME_LOAD_COMPLETE_REQ; deferring tutorial captured sync until load complete");
+        return true;
+      }
+      ctx.sendCapturedTutorialHeartbeatReply(socket, time, "heart-bit");
+      return true;
+    }
     if (ctx.config.REPLAY_CAPTURED_GAME_FLOW && ctx.capturedGameFlow) {
       if (!replay.loadCompleteReceived) {
         ctx.sendServerGamePacket(socket, ctx.constants.HEART_BIT_ACK, ctx.writeSignedVarLong(time), "heart-bit");

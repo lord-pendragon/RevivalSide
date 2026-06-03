@@ -70,6 +70,10 @@ function createEventPassHandlers() {
 }
 
 function handleEventPassReq(ctx, socket, packet) {
+  if (shouldDeferCounterPassForTutorial(ctx, socket, { activeBootstrapOnly: true })) {
+    console.log("[counter-pass:req] deferred during tutorial captured bootstrap");
+    return true;
+  }
   markCounterPassRequestSeen(socket);
   const user = getSocketUser(ctx, socket);
   const pass = resolveActiveCounterPass(ctx);
@@ -178,6 +182,10 @@ function handleLevelUpReq(ctx, socket, packet) {
 }
 
 function sendCounterPassLobbyNotifications(ctx, socket, label = "counter-pass-not", options = {}) {
+  if (shouldDeferCounterPassForTutorial(ctx, socket)) {
+    console.log(`[counter-pass:not] deferred during tutorial label=${label}`);
+    return false;
+  }
   const session = socket && socket.session;
   const replay = session && session.gameReplay;
   const alreadySent = Boolean((session && session.counterPassNotSent) || (replay && replay.counterPassNotSent));
@@ -196,6 +204,10 @@ function sendCounterPassLobbyNotifications(ctx, socket, label = "counter-pass-no
 }
 
 function sendCounterPassDotNotification(ctx, socket, user, pass, label = "counter-pass-dot") {
+  if (shouldDeferCounterPassForTutorial(ctx, socket)) {
+    console.log(`[counter-pass:dot] deferred during tutorial label=${label}`);
+    return false;
+  }
   if (!pass || !ctx || typeof ctx.sendServerGamePacket !== "function") return false;
   const state = ensureCounterPassState(user, pass);
   syncGenericMissionExp(user, state);
@@ -499,6 +511,16 @@ function grantCounterPassRewardRow(ctx, user, row, lane, reward) {
       expandPackages: true,
     })
   );
+}
+
+function shouldDeferCounterPassForTutorial(ctx, socket, options = {}) {
+  if (ctx && typeof ctx.isTutorialCapturedBootstrapActive === "function" && ctx.isTutorialCapturedBootstrapActive(socket)) {
+    return true;
+  }
+  if (options.activeBootstrapOnly) return false;
+  const user = socket && socket.session && socket.session.user;
+  const tutorial = user && user.tutorial && typeof user.tutorial === "object" ? user.tutorial : null;
+  return Boolean(tutorial && tutorial.enabled !== false && tutorial.completed !== true && tutorial.loginMode !== "post-tutorial");
 }
 
 function buildEventPassMissionInfoData(info) {

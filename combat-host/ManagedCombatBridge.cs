@@ -80,6 +80,7 @@ internal static class ManagedCombatBridge
         "m_DiveHistoryData",
         "m_companyBuffDataList",
         "backGroundInfo",
+        "m_BirthDayData",
         "m_JukeboxData"
     ];
 
@@ -551,6 +552,92 @@ internal static class ManagedCombatBridge
         }
     }
 
+    public static bool TryExtractJoinLobbyIntervals(
+        HostOptions options,
+        PacketValidationData data,
+        out HostResponse? response,
+        out string? error)
+    {
+        response = null;
+        error = null;
+        if (string.IsNullOrWhiteSpace(options.ManagedDir))
+        {
+            error = "managed dir required";
+            return false;
+        }
+
+        var runtime = ManagedRuntime.TryLoad(options.ManagedDir, options.GameplayTablesDir, out error);
+        if (runtime == null)
+        {
+            return false;
+        }
+
+        try
+        {
+            var payload = Convert.FromBase64String(data.PayloadBase64 ?? "");
+            var packet = runtime.DeserializePacket(data.PacketId == 0 ? JoinLobbyAck : data.PacketId, payload);
+            var intervals = runtime.ExportJoinLobbyIntervals(packet);
+            response = new HostResponse
+            {
+                Ok = true,
+                PacketType = packet.GetType().FullName,
+                SerializedPayloadSize = payload.Length,
+                Summary = $"intervals={intervals.Count}",
+                Intervals = intervals
+            };
+            return true;
+        }
+        catch (Exception ex)
+        {
+            error = ex.ToString();
+            response = new HostResponse { Ok = false, Error = error };
+            return false;
+        }
+    }
+
+    public static bool TryExtractJoinLobbyProfile(
+        HostOptions options,
+        PacketValidationData data,
+        out HostResponse? response,
+        out string? error)
+    {
+        response = null;
+        error = null;
+        if (string.IsNullOrWhiteSpace(options.ManagedDir))
+        {
+            error = "managed dir required";
+            return false;
+        }
+
+        var runtime = ManagedRuntime.TryLoad(options.ManagedDir, options.GameplayTablesDir, out error);
+        if (runtime == null)
+        {
+            return false;
+        }
+
+        try
+        {
+            var payload = Convert.FromBase64String(data.PayloadBase64 ?? "");
+            var packet = runtime.DeserializePacket(data.PacketId == 0 ? JoinLobbyAck : data.PacketId, payload);
+            var profile = runtime.ExportJoinLobbyProfile(packet);
+            response = new HostResponse
+            {
+                Ok = true,
+                PacketType = packet.GetType().FullName,
+                SerializedPayloadSize = payload.Length,
+                Summary = $"uid={profile.UserUid} nickname={profile.Nickname} units={profile.Army.Units.Count} ships={profile.Army.Ships.Count} operators={profile.Army.Operators.Count} equips={profile.Inventory.Equips.Count} misc={profile.Inventory.Misc.Count}",
+                OfficialProfile = profile
+            };
+            return true;
+        }
+        catch (Exception ex)
+        {
+            error = ex.ToString();
+            response = new HostResponse { Ok = false, Error = error };
+            return false;
+        }
+    }
+
     public static bool TryMergeJoinLobbyAck(
         HostOptions options,
         JoinLobbyMergeData data,
@@ -764,7 +851,10 @@ internal static class ManagedCombatBridge
                 runtime.ApplyPlayerIdentityRuntimeData(runtimeData, data.Stage?.PlayerDeck);
                 runtime.Invoke(server, "SetGameRuntimeData", runtimeData);
             }
-            runtime.SuppressPlayerDynamicRespawns(server, gameData);
+            if (!usesTutorialEventDeck)
+            {
+                runtime.SuppressPlayerDynamicRespawns(server, gameData);
+            }
             runtime.ApplyPlayerIdentityTeamA(gameData, data.Stage?.PlayerDeck);
             runtime.ClearTeamAUnitOwnersForGameLoadAck(gameData, data.Stage?.PlayerDeck);
             runtime.ApplyGameType(gameData, dynamicGame);
@@ -2040,6 +2130,11 @@ internal static class ManagedCombatBridge
             return slotType is "ST_GUEST" or "ST_NPC" or "ST_RANDOM";
         }
 
+        private static bool EventDeckSlotCanSynthesizeUnit(string slotType)
+        {
+            return slotType is "ST_FIXED" or "ST_GUEST" or "ST_NPC";
+        }
+
         private static bool TrySetCollectionItem(object collection, int index, object value)
         {
             if (index < 0) return false;
@@ -2314,6 +2409,7 @@ internal static class ManagedCombatBridge
             unitList?.GetType().GetMethod("Clear", BindingFlags.Public | BindingFlags.Instance)?.Invoke(unitList, null);
 
             long firstUnitUid = 0;
+            var addedUnits = 0;
             if (gameUnitDataList is IEnumerable units)
             {
                 var add = unitList?.GetType().GetMethod("Add", BindingFlags.Public | BindingFlags.Instance);
@@ -2322,6 +2418,7 @@ internal static class ManagedCombatBridge
                     var unit = GetField(gameUnitData, "unit");
                     if (unit == null) continue;
                     add?.Invoke(unitList, [unit]);
+                    addedUnits++;
                     if (firstUnitUid == 0)
                     {
                         firstUnitUid = Convert.ToInt64(GetField(unit, "m_UnitUID"), CultureInfo.InvariantCulture);
@@ -2329,10 +2426,52 @@ internal static class ManagedCombatBridge
                 }
             }
 
+            if (addedUnits == 0)
+            {
+                firstUnitUid = AddFallbackEventDeckUnits(unitList, eventDeckTemplet);
+            }
+
             if (firstUnitUid > 0)
             {
                 SetField(teamA, "m_LeaderUnitUID", firstUnitUid);
             }
+        }
+
+        private long AddFallbackEventDeckUnits(object? unitList, object eventDeckTemplet)
+        {
+            if (unitList == null) return 0;
+            var getUnitSlot = eventDeckTemplet.GetType().GetMethod(
+                "GetUnitSlot",
+                BindingFlags.Public | BindingFlags.Instance,
+                null,
+                [typeof(int)],
+                null);
+            if (getUnitSlot == null) return 0;
+
+            long firstUnitUid = 0;
+            for (var slotIndex = 0; slotIndex < 8; slotIndex++)
+            {
+                var slot = getUnitSlot.Invoke(eventDeckTemplet, [slotIndex]);
+                if (slot == null) continue;
+                var slotType = GetField(slot, "m_eType")?.ToString() ?? "";
+                if (!EventDeckSlotCanSynthesizeUnit(slotType)) continue;
+
+                var unitId = Convert.ToInt32(GetField(slot, "m_ID") ?? 0, CultureInfo.InvariantCulture);
+                if (unitId <= 0) continue;
+
+                var level = Math.Max(1, Convert.ToInt32(GetField(slot, "m_Level") ?? 1, CultureInfo.InvariantCulture));
+                var skinId = Convert.ToInt32(GetField(slot, "m_SkinID") ?? 0, CultureInfo.InvariantCulture);
+                var tacticLevel = Math.Max(0, Convert.ToInt32(GetField(slot, "m_TacticLevel") ?? 0, CultureInfo.InvariantCulture));
+                var npcUid = Convert.ToInt64(
+                    GetType("NKM.NpcUid").GetMethod("Get", BindingFlags.Public | BindingFlags.Static)!.Invoke(null, null),
+                    CultureInfo.InvariantCulture);
+                if (npcUid <= 0) continue;
+
+                var unit = CreateBasicTutorialUnit(unitId, npcUid, level, skinId, tacticLevel);
+                AddCollectionItem(unitList, unit);
+                if (firstUnitUid <= 0) firstUnitUid = npcUid;
+            }
+            return firstUnitUid;
         }
 
         private void RefreshTeamDeck(object gameData, object teamData, bool resetDeck)
@@ -2657,6 +2796,496 @@ internal static class ManagedCombatBridge
 
             lines.Add($"intervalSample={DescribeIntervals(GetField(packet, "intervalData"), 16)}");
             return string.Join(Environment.NewLine, lines);
+        }
+
+        public OfficialProfileSnapshot ExportJoinLobbyProfile(object packet)
+        {
+            var userData = Field(packet, "userData");
+            var userProfile = Field(packet, "userProfileData");
+            var commonProfile = Field(userProfile, "commonProfile");
+            var profile = new OfficialProfileSnapshot
+            {
+                UserUid = ToLongString(Prefer(Field(userData, "m_UserUID"), Field(commonProfile, "userUid"))),
+                FriendCode = ToLongString(Prefer(Field(userData, "m_FriendCode"), Field(packet, "friendCode"), Field(commonProfile, "friendCode"))),
+                Nickname = ToText(Prefer(Field(userData, "m_UserNickName"), Field(commonProfile, "nickname"), "OfficialProfile")),
+                Level = Math.Max(1, ToInt(Prefer(Field(userData, "m_UserLevel"), Field(commonProfile, "level"), 1), 1)),
+                Exp = ToLongString(Field(userData, "m_lUserLevelEXP")),
+                AuthLevel = Math.Max(1, ToInt(Field(userData, "m_eAuthLevel"), 1)),
+                FriendIntro = ToText(Field(userProfile, "friendIntro")),
+                MainUnitId = ToInt(Field(commonProfile, "mainUnitId")),
+                MainUnitSkinId = ToInt(Field(commonProfile, "mainUnitSkinId")),
+                MainUnitTacticLevel = ToInt(Field(commonProfile, "mainUnitTacticLevel")),
+                FrameId = ToInt(Field(commonProfile, "frameId")),
+                SelfiFrameId = ToInt(Field(userProfile, "selfiFrameId")),
+                TitleId = ToInt(Field(commonProfile, "titleId")),
+                UnlockedStageIds = ExportIntList(Field(packet, "unlockedStageIds")),
+                ProfileEmblems = ExportProfileEmblems(Field(userProfile, "emblems")),
+                Inventory = ExportInventory(Field(userData, "m_InventoryData")),
+                Army = ExportArmy(Field(userData, "m_ArmyData")),
+                StagePlayData = ExportStagePlayData(Field(packet, "stagePlayDataList")),
+                DungeonClear = ExportDungeonClear(Field(userData, "m_dicNKMDungeonClearData")),
+            };
+
+            profile.OfficialImport["packetType"] = packet.GetType().FullName ?? "";
+            profile.OfficialImport["capturedAt"] = DateTimeOffset.UtcNow.ToString("O", CultureInfo.InvariantCulture);
+            profile.OfficialImport["source"] = "join_lobby_ack";
+            return profile;
+        }
+
+        private OfficialInventorySnapshot ExportInventory(object? inventory)
+        {
+            var output = new OfficialInventorySnapshot();
+            foreach (var item in DictionaryValues(Field(inventory, "m_ItemMiscData")))
+            {
+                var itemId = ToInt(Field(item, "m_ItemMiscID"));
+                if (itemId <= 0) itemId = ToInt(Field(item, "ItemID"));
+                if (itemId <= 0) continue;
+                output.Misc[itemId.ToString(CultureInfo.InvariantCulture)] = new OfficialMiscItemSnapshot
+                {
+                    ItemId = itemId,
+                    CountFree = ToLongString(Field(item, "m_CountFree")),
+                    CountPaid = ToLongString(Field(item, "m_CountPaid")),
+                    BonusRatio = ToInt(Field(item, "BonusRatio")),
+                    RegDate = DateBinaryString(Field(item, "m_RegDate")),
+                };
+            }
+
+            foreach (var equip in DictionaryValues(Field(inventory, "m_ItemEquipData")))
+            {
+                var converted = ExportEquip(equip);
+                if (converted.EquipUid == "0") continue;
+                output.Equips[converted.EquipUid] = converted;
+            }
+
+            output.Skins = ExportIntList(Field(inventory, "m_ItemSkinData"));
+            return output;
+        }
+
+        private OfficialArmySnapshot ExportArmy(object? army)
+        {
+            var output = new OfficialArmySnapshot();
+            foreach (var unit in DictionaryValues(Field(army, "m_dicMyUnit")))
+            {
+                var converted = ExportUnit(unit);
+                if (converted.UnitUid != "0") output.Units[converted.UnitUid] = converted;
+            }
+            foreach (var unit in DictionaryValues(Field(army, "m_dicMyShip")))
+            {
+                var converted = ExportUnit(unit);
+                if (converted.UnitUid != "0") output.Ships[converted.UnitUid] = converted;
+            }
+            foreach (var unit in DictionaryValues(Field(army, "m_dicMyTrophy")))
+            {
+                var converted = ExportUnit(unit);
+                if (converted.UnitUid != "0") output.Trophies[converted.UnitUid] = converted;
+            }
+            foreach (var item in DictionaryValues(Field(army, "m_dicMyOperator")))
+            {
+                var converted = ExportOperator(item);
+                if (converted.Uid != "0") output.Operators[converted.Uid] = converted;
+            }
+
+            foreach (var deckSet in EnumerateObjects(Field(army, "deckSets")))
+            {
+                var deckType = ToInt(Field(deckSet, "type"));
+                var decks = new List<OfficialDeckSnapshot>();
+                foreach (var deck in EnumerateObjects(Field(deckSet, "decks")))
+                {
+                    decks.Add(ExportDeck(deck, deckType));
+                }
+                output.DeckSets[deckType.ToString(CultureInfo.InvariantCulture)] = decks;
+            }
+
+            return output;
+        }
+
+        private OfficialUnitSnapshot ExportUnit(object unit)
+        {
+            return new OfficialUnitSnapshot
+            {
+                UnitUid = ToLongString(Field(unit, "m_UnitUID")),
+                UserUid = ToLongString(Field(unit, "m_UserUID")),
+                UnitId = ToInt(Field(unit, "m_UnitID")),
+                Level = Math.Max(1, ToInt(Field(unit, "m_UnitLevel"), 1)),
+                Exp = ToInt(Field(unit, "m_iUnitLevelEXP")),
+                SkinId = ToInt(Field(unit, "m_SkinID")),
+                Injury = ToFloat(Field(unit, "m_fInjury")),
+                LimitBreakLevel = ToInt(Field(unit, "m_LimitBreakLevel")),
+                Locked = ToBool(Field(unit, "m_bLock")),
+                SummonUnit = ToBool(Field(unit, "m_bSummonUnit")),
+                StatExp = ExportIntList(Field(unit, "m_listStatEXP")),
+                SkillLevels = ExportIntList(Field(unit, "m_aUnitSkillLevel")),
+                EquipItemUids = ExportLongStringList(Field(unit, "m_EquipItemList")),
+                Loyalty = ToInt(Field(unit, "loyalty")),
+                IsPermanentContract = ToBool(Field(unit, "isPermanentContract")),
+                IsSeized = ToBool(Field(unit, "isSeized")),
+                FromContract = ToBool(Field(unit, "fromContract"), true),
+                OfficeRoomId = ToInt(Field(unit, "officeRoomId")),
+                RegDate = DateBinaryString(Field(unit, "m_regDate")),
+                OfficeGrade = ToInt(Field(unit, "officeGrade")),
+                OfficeGaugeStartTime = DateBinaryString(Field(unit, "officeGaugeStartTime")),
+                DungeonRespawnUnitTempletUid = ToLongString(Field(unit, "m_DungeonRespawnUnitTempletUID")),
+                IsFavorite = ToBool(Field(unit, "isFavorite")),
+                ShipCommandModules = ExportShipCommandModules(Field(unit, "ShipCommandModule")),
+                TacticLevel = ToInt(Field(unit, "tacticLevel")),
+                ReactorLevel = ToInt(Field(unit, "reactorLevel")),
+            };
+        }
+
+        private OfficialOperatorSnapshot ExportOperator(object item)
+        {
+            return new OfficialOperatorSnapshot
+            {
+                Uid = ToLongString(Field(item, "uid")),
+                Id = ToInt(Field(item, "id")),
+                Level = Math.Max(1, ToInt(Field(item, "level"), 1)),
+                Exp = ToInt(Field(item, "exp")),
+                Locked = ToBool(Field(item, "bLock")),
+                MainSkill = ExportOperatorSkill(Field(item, "mainSkill")),
+                SubSkill = ExportOperatorSkill(Field(item, "subSkill")),
+                FromContract = ToBool(Field(item, "fromContract"), true),
+            };
+        }
+
+        private OfficialOperatorSkillSnapshot ExportOperatorSkill(object? skill)
+        {
+            return new OfficialOperatorSkillSnapshot
+            {
+                Id = ToInt(Field(skill, "id")),
+                Level = Math.Max(1, ToInt(Field(skill, "level"), 1)),
+                Exp = ToInt(Field(skill, "exp")),
+            };
+        }
+
+        private OfficialDeckSnapshot ExportDeck(object deck, int deckType)
+        {
+            return new OfficialDeckSnapshot
+            {
+                DeckType = deckType,
+                Name = ToText(Field(deck, "m_DeckName")),
+                ShipUid = ToLongString(Field(deck, "m_ShipUID")),
+                OperatorUid = ToLongString(Field(deck, "m_OperatorUID")),
+                UnitUids = ExportLongStringList(Field(deck, "m_listDeckUnitUID")),
+                LeaderIndex = ToInt(Field(deck, "m_LeaderIndex"), -1),
+                State = ToInt(Field(deck, "m_DeckState")),
+            };
+        }
+
+        private OfficialEquipItemSnapshot ExportEquip(object item)
+        {
+            return new OfficialEquipItemSnapshot
+            {
+                EquipUid = ToLongString(Field(item, "m_ItemUid")),
+                ItemEquipId = ToInt(Field(item, "m_ItemEquipID")),
+                EnchantLevel = ToInt(Field(item, "m_EnchantLevel")),
+                EnchantExp = ToInt(Field(item, "m_EnchantExp")),
+                Stats = EnumerateObjects(Field(item, "m_Stat")).Select(ExportEquipStat).ToList(),
+                OwnerUnitUid = ToLongString(Field(item, "m_OwnerUnitUID")),
+                Locked = ToBool(Field(item, "m_bLock")),
+                Precision = ToInt(Field(item, "m_Precision")),
+                Precision2 = ToInt(Field(item, "m_Precision2")),
+                SetOptionId = ToInt(Field(item, "m_SetOptionId")),
+                ImprintUnitId = ToInt(Field(item, "m_ImprintUnitId")),
+                PotentialOptions = EnumerateObjects(Field(item, "potentialOptions")).Select(ExportPotentialOption).ToList(),
+            };
+        }
+
+        private OfficialEquipStatSnapshot ExportEquipStat(object item)
+        {
+            return new OfficialEquipStatSnapshot
+            {
+                Type = ToEnumText(Field(item, "type"), "NST_RANDOM"),
+                Value = ToFloat(Field(item, "stat_value")),
+                LevelValue = ToFloat(Field(item, "stat_level_value")),
+            };
+        }
+
+        private OfficialPotentialOptionSnapshot ExportPotentialOption(object item)
+        {
+            return new OfficialPotentialOptionSnapshot
+            {
+                OptionKey = ToInt(Field(item, "optionKey")),
+                StatType = ToEnumText(Field(item, "statType"), "NST_RANDOM"),
+                Sockets = EnumerateObjectsAllowNull(Field(item, "sockets")).Select(socket => socket == null ? null : ExportPotentialSocket(socket)).ToList(),
+                PrecisionChangeCount = ToInt(Field(item, "precisionChangeCount")),
+            };
+        }
+
+        private OfficialPotentialSocketSnapshot ExportPotentialSocket(object item)
+        {
+            return new OfficialPotentialSocketSnapshot
+            {
+                StatValue = ToFloat(Field(item, "statValue")),
+                Precision = ToInt(Field(item, "precision")),
+            };
+        }
+
+        private List<OfficialShipCommandModuleSnapshot> ExportShipCommandModules(object? modules)
+        {
+            return EnumerateObjects(modules)
+                .Select(module => new OfficialShipCommandModuleSnapshot
+                {
+                    Slots = EnumerateObjects(Field(module, "slots")).Select(ExportShipCommandSlot).ToList()
+                })
+                .ToList();
+        }
+
+        private OfficialShipCommandSlotSnapshot ExportShipCommandSlot(object slot)
+        {
+            return new OfficialShipCommandSlotSnapshot
+            {
+                TargetStyleType = ExportIntList(Field(slot, "targetStyleType")),
+                TargetRoleType = ExportIntList(Field(slot, "targetRoleType")),
+                StatType = ToEnumText(Field(slot, "statType"), "NST_RANDOM"),
+                StatValue = ToFloat(Field(slot, "statValue")),
+                IsLock = ToBool(Field(slot, "isLock")),
+            };
+        }
+
+        private List<OfficialProfileEmblem> ExportProfileEmblems(object? emblems)
+        {
+            return EnumerateObjects(emblems)
+                .Select(item => new OfficialProfileEmblem
+                {
+                    Id = ToInt(Field(item, "id")),
+                    Count = ToLongString(Field(item, "count")),
+                })
+                .Where(item => item.Id > 0)
+                .ToList();
+        }
+
+        private Dictionary<string, OfficialStagePlaySnapshot> ExportStagePlayData(object? stagePlayData)
+        {
+            var output = new Dictionary<string, OfficialStagePlaySnapshot>();
+            foreach (var item in EnumerateObjects(stagePlayData))
+            {
+                var stageId = ToInt(Field(item, "stageId"));
+                if (stageId <= 0) continue;
+                output[stageId.ToString(CultureInfo.InvariantCulture)] = new OfficialStagePlaySnapshot
+                {
+                    StageId = stageId,
+                    PlayCount = ToLongString(Field(item, "playCount")),
+                    RestoreCount = ToLongString(Field(item, "restoreCount")),
+                    BestKillCount = ToLongString(Field(item, "bestKillCount")),
+                    NextResetDate = DateBinaryString(Field(item, "nextResetDate")),
+                    BestClearTimeSec = ToInt(Field(item, "bestClearTimeSec")),
+                    TotalPlayCount = ToLongString(Field(item, "totalPlayCount")),
+                };
+            }
+            return output;
+        }
+
+        private Dictionary<string, OfficialDungeonClearSnapshot> ExportDungeonClear(object? dungeonClear)
+        {
+            var output = new Dictionary<string, OfficialDungeonClearSnapshot>();
+            foreach (var item in DictionaryValues(dungeonClear))
+            {
+                var dungeonId = ToInt(Field(item, "dungeonId"));
+                if (dungeonId <= 0) continue;
+                output[dungeonId.ToString(CultureInfo.InvariantCulture)] = new OfficialDungeonClearSnapshot
+                {
+                    DungeonId = dungeonId,
+                    MissionResult1 = ToBool(Field(item, "missionResult1")),
+                    MissionResult2 = ToBool(Field(item, "missionResult2")),
+                    MissionRewardResult = ToBool(Field(item, "missionRewardResult")),
+                    OnetimeRewardResults = EnumerateObjects(Field(item, "onetimeRewardResults")).Select(value => ToBool(value)).ToList(),
+                    UnitExp = ToInt(Field(item, "unitExp")),
+                };
+            }
+            return output;
+        }
+
+        public List<IntervalExportRow> ExportJoinLobbyIntervals(object packet)
+        {
+            var output = new List<IntervalExportRow>();
+            if (GetField(packet, "intervalData") is not IEnumerable enumerable) return output;
+
+            var seenStrKeys = new HashSet<string>(StringComparer.Ordinal);
+            foreach (var interval in enumerable.Cast<object>())
+            {
+                var strKey = Convert.ToString(GetField(interval, "strKey"), CultureInfo.InvariantCulture) ?? "";
+                if (string.IsNullOrWhiteSpace(strKey) || !seenStrKeys.Add(strKey)) continue;
+                output.Add(new IntervalExportRow
+                {
+                    Key = Convert.ToInt32(GetField(interval, "key") ?? 0, CultureInfo.InvariantCulture),
+                    StrKey = strKey,
+                    StartDate = FormatTableDate(GetField(interval, "startDate")),
+                    EndDate = FormatTableDate(GetField(interval, "endDate")),
+                    RepeatStartDate = Convert.ToInt32(GetField(interval, "repeatStartDate") ?? 0, CultureInfo.InvariantCulture),
+                    RepeatEndDate = Convert.ToInt32(GetField(interval, "repeatEndDate") ?? 0, CultureInfo.InvariantCulture),
+                });
+            }
+
+            return output
+                .OrderBy(interval => interval.Key)
+                .ThenBy(interval => interval.StrKey, StringComparer.Ordinal)
+                .ToList();
+        }
+
+        private static string FormatTableDate(object? value)
+        {
+            if (value is DateTime dateTime && dateTime != DateTime.MinValue)
+            {
+                return dateTime.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+            }
+
+            var text = Convert.ToString(value, CultureInfo.InvariantCulture) ?? "";
+            if (DateTime.TryParse(text, CultureInfo.InvariantCulture, DateTimeStyles.None, out var parsed) && parsed != DateTime.MinValue)
+            {
+                return parsed.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+            }
+
+            return "";
+        }
+
+        private object? Field(object? target, string fieldName)
+        {
+            return target == null ? null : GetField(target, fieldName);
+        }
+
+        private static object? Prefer(params object?[] values)
+        {
+            foreach (var value in values)
+            {
+                if (IsMeaningful(value)) return value;
+            }
+            return values.FirstOrDefault(value => value != null);
+        }
+
+        private static bool IsMeaningful(object? value)
+        {
+            if (value == null) return false;
+            if (value is string text) return !string.IsNullOrWhiteSpace(text);
+            if (value is bool) return true;
+            if (value.GetType().IsEnum) return Convert.ToInt32(value, CultureInfo.InvariantCulture) != 0;
+            try
+            {
+                if (value is byte or sbyte or short or ushort or int or uint or long or ulong)
+                {
+                    return Convert.ToInt64(value, CultureInfo.InvariantCulture) != 0L;
+                }
+            }
+            catch
+            {
+                return true;
+            }
+            return true;
+        }
+
+        private static IEnumerable<object> DictionaryValues(object? source)
+        {
+            if (source is not IDictionary dictionary) yield break;
+            foreach (DictionaryEntry entry in dictionary)
+            {
+                if (entry.Value != null) yield return entry.Value;
+            }
+        }
+
+        private static IEnumerable<object> EnumerateObjects(object? source)
+        {
+            if (source == null || source is string) yield break;
+            if (source is IEnumerable enumerable)
+            {
+                foreach (var item in enumerable)
+                {
+                    if (item != null) yield return item;
+                }
+            }
+        }
+
+        private static IEnumerable<object?> EnumerateObjectsAllowNull(object? source)
+        {
+            if (source == null || source is string) yield break;
+            if (source is IEnumerable enumerable)
+            {
+                foreach (var item in enumerable) yield return item;
+            }
+        }
+
+        private static List<int> ExportIntList(object? source)
+        {
+            return EnumerateObjects(source).Select(value => ToInt(value)).ToList();
+        }
+
+        private static List<string> ExportLongStringList(object? source)
+        {
+            return EnumerateObjects(source).Select(value => ToLongString(value)).ToList();
+        }
+
+        private static string ToText(object? value, string fallback = "")
+        {
+            return value == null ? fallback : Convert.ToString(value, CultureInfo.InvariantCulture) ?? fallback;
+        }
+
+        private static string ToLongString(object? value, string fallback = "0")
+        {
+            try
+            {
+                if (value == null) return fallback;
+                if (value.GetType().IsEnum) return Convert.ToInt64(value).ToString(CultureInfo.InvariantCulture);
+                return Convert.ToInt64(value, CultureInfo.InvariantCulture).ToString(CultureInfo.InvariantCulture);
+            }
+            catch
+            {
+                var text = Convert.ToString(value, CultureInfo.InvariantCulture);
+                return string.IsNullOrWhiteSpace(text) ? fallback : text;
+            }
+        }
+
+        private static int ToInt(object? value, int fallback = 0)
+        {
+            try
+            {
+                if (value == null) return fallback;
+                if (value.GetType().IsEnum) return Convert.ToInt32(value);
+                return Convert.ToInt32(value, CultureInfo.InvariantCulture);
+            }
+            catch
+            {
+                return fallback;
+            }
+        }
+
+        private static float ToFloat(object? value, float fallback = 0f)
+        {
+            try
+            {
+                if (value == null) return fallback;
+                return Convert.ToSingle(value, CultureInfo.InvariantCulture);
+            }
+            catch
+            {
+                return fallback;
+            }
+        }
+
+        private static bool ToBool(object? value, bool fallback = false)
+        {
+            try
+            {
+                if (value == null) return fallback;
+                if (value.GetType().IsEnum) return Convert.ToInt64(value) != 0L;
+                return Convert.ToBoolean(value, CultureInfo.InvariantCulture);
+            }
+            catch
+            {
+                return fallback;
+            }
+        }
+
+        private static string DateBinaryString(object? value)
+        {
+            if (value is DateTime dateTime && dateTime != DateTime.MinValue)
+            {
+                return dateTime.ToBinary().ToString(CultureInfo.InvariantCulture);
+            }
+            return ToLongString(value);
+        }
+
+        private static string ToEnumText(object? value, string fallback = "")
+        {
+            var text = ToText(value, fallback);
+            return string.IsNullOrWhiteSpace(text) ? fallback : text;
         }
 
         private string DescribeRuntimeData(object? runtimeData)

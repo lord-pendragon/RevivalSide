@@ -40,7 +40,8 @@ module.exports = {
 
     ctx.sendResponse(socket, packet.sequence, ctx.constants.LOGIN_ACK, () => {
       const captured = ctx.capturedTcpResponses.get(ctx.constants.LOGIN_ACK);
-      if (ctx.config.REPLAY_CAPTURED_LOGIN_ACK && captured) {
+      const officialTemplate = ctx.capturedTcpProfiles && ctx.capturedTcpProfiles.loginAck;
+      if (ctx.config.REPLAY_CAPTURED_LOGIN_ACK && (captured || officialTemplate)) {
         return ctx.buildCapturedLoginAck(packet.sequence, socket.session.user);
       }
       if (captured) {

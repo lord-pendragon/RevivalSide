@@ -8,16 +8,20 @@
     "check:listener": "node --check cs-listener.js && node --check server/listener.js && node --check server/packetHandlerLoader.js",
     "check:handlers": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Get-ChildItem packet-handlers,modules -Recurse -Filter *.js | Where-Object { $_.DirectoryName -match '[\\\\/]handlers$' } | ForEach-Object { node --check $_.FullName }\"",
     "build:combat-host": "dotnet build combat-host/CombatHost.csproj --nologo",
-    "publish:combat-host": "dotnet publish combat-host/CombatHost.csproj -c Release --nologo -o prebuilt/combat-host",
+    "build:launcher": "dotnet build tools/RevivalSideLauncherApp/RevivalSideLauncherApp.csproj --nologo",
+    "publish:installer": "powershell -NoProfile -ExecutionPolicy Bypass -File tools/package-revivalside-universal-installer.ps1",
+    "publish:github-release": "powershell -NoProfile -ExecutionPolicy Bypass -File tools/package-revivalside-github-release.ps1",
     "build:gameplay-jsons": "node tools/build-prepackaged-gameplay-jsons.js",
     "patch:counter-pass-client": "dotnet run --project tools/CounterPassClientPatcher/CounterPassClientPatcher.csproj -- --env-switch",
     "patch:counter-pass-client:restore": "dotnet run --project tools/CounterPassClientPatcher/CounterPassClientPatcher.csproj -- --restore",
     "patch:counter-pass-client:legacy": "dotnet run --project tools/CounterPassClientPatcher/CounterPassClientPatcher.csproj -- --restore-first --legacy-all",
     "patch:counter-pass-client:status": "dotnet run --project tools/CounterPassClientPatcher/CounterPassClientPatcher.csproj -- --status",
     "diag:event": "node tools/event-manager-diagnostics.js",
+    "import:event-schedules": "node tools/import-official-event-schedules.js",
     "generate:packet-schema": "node tools/generate-packet-schema.js",
     "coverage:join-lobby-ack": "node tools/report-join-lobby-ack-coverage.js",
     "wiki:build": "node tools/build-revivalside-wiki.js",
+    "wiki:assets": "node tools/copy-wiki-assets.js",
     "wiki:serve": "node tools/serve-revivalside-wiki.js"
   }
 }

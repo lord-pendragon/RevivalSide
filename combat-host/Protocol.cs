@@ -38,6 +38,8 @@ public sealed class HostResponse
     public List<HostPacket>? Packets { get; set; }
     public HostDeployResult? Deployed { get; set; }
     public HostResult? Result { get; set; }
+    public List<IntervalExportRow>? Intervals { get; set; }
+    public OfficialProfileSnapshot? OfficialProfile { get; set; }
 }
 
 public sealed class HostPacket
@@ -68,6 +70,16 @@ public sealed class PacketValidationData
     public string PayloadBase64 { get; set; } = "";
 }
 
+public sealed class IntervalExportRow
+{
+    public int Key { get; set; }
+    public string StrKey { get; set; } = "";
+    public string StartDate { get; set; } = "";
+    public string EndDate { get; set; } = "";
+    public int RepeatStartDate { get; set; }
+    public int RepeatEndDate { get; set; }
+}
+
 public sealed class JoinLobbyMergeData
 {
     public string OfficialPayloadBase64 { get; set; } = "";
@@ -82,4 +94,191 @@ public sealed class JoinLobbyMergeData
 public sealed class JoinLobbyNormalizeData
 {
     public string LocalPayloadBase64 { get; set; } = "";
+}
+
+public sealed class OfficialProfileSnapshot
+{
+    public string UserUid { get; set; } = "";
+    public string FriendCode { get; set; } = "";
+    public string Nickname { get; set; } = "";
+    public int Level { get; set; } = 1;
+    public string Exp { get; set; } = "0";
+    public int AuthLevel { get; set; } = 1;
+    public string FriendIntro { get; set; } = "";
+    public int MainUnitId { get; set; }
+    public int MainUnitSkinId { get; set; }
+    public int MainUnitTacticLevel { get; set; }
+    public int FrameId { get; set; }
+    public int SelfiFrameId { get; set; }
+    public int TitleId { get; set; }
+    public List<int> UnlockedStageIds { get; set; } = new();
+    public List<OfficialProfileEmblem> ProfileEmblems { get; set; } = new();
+    public OfficialInventorySnapshot Inventory { get; set; } = new();
+    public OfficialArmySnapshot Army { get; set; } = new();
+    public Dictionary<string, OfficialStagePlaySnapshot> StagePlayData { get; set; } = new();
+    public Dictionary<string, OfficialDungeonClearSnapshot> DungeonClear { get; set; } = new();
+    public Dictionary<string, object> OfficialImport { get; set; } = new();
+}
+
+public sealed class OfficialInventorySnapshot
+{
+    public Dictionary<string, OfficialMiscItemSnapshot> Misc { get; set; } = new();
+    public Dictionary<string, OfficialEquipItemSnapshot> Equips { get; set; } = new();
+    public List<int> Skins { get; set; } = new();
+}
+
+public sealed class OfficialArmySnapshot
+{
+    public Dictionary<string, OfficialUnitSnapshot> Units { get; set; } = new();
+    public Dictionary<string, OfficialUnitSnapshot> Ships { get; set; } = new();
+    public Dictionary<string, OfficialUnitSnapshot> Trophies { get; set; } = new();
+    public Dictionary<string, OfficialOperatorSnapshot> Operators { get; set; } = new();
+    public Dictionary<string, List<OfficialDeckSnapshot>> DeckSets { get; set; } = new();
+}
+
+public sealed class OfficialMiscItemSnapshot
+{
+    public int ItemId { get; set; }
+    public string CountFree { get; set; } = "0";
+    public string CountPaid { get; set; } = "0";
+    public int BonusRatio { get; set; }
+    public string RegDate { get; set; } = "0";
+}
+
+public sealed class OfficialEquipItemSnapshot
+{
+    public string EquipUid { get; set; } = "0";
+    public int ItemEquipId { get; set; }
+    public int EnchantLevel { get; set; }
+    public int EnchantExp { get; set; }
+    public List<OfficialEquipStatSnapshot> Stats { get; set; } = new();
+    public string OwnerUnitUid { get; set; } = "-1";
+    public bool Locked { get; set; }
+    public int Precision { get; set; }
+    public int Precision2 { get; set; }
+    public int SetOptionId { get; set; }
+    public int ImprintUnitId { get; set; }
+    public List<OfficialPotentialOptionSnapshot> PotentialOptions { get; set; } = new();
+}
+
+public sealed class OfficialEquipStatSnapshot
+{
+    public string Type { get; set; } = "NST_RANDOM";
+    public float Value { get; set; }
+    public float LevelValue { get; set; }
+}
+
+public sealed class OfficialPotentialOptionSnapshot
+{
+    public int OptionKey { get; set; }
+    public string StatType { get; set; } = "NST_RANDOM";
+    public List<OfficialPotentialSocketSnapshot?> Sockets { get; set; } = new();
+    public int PrecisionChangeCount { get; set; }
+}
+
+public sealed class OfficialPotentialSocketSnapshot
+{
+    public float StatValue { get; set; }
+    public int Precision { get; set; }
+}
+
+public sealed class OfficialUnitSnapshot
+{
+    public string UnitUid { get; set; } = "0";
+    public string UserUid { get; set; } = "0";
+    public int UnitId { get; set; }
+    public int Level { get; set; } = 1;
+    public int Exp { get; set; }
+    public int SkinId { get; set; }
+    public float Injury { get; set; }
+    public int LimitBreakLevel { get; set; }
+    public bool Locked { get; set; }
+    public bool SummonUnit { get; set; }
+    public List<int> StatExp { get; set; } = new();
+    public List<int> SkillLevels { get; set; } = new();
+    public List<string> EquipItemUids { get; set; } = new();
+    public int Loyalty { get; set; }
+    public bool IsPermanentContract { get; set; }
+    public bool IsSeized { get; set; }
+    public bool FromContract { get; set; }
+    public int OfficeRoomId { get; set; }
+    public string RegDate { get; set; } = "0";
+    public int OfficeGrade { get; set; }
+    public string OfficeGaugeStartTime { get; set; } = "0";
+    public string DungeonRespawnUnitTempletUid { get; set; } = "0";
+    public bool IsFavorite { get; set; }
+    public List<OfficialShipCommandModuleSnapshot> ShipCommandModules { get; set; } = new();
+    public int TacticLevel { get; set; }
+    public int ReactorLevel { get; set; }
+}
+
+public sealed class OfficialShipCommandModuleSnapshot
+{
+    public List<OfficialShipCommandSlotSnapshot> Slots { get; set; } = new();
+}
+
+public sealed class OfficialShipCommandSlotSnapshot
+{
+    public List<int> TargetStyleType { get; set; } = new();
+    public List<int> TargetRoleType { get; set; } = new();
+    public string StatType { get; set; } = "NST_RANDOM";
+    public float StatValue { get; set; }
+    public bool IsLock { get; set; }
+}
+
+public sealed class OfficialOperatorSnapshot
+{
+    public string Uid { get; set; } = "0";
+    public int Id { get; set; }
+    public int Level { get; set; } = 1;
+    public int Exp { get; set; }
+    public bool Locked { get; set; }
+    public OfficialOperatorSkillSnapshot MainSkill { get; set; } = new();
+    public OfficialOperatorSkillSnapshot SubSkill { get; set; } = new();
+    public bool FromContract { get; set; }
+}
+
+public sealed class OfficialOperatorSkillSnapshot
+{
+    public int Id { get; set; }
+    public int Level { get; set; } = 1;
+    public int Exp { get; set; }
+}
+
+public sealed class OfficialDeckSnapshot
+{
+    public int DeckType { get; set; }
+    public string Name { get; set; } = "";
+    public string ShipUid { get; set; } = "0";
+    public string OperatorUid { get; set; } = "0";
+    public List<string> UnitUids { get; set; } = new();
+    public int LeaderIndex { get; set; } = -1;
+    public int State { get; set; }
+}
+
+public sealed class OfficialProfileEmblem
+{
+    public int Id { get; set; }
+    public string Count { get; set; } = "0";
+}
+
+public sealed class OfficialStagePlaySnapshot
+{
+    public int StageId { get; set; }
+    public string PlayCount { get; set; } = "0";
+    public string RestoreCount { get; set; } = "0";
+    public string BestKillCount { get; set; } = "0";
+    public string NextResetDate { get; set; } = "0";
+    public int BestClearTimeSec { get; set; }
+    public string TotalPlayCount { get; set; } = "0";
+}
+
+public sealed class OfficialDungeonClearSnapshot
+{
+    public int DungeonId { get; set; }
+    public bool MissionResult1 { get; set; }
+    public bool MissionResult2 { get; set; }
+    public bool MissionRewardResult { get; set; }
+    public List<bool> OnetimeRewardResults { get; set; } = new();
+    public int UnitExp { get; set; }
 }

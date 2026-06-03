@@ -3,6 +3,10 @@ const path = require("path");
 
 const STATE_VERSION = 1;
 const DAY_MS = 24 * 60 * 60 * 1000;
+const DOTNET_TICKS_AT_UNIX_EPOCH = 621355968000000000n;
+const TICKS_PER_MS = 10000n;
+const DATE_TIME_LOCAL_MASK = 0x4000000000000000n;
+const DATE_TIME_TICKS_MASK = 0x3fffffffffffffffn;
 
 function createServerTime(options = {}) {
   const rootDir = path.resolve(options.rootDir || path.resolve(__dirname, "..", ".."));
@@ -13,6 +17,9 @@ function createServerTime(options = {}) {
 
   function now(localNowInput = new Date()) {
     const localNow = validDate(localNowInput) || new Date();
+    const manualNow = getManualNow(state, localNow);
+    if (manualNow) return manualNow;
+
     const eventDate = getConfiguredEventDate(eventManager);
     if (!eventDate) return new Date(localNow.getTime());
 
@@ -45,17 +52,62 @@ function createServerTime(options = {}) {
   function getSummary() {
     const current = now();
     const eventDate = getConfiguredEventDate(eventManager);
+    const manualCurrent = getManualNow(state, new Date());
     return {
-      enabled: Boolean(eventDate),
+      enabled: Boolean(eventDate || manualCurrent),
+      mode: manualCurrent ? "manual" : eventDate ? "event-anchor" : "local",
+      manual: Boolean(manualCurrent),
       statePath,
       currentIso: current.toISOString(),
-      eventDateKey: eventDate ? utcDateKey(eventDate) : "",
+      eventDateKey: manualCurrent ? utcDateKey(manualCurrent) : eventDate ? utcDateKey(eventDate) : "",
       state: { ...state },
     };
   }
 
+  function setManualTime(serverDateInput, localNowInput = new Date()) {
+    const serverDate = coerceDate(serverDateInput);
+    if (!serverDate) throw new Error("Invalid server time.");
+    const localNow = validDate(localNowInput) || new Date();
+    const serverDateKey = utcDateKey(serverDate);
+    state = {
+      ...createAnchoredState(serverDateKey, localDayKey(localNow)),
+      manualServerIso: serverDate.toISOString(),
+      manualLocalIso: localNow.toISOString(),
+      manualSetAt: new Date().toISOString(),
+    };
+    saveState(statePath, state, logger);
+    return now(localNow);
+  }
+
+  function clearManualTime(localNowInput = new Date()) {
+    const localNow = validDate(localNowInput) || new Date();
+    const eventDate = getConfiguredEventDate(eventManager);
+    state = eventDate ? createAnchoredState(utcDateKey(eventDate), localDayKey(localNow)) : {};
+    saveState(statePath, state, logger);
+    return now(localNow);
+  }
+
   return {
     now,
+    setManualTime,
+    set: setManualTime,
+    clearManualTime,
+    clearManual: clearManualTime,
+    dateTimeTicksNow(localNowInput) {
+      return dateTimeTicksForDate(now(localNowInput));
+    },
+    dateTimeBinaryNow(localNowInput) {
+      return dateTimeBinaryForDate(now(localNowInput));
+    },
+    eventDateKey(localNowInput) {
+      const manualNow = getManualNow(state, new Date());
+      if (manualNow) return utcDateKey(manualNow);
+      const stateSnapshot = isUsableState(state) ? state : null;
+      if (stateSnapshot && isDateKey(stateSnapshot.eventDateKey)) return stateSnapshot.eventDateKey;
+      const eventDate = getConfiguredEventDate(eventManager);
+      if (eventDate) return utcDateKey(eventDate);
+      return utcDateKey(now(localNowInput));
+    },
     getSummary,
     getState() {
       return { ...state };
@@ -92,6 +144,25 @@ function isUsableState(value) {
   );
 }
 
+function isManualState(value) {
+  return (
+    value &&
+    typeof value === "object" &&
+    Number(value.version || 0) === STATE_VERSION &&
+    coerceDate(value.manualServerIso) &&
+    coerceDate(value.manualLocalIso)
+  );
+}
+
+function getManualNow(value, localNowInput = new Date()) {
+  if (!isManualState(value)) return null;
+  const serverDate = coerceDate(value.manualServerIso);
+  const localAnchor = coerceDate(value.manualLocalIso);
+  const localNow = validDate(localNowInput) || new Date();
+  const elapsedMs = Math.max(0, localNow.getTime() - localAnchor.getTime());
+  return new Date(serverDate.getTime() + elapsedMs);
+}
+
 function loadState(statePath, logger) {
   try {
     if (!statePath || !fs.existsSync(statePath)) return {};
@@ -116,6 +187,15 @@ function saveState(statePath, state, logger) {
 
 function validDate(value) {
   return value instanceof Date && !Number.isNaN(value.getTime()) ? value : null;
+}
+
+function coerceDate(value) {
+  if (validDate(value)) return value;
+  if (typeof value === "string" || typeof value === "number") {
+    const date = new Date(value);
+    return validDate(date);
+  }
+  return null;
 }
 
 function isDateKey(value) {
@@ -191,10 +271,47 @@ function combineUtcDateWithLocalTime(dateKey, localNow) {
   );
 }
 
+function dateTimeTicksForDate(date) {
+  const source = validDate(date) || new Date();
+  return BigInt(source.getTime()) * TICKS_PER_MS + DOTNET_TICKS_AT_UNIX_EPOCH;
+}
+
+function dateTimeBinaryForDate(date) {
+  return dateTimeTicksForDate(date) | DATE_TIME_LOCAL_MASK;
+}
+
+function rawTicksFromDateTime(value) {
+  try {
+    const raw = BigInt(value || 0);
+    return raw > DATE_TIME_LOCAL_MASK ? raw & DATE_TIME_TICKS_MASK : raw;
+  } catch (_) {
+    return 0n;
+  }
+}
+
+function dateFromDateTime(value) {
+  try {
+    const ticks = rawTicksFromDateTime(value);
+    if (ticks <= DOTNET_TICKS_AT_UNIX_EPOCH) return null;
+    const ms = (ticks - DOTNET_TICKS_AT_UNIX_EPOCH) / TICKS_PER_MS;
+    const maxDateMs = 8640000000000000n;
+    if (ms < -maxDateMs || ms > maxDateMs) return null;
+    const date = new Date(Number(ms));
+    return Number.isNaN(date.getTime()) ? null : date;
+  } catch (_) {
+    return null;
+  }
+}
+
 function pad2(value) {
   return String(value).padStart(2, "0");
 }
 
 module.exports = {
   createServerTime,
+  dateFromDateTime,
+  dateTimeBinaryForDate,
+  dateTimeTicksForDate,
+  rawTicksFromDateTime,
+  utcDateKey,
 };

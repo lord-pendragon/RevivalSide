@@ -3,6 +3,11 @@ module.exports = {
   name: "GAME_LOAD_COMPLETE_REQ",
   handle(ctx, socket) {
     socket.session.gameReplay.loadCompleteReceived = true;
+    if (ctx.isTutorialCapturedBootstrapActive(socket)) {
+      if (ctx.sendCapturedTutorialLoadCompleteBootstrap(socket, "tutorial-load-complete")) return true;
+      console.log("[capture-game] tutorial captured bootstrap missing load-complete window; no dynamic fallback sent");
+      return true;
+    }
     if (ctx.config.DYNAMIC_BATTLE_MANAGER && socket.session.gameReplay.dynamicGame) {
       const replay = socket.session.gameReplay;
       const packets = ctx.ensureGameStartPackets(ctx.buildInitialBattlePackets(replay), replay, socket);

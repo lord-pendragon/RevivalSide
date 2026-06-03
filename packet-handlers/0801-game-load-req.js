@@ -1,7 +1,10 @@
-const { getTutorialStageForRequest, isTutorialDungeonId, isTutorialStageId } = require("../stages/tutorialStage");
+const { getTutorialStageForRequest, isTutorialDungeonId, isTutorialStageId, TUTORIAL_STAGE_CHAIN } = require("../stages/tutorialStage");
 const { getMainStoryStageForRequest } = require("../stages/mainStoryStage");
 const { buildPlayerDeckForGameLoad } = require("../modules/unit");
 const { eventDeckHasFreeShipSlot, eventDeckHasGivenUnitSlots, getEventDeckPlayerUnitSlots } = require("../modules/game-data");
+const worldMap = require("../modules/world-map");
+
+const NGT_DIVE = 5;
 
 module.exports = {
   packetId: 801,
@@ -13,18 +16,70 @@ module.exports = {
     // selected stageID first so Act 2+ does not get pulled back into 1004.
     // Tutorial stages must come from tutorialStage.js, not the main-story catalog
     // wrapper, because that module carries the phase-specific tutorial runtime.
+    const user = socket.session && socket.session.user;
     const requestedStageId = Number((req && req.stageID) || 0);
     const requestedDungeonId = Number((req && req.dungeonID) || 0);
     const explicitTutorial = isTutorialStageId(requestedStageId) || isTutorialDungeonId(requestedDungeonId);
-    const stage = (explicitTutorial
-      ? getTutorialStageForRequest({ stageID: requestedStageId, dungeonID: requestedDungeonId })
-      : getMainStoryStageForRequest({ stageID: requestedStageId, dungeonID: 0 })) ||
-      getMainStoryStageForRequest(req) ||
-      getTutorialStageForRequest(req) ||
-      (ctx.getGenericStageForRequest ? ctx.getGenericStageForRequest(req) : null);
+    const diveGameLoad = req && Number(req.diveStageID || 0) > 0 ? worldMap.prepareDiveGameLoad(user, req) : null;
+    let stage = null;
+    if (diveGameLoad) {
+      const diveStage =
+        (ctx.getGenericStageForRequest ? ctx.getGenericStageForRequest({ dungeonID: diveGameLoad.dungeonID }) : null) ||
+        (ctx.getGenericStageForRequest
+          ? ctx.getGenericStageForRequest({ stageID: requestedStageId, dungeonID: diveGameLoad.dungeonID })
+          : null) ||
+        {};
+      req.stageID = Number(diveStage.stageId || requestedStageId || diveGameLoad.diveStageID || 0);
+      req.dungeonID = diveGameLoad.dungeonID;
+      req.gameType = NGT_DIVE;
+      stage = {
+        ...diveStage,
+        stageId: req.stageID,
+        dungeonID: diveGameLoad.dungeonID,
+        gameType: NGT_DIVE,
+        eventDeckId: 0,
+        EventDeckId: 0,
+        miscMode: "dive",
+        diveStageID: diveGameLoad.diveStageID,
+        diveDeckIndex: diveGameLoad.deckIndex,
+        tutorial: false,
+        cutsceneOnly: false,
+      };
+      console.log(
+        `[game-load:dive] diveStageID=${diveGameLoad.diveStageID} dungeonID=${diveGameLoad.dungeonID} deck=${diveGameLoad.deckIndex}`
+      );
+    } else {
+      stage = (explicitTutorial
+        ? getTutorialStageForRequest({ stageID: requestedStageId, dungeonID: requestedDungeonId })
+        : getMainStoryStageForRequest({ stageID: requestedStageId, dungeonID: 0 })) ||
+        getMainStoryStageForRequest(req) ||
+        getTutorialStageForRequest(req) ||
+        (ctx.getGenericStageForRequest ? ctx.getGenericStageForRequest(req) : null);
+    }
     if (stage) {
       req.stageID = stage.stageId;
       req.dungeonID = stage.dungeonID;
+    }
+    if (stage && stage.tutorial && user) {
+      const expectedTutorialStage = getExpectedTutorialStageForUser(user);
+      if (
+        expectedTutorialStage &&
+        (Number(stage.stageId) !== Number(expectedTutorialStage.stageId) ||
+          Number(stage.dungeonID) !== Number(expectedTutorialStage.dungeonID))
+      ) {
+        const redirectedStage = getTutorialStageForRequest({
+          stageID: expectedTutorialStage.stageId,
+          dungeonID: expectedTutorialStage.dungeonID,
+        });
+        if (redirectedStage) {
+          console.log(
+            `[game-load:tutorial] redirect stageID=${stage.stageId} dungeonID=${stage.dungeonID} -> stageID=${redirectedStage.stageId} dungeonID=${redirectedStage.dungeonID}`
+          );
+          stage = redirectedStage;
+          req.stageID = stage.stageId;
+          req.dungeonID = stage.dungeonID;
+        }
+      }
     }
     if (socket.session && socket.session.gameReplay) {
       socket.session.gameReplay.lastGameLoadReq = {
@@ -37,7 +92,6 @@ module.exports = {
     const eventDeckPlayerUnitSlots = usesEventDeck ? getEventDeckPlayerUnitSlots(eventDeckId) : [];
     const eventDeckAllowsPlayerUnits = eventDeckPlayerUnitSlots.length > 0;
     const usesHybridEventDeck = eventDeckAllowsPlayerUnits && eventDeckHasGivenUnitSlots(eventDeckId);
-    const user = socket.session && socket.session.user;
     let playerDeck = null;
     if (stage && !stage.cutsceneOnly) {
       if (stage.tutorial || (usesEventDeck && !eventDeckAllowsPlayerUnits)) {
@@ -107,4 +161,15 @@ function buildPlayerIdentityForGameLoad(user) {
     userLevel: Number(user.level || 1),
     units: [],
   };
+}
+
+function getExpectedTutorialStageForUser(user) {
+  const tutorial = user && user.tutorial && typeof user.tutorial === "object" ? user.tutorial : null;
+  if (!tutorial || tutorial.enabled === false || tutorial.completed === true || tutorial.loginMode === "post-tutorial") return null;
+  const phases = tutorial.phases && typeof tutorial.phases === "object" ? tutorial.phases : {};
+  for (const stage of TUTORIAL_STAGE_CHAIN) {
+    const phase = phases[String(stage.dungeonID)] || phases[String(stage.stageId)];
+    if (!phase || phase.completed !== true) return stage;
+  }
+  return null;
 }

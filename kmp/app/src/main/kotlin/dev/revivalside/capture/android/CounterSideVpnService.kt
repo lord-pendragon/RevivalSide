@@ -1,0 +1,401 @@
+package dev.revivalside.capture.android
+
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.VpnService
+import android.os.Build
+import android.os.ParcelFileDescriptor
+import dev.revivalside.capture.protocol.CounterSideFrameScanner
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.net.DatagramPacket
+import java.net.DatagramSocket
+import java.net.InetAddress
+import java.net.InetSocketAddress
+import java.net.Socket
+import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.atomic.AtomicBoolean
+import kotlin.concurrent.thread
+import kotlin.random.Random
+
+class CounterSideVpnService : VpnService() {
+    private val running = AtomicBoolean(false)
+    private val ackCaptured = AtomicBoolean(false)
+    private val sessions = ConcurrentHashMap<TcpKey, TcpSession>()
+    private var vpnInterface: ParcelFileDescriptor? = null
+    private var worker: Thread? = null
+    private var output: FileOutputStream? = null
+    private val outputLock = Any()
+
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        when (intent?.action) {
+            ACTION_START -> startCapture(intent.getStringExtra(EXTRA_TARGET_PACKAGE).orEmpty())
+            ACTION_STOP -> stopCapture()
+        }
+        return START_STICKY
+    }
+
+    override fun onDestroy() {
+        stopCapture()
+        super.onDestroy()
+    }
+
+    private fun startCapture(targetPackage: String) {
+        if (!running.compareAndSet(false, true)) {
+            publishStatus("Capture is already running")
+            return
+        }
+
+        try {
+            startForeground(NOTIFICATION_ID, buildNotification("Capturing CounterSide traffic"))
+            val builder = Builder()
+                .setSession("RevivalSide Capture")
+                .setMtu(1500)
+                .addAddress("10.79.0.2", 32)
+                .addRoute("0.0.0.0", 0)
+                .addDnsServer("1.1.1.1")
+
+            val scopedTarget = tryAddTargetApplication(builder, targetPackage)
+
+            vpnInterface = builder.establish() ?: error("Android did not establish the VPN interface.")
+            output = FileOutputStream(vpnInterface!!.fileDescriptor)
+            worker = thread(name = "revivalside-vpn", isDaemon = true) {
+                runPacketLoop(vpnInterface!!)
+            }
+            publishStatus("Recording ${scopedTarget.ifBlank { "all routed apps" }}")
+        } catch (ex: Exception) {
+            publishStatus("Failed: ${ex.message}")
+            stopCapture()
+        }
+    }
+
+    private fun stopCapture() {
+        if (!running.getAndSet(false)) return
+        sessions.values.forEach { it.close() }
+        sessions.clear()
+        try {
+            vpnInterface?.close()
+        } catch (_: Exception) {
+        }
+        vpnInterface = null
+        output = null
+        stopForeground(STOP_FOREGROUND_REMOVE)
+        publishStatus("Stopped")
+    }
+
+    private fun runPacketLoop(descriptor: ParcelFileDescriptor) {
+        val input = FileInputStream(descriptor.fileDescriptor)
+        val packet = ByteArray(32767)
+        while (running.get()) {
+            val length = try {
+                input.read(packet)
+            } catch (_: Exception) {
+                break
+            }
+            if (length <= 0) continue
+            try {
+                handlePacket(packet, length)
+            } catch (ex: Exception) {
+                publishStatus("Packet skipped: ${ex.message}")
+            }
+        }
+        running.set(false)
+    }
+
+    private fun handlePacket(packet: ByteArray, length: Int) {
+        val ip = parseIpv4(packet, length) ?: return
+        when (ip.protocol) {
+            6 -> handleTcp(packet, ip)
+            17 -> handleUdp(packet, ip)
+        }
+    }
+
+    private fun handleTcp(packet: ByteArray, ip: Ipv4Packet) {
+        val tcp = parseTcp(packet, ip) ?: return
+        val key = TcpKey(ip.source, tcp.sourcePort, ip.destination, tcp.destinationPort)
+
+        if ((tcp.flags and TcpFlags.RST) != 0) {
+            sessions.remove(key)?.close()
+            return
+        }
+
+        if ((tcp.flags and TcpFlags.SYN) != 0 && !sessions.containsKey(key)) {
+            openTcpSession(key, tcp)
+            return
+        }
+
+        val session = sessions[key] ?: return
+        if (tcp.payloadLength > 0) {
+            val payload = packet.copyOfRange(tcp.payloadOffset, tcp.payloadOffset + tcp.payloadLength)
+            session.writeFromClient(tcp.sequence, payload)
+            writePacket(session.buildAck())
+        }
+
+        if ((tcp.flags and TcpFlags.FIN) != 0) {
+            session.clientNext = incrementSequence(tcp.sequence, tcp.payloadLength + 1)
+            writePacket(session.buildAck())
+            writePacket(session.buildFin())
+            sessions.remove(key)?.close()
+        }
+    }
+
+    private fun openTcpSession(key: TcpKey, tcp: TcpPacket) {
+        val socket = Socket()
+        protect(socket)
+        try {
+            socket.tcpNoDelay = true
+            socket.connect(InetSocketAddress(intToAddress(key.remoteIp), key.remotePort), CONNECT_TIMEOUT_MS)
+            val session = TcpSession(
+                key = key,
+                socket = socket,
+                serverNext = Random.nextLong().toUInt32(),
+                clientNext = incrementSequence(tcp.sequence, 1),
+                scanner = CounterSideFrameScanner(),
+            )
+            sessions[key] = session
+            writePacket(session.buildSynAck())
+            session.serverNext = incrementSequence(session.serverNext, 1)
+            startServerReader(session)
+        } catch (ex: Exception) {
+            try {
+                socket.close()
+            } catch (_: Exception) {
+            }
+            writePacket(
+                buildTcpIpv4Packet(
+                    sourceIp = key.remoteIp,
+                    destinationIp = key.localIp,
+                    sourcePort = key.remotePort,
+                    destinationPort = key.localPort,
+                    sequence = 0,
+                    acknowledgment = incrementSequence(tcp.sequence, 1),
+                    flags = TcpFlags.RST or TcpFlags.ACK,
+                ),
+            )
+            publishStatus("Connect failed ${key.remoteLabel}: ${ex.message}")
+        }
+    }
+
+    private fun startServerReader(session: TcpSession) {
+        thread(name = "revivalside-tcp-${session.key.remotePort}", isDaemon = true) {
+            val buffer = ByteArray(32 * 1024)
+            try {
+                val input = session.socket.getInputStream()
+                while (running.get() && !session.closed.get()) {
+                    val read = input.read(buffer)
+                    if (read < 0) break
+                    if (read == 0) continue
+                    inspectServerPayload(session, buffer, read)
+                    val payload = buffer.copyOfRange(0, read)
+                    writePacket(session.buildServerData(payload))
+                    session.serverNext = incrementSequence(session.serverNext, read)
+                }
+                if (!session.closed.get()) {
+                    writePacket(session.buildFin())
+                }
+            } catch (_: Exception) {
+            } finally {
+                sessions.remove(session.key)
+                session.close()
+            }
+        }
+    }
+
+    private fun inspectServerPayload(session: TcpSession, bytes: ByteArray, length: Int) {
+        if (ackCaptured.get()) return
+        val frames = session.scanner.push(bytes, length)
+        val lobbyAck = frames.firstOrNull { it.packetId == JOIN_LOBBY_ACK } ?: return
+        if (!ackCaptured.compareAndSet(false, true)) return
+        val export = CaptureRepository.saveJoinLobbyAck(this, lobbyAck, session.key.remoteLabel)
+        publishStatus("Captured JOIN_LOBBY_ACK", export)
+    }
+
+    private fun handleUdp(packet: ByteArray, ip: Ipv4Packet) {
+        val udp = parseUdp(packet, ip) ?: return
+        val payload = packet.copyOfRange(udp.payloadOffset, udp.payloadOffset + udp.payloadLength)
+        thread(name = "revivalside-udp", isDaemon = true) {
+            try {
+                DatagramSocket().use { socket ->
+                    protect(socket)
+                    socket.soTimeout = UDP_TIMEOUT_MS
+                    val request = DatagramPacket(payload, payload.size, intToAddress(ip.destination), udp.destinationPort)
+                    socket.send(request)
+                    val responseBuffer = ByteArray(4096)
+                    val response = DatagramPacket(responseBuffer, responseBuffer.size)
+                    socket.receive(response)
+                    val responsePayload = response.data.copyOfRange(0, response.length)
+                    writePacket(
+                        buildUdpIpv4Packet(
+                            sourceIp = ip.destination,
+                            destinationIp = ip.source,
+                            sourcePort = udp.destinationPort,
+                            destinationPort = udp.sourcePort,
+                            payload = responsePayload,
+                        ),
+                    )
+                }
+            } catch (_: Exception) {
+            }
+        }
+    }
+
+    private fun writePacket(packet: ByteArray) {
+        synchronized(outputLock) {
+            try {
+                output?.write(packet)
+            } catch (_: Exception) {
+            }
+        }
+    }
+
+    private fun buildNotification(text: String): Notification {
+        val manager = getSystemService(NotificationManager::class.java)
+        if (Build.VERSION.SDK_INT >= 26) {
+            manager.createNotificationChannel(
+                NotificationChannel(CHANNEL_ID, "RevivalSide Capture", NotificationManager.IMPORTANCE_LOW),
+            )
+        }
+        val intent = PendingIntent.getActivity(
+            this,
+            0,
+            Intent(this, MainActivity::class.java),
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
+        )
+        return Notification.Builder(this, CHANNEL_ID)
+            .setContentTitle("RevivalSide Capture")
+            .setContentText(text)
+            .setSmallIcon(android.R.drawable.stat_sys_download_done)
+            .setContentIntent(intent)
+            .setOngoing(true)
+            .build()
+    }
+
+    private fun publishStatus(message: String, export: java.io.File? = null) {
+        sendBroadcast(Intent(ACTION_STATUS).apply {
+            setPackage(packageName)
+            putExtra(EXTRA_MESSAGE, message)
+            if (export != null) putExtra(EXTRA_EXPORT_PATH, export.absolutePath)
+        })
+    }
+
+    private fun tryAddTargetApplication(builder: Builder, targetPackage: String): String {
+        if (targetPackage.isBlank()) {
+            builder.addDisallowedApplication(packageName)
+            return ""
+        }
+        return try {
+            builder.addAllowedApplication(targetPackage)
+            targetPackage
+        } catch (_: PackageManager.NameNotFoundException) {
+            builder.addDisallowedApplication(packageName)
+            publishStatus("Target package is not visible; recording all routed apps")
+            ""
+        }
+    }
+
+    companion object {
+        const val JOIN_LOBBY_ACK = 205
+        const val CHANNEL_ID = "revivalside_capture"
+        const val NOTIFICATION_ID = 6001
+        const val CONNECT_TIMEOUT_MS = 10_000
+        const val UDP_TIMEOUT_MS = 5_000
+        const val ACTION_START = "dev.revivalside.capture.START"
+        const val ACTION_STOP = "dev.revivalside.capture.STOP"
+        const val ACTION_STATUS = "dev.revivalside.capture.STATUS"
+        const val EXTRA_TARGET_PACKAGE = "targetPackage"
+        const val EXTRA_MESSAGE = "message"
+        const val EXTRA_EXPORT_PATH = "exportPath"
+    }
+}
+
+private data class TcpKey(
+    val localIp: Int,
+    val localPort: Int,
+    val remoteIp: Int,
+    val remotePort: Int,
+) {
+    val remoteLabel: String get() = "${intToAddress(remoteIp).hostAddress}:$remotePort"
+}
+
+private class TcpSession(
+    val key: TcpKey,
+    val socket: Socket,
+    var serverNext: Long,
+    var clientNext: Long,
+    val scanner: CounterSideFrameScanner,
+) {
+    val closed = AtomicBoolean(false)
+
+    fun writeFromClient(sequence: Long, payload: ByteArray) {
+        if (sequence != clientNext) return
+        socket.getOutputStream().write(payload)
+        socket.getOutputStream().flush()
+        clientNext = incrementSequence(clientNext, payload.size)
+    }
+
+    fun buildSynAck(): ByteArray = buildTcpIpv4Packet(
+        sourceIp = key.remoteIp,
+        destinationIp = key.localIp,
+        sourcePort = key.remotePort,
+        destinationPort = key.localPort,
+        sequence = serverNext,
+        acknowledgment = clientNext,
+        flags = TcpFlags.SYN or TcpFlags.ACK,
+    )
+
+    fun buildAck(): ByteArray = buildTcpIpv4Packet(
+        sourceIp = key.remoteIp,
+        destinationIp = key.localIp,
+        sourcePort = key.remotePort,
+        destinationPort = key.localPort,
+        sequence = serverNext,
+        acknowledgment = clientNext,
+        flags = TcpFlags.ACK,
+    )
+
+    fun buildServerData(payload: ByteArray): ByteArray = buildTcpIpv4Packet(
+        sourceIp = key.remoteIp,
+        destinationIp = key.localIp,
+        sourcePort = key.remotePort,
+        destinationPort = key.localPort,
+        sequence = serverNext,
+        acknowledgment = clientNext,
+        flags = TcpFlags.PSH or TcpFlags.ACK,
+        payload = payload,
+    )
+
+    fun buildFin(): ByteArray = buildTcpIpv4Packet(
+        sourceIp = key.remoteIp,
+        destinationIp = key.localIp,
+        sourcePort = key.remotePort,
+        destinationPort = key.localPort,
+        sequence = serverNext,
+        acknowledgment = clientNext,
+        flags = TcpFlags.FIN or TcpFlags.ACK,
+    )
+
+    fun close() {
+        if (!closed.compareAndSet(false, true)) return
+        try {
+            socket.close()
+        } catch (_: Exception) {
+        }
+    }
+}
+
+private fun intToAddress(value: Int): InetAddress {
+    return InetAddress.getByAddress(
+        byteArrayOf(
+            ((value ushr 24) and 0xff).toByte(),
+            ((value ushr 16) and 0xff).toByte(),
+            ((value ushr 8) and 0xff).toByte(),
+            (value and 0xff).toByte(),
+        ),
+    )
+}
+
+private fun Long.toUInt32(): Long = this and 0xffffffffL

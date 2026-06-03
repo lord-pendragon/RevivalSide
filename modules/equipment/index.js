@@ -22,6 +22,8 @@ const { ensureArmy } = require("../unit");
 
 const DEFAULT_NEXT_EQUIP_UID = 9100000000000001n;
 const TICKS_AT_UNIX_EPOCH = 621355968000000000n;
+const DATE_TIME_LOCAL_MASK = 0x4000000000000000n;
+const DATE_TIME_TICKS_MASK = 0x3fffffffffffffffn;
 const MAX_CRAFT_SLOTS = 5;
 const DEFAULT_UNLOCKED_CRAFT_SLOTS = 1;
 const CRAFT_SLOT_UNLOCK_ITEM_ID = 101;
@@ -75,6 +77,7 @@ function ensureEquipInventory(user) {
     if (String(key) !== String(equip.equipUid)) delete inventory.equips[key];
     inventory.equips[String(equip.equipUid)] = equip;
   }
+  if (reconcileEquipOwnership(user, inventory)) markInventoryTouched(inventory);
   normalizeEquipPresets(inventory);
   return inventory;
 }
@@ -166,7 +169,7 @@ function startCraft(user, slotIndex, moldId, count = 1, options = {}) {
   const costs = spendMiscCosts(user, getMoldMaterialCosts(moldTemplet, craftCount), options);
   slot.moldId = Number(moldId);
   slot.count = craftCount;
-  slot.completeDate = (dateTimeTicksNow() + BigInt(Math.max(0, Number(moldTemplet.m_Time || 0)) * 60 * 10000000)).toString();
+  slot.completeDate = (dateTimeTicksNow(options.regDate) + BigInt(Math.max(0, Number(moldTemplet.m_Time || 0)) * 60 * 10000000)).toString();
   craft.slots[String(slot.index)] = slot;
   return { slot, costItems: costs };
 }
@@ -255,12 +258,12 @@ function createEquipData(equipId, equipUid, options = {}) {
     const groupId = slot === 1 ? templet.m_StatGroupID : templet.m_StatGroupID_2;
     const precision = slot === 1 ? precision1 : precision2;
     const custom = customSubstats.find((entry) => Number(entry.slot) === slot);
+    if (Number(groupId || 0) <= 0) continue;
     const rolled = custom
       ? buildCustomSubstat(groupId, custom, { overrideUnsupportedSubstats: options.overrideUnsupportedSubstats, precision })
       : rollStatFromGroup(groupId, cursor + slot - 1, precision);
     if (rolled) stats.push(rolled);
   }
-  while (stats.length < 3) stats.push(rollFallbackStat(stats.length + Number(options.cursor || 0)));
 
   return normalizeEquip({
     equipUid: equipUid.toString(),
@@ -301,18 +304,28 @@ function equipItemToUnit(user, unitUid, equipUid, position = null) {
   const key = String(toBigInt(equipUid));
   const equip = normalizeEquip(inventory.equips[key]);
   const unit = getUnitByUid(army, unitUid);
-  if (!equip || !unit) return { equip: null, unit: null, unequipItemUID: "0", position: normalizePosition(position) };
+  const fallbackPosition = equip ? inferEquipPosition(equip) : 0;
+  if (!equip || !unit) return { equip: equip || null, unit: unit || null, unequipItemUID: "0", position: normalizePosition(position, fallbackPosition) };
 
-  const slot = normalizePosition(position != null ? position : inferEquipPosition(equip));
+  const slot = normalizePosition(position, fallbackPosition);
+  const previousOwner = findEquipOwnerUnit(army, key);
   unit.equipItemUids = normalizeFixedArray(unit.equipItemUids, 4, 0);
-  const unequipItemUID = String(toBigInt(unit.equipItemUids[slot] || 0));
+  const currentSlotEquipUid = String(toBigInt(unit.equipItemUids[slot] || 0));
+  const unequipItemUID = currentSlotEquipUid === key ? "0" : currentSlotEquipUid;
   if (unequipItemUID !== "0" && inventory.equips[unequipItemUID]) inventory.equips[unequipItemUID].ownerUnitUid = "-1";
   unequipFromAnyUnit(army, key);
   unit.equipItemUids[slot] = key;
   equip.ownerUnitUid = String(toBigInt(unit.unitUid));
   inventory.equips[key] = equip;
   markInventoryTouched(inventory);
-  return { equip, unit, unequipItemUID, position: slot };
+  return {
+    equip,
+    unit,
+    unequipItemUID,
+    position: slot,
+    previousOwnerUnit: previousOwner && previousOwner.unit,
+    previousOwnerPosition: previousOwner && previousOwner.position,
+  };
 }
 
 function unequipItem(user, equipUid) {
@@ -320,7 +333,8 @@ function unequipItem(user, equipUid) {
   const army = ensureArmy(user);
   const key = String(toBigInt(equipUid));
   const equip = normalizeEquip(inventory.equips[key]);
-  const owner = findEquipOwnerUnit(army, key) || (equip && toBigInt(equip.ownerUnitUid) > 0n ? { unit: getUnitByUid(army, equip.ownerUnitUid), position: inferEquipPosition(equip) } : null);
+  const owner = findEquipOwnerUnit(army, key);
+  const detachedOwnerCleared = !owner && equip && toBigInt(equip.ownerUnitUid) > 0n;
   const position = owner && owner.position != null ? owner.position : equip ? inferEquipPosition(equip) : 0;
   unequipFromAnyUnit(army, key);
   if (equip) {
@@ -328,7 +342,7 @@ function unequipItem(user, equipUid) {
     inventory.equips[key] = equip;
   }
   markInventoryTouched(inventory);
-  return { equip, unit: owner && owner.unit, unequipItemUID: key, position };
+  return { equip, unit: owner && owner.unit, unequipItemUID: key, position, detachedOwnerCleared };
 }
 
 function lockEquipItem(user, equipUid, isLock) {
@@ -442,6 +456,7 @@ function confirmEquipSubstat(user, equipUid, optionId = 0) {
   if (!equip) return null;
   const candidate = equip.tuningCandidate || null;
   if (candidate) {
+    const templet = getEquipTemplet(equip.itemEquipId) || {};
     const slot = normalizeOptionSlot(optionId || candidate.slot || 1);
     const candidateType = slot === 2 ? candidate.option2 : candidate.option1;
     const normalizedCandidateType = normalizeStatType(candidateType);
@@ -450,8 +465,8 @@ function confirmEquipSubstat(user, equipUid, optionId = 0) {
       (normalizedCandidateType && normalizedCandidateType !== "NST_RANDOM"
         ? statForType(normalizedCandidateType, getStatGroupIdForSlot(equip, slot), null, getPrecisionForSlot(equip, slot))
         : null);
-    equip.stats = normalizeStats(equip.stats);
-    if (stat) equip.stats[slot] = stat;
+    equip.stats = normalizeEquipStats(equip.stats, templet);
+    if (stat && slot < equip.stats.length) equip.stats[slot] = stat;
   }
   equip.tuningCandidate = null;
   ensureEquipInventory(user).equips[equip.equipUid] = equip;
@@ -638,10 +653,17 @@ function setEquipPresetName(user, presetIndex, name) {
 function registerEquipPreset(user, presetIndex, position, equipUid) {
   const inventory = ensureEquipInventory(user);
   const preset = ensureEquipPreset(user, presetIndex);
-  const slot = normalizePosition(position);
-  preset.equipUids = normalizeFixedArray(preset.equipUids, 4, 0);
+  const slots = sanitizePresetEquipUids(inventory, preset.equipUids);
   const key = normalizePresetEquipUid(inventory, equipUid);
-  preset.equipUids[slot] = key;
+  const equip = key !== 0 ? normalizeEquip(inventory.equips[String(key)]) : null;
+  const slot = normalizePosition(position, equip ? inferEquipPosition(equip) : 0);
+  if (key !== 0) {
+    for (let index = 0; index < slots.length; index += 1) {
+      if (slots[index] === key) slots[index] = 0;
+    }
+  }
+  slots[slot] = key;
+  preset.equipUids = sanitizePresetEquipUids(inventory, slots);
   preset.presetType = inferEquipPresetType(inventory, preset.equipUids);
   markInventoryTouched(inventory);
   return preset;
@@ -663,25 +685,39 @@ function applyEquipPreset(user, presetIndex, unitUid) {
   const preset = ensureEquipPreset(user, presetIndex);
   preset.equipUids = sanitizePresetEquipUids(inventory, preset.equipUids);
   preset.presetType = inferEquipPresetType(inventory, preset.equipUids);
-  const update = { unitUid: String(toBigInt(unitUid)), equipUids: normalizeFixedArray(preset.equipUids, 4, 0) };
+  const targetUnitUid = String(toBigInt(unitUid));
+  const update = { unitUid: targetUnitUid, equipUids: normalizeFixedArray(preset.equipUids, 4, 0) };
   const army = ensureArmy(user);
   const unit = getUnitByUid(army, unitUid);
+  const affectedUnitUids = new Set([targetUnitUid]);
   if (unit) {
-    unit.equipItemUids = normalizeFixedArray(unit.equipItemUids, 4, 0);
     for (let index = 0; index < 4; index += 1) {
+      const currentUnit = getUnitByUid(ensureArmy(user), unitUid);
+      const currentSlots = normalizeFixedArray(currentUnit && currentUnit.equipItemUids, 4, 0);
       const equipUid = update.equipUids[index];
       if (toBigInt(equipUid) > 0n) {
-        equipItemToUnit(user, unitUid, equipUid, index);
+        const previousOwner = findEquipOwnerUnit(ensureArmy(user), equipUid);
+        if (previousOwner && previousOwner.unit) affectedUnitUids.add(String(toBigInt(previousOwner.unit.unitUid)));
+        const currentEquipUid = currentSlots[index];
+        if (toBigInt(currentEquipUid || 0) > 0n) {
+          const currentOwner = findEquipOwnerUnit(ensureArmy(user), currentEquipUid);
+          if (currentOwner && currentOwner.unit) affectedUnitUids.add(String(toBigInt(currentOwner.unit.unitUid)));
+        }
+        const result = equipItemToUnit(user, unitUid, equipUid, index);
+        if (result && result.previousOwnerUnit) affectedUnitUids.add(String(toBigInt(result.previousOwnerUnit.unitUid)));
       } else {
-        const currentUnit = getUnitByUid(ensureArmy(user), unitUid);
-        const currentEquipUid = currentUnit && Array.isArray(currentUnit.equipItemUids) ? currentUnit.equipItemUids[index] : 0;
-        if (toBigInt(currentEquipUid || 0) > 0n) unequipItem(user, currentEquipUid);
+        const currentEquipUid = currentSlots[index];
+        if (toBigInt(currentEquipUid || 0) > 0n) {
+          const result = unequipItem(user, currentEquipUid);
+          if (result && result.unit) affectedUnitUids.add(String(toBigInt(result.unit.unitUid)));
+        }
       }
     }
     const updatedUnit = getUnitByUid(ensureArmy(user), unitUid);
     update.equipUids = normalizeFixedArray(updatedUnit ? updatedUnit.equipItemUids : [], 4, 0);
   }
   markInventoryTouched(inventory);
+  update.updates = buildUnitEquipUpdates(ensureArmy(user), affectedUnitUids, targetUnitUid, { preferredLast: true });
   return update;
 }
 
@@ -692,6 +728,7 @@ function clearEquipPresets(user, presetIndices) {
     if (indices.has(Number(preset.presetIndex))) {
       preset.equipUids = [0, 0, 0, 0];
       preset.presetType = EQUIP_PRESET_TYPE.NONE;
+      preset.presetName = "";
     }
   }
   normalizeEquipPresets(inventory);
@@ -701,14 +738,26 @@ function clearEquipPresets(user, presetIndices) {
 
 function changeEquipPresetIndices(user, changes) {
   const inventory = ensureEquipInventory(user);
+  const normalizedChanges = [];
+  let maxIndex = inventory.equipPresets.length - 1;
   for (const change of Array.isArray(changes) ? changes : []) {
     const from = Number(change.from != null ? change.from : change.presetIndex);
     const to = Number(change.to != null ? change.to : change.changeIndex);
-    if (!Number.isInteger(from) || !Number.isInteger(to)) continue;
-    ensureEquipPreset(user, Math.max(from, to));
-    const tmp = inventory.equipPresets[from];
-    inventory.equipPresets[from] = inventory.equipPresets[to];
-    inventory.equipPresets[to] = tmp;
+    if (!Number.isInteger(from) || !Number.isInteger(to) || from < 0 || to < 0) continue;
+    normalizedChanges.push({ from, to });
+    maxIndex = Math.max(maxIndex, from, to);
+  }
+  if (normalizedChanges.length) {
+    ensureEquipPreset(user, maxIndex);
+    const before = inventory.equipPresets.slice();
+    const reordered = before.slice();
+    const assignedTargets = new Set();
+    for (const { from, to } of normalizedChanges) {
+      if (from >= before.length || to >= reordered.length || assignedTargets.has(to)) continue;
+      reordered[to] = before[from];
+      assignedTargets.add(to);
+    }
+    inventory.equipPresets = reordered;
   }
   normalizeEquipPresets(inventory);
   markInventoryTouched(inventory);
@@ -852,15 +901,17 @@ function migrateStatsForNewTemplet(previousStats, templet, equip = null) {
   for (let index = 0; index < 2; index += 1) {
     const previous = substats[index];
     const groupId = index === 0 ? templet.m_StatGroupID : templet.m_StatGroupID_2;
+    if (Number(groupId || 0) <= 0) continue;
     stats.push(statForType(previous && previous.type, groupId, null, getPrecisionForSlot(equip, index + 1)) || rollFallbackStat(index + 1));
   }
-  return normalizeStats(stats);
+  return normalizeEquipStats(stats, templet);
 }
 
 function updateStatValueForPrecision(equip, slot) {
   const templet = getEquipTemplet(equip.itemEquipId) || {};
-  equip.stats = normalizeStats(equip.stats);
+  equip.stats = normalizeEquipStats(equip.stats, templet);
   const groupId = slot === 2 ? templet.m_StatGroupID_2 : templet.m_StatGroupID;
+  if (Number(groupId || 0) <= 0 || slot >= equip.stats.length) return;
   const current = equip.stats[slot];
   const next = statForType(current && current.type, groupId, null, getPrecisionForSlot(equip, slot));
   if (next) equip.stats[slot] = next;
@@ -976,7 +1027,11 @@ function normalizeCraftSlot(value, fallbackIndex = 1) {
   };
 }
 
-function dateTimeTicksNow() {
+function dateTimeTicksNow(value) {
+  if (value != null) {
+    const raw = toBigInt(value, 0n);
+    if (raw > 0n) return raw > DATE_TIME_LOCAL_MASK ? raw & DATE_TIME_TICKS_MASK : raw;
+  }
   return BigInt(Date.now()) * 10000n + TICKS_AT_UNIX_EPOCH;
 }
 
@@ -985,6 +1040,7 @@ function normalizeEquip(value) {
   const equipUid = toBigInt(value.equipUid != null ? value.equipUid : value.m_ItemUid || 0);
   const itemEquipId = Number(value.itemEquipId != null ? value.itemEquipId : value.m_ItemEquipID || 0);
   if (equipUid <= 0n || !Number.isInteger(itemEquipId) || itemEquipId <= 0) return null;
+  const templet = getEquipTemplet(itemEquipId) || {};
   return {
     ...value,
     equipUid: equipUid.toString(),
@@ -992,7 +1048,7 @@ function normalizeEquip(value) {
     ownerUnitUid: String(toBigInt(value.ownerUnitUid != null ? value.ownerUnitUid : value.m_OwnerUnitUID != null ? value.m_OwnerUnitUID : -1)),
     enchantLevel: Number(value.enchantLevel != null ? value.enchantLevel : value.m_EnchantLevel || 0) || 0,
     enchantExp: Number(value.enchantExp != null ? value.enchantExp : value.m_EnchantExp || 0) || 0,
-    stats: normalizeStats(value.stats || value.m_Stat),
+    stats: normalizeEquipStats(value.stats || value.m_Stat, templet),
     locked: Boolean(value.locked || value.m_bLock),
     precision: Number(value.precision != null ? value.precision : value.m_Precision || 0) || 0,
     precision2: Number(value.precision2 != null ? value.precision2 : value.m_Precision2 || 0) || 0,
@@ -1003,15 +1059,27 @@ function normalizeEquip(value) {
   };
 }
 
-function normalizeStats(stats) {
-  const list = Array.isArray(stats) ? stats.slice(0, 3) : [];
+function normalizeStats(stats, targetLength = 3) {
+  const length = Math.max(1, Math.min(3, Math.trunc(Number(targetLength) || 3)));
+  const list = Array.isArray(stats) ? stats.slice(0, length) : [];
   const result = list.map((stat, index) => ({
     type: String((stat && (stat.type || stat.statType)) || (index === 0 ? "NST_HP" : DEFAULT_STAT_TYPES[index] || "NST_ATK")),
     value: Number(stat && (stat.value != null ? stat.value : stat.stat_value || 0)) || 0,
     levelValue: Number(stat && (stat.levelValue != null ? stat.levelValue : stat.stat_level_value || 0)) || 0,
   }));
-  while (result.length < 3) result.push(rollFallbackStat(result.length));
+  while (result.length < length) result.push(rollFallbackStat(result.length));
   return result;
+}
+
+function normalizeEquipStats(stats, templet) {
+  return normalizeStats(stats, expectedStatCountForTemplet(templet));
+}
+
+function expectedStatCountForTemplet(templet) {
+  let count = 1;
+  if (Number(templet && templet.m_StatGroupID || 0) > 0) count += 1;
+  if (Number(templet && templet.m_StatGroupID_2 || 0) > 0) count += 1;
+  return count;
 }
 
 function rollStatFromGroup(groupId, cursor = 0, precision = 100, exceptStatType = null) {
@@ -1273,9 +1341,11 @@ function inferEquipPosition(equip) {
     : 0;
 }
 
-function normalizePosition(position) {
+function normalizePosition(position, fallback = 0) {
   const numeric = Number(position);
-  return Number.isInteger(numeric) && numeric >= 0 && numeric <= 3 ? numeric : 0;
+  const fallbackNumeric = Number(fallback);
+  const safeFallback = Number.isInteger(fallbackNumeric) && fallbackNumeric >= 0 && fallbackNumeric <= 3 ? fallbackNumeric : 0;
+  return Number.isInteger(numeric) && numeric >= 0 && numeric <= 3 ? numeric : safeFallback;
 }
 
 function normalizeOptionSlot(optionId) {
@@ -1386,6 +1456,49 @@ function unequipFromAnyUnit(army, equipUid) {
   }
 }
 
+function reconcileEquipOwnership(user, inventory) {
+  if (!user || typeof user !== "object" || !inventory || typeof inventory !== "object") return false;
+  const equips = inventory.equips && typeof inventory.equips === "object" ? inventory.equips : {};
+  const army = ensureArmy(user);
+  const ownerByEquipUid = new Map();
+  const seenEquips = new Set();
+  let changed = false;
+
+  const visitUnit = (unit, fallbackUnitUid) => {
+    if (!unit || typeof unit !== "object") return;
+    const unitUid = String(toBigInt(unit.unitUid != null ? unit.unitUid : fallbackUnitUid || 0));
+    const previousSlots = Array.isArray(unit.equipItemUids) ? unit.equipItemUids : [];
+    const slots = normalizeFixedArray(unit.equipItemUids, 4, 0);
+    for (let index = 0; index < slots.length; index += 1) {
+      const key = String(toBigInt(slots[index] || 0));
+      const isValid = key !== "0" && equips[key] && unitUid !== "0" && !seenEquips.has(key);
+      const nextSlot = isValid ? key : 0;
+      const previousKey = String(toBigInt(previousSlots[index] || 0));
+      const nextKey = String(toBigInt(nextSlot || 0));
+      if (previousKey !== nextKey) changed = true;
+      slots[index] = nextSlot;
+      if (!isValid) continue;
+      seenEquips.add(key);
+      ownerByEquipUid.set(key, unitUid);
+    }
+    if (!Array.isArray(unit.equipItemUids) || unit.equipItemUids.length !== 4) changed = true;
+    unit.equipItemUids = slots;
+  };
+
+  for (const [unitUid, unit] of Object.entries(army.units || {})) visitUnit(unit, unitUid);
+  for (const [unitUid, unit] of Object.entries(army.ships || {})) visitUnit(unit, unitUid);
+
+  for (const [equipUid, equip] of Object.entries(equips)) {
+    if (!equip || typeof equip !== "object") continue;
+    const key = String(toBigInt(equip.equipUid != null ? equip.equipUid : equipUid));
+    const ownerUnitUid = ownerByEquipUid.get(key) || "-1";
+    if (String(toBigInt(equip.ownerUnitUid != null ? equip.ownerUnitUid : -1)) !== ownerUnitUid) changed = true;
+    equip.ownerUnitUid = ownerUnitUid;
+  }
+
+  return changed;
+}
+
 function allocateEquipUid(user) {
   const inventory = ensureEquipInventory(user);
   let next = toBigInt(user.nextEquipUid, DEFAULT_NEXT_EQUIP_UID);
@@ -1436,6 +1549,23 @@ function inferEquipPresetType(inventory, equipUids) {
     if (presetType) return presetType;
   }
   return EQUIP_PRESET_TYPE.NONE;
+}
+
+function buildUnitEquipUpdates(army, unitUids, preferredUnitUid = null, options = {}) {
+  const ordered = [];
+  const seen = new Set();
+  const add = (uid) => {
+    const key = String(toBigInt(uid || 0));
+    if (key === "0" || seen.has(key)) return;
+    const unit = getUnitByUid(army, key);
+    if (!unit) return;
+    seen.add(key);
+    ordered.push({ unitUid: key, equipUids: normalizeFixedArray(unit.equipItemUids, 4, 0) });
+  };
+  if (!options.preferredLast) add(preferredUnitUid);
+  for (const uid of unitUids || []) add(uid);
+  if (options.preferredLast) add(preferredUnitUid);
+  return ordered;
 }
 
 function markInventoryTouched(inventory) {

@@ -57,6 +57,8 @@ internal sealed class CombatEngine
             "inspectGameLoadCompleteAck" => InspectGameLoadCompleteAck(Read<PacketValidationData>(request.Data)),
             "inspectGameSync" => InspectGameSync(Read<PacketValidationData>(request.Data)),
             "inspectJoinLobbyAck" => InspectJoinLobbyAck(Read<PacketValidationData>(request.Data)),
+            "extractJoinLobbyIntervals" => ExtractJoinLobbyIntervals(Read<PacketValidationData>(request.Data)),
+            "extractJoinLobbyProfile" => ExtractJoinLobbyProfile(Read<PacketValidationData>(request.Data)),
             "mergeJoinLobbyAck" => MergeJoinLobbyAck(Read<JoinLobbyMergeData>(request.Data)),
             "normalizeJoinLobbyAck" => NormalizeJoinLobbyAck(Read<JoinLobbyNormalizeData>(request.Data)),
             _ => new HostResponse { Ok = false, Error = $"unknown command: {request.Command}" }
@@ -103,6 +105,20 @@ internal sealed class CombatEngine
         return ManagedCombatBridge.TryInspectJoinLobbyAck(options, data, out var response, out var error)
             ? response ?? new HostResponse { Ok = true }
             : new HostResponse { Ok = false, Error = error ?? "managed JOIN_LOBBY_ACK inspection failed" };
+    }
+
+    private HostResponse ExtractJoinLobbyIntervals(PacketValidationData data)
+    {
+        return ManagedCombatBridge.TryExtractJoinLobbyIntervals(options, data, out var response, out var error)
+            ? response ?? new HostResponse { Ok = true }
+            : new HostResponse { Ok = false, Error = error ?? "managed JOIN_LOBBY_ACK interval extraction failed" };
+    }
+
+    private HostResponse ExtractJoinLobbyProfile(PacketValidationData data)
+    {
+        return ManagedCombatBridge.TryExtractJoinLobbyProfile(options, data, out var response, out var error)
+            ? response ?? new HostResponse { Ok = true }
+            : new HostResponse { Ok = false, Error = error ?? "managed JOIN_LOBBY_ACK profile extraction failed" };
     }
 
     private HostResponse MergeJoinLobbyAck(JoinLobbyMergeData data)

@@ -71,6 +71,9 @@ const EQUIP_PACKET_IDS = [
   1042, 1044, 1046, 1048, 1052, 1055, 1057, 1059, 1061, 1063,
   1066, 1068, 1070, 1072, 1074, 1076,
 ];
+const NEC_OK = 0;
+const NEC_DB_FAIL_EQUIP_ITEM_DATA = 6;
+const NEC_FAIL_UNIT_NOT_EXIST = 136;
 
 function createEquipmentPipelineHandlers() {
   return EQUIP_PACKET_IDS.map((packetId) => ({
@@ -83,6 +86,11 @@ function createEquipmentPipelineHandlers() {
       const response = buildResponse(ctx, user, packetId, request);
       const missionTracking = trackEquipmentMission(ctx, user, packetId, request);
       console.log(`[equipment:${packetId}] ACK packetId=${response.packetId} payloadSize=${response.payload.length}`);
+      for (const preResponse of response.preResponses || []) {
+        ctx.sendResponse(socket, packet.sequence, preResponse.packetId, () =>
+          ctx.buildEncryptedPacket(packet.sequence, preResponse.packetId, preResponse.payload)
+        );
+      }
       ctx.sendResponse(socket, packet.sequence, response.packetId, () =>
         ctx.buildEncryptedPacket(packet.sequence, response.packetId, response.payload)
       );
@@ -232,20 +240,67 @@ function equipItemAck(user, req) {
   const result = isUnequip
     ? unequipItem(user, req.equipItemUID)
     : equipItemToUnit(user, req.unitUID, req.equipItemUID, req.equipPosition);
+  if (isUnequip && !result.equip) {
+    console.warn(
+      `[equipment:1000] unequip rejected error=${NEC_DB_FAIL_EQUIP_ITEM_DATA} unitUID=${String(req.unitUID || 0)} equipItemUID=${String(req.equipItemUID || 0)} position=${Number(req.equipPosition || 0)}`
+    );
+    return buildEquipItemEquipAckPayload(NEC_DB_FAIL_EQUIP_ITEM_DATA, req.unitUID, 0, req.equipItemUID, req.equipPosition);
+  }
+  if (isUnequip && !result.unit) {
+    if (result.detachedOwnerCleared) {
+      console.warn(
+        `[equipment:1000] cleared detached equip owner equipItemUID=${String(req.equipItemUID || 0)} requestedUnitUID=${String(req.unitUID || 0)} position=${Number(result.position != null ? result.position : req.equipPosition || 0)}`
+      );
+    }
+    return buildEquipItemEquipAckPayload(NEC_OK, req.unitUID || 0, 0, 0, result.position != null ? result.position : req.equipPosition || 0);
+  }
+  if (!isUnequip && (!result.equip || !result.unit)) {
+    const errorCode = result.equip ? NEC_FAIL_UNIT_NOT_EXIST : NEC_DB_FAIL_EQUIP_ITEM_DATA;
+    console.warn(
+      `[equipment:1000] equip rejected error=${errorCode} unitUID=${String(req.unitUID || 0)} equipItemUID=${String(req.equipItemUID || 0)} position=${Number(req.equipPosition || 0)}`
+    );
+    return buildEquipItemEquipAckPayload(errorCode, req.unitUID, req.equipItemUID, 0, req.equipPosition);
+  }
   const equipItemUID = isUnequip ? 0 : req.equipItemUID || (result.equip && result.equip.equipUid) || 0;
   const unequipItemUID = isUnequip
     ? result.unequipItemUID || req.equipItemUID || 0
     : result.unequipItemUID || 0;
+  const responseUnitUid = isUnequip
+    ? (result.unit && result.unit.unitUid) || req.unitUID || 0
+    : (result.unit && result.unit.unitUid) || req.unitUID || 0;
+  const response = buildEquipItemEquipAckPayload(NEC_OK, responseUnitUid, equipItemUID, unequipItemUID, result.position != null ? result.position : req.equipPosition || 0);
+  const previousOwnerUnitUid = result.previousOwnerUnit && result.previousOwnerUnit.unitUid;
+  const previousOwnerPosition = Number(result.previousOwnerPosition);
+  const targetPosition = Number(result.position != null ? result.position : req.equipPosition || 0) || 0;
+  const movedFromAnotherSlot = !isUnequip
+    && previousOwnerUnitUid
+    && toBigInt(previousOwnerUnitUid) > 0n
+    && (String(toBigInt(previousOwnerUnitUid)) !== String(toBigInt(responseUnitUid)) || previousOwnerPosition !== targetPosition);
+  if (movedFromAnotherSlot) {
+    response.preResponses = [
+      buildEquipItemEquipAckPayload(NEC_OK, previousOwnerUnitUid, 0, equipItemUID, previousOwnerPosition),
+    ];
+  }
+  return response;
+}
+
+function buildEquipItemEquipAckPayload(errorCode, unitUID, equipItemUID, unequipItemUID, equipPosition) {
+  const safeEquipPosition = normalizeEquipPosition(equipPosition);
   return {
     packetId: 1001,
     payload: Buffer.concat([
-      writeSignedVarInt(0),
-      writeSignedVarLong(toBigInt(req.unitUID || (result.unit && result.unit.unitUid) || 0)),
+      writeSignedVarInt(Number(errorCode || 0) || 0),
+      writeSignedVarLong(toBigInt(unitUID || 0)),
       writeSignedVarLong(toBigInt(equipItemUID)),
       writeSignedVarLong(toBigInt(unequipItemUID)),
-      writeSignedVarInt(Number(result.position != null ? result.position : req.equipPosition || 0) || 0),
+      writeSignedVarInt(safeEquipPosition),
     ]),
   };
+}
+
+function normalizeEquipPosition(equipPosition) {
+  const numeric = Number(equipPosition);
+  return Number.isInteger(numeric) && numeric >= 0 && numeric <= 3 ? numeric : 0;
 }
 
 function enchantAck(user, req, packetId) {
@@ -544,12 +599,16 @@ function presetRegisterAck(user, req) {
 
 function presetApplyAck(user, req) {
   const update = applyEquipPreset(user, req.presetIndex, req.applyUnitUid);
+  const updates = Array.isArray(update.updates) && update.updates.length ? update.updates : [update];
   return {
     packetId: 1049,
     payload: Buffer.concat([
       writeSignedVarInt(0),
       writeSignedVarInt(Number(req.presetIndex || 0) || 0),
-      writeObjectList([writeNullableObject(Buffer.concat([writeSignedVarLong(toBigInt(update.unitUid || 0)), writeLongArray(update.equipUids || [])]))]),
+      writeObjectList(updates.map((entry) => writeNullableObject(Buffer.concat([
+        writeSignedVarLong(toBigInt(entry.unitUid || 0)),
+        writeLongArray(entry.equipUids || []),
+      ])))),
     ]),
   };
 }

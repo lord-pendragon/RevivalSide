@@ -11,6 +11,21 @@ module.exports = {
         )} gameTime=${req.gameTime.toFixed(2)}`
       );
     }
+    if (ctx.isTutorialCapturedBootstrapActive(socket)) {
+      if (!ctx.sendCapturedTutorialThroughPacketId(socket, ctx.constants.GAME_RESPAWN_ACK, "tutorial-game-respawn")) {
+        console.log(
+          `[official-missing] no sniffed tutorial GAME_RESPAWN_ACK for nextServerIndex=${socket.session.gameReplay.nextServerIndex}; no response sent`
+        );
+        return true;
+      }
+      ctx.sendCapturedTutorialUntilBeforePacketIds(
+        socket,
+        [ctx.constants.HEART_BIT_ACK, ctx.constants.GAME_PAUSE_ACK, ctx.constants.GAME_RESPAWN_ACK],
+        "tutorial-game-respawn-sync"
+      );
+      ctx.maybeTransitionTutorialReplayToDynamic(socket, "game-respawn");
+      return true;
+    }
     if (ctx.config.DYNAMIC_BATTLE_MANAGER && ctx.handleDynamicBattleRespawn(socket, req)) {
       return true;
     }

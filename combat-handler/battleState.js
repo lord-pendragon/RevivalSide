@@ -1,8 +1,7 @@
 // Battle state ownership.
 //
-// This module keeps the small bits of combat metadata that Node still needs for
-// managed combat bookkeeping. It intentionally does not send network packets or
-// own battle simulation.
+// This module creates and mutates the in-memory combat state used by deploy,
+// tick, and syncBuilder. It intentionally does not send network packets.
 
 function createBattleStateManager(options = {}) {
   const tick = options.tick;
@@ -10,6 +9,65 @@ function createBattleStateManager(options = {}) {
   const capturedRespawnUnitPools = options.capturedRespawnUnitPools || emptyPools();
   const parseCapturedGameSyncPayload = options.parseCapturedGameSyncPayload;
   const capturedGameFlow = options.capturedGameFlow || null;
+  const dynamicBattleGameUnitGroups = options.dynamicBattleGameUnitGroups || [];
+  const makeDynamicGameUid = options.makeDynamicGameUid || (() => BigInt(Date.now()) * 10000n);
+  const mapIdForStageDungeon = options.mapIdForStageDungeon || (() => 1064);
+
+  function startBattle(initialData = {}) {
+    const replay = initialData.replay;
+    const req = initialData.req;
+    if (!replay || !req) return null;
+    const activeStage = initialData.stage || {};
+    const gameUnitGroups =
+      activeStage.deployableGameUnitUIDGroups && activeStage.deployableGameUnitUIDGroups.length
+        ? activeStage.deployableGameUnitUIDGroups
+        : dynamicBattleGameUnitGroups.length
+          ? dynamicBattleGameUnitGroups
+          : [[5, 6]];
+    const assignedGameUnitUIDs = gameUnitGroups.flat();
+    const gameUID = initialData.gameUID || makeDynamicGameUid();
+
+    replay.dynamicGame = {
+      stageID: Number(activeStage.stageId || req.stageID || 0),
+      dungeonID: Number(activeStage.dungeonID || req.dungeonID || 0),
+      mapID: Number(activeStage.mapID || mapIdForStageDungeon(req.stageID, req.dungeonID)),
+      gameUID,
+      gameUnitUIDIndex: Number(activeStage.gameUnitUIDIndex || 18),
+      deployableGameUnitUIDGroups: gameUnitGroups.map((group) => group.slice()),
+      assignedGameUnitUIDs,
+      initialUnitsSent: false,
+      tutorial: isTutorialStageId(activeStage.stageId || req.stageID),
+    };
+
+    replay.battleState = {
+      stageId: replay.dynamicGame.stageID,
+      gameUID,
+      units: (activeStage.initialUnits || []).map((unit) => ({ ...unit })),
+      startTime: Date.now(),
+      gameTime: Number(activeStage.initialGameTime || 4),
+      absoluteGameTime: Number(activeStage.initialGameTime || 4),
+      remainGameTime: Number(activeStage.initialRemainGameTime || 180),
+      respawnCostA1: activeStage.respawnCostA1 == null ? 10 : Number(activeStage.respawnCostA1),
+      respawnCostB1: activeStage.respawnCostB1 == null ? 10 : Number(activeStage.respawnCostB1),
+      gameState: activeStage.gameState || { state: 3, winTeam: 0, waveId: 1 },
+      autoDeployUnits: (activeStage.autoDeployUnits || []).map((unit) => ({ ...unit, gameUnitUIDs: unit.gameUnitUIDs.slice() })),
+      deployedUnitUIDs: new Set(),
+      pendingDieUnitUIDs: [],
+      pendingDeckSyncs: [],
+      pendingGameStates: [],
+      pendingDungeonEvents: [],
+      deployCount: 0,
+    };
+
+    for (const unit of replay.battleState.units) tick.hydrateBattleUnitStats(unit);
+    replay.dynamicGame.gameUID = gameUID;
+    replay.tutorialReplayPhase = replay.dynamicGame.tutorial ? "captured-bootstrap" : "dynamic";
+    replay.syntheticGameTime = replay.battleState.gameTime;
+    replay.battleSim = null;
+    replay.dynamicBattleResultSent = false;
+    replay.managedGameLoadAckPayload = null;
+    return replay.dynamicGame;
+  }
 
   function attachGameLoadUnitPools(replay, activeStage, gameLoadAckPayload) {
     if (!replay || !replay.dynamicGame) return emptyPools();
@@ -43,6 +101,48 @@ function createBattleStateManager(options = {}) {
   function describeRuntimeGameUnitPools(pools) {
     if (!pools || !pools.ordered || pools.ordered.length === 0) return "";
     return pools.ordered.map((pool) => `${pool.unitUID}:${pool.gameUnitUIDs.join("/")}`).join(";");
+  }
+
+  function deployStageLineup(replay) {
+    const battleState = replay && replay.battleState;
+    if (!battleState || !Array.isArray(battleState.autoDeployUnits)) return [];
+    const dynamicGame = replay.dynamicGame || {};
+    if (!dynamicGame.usedPooledGameUnitUIDs) dynamicGame.usedPooledGameUnitUIDs = new Set();
+    const deployed = [];
+    for (const unit of battleState.autoDeployUnits) {
+      const unitUID = String(unit.unitUID || "");
+      if (!unitUID || battleState.deployedUnitUIDs.has(unitUID)) continue;
+      battleState.deployedUnitUIDs.add(unitUID);
+      for (const gameUnitUID of unit.gameUnitUIDs || []) {
+        const deployedUnit = {
+          sourceUnitUID: unitUID,
+          gameUnitUID,
+          team: 1,
+          hp: unit.hp,
+          maxHp: unit.hp,
+          x: unit.x,
+          z: unit.z,
+          savedPosX: unit.x,
+          right: unit.right !== false,
+          playState: unit.playState == null ? 1 : unit.playState,
+          respawn: true,
+          stateId: unit.stateId || 13,
+          stateChangeCount: unit.stateChangeCount == null ? 1 : unit.stateChangeCount,
+          speedX: 0,
+          speedY: 0,
+          speedZ: 0,
+          targetUID: 0,
+          subTargetUID: 0,
+          seed: unit.seed == null ? 51 : unit.seed,
+        };
+        tick.hydrateBattleUnitStats(deployedUnit);
+        battleState.units.push(deployedUnit);
+        dynamicGame.usedPooledGameUnitUIDs.add(Number(gameUnitUID));
+      }
+      deployed.push(unit);
+    }
+    replay.dynamicGame = dynamicGame;
+    return deployed;
   }
 
   function transitionTutorialReplayToDynamic(replay, endIndex) {
@@ -133,9 +233,11 @@ function createBattleStateManager(options = {}) {
   }
 
   return {
+    startBattle,
     attachGameLoadUnitPools,
     buildRuntimeGameUnitPools,
     describeRuntimeGameUnitPools,
+    deployStageLineup,
     transitionTutorialReplayToDynamic,
     mergeCapturedBattleUnits,
     extractCapturedBattleStateBeforeIndex,
@@ -144,6 +246,10 @@ function createBattleStateManager(options = {}) {
 
 function emptyPools() {
   return { byUnitUID: new Map(), ordered: [], allGameUnitUIDs: [], unassignedGameUnitUIDs: [] };
+}
+
+function isTutorialStageId(stageId) {
+  return [11211, 11212, 11213, 11214].includes(Number(stageId));
 }
 
 function buildCapturedRespawnUnitPools(flow, options = {}) {

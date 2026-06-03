@@ -93,6 +93,20 @@ async function routeRequest(config, html, req, res, requestUrl) {
     return;
   }
 
+  if (req.method === "POST" && pathname === `${apiPath}/users/import-json-profile`) {
+    const body = await readJsonBody(req, config.maxBodyBytes);
+    const imported = importUserFromJsonDb(config, body && body.db ? body.db : body);
+    rebuildUserDbIndexes(config.userDb);
+    persist(config, "import-json-profile");
+    sendJson(res, 201, {
+      user: imported.user,
+      sourceUserUid: imported.sourceUserUid,
+      users: buildUserSummaries(config.userDb),
+      meta: buildDbMeta(config.userDb, config.userDbPath),
+    });
+    return;
+  }
+
   if (pathname === `${apiPath}/db`) {
     if (req.method === "GET") {
       sendJson(res, 200, { db: config.userDb, users: buildUserSummaries(config.userDb), meta: buildDbMeta(config.userDb, config.userDbPath) });
@@ -144,6 +158,11 @@ async function routeRequest(config, html, req, res, requestUrl) {
       sendJson(res, 200, { deletedUserUid: uid, users: buildUserSummaries(config.userDb), meta: buildDbMeta(config.userDb, config.userDbPath) });
       return;
     }
+  }
+
+  if (req.method === "GET" && action === "export-json") {
+    sendJson(res, 200, buildSingleUserExport(config.userDb, uid));
+    return;
   }
 
   if (req.method === "POST" && action === "clone") {
@@ -235,6 +254,75 @@ function cloneUser(config, uid, body) {
   return clone;
 }
 
+function importUserFromJsonDb(config, incomingDb) {
+  const sourceUid = chooseImportSourceUserUid(incomingDb);
+  const source = incomingDb.users[sourceUid];
+  const imported = deepClone(source);
+  const originalUserUid = nonEmpty(imported.userUid) || sourceUid;
+  const originalFriendCode = nonEmpty(imported.friendCode);
+  const now = new Date().toISOString();
+  const userUid = allocateNumericId(config.userDb, "nextUserUid", "1000000001", (candidate) => config.userDb.users[String(candidate)]);
+  const friendCode = allocateNumericId(config.userDb, "nextFriendCode", "10000001", (candidate) =>
+    Object.values(config.userDb.users || {}).some((user) => user && String(user.friendCode || "") === String(candidate))
+  );
+
+  imported.userUid = userUid;
+  imported.friendCode = friendCode;
+  imported.nickname = nonEmpty(imported.nickname) || "ImportedProfile";
+  imported.createdAt = now;
+  imported.lastLoginAt = "";
+  imported.lastJoinAt = "";
+  imported.accessToken = config.makeAccessToken();
+  imported.reconnectKey = config.makeToken("rck");
+  imported.lastTokenIssuedAt = now;
+  imported.importedFromUsersJson = {
+    importedAt: now,
+    sourceUserUid: originalUserUid,
+    sourceFriendCode: originalFriendCode,
+    sourceActiveUserUid: nonEmpty(incomingDb.activeUserUid),
+    localUserUid: userUid,
+    localFriendCode: friendCode,
+  };
+  if (imported.officialImport && typeof imported.officialImport === "object") {
+    imported.officialImport = {
+      ...imported.officialImport,
+      copiedJsonImportedAt: now,
+      copiedJsonSourceUserUid: originalUserUid,
+      localUserUid: userUid,
+      localFriendCode: friendCode,
+    };
+  }
+  delete imported.steamAccountId;
+  delete imported.steamLoginKey;
+  delete imported.steamStableId;
+  delete imported.steamLoginTicketHash;
+  delete imported.deviceUid;
+
+  retargetUnitOwnership(imported, userUid);
+  config.ensureUserDefaults(imported);
+  retargetUnitOwnership(imported, userUid);
+
+  config.userDb.users[userUid] = imported;
+  config.userDb.activeUserUid = userUid;
+  return { user: imported, sourceUserUid: sourceUid };
+}
+
+function chooseImportSourceUserUid(incomingDb) {
+  if (!incomingDb || typeof incomingDb !== "object" || Array.isArray(incomingDb)) {
+    throw httpError(400, "Imported JSON must be a users.json database object.");
+  }
+  const users = incomingDb.users && typeof incomingDb.users === "object" && !Array.isArray(incomingDb.users) ? incomingDb.users : null;
+  if (!users) throw httpError(400, "Imported JSON is missing a users object.");
+
+  const activeUid = nonEmpty(incomingDb.activeUserUid);
+  if (activeUid && users[activeUid]) return activeUid;
+
+  const entries = Object.entries(users).filter(([, user]) => user && typeof user === "object" && !Array.isArray(user));
+  if (entries.length === 1) return entries[0][0];
+  if (entries.length === 0) throw httpError(400, "Imported users.json does not contain any profiles.");
+  throw httpError(400, "Imported users.json has multiple profiles and no activeUserUid; switch to the profile you want before copying it.");
+}
+
 function replaceUser(userDb, currentUid, incoming) {
   if (!incoming || typeof incoming !== "object" || Array.isArray(incoming)) {
     throw httpError(400, "User profile must be a JSON object.");
@@ -287,6 +375,27 @@ function getRequiredUser(userDb, uid) {
   const user = userDb && userDb.users && userDb.users[uid];
   if (!user) throw httpError(404, `User ${uid} was not found.`);
   return user;
+}
+
+function buildSingleUserExport(userDb, uid) {
+  const source = getRequiredUser(userDb, uid);
+  const exported = deepClone(source);
+  const userUid = nonEmpty(exported.userUid) || String(uid);
+  exported.userUid = userUid;
+  const db = {
+    schemaVersion: Number(userDb.schemaVersion || 1),
+    nextUserUid: String(userDb.nextUserUid || "1000000001"),
+    nextFriendCode: String(userDb.nextFriendCode || "10000001"),
+    activeUserUid: userUid,
+    users: {
+      [userUid]: exported,
+    },
+  };
+  return {
+    userUid,
+    fileName: `users-${sanitizeFilePart(exported.nickname || userUid)}-${sanitizeFilePart(userUid)}.json`,
+    db,
+  };
 }
 
 function replaceUserDb(target, incoming) {
@@ -371,6 +480,8 @@ function buildUserSummaries(userDb) {
       lastJoinAt: String(user.lastJoinAt || ""),
       steamStableId: String(user.steamStableId || ""),
       deviceUid: String(user.deviceUid || ""),
+      importedOfficialProfile: Boolean(user.importedOfficialProfile || user.officialImport),
+      officialUserUid: String(user.officialImport && user.officialImport.officialUserUid || ""),
       accessTokenPreview: previewSecret(user.accessToken),
       reconnectKeyPreview: previewSecret(user.reconnectKey),
       units: countObject(user.army && user.army.units),
@@ -494,6 +605,17 @@ function nonEmpty(value) {
 
 function deepClone(value) {
   return JSON.parse(JSON.stringify(value, (_key, item) => (typeof item === "bigint" ? item.toString() : item)));
+}
+
+function retargetUnitOwnership(profile, userUid) {
+  const army = profile && profile.army && typeof profile.army === "object" ? profile.army : null;
+  if (!army) return;
+  for (const bucket of ["units", "ships", "trophies"]) {
+    const units = army[bucket] && typeof army[bucket] === "object" && !Array.isArray(army[bucket]) ? army[bucket] : {};
+    for (const unit of Object.values(units)) {
+      if (unit && typeof unit === "object") unit.userUid = userUid;
+    }
+  }
 }
 
 function normalizeBasePath(value) {
@@ -915,6 +1037,13 @@ function buildUserManagerHtml(basePath) {
       flex: 1 1 auto;
     }
 
+    .export-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
     .status {
       min-width: min(420px, 100%);
       color: var(--muted);
@@ -944,6 +1073,8 @@ function buildUserManagerHtml(basePath) {
       <div class="header-meta" id="dbMeta">Loading</div>
       <div class="header-actions">
         <button id="reloadBtn" title="Reload from disk">Reload</button>
+        <button id="importJsonBtn" title="Add one profile from a copied users.json clipboard value or file">Import copied JSON</button>
+        <input id="importJsonFileInput" type="file" accept="application/json,.json" hidden>
         <button id="newBtn" class="primary" title="Create profile">New</button>
       </div>
     </header>
@@ -981,6 +1112,10 @@ function buildUserManagerHtml(basePath) {
           <button id="repairBtn" title="Apply game defaults">Repair</button>
           <button id="tokensBtn" title="Regenerate tokens">Tokens</button>
           <button id="cloneBtn" title="Clone selected profile">Clone</button>
+          <div class="export-actions">
+            <button id="copyProfileBtn" title="Copy selected profile as a one-profile users.json">Copy JSON</button>
+            <button id="downloadProfileBtn" title="Download selected profile as a one-profile users.json">Export file</button>
+          </div>
           <button id="switchBtn" title="Use selected profile on next login">Switch</button>
           <button id="deleteBtn" class="danger" title="Delete checked profiles">Delete selected</button>
           <div class="spacer"></div>
@@ -1009,6 +1144,8 @@ function buildUserManagerHtml(basePath) {
     const els = {
       dbMeta: document.getElementById("dbMeta"),
       reloadBtn: document.getElementById("reloadBtn"),
+      importJsonBtn: document.getElementById("importJsonBtn"),
+      importJsonFileInput: document.getElementById("importJsonFileInput"),
       newBtn: document.getElementById("newBtn"),
       searchInput: document.getElementById("searchInput"),
       selectVisibleInput: document.getElementById("selectVisibleInput"),
@@ -1029,6 +1166,8 @@ function buildUserManagerHtml(basePath) {
       repairBtn: document.getElementById("repairBtn"),
       tokensBtn: document.getElementById("tokensBtn"),
       cloneBtn: document.getElementById("cloneBtn"),
+      copyProfileBtn: document.getElementById("copyProfileBtn"),
+      downloadProfileBtn: document.getElementById("downloadProfileBtn"),
       switchBtn: document.getElementById("switchBtn"),
       deleteBtn: document.getElementById("deleteBtn"),
       statusLine: document.getElementById("statusLine")
@@ -1087,6 +1226,7 @@ function buildUserManagerHtml(basePath) {
     function bindEvents() {
       els.searchInput.addEventListener("input", renderUsers);
       els.reloadBtn.addEventListener("click", reloadFromDisk);
+      els.importJsonBtn.addEventListener("click", importCopiedJson);
       els.newBtn.addEventListener("click", createProfile);
       els.profileTab.addEventListener("click", function () { switchMode("profile"); });
       els.dbTab.addEventListener("click", function () { switchMode("db"); });
@@ -1098,6 +1238,8 @@ function buildUserManagerHtml(basePath) {
       els.repairBtn.addEventListener("click", repairProfile);
       els.tokensBtn.addEventListener("click", regenerateTokens);
       els.cloneBtn.addEventListener("click", cloneProfile);
+      els.copyProfileBtn.addEventListener("click", copyProfileJson);
+      els.downloadProfileBtn.addEventListener("click", downloadProfileJson);
       els.switchBtn.addEventListener("click", switchProfile);
       els.deleteBtn.addEventListener("click", deleteProfile);
       els.selectVisibleInput.addEventListener("change", function () {
@@ -1133,7 +1275,7 @@ function buildUserManagerHtml(basePath) {
     function getFilteredUsers() {
       const query = els.searchInput.value.trim().toLowerCase();
       return state.users.filter(function (user) {
-        const haystack = [user.userUid, user.friendCode, user.nickname, user.steamStableId, user.deviceUid].join(" ").toLowerCase();
+        const haystack = [user.userUid, user.friendCode, user.nickname, user.steamStableId, user.deviceUid, user.officialUserUid].join(" ").toLowerCase();
         return !query || haystack.indexOf(query) !== -1;
       });
     }
@@ -1170,7 +1312,7 @@ function buildUserManagerHtml(basePath) {
         row.querySelector(".user-name span:first-child").textContent = user.nickname || "(unnamed)";
         row.querySelector(".user-name span:last-child").textContent = (isLoginActive ? "Active | " : "") + "Lv " + (user.level || 0);
         const lines = row.querySelectorAll(".user-line");
-        lines[0].textContent = user.userUid + " | " + user.friendCode;
+        lines[0].textContent = user.userUid + " | " + user.friendCode + (user.importedOfficialProfile ? " | Official" : "");
         lines[1].textContent = "U " + user.units + " S " + user.ships + " O " + user.operators + " E " + user.equips;
         row.addEventListener("click", function () { selectUser(user.userUid); });
         entry.appendChild(checkbox);
@@ -1225,6 +1367,8 @@ function buildUserManagerHtml(basePath) {
       els.repairBtn.disabled = !profileMode || !state.selectedUid;
       els.tokensBtn.disabled = !profileMode || !state.selectedUid;
       els.cloneBtn.disabled = !profileMode || !state.selectedUid;
+      els.copyProfileBtn.disabled = !profileMode || !state.selectedUid;
+      els.downloadProfileBtn.disabled = !profileMode || !state.selectedUid;
       els.switchBtn.disabled = !profileMode || !state.selectedUid || state.selectedUid === state.activeUid;
       renderDeleteSelectionControls();
       if (profileMode && state.profile) {
@@ -1361,6 +1505,176 @@ function buildUserManagerHtml(basePath) {
       renderUsers();
       await selectUser(payload.user.userUid);
       setStatus("Created " + payload.user.userUid, "ok");
+    }
+
+    async function importCopiedJson() {
+      if (state.dirty && !window.confirm("Discard unsaved edits before adding the copied profile?")) return;
+      els.importJsonBtn.disabled = true;
+      setStatus("Reading copied users.json", "warn");
+      try {
+        const imported = await readImportedUsersJson();
+        const payload = await requestJson("/users/import-json-profile", {
+          method: "POST",
+          body: JSON.stringify({ db: imported.db })
+        });
+        state.db = null;
+        state.users = payload.users || [];
+        state.deleteSelectedUids.clear();
+        renderMeta(payload.meta);
+        renderUsers();
+        if (payload.user && payload.user.userUid) await selectUser(payload.user.userUid);
+        else renderProfile();
+        setStatus("Added profile from " + imported.source, "ok");
+      } catch (err) {
+        if (err && err.message !== "import-cancelled") setStatus(err.message, "invalid");
+      } finally {
+        els.importJsonBtn.disabled = false;
+      }
+    }
+
+    async function readImportedUsersJson() {
+      const clipboard = await tryReadClipboardUsersJson();
+      if (clipboard) return clipboard;
+      setStatus("Choose the copied users.json file", "warn");
+      return readUsersJsonFile();
+    }
+
+    async function tryReadClipboardUsersJson() {
+      if (!navigator.clipboard || typeof navigator.clipboard.readText !== "function") return null;
+      try {
+        const text = await navigator.clipboard.readText();
+        if (!text || !text.trim()) return null;
+        return { db: parseUsersJsonText(text), source: "clipboard" };
+      } catch (_) {
+        return null;
+      }
+    }
+
+    function readUsersJsonFile() {
+      return new Promise(function (resolve, reject) {
+        els.importJsonFileInput.value = "";
+        els.importJsonFileInput.onchange = function () {
+          const file = els.importJsonFileInput.files && els.importJsonFileInput.files[0];
+          if (!file) {
+            reject(new Error("import-cancelled"));
+            return;
+          }
+          const reader = new FileReader();
+          reader.onload = function () {
+            try {
+              resolve({ db: parseUsersJsonText(String(reader.result || "")), source: file.name || "file" });
+            } catch (err) {
+              reject(err);
+            }
+          };
+          reader.onerror = function () { reject(new Error("Failed to read users.json.")); };
+          reader.readAsText(file);
+        };
+        els.importJsonFileInput.click();
+      });
+    }
+
+    function parseUsersJsonText(text) {
+      let db;
+      try {
+        db = JSON.parse(normalizeImportedJsonText(text));
+      } catch (err) {
+        throw new Error("Clipboard/file does not contain valid JSON: " + err.message);
+      }
+      if (!db || typeof db !== "object" || Array.isArray(db) || !db.users || typeof db.users !== "object" || Array.isArray(db.users)) {
+        throw new Error("Clipboard/file JSON is not a users.json database.");
+      }
+      return db;
+    }
+
+    function normalizeImportedJsonText(text) {
+      return String(text || "").replace(/^\uFEFF/, "").replace(/(?:\\n)+\s*$/, "");
+    }
+
+    async function getSelectedProfileExport() {
+      if (!state.selectedUid) throw new Error("Select a profile first.");
+      if (state.mode !== "profile") throw new Error("Switch to Profile JSON before exporting.");
+      if (!validateEditor()) throw new Error("Profile JSON must be valid before exporting.");
+      const payload = await requestJson("/users/" + encodeURIComponent(state.selectedUid) + "/export-json");
+      const profile = parseEditor();
+      const userUid = String(profile.userUid || payload.userUid || state.selectedUid);
+      profile.userUid = userUid;
+      payload.userUid = userUid;
+      payload.fileName = "users-" + sanitizeFileNamePart(profile.nickname || userUid) + "-" + sanitizeFileNamePart(userUid) + ".json";
+      payload.db.activeUserUid = userUid;
+      payload.db.users = {};
+      payload.db.users[userUid] = profile;
+      return payload;
+    }
+
+    async function copyProfileJson() {
+      if (!state.selectedUid) return;
+      els.copyProfileBtn.disabled = true;
+      setStatus("Copying profile users.json", "warn");
+      try {
+        const payload = await getSelectedProfileExport();
+        await writeClipboardText(JSON.stringify(payload.db, null, 2));
+        setStatus("Copied " + payload.userUid + " as users.json", "ok");
+      } catch (err) {
+        setStatus(err.message, "invalid");
+      } finally {
+        els.copyProfileBtn.disabled = false;
+      }
+    }
+
+    async function downloadProfileJson() {
+      if (!state.selectedUid) return;
+      els.downloadProfileBtn.disabled = true;
+      setStatus("Preparing profile export", "warn");
+      try {
+        const payload = await getSelectedProfileExport();
+        downloadText(payload.fileName || "users-" + payload.userUid + ".json", JSON.stringify(payload.db, null, 2));
+        setStatus("Exported " + payload.userUid + " as users.json", "ok");
+      } catch (err) {
+        setStatus(err.message, "invalid");
+      } finally {
+        els.downloadProfileBtn.disabled = false;
+      }
+    }
+
+    async function writeClipboardText(text) {
+      if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+        try {
+          await navigator.clipboard.writeText(text);
+          return;
+        } catch (_) {
+        }
+      }
+      const area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "fixed";
+      area.style.left = "-9999px";
+      area.style.top = "0";
+      document.body.appendChild(area);
+      area.focus();
+      area.select();
+      try {
+        if (!document.execCommand("copy")) throw new Error("Clipboard copy failed.");
+      } finally {
+        document.body.removeChild(area);
+      }
+    }
+
+    function downloadText(fileName, text) {
+      const blob = new Blob([text], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
+
+    function sanitizeFileNamePart(value) {
+      return String(value || "profile").replace(/[^A-Za-z0-9_-]+/g, "-").replace(/^-+|-+$/g, "") || "profile";
     }
 
     async function cloneProfile() {

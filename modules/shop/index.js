@@ -1,7 +1,14 @@
 const fs = require("fs");
 const path = require("path");
 const { getGameplayTableFileCandidates } = require("../gameplay-jsons");
-const { getMiscItem, spendMiscItem, toBigInt } = require("../inventory");
+const {
+  COMMON_RESOURCE_ITEM_IDS,
+  DEFAULT_LOCAL_SHOP_BALANCE,
+  getMiscItem,
+  seedShopCurrency,
+  spendMiscItem,
+  toBigInt,
+} = require("../inventory");
 const { buildUnitData, buildOperatorData, buildEquipItemData, buildMoldItemData } = require("../packet-codec");
 const { grantRewardByType, mergeReward } = require("../reward");
 const {
@@ -11,6 +18,7 @@ const {
   spendShopPrice,
   grantFallbackResource,
   getPurchaseKey,
+  getShopPurchaseHistories,
   hasCompletedPurchase,
   markCompletedPurchase,
   makeLocalOrderId,
@@ -21,12 +29,19 @@ const ROOT_DIR = path.resolve(__dirname, "..", "..");
 const DOTNET_TICKS_AT_UNIX_EPOCH = 621355968000000000n;
 const TICKS_PER_MS = 10000n;
 const TICKS_PER_HOUR = 60n * 60n * 10000000n;
+const DATE_TIME_LOCAL_MASK = 0x4000000000000000n;
+const DATE_TIME_TICKS_MASK = 0x3fffffffffffffffn;
 const RANDOM_SHOP_SLOT_COUNT = readPositiveIntEnv("CS_RANDOM_SHOP_SLOT_COUNT", 9);
 const RANDOM_SHOP_REFRESH_INTERVAL_HOURS = readPositiveIntEnv("CS_RANDOM_SHOP_REFRESH_INTERVAL_HOURS", 6);
 const RANDOM_SHOP_REFRESH_COST_ITEM_ID = readPositiveIntEnv("CS_RANDOM_SHOP_REFRESH_COST_ITEM_ID", 101);
 const RANDOM_SHOP_REFRESH_COST = readNonNegativeIntEnv("CS_RANDOM_SHOP_REFRESH_COST", 15);
 const RANDOM_SHOP_REFRESH_MAX_COUNT = readNonNegativeIntEnv("CS_RANDOM_SHOP_REFRESH_MAX_COUNT", 5);
 const RANDOM_SHOP_STATE_VERSION = 1;
+const EVENT_SHOP_SEED_CURRENCIES = process.env.CS_EVENT_SHOP_SEED_CURRENCIES !== "0";
+const EVENT_SHOP_CURRENCY_BALANCE = toBigInt(
+  process.env.CS_EVENT_SHOP_CURRENCY_BALANCE || process.env.CS_LOCAL_SHOP_BALANCE || process.env.CS_LOCAL_SHOP_CURRENCY_BALANCE,
+  DEFAULT_LOCAL_SHOP_BALANCE
+);
 const ERROR_CODES = Object.freeze({
   OK: 0,
   INSUFFICIENT_CASH: 96,
@@ -99,6 +114,9 @@ const PACKETS = Object.freeze({
 });
 
 const SHOP_TEMPLET_FILES = ["LUA_SHOP_TEMPLET_01.json", "LUA_SHOP_TEMPLET_02.json"].flatMap((fileName) =>
+  getGameplayTableFileCandidates("ab_script", fileName, { rootDir: ROOT_DIR })
+);
+const SHOP_TAB_TEMPLET_FILES = ["LUA_SHOP_TAB_TEMPLET_01.json", "LUA_SHOP_TAB_TEMPLET_02.json"].flatMap((fileName) =>
   getGameplayTableFileCandidates("ab_script", fileName, { rootDir: ROOT_DIR })
 );
 
@@ -242,7 +260,10 @@ function buildShopResponseInner(ctx, packetId, request) {
 }
 
 function buildShopFixedListAck(ctx) {
-  const productIds = loadShopCatalog().productIds;
+  const catalog = loadShopCatalog();
+  const activeShop = getActiveEventShopState(ctx);
+  const productIds = uniquePositiveInts([...(catalog.productIds || []), ...(activeShop.productIds || [])]);
+  ensureActiveEventShopCurrencies(getSessionUser(ctx), ctx && ctx.eventManager, { regDate: currentDateTimeBinary(ctx) });
   return Buffer.concat([
     ctx.writeSignedVarInt(0),
     writeIntList(ctx, productIds),
@@ -252,17 +273,17 @@ function buildShopFixedListAck(ctx) {
 
 function buildShopFixBuyAck(ctx, request, productId, options = {}) {
   const result = options.skipGrant
-    ? { reward: createEmptyReward(), costItem: null }
+    ? { errorCode: ERROR_CODES.OK, reward: createEmptyReward(), costItem: null, history: null }
     : processProductPurchase(ctx, productId, request && request.productCount, {
         source: options.source || "shop-buy",
         request,
         dedupe: options.dedupe,
       });
   return Buffer.concat([
-    ctx.writeSignedVarInt(0),
+    ctx.writeSignedVarInt(result.errorCode == null ? ERROR_CODES.OK : result.errorCode),
     writeNullableObject(buildRewardData(ctx, result.reward)),
     ctx.writeSignedVarInt(productId || 0),
-    writeNullableObject(buildPurchaseHistory(ctx, productId || 0, request && request.productCount)),
+    writeNullableObject(buildPurchaseHistory(ctx, productId || 0, request && request.productCount, result.history)),
     writeNullableObjectOrNull(result.costItem ? buildItemMiscData(ctx, result.costItem) : null), // costItemData
     writeNullObject(), // subscriptionData
     writeDoubleLE(0),
@@ -275,10 +296,10 @@ function buildGamebaseBuyAck(ctx, request, productId) {
     request,
   });
   return Buffer.concat([
-    ctx.writeSignedVarInt(0),
+    ctx.writeSignedVarInt(result.errorCode == null ? ERROR_CODES.OK : result.errorCode),
     writeNullableObject(buildRewardData(ctx, result.reward)),
     ctx.writeSignedVarInt(productId || 0),
-    writeNullableObject(buildPurchaseHistory(ctx, productId || 0, request && request.productCount)),
+    writeNullableObject(buildPurchaseHistory(ctx, productId || 0, request && request.productCount, result.history)),
     writeNullableObjectOrNull(result.costItem ? buildItemMiscData(ctx, result.costItem) : null), // costItemData
     writeNullObject(), // subscriptionData
     writeDoubleLE(0),
@@ -383,7 +404,7 @@ function buildRandomShopListData(slot) {
 
 function refreshRandomShop(ctx, useCash) {
   const user = getSessionUser(ctx);
-  const now = utcTicksNow();
+  const now = currentRawTicks(ctx);
   const state = ensureRandomShopState(user, { now, autoRefresh: false });
   let costItem = null;
 
@@ -410,7 +431,7 @@ function refreshRandomShop(ctx, useCash) {
 
 function processRandomShopPurchase(ctx, slotIndexes) {
   const user = getSessionUser(ctx);
-  const state = ensureRandomShopState(user);
+  const state = ensureRandomShopState(user, { now: currentRawTicks(ctx) });
   const requested = uniquePositiveInts(slotIndexes);
   const slots = normalizeRandomShopSlots(state.slots);
   if (!requested.length) return randomShopPurchaseResult(ERROR_CODES.INVALID_SHOP_ID);
@@ -593,10 +614,15 @@ function utcTicksNow() {
 
 function toRawTicks(value) {
   try {
-    return BigInt(value || 0);
+    const raw = BigInt(value || 0);
+    return raw > DATE_TIME_LOCAL_MASK ? raw & DATE_TIME_TICKS_MASK : raw;
   } catch (_) {
     return 0n;
   }
+}
+
+function currentRawTicks(ctx) {
+  return toRawTicks(ctx && typeof ctx.dateTimeBinaryNow === "function" ? ctx.dateTimeBinaryNow() : utcTicksNow());
 }
 
 function currentDateTimeBinary(ctx) {
@@ -808,6 +834,7 @@ function loadShopCatalog() {
   const marketToProductId = new Map();
   const recordsByProductId = new Map();
   const priceItemIds = new Set();
+  const tabRecords = [];
   let suppressedProducts = 0;
 
   for (const filePath of SHOP_TEMPLET_FILES) {
@@ -834,14 +861,29 @@ function loadShopCatalog() {
     }
   }
 
+  for (const filePath of SHOP_TAB_TEMPLET_FILES) {
+    if (!fs.existsSync(filePath)) continue;
+    try {
+      const parsed = JSON.parse(fs.readFileSync(filePath, "utf8"));
+      for (const record of parsed.records || []) {
+        if (!record || typeof record !== "object") continue;
+        tabRecords.push(record);
+      }
+    } catch (err) {
+      console.log(`[shop] failed to load ${filePath}: ${err.message}`);
+    }
+  }
+
   cachedCatalog = {
     productIds: Array.from(productIds).sort((a, b) => a - b),
     marketToProductId,
     recordsByProductId,
+    records: Array.from(recordsByProductId.values()),
+    tabRecords,
     priceItemIds: Array.from(priceItemIds).sort((a, b) => a - b),
   };
   console.log(
-    `[shop] catalog loaded products=${cachedCatalog.productIds.length} marketIds=${marketToProductId.size} priceItems=${cachedCatalog.priceItemIds.length} suppressed=${suppressedProducts}`
+    `[shop] catalog loaded products=${cachedCatalog.productIds.length} tabs=${tabRecords.length} marketIds=${marketToProductId.size} priceItems=${cachedCatalog.priceItemIds.length} suppressed=${suppressedProducts}`
   );
   return cachedCatalog;
 }
@@ -901,21 +943,206 @@ function findProductRecord(productId) {
   return loadShopCatalog().recordsByProductId.get(Number(productId)) || null;
 }
 
+function getActiveEventShopState(ctxOrState = null) {
+  const state = resolveEventShopActiveState(ctxOrState);
+  const catalog = loadShopCatalog();
+  const activeTags = buildActiveShopTagState(state);
+  const activeTabs = new Set();
+
+  for (const tab of catalog.tabRecords || []) {
+    if (isShopRecordActive(tab, activeTags)) activeTabs.add(shopRecordTabKey(tab));
+  }
+
+  const productIds = [];
+  const priceItemIds = new Set();
+  const intervalTags = new Set();
+  const openTags = new Set();
+  const contentsTags = new Set();
+
+  for (const record of catalog.records || []) {
+    const active = isShopRecordActive(record, activeTags) || activeTabs.has(shopRecordTabKey(record));
+    if (!active) continue;
+    const productId = Number(record && record.m_ProductID);
+    if (Number.isInteger(productId) && productId > 0) productIds.push(productId);
+    const priceItemId = Number(record && record.m_PriceItemID);
+    if (Number.isInteger(priceItemId) && priceItemId > 0 && isEventLimitedShopRecord(record)) {
+      priceItemIds.add(priceItemId);
+    }
+    for (const tag of getShopRecordIntervalTags(record)) intervalTags.add(tag);
+    for (const tag of getShopRecordOpenTags(record)) openTags.add(tag);
+    for (const tag of getShopRecordContentsTags(record)) contentsTags.add(tag);
+  }
+
+  return {
+    productIds: uniquePositiveInts(productIds),
+    priceItemIds: Array.from(priceItemIds).sort((a, b) => a - b),
+    intervalTags: Array.from(intervalTags).sort(),
+    openTags: Array.from(openTags).sort(),
+    contentsTags: Array.from(contentsTags).sort(),
+    tabCount: activeTabs.size,
+  };
+}
+
+function ensureActiveEventShopCurrencies(user, eventManagerOrState = null, options = {}) {
+  if (!EVENT_SHOP_SEED_CURRENCIES || !user) return { seeded: [], active: getActiveEventShopState(eventManagerOrState) };
+  const active = getActiveEventShopState(eventManagerOrState);
+  const seedItemIds = (active.priceItemIds || []).filter((itemId) => itemId > 0 && !isCommonResourceItemId(itemId));
+  if (!seedItemIds.length) return { seeded: [], active };
+  seedShopCurrency(user, seedItemIds, {
+    balance: options.balance || EVENT_SHOP_CURRENCY_BALANCE,
+    regDate: options.regDate || 0n,
+    seedMissingOnly: options.seedMissingOnly !== false,
+    includeCommonResources: false,
+  });
+  return { seeded: seedItemIds, active };
+}
+
+function resolveEventShopActiveState(ctxOrState) {
+  if (ctxOrState && typeof ctxOrState.getActiveEventState === "function") return ctxOrState.getActiveEventState();
+  if (ctxOrState && ctxOrState.eventManager && typeof ctxOrState.eventManager.getActiveEventState === "function") {
+    return ctxOrState.eventManager.getActiveEventState();
+  }
+  if (ctxOrState && Array.isArray(ctxOrState.intervalData)) return ctxOrState;
+  return null;
+}
+
+function buildActiveShopTagState(state) {
+  const intervals = new Set();
+  const openTags = new Set();
+  const contentsTags = new Set();
+  for (const interval of Array.isArray(state && state.intervalData) ? state.intervalData : []) {
+    addUsableShopTag(intervals, interval && interval.strKey);
+  }
+  for (const tag of state && state.openTags || []) addUsableShopTag(openTags, tag);
+  for (const tag of state && state.contentsTags || []) addUsableShopTag(contentsTags, tag);
+  for (const tag of state && state.counterPassContentsTags || []) addUsableShopTag(contentsTags, tag);
+  return { intervals, openTags, contentsTags };
+}
+
+function isShopRecordActive(record, activeTags) {
+  if (!record || !activeTags) return false;
+  return (
+    hasUsableTagIntersection(activeTags.intervals, getShopRecordIntervalTags(record)) ||
+    hasUsableTagIntersection(activeTags.openTags, getShopRecordOpenTags(record)) ||
+    hasUsableTagIntersection(activeTags.contentsTags, getShopRecordContentsTags(record))
+  );
+}
+
+function isEventLimitedShopRecord(record) {
+  if (!record) return false;
+  const tabId = String(record.m_TabID || record.ShopTabID || "").trim().toUpperCase();
+  const text = [
+    tabId,
+    ...getShopRecordIntervalTags(record),
+    ...getShopRecordOpenTags(record),
+    ...getShopRecordContentsTags(record),
+  ].join("|");
+  return (
+    tabId === "TAB_EVENT" ||
+    tabId === "TAB_EVENT_V2" ||
+    tabId.startsWith("TAB_PACKAGE_CLB") ||
+    /\bCLB_\d+\b/.test(text) ||
+    /SHOP_EVENT|COMMON_EVENT|POINT_EXCHANGE|BINGO|COLLAB/i.test(text)
+  );
+}
+
+function getShopRecordIntervalTags(record) {
+  return normalizeShopTags([
+    record && record.m_DateStrID,
+    record && record.m_DateStrId,
+    record && record.m_EventDateStrID,
+    record && record.m_DiscountDateStrID,
+  ]);
+}
+
+function getShopRecordOpenTags(record) {
+  return normalizeShopTags([record && record.m_OpenTag, record && record.OpenTag, record && record.openTag]);
+}
+
+function getShopRecordContentsTags(record) {
+  return normalizeShopTags([
+    ...(Array.isArray(record && record.listContentsTagAllow) ? record.listContentsTagAllow : []),
+    record && record.contentsTagAllow,
+    record && record.m_ContentsTag,
+  ]);
+}
+
+function normalizeShopTags(values) {
+  const tags = [];
+  for (const value of Array.isArray(values) ? values : [values]) {
+    if (Array.isArray(value)) {
+      tags.push(...normalizeShopTags(value));
+      continue;
+    }
+    const tag = String(value || "").trim().toUpperCase();
+    if (isUsableShopTag(tag)) tags.push(tag);
+  }
+  return Array.from(new Set(tags));
+}
+
+function addUsableShopTag(set, value) {
+  const tag = String(value || "").trim().toUpperCase();
+  if (isUsableShopTag(tag)) set.add(tag);
+}
+
+function isUsableShopTag(tag) {
+  const text = String(tag || "").trim().toUpperCase();
+  if (!text || text === "0" || text === "NONE") return false;
+  if (text.includes("NOT_USED") || text.includes("NO_USE") || text.includes("DUMMY")) return false;
+  if (["GLOBAL", "KOR", "JPN", "CHN", "SEA", "TW", "KR"].includes(text)) return false;
+  if (text.startsWith("LANGUAGE_") || text.startsWith("VOICE_")) return false;
+  return true;
+}
+
+function hasUsableTagIntersection(activeSet, tags) {
+  for (const tag of Array.isArray(tags) ? tags : []) {
+    if (activeSet && activeSet.has(tag)) return true;
+  }
+  return false;
+}
+
+function shopRecordTabKey(record) {
+  if (!record) return "";
+  const tabId = String(record.m_TabID || record.ShopTabID || "").trim().toUpperCase();
+  const subIndex = Number(record.m_TabSubIndex || record.ShopTabSubIndex || 0) || 0;
+  return tabId ? `${tabId}:${subIndex}` : "";
+}
+
 function processProductPurchase(ctx, productId, productCount, options = {}) {
   const record = findProductRecord(productId);
   const user = getSessionUser(ctx);
+  const count = Math.max(1, Number(productCount) || 1);
   const source = options.source || "shop-buy";
   const shouldDedupe = options.dedupe !== false && (source === "steam" || source === "cash" || source === "gamebase");
   const purchaseKey = shouldDedupe ? getPurchaseKey(source, productId, options.request || {}) : "";
-  if (shouldDedupe && hasCompletedPurchase(ctx.socket, purchaseKey)) return { reward: createEmptyReward(), costItem: null };
+  if (shouldDedupe && hasCompletedPurchase(ctx.socket, purchaseKey)) {
+    return { errorCode: ERROR_CODES.OK, reward: createEmptyReward(), costItem: null, history: getPurchaseHistory(user, productId) };
+  }
+  const priceItemId = Number(record && record.m_PriceItemID) || 0;
+  const totalPrice = getShopProductTotalPrice(record, count);
+  if (record && priceItemId > 0 && totalPrice > 0n && !hasEnoughMiscItem(user, priceItemId, totalPrice)) {
+    return {
+      errorCode: isCommonResourceItemId(priceItemId) ? ERROR_CODES.INSUFFICIENT_CASH : ERROR_CODES.INSUFFICIENT_RESOURCE,
+      reward: createEmptyReward(),
+      costItem: null,
+      history: getPurchaseHistory(user, productId),
+    };
+  }
   const reward = record
-    ? grantShopProduct(ctx, user, record, productCount)
-    : grantFallbackResource(ctx, user, productCount);
-  const costItem = record ? spendShopPrice(ctx, user, record, productCount) : null;
-  trackShopPurchaseMission(ctx, user, record, productId, productCount, costItem);
+    ? grantShopProduct(ctx, user, record, count)
+    : grantFallbackResource(ctx, user, count);
+  const costItem = record ? spendShopPrice(ctx, user, record, count) : null;
+  trackShopPurchaseMission(ctx, user, record, productId, count, costItem);
+  const history = getPurchaseHistory(user, productId);
   if (shouldDedupe) markCompletedPurchase(ctx.socket, purchaseKey);
   persistUserDb(ctx);
-  return { reward, costItem };
+  return { errorCode: ERROR_CODES.OK, reward, costItem, history };
+}
+
+function getShopProductTotalPrice(record, productCount = 1) {
+  if (!record || isRealMoneyProduct(record)) return 0n;
+  const unitPrice = toBigInt(record.m_Price || 0, 0n);
+  return unitPrice * BigInt(Math.max(1, Number(productCount) || 1));
 }
 
 function trackShopPurchaseMission(ctx, user, record, productId, productCount = 1, costItem = null) {
@@ -1001,13 +1228,30 @@ function buildItemMiscData(ctx, item) {
   ]);
 }
 
-function buildPurchaseHistory(ctx, productId, productCount) {
+function buildPurchaseHistory(ctx, productId, productCount, history = null) {
+  const resolved = history || getPurchaseHistory(getSessionUser(ctx), productId) || {
+    shopId: Number(productId) || 0,
+    purchaseCount: 0,
+    purchaseTotalCount: 0,
+    nextResetDate: "0",
+  };
   return Buffer.concat([
-    ctx.writeSignedVarInt(Number(productId) || 0),
-    ctx.writeSignedVarInt(0),
-    ctx.writeSignedVarInt(0),
-    ctx.writeSignedVarLong(0n),
+    ctx.writeSignedVarInt(Number(resolved.shopId || productId) || 0),
+    ctx.writeSignedVarInt(Number(resolved.purchaseCount) || 0),
+    ctx.writeSignedVarInt(Number(resolved.purchaseTotalCount) || 0),
+    ctx.writeSignedVarLong(toBigInt(resolved.nextResetDate || 0, 0n)),
   ]);
+}
+
+function getPurchaseHistory(user, productId) {
+  const id = Number(productId) || 0;
+  if (!id) return null;
+  return (getShopPurchaseHistories(user) || []).find((history) => Number(history.shopId) === id) || null;
+}
+
+function isCommonResourceItemId(itemId) {
+  const id = Number(itemId) || 0;
+  return COMMON_RESOURCE_ITEM_IDS.map((value) => Number(value)).includes(id);
 }
 
 function formatShopRequest(request) {
@@ -1128,6 +1372,8 @@ module.exports = {
   PACKETS,
   createShopHandler,
   loadShopCatalog,
+  getActiveEventShopState,
+  ensureActiveEventShopCurrencies,
   buildSerializedRandomShopData,
   ensureRandomShopState,
 };

@@ -5,6 +5,7 @@ const { execFileSync } = require("child_process");
 
 const HEAD_FENCE = 0xaabbccdd;
 const TAIL_FENCE = 0x11223344;
+const TSHARK_PATH = process.env.CS_TSHARK_PATH || "C:\\Program Files\\Wireshark\\tshark.exe";
 
 function usage() {
   console.error(
@@ -48,7 +49,7 @@ console.log(
 
 function readStreamRows(file, tcpStream) {
   const output = execFileSync(
-    "C:\\Program Files\\Wireshark\\tshark.exe",
+    TSHARK_PATH,
     [
       "-r",
       file,

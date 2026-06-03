@@ -55,7 +55,10 @@ internal static class ManagedAssemblyPatcher
     private static string BuildPatchKey(string sourceAssembly)
     {
         var sourceStamp = File.GetLastWriteTimeUtc(sourceAssembly).Ticks;
-        var hostStamp = File.GetLastWriteTimeUtc(typeof(ManagedAssemblyPatcher).Assembly.Location).Ticks;
+        var hostPath = Environment.ProcessPath;
+        var hostStamp = !string.IsNullOrWhiteSpace(hostPath) && File.Exists(hostPath)
+            ? File.GetLastWriteTimeUtc(hostPath).Ticks
+            : typeof(ManagedAssemblyPatcher).Assembly.GetName().Version?.GetHashCode() ?? 0;
         return $"{sourceStamp:x}-{hostStamp:x}";
     }
 

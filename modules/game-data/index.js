@@ -82,6 +82,14 @@ function loadGameData() {
     if (Number.isInteger(contractId) && contractId > 0 && !contracts.has(contractId)) contracts.set(contractId, record);
   }
 
+  const selectableContracts = new Map();
+  for (const record of readRecords("ab_script", "LUA_SELECTABLE_CONTRACT.json")) {
+    const contractId = Number(record && record.m_ContractID);
+    if (Number.isInteger(contractId) && contractId > 0 && !selectableContracts.has(contractId)) {
+      selectableContracts.set(contractId, record);
+    }
+  }
+
   const contractTabs = new Map();
   for (const record of readRecords("ab_script", "LUA_CONTRACT_TAB_TABLE.json")) {
     const contractId = Number(record && record.m_ContractID);
@@ -268,6 +276,7 @@ function loadGameData() {
     unitSkillStrIdById,
     pieceByItemId,
     contracts,
+    selectableContracts,
     contractTabs,
     contractUnitPools,
     selectableContractUnitPools,
@@ -443,6 +452,14 @@ function getContractTabRecord(contractId) {
   return loadGameData().contractTabs.get(Number(contractId)) || null;
 }
 
+function getSelectableContractRecord(contractId) {
+  return loadGameData().selectableContracts.get(Number(contractId)) || null;
+}
+
+function getSelectableContractRecords() {
+  return Array.from(loadGameData().selectableContracts.values());
+}
+
 function getVisibleContractIds() {
   const data = loadGameData();
   const ids = new Set([...data.contracts.keys(), ...data.contractTabs.keys()]);
@@ -493,6 +510,33 @@ function getContractPoolUnitEntries(contractIdOrPoolId, options = {}) {
     });
   }
   return entries;
+}
+
+function getSelectableContractPoolSlotEntries(contractIdOrPoolId) {
+  const data = loadGameData();
+  const records = data.selectableContractUnitPools.filter((record) => matchesPool(record, contractIdOrPoolId));
+  const bySlot = new Map();
+  for (const record of records) {
+    const slotNumber = Number(record && record.m_SlotNumber);
+    if (!Number.isInteger(slotNumber) || slotNumber <= 0) continue;
+    const unitId = resolveUnitId(record.m_UnitStrId || record.m_UnitID || record.m_UnitId);
+    if (!Number.isInteger(unitId) || unitId <= 0 || !isContractRewardUnitId(unitId)) continue;
+    const unitRecord = getUnitTemplet(unitId) || {};
+    const entries = bySlot.get(slotNumber) || [];
+    if (entries.some((entry) => Number(entry.unitId) === unitId)) continue;
+    entries.push({
+      unitId,
+      ratio: Math.max(1, Number(record.m_Ratio || 1)),
+      grade: normalizeUnitGrade(unitRecord.m_NKM_UNIT_GRADE),
+      pickupTarget: record.m_PickupTarget === true || record.m_CustomPickupTarget === true,
+      slotNumber,
+      record,
+    });
+    bySlot.set(slotNumber, entries);
+  }
+  return Array.from(bySlot.entries())
+    .sort((a, b) => a[0] - b[0])
+    .map(([slotNumber, entries]) => ({ slotNumber, entries }));
 }
 
 function isContractRewardUnitId(unitId) {
@@ -1030,9 +1074,12 @@ module.exports = {
   getPlayableOperatorIds,
   getContractRecord,
   getContractTabRecord,
+  getSelectableContractRecord,
+  getSelectableContractRecords,
   getVisibleContractIds,
   getContractPoolUnitIds,
   getContractPoolUnitEntries,
+  getSelectableContractPoolSlotEntries,
   getMiscContractRecord,
   getCustomPickupContractRecords,
   getRandomGradeTable,

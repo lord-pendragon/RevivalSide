@@ -36,21 +36,26 @@ module.exports = {
     }
 
     const replay = socket.session.gameReplay;
-    replay.inGameFlow = true;
 
     if (ctx.config.REPLAY_CAPTURED_GAME_FLOW && ctx.capturedGameFlow) {
       if (ctx.shouldUseLocalJoinLobbyAck(user)) {
-        if (!replay.bootLobbyTemplateSent) {
-          sendJoinLobbyBootTemplates(ctx, socket, replay, user);
-        }
         const joinLobbyPayload = ctx.buildJoinLobbyAckPayload(user);
         if (ctx.config.USE_LOCAL_USER_DB && user.userUid) ctx.saveUserDb();
-        ctx.sendServerGamePacket(
+        if (shouldUseOfficialTutorialLobbyOrder(user)) {
+          sendOfficialTutorialJoinLobby(ctx, socket, replay, joinLobbyPayload);
+          return true;
+        }
+        ctx.sendGameResponse(
           socket,
+          packet,
           ctx.constants.JOIN_LOBBY_ACK,
           joinLobbyPayload,
           "join-lobby-local-progress"
         );
+        replay.inGameFlow = true;
+        if (!replay.bootLobbyTemplateSent) {
+          sendJoinLobbyBootTemplates(ctx, socket, replay, user);
+        }
         sendCounterPassLobbyBootstrap(ctx, socket);
         sendJoinLobbyRaidBootstrap(ctx, socket, user);
         if (typeof ctx.repairPostTutorialGuideMissionsForSocket === "function") {
@@ -66,6 +71,7 @@ module.exports = {
         replay.localJoinLobbyAckSent = true;
         ctx.skipCapturedGameThroughPacketId(socket, ctx.constants.JOIN_LOBBY_ACK);
       } else {
+        replay.inGameFlow = true;
         if (ctx.hasTutorialProgress(user)) {
           console.log("[JOIN_LOBBY_REQ] using captured lobby ACK; local account overlay disabled");
         }
@@ -82,11 +88,12 @@ module.exports = {
       return true;
     }
 
-    if (!replay.bootLobbyTemplateSent) {
-      sendJoinLobbyBootTemplates(ctx, socket, replay, user);
-    }
     const joinLobbyPayload = ctx.buildJoinLobbyAckPayload(user);
     if (ctx.config.USE_LOCAL_USER_DB && user.userUid) ctx.saveUserDb();
+    if (shouldUseOfficialTutorialLobbyOrder(user)) {
+      sendOfficialTutorialJoinLobby(ctx, socket, replay, joinLobbyPayload);
+      return true;
+    }
     ctx.sendGameResponse(
       socket,
       packet,
@@ -94,6 +101,10 @@ module.exports = {
       joinLobbyPayload,
       "join-lobby-local-progress"
     );
+    replay.inGameFlow = true;
+    if (!replay.bootLobbyTemplateSent) {
+      sendJoinLobbyBootTemplates(ctx, socket, replay, user);
+    }
     sendCounterPassLobbyBootstrap(ctx, socket);
     sendJoinLobbyRaidBootstrap(ctx, socket, user);
     if (typeof ctx.repairPostTutorialGuideMissionsForSocket === "function") {
@@ -111,6 +122,26 @@ module.exports = {
     return true;
   },
 };
+
+function shouldUseOfficialTutorialLobbyOrder(user) {
+  const tutorial = user && user.tutorial && typeof user.tutorial === "object" ? user.tutorial : null;
+  return Boolean(tutorial && tutorial.enabled !== false && tutorial.completed !== true && tutorial.loginMode !== "post-tutorial");
+}
+
+function sendOfficialTutorialJoinLobby(ctx, socket, replay, joinLobbyPayload) {
+  replay.inGameFlow = true;
+  if (!replay.bootLobbyTemplateSent) {
+    ctx.sendCapturedGameTemplateRange(socket, 1, 7, "tutorial-join-lobby-boot", { forceReframe: false });
+    replay.bootLobbyTemplateSent = true;
+  }
+  ctx.sendServerGamePacket(socket, ctx.constants.JOIN_LOBBY_ACK, joinLobbyPayload, "tutorial-join-lobby-local-progress");
+  ctx.sendCapturedGameTemplateRange(socket, 9, 18, "tutorial-join-lobby-post-boot", { forceReframe: false });
+  replay.bootPostListTemplateSent = true;
+  replay.postLobbyBootTemplateSent = true;
+  replay.localJoinLobbyAckSent = true;
+  replay.inGameFlow = true;
+  replay.nextServerIndex = Math.max(Number(replay.nextServerIndex || 1), 19);
+}
 
 function sendCounterPassLobbyBootstrap(ctx, socket) {
   sendCounterPassLobbyNotifications(ctx, socket, "join-lobby-counter-pass");

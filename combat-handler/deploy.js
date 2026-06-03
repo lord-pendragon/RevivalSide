@@ -1,12 +1,74 @@
-// Managed deployment helpers for GAME_RESPAWN_REQ (816).
+// Deployment handling for GAME_RESPAWN_REQ (816).
 //
-// The C# host owns packet emission. This module only mirrors runtime unit
-// metadata into battleState so result/reward bookkeeping can read it later.
+// The listener parses the request and sends packets. This module decides which
+// runtime gameUnitUID to use and updates battleState/deck sync state.
 
 function createDeployHandler(options = {}) {
   const tick = options.tick;
+  const syncBuilder = options.syncBuilder;
   const defaultDeployedUnitHp = options.defaultDeployedUnitHp || 1989;
   const combatStateId = options.combatStateId || { IDLE: 12, MOVE: 13, ATTACK: 45, DEAD: 18 };
+  const dynamicBattleGameUnitGroups = options.dynamicBattleGameUnitGroups || [];
+
+  function handleDeploy(replay, req) {
+    if (!replay || !req) return { handled: false };
+    if (replay.battleState || replay.dynamicGame) {
+      const deployed = deployRuntimeBattleUnit(replay, req);
+      return {
+        handled: true,
+        mode: "battleState",
+        deployed,
+        ackPayload: syncBuilder.buildRespawnAck({ unitUID: req.unitUID, assistUnit: false }),
+        syncPayload:
+          deployed && replay.battleState
+            ? syncBuilder.buildGameSync(
+                {
+                  battleState: replay.battleState,
+                  delta: 0,
+                  skipSimulation: true,
+                },
+                { continueBattleStateUnits: tick.continueBattleStateUnits }
+              )
+            : null,
+      };
+    }
+
+    const sim = initBattleSimulator(replay);
+    const group = getBattleSpawnGroup(sim);
+    if (group.length === 0) {
+      return {
+        handled: true,
+        mode: "battleSim",
+        deployed: null,
+        ackPayload: syncBuilder.buildRespawnAck({ unitUID: req.unitUID, assistUnit: req.assistUnit }),
+        syncPayload: null,
+      };
+    }
+    const x = tick.clamp(Number(req.respawnPosX || 400), 250, 720);
+    const spawned = group.map((gameUnitUID, index) =>
+      createBattlePlayerUnit(gameUnitUID, req.unitUID, x + index * 10, index % 2 === 0 ? -180 : -176)
+    );
+    sim.units.push(...spawned);
+    sim.playerUnitCount += 1;
+    sim.respawnCostA1 = Math.max(0, sim.respawnCostA1 - spawned[0].cost);
+    sim.usedRespawnCostA1 += spawned[0].cost;
+    sim.pendingDeckSyncs.push({
+      team: 1,
+      unitDeckIndex: 0,
+      unitDeckUID: req.unitUID,
+      deckUsedAddUnitUID: req.unitUID,
+    });
+    sim.gameTime = Math.max(sim.gameTime, Number(req.gameTime || sim.gameTime));
+    sim.absoluteGameTime = Math.max(sim.absoluteGameTime, sim.gameTime);
+    return {
+      handled: true,
+      mode: "battleSim",
+      deployed: spawned[0],
+      spawned,
+      ackPayload: syncBuilder.buildRespawnAck({ unitUID: req.unitUID, assistUnit: req.assistUnit }),
+      syncPayload: null,
+    };
+  }
 
   function deployRuntimeBattleUnit(replay, req) {
     const battleState = replay && replay.battleState;
@@ -168,11 +230,98 @@ function createDeployHandler(options = {}) {
     return count % 4;
   }
 
+  function initBattleSimulator(replay) {
+    if (replay.battleSim) return replay.battleSim;
+    const respawn = replay.lastRespawnReq || {};
+    const startTime = Number(respawn.gameTime || replay.syntheticGameTime || 10);
+    replay.battleSim = {
+      tick: 0,
+      gameTime: Math.max(4, startTime),
+      absoluteGameTime: Math.max(4, startTime),
+      remainGameTime: Math.max(1, 180 - startTime),
+      nextPlayerGameUnitUID: 4,
+      playerUnitCount: 0,
+      waveId: 1,
+      gameState: 3,
+      finishSent: false,
+      resultDelayTicks: 0,
+      spawnGroupIndex: 0,
+      spawnGroups:
+        replay.dynamicGame && replay.dynamicGame.deployableGameUnitUIDGroups
+          ? replay.dynamicGame.deployableGameUnitUIDGroups.map((group) => group.slice())
+          : dynamicBattleGameUnitGroups.map((group) => group.slice()),
+      respawnCostA1: 10,
+      respawnCostB1: 10,
+      respawnCostAssistA1: 0,
+      respawnCostAssistB1: 0,
+      usedRespawnCostA1: 0,
+      usedRespawnCostB1: 0,
+      pendingDeckSyncs: [],
+      pendingDieUnitUIDs: [],
+      pendingGameStates: [{ state: 3, winTeam: 0, waveId: 1 }],
+      finished: false,
+      win: false,
+      targetHp: 2800,
+      targetMaxHp: 2800,
+      targetUID: 2,
+      targetX: 1180,
+      units: [],
+    };
+    return replay.battleSim;
+  }
+
+  function getBattleSpawnGroup(sim) {
+    const configured = (sim.spawnGroups || [])[sim.spawnGroupIndex] || [];
+    sim.spawnGroupIndex += 1;
+    if (configured.length > 0) return configured.filter((uid) => !sim.units.some((unit) => unit.gameUnitUID === uid));
+    const first = Math.max(10, sim.nextPlayerGameUnitUID || 10);
+    sim.nextPlayerGameUnitUID = first + 1;
+    return [first];
+  }
+
+  function createBattlePlayerUnit(gameUnitUID, sourceUnitUID, x, z) {
+    return {
+      gameUnitUID,
+      sourceUnitUID,
+      hp: defaultDeployedUnitHp,
+      maxHp: defaultDeployedUnitHp,
+      x,
+      z,
+      right: true,
+      stateId: 13,
+      stateChangeCount: 0,
+      speedX: 140,
+      speedCurrent: 0,
+      attackRange: 95,
+      attackDamage: 360,
+      attackCooldown: 1.05,
+      attackTimer: 0.25,
+      hitFrame: 0.35,
+      hitDone: false,
+      attackStateTime: 0,
+      cost: 4,
+      spawnGrace: 0.35,
+      alive: true,
+      respawn: true,
+      team: 1,
+      playState: 1,
+      deadSynced: false,
+      dyingFrames: 0,
+      targetUID: 0,
+      subTargetUID: 0,
+      seed: 51,
+    };
+  }
+
   return {
+    handleDeploy,
     deployRuntimeBattleUnit,
     enrichBattleStateUnitsFromPlayerDeck,
     consumePooledGameUnitUIDForDeploy,
     nextDeckSyncIndexForBattleState,
+    initBattleSimulator,
+    getBattleSpawnGroup,
+    createBattlePlayerUnit,
   };
 }
 

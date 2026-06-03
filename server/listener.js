@@ -65,6 +65,7 @@ const {
   buildOperatorData: buildSerializedOperatorData,
   buildContractStateData: buildSerializedContractStateData,
   buildContractBonusStateData: buildSerializedContractBonusStateData,
+  buildSelectableContractStateData: buildSerializedSelectableContractStateData,
   buildEquipItemData: buildSerializedEquipItemData,
   buildDeckIndexData: buildSerializedDeckIndexData,
   buildDeckData: buildSerializedDeckData,
@@ -94,11 +95,10 @@ const {
   buildAttendanceData: buildSerializedAttendanceData,
   buildAttendanceIntervalDataList: buildSerializedAttendanceIntervalDataList,
 } = require("../modules/attendance");
-const { loadShopCatalog, buildSerializedRandomShopData } = require("../modules/shop");
+const { loadShopCatalog, buildSerializedRandomShopData, ensureActiveEventShopCurrencies } = require("../modules/shop");
 const { getShopPurchaseHistories } = require("../modules/resource");
 const {
   getContentUnlocksForDungeon,
-  getContractPoolUnitIds,
   getEventDeckTemplet,
   getMissionTabTemplets,
   getMissionTempletsByTabId,
@@ -108,6 +108,7 @@ const {
 const {
   getAllContractStates,
   getAllContractBonusStates,
+  getSelectableContractState,
   getAllCustomPickupContracts,
   buildCustomPickupContractData: buildSerializedCustomPickupContractData,
 } = require("../modules/contract");
@@ -238,6 +239,7 @@ const MISSION_COMPLETE_ACK = 1621;
 const DEFENCE_INFO_ACK = 3905;
 const NPT_GAME_SYNC_DATA_PACK_NOT = 822;
 const NGT_DUNGEON = 3;
+const NGT_DIVE = 5;
 const NGT_RAID = 8;
 const NGT_TUTORIAL = 7;
 const NGT_CUTSCENE = 9;
@@ -282,7 +284,8 @@ const MANAGED_HOST_PRIME_FRAMES = Number(process.env.CS_MANAGED_HOST_PRIME_FRAME
 const DYNAMIC_BATTLE_GAME_UNIT_GROUPS = parseGameUnitGroups(process.env.CS_DYNAMIC_BATTLE_GAME_UNIT_GROUPS || "5,6;8,9;10,11;12,13");
 const CSHARP_COMBAT_HOST = process.env.CS_CSHARP_COMBAT_HOST !== "0";
 const CSHARP_COMBAT_HOST_PROJECT = process.env.CS_CSHARP_COMBAT_HOST_PROJECT || path.join(ROOT_DIR, "combat-host", "CombatHost.csproj");
-const CSHARP_COMBAT_HOST_DLL = process.env.CS_CSHARP_COMBAT_HOST_DLL || "";
+const CSHARP_COMBAT_HOST_DLL =
+  process.env.CS_CSHARP_COMBAT_HOST_DLL || process.env.CS_COMBAT_HOST_PATH || findDefaultCombatHostExecutable(CSHARP_COMBAT_HOST_PROJECT);
 const CSHARP_COMBAT_HOST_TIMEOUT_MS = Number(process.env.CS_CSHARP_COMBAT_HOST_TIMEOUT_MS || 20000);
 const CSHARP_COMBAT_HOST_DOTNET = process.env.CS_DOTNET_PATH || findDefaultDotnetRuntime();
 const COUNTERSIDE_MANAGED_DIR = process.env.CS_COUNTERSIDE_MANAGED_DIR || findDefaultCounterSideManagedDir();
@@ -409,7 +412,7 @@ const CRYPTO_MASKS = [
 ];
 
 const capturedTcpResponses = loadCapturedTcpResponses(CAPTURED_TCP_DIR);
-const capturedTcpProfiles = buildCapturedTcpProfiles(capturedTcpResponses);
+const capturedTcpProfiles = buildCapturedTcpProfiles(capturedTcpResponses, CAPTURED_TCP_DIR);
 const capturedGameTemplateFlow = loadCapturedGameFlow(CAPTURED_GAME_FLOW_DIR);
 const capturedGameFlow = REPLAY_CAPTURED_GAME_FLOW ? capturedGameTemplateFlow : null;
 const capturedRespawnUnitPools = buildCombatCapturedRespawnUnitPools(capturedGameFlow, {
@@ -422,18 +425,6 @@ const capturedCombatReplayEntries = buildCapturedCombatReplayEntries(capturedGam
 const capturedFlowMirror = loadCapturedFlowMirror(CAPTURED_FLOW_DIR);
 const gameplayUnitStats = loadGameplayUnitStats(UNIT_TABLE_PATH);
 const userDb = loadUserDb(USER_DB_PATH);
-const userManager = USER_MANAGER_ENABLED
-  ? createUserManager({
-      basePath: USER_MANAGER_BASE_PATH,
-      allowRemote: USER_MANAGER_ALLOW_REMOTE,
-      userDb,
-      userDbPath: USER_DB_PATH,
-      saveUserDb,
-      ensureUserDefaults,
-      makeAccessToken,
-      makeToken,
-    })
-  : null;
 const packetHandlers = loadPacketHandlers([PACKET_HANDLER_DIR, MODULE_HANDLER_ROOT], { rootDir: ROOT_DIR });
 const joinLobbyAckPayloadCache = new Map();
 const localProgressResetUsers = new Set();
@@ -489,13 +480,26 @@ const combatHandler = createCombatHandler({
   staticCombatStats: STATIC_COMBAT_STATS,
   defaultDeployedUnitHp: DEFAULT_DEPLOYED_UNIT_HP,
   gameplayUnitStats,
-  capturedGameFlow,
+  capturedGameFlow: capturedGameFlow || capturedGameTemplateFlow,
   capturedRespawnUnitPools,
   parseCapturedGameSyncPayload,
   extractGameLoadUnitPools,
   makeDynamicGameUid,
   mapIdForStageDungeon,
 });
+
+const userManager = USER_MANAGER_ENABLED
+  ? createUserManager({
+      basePath: USER_MANAGER_BASE_PATH,
+      allowRemote: USER_MANAGER_ALLOW_REMOTE,
+      userDb,
+      userDbPath: USER_DB_PATH,
+      saveUserDb,
+      ensureUserDefaults,
+      makeAccessToken,
+      makeToken,
+    })
+  : null;
 
 if (process.env.CS_DUMP_MERGED_JOIN_LOBBY_ACK_PAYLOAD) {
   const dumpUserUid = String(process.env.CS_DUMP_USER_UID || "");
@@ -591,16 +595,18 @@ function logRuntimeConfig() {
   console.log(
     `[cfg] eventManager=${eventSummary.enabled ? "on" : "off"} date=${
       eventSummary.dateInput || "(unset)"
-    } profile=${eventSummary.profile} tableScan=${eventSummary.tableScan} tables=${eventSummary.tableCount} entries=${
+    } profile=${eventSummary.profile} schedule=${eventSummary.officialScheduleEnabled ? "on" : "off"} dateProfiles=${
+      eventSummary.dateProfilesEnabled ? "on" : "off"
+    } tableScan=${eventSummary.tableScan} tables=${eventSummary.tableCount} entries=${
       eventSummary.entryCount
-    } active=${eventSummary.activeEntryCount} intervals=${eventSummary.activeIntervalCount} contentsTags=${
+    } active=${eventSummary.activeEntryCount} schedules=${eventSummary.activeOfficialScheduleCount} intervals=${eventSummary.activeIntervalCount} contentsTags=${
       eventSummary.activeContentsTagCount
     } emitContentsTags=${EVENT_CONTENTS_TAGS_ENABLED ? "on" : "off"} counterPasses=${
       eventSummary.activeCounterPassCount
     } counterPassContentsTags=${EVENT_COUNTER_PASS_CONTENTS_TAGS_ENABLED ? "on" : "off"} openTags=${eventSummary.activeOpenTagCount}`
   );
   console.log(
-    `[cfg] serverTime=${serverTimeSummary.enabled ? "event-anchor" : "local"} current=${
+    `[cfg] serverTime=${serverTimeSummary.mode || (serverTimeSummary.enabled ? "event-anchor" : "local")} current=${
       serverTimeSummary.currentIso
     } eventDate=${serverTimeSummary.eventDateKey || "(unset)"} state=${SERVER_TIME_STATE_PATH}`
   );
@@ -647,7 +653,9 @@ function logRuntimeConfig() {
     `[cfg] dynamicBattleManager=${DYNAMIC_BATTLE_MANAGER ? "on" : "off"} syncInterval=${DYNAMIC_BATTLE_SYNC_INTERVAL_MS}ms managedTick=${MANAGED_HOST_TICK_INTERVAL_MS}ms managedPrimeFrames=${MANAGED_HOST_PRIME_FRAMES} spawnGroups=${DYNAMIC_BATTLE_GAME_UNIT_GROUPS.map((group) => group.join(",")).join(";")}`
   );
   console.log(
-    `[cfg] csharpCombatHost=${CSHARP_COMBAT_HOST ? "on" : "off"} dotnet=${CSHARP_COMBAT_HOST_DOTNET} project=${CSHARP_COMBAT_HOST_PROJECT} managed=${
+    `[cfg] csharpCombatHost=${CSHARP_COMBAT_HOST ? "on" : "off"} mode=${
+      CSHARP_COMBAT_HOST_DLL ? "exe" : "project"
+    } host=${CSHARP_COMBAT_HOST_DLL || CSHARP_COMBAT_HOST_PROJECT} dotnet=${CSHARP_COMBAT_HOST_DOTNET} managed=${
       COUNTERSIDE_MANAGED_DIR || "(none)"
     } tables=${GAMEPLAY_TABLES_DIR || "(none)"}`
   );
@@ -663,6 +671,7 @@ function startHttpMirror() {
   http
     .createServer(async (req, res) => {
       try {
+        if (await serveLauncherApi(req, res)) return;
         if (userManager && (await userManager.handle(req, res))) return;
         if (serveEventManagerDiagnostics(req, res)) return;
         if (capturedFlowMirror) {
@@ -687,6 +696,94 @@ function startHttpMirror() {
         console.log(`[+] User manager listening on ${MIRROR_PUBLIC_BASE_URL}${userManager.basePath}`);
       }
     });
+}
+
+async function serveLauncherApi(req, res) {
+  const url = new URL(req.url || "/", MIRROR_PUBLIC_BASE_URL);
+  if (!url.pathname.startsWith("/launcher/api/")) return false;
+
+  if (!isLoopbackAddress(req.socket && req.socket.remoteAddress)) {
+    sendJsonResponse(res, 403, { error: "Launcher API is restricted to loopback requests." });
+    return true;
+  }
+
+  if (req.method === "GET" && url.pathname === "/launcher/api/health") {
+    sendJsonResponse(res, 200, {
+      ok: true,
+      port: PORT,
+      httpPort: HTTP_MIRROR_PORT,
+      userManagerPath: userManager ? userManager.basePath : "",
+      serverTime: serverTime.getSummary(),
+    });
+    return true;
+  }
+
+  if (req.method === "GET" && url.pathname === "/launcher/api/server-time") {
+    sendJsonResponse(res, 200, serverTime.getSummary());
+    return true;
+  }
+
+  if (req.method === "POST" && url.pathname === "/launcher/api/server-time") {
+    const body = await readJsonRequestBody(req);
+    const iso = body && (body.iso || body.serverTime || body.time);
+    const current = serverTime.setManualTime(iso);
+    sendJsonResponse(res, 200, { ok: true, currentIso: current.toISOString(), serverTime: serverTime.getSummary() });
+    return true;
+  }
+
+  if (req.method === "POST" && url.pathname === "/launcher/api/server-time/clear") {
+    const current = serverTime.clearManualTime();
+    sendJsonResponse(res, 200, { ok: true, currentIso: current.toISOString(), serverTime: serverTime.getSummary() });
+    return true;
+  }
+
+  sendJsonResponse(res, 404, { error: "Unknown launcher API route." });
+  return true;
+}
+
+function sendJsonResponse(res, statusCode, body) {
+  res.writeHead(statusCode, { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" });
+  res.end(`${JSON.stringify(body || {})}\n`);
+}
+
+function readJsonRequestBody(req) {
+  return new Promise((resolve, reject) => {
+    const chunks = [];
+    let total = 0;
+    req.on("data", (chunk) => {
+      total += chunk.length;
+      if (total > 1024 * 1024) {
+        reject(new Error("Request body is too large."));
+        req.destroy();
+        return;
+      }
+      chunks.push(chunk);
+    });
+    req.on("end", () => {
+      const text = Buffer.concat(chunks).toString("utf8").trim();
+      if (!text) {
+        resolve({});
+        return;
+      }
+      try {
+        resolve(JSON.parse(text));
+      } catch (error) {
+        reject(error);
+      }
+    });
+    req.on("error", reject);
+  });
+}
+
+function isLoopbackAddress(remoteAddress) {
+  const remote = String(remoteAddress || "");
+  return (
+    remote === "::1" ||
+    remote === "127.0.0.1" ||
+    remote === "::ffff:127.0.0.1" ||
+    /^127\./.test(remote) ||
+    /^::ffff:127\./.test(remote)
+  );
 }
 
 function serveEventManagerDiagnostics(req, res) {
@@ -896,7 +993,14 @@ function createPacketContext() {
     capturedTcpProfiles,
     capturedGameFlow,
     userDb,
+    serverTime,
     eventManager: runtimeEventManager,
+    setServerTime(date) {
+      return serverTime && typeof serverTime.setManualTime === "function" ? serverTime.setManualTime(date) : null;
+    },
+    clearServerTime() {
+      return serverTime && typeof serverTime.clearManualTime === "function" ? serverTime.clearManualTime() : null;
+    },
     setLastAckContents(version, tags) {
       lastAckContentsVersion = version || "";
       lastAckContentsTags = Array.isArray(tags) ? tags.slice() : [];
@@ -915,6 +1019,13 @@ function createPacketContext() {
     skipCapturedGameThroughPacketId,
     skipCapturedGameUntilBeforePacketIds,
     sendCapturedHeartbeatReply,
+    isTutorialCapturedBootstrapActive,
+    peekCapturedTutorialPacketId,
+    sendCapturedTutorialGameLoadAck,
+    sendCapturedTutorialLoadCompleteBootstrap,
+    sendCapturedTutorialHeartbeatReply,
+    sendCapturedTutorialThroughPacketId,
+    sendCapturedTutorialUntilBeforePacketIds,
     maybeTransitionTutorialReplayToDynamic,
     peekCapturedGamePacketId,
     sendServerGamePacket,
@@ -962,6 +1073,7 @@ function createPacketContext() {
     buildLoginLikePayload,
     buildJoinLobbyAckPayload,
     buildMinimalJoinLobbyPayload,
+    invalidateJoinLobbyAckPayloadCache,
     hasTutorialProgress,
     shouldUseLocalJoinLobbyAck,
     ensureTutorialCompletionProgress,
@@ -1020,6 +1132,7 @@ function createPacketContext() {
     dateTimeBinaryNow,
     dateTimeTicksNow,
     getServerNowDate,
+    getServerEventDateKey,
     getMissionClockOptions,
     getEffectiveContentsTags,
     getRequiredContentsTags,
@@ -1094,7 +1207,7 @@ function sendCapturedGameExact(socket, index, label) {
   replay.nextServerIndex = Math.max(replay.nextServerIndex, index + 1);
 }
 
-function sendCapturedGameTemplateRange(socket, startIndex, endIndex, label) {
+function sendCapturedGameTemplateRange(socket, startIndex, endIndex, label, options = {}) {
   if (!capturedGameTemplateFlow || !Array.isArray(capturedGameTemplateFlow.server)) return 0;
   const quietRange = !VERBOSE_CAPTURE_LOGS && endIndex > startIndex;
   let sentCount = 0;
@@ -1108,7 +1221,10 @@ function sendCapturedGameTemplateRange(socket, startIndex, endIndex, label) {
         console.log(`[capture-game] missing template server packet index=${index} label=${label}`);
         continue;
       }
-      sendCapturedGameEntry(socket, entry, index, label, { quiet: quietRange, forceReframe: true });
+      sendCapturedGameEntry(socket, entry, index, label, {
+        quiet: quietRange,
+        forceReframe: options.forceReframe !== false,
+      });
       sentCount += 1;
     }
   });
@@ -1116,6 +1232,103 @@ function sendCapturedGameTemplateRange(socket, startIndex, endIndex, label) {
     console.log(`[capture-game:${label}] sent=${sentCount}`);
   }
   return sentCount;
+}
+
+function sendCapturedGameTemplateRangeAndAdvance(socket, startIndex, endIndex, label, options = {}) {
+  const replay = socket.session.gameReplay;
+  if (endIndex < startIndex) return false;
+  const sentCount = sendCapturedGameTemplateRange(socket, startIndex, endIndex, label, options);
+  if (sentCount > 0) {
+    replay.nextServerIndex = Math.max(replay.nextServerIndex || 1, endIndex + 1);
+    return true;
+  }
+  return false;
+}
+
+function sendCapturedTutorialGameLoadAck(socket, label) {
+  const replay = socket && socket.session && socket.session.gameReplay;
+  if (!replay || !isTutorialCapturedBootstrapActive(socket)) return false;
+  const current = Math.max(1, replay.nextServerIndex || 1);
+  const index =
+    findCapturedTemplateServerIndexFrom(current, (entry) => entry.packetId === GAME_LOAD_ACK) ||
+    findCapturedTemplateServerIndexFrom(1, (entry) => entry.packetId === GAME_LOAD_ACK);
+  if (!index) return false;
+  const entry = getCapturedTemplateServerEntry(index);
+  if (!entry || !entry.raw) return false;
+  sendCapturedGameEntry(socket, entry, index, label || "captured-tutorial-game-load", { forceReframe: false });
+  replay.nextServerIndex = Math.max(current, index + 1);
+  console.log(`[capture-game:${label || "tutorial-game-load"}] using captured tutorial timeline from serverIndex=${replay.nextServerIndex}`);
+  return true;
+}
+
+function sendCapturedTutorialLoadCompleteBootstrap(socket, label) {
+  if (!isTutorialCapturedBootstrapActive(socket)) return false;
+  const replay = socket.session.gameReplay;
+  const startIndex = findNextCapturedTemplateServerIndex(socket, (entry) => entry.packetId === GAME_LOAD_COMPLETE_ACK);
+  if (!startIndex) {
+    console.log(
+      `[official-missing] no captured tutorial GAME_LOAD_COMPLETE_ACK from index=${replay.nextServerIndex}; no response sent`
+    );
+    return false;
+  }
+  const stopIndex = findCapturedTemplateServerIndexFrom(startIndex + 1, (entry) => entry.packetId === HEART_BIT_ACK);
+  const endIndex = stopIndex ? stopIndex - 1 : startIndex;
+  return sendCapturedGameTemplateRangeAndAdvance(socket, startIndex, endIndex, label || "tutorial-load-complete", {
+    forceReframe: false,
+  });
+}
+
+function sendCapturedTutorialHeartbeatReply(socket, time, label) {
+  if (!isTutorialCapturedBootstrapActive(socket)) return false;
+  const replay = socket.session.gameReplay;
+  const next = getCapturedTemplateServerEntry(replay.nextServerIndex || 1);
+  if (next && next.packetId === HEART_BIT_ACK) {
+    sendCapturedTutorialThroughPacketId(socket, HEART_BIT_ACK, label || "heart-bit");
+  } else if (next) {
+    console.log(
+      `[capture-game:${label || "heart-bit"}] expected captured tutorial HEART_BIT_ACK at index=${replay.nextServerIndex}, nextPacketId=${next.packetId}; using live ACK only`
+    );
+    sendServerGamePacket(socket, HEART_BIT_ACK, writeSignedVarLong(time), label || "heart-bit");
+  } else {
+    sendServerGamePacket(socket, HEART_BIT_ACK, writeSignedVarLong(time), label || "heart-bit");
+  }
+
+  const stopPacketIds =
+    replay.nextServerIndex >= TUTORIAL_DYNAMIC_HANDOFF_SERVER_INDEX - 8
+      ? [HEART_BIT_ACK, GAME_PAUSE_ACK, GAME_RESPAWN_ACK, GAME_END_NOT]
+      : [HEART_BIT_ACK, GAME_PAUSE_ACK, GAME_RESPAWN_ACK];
+  sendCapturedTutorialUntilBeforePacketIds(socket, stopPacketIds, `${label || "heart-bit"}-post-sync`);
+  maybeTransitionTutorialReplayToDynamic(socket, label || "heart-bit");
+  return true;
+}
+
+function sendCapturedTutorialThroughPacketId(socket, packetId, label) {
+  if (!isTutorialCapturedBootstrapActive(socket)) return false;
+  const replay = socket.session.gameReplay;
+  const index = findNextCapturedTemplateServerIndex(socket, (entry) => entry.packetId === packetId);
+  if (!index) {
+    console.log(
+      `[official-missing] no captured tutorial server packetId=${packetId} from index=${replay.nextServerIndex} label=${label}; no response sent`
+    );
+    return false;
+  }
+  return sendCapturedGameTemplateRangeAndAdvance(socket, replay.nextServerIndex || 1, index, label || "tutorial-captured", {
+    forceReframe: false,
+  });
+}
+
+function sendCapturedTutorialUntilBeforePacketIds(socket, packetIds, label) {
+  if (!isTutorialCapturedBootstrapActive(socket)) return false;
+  const replay = socket.session.gameReplay;
+  const stops = new Set(packetIds);
+  const stopIndex = findNextCapturedTemplateServerIndex(socket, (entry) => stops.has(entry.packetId));
+  const endIndex = stopIndex ? stopIndex - 1 : capturedGameTemplateFlow.server.length;
+  if (endIndex >= (replay.nextServerIndex || 1)) {
+    return sendCapturedGameTemplateRangeAndAdvance(socket, replay.nextServerIndex || 1, endIndex, label || "tutorial-sync", {
+      forceReframe: false,
+    });
+  }
+  return false;
 }
 
 function sendCapturedGamePacketIdOnly(socket, packetId, label) {
@@ -1852,6 +2065,44 @@ function findNextCapturedServerIndex(socket, predicate) {
   return 0;
 }
 
+function getCapturedTemplateServerEntry(index) {
+  if (!capturedGameTemplateFlow || !Array.isArray(capturedGameTemplateFlow.server)) return null;
+  return capturedGameTemplateFlow.server[index - 1] || null;
+}
+
+function findCapturedTemplateServerIndexFrom(startIndex, predicate) {
+  if (!capturedGameTemplateFlow || !Array.isArray(capturedGameTemplateFlow.server)) return 0;
+  const start = Math.max(1, Number(startIndex || 1));
+  for (let index = start; index <= capturedGameTemplateFlow.server.length; index += 1) {
+    const entry = capturedGameTemplateFlow.server[index - 1];
+    if (entry && predicate(entry, index)) return index;
+  }
+  return 0;
+}
+
+function findNextCapturedTemplateServerIndex(socket, predicate) {
+  const replay = socket && socket.session && socket.session.gameReplay;
+  return findCapturedTemplateServerIndexFrom(replay ? replay.nextServerIndex || 1 : 1, predicate);
+}
+
+function isTutorialCapturedBootstrapActive(socket) {
+  const replay = socket && socket.session && socket.session.gameReplay;
+  const dynamicGame = replay && replay.dynamicGame;
+  if (!replay || !dynamicGame || replay.tutorialReplayPhase !== "captured-bootstrap") return false;
+  if (!capturedGameTemplateFlow || !Array.isArray(capturedGameTemplateFlow.server)) return false;
+  return (
+    dynamicGame.tutorial === true &&
+    Number(dynamicGame.stageID || 0) === 11211 &&
+    Number(dynamicGame.dungeonID || 0) === 1004
+  );
+}
+
+function peekCapturedTutorialPacketId(socket) {
+  const replay = socket && socket.session && socket.session.gameReplay;
+  const next = replay ? getCapturedTemplateServerEntry(replay.nextServerIndex || 1) : null;
+  return next ? next.packetId : 0;
+}
+
 function sendCapturedGameRange(socket, startIndex, endIndex, label) {
   const replay = socket.session.gameReplay;
   const quietRange = !VERBOSE_CAPTURE_LOGS && endIndex > startIndex;
@@ -1888,7 +2139,10 @@ function withSocketPacketBurst(socket, send) {
 
 function sendCapturedGameEntry(socket, entry, index, label, options = {}) {
   const replay = socket.session.gameReplay;
-  const reframe = options.forceReframe || REFRAME_CAPTURED_GAME_FLOW;
+  const reframe =
+    Object.prototype.hasOwnProperty.call(options, "forceReframe")
+      ? Boolean(options.forceReframe)
+      : REFRAME_CAPTURED_GAME_FLOW;
   const sendSequence = reframe ? replay.nextServerSequence : entry.sequence;
   const packet =
     reframe && entry.payload
@@ -1902,7 +2156,9 @@ function sendCapturedGameEntry(socket, entry, index, label, options = {}) {
     );
   }
   if (DEBUG_HEX) printHex(packet);
-  replay.nextServerSequence = Math.max(replay.nextServerSequence, Number(sendSequence) + 1);
+  if (Number.isFinite(Number(sendSequence))) {
+    replay.nextServerSequence = Math.max(replay.nextServerSequence, Number(sendSequence) + 1);
+  }
 }
 
 function startOfficialCombatReplay(socket, label) {
@@ -2328,8 +2584,8 @@ function buildDynamicGameLoadPayload(socket, req, stage) {
     gameUID: activeStage.gameUID || activeStage.gameUid || req.gameUID || req.gameUid,
     gameLoadAckPayloadBase64: !nativeTutorialLoad && !usesEventDeck && gameLoadAckTemplate ? gameLoadAckTemplate.toString("base64") : "",
   });
-  if (!dynamicGame || !replay.dynamicGame || !replay.managedGameLoadAckPayload) {
-    console.log("[dynamic-game-load] managed local combat failed; JS GAME_LOAD_ACK fallback is disabled");
+  if (!dynamicGame || !replay.dynamicGame) {
+    console.log("[dynamic-game-load] battle state creation failed; no GAME_LOAD_ACK sent");
     return null;
   }
   if (replay.dynamicGame) {
@@ -2341,15 +2597,33 @@ function buildDynamicGameLoadPayload(socket, req, stage) {
     if (gameType) replay.dynamicGame.gameType = gameType;
     if (activeStage.playerDeck) replay.dynamicGame.playerDeck = activeStage.playerDeck;
     if (activeStage.worldmapEventID) replay.dynamicGame.worldmapEventID = Number(activeStage.worldmapEventID || 0);
+    if (activeStage.diveStageID || (req && req.diveStageID)) replay.dynamicGame.diveStageID = Number(activeStage.diveStageID || req.diveStageID || 0);
+    if (activeStage.miscMode) replay.dynamicGame.miscMode = String(activeStage.miscMode || "");
     replay.dynamicGame.isTryAssist = Boolean(req && req.isTryAssist);
   }
   applySavedCombatControls(socket);
-  const payload = replay.managedGameLoadAckPayload;
+  const capturedTutorialBootstrap =
+    replay.dynamicGame &&
+    replay.dynamicGame.tutorial === true &&
+    replay.tutorialReplayPhase === "captured-bootstrap" &&
+    Number(replay.dynamicGame.stageID || 0) === 11211 &&
+    Number(replay.dynamicGame.dungeonID || 0) === 1004;
+  const capturedTutorialLoadPayload = capturedTutorialBootstrap ? gameLoadAckTemplate : null;
+  const payload =
+    replay.managedGameLoadAckPayload ||
+    capturedTutorialLoadPayload ||
+    buildGameLoadAck({
+      ...replay.dynamicGame,
+      // Phase 1 preserves the captured 804 layout exactly; later stages patch
+      // dungeon/map so the client routes into the correct script.
+      patchStageFields: !replay.dynamicGame.tutorial || Number(replay.dynamicGame.stageID) !== 11211,
+    });
   combatHandler.attachGameLoadUnitPools(replay, activeStage, payload);
   return {
     replay,
     payload,
     managed: Boolean(replay.managedGameLoadAckPayload),
+    capturedTutorialBootstrap: Boolean(capturedTutorialLoadPayload),
   };
 }
 
@@ -2359,7 +2633,16 @@ function sendDynamicGameLoadAck(socket, req, stage) {
   const replay = result.replay;
   const payload = result.payload;
   const raidHpChanged = syncRaidCombatHpForReplay(socket, replay, "raid-game-load");
-  sendServerGamePacket(socket, GAME_LOAD_ACK, payload, replay.managedGameLoadAckPayload ? "managed-game-load" : "dynamic-game-load");
+  const label = result.capturedTutorialBootstrap
+    ? "captured-tutorial-game-load"
+    : replay.managedGameLoadAckPayload
+      ? "managed-game-load"
+      : "dynamic-game-load";
+  if (result.capturedTutorialBootstrap) {
+    if (!sendCapturedTutorialGameLoadAck(socket, label)) sendServerGamePacket(socket, GAME_LOAD_ACK, payload, label);
+  } else {
+    sendServerGamePacket(socket, GAME_LOAD_ACK, payload, label);
+  }
   console.log(
     `[dynamic-game-load] stageID=${replay.dynamicGame.stageID} dungeonID=${replay.dynamicGame.dungeonID} mapID=${replay.dynamicGame.mapID} gameType=${replay.dynamicGame.gameType || 0} raidUID=${replay.dynamicGame.raidUID || 0} mode=${replay.dynamicGame.miscMode || "dungeon"} gameUID=${replay.dynamicGame.gameUID} battleUnits=${replay.battleState.units.map((unit) => unit.gameUnitUID).join(",")} deployPools=${combatHandler.describeRuntimeGameUnitPools(replay.dynamicGame.unitPools) || replay.dynamicGame.assignedGameUnitUIDs.join(",")}`
   );
@@ -2383,8 +2666,33 @@ function handleDynamicBattleRespawn(socket, req) {
     console.log(`[combat-host] deploy accepted unitUID=${req.unitUID} packets=${packets.length}`);
     return true;
   }
-  console.log(`[combat-host] ignored non-managed deploy result mode=${result.mode || "unknown"}; JS simulator fallback is disabled`);
-  return false;
+  const ackLabel = result.mode === "battleState" ? "battle-continuation-respawn" : "battle-manager-respawn";
+  sendServerGamePacket(socket, GAME_RESPAWN_ACK, result.ackPayload, ackLabel);
+  if (result.syncPayload) {
+    sendServerGamePacket(socket, NPT_GAME_SYNC_DATA_PACK_NOT, result.syncPayload, "battle-continuation-deploy-sync");
+  }
+  if (result.mode === "battleState") {
+    if (result.deployed) {
+      console.log(
+        `[battle-continuation] deploy unitUID=${req.unitUID} gameUnitUID=${result.deployed.gameUnitUID} x=${result.deployed.x.toFixed(
+          2
+        )} hp=${result.deployed.hp}`
+      );
+      startDynamicBattleManager(socket, "deploy");
+    } else {
+      console.log(`[battle-continuation] respawn acked without active battleState unitUID=${req.unitUID}`);
+    }
+  } else if (result.spawned && result.spawned.length) {
+    startDynamicBattleManager(socket, "respawn");
+    console.log(
+      `[battle-manager] deploy gameUnitUIDs=${result.spawned.map((unit) => unit.gameUnitUID).join(",")} unitUID=${req.unitUID} x=${result.spawned[0].x.toFixed(
+        1
+      )} cost=${result.spawned[0].cost}`
+    );
+  } else {
+    console.log(`[battle-manager] no unused gameUnitUID available for deploy unitUID=${req.unitUID}`);
+  }
+  return true;
 }
 
 function handleDynamicBattlePause(socket, req) {
@@ -2555,6 +2863,8 @@ function scrubTutorialEpisodeClearProgress(user) {
   let changed = false;
   user.dungeonClear = user.dungeonClear && typeof user.dungeonClear === "object" ? user.dungeonClear : {};
   user.stagePlayData = user.stagePlayData && typeof user.stagePlayData === "object" ? user.stagePlayData : {};
+  const tutorialDungeonIds = new Set(TUTORIAL_STAGE_CHAIN.map((stage) => Number(stage.dungeonID)));
+  const tutorialStageIds = new Set(TUTORIAL_STAGE_CHAIN.map((stage) => Number(stage.stageId)));
   for (const stage of TUTORIAL_STAGE_CHAIN) {
     if (Object.prototype.hasOwnProperty.call(user.dungeonClear, String(stage.dungeonID))) {
       delete user.dungeonClear[String(stage.dungeonID)];
@@ -2577,11 +2887,105 @@ function scrubTutorialEpisodeClearProgress(user) {
       }
     }
   }
+  if (user.clearConditions && typeof user.clearConditions === "object") {
+    const clearDungeons =
+      user.clearConditions.dungeons && typeof user.clearConditions.dungeons === "object" ? user.clearConditions.dungeons : null;
+    const clearStages =
+      user.clearConditions.stages && typeof user.clearConditions.stages === "object" ? user.clearConditions.stages : null;
+    if (clearDungeons) {
+      for (const dungeonId of tutorialDungeonIds) {
+        const key = String(dungeonId);
+        if (Object.prototype.hasOwnProperty.call(clearDungeons, key)) {
+          delete clearDungeons[key];
+          changed = true;
+        }
+      }
+    }
+    if (clearStages) {
+      for (const stageId of tutorialStageIds) {
+        const key = String(stageId);
+        if (Object.prototype.hasOwnProperty.call(clearStages, key)) {
+          delete clearStages[key];
+          changed = true;
+        }
+      }
+    }
+  }
+  if (user.gameplayUnlocks && typeof user.gameplayUnlocks === "object") {
+    const removedUnlockKeys = new Set();
+    const byDungeon =
+      user.gameplayUnlocks.byDungeon && typeof user.gameplayUnlocks.byDungeon === "object" ? user.gameplayUnlocks.byDungeon : null;
+    const byKey = user.gameplayUnlocks.byKey && typeof user.gameplayUnlocks.byKey === "object" ? user.gameplayUnlocks.byKey : null;
+    if (byDungeon) {
+      for (const dungeonId of tutorialDungeonIds) {
+        const key = String(dungeonId);
+        const unlockKeys = Array.isArray(byDungeon[key]) ? byDungeon[key] : [];
+        for (const unlockKey of unlockKeys) removedUnlockKeys.add(String(unlockKey));
+        if (Object.prototype.hasOwnProperty.call(byDungeon, key)) {
+          delete byDungeon[key];
+          changed = true;
+        }
+      }
+    }
+    if (byKey) {
+      for (const [key, unlock] of Object.entries(byKey)) {
+        const stageId = Number(unlock && unlock.stageId);
+        const reqValue = Number(unlock && unlock.reqValue);
+        if (removedUnlockKeys.has(String(key)) || tutorialStageIds.has(stageId) || tutorialDungeonIds.has(reqValue)) {
+          delete byKey[key];
+          changed = true;
+        }
+      }
+    }
+  }
+  if (user.persistentCutsceneViews && typeof user.persistentCutsceneViews === "object") {
+    for (const [key, view] of Object.entries(user.persistentCutsceneViews)) {
+      const dungeonId = Number((view && view.dungeonId) || key);
+      const stageId = Number((view && view.stageId) || key);
+      if (tutorialDungeonIds.has(dungeonId) || tutorialStageIds.has(stageId)) {
+        delete user.persistentCutsceneViews[key];
+        changed = true;
+      }
+    }
+  }
+  if (normalizeTutorialPhaseOrder(user)) changed = true;
   if (user.mainStory && typeof user.mainStory === "object") {
     user.mainStory.completed = false;
   }
   if (user.episode1 && typeof user.episode1 === "object") {
     user.episode1.completed = false;
+  }
+  return changed;
+}
+
+function normalizeTutorialPhaseOrder(user) {
+  if (!user || typeof user !== "object") return false;
+  const tutorial = user.tutorial && typeof user.tutorial === "object" ? user.tutorial : null;
+  const phases = tutorial && tutorial.phases && typeof tutorial.phases === "object" ? tutorial.phases : null;
+  if (!tutorial || !phases) return false;
+  if (user.loginFlow === "post-tutorial" || tutorial.loginMode === "post-tutorial" || tutorial.completed === true) return false;
+  let changed = false;
+  let foundOpenPhase = false;
+  for (const stage of TUTORIAL_STAGE_CHAIN) {
+    const key = tutorialPhaseKey(stage);
+    const phase = phases[key] || phases[String(stage.stageId)];
+    if (!phase || typeof phase !== "object") {
+      foundOpenPhase = true;
+      continue;
+    }
+    if (foundOpenPhase || phase.completed !== true) {
+      if (phase.completed !== false || phase.completedAt || Number(phase.bestClearTimeSec || 0) !== 0) changed = true;
+      phase.completed = false;
+      phase.completedAt = "";
+      phase.bestClearTimeSec = 0;
+      foundOpenPhase = true;
+    }
+  }
+  if (foundOpenPhase) {
+    if (tutorial.completed !== false || tutorial.completedAt || tutorial.loginMode === "post-tutorial") changed = true;
+    tutorial.completed = false;
+    tutorial.completedAt = "";
+    if (tutorial.loginMode === "post-tutorial") delete tutorial.loginMode;
   }
   return changed;
 }
@@ -2670,6 +3074,7 @@ function sendRaidStateDataForSocket(socket, label = "raid-state") {
 function maybeRecordDynamicBattleClear(socket, overrideState = null) {
   const replay = socket && socket.session && socket.session.gameReplay;
   if (!replay || !replay.dynamicGame || replay.dynamicGame.tutorial) return false;
+  if (Number(replay.dynamicGame.diveStageID || 0) > 0 || Number(replay.dynamicGame.gameType || 0) === NGT_DIVE) return false;
   if (isRaidDynamicGame(replay.dynamicGame)) {
     const lastEnd = replay.lastDynamicGameEndResult || null;
     if (!lastEnd) return false;
@@ -3052,16 +3457,22 @@ function buildDynamicGameEndNotPayload(replay, override = {}) {
     }`
   );
   const raidBattleResult = isRaidGame ? maybeRecordRaidBattleResultForReplay(replay, { ...override, battleState }, win) : null;
-  const stageLoot = !isRaidGame && win ? getOrGrantStageClearLoot(replay, override.user, dungeonId, stageId) : null;
-  const costItems = isRaidGame ? (raidBattleResult && raidBattleResult.costItems) || [] : spendStageReqItemCostForReplay(replay, override.user, stageId);
-  const episodeCompleteData = !isRaidGame && win ? buildMainStoryEpisodeCompleteDataForStage(override.user, stageId) : null;
+  const isDiveGame = !isRaidGame && (Number(dynamicGame.diveStageID || 0) > 0 || Number(dynamicGame.gameType || 0) === NGT_DIVE);
+  const diveBattleResult = isDiveGame ? worldMap.completeDiveBattle(override.user, dynamicGame, battleState, { win, now: dateTimeBinaryNow() }) : null;
+  const stageLoot = !isRaidGame && !isDiveGame && win ? getOrGrantStageClearLoot(replay, override.user, dungeonId, stageId) : null;
+  const costItems = isRaidGame
+    ? (raidBattleResult && raidBattleResult.costItems) || []
+    : isDiveGame
+      ? []
+      : spendStageReqItemCostForReplay(replay, override.user, stageId);
+  const episodeCompleteData = !isRaidGame && !isDiveGame && win ? buildMainStoryEpisodeCompleteDataForStage(override.user, stageId) : null;
   const playTime = getBattlePlayTime(battleState);
   const isPhaseGame = Number(dynamicGame.gameType || 0) === NGT_PHASE || String(dynamicGame.miscMode || "") === "phase";
   return Buffer.concat([
     writeBool(win), // win
     writeBool(Boolean(override.giveup || false)), // giveup
     writeBool(Boolean(override.restart || false)), // restart
-    !isRaidGame && dungeonId
+    !isRaidGame && !isDiveGame && dungeonId
       ? writeNullableObject(
           buildDungeonClearData(dungeonId, {
             stageId,
@@ -3085,7 +3496,7 @@ function buildDynamicGameEndNotPayload(replay, override = {}) {
     writeNullableObject(buildBattleDeckIndexData(replay)), // deckIndex
     writeNullObject(), // warfareSyncData
     writeNullObject(), // pvpResultData
-    writeNullObject(), // diveSyncData
+    diveBattleResult ? writeNullableObject(worldMap.buildDiveSyncData(diveBattleResult.syncData)) : writeNullObject(), // diveSyncData
     writeNullableObject(buildRaidBossResultData(raidBattleResult && raidBattleResult.bossResult)), // raidBossResultData
     writeNullObject(), // gameRecord
     writeObjectList([]), // updatedUnits
@@ -4974,6 +5385,7 @@ function ensureTutorialState(user) {
     };
   }
   user.tutorial.phases = phases;
+  normalizeTutorialPhaseOrder(user);
   if (Object.values(phases).every((phase) => phase.completed)) {
     user.tutorial.completed = true;
     user.tutorial.completedAt = user.tutorial.completedAt || new Date().toISOString();
@@ -5307,6 +5719,21 @@ function recordTutorialDungeonClearForUser(user, dungeonId, stageId, battleState
   if (!stageMeta) return false;
   const tutorial = ensureTutorialState(user);
   let changed = scrubTutorialEpisodeClearProgress(user);
+  const expectedStage = nextTutorialStageForUser(user);
+  if (
+    !options.force &&
+    expectedStage &&
+    (Number(expectedStage.dungeonID) !== Number(stageMeta.dungeonID) || Number(expectedStage.stageId) !== Number(stageMeta.stageId))
+  ) {
+    console.log(
+      `[tutorial-progress] ignored out-of-order clear uid=${user.userUid || "(ephemeral)"} gotStage=${
+        stageMeta.stageId
+      } gotDungeon=${stageMeta.dungeonID} expectedStage=${expectedStage.stageId} expectedDungeon=${expectedStage.dungeonID}`
+    );
+    ensureMainStoryState(user);
+    if (USE_LOCAL_USER_DB && options.save !== false && changed) saveUserDb();
+    return false;
+  }
   user.unlockedStageIds = Array.isArray(user.unlockedStageIds) ? user.unlockedStageIds : [];
   const bestClearTimeSec = Math.max(0, Math.round(Number((battleState && battleState.gameTime) || 0)));
   const phase = tutorial.phases[tutorialPhaseKey(stageMeta)];
@@ -6550,6 +6977,7 @@ function buildMinimalJoinLobbyPayload(user) {
   ensureDefaultLineup(user, { deckType: 3, index: 0 });
   const intervalData = buildJoinLobbyIntervalDataList(user);
   const lobbyNow = dateTimeBinaryNow();
+  const clockCtx = getServerClockContext();
   const refreshedStamina = stamina.refreshTimedStamina(user, {
     now: lobbyNow,
     initializeMissing: true,
@@ -6601,9 +7029,9 @@ function buildMinimalJoinLobbyPayload(user) {
     writeBool(false), // rankPvpOpen
     writeBool(false), // leaguePvpOpen
     writeObjectList([]), // ReturningUserStates
-    writeObjectList(getAllContractStates(user).map((state) => writeNullableObject(buildSerializedContractStateData(state)))), // contractState
-    writeObjectList(getAllContractBonusStates(user).map((state) => writeNullableObject(buildSerializedContractBonusStateData(state)))), // contractBonusState
-    writeNullableObject(buildSelectableContractStateData()), // selectableContractState
+    writeObjectList(getAllContractStates(user, clockCtx).map((state) => writeNullableObject(buildSerializedContractStateData(state)))), // contractState
+    writeObjectList(getAllContractBonusStates(user, clockCtx).map((state) => writeNullableObject(buildSerializedContractBonusStateData(state)))), // contractBonusState
+    writeNullableObject(buildSelectableContractStateData(user, clockCtx)), // selectableContractState
     writeObjectList(buildStagePlayDataList(user)), // stagePlayDataList
     writeNullableObject(buildEventInfoData()), // eventInfo
     writeString(user.reconnectKey || ""),
@@ -6640,7 +7068,7 @@ function buildMinimalJoinLobbyPayload(user) {
     writeNullableObject(buildUserProfileData(user, userUid, friendCode, nickname)), // userProfileData
     writeNullableObject(buildShortCutInfoData()), // lastPlayInfo
     writeNullableObject(buildPvpStateData()), // eventPvpState
-    writeObjectList(getAllCustomPickupContracts(user).map((contract) => writeNullableObject(buildSerializedCustomPickupContractData(contract)))), // customPickupContracts
+    writeObjectList(getAllCustomPickupContracts(user, clockCtx).map((contract) => writeNullableObject(buildSerializedCustomPickupContractData(contract)))), // customPickupContracts
     writeNullableObject(buildPotentialOptionCandidateData()), // potentialOptionCandidate
     writeNullableObject(buildPvpCastingVoteData()), // pvpDraftVoteData
     writeNullableObject(buildSupportUnitData(user)), // supportUnitProfileData
@@ -6740,6 +7168,13 @@ function rememberJoinLobbyAckPayload(cacheKey, payload) {
   joinLobbyAckPayloadCache.set(cacheKey, payload);
 }
 
+function invalidateJoinLobbyAckPayloadCache(reason = "") {
+  if (joinLobbyAckPayloadCache.size === 0) return;
+  const count = joinLobbyAckPayloadCache.size;
+  joinLobbyAckPayloadCache.clear();
+  console.log(`[JOIN_LOBBY_ACK cache] cleared entries=${count}${reason ? ` reason=${reason}` : ""}`);
+}
+
 function sha1Buffer(buffer) {
   return crypto.createHash("sha1").update(buffer).digest("hex").slice(0, 16);
 }
@@ -6781,6 +7216,7 @@ function hasLocalAccountState(user) {
   const persistentCutsceneViews =
     user.persistentCutsceneViews && typeof user.persistentCutsceneViews === "object" ? user.persistentCutsceneViews : {};
   const support = user.support && typeof user.support === "object" ? user.support : {};
+  if (user.birthDayData || user.birthdayData || user.m_BirthDayData) return true;
   if (Array.isArray(user.unlockedStageIds) && user.unlockedStageIds.length > 0) return true;
   if (user.mainStory && typeof user.mainStory === "object") return true;
   if (user.episode1 && typeof user.episode1 === "object") return true;
@@ -6978,7 +7414,7 @@ function buildMinimalUserData(user, userUid, friendCode, nickname) {
     writeNullableObject(buildShadowPalaceDataForUser(user)), // m_ShadowPalace
     writeNullableObject(buildBackgroundInfoData(user)), // backGroundInfo
     writeNullObject(), // m_RecallHistoryData
-    writeNullObject(), // m_BirthDayData
+    buildUserBirthDayData(user), // m_BirthDayData
     writeNullableObject(buildJukeboxData(user)), // m_JukeboxData
   ]);
 }
@@ -7188,31 +7624,8 @@ function buildTrimIntervalData() {
   return Buffer.concat([writeSignedVarInt(0), writeSignedVarInt(0), writeSignedVarInt(0)]);
 }
 
-function buildSelectableContractStateData() {
-  const state = resolveSelectableContractState();
-  return Buffer.concat([
-    writeSignedVarInt(Number(state.contractId || 0)),
-    writeIntList(state.unitIdList || []),
-    writeSignedVarInt(Number(state.unitPoolChangeCount || 0)),
-    writeBool(state.isActive !== false && Number(state.contractId || 0) > 0),
-  ]);
-}
-
-function resolveSelectableContractState() {
-  const records = readGameplayTableRecords("ab_script", "LUA_SELECTABLE_CONTRACT.json", {
-    rootDir: ROOT_DIR,
-    logLabel: "gameplay-jsons",
-  });
-  const record = records.find((entry) => Number(entry && entry.m_ContractID) > 0);
-  if (!record) return { contractId: 0, unitIdList: [], unitPoolChangeCount: 0, isActive: false };
-  const contractId = Number(record.m_ContractID) || 0;
-  const poolId = record.m_SelectableUnitPoolId || record.m_UnitPoolID || contractId;
-  return {
-    contractId,
-    unitIdList: getContractPoolUnitIds(poolId).slice(0, 10),
-    unitPoolChangeCount: Math.max(0, Number(record.m_UnitPoolChangeCount || 0) || 0),
-    isActive: true,
-  };
+function buildSelectableContractStateData(user, ctx) {
+  return buildSerializedSelectableContractStateData(getSelectableContractState(user));
 }
 
 function buildEventInfoData() {
@@ -7323,6 +7736,46 @@ function buildPvpProfileData() {
   return Buffer.concat([writeSignedVarInt(0), writeSignedVarInt(0), writeSignedVarInt(0)]);
 }
 
+function buildUserBirthDayData(user) {
+  const data = normalizeUserBirthDayData(user && (user.birthDayData || user.birthdayData || user.m_BirthDayData));
+  if (!data) return writeNullObject();
+  return writeNullableObject(
+    Buffer.concat([
+      writeNullableObject(buildBirthDayDateData(data.birthDay)),
+      writeSignedVarInt(data.years),
+    ])
+  );
+}
+
+function buildBirthDayDateData(birthDay) {
+  const data = normalizeBirthDayDate(birthDay);
+  return Buffer.concat([writeSignedVarInt(data.month), writeSignedVarInt(data.day)]);
+}
+
+function normalizeUserBirthDayData(data) {
+  if (!data || typeof data !== "object") return null;
+  const birthDay = normalizeBirthDayDate(data.birthDay || data.BirthDay || data);
+  return {
+    birthDay,
+    years: Math.max(0, Number(data.years != null ? data.years : data.Years || 0) || 0),
+  };
+}
+
+function normalizeBirthDayDate(value) {
+  const data = value && typeof value === "object" ? value : {};
+  const rawMonth = data.month != null ? data.month : data.Month;
+  const rawDay = data.day != null ? data.day : data.Day;
+  const month = Math.max(1, Math.min(12, Math.trunc(Number(rawMonth || 1) || 1)));
+  const day = Math.max(1, Math.min(getMaxBirthdayDay(month), Math.trunc(Number(rawDay || 1) || 1)));
+  return { month, day };
+}
+
+function getMaxBirthdayDay(month) {
+  if (month === 2) return 29;
+  if ([4, 6, 9, 11].includes(month)) return 30;
+  return 31;
+}
+
 function buildAsyncDeckData() {
   return Buffer.concat([
     writeSignedVarInt(0), // short leaderIndex
@@ -7391,9 +7844,10 @@ function buildMinimalUserOption(user) {
 }
 
 function buildMinimalShopData(user) {
+  const now = dateTimeBinaryNow();
   return Buffer.concat([
     writeObjectMapInt(buildShopPurchaseHistoryEntries(user)), // histories
-    writeNullableObject(buildSerializedRandomShopData(user)), // randomShop
+    writeNullableObject(buildSerializedRandomShopData(user, { now })), // randomShop
     writeObjectMapInt([]), // subscriptions
   ]);
 }
@@ -7526,6 +7980,7 @@ function coerceDateTimeTicks(value) {
 }
 
 function dateTimeTicksNow() {
+  if (serverTime && typeof serverTime.dateTimeTicksNow === "function") return serverTime.dateTimeTicksNow();
   return dateTimeTicksForDate(getServerNowDate());
 }
 
@@ -7541,7 +7996,19 @@ function getMissionClockOptions() {
   };
 }
 
+function getServerClockContext() {
+  return {
+    eventManager: runtimeEventManager,
+    dateTimeBinaryNow,
+    dateTimeTicksNow,
+    getServerNowDate,
+    getServerEventDateKey,
+    getMissionClockOptions,
+  };
+}
+
 function getServerEventDateKey(nowDate = getServerNowDate()) {
+  if (serverTime && typeof serverTime.eventDateKey === "function") return serverTime.eventDateKey(nowDate);
   const state = serverTime && typeof serverTime.getState === "function" ? serverTime.getState() : {};
   if (state && /^\d{4}-\d{2}-\d{2}$/.test(String(state.eventDateKey || ""))) return String(state.eventDateKey);
   const eventDate = eventManager && eventManager.config && eventManager.config.enabled ? eventManager.config.eventDate : null;
@@ -7885,6 +8352,16 @@ function ensureLocalShopInventory(user) {
       seedMissingOnly: true,
       includeCommonResources: seedCoreCurrencies,
     });
+    const eventShopSeed = ensureActiveEventShopCurrencies(user, runtimeEventManager, {
+      balance: seedBalance,
+      regDate: dateTimeBinaryNow(),
+      seedMissingOnly: true,
+    });
+    if (eventShopSeed.seeded.length > 0 && process.env.CS_EVENT_SHOP_LOG !== "0") {
+      console.log(
+        `[event-shop] active products=${eventShopSeed.active.productIds.length} currencies=${eventShopSeed.seeded.join(",")}`
+      );
+    }
     if (
       !seedCoreCurrencies &&
       process.env.CS_REPAIR_LOCAL_SHOP_CORE_CURRENCY_SEED !== "0" &&
@@ -8108,10 +8585,10 @@ function loadCapturedTcpResponses(captureDir) {
   }
 }
 
-function buildCapturedTcpProfiles(responses) {
+function buildCapturedTcpProfiles(responses, captureDir) {
   return {
     contentsVersionAck: parseCapturedContentsVersionAck(responses.get(CONTENTS_VERSION_ACK)),
-    loginAck: parseCapturedLoginAck(responses.get(LOGIN_ACK)),
+    loginAck: parseCapturedLoginAck(responses.get(LOGIN_ACK)) || loadCapturedLoginTemplate(captureDir),
   };
 }
 
@@ -8171,6 +8648,35 @@ function parseCapturedLoginAck(entry) {
     console.log(`[capture-replay] failed to parse official ${LOGIN_ACK}: ${err.message}`);
     return null;
   }
+}
+
+function loadCapturedLoginTemplate(captureDir) {
+  const templatePath = path.join(captureDir, "official-login-template.json");
+  if (!fs.existsSync(templatePath)) return null;
+  try {
+    const template = JSON.parse(fs.readFileSync(templatePath, "utf8"));
+    const contentsTag = normalizeStringArray(template.contentsTag || template.contentsTags);
+    const openTag = normalizeStringArray(template.openTag || template.openTags);
+    if (!template.contentsVersion || !contentsTag.length) return null;
+    return {
+      errorCode: Number(template.errorCode || 0),
+      accessToken: "",
+      gameServerIP: "",
+      gameServerPort: 0,
+      contentsVersion: String(template.contentsVersion || ""),
+      contentsTag,
+      openTag,
+      rawPayload: null,
+    };
+  } catch (err) {
+    console.log(`[capture-replay] failed to load official login template: ${err.message}`);
+    return null;
+  }
+}
+
+function normalizeStringArray(value) {
+  if (!Array.isArray(value)) return [];
+  return value.map((item) => String(item || "").trim()).filter(Boolean);
 }
 
 function decodeCapturedPayload(entry) {
@@ -8429,8 +8935,16 @@ function findDefaultDotnetRuntime() {
   if (process.platform === "win32") {
     const x64Dotnet = path.join(process.env.ProgramFiles || "C:\\Program Files", "dotnet", "x64", "dotnet.exe");
     if (fs.existsSync(x64Dotnet)) return x64Dotnet;
+    const nativeDotnet = path.join(process.env.ProgramFiles || "C:\\Program Files", "dotnet", "dotnet.exe");
+    if (fs.existsSync(nativeDotnet)) return nativeDotnet;
   }
   return "dotnet";
+}
+
+function findDefaultCombatHostExecutable(projectPath) {
+  const packagedHost = path.join(ROOT_DIR, "combat-host", process.platform === "win32" ? "CombatHost.exe" : "CombatHost");
+  if (fs.existsSync(packagedHost) && !fs.existsSync(projectPath)) return packagedHost;
+  return "";
 }
 
 function findDefaultGameplayTablesDir() {
@@ -8622,6 +9136,7 @@ function floatToHalf(value) {
 }
 
 function dateTimeBinaryNow() {
+  if (serverTime && typeof serverTime.dateTimeBinaryNow === "function") return serverTime.dateTimeBinaryNow();
   return dateTimeBinaryForDate(getServerNowDate());
 }
 

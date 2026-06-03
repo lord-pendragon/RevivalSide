@@ -62,6 +62,34 @@ const CITY_UNLOCK_LEVELS = Object.freeze([0, 1, 10, 25, 35, 45, 55]);
 const STRICT_BRANCH_UNLOCK_ERRORS = envFlagDefault(false, "CS_WORLDMAP_STRICT_BRANCH_UNLOCK");
 const RAID_FACILITY_BUILDING_ID = 21;
 const DECK_TYPE_RAID = 4;
+const DIVE_PLAYER_STATE = Object.freeze({
+  EXPLORING: 0,
+  BATTLE_READY: 1,
+  BATTLE_LOAD: 2,
+  BATTLE: 3,
+  SELECT_ARTIFACT: 4,
+  ANNIHILATION: 5,
+  CLEAR: 6,
+});
+const DIVE_SECTOR_TYPE = Object.freeze({
+  START: 1,
+  BOSS: 2,
+  POINCARE: 4,
+  REIMANN: 6,
+  GAUNTLET: 8,
+  EUCLID: 10,
+});
+const DIVE_EVENT_TYPE = Object.freeze({
+  NONE: 0,
+  DUNGEON: 1,
+  DUNGEON_BOSS: 2,
+  BLANK: 5,
+});
+const DIVE_DUNGEON_PREFIX_BY_SECTOR = Object.freeze({
+  [DIVE_SECTOR_TYPE.POINCARE]: "POINCARE",
+  [DIVE_SECTOR_TYPE.REIMANN]: "REIMANN",
+  [DIVE_SECTOR_TYPE.GAUNTLET]: "GAUNTLET",
+});
 
 const WORLD_MAP_PACKET_IDS = [2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018, 2020, 2022, 2024];
 const DIVE_PACKET_IDS = [1206, 1208, 1210, 1212, 1215, 1217, 1249];
@@ -1233,11 +1261,8 @@ function createDiveState(user, options = {}) {
   const templet = getDiveTemplet(stageID);
   const slotCount = Math.max(1, Math.min(5, Number(templet && templet.SLOT_COUNT) || 3));
   const randomSetCount = Math.max(1, Number(templet && templet.RANDOM_SET_COUNT) || 2);
-  const slotSets = [
-    { slots: [{ sectorType: 1, eventType: 0, eventValue: 0 }] },
-    { slots: Array.from({ length: slotCount }, (_, index) => createDiveSlot(stageID, index, false)) },
-  ];
-  const deckIndexes = uniquePositiveInts(options.deckIndexes).slice(0, Math.max(1, Number(templet && templet.SQUAD_COUNT) || 4));
+  const slotSets = createDiveSlotSets(stageID, randomSetCount, slotCount);
+  const deckIndexes = uniqueNonNegativeInts(options.deckIndexes).slice(0, Math.max(1, Number(templet && templet.SQUAD_COUNT) || 4));
   if (!deckIndexes.length) deckIndexes.push(0);
   const squads = {};
   for (const deckIndex of deckIndexes) squads[String(deckIndex)] = { state: 0, deckIndex, curHp: 100000, maxHp: 100000, supply: 2 };
@@ -1255,10 +1280,10 @@ function createDiveState(user, options = {}) {
       },
       player: {
         base: {
-          state: 0,
-          prevSlotSetIndex: 0,
+          state: DIVE_PLAYER_STATE.EXPLORING,
+          prevSlotSetIndex: -1,
           prevSlotIndex: 0,
-          slotSetIndex: 0,
+          slotSetIndex: -1,
           slotIndex: 0,
           distance: 0,
           leaderDeckIndex,
@@ -1274,11 +1299,26 @@ function createDiveState(user, options = {}) {
   );
 }
 
-function createDiveSlot(stageID, index, boss) {
-  const sectorType = boss ? 2 : [8, 10, 6, 4][index % 4];
-  const eventType = boss ? 2 : [1, 3, 6, 7][index % 4];
-  const eventValue = boss ? getDiveBossDungeonId(stageID) : getDiveDungeonId(stageID);
+function createDiveSlotSets(stageID, randomSetCount, slotCount) {
+  const count = Math.max(1, Number(randomSetCount || 1) || 1);
+  const size = Math.max(1, Math.min(5, Number(slotCount || 3) || 3));
+  const slotSets = [];
+  for (let setIndex = 0; setIndex < count; setIndex += 1) {
+    slotSets.push({ slots: Array.from({ length: size }, (_, slotIndex) => createDiveSlot(stageID, slotIndex, false, setIndex)) });
+  }
+  slotSets.push({ slots: [createDiveSlot(stageID, 0, true, count)] });
+  return slotSets;
+}
+
+function createDiveSlot(stageID, index, boss, setIndex = 0) {
+  const sectorType = boss ? DIVE_SECTOR_TYPE.BOSS : getDivePathSectorType(index, setIndex);
+  const eventType = boss ? DIVE_EVENT_TYPE.DUNGEON_BOSS : DIVE_EVENT_TYPE.DUNGEON;
+  const eventValue = boss ? getDiveBossDungeonId(stageID, index, setIndex) : getDiveDungeonId(stageID, sectorType, index, setIndex);
   return { sectorType, eventType, eventValue };
+}
+
+function getDivePathSectorType(index, setIndex = 0) {
+  return [DIVE_SECTOR_TYPE.POINCARE, DIVE_SECTOR_TYPE.REIMANN, DIVE_SECTOR_TYPE.GAUNTLET][(Number(index || 0) + Number(setIndex || 0)) % 3];
 }
 
 function normalizeDiveState(dive, options = {}) {
@@ -1286,10 +1326,13 @@ function normalizeDiveState(dive, options = {}) {
   const stageID = positiveInt(data.stageID || data.floor && data.floor.stageID) || firstDiveStageId();
   const templet = getDiveTemplet(stageID);
   const randomSetCount = Math.max(1, Number((data.floor && data.floor.randomSetCount) || (templet && templet.RANDOM_SET_COUNT)) || 2);
+  const slotCount = Math.max(1, Math.min(5, Number(templet && templet.SLOT_COUNT) || 3));
   const floor = data.floor && typeof data.floor === "object" ? data.floor : {};
-  const slotSets = Array.isArray(floor.slotSets) && floor.slotSets.length ? floor.slotSets : [{ slots: [{ sectorType: 1, eventType: 0, eventValue: 0 }] }];
+  const slotSets = normalizeDiveSlotSets(floor.slotSets, stageID, randomSetCount, slotCount);
   const player = data.player && typeof data.player === "object" ? data.player : {};
   const base = player.base && typeof player.base === "object" ? player.base : {};
+  const distance = Math.max(0, Number(base.distance || 0) || 0);
+  const slotSetIndex = distance === 0 ? -1 : Math.max(0, Number(base.slotSetIndex != null ? base.slotSetIndex : 0) || 0);
   return {
     diveUid: String(toBigInt(data.diveUid || data.DiveUid || 0)),
     cityID: positiveInt(data.cityID) || firstCityId(),
@@ -1309,20 +1352,72 @@ function normalizeDiveState(dive, options = {}) {
     player: {
       base: {
         state: Math.max(0, Number(base.state || 0) || 0),
-        prevSlotSetIndex: Number(base.prevSlotSetIndex || 0) || 0,
+        prevSlotSetIndex: Number(base.prevSlotSetIndex != null ? base.prevSlotSetIndex : -1),
         prevSlotIndex: Number(base.prevSlotIndex || 0) || 0,
-        slotSetIndex: Number(base.slotSetIndex != null ? base.slotSetIndex : 0) || 0,
+        slotSetIndex,
         slotIndex: Number(base.slotIndex || 0) || 0,
-        distance: Math.max(0, Number(base.distance || 0) || 0),
+        distance,
         leaderDeckIndex: Number(base.leaderDeckIndex || 0) || 0,
         reservedDungeonID: Number(base.reservedDungeonID || 0) || 0,
-        reservedDeckIndex: Number(base.reservedDeckIndex != null ? base.reservedDeckIndex : -1) || -1,
+        reservedDeckIndex: Number(base.reservedDeckIndex != null ? base.reservedDeckIndex : -1),
         artifacts: uniquePositiveInts(base.artifacts),
         reservedArtifacts: uniquePositiveInts(base.reservedArtifacts),
       },
       squads: normalizeDiveSquads(player.squads),
     },
   };
+}
+
+function normalizeDiveSlotSets(sourceSlotSets, stageID, randomSetCount, slotCount) {
+  const needed = Math.max(1, Number(randomSetCount || 1) || 1) + 1;
+  const rawSlotSets = (Array.isArray(sourceSlotSets) ? sourceSlotSets : [])
+    .map((set) => ({
+      slots: (Array.isArray(set && set.slots) ? set.slots : []).filter(Boolean),
+    }))
+    .filter((set) => set.slots.length > 0);
+
+  if (
+    rawSlotSets.length > 0 &&
+    rawSlotSets[0].slots.length === 1 &&
+    (Number(rawSlotSets[0].slots[0].sectorType || 0) === DIVE_SECTOR_TYPE.START || Number(rawSlotSets[0].slots[0].sectorType || 0) === 0)
+  ) {
+    rawSlotSets.shift();
+  }
+
+  const slotSets = rawSlotSets
+    .map((set, setIndex) => ({
+      slots: (Array.isArray(set && set.slots) ? set.slots : []).map((slot, slotIndex) =>
+        normalizeDiveSlot(slot, stageID, slotIndex, setIndex, setIndex >= needed - 1)
+      ),
+    }))
+    .filter((set) => set.slots.length > 0);
+
+  for (let index = slotSets.length; index < needed; index += 1) {
+    const boss = index >= needed - 1;
+    slotSets.push({
+      slots: boss
+        ? [createDiveSlot(stageID, 0, true, index)]
+        : Array.from({ length: slotCount }, (_, slotIndex) => createDiveSlot(stageID, slotIndex, false, index)),
+    });
+  }
+  return slotSets.slice(0, needed);
+}
+
+function normalizeDiveSlot(slot, stageID, slotIndex, setIndex, boss = false) {
+  const sectorType = Math.max(0, Number(slot && slot.sectorType) || 0);
+  const eventType = Math.max(0, Number(slot && slot.eventType) || 0);
+  const eventValue = Math.max(0, Number(slot && slot.eventValue) || 0);
+  const isBoss =
+    boss ||
+    sectorType === DIVE_SECTOR_TYPE.BOSS ||
+    eventType === DIVE_EVENT_TYPE.DUNGEON_BOSS;
+  if (isBoss) return createDiveSlot(stageID, 0, true, setIndex);
+
+  const playableSectorType = DIVE_DUNGEON_PREFIX_BY_SECTOR[sectorType] ? sectorType : getDivePathSectorType(slotIndex, setIndex);
+  if (eventType === DIVE_EVENT_TYPE.DUNGEON && getKnownDungeonId(eventValue)) {
+    return { sectorType: playableSectorType, eventType, eventValue };
+  }
+  return createDiveSlot(stageID, slotIndex, false, setIndex);
 }
 
 function normalizeDiveSquads(squads) {
@@ -1333,9 +1428,9 @@ function normalizeDiveSquads(squads) {
     result[String(deckIndex)] = {
       state: Math.max(0, Number(squad && squad.state) || 0),
       deckIndex,
-      curHp: Math.max(0, Number(squad && squad.curHp) || 100000),
-      maxHp: Math.max(1, Number(squad && squad.maxHp) || 100000),
-      supply: Math.max(0, Number(squad && squad.supply) || 2),
+      curHp: Math.max(0, Number(squad && squad.curHp != null ? squad.curHp : 100000) || 0),
+      maxHp: Math.max(1, Number(squad && squad.maxHp != null ? squad.maxHp : 100000) || 1),
+      supply: Math.max(0, Number(squad && squad.supply != null ? squad.supply : 2) || 0),
     };
   }
   return result;
@@ -1344,26 +1439,30 @@ function normalizeDiveSquads(squads) {
 function moveDiveForward(user, slotIndex, options = {}) {
   const dive = getActiveDive(user, options) || createDiveState(user, options);
   const base = dive.player.base;
-  const nextSetIndex = Math.min(dive.floor.slotSets.length - 1, base.distance === 0 ? 1 : base.slotSetIndex + 1);
+  const nextSetIndex = Math.min(dive.floor.slotSets.length - 1, base.distance === 0 ? 0 : base.slotSetIndex + 1);
   const slots = dive.floor.slotSets[nextSetIndex] ? dive.floor.slotSets[nextSetIndex].slots : [];
   const nextSlotIndex = Math.max(0, Math.min(Math.max(0, slots.length - 1), Number(slotIndex || 0) || 0));
+  const selectedSlot = slots[nextSlotIndex] || createDiveSlot(dive.floor.stageID, nextSlotIndex, false, nextSetIndex);
   base.prevSlotSetIndex = base.slotSetIndex;
   base.prevSlotIndex = base.slotIndex;
   base.slotSetIndex = nextSetIndex;
   base.slotIndex = nextSlotIndex;
   base.distance += 1;
-  const reachedBoss = base.distance >= Number(dive.floor.randomSetCount || 2);
-  if (reachedBoss) {
-    base.state = 1;
-    base.reservedDungeonID = getDiveBossDungeonId(dive.floor.stageID);
-    if (dive.floor.slotSets.length < nextSetIndex + 2) {
-      dive.floor.slotSets.push({ slots: [createDiveSlot(dive.floor.stageID, 0, true)] });
-    }
+  base.reservedDeckIndex = -1;
+  base.reservedArtifacts = [];
+  if (isDiveBattleEvent(selectedSlot.eventType)) {
+    base.state = DIVE_PLAYER_STATE.BATTLE_READY;
+    base.reservedDungeonID =
+      positiveInt(selectedSlot.eventValue) ||
+      (Number(selectedSlot.eventType || 0) === DIVE_EVENT_TYPE.DUNGEON_BOSS
+        ? getDiveBossDungeonId(dive.floor.stageID, nextSlotIndex, nextSetIndex)
+        : getDiveDungeonId(dive.floor.stageID, selectedSlot.sectorType, nextSlotIndex, nextSetIndex));
   } else {
-    base.state = 0;
+    base.state = DIVE_PLAYER_STATE.EXPLORING;
+    base.reservedDungeonID = 0;
   }
   setActiveDive(user, dive, options);
-  return { dive, syncData: { updatedPlayer: base } };
+  return { dive, syncData: { updatedPlayer: cloneDivePlayerBase(base) } };
 }
 
 function giveUpDive(user) {
@@ -1399,6 +1498,122 @@ function suicideDiveSquad(user, deckIndex, options = {}) {
   }
   setActiveDive(user, dive, options);
   return { dive, syncData: { updatedSquads: dive.player.squads[key] ? [dive.player.squads[key]] : [] } };
+}
+
+function prepareDiveGameLoad(user, req = {}, options = {}) {
+  const dive = getActiveDive(user, options);
+  if (!dive) return null;
+  const base = dive.player.base;
+  const selectedSlot = getDivePlayerSlot(dive);
+  const dungeonID =
+    positiveInt(base.reservedDungeonID) ||
+    positiveInt(selectedSlot && selectedSlot.eventValue) ||
+    (Number(selectedSlot && selectedSlot.eventType) === DIVE_EVENT_TYPE.DUNGEON_BOSS
+      ? getDiveBossDungeonId(dive.floor.stageID, base.slotIndex, base.slotSetIndex)
+      : getDiveDungeonId(dive.floor.stageID, selectedSlot && selectedSlot.sectorType, base.slotIndex, base.slotSetIndex));
+  if (!dungeonID) return null;
+  const deckIndex = Math.max(0, Number(req.selectDeckIndex != null ? req.selectDeckIndex : base.leaderDeckIndex) || 0);
+  base.state = DIVE_PLAYER_STATE.BATTLE_LOAD;
+  base.reservedDungeonID = dungeonID;
+  base.reservedDeckIndex = deckIndex;
+  base.leaderDeckIndex = deckIndex;
+  setActiveDive(user, dive, options);
+  return {
+    dive,
+    diveStageID: dive.floor.stageID,
+    dungeonID,
+    deckIndex,
+    selectedSlot,
+  };
+}
+
+function completeDiveBattle(user, dynamicGame = {}, battleState = {}, options = {}) {
+  const diveStageID = positiveInt(dynamicGame.diveStageID || dynamicGame.diveStageId || dynamicGame.diveID || dynamicGame.diveId);
+  if (!diveStageID) return null;
+  const dive = getActiveDive(user, options);
+  if (!dive || positiveInt(dive.floor.stageID) !== diveStageID) return null;
+
+  const base = dive.player.base;
+  const selectedSlot = getDivePlayerSlot(dive);
+  const deckIndex = Math.max(0, Number(base.reservedDeckIndex != null ? base.reservedDeckIndex : dynamicGame.deckIndex || 0) || 0);
+  const syncData = {
+    updatedPlayer: null,
+    updatedSquads: [],
+    rewardData: null,
+    artifactRewardData: null,
+    stormMiscReward: null,
+  };
+
+  const squad = dive.player.squads[String(deckIndex)];
+  if (squad) {
+    squad.supply = Math.max(0, Number(squad.supply || 0) - 1);
+    syncData.updatedSquads.push({ ...squad });
+  }
+
+  const win = options.win !== false && !isDiveBattleLoss(battleState);
+  if (!win) {
+    base.state = Object.values(dive.player.squads).some((item) => item && Number(item.curHp || 0) > 0) ? DIVE_PLAYER_STATE.BATTLE_READY : DIVE_PLAYER_STATE.ANNIHILATION;
+    base.reservedDeckIndex = -1;
+    syncData.updatedPlayer = cloneDivePlayerBase(base);
+    setActiveDive(user, dive, options);
+    return { dive, syncData, cleared: false };
+  }
+
+  const clearDive =
+    Number(selectedSlot && selectedSlot.eventType) === DIVE_EVENT_TYPE.DUNGEON_BOSS ||
+    base.distance >= Number(dive.floor.randomSetCount || 1) + 1;
+  base.reservedDungeonID = 0;
+  base.reservedDeckIndex = -1;
+  base.reservedArtifacts = [];
+  if (clearDive) {
+    base.state = DIVE_PLAYER_STATE.CLEAR;
+    syncData.rewardData = grantDiveReward(user, getDiveTemplet(dive.floor.stageID), String(binaryNow(options)));
+    markDiveCleared(user, dive.floor.stageID, options);
+    syncData.updatedPlayer = cloneDivePlayerBase(base);
+    giveUpDive(user);
+    return { dive, syncData, cleared: true };
+  }
+
+  base.state = DIVE_PLAYER_STATE.EXPLORING;
+  syncData.updatedPlayer = cloneDivePlayerBase(base);
+  setActiveDive(user, dive, options);
+  return { dive, syncData, cleared: false };
+}
+
+function isDiveBattleEvent(eventType) {
+  return Number(eventType || 0) === DIVE_EVENT_TYPE.DUNGEON || Number(eventType || 0) === DIVE_EVENT_TYPE.DUNGEON_BOSS;
+}
+
+function isDiveBattleLoss(battleState = {}) {
+  if (!battleState || typeof battleState !== "object") return false;
+  if (battleState.giveup === true || battleState.Giveup === true) return true;
+  if (battleState.win === false || battleState.Win === false) return true;
+  if (battleState.gameState && Number(battleState.gameState.winTeam || 0) === 3) return true;
+  return false;
+}
+
+function getDivePlayerSlot(dive) {
+  if (!dive || !dive.floor || !dive.player || !dive.player.base) return null;
+  const base = dive.player.base;
+  const slotSet = dive.floor.slotSets[Number(base.slotSetIndex || 0)];
+  if (!slotSet || !Array.isArray(slotSet.slots)) return null;
+  return slotSet.slots[Number(base.slotIndex || 0)] || null;
+}
+
+function cloneDivePlayerBase(base = {}) {
+  return {
+    state: Number(base.state || 0) || 0,
+    prevSlotSetIndex: Number(base.prevSlotSetIndex != null ? base.prevSlotSetIndex : -1),
+    prevSlotIndex: Number(base.prevSlotIndex || 0) || 0,
+    slotSetIndex: Number(base.slotSetIndex != null ? base.slotSetIndex : -1),
+    slotIndex: Number(base.slotIndex || 0) || 0,
+    distance: Math.max(0, Number(base.distance || 0) || 0),
+    leaderDeckIndex: Number(base.leaderDeckIndex || 0) || 0,
+    reservedDungeonID: Number(base.reservedDungeonID || 0) || 0,
+    reservedDeckIndex: Number(base.reservedDeckIndex != null ? base.reservedDeckIndex : -1),
+    artifacts: Array.isArray(base.artifacts) ? base.artifacts.slice() : [],
+    reservedArtifacts: Array.isArray(base.reservedArtifacts) ? base.reservedArtifacts.slice() : [],
+  };
 }
 
 function skipDive(user, req, options = {}) {
@@ -1508,7 +1723,7 @@ function buildDivePlayerBaseData(base) {
     writeSignedVarInt(Number(data.distance || 0) || 0),
     writeSignedVarInt(Number(data.leaderDeckIndex || 0) || 0),
     writeSignedVarInt(Number(data.reservedDungeonID || 0) || 0),
-    writeSignedVarInt(Number(data.reservedDeckIndex != null ? data.reservedDeckIndex : -1) || -1),
+    writeSignedVarInt(Number(data.reservedDeckIndex != null ? data.reservedDeckIndex : -1)),
     writeIntList(data.artifacts || []),
     writeIntList(data.reservedArtifacts || []),
   ]);
@@ -3243,14 +3458,54 @@ function currentRaidSeasonId() {
   return seasons[0] || 10001;
 }
 
-function getDiveDungeonId(stageID) {
+function getDiveDungeonId(stageID, sectorType = DIVE_SECTOR_TYPE.POINCARE, slotIndex = 0, setIndex = 0) {
   const templet = getDiveTemplet(stageID);
-  return positiveInt(templet && templet.STAGE_ID) || positiveInt(stageID) || 1010;
+  return findDiveBattleDungeonId(templet, DIVE_DUNGEON_PREFIX_BY_SECTOR[sectorType] || "POINCARE", slotIndex, setIndex);
 }
 
-function getDiveBossDungeonId(stageID) {
+function getDiveBossDungeonId(stageID, slotIndex = 0, setIndex = 0) {
   const templet = getDiveTemplet(stageID);
-  return positiveInt(templet && templet.BOSS_EVENT_GROUP_ID) || positiveInt(templet && templet.STAGE_ID) || positiveInt(stageID) || 1010;
+  return findDiveBattleDungeonId(templet, "BOSS", slotIndex, setIndex);
+}
+
+function findDiveBattleDungeonId(templet, role, slotIndex = 0, setIndex = 0) {
+  const tables = getTables();
+  const depth = Math.max(1, Number(templet && templet.DEPTH) || 1);
+  const variant = Math.max(1, Math.min(3, ((Number(slotIndex || 0) + Number(setIndex || 0)) % 3) + 1));
+  const difficulty = isHardDiveTemplet(templet) ? "HARD" : "EASY";
+  const candidates = [
+    `NKM_DIVE_BATTLE_${role}_${difficulty}_${depth}${variant}`,
+    `NKM_DIVE_BATTLE_${role}_${difficulty}_${depth}1`,
+    `NKM_DIVE_BATTLE_${role}_${difficulty}_${depth}`,
+    `NKM_DIVE_BATTLE_${role}_${difficulty}_11`,
+  ];
+  if (role === "BOSS") {
+    candidates.push(`NKM_DIVE_BATTLE_SECTORBOSS_${Math.max(1, Math.min(10, depth))}`, "NKM_DIVE_BATTLE_SECTORBOSS_1");
+  }
+  for (const strId of candidates) {
+    const direct = tables.dungeonsByStrId.get(strId);
+    if (direct && positiveInt(direct.m_DungeonID)) return positiveInt(direct.m_DungeonID);
+  }
+
+  const prefix = `NKM_DIVE_BATTLE_${role}_${difficulty}_${depth}`;
+  const fallback = tables.dungeonTemplets.find((row) => String(row && row.m_DungeonStrID || "").startsWith(prefix));
+  if (fallback && positiveInt(fallback.m_DungeonID)) return positiveInt(fallback.m_DungeonID);
+
+  const loosePrefix = `NKM_DIVE_BATTLE_${role}_`;
+  const looseFallback = tables.dungeonTemplets.find((row) => String(row && row.m_DungeonStrID || "").startsWith(loosePrefix));
+  if (looseFallback && positiveInt(looseFallback.m_DungeonID)) return positiveInt(looseFallback.m_DungeonID);
+
+  const anyDive = tables.dungeonTemplets.find((row) => /^NKM_DIVE_BATTLE_/.test(String(row && row.m_DungeonStrID || "")));
+  return positiveInt(anyDive && anyDive.m_DungeonID) || positiveInt(templet && templet.STAGE_ID) || 1010;
+}
+
+function isHardDiveTemplet(templet) {
+  return /HARD/i.test(String(templet && (templet.DIVE_STAGE_TYPE || templet.STAGE_TYPE || "")));
+}
+
+function getKnownDungeonId(dungeonID) {
+  const id = positiveInt(dungeonID);
+  return id > 0 && getTables().dungeonsById.has(id) ? id : 0;
 }
 
 function defaultNextUid(user) {
@@ -3443,6 +3698,16 @@ function uniquePositiveInts(values) {
   return Array.from(new Set((Array.isArray(values) ? values : []).map((value) => positiveInt(value)).filter(Boolean))).sort((a, b) => a - b);
 }
 
+function uniqueNonNegativeInts(values) {
+  return Array.from(
+    new Set(
+      (Array.isArray(values) ? values : [])
+        .map((value) => Math.trunc(Number(value)))
+        .filter((value) => Number.isFinite(value) && value >= 0)
+    )
+  ).sort((a, b) => a - b);
+}
+
 function uniquePositiveIntsInOrder(values) {
   const seen = new Set();
   const result = [];
@@ -3498,6 +3763,9 @@ module.exports = {
   buildActiveDiveGameData,
   buildDiveClearData,
   buildDiveHistoryData,
+  buildDiveSyncData,
+  prepareDiveGameLoad,
+  completeDiveBattle,
   sendActiveRaidData,
   sendRaidResultData,
   sendRaidStateData,

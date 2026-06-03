@@ -19,7 +19,10 @@ parentPort.on("message", (message) => {
 });
 
 function startChild() {
-  child = spawn(workerData.dotnetPath || "dotnet", [workerData.dllPath, "--stdio"], {
+  const runDirectly = Boolean(workerData.runDirectly);
+  const fileName = runDirectly ? workerData.hostPath : workerData.dotnetPath || "dotnet";
+  const args = runDirectly ? ["--stdio"] : [workerData.hostPath, "--stdio"];
+  child = spawn(fileName, args, {
     stdio: ["pipe", "pipe", "pipe"],
     windowsHide: true,
   });

@@ -76,3 +76,9 @@ if (-not $Remove) {
 Write-TextFileAtomic -Path $hostsPath -Text $content
 Write-Host "[hosts] updated $hostsPath"
 Write-Host "[hosts] backup $backupPath"
+try {
+  ipconfig /flushdns | Out-Null
+  Write-Host "[hosts] dns cache flushed"
+} catch {
+  Write-Warning "[hosts] dns cache flush failed: $($_.Exception.Message)"
+}

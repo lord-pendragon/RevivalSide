@@ -128,7 +128,8 @@ function createLoginLikeHydratedHandler(packetId, options = {}) {
           ctx.capturedTcpResponses && typeof ctx.capturedTcpResponses.get === "function"
             ? ctx.capturedTcpResponses.get(203)
             : null;
-        if (ackPacketId === 203 && ctx.config && ctx.config.REPLAY_CAPTURED_LOGIN_ACK && capturedLoginAck) {
+        const officialLoginTemplate = ctx.capturedTcpProfiles && ctx.capturedTcpProfiles.loginAck;
+        if (ackPacketId === 203 && ctx.config && ctx.config.REPLAY_CAPTURED_LOGIN_ACK && (capturedLoginAck || officialLoginTemplate)) {
           return ctx.buildCapturedLoginAck(packet.sequence, user);
         }
         const payload = ctx.buildLoginLikePayload ? ctx.buildLoginLikePayload(user) : buildHydratedAckPayload(ctx, socket, ackPacket);

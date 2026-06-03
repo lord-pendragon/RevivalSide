@@ -305,6 +305,9 @@ function handleAdminCommand(ctx, user, messageText) {
   if (command === "clear") {
     return clearAdminInbox(user);
   }
+  if (command === "time" || command === "clock" || command === "servertime" || command === "server-time") {
+    return handleServerTimeCommand(ctx, user, tokens);
+  }
   if (command === "raid" || command === "spawnraid" || command === "raidspawn") {
     return handleRaidSpawnCommand(ctx, user, tokens);
   }
@@ -1017,6 +1020,23 @@ function createAdminRewardPosts(user, rewards, title, contents) {
   return posts;
 }
 
+function createAdminInfoPost(ctx, user, title, contents) {
+  const state = ensureAdminState(user);
+  const postIndex = allocatePostIndex(state);
+  const post = {
+    postId: ADMIN_POST_ID,
+    postIndex: postIndex.toString(),
+    title: title || "Admin Notice",
+    contents: contents || "",
+    sendDate: String(currentAdminDateTimeBinary(ctx)),
+    expirationDate: String(farFutureDateTimeBinary()),
+    rewards: [],
+    received: false,
+  };
+  state.posts.push(post);
+  return post;
+}
+
 function clearAdminInbox(user) {
   const state = ensureAdminState(user);
   let clearedPosts = 0;
@@ -1038,6 +1058,136 @@ function clearAdminInbox(user) {
     clearedPosts,
     clearedRewardLines,
   };
+}
+
+function handleServerTimeCommand(ctx, user, tokens) {
+  const subcommand = String(tokens && tokens[0] || "").trim().toLowerCase();
+  if (subcommand === "reset" || subcommand === "clear" || subcommand === "auto") {
+    tokens.shift();
+    const restored = clearServerTimeOverride(ctx);
+    const contents = formatServerTimeStatus(ctx, restored, "Manual server time override cleared.");
+    createAdminInfoPost(ctx, user, "Server Time Reset", contents);
+    return {
+      reply: "Server time override cleared. I sent the current server time to Mail.",
+      createdPosts: 1,
+    };
+  }
+
+  if (subcommand === "set" || subcommand === "to" || looksLikeDateToken(subcommand)) {
+    const rawTokens = subcommand === "set" || subcommand === "to" ? tokens.slice(1) : tokens;
+    const parsed = parseServerTimeInput(rawTokens);
+    if (!parsed.ok) {
+      return { reply: `${parsed.error}\n${serverTimeHelpText()}`, createdPosts: 0 };
+    }
+    let updated;
+    try {
+      updated = setServerTimeOverride(ctx, parsed.date);
+    } catch (error) {
+      return { reply: `Could not set server time: ${error.message}`, createdPosts: 0 };
+    }
+    const contents = formatServerTimeStatus(ctx, updated, `Server time set from command input: ${parsed.raw}`);
+    createAdminInfoPost(ctx, user, "Server Time Updated", contents);
+    return {
+      reply: `Server time set to ${updated.toISOString()}. I sent a confirmation to Mail.`,
+      createdPosts: 1,
+    };
+  }
+
+  const contents = formatServerTimeStatus(ctx, getAdminServerDate(ctx), "Current server clock snapshot.");
+  createAdminInfoPost(ctx, user, "Current Server Time", contents);
+  return {
+    reply: "I sent the current server date and time to Mail.",
+    createdPosts: 1,
+  };
+}
+
+function currentAdminDateTimeBinary(ctx) {
+  if (ctx && typeof ctx.dateTimeBinaryNow === "function") {
+    try {
+      return ctx.dateTimeBinaryNow();
+    } catch (_) {
+      // Fall back to the packet-codec real-time helper if the runtime clock is unavailable.
+    }
+  }
+  return dateTimeBinaryNow();
+}
+
+function getAdminServerDate(ctx) {
+  if (ctx && typeof ctx.getServerNowDate === "function") {
+    const date = ctx.getServerNowDate();
+    if (date instanceof Date && !Number.isNaN(date.getTime())) return date;
+  }
+  return new Date();
+}
+
+function setServerTimeOverride(ctx, date) {
+  if (ctx && typeof ctx.setServerTime === "function") {
+    const updated = ctx.setServerTime(date);
+    if (updated instanceof Date && !Number.isNaN(updated.getTime())) return updated;
+  }
+  if (ctx && ctx.serverTime && typeof ctx.serverTime.setManualTime === "function") {
+    return ctx.serverTime.setManualTime(date);
+  }
+  throw new Error("Server time manager is unavailable.");
+}
+
+function clearServerTimeOverride(ctx) {
+  if (ctx && typeof ctx.clearServerTime === "function") {
+    const restored = ctx.clearServerTime();
+    if (restored instanceof Date && !Number.isNaN(restored.getTime())) return restored;
+  }
+  if (ctx && ctx.serverTime && typeof ctx.serverTime.clearManualTime === "function") {
+    return ctx.serverTime.clearManualTime();
+  }
+  return getAdminServerDate(ctx);
+}
+
+function formatServerTimeStatus(ctx, serverDate, prefix) {
+  const date = serverDate instanceof Date && !Number.isNaN(serverDate.getTime()) ? serverDate : getAdminServerDate(ctx);
+  const summary =
+    ctx && ctx.serverTime && typeof ctx.serverTime.getSummary === "function" ? ctx.serverTime.getSummary() : null;
+  const eventDateKey =
+    ctx && typeof ctx.getServerEventDateKey === "function" ? ctx.getServerEventDateKey() : date.toISOString().slice(0, 10);
+  const lines = [];
+  if (prefix) lines.push(prefix);
+  lines.push(`Server time: ${date.toISOString()}`);
+  lines.push(`Date key: ${eventDateKey || date.toISOString().slice(0, 10)}`);
+  if (summary && summary.mode) lines.push(`Mode: ${summary.mode}`);
+  lines.push(`DateTimeBinary: ${currentAdminDateTimeBinary(ctx)}`);
+  return lines.join("\n");
+}
+
+function parseServerTimeInput(tokens) {
+  const raw = Array.isArray(tokens) ? tokens.join(" ").trim() : String(tokens || "").trim();
+  if (!raw) return { ok: false, error: "Missing time value." };
+  if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) {
+    const date = new Date(`${raw}T12:00:00.000Z`);
+    return validParsedDate(date) ? { ok: true, date, raw: `${raw} 12:00:00Z` } : { ok: false, error: "Invalid date." };
+  }
+
+  const dateTimeMatch = raw.match(
+    /^(\d{4}-\d{2}-\d{2})[ T](\d{1,2}:\d{2}(?::\d{2}(?:\.\d{1,3})?)?)(?:\s*(Z|[+-]\d{2}:?\d{2}))?$/i
+  );
+  if (dateTimeMatch) {
+    const time = dateTimeMatch[2].length === 5 ? `${dateTimeMatch[2]}:00` : dateTimeMatch[2];
+    const zone = dateTimeMatch[3] || "Z";
+    const date = new Date(`${dateTimeMatch[1]}T${time}${zone}`);
+    return validParsedDate(date) ? { ok: true, date, raw } : { ok: false, error: "Invalid date/time." };
+  }
+
+  const normalized = raw.replace(/\s+/, "T");
+  const hasZone = /(?:Z|[+-]\d{2}:?\d{2})$/i.test(normalized);
+  const date = new Date(hasZone ? normalized : `${normalized}Z`);
+  if (!validParsedDate(date)) return { ok: false, error: `Could not parse server time "${raw}".` };
+  return { ok: true, date, raw };
+}
+
+function looksLikeDateToken(value) {
+  return /^\d{4}-\d{2}-\d{2}/.test(String(value || ""));
+}
+
+function validParsedDate(value) {
+  return value instanceof Date && !Number.isNaN(value.getTime());
 }
 
 function ensureLoginRewardPosts(user, options = {}) {
@@ -1754,8 +1904,21 @@ function adminHelpText() {
     "/sephira branch <branch>",
     "/raid kill branch <branch>",
     "/raid clear [all]",
+    "/time",
+    "/time set <YYYY-MM-DD [HH:mm[:ss]]>",
+    "/time reset",
     "/clear",
     "Rewards are delivered to Mail and granted when claimed.",
+  ].join("\n");
+}
+
+function serverTimeHelpText() {
+  return [
+    "Server time commands:",
+    "/time",
+    "/time set <YYYY-MM-DD [HH:mm[:ss]]>",
+    "/time reset",
+    "Examples: /time set 2026-05-13 15:30, /time set 2025-08-10",
   ].join("\n");
 }
 
@@ -1787,6 +1950,10 @@ function isAdminCommand(message) {
     text.startsWith("/spawnsephira") ||
     text.startsWith("/killraid") ||
     text.startsWith("/raidkill") ||
+    text.startsWith("/time") ||
+    text.startsWith("/clock") ||
+    text.startsWith("/servertime") ||
+    text.startsWith("/server-time") ||
     text.startsWith("/clear") ||
     text === "/help"
   );

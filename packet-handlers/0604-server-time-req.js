@@ -7,6 +7,19 @@ module.exports = {
     const serverTicks = ctx.dateTimeTicksNow
       ? ctx.dateTimeTicksNow()
       : BigInt(Date.now()) * 10000n + 621355968000000000n;
+    if (ctx.isTutorialCapturedBootstrapActive(socket)) {
+      if (ctx.sendCapturedTutorialThroughPacketId(socket, ctx.constants.SERVER_TIME_ACK, "tutorial-server-time")) {
+        return true;
+      }
+      ctx.sendGameResponse(
+        socket,
+        packet,
+        ctx.constants.SERVER_TIME_ACK,
+        ctx.writeSignedVarLong(serverTicks),
+        "tutorial-server-time"
+      );
+      return true;
+    }
     if (ctx.config.REPLAY_CAPTURED_GAME_FLOW && ctx.capturedGameFlow) {
       ctx.skipStaleTutorialGameLoadReplay(socket, "server-time");
       if (typeof ctx.sendCapturedGameUntilBeforePacketIds === "function") {

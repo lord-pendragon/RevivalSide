@@ -4,6 +4,15 @@ const { getGameplayTableRoots } = require("../gameplay-jsons");
 
 const DATE_PROFILES_FILE = path.join(__dirname, "date-profiles.json");
 const DATE_PROFILE_TABLE_NAME = "EVENT_DATE_PROFILE";
+const OFFICIAL_EVENT_SCHEDULE_FILE = path.join(__dirname, "official-event-schedules.json");
+const OFFICIAL_EVENT_SCHEDULE_TABLE_NAME = "OFFICIAL_EVENT_SCHEDULE";
+const EMPTY_OFFICIAL_SCHEDULE_SIGNALS = Object.freeze({
+  openTags: Object.freeze([]),
+  intervalTags: Object.freeze([]),
+  contentsTagAllow: Object.freeze([]),
+  counterPassIds: Object.freeze([]),
+  entryCount: 0,
+});
 
 const DEFAULT_EVENT_TABLES = Object.freeze([
   table("interval", "ab_script", "LUA_INTERVAL_TEMPLET.json", { optional: true }),
@@ -238,6 +247,8 @@ function createEventManager(options = {}) {
       dateIso: config.eventDate ? config.eventDate.toISOString() : "",
       timezone: config.timezone,
       profile: config.profile,
+      officialScheduleEnabled: config.officialScheduleEnabled,
+      dateProfilesEnabled: config.dateProfilesEnabled,
       tableScan: config.tableScan,
       tableRoots: config.tableRoots.slice(),
       tableCount: registry.tables.length,
@@ -251,6 +262,7 @@ function createEventManager(options = {}) {
       activeOpenTagCount: activeState.openTags.length,
       activeCounterPassCount: activeState.counterPasses.length,
       activeCounterPassContentsTagCount: activeState.counterPassContentsTags.length,
+      activeOfficialScheduleCount: activeState.officialScheduleEntries.length,
       errors: registry.errors.slice(),
     };
   }
@@ -455,6 +467,10 @@ function resolveEventManagerConfig(options = {}) {
     profile: String(env.CS_EVENT_PROFILE || "auto").trim() || "auto",
     tableScan,
     defaultWindowDays: readPositiveInt(env.CS_EVENT_DEFAULT_WINDOW_DAYS, 28),
+    officialScheduleEnabled: parseEnvBool(env.CS_EVENT_OFFICIAL_SCHEDULE, true),
+    dateProfilesEnabled: parseEnvBool(env.CS_EVENT_DATE_PROFILES, false),
+    inferYearOnly: parseEnvBool(env.CS_EVENT_INFER_YEAR_ONLY, false),
+    inferSeasonalIntervals: parseEnvBool(env.CS_EVENT_INFER_SEASONAL_INTERVALS, false),
     emitRequiredIntervals: parseEnvBool(env.CS_EVENT_EMIT_REQUIRED_INTERVALS, false),
     counterPassEnabled: !counterPassDisabled,
     counterPassMode,
@@ -462,6 +478,7 @@ function resolveEventManagerConfig(options = {}) {
     counterPassAnchorDate: parseTableDate(env.CS_EVENT_COUNTER_PASS_ANCHOR_DATE || COUNTER_PASS_DEFAULT_ANCHOR) || parseTableDate(COUNTER_PASS_DEFAULT_ANCHOR),
     counterPassDurationDays: readPositiveInt(env.CS_EVENT_COUNTER_PASS_DURATION_DAYS, 35),
     counterPassCadenceDays: readPositiveInt(env.CS_EVENT_COUNTER_PASS_CADENCE_DAYS, readPositiveInt(env.CS_EVENT_COUNTER_PASS_DURATION_DAYS, 35)),
+    counterPassRollingEnabled: parseEnvBool(env.CS_EVENT_COUNTER_PASS_ROLLING, false),
     tableRoots: resolveTableRoots(rootDir, env),
   };
 }
@@ -513,6 +530,17 @@ function loadDateProfiles() {
     const parsed = JSON.parse(fs.readFileSync(DATE_PROFILES_FILE, "utf8"));
     if (Array.isArray(parsed)) return parsed;
     if (parsed && Array.isArray(parsed.profiles)) return parsed.profiles;
+  } catch {
+    return [];
+  }
+  return [];
+}
+
+function loadOfficialEventSchedules() {
+  try {
+    const parsed = JSON.parse(fs.readFileSync(OFFICIAL_EVENT_SCHEDULE_FILE, "utf8"));
+    if (Array.isArray(parsed)) return parsed;
+    if (parsed && Array.isArray(parsed.schedules)) return parsed.schedules;
   } catch {
     return [];
   }
@@ -596,6 +624,139 @@ function normalizeDateProfileEntry(profile, index) {
   };
 }
 
+function normalizeOfficialScheduleEntry(schedule, index, registry = null) {
+  if (!schedule || typeof schedule !== "object" || schedule.enabled === false) return null;
+  const id = stringifyValue(schedule.id || schedule.name || schedule.title || `official-schedule-${index + 1}`);
+  const label = stringifyValue(schedule.name || schedule.title || schedule.id || id);
+  const startDate = parseTableDate(schedule.startDate || schedule.start || schedule.from);
+  const endDate = parseTableDate(schedule.endDate || schedule.end || schedule.to);
+  const matchedSignals = schedule.runtimeMatch === true
+    ? collectOfficialScheduleMatchedSignals(registry, schedule)
+    : EMPTY_OFFICIAL_SCHEDULE_SIGNALS;
+  const openTags = uniqueStrings([
+    ...normalizeTags(schedule.openTags),
+    ...normalizeTags(schedule.openTag),
+    ...normalizeTags(schedule.tags),
+    ...matchedSignals.openTags,
+  ]);
+  const intervalTags = uniqueStrings([
+    ...normalizeTags(schedule.intervalTags),
+    ...normalizeTags(schedule.intervalTag),
+    ...normalizeTags(schedule.intervalStrIDs),
+    ...normalizeTags(schedule.dateStrIDs),
+    ...normalizeTags(schedule.dateStrIds),
+    ...normalizeTags(schedule.intervals),
+    ...matchedSignals.intervalTags,
+  ]);
+  const contentsTagAllow = uniqueStrings([
+    ...normalizeTags(schedule.contentsTags),
+    ...normalizeTags(schedule.contentsTagAllow),
+    ...normalizeTags(schedule.contentsTag),
+    ...matchedSignals.contentsTagAllow,
+  ]);
+  const contentsTagIgnore = uniqueStrings([
+    ...normalizeTags(schedule.contentsTagIgnore),
+    ...normalizeTags(schedule.ignoreContentsTags),
+  ]);
+  const counterPassIds = uniquePositiveInts([
+    ...normalizeNumberValues(schedule.counterPassIds),
+    ...normalizeNumberValues(schedule.counterPassId),
+    ...normalizeNumberValues(schedule.counterPasses),
+    ...normalizeNumberValues(schedule.eventPassIds),
+    ...normalizeNumberValues(schedule.eventPassId),
+    ...matchedSignals.counterPassIds,
+  ]);
+
+  if (!startDate || !endDate) {
+    return null;
+  }
+
+  return {
+    kind: "entry",
+    id,
+    label,
+    openTags,
+    intervalTags,
+    contentsTagAllow,
+    contentsTagIgnore,
+    counterPassIds,
+    startDate,
+    endDate,
+    repeatStartDate: null,
+    repeatEndDate: null,
+    repeatStartDay: 0,
+    repeatEndDay: 0,
+    startDateText: stringifyValue(schedule.startDate || schedule.start || schedule.from),
+    endDateText: stringifyValue(schedule.endDate || schedule.end || schedule.to),
+    repeatStartDateText: "",
+    repeatEndDateText: "",
+    resolvedIntervalTag: "",
+    resolvedStartDate: startDate,
+    resolvedEndDate: endDate,
+    resolvedRepeatStartDate: null,
+    resolvedRepeatEndDate: null,
+    resolvedRepeatStartDay: 0,
+    resolvedRepeatEndDay: 0,
+    source: {
+      category: "schedule",
+      tableName: OFFICIAL_EVENT_SCHEDULE_TABLE_NAME,
+      fileName: path.basename(OFFICIAL_EVENT_SCHEDULE_FILE),
+      relativePath: path.join("modules", "event-manager", path.basename(OFFICIAL_EVENT_SCHEDULE_FILE)),
+      index,
+    },
+    raw: {
+      ...schedule,
+      matchedEntryCount: matchedSignals.entryCount,
+    },
+  };
+}
+
+function collectOfficialScheduleMatchedSignals(registry, schedule) {
+  const result = {
+    openTags: [],
+    intervalTags: [],
+    contentsTagAllow: [],
+    counterPassIds: [],
+    entryCount: 0,
+  };
+  if (!registry || !Array.isArray(registry.entries)) return result;
+
+  const tokens = normalizeTags(schedule.matchTokens)
+    .map((token) => String(token || "").trim().toUpperCase())
+    .filter(Boolean);
+  if (!tokens.length) return result;
+
+  const excludeTokens = normalizeTags(schedule.excludeTokens)
+    .map((token) => String(token || "").trim().toUpperCase())
+    .filter(Boolean);
+  const matchMode = String(schedule.matchMode || "any").trim().toLowerCase();
+
+  for (const entry of registry.entries) {
+    const text = searchableEntryText(entry).toUpperCase();
+    if (!text) continue;
+    if (excludeTokens.some((token) => text.includes(token))) continue;
+    const matched = matchMode === "all"
+      ? tokens.every((token) => text.includes(token))
+      : tokens.some((token) => text.includes(token));
+    if (!matched) continue;
+
+    result.entryCount += 1;
+    result.openTags.push(...(entry.openTags || []));
+    result.intervalTags.push(...(entry.intervalTags || []));
+    result.contentsTagAllow.push(...(entry.contentsTagAllow || []));
+    if (isCounterPassEntry(entry)) {
+      const eventPassId = Number(entry.raw && entry.raw.EventPassID || entry.id || 0) || 0;
+      if (eventPassId > 0) result.counterPassIds.push(eventPassId);
+    }
+  }
+
+  result.openTags = uniqueStrings(result.openTags);
+  result.intervalTags = uniqueStrings(result.intervalTags);
+  result.contentsTagAllow = uniqueStrings(result.contentsTagAllow);
+  result.counterPassIds = uniquePositiveInts(result.counterPassIds);
+  return result;
+}
+
 function isDateProfileSelected(profile, requestedProfile) {
   const requested = String(requestedProfile || "auto").trim().toLowerCase();
   if (!requested || requested === "auto" || requested === "all" || requested === "*") return true;
@@ -614,12 +775,22 @@ function selectRegistryEntriesForDate(registry, date) {
 }
 
 function selectDateProfileEntries(date, config = {}) {
+  if (!config.dateProfilesEnabled) return [];
   const targetDate = parseEventDateInput(date);
   if (!targetDate) return [];
   const requestedProfile = String(config.profile || "auto").trim().toLowerCase() || "auto";
   return loadDateProfiles()
     .map((profile, index) => normalizeDateProfileEntry(profile, index))
     .filter((entry) => entry && isDateProfileSelected(entry.raw, requestedProfile) && isEntryActiveAt(entry, targetDate));
+}
+
+function selectOfficialScheduleEntries(registry, date, config = {}) {
+  if (!config.officialScheduleEnabled) return [];
+  const targetDate = parseEventDateInput(date);
+  if (!targetDate) return [];
+  return loadOfficialEventSchedules()
+    .map((schedule, index) => normalizeOfficialScheduleEntry(schedule, index, registry))
+    .filter((entry) => entry && isEntryActiveAt(entry, targetDate));
 }
 
 function selectCounterPassEntriesForDate(registry, date, config = {}, profileSeeds = []) {
@@ -647,6 +818,8 @@ function selectCounterPassEntriesForDate(registry, date, config = {}, profileSee
     return active.map((entry) => decorateCounterPassEntry(entry, resolveEntryWindow(entry, targetDate, config)));
   }
 
+  const rollingMode = ["rolling", "legacy", "synthetic"].includes(String(config.counterPassMode || "").trim().toLowerCase());
+  if (!rollingMode && !config.counterPassRollingEnabled) return [];
   const rolling = selectRollingCounterPassEntry(passEntries, targetDate, config);
   return rolling ? [rolling] : [];
 }
@@ -761,18 +934,45 @@ function buildActiveEventState(registry, config = {}, date = config.eventDate) {
     openTags: [],
     counterPasses: [],
     counterPassContentsTags: [],
+    officialScheduleEntries: [],
   };
   if (!config.enabled || !targetDate || !registry || !Array.isArray(registry.entries)) return empty;
 
   const explicitSeeds = selectRegistryEntriesForDate(registry, targetDate);
+  const officialScheduleSeeds = selectOfficialScheduleEntries(registry, targetDate, config);
   const profileSeeds = selectDateProfileEntries(targetDate, config);
-  const inferredSeeds = selectRegistryEntriesByDateToken(registry, targetDate, {
-    allowYearOnly: explicitSeeds.length === 0 && profileSeeds.length === 0,
-    defaultWindowDays: config.defaultWindowDays,
-  });
-  const counterPassSeeds = selectCounterPassEntriesForDate(registry, targetDate, config, profileSeeds);
-  const seedEntries = uniqueEntries([...counterPassSeeds, ...explicitSeeds, ...profileSeeds, ...inferredSeeds]);
-  const entries = uniqueEntries([...seedEntries, ...expandRelatedEntries(registry, seedEntries)]).filter((entry) =>
+  const intervalKeySeeds = selectIntervalKeySeedsForDate(registry, targetDate, config);
+  const directInferredSeeds = config.inferYearOnly
+    ? selectRegistryEntriesByDateToken(registry, targetDate, {
+        allowYearOnly: true,
+        allowSeasonal: Boolean(config.inferSeasonalIntervals),
+        defaultWindowDays: config.defaultWindowDays,
+      })
+    : [];
+  const counterPassSeeds = selectCounterPassEntriesForDate(registry, targetDate, config, [
+    ...officialScheduleSeeds,
+    ...profileSeeds,
+  ]);
+  const expandableSeeds = uniqueEntries([
+    ...counterPassSeeds,
+    ...explicitSeeds,
+    ...profileSeeds,
+    ...intervalKeySeeds,
+    ...directInferredSeeds,
+  ]);
+  const seedEntries = uniqueEntries([
+    ...officialScheduleSeeds,
+    ...expandableSeeds,
+  ]);
+  const relatedSeeds = uniqueEntries([
+    ...officialScheduleSeeds,
+    ...expandableSeeds,
+  ]);
+  const entries = uniqueEntries([
+    ...officialScheduleSeeds,
+    ...expandableSeeds,
+    ...expandRelatedEntries(registry, relatedSeeds, { inheritWindows: true }),
+  ]).filter((entry) =>
     isEntryCompatibleWithTargetDate(entry, targetDate, config)
   );
   const counterPassEntries = entries.filter(isCounterPassEntry);
@@ -787,6 +987,7 @@ function buildActiveEventState(registry, config = {}, date = config.eventDate) {
     date: targetDate,
     seedEntries,
     entries,
+    officialScheduleEntries: officialScheduleSeeds,
     intervalData,
     requiredIntervalData,
     contentsTags: collectActiveContentsTags(entries, targetDate, config),
@@ -828,6 +1029,9 @@ function buildEventDiagnostics(registry, config = {}, date = config.eventDate, o
       profile: config.profile || "",
       tableScan: config.tableScan || "",
       defaultWindowDays: Number(config.defaultWindowDays || 0) || 0,
+      officialScheduleEnabled: Boolean(config.officialScheduleEnabled),
+      dateProfilesEnabled: Boolean(config.dateProfilesEnabled),
+      inferSeasonalIntervals: Boolean(config.inferSeasonalIntervals),
       emitRequiredIntervals: Boolean(config.emitRequiredIntervals),
       counterPassEnabled: Boolean(config.counterPassEnabled),
       counterPassMode: config.counterPassMode || "",
@@ -835,6 +1039,7 @@ function buildEventDiagnostics(registry, config = {}, date = config.eventDate, o
       counterPassAnchorDate: dateIso(config.counterPassAnchorDate),
       counterPassDurationDays: Number(config.counterPassDurationDays || 0) || 0,
       counterPassCadenceDays: Number(config.counterPassCadenceDays || 0) || 0,
+      counterPassRollingEnabled: Boolean(config.counterPassRollingEnabled),
       tableRoots: (config.tableRoots || []).map((root) => ({
         path: root,
         exists: fs.existsSync(root),
@@ -863,6 +1068,7 @@ function buildEventDiagnostics(registry, config = {}, date = config.eventDate, o
       openTagCount: activeState.openTags.length,
       counterPassCount: activeState.counterPasses.length,
       counterPassContentsTagCount: activeState.counterPassContentsTags.length,
+      officialScheduleCount: activeState.officialScheduleEntries.length,
       contentsTags: activeState.contentsTags.slice(0, limit),
       openTags: activeState.openTags.slice(0, limit),
       counterPassContentsTags: activeState.counterPassContentsTags.slice(0, limit),
@@ -893,7 +1099,7 @@ function formatEventDiagnostics(diagnostics) {
   lines.push(`Event manager diagnostics: ${diag.status || "unknown"}`);
   lines.push(`date=${config.dateIso || config.dateInput || "(unset)"} enabled=${config.enabled ? "yes" : "no"} mode=${config.mode || "(unset)"} scan=${config.tableScan || "(unset)"}`);
   lines.push(`tables=${tables.count || 0} missing=${tables.missingCount || 0} errors=${tables.errorCount || 0} entries=${registry.entryCount || 0} intervalTemplates=${registry.intervalTemplateCount || 0} intervalRefs=${registry.requiredIntervalReferenceCount || 0}`);
-  lines.push(`active seeds=${active.seedEntryCount || 0} entries=${active.entryCount || 0} intervals=${active.intervalCount || 0} requiredIntervals=${active.requiredIntervalCount || 0} counterPasses=${active.counterPassCount || 0} contentsTags=${active.contentsTagCount || 0} openTags=${active.openTagCount || 0}`);
+  lines.push(`active seeds=${active.seedEntryCount || 0} entries=${active.entryCount || 0} intervals=${active.intervalCount || 0} requiredIntervals=${active.requiredIntervalCount || 0} officialSchedules=${active.officialScheduleCount || 0} counterPasses=${active.counterPassCount || 0} contentsTags=${active.contentsTagCount || 0} openTags=${active.openTagCount || 0}`);
   lines.push(`checks serverClock=${checks.serverClockUsesEventDate ? "event-date" : "real-time"} loginTags=${checks.loginTagsEmitted ? "yes" : "no"} lobbyIntervals=${checks.lobbyIntervalsEmitted ? "yes" : "no"} packagedRoots=${checks.packagedRootsAvailable ? "yes" : "no"}`);
 
   if (Array.isArray(diag.warnings) && diag.warnings.length) {
@@ -1115,13 +1321,17 @@ function indexEntries(registry) {
 
 function isEntryActiveAt(entry, date) {
   if (!entry || !(date instanceof Date) || Number.isNaN(date.getTime())) return false;
-  if (entry.resolvedStartDate || entry.resolvedEndDate) {
-    if (entry.resolvedStartDate && date < entry.resolvedStartDate) return false;
-    if (entry.resolvedEndDate && date > entry.resolvedEndDate) return false;
+  const startDate = entry.resolvedStartDate || entry.startDate || null;
+  const endDate = entry.resolvedEndDate || entry.endDate || null;
+  if (startDate || endDate) {
+    if (startDate && date < startDate) return false;
+    if (endDate && date > endDate) return false;
     return true;
   }
-  if (entry.resolvedRepeatStartDate || entry.resolvedRepeatEndDate) {
-    return isRepeatDateActive(date, entry.resolvedRepeatStartDate, entry.resolvedRepeatEndDate);
+  const repeatStartDate = entry.resolvedRepeatStartDate || entry.repeatStartDate || null;
+  const repeatEndDate = entry.resolvedRepeatEndDate || entry.repeatEndDate || null;
+  if (repeatStartDate || repeatEndDate) {
+    return isRepeatDateActive(date, repeatStartDate, repeatEndDate);
   }
   if (entry.resolvedRepeatStartDay || entry.resolvedRepeatEndDay || entry.repeatStartDay || entry.repeatEndDay) {
     return isRepeatDayActive(
@@ -1142,13 +1352,102 @@ function selectRegistryEntriesByDateToken(registry, date, options = {}) {
     if (!entryHasClientSignals(entry)) continue;
     if (isEntryActiveAt(entry, targetDate)) continue;
     const text = searchableEntryText(entry);
-    if (!hasDateSpecificTokenForTarget(text, targetDate, { allowYearOnly: options.allowYearOnly })) continue;
+    if (!hasDateSpecificTokenForTarget(text, targetDate, {
+      allowYearOnly: options.allowYearOnly,
+      allowSeasonal: options.allowSeasonal,
+    })) continue;
     const inferredWindow = inferWindowFromEntryTokens(entry, targetDate, options);
     if (hasSeasonalDateToken(text) && !isDateWithinWindow(targetDate, inferredWindow)) continue;
     candidates.push(entry);
   }
 
   return candidates;
+}
+
+function selectIntervalKeySeedsForDate(registry, date, config = {}) {
+  const targetDate = parseEventDateInput(date);
+  if (!targetDate || !registry) return [];
+  const seeds = [];
+
+  for (const interval of Array.isArray(registry.intervals) ? registry.intervals : []) {
+    if (isEntryActiveAt(interval, targetDate)) seeds.push(interval);
+  }
+
+  const inferredByStrKey = new Map();
+  for (const [strKey, text] of collectReferencedIntervalKeyText(registry)) {
+    if (inferredByStrKey.has(strKey)) continue;
+    const intervalText = String(strKey || "").toUpperCase();
+    if (!hasDateSpecificTokenForTarget(intervalText, targetDate, {
+      allowYearOnly: Boolean(config.inferYearOnly),
+      allowSeasonal: Boolean(config.inferSeasonalIntervals),
+    })) continue;
+    const window = inferWindowFromText(intervalText, targetDate, config);
+    if (!isDateWithinWindow(targetDate, window)) continue;
+    inferredByStrKey.set(strKey, makeInferredIntervalEntry(strKey, text, window, inferredByStrKey.size));
+  }
+
+  return uniqueEntries([...seeds, ...inferredByStrKey.values()]);
+}
+
+function collectReferencedIntervalKeyText(registry) {
+  const byStrKey = new Map();
+  const addText = (strKey, text) => {
+    const key = stringifyValue(strKey);
+    if (!isRequiredIntervalKey(key)) return;
+    const existing = byStrKey.get(key);
+    byStrKey.set(key, existing ? `${existing} ${text}` : `${key} ${text}`);
+  };
+
+  for (const reference of Array.isArray(registry.requiredIntervalRefs) ? registry.requiredIntervalRefs : []) {
+    addText(reference && reference.strKey, reference && reference.source ? reference.source.tableName : "");
+  }
+
+  for (const entry of Array.isArray(registry.entries) ? registry.entries : []) {
+    const text = searchableEntryText(entry);
+    for (const strKey of entry.intervalTags || []) addText(strKey, text);
+  }
+
+  return byStrKey;
+}
+
+function makeInferredIntervalEntry(strKey, text, window, index) {
+  const startDate = window && window.startDate instanceof Date ? window.startDate : null;
+  const endDate = window && window.endDate instanceof Date ? window.endDate : null;
+  return {
+    kind: "interval",
+    id: `inferred:${strKey}`,
+    label: strKey,
+    strKey,
+    openTags: [],
+    intervalTags: [strKey],
+    contentsTagAllow: [],
+    contentsTagIgnore: [],
+    startDate,
+    endDate,
+    repeatStartDate: null,
+    repeatEndDate: null,
+    repeatStartDay: 0,
+    repeatEndDay: 0,
+    startDateText: dateIso(startDate),
+    endDateText: dateIso(endDate),
+    repeatStartDateText: "",
+    repeatEndDateText: "",
+    resolvedIntervalTag: strKey,
+    resolvedStartDate: startDate,
+    resolvedEndDate: endDate,
+    resolvedRepeatStartDate: null,
+    resolvedRepeatEndDate: null,
+    resolvedRepeatStartDay: 0,
+    resolvedRepeatEndDay: 0,
+    source: {
+      category: "interval",
+      tableName: "INFERRED_INTERVAL",
+      fileName: "",
+      relativePath: `__inferred_interval__/${strKey}`,
+      index,
+    },
+    raw: { strKey, inferredFromText: text },
+  };
 }
 
 function hasDateSpecificTokenForTarget(text, targetDate, options = {}) {
@@ -1191,40 +1490,152 @@ function hasDateSpecificTokenForTarget(text, targetDate, options = {}) {
     normalized.includes(`${year}${month}`) ||
     normalized.includes(`${year}_${shortMonth}`) ||
     normalized.includes(`${year}_${longMonth}`);
-  const hasSeason = seasonalTokensForMonth(targetDate.getUTCMonth() + 1).some((token) => normalized.includes(token));
+  const hasSeason =
+    options.allowSeasonal === true &&
+    seasonalTokensForMonth(targetDate.getUTCMonth() + 1).some((token) => normalized.includes(token));
   const yearOnly =
     options.allowYearOnly === true && /\b(COMMON|ANN|ANNIVERSARY|PROJECT|EVENT)\b/.test(normalized.replace(/_/g, " "));
   return hasMonth || hasSeason || yearOnly;
 }
 
-function expandRelatedEntries(registry, seedEntries) {
+function expandRelatedEntries(registry, seedEntries, options = {}) {
   const related = [];
   if (!seedEntries.length) return related;
-  const openTags = new Set();
-  const intervalTags = new Set();
-  const contentsTags = new Set();
+  const selected = uniqueEntries(seedEntries).slice();
+  const selectedKeys = new Set(selected.map(eventEntryUniqueKey));
 
-  for (const entry of seedEntries) {
-    for (const tag of entry.openTags || []) if (isUsableTag(tag)) openTags.add(tag.toUpperCase());
-    for (const tag of entry.intervalTags || []) if (isUsableTag(tag)) intervalTags.add(tag.toUpperCase());
-    for (const tag of entry.contentsTagAllow || []) if (isUsableTag(tag)) contentsTags.add(tag.toUpperCase());
-  }
-
-  for (const entry of registry.entries) {
-    if (seedEntries.includes(entry)) continue;
-    if (intersectsTagSet(openTags, entry.openTags)) {
-      related.push(entry);
-      continue;
+  for (let pass = 0; pass < 4; pass += 1) {
+    const owners = collectRelatedOwners(selected);
+    const next = [];
+    for (const entry of registry.entries) {
+      const key = eventEntryUniqueKey(entry);
+      if (selectedKeys.has(key)) continue;
+      const inheritedWindowSource = [
+        findRelatedTagOwner(owners.openTags, entry.openTags),
+        findRelatedTagOwner(owners.intervalTags, entry.intervalTags),
+        findRelatedTagOwner(owners.contentsTags, entry.contentsTagAllow),
+        findRelatedTabOwner(owners.shopTabs, entry),
+      ].find((owner) => owner && canExpandRelatedEntry(owner, entry));
+      if (!inheritedWindowSource) continue;
+      const resolved = options.inheritWindows ? inheritEntryWindow(entry, inheritedWindowSource) : entry;
+      selectedKeys.add(key);
+      selected.push(resolved);
+      related.push(resolved);
+      next.push(resolved);
     }
-    if (intersectsTagSet(intervalTags, entry.intervalTags)) {
-      related.push(entry);
-      continue;
-    }
-    if (intersectsTagSet(contentsTags, entry.contentsTagAllow)) {
-      related.push(entry);
-    }
+    if (!next.length) break;
   }
   return related;
+}
+
+function collectRelatedOwners(entries) {
+  const owners = {
+    openTags: new Map(),
+    intervalTags: new Map(),
+    contentsTags: new Map(),
+    shopTabs: new Map(),
+  };
+  for (const entry of entries) {
+    for (const tag of entry.openTags || []) addRelatedTagOwner(owners.openTags, tag, entry);
+    for (const tag of entry.intervalTags || []) addRelatedTagOwner(owners.intervalTags, tag, entry);
+    for (const tag of entry.contentsTagAllow || []) addRelatedTagOwner(owners.contentsTags, tag, entry);
+    addRelatedShopTabOwner(owners.shopTabs, entry);
+  }
+  return owners;
+}
+
+function addRelatedTagOwner(map, tag, entry) {
+  if (!isUsableTag(tag)) return;
+  const key = String(tag || "").toUpperCase();
+  if (!map.has(key)) map.set(key, entry);
+}
+
+function findRelatedTagOwner(map, tags) {
+  for (const tag of Array.isArray(tags) ? tags : []) {
+    if (!isUsableTag(tag)) continue;
+    const owner = map.get(String(tag || "").toUpperCase());
+    if (owner) return owner;
+  }
+  return null;
+}
+
+function addRelatedShopTabOwner(map, entry) {
+  const key = shopEntryTabKey(entry);
+  if (!key || map.has(key)) return;
+  map.set(key, entry);
+}
+
+function findRelatedTabOwner(map, entry) {
+  const key = shopEntryTabKey(entry);
+  return key ? map.get(key) || null : null;
+}
+
+function canExpandRelatedEntry(sourceEntry, targetEntry) {
+  const sourceCategory = relationCategory(sourceEntry);
+  const targetCategory = relationCategory(targetEntry);
+  if (targetCategory === "shop") return sourceCategory === "shop";
+  if (targetCategory === "contract") return sourceCategory === "contract";
+  if (sourceCategory === "shop" || sourceCategory === "contract") return false;
+  return true;
+}
+
+function relationCategory(entry) {
+  const source = entry && entry.source ? entry.source : {};
+  const tableName = String(source.tableName || "").toUpperCase();
+  if (/SHOP/.test(tableName)) return "shop";
+  if (/CONTRACT/.test(tableName)) return "contract";
+  if (tableName === OFFICIAL_EVENT_SCHEDULE_TABLE_NAME) {
+    const raw = entry && entry.raw && typeof entry.raw === "object" ? entry.raw : {};
+    const scheduleType = String(raw.scheduleType || raw.type || "").toUpperCase();
+    const signals = [
+      scheduleType,
+      ...(entry.openTags || []),
+      ...(entry.intervalTags || []),
+      ...(entry.contentsTagAllow || []),
+    ].join("|");
+    if (/SHOP/.test(signals)) return "shop";
+    if (/CONTRACT|PICKUP|CLASSIFIED|FIRST_UNIT|FIRST_OPR/.test(signals)) return "contract";
+  }
+  return source.category || "";
+}
+
+function shopEntryTabKey(entry) {
+  if (!isShopRegistryEntry(entry)) return "";
+  const raw = entry && entry.raw && typeof entry.raw === "object" ? entry.raw : {};
+  const tabId = stringifyValue(raw.m_TabID || raw.ShopTabID || raw.shopTabId).trim().toUpperCase();
+  if (!tabId) return "";
+  const subIndex = Number(raw.m_TabSubIndex || raw.ShopTabSubIndex || raw.shopTabSubIndex || 0) || 0;
+  return `${tabId}:${subIndex}`;
+}
+
+function isShopRegistryEntry(entry) {
+  const source = entry && entry.source ? entry.source : {};
+  return source.category === "shop" || /SHOP/i.test(source.tableName || "");
+}
+
+function eventEntryUniqueKey(entry) {
+  return `${entry && entry.source ? entry.source.relativePath : ""}:${entry && entry.source ? entry.source.index : ""}:${entry ? entry.id : ""}`;
+}
+
+function inheritEntryWindow(entry, sourceEntry) {
+  if (!entry || !sourceEntry) return entry;
+  const sourceWindow = {
+    startDate: sourceEntry.resolvedStartDate || sourceEntry.startDate || null,
+    endDate: sourceEntry.resolvedEndDate || sourceEntry.endDate || null,
+  };
+  if (!sourceWindow.startDate && !sourceWindow.endDate) return entry;
+  return {
+    ...entry,
+    resolvedStartDate: sourceWindow.startDate || entry.resolvedStartDate || entry.startDate || null,
+    resolvedEndDate: sourceWindow.endDate || entry.resolvedEndDate || entry.endDate || null,
+    inheritedWindowSource: sourceEntry.source
+      ? {
+          tableName: sourceEntry.source.tableName || "",
+          relativePath: sourceEntry.source.relativePath || "",
+          index: sourceEntry.source.index || 0,
+        }
+      : null,
+  };
 }
 
 function buildRequiredIntervalData(registry) {
@@ -1361,7 +1772,10 @@ function shouldEmitContentsTagsForEntry(entry, targetDate, config = {}) {
   if (!hasIntervalTags) return false;
 
   const text = searchableEntryText(entry);
-  if (!hasDateSpecificTokenForTarget(text, targetDate, { allowYearOnly: false })) return false;
+  if (!hasDateSpecificTokenForTarget(text, targetDate, {
+    allowYearOnly: false,
+    allowSeasonal: Boolean(config.inferSeasonalIntervals),
+  })) return false;
   return isDateWithinWindow(targetDate, inferWindowFromEntryTokens(entry, targetDate, config));
 }
 
@@ -1375,22 +1789,26 @@ function isDateWithinWindow(date, window) {
 }
 
 function inferWindowFromEntryTokens(entry, targetDate, config = {}) {
-  const text = searchableEntryText(entry);
+  return inferWindowFromText(searchableEntryText(entry), targetDate, config);
+}
+
+function inferWindowFromText(text, targetDate, config = {}) {
+  const normalized = String(text || "").toUpperCase();
   const year = targetDate.getUTCFullYear();
   const defaultWindowDays = Math.max(1, Number(config.defaultWindowDays || 28) || 28);
   const month = targetDate.getUTCMonth() + 1;
   const monthStart = (monthValue) => new Date(Date.UTC(year, monthValue - 1, 1, 0, 0, 0, 0));
   const monthEnd = (monthValue) => new Date(Date.UTC(year, monthValue, 1, 0, 0, 0, 0));
 
-  if (text.includes("NEWYEAR")) return { startDate: monthStart(1), endDate: monthEnd(2) };
-  if (text.includes("VALEN")) return { startDate: monthStart(2), endDate: monthEnd(3) };
-  if (text.includes("FOOLS")) return { startDate: monthStart(4), endDate: new Date(Date.UTC(year, 3, 15, 0, 0, 0, 0)) };
-  if (text.includes("SPRING")) return { startDate: monthStart(3), endDate: monthEnd(6) };
-  if (text.includes("SUMMER") || text.includes("VACANCE")) return { startDate: monthStart(7), endDate: monthEnd(9) };
-  if (text.includes("AUTUMN")) return { startDate: monthStart(9), endDate: monthEnd(12) };
-  if (text.includes("HALLOWEEN")) return { startDate: monthStart(10), endDate: monthEnd(11) };
-  if (text.includes("BLACK_FRIDAY") || text.includes("BLACKFRIDAY")) return { startDate: monthStart(11), endDate: monthEnd(12) };
-  if (text.includes("XMAS") || text.includes("CHRISTMAS") || text.includes("WINTER") || text.includes("HOLY_DAY")) {
+  if (normalized.includes("NEWYEAR")) return { startDate: monthStart(1), endDate: monthEnd(2) };
+  if (normalized.includes("VALEN")) return { startDate: monthStart(2), endDate: monthEnd(3) };
+  if (normalized.includes("FOOLS")) return { startDate: monthStart(4), endDate: new Date(Date.UTC(year, 3, 15, 0, 0, 0, 0)) };
+  if (normalized.includes("SPRING")) return { startDate: monthStart(3), endDate: monthEnd(6) };
+  if (normalized.includes("SUMMER") || normalized.includes("VACANCE")) return { startDate: monthStart(7), endDate: monthEnd(9) };
+  if (normalized.includes("AUTUMN")) return { startDate: monthStart(9), endDate: monthEnd(12) };
+  if (normalized.includes("HALLOWEEN")) return { startDate: monthStart(10), endDate: monthEnd(11) };
+  if (normalized.includes("BLACK_FRIDAY") || normalized.includes("BLACKFRIDAY")) return { startDate: monthStart(11), endDate: monthEnd(12) };
+  if (normalized.includes("XMAS") || normalized.includes("CHRISTMAS") || normalized.includes("WINTER") || normalized.includes("HOLY_DAY")) {
     return { startDate: monthStart(12), endDate: new Date(Date.UTC(year + 1, 0, 15, 0, 0, 0, 0)) };
   }
 

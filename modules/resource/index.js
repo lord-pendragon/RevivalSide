@@ -11,7 +11,10 @@ const {
 } = require("../reward");
 
 const PURCHASE_DEDUPE_MS = Number(process.env.CS_RESOURCE_PURCHASE_DEDUPE_MS || 10000);
-const TRACK_SHOP_PURCHASE_LIMITS = process.env.CS_SHOP_TRACK_PURCHASE_LIMITS === "1";
+const TRACK_SHOP_PURCHASE_LIMITS = readEnvBool(process.env.CS_SHOP_TRACK_PURCHASE_LIMITS, true);
+const DOTNET_TICKS_AT_UNIX_EPOCH = 621355968000000000n;
+const TICKS_PER_MS = 10000n;
+const TICKS_PER_DAY = 24n * 60n * 60n * 10000000n;
 
 function isRealMoneyProduct(record) {
   return Number(record && record.m_PriceItemID) === 0;
@@ -51,7 +54,11 @@ function grantShopProduct(ctx, user, record, productCount = 1) {
     if (Array.isArray(granted[key])) reward[key].push(...granted[key]);
   }
 
-  recordShopPurchase(user, Number(record.m_ProductID) || 0, count);
+  recordShopPurchase(user, Number(record.m_ProductID) || 0, count, {
+    now: getCurrentRawTicks(ctx),
+    nextResetDate: getNextShopResetDate(ctx, record),
+    resetType: record.resetType || record.m_QuantityLimitCond || "",
+  });
   return reward;
 }
 
@@ -83,7 +90,7 @@ function grantFallbackResource(ctx, user, multiplier = 1) {
   return reward;
 }
 
-function recordShopPurchase(user, productId, productCount = 1) {
+function recordShopPurchase(user, productId, productCount = 1, options = {}) {
   if (!user || !Number.isInteger(Number(productId)) || Number(productId) <= 0) return null;
   if (!TRACK_SHOP_PURCHASE_LIMITS) {
     return {
@@ -97,20 +104,26 @@ function recordShopPurchase(user, productId, productCount = 1) {
     user.shopPurchaseHistory && typeof user.shopPurchaseHistory === "object" ? user.shopPurchaseHistory : {};
   const key = String(Number(productId));
   const existing = user.shopPurchaseHistory[key] || {};
-  const purchaseCount = Number(existing.purchaseCount || 0) + Math.max(1, Number(productCount) || 1);
+  const now = toBigInt(options.now || 0, 0n);
+  const existingNextReset = toBigInt(existing.nextResetDate || 0, 0n);
+  const countReset = isCountResetShopType(options.resetType || existing.resetType || "");
+  const resetExpired = countReset && existingNextReset > 0n && now > 0n && existingNextReset <= now;
+  const previousPurchaseCount = resetExpired ? 0 : Number(existing.purchaseCount || 0);
+  const purchaseCount = previousPurchaseCount + Math.max(1, Number(productCount) || 1);
+  const nextResetDate = String(options.nextResetDate || (resetExpired ? 0 : existing.nextResetDate) || "0");
   const history = {
     shopId: Number(productId),
     purchaseCount,
     purchaseTotalCount: Number(existing.purchaseTotalCount || 0) + Math.max(1, Number(productCount) || 1),
-    nextResetDate: String(existing.nextResetDate || "0"),
+    nextResetDate,
   };
   user.shopPurchaseHistory[key] = history;
   return history;
 }
 
 function getShopPurchaseHistories(user) {
-  if (!TRACK_SHOP_PURCHASE_LIMITS) return [];
   const history = user && user.shopPurchaseHistory && typeof user.shopPurchaseHistory === "object" ? user.shopPurchaseHistory : {};
+  if (!TRACK_SHOP_PURCHASE_LIMITS && !Object.keys(history).length) return [];
   return Object.values(history)
     .map((entry) => ({
       shopId: Number(entry.shopId || 0),
@@ -119,6 +132,47 @@ function getShopPurchaseHistories(user) {
       nextResetDate: String(entry.nextResetDate || "0"),
     }))
     .filter((entry) => entry.shopId > 0);
+}
+
+function getCurrentRawTicks(ctx) {
+  const value = ctx && typeof ctx.dateTimeBinaryNow === "function" ? toBigInt(ctx.dateTimeBinaryNow(), 0n) : 0n;
+  if (value > 0n) return value & 0x3fffffffffffffffn;
+  return DOTNET_TICKS_AT_UNIX_EPOCH + BigInt(Date.now()) * TICKS_PER_MS;
+}
+
+function getNextShopResetDate(ctx, record) {
+  const resetType = String(record && (record.resetType || record.m_QuantityLimitCond) || "").trim().toUpperCase();
+  const nowTicks = getCurrentRawTicks(ctx);
+  if (!resetType || resetType === "UNLIMITED") return "0";
+  if (resetType === "FIXED") return String(nowTicks + 36525n * TICKS_PER_DAY);
+
+  const nowDate = new Date(Number((nowTicks - DOTNET_TICKS_AT_UNIX_EPOCH) / TICKS_PER_MS));
+  let nextDate;
+  if (resetType === "DAY") {
+    nextDate = new Date(Date.UTC(nowDate.getUTCFullYear(), nowDate.getUTCMonth(), nowDate.getUTCDate() + 1, 0, 0, 0, 0));
+  } else if (resetType === "MONTH") {
+    nextDate = new Date(Date.UTC(nowDate.getUTCFullYear(), nowDate.getUTCMonth() + 1, 1, 0, 0, 0, 0));
+  } else if (resetType.startsWith("WEEK")) {
+    const day = nowDate.getUTCDay();
+    const daysUntilMonday = ((8 - day) % 7) || 7;
+    nextDate = new Date(Date.UTC(nowDate.getUTCFullYear(), nowDate.getUTCMonth(), nowDate.getUTCDate() + daysUntilMonday, 0, 0, 0, 0));
+  } else {
+    return "0";
+  }
+  return String(DOTNET_TICKS_AT_UNIX_EPOCH + BigInt(nextDate.getTime()) * TICKS_PER_MS);
+}
+
+function isCountResetShopType(resetType) {
+  const text = String(resetType || "").trim().toUpperCase();
+  return text === "DAY" || text === "MONTH" || text.startsWith("WEEK");
+}
+
+function readEnvBool(value, fallback = false) {
+  const text = String(value == null ? "" : value).trim().toLowerCase();
+  if (!text) return fallback;
+  if (["1", "true", "yes", "on"].includes(text)) return true;
+  if (["0", "false", "no", "off"].includes(text)) return false;
+  return fallback;
 }
 
 function getPurchaseKey(source, productId, request = {}) {

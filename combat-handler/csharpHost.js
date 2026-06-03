@@ -36,11 +36,24 @@ function createCsharpCombatHost(options = {}) {
       ready = false;
       workerDllPath = "";
     }
-    if (!fs.existsSync(dllPath)) {
+    if (needsHostPublish(dllPath)) {
       const outDir = path.dirname(dllPath);
       fs.mkdirSync(outDir, { recursive: true });
-      const buildArgs = ["build", projectPath, "--nologo"];
-      if (!explicitDllPath) buildArgs.push(`-p:OutDir=${outDir}${path.sep}`);
+      const buildArgs = explicitDllPath
+        ? ["build", projectPath, "--nologo"]
+        : [
+            "publish",
+            projectPath,
+            "-c",
+            "Release",
+            "--self-contained",
+            "false",
+            "--nologo",
+            "-o",
+            outDir,
+            "-p:DebugType=None",
+            "-p:DebugSymbols=false",
+          ];
       const build = spawnSync(buildDotnetPath, buildArgs, {
         encoding: "utf8",
         timeout: Math.max(timeoutMs, 30000),
@@ -53,8 +66,9 @@ function createCsharpCombatHost(options = {}) {
     ready = fs.existsSync(dllPath);
     if (!ready) lastError = `missing combat host dll: ${dllPath}`;
     if (ready && !worker) {
+      const runDirectly = /\.exe$/i.test(dllPath);
       worker = new Worker(path.join(__dirname, "csharpHostWorker.js"), {
-        workerData: { dllPath, dotnetPath },
+        workerData: { hostPath: dllPath, dotnetPath, runDirectly },
       });
       workerDllPath = dllPath;
       if (typeof worker.unref === "function") worker.unref();
@@ -78,6 +92,13 @@ function createCsharpCombatHost(options = {}) {
     if (explicitDllPath) return explicitDllPath;
     const stamp = computeCombatHostStamp(projectDir);
     return path.join(projectDir, "bin", "host-cache", stamp, "CombatHost.dll");
+  }
+
+  function needsHostPublish(dllPath) {
+    if (!fs.existsSync(dllPath)) return true;
+    if (explicitDllPath) return false;
+    const baseName = dllPath.replace(/\.dll$/i, "");
+    return !fs.existsSync(`${baseName}.runtimeconfig.json`) || !fs.existsSync(`${baseName}.deps.json`);
   }
 
   function request(command, data, requestOptions = {}) {
@@ -138,6 +159,9 @@ function createCsharpCombatHost(options = {}) {
     enabled,
     ensureReady,
     request,
+    get hostPath() {
+      return resolveHostDllPath();
+    },
     get lastError() {
       return lastError;
     },
@@ -149,6 +173,10 @@ function findPreferredDotnetRuntime(managedDir) {
   if (managedDir && process.platform === "win32") {
     const x64Dotnet = "C:\\Program Files\\dotnet\\x64\\dotnet.exe";
     if (fs.existsSync(x64Dotnet)) return x64Dotnet;
+  }
+  if (process.platform === "win32") {
+    const nativeDotnet = "C:\\Program Files\\dotnet\\dotnet.exe";
+    if (fs.existsSync(nativeDotnet)) return nativeDotnet;
   }
   return "dotnet";
 }

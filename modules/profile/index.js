@@ -34,6 +34,7 @@ const {
 } = require("../account-progression");
 
 const PROFILE_PACKET_NAMES = Object.freeze({
+  226: "ACCOUNT_UPDATE_BIRTHDAY_REQ",
   420: "FRIEND_PROFILE_MODIFY_MAIN_CHAR_REQ",
   422: "FRIEND_PROFILE_MODIFY_INTRO_REQ",
   424: "FRIEND_PROFILE_MODIFY_DECK_REQ",
@@ -45,6 +46,7 @@ const PROFILE_PACKET_NAMES = Object.freeze({
   495: "UPDATE_TITLE_REQ",
   3200: "LEADERBOARD_ACHIEVE_LIST_REQ",
 });
+const NEC_DB_FAIL_USER_DATA = 1;
 
 function createProfileHandlers() {
   return Object.keys(PROFILE_PACKET_NAMES).map((packetIdText) => {
@@ -60,9 +62,7 @@ function createProfileHandlers() {
         ctx.sendResponse(socket, packet.sequence, response.packetId, () =>
           ctx.buildEncryptedPacket(packet.sequence, response.packetId, response.payload)
         );
-        if (ctx.config && ctx.config.USE_LOCAL_USER_DB && typeof ctx.saveUserDb === "function" && response.persist !== false) {
-          ctx.saveUserDb();
-        }
+        persistUserDb(ctx, response);
         return true;
       },
     };
@@ -72,6 +72,22 @@ function createProfileHandlers() {
 function buildResponse(ctx, user, packetId, req) {
   ensureAccountProgress(user);
   switch (packetId) {
+    case 226: {
+      if (!isValidBirthDayDate(req.birthDay)) {
+        return ack(
+          227,
+          Buffer.concat([writeSignedVarInt(NEC_DB_FAIL_USER_DATA), writeNullObject()]),
+          "invalid-birthday",
+          false
+        );
+      }
+      const birthDay = setBirthday(user, req.birthDay);
+      return ack(
+        227,
+        Buffer.concat([writeSignedVarInt(0), writeNullableObject(buildBirthDayDateData(birthDay))]),
+        `birthday=${birthDay.month}/${birthDay.day}`
+      );
+    }
     case 420: {
       setProfileMainUnit(user, req.mainCharId, req.mainCharSkinId, findTacticLevel(user, req.mainCharId));
       return ack(
@@ -175,6 +191,8 @@ function decodeRequest(ctx, packetId, encryptedPayload) {
         return { titleId: reader.int() };
       case 3200:
         return { isAll: reader.bool() };
+      case 226:
+        return { birthDay: reader.birthDayDate() };
       default:
         return {};
     }
@@ -373,7 +391,56 @@ function createReader(payload) {
       if (!this.bool()) return { deckType: 1, index: 0 };
       return { deckType: this.int(), index: this.byte() };
     },
+    birthDayDate() {
+      if (!this.bool()) return null;
+      return { month: this.int(), day: this.int() };
+    },
   };
+}
+
+function setBirthday(user, birthDay) {
+  const normalized = normalizeBirthDayDate(birthDay);
+  const existing = normalizeUserBirthDayData(user && user.birthDayData);
+  user.birthDayData = {
+    birthDay: normalized,
+    years: existing ? existing.years : 0,
+  };
+  user.profileUpdatedAt = new Date().toISOString();
+  return normalized;
+}
+
+function isValidBirthDayDate(value) {
+  if (!value || typeof value !== "object") return false;
+  const month = Number(value.month != null ? value.month : value.Month);
+  const day = Number(value.day != null ? value.day : value.Day);
+  return Number.isFinite(month) && Number.isFinite(day) && month >= 1 && month <= 12 && day >= 1 && day <= getMaxBirthdayDay(Math.trunc(month));
+}
+
+function normalizeUserBirthDayData(data) {
+  if (!data || typeof data !== "object") return null;
+  const birthDay = normalizeBirthDayDate(data.birthDay || data.BirthDay || data);
+  return {
+    birthDay,
+    years: Math.max(0, Number(data.years != null ? data.years : data.Years || 0) || 0),
+  };
+}
+
+function normalizeBirthDayDate(value) {
+  const data = value && typeof value === "object" ? value : {};
+  const month = Math.max(1, Math.min(12, Math.trunc(Number(data.month != null ? data.month : data.Month || 1) || 1)));
+  const day = Math.max(1, Math.min(getMaxBirthdayDay(month), Math.trunc(Number(data.day != null ? data.day : data.Day || 1) || 1)));
+  return { month, day };
+}
+
+function getMaxBirthdayDay(month) {
+  if (month === 2) return 29;
+  if ([4, 6, 9, 11].includes(month)) return 30;
+  return 31;
+}
+
+function buildBirthDayDateData(birthDay) {
+  const data = normalizeBirthDayDate(birthDay);
+  return Buffer.concat([writeSignedVarInt(data.month), writeSignedVarInt(data.day)]);
 }
 
 function getSocketUser(ctx, socket) {
@@ -381,6 +448,12 @@ function getSocketUser(ctx, socket) {
   const user = ctx && typeof ctx.createEphemeralUser === "function" ? ctx.createEphemeralUser() : {};
   if (socket && socket.session) socket.session.user = user;
   return user;
+}
+
+function persistUserDb(ctx, response = {}) {
+  if (response.persist === false) return;
+  if (ctx && (!ctx.config || ctx.config.USE_LOCAL_USER_DB) && typeof ctx.saveUserDb === "function") ctx.saveUserDb();
+  if (ctx && typeof ctx.invalidateJoinLobbyAckPayloadCache === "function") ctx.invalidateJoinLobbyAckPayloadCache("profile-update");
 }
 
 function ack(packetId, payload, log = "", persist = true) {

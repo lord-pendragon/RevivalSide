@@ -34,7 +34,11 @@ function createCombatHandler(options = {}) {
   let csharpWarningPrinted = false;
   if (csharpHost.enabled) {
     const warmup = csharpHost.request("warmup", {});
-    if (!warmup.ok) warnCsharpFallback(warmup.error);
+    if (warmup.ok) {
+      console.log(`[combat-host] warmup ok host=${csharpHost.hostPath}`);
+    } else {
+      warnCsharpFallback(warmup.error);
+    }
   }
   const tickEngine = createTickEngine({
     combatStateId: options.combatStateId,
@@ -48,15 +52,21 @@ function createCombatHandler(options = {}) {
     capturedRespawnUnitPools: options.capturedRespawnUnitPools,
     parseCapturedGameSyncPayload: options.parseCapturedGameSyncPayload,
     extractGameLoadUnitPools: options.extractGameLoadUnitPools,
+    dynamicBattleGameUnitGroups: config.DYNAMIC_BATTLE_GAME_UNIT_GROUPS,
+    makeDynamicGameUid: options.makeDynamicGameUid,
+    mapIdForStageDungeon: options.mapIdForStageDungeon,
   });
   const deployHandler = createDeployHandler({
     tick: tickEngine,
+    syncBuilder,
     combatStateId: options.combatStateId,
     defaultDeployedUnitHp: options.defaultDeployedUnitHp,
+    dynamicBattleGameUnitGroups: config.DYNAMIC_BATTLE_GAME_UNIT_GROUPS,
   });
 
   function startBattle(initialData) {
-    if (csharpHost.enabled && initialData && initialData.replay && initialData.req) {
+    const forceJsFallback = shouldUseJsBattleFallback(initialData);
+    if (!forceJsFallback && csharpHost.enabled && initialData && initialData.replay && initialData.req) {
       const gameUID =
         initialData.gameUID ||
         (typeof options.makeDynamicGameUid === "function" ? options.makeDynamicGameUid() : BigInt(Date.now()) * 10000n);
@@ -76,13 +86,14 @@ function createCombatHandler(options = {}) {
         initialData.replay.syntheticGameTime = Number(response.battleState.gameTime || 4);
         initialData.replay.dynamicBattleResultSent = false;
         initialData.replay.managedGameLoadAckPayload = response.payload || null;
+        console.log(
+          `[combat-host] startBattle ok stageID=${response.dynamicGame.stageID} dungeonID=${response.dynamicGame.dungeonID} session=${response.dynamicGame.managedSessionId || ""} payloadSize=${response.payload.length}`
+        );
         return response.dynamicGame;
       }
       warnCsharpFallback(response.error || "managed local server did not return GAME_LOAD_ACK");
-      return null;
     }
-    warnCsharpFallback("C# combat host disabled");
-    return null;
+    return stateManager.startBattle(initialData);
   }
 
   function attachGameLoadUnitPools(replay, activeStage, payload) {
@@ -91,7 +102,7 @@ function createCombatHandler(options = {}) {
 
   function handleDeploy(request) {
     const replay = request && request.replay;
-    if (csharpHost.enabled && replay && replay.battleState && replay.dynamicGame && request.req) {
+    if (csharpHost.enabled && replay && replay.battleState && replay.dynamicGame && replay.dynamicGame.managedCombat && request.req) {
       const response = csharpHost.request("handleDeploy", {
         dynamicGame: replay.dynamicGame,
         battleState: replay.battleState,
@@ -121,7 +132,7 @@ function createCombatHandler(options = {}) {
       }
       warnCsharpFallback(response.error);
     }
-    return { handled: false };
+    return deployHandler.handleDeploy(replay, request && request.req);
   }
 
   function handlePause(request = {}) {
@@ -192,7 +203,7 @@ function createCombatHandler(options = {}) {
 
   function buildSync(data = {}) {
     const defaultDelta = defaultSyncDelta(data.dynamicGame);
-    if (csharpHost.enabled && data.battleState) {
+    if (csharpHost.enabled && data.battleState && data.dynamicGame && data.dynamicGame.managedCombat) {
       const response = csharpHost.request("buildSync", {
         dynamicGame: data.dynamicGame,
         battleState: data.battleState,
@@ -209,12 +220,12 @@ function createCombatHandler(options = {}) {
       }
       warnCsharpFallback(response.error);
     }
-    return null;
+    return syncBuilder.buildGameSync(data, { continueBattleStateUnits: tickEngine.continueBattleStateUnits });
   }
 
   function buildSyncPackets(data = {}) {
     const defaultDelta = defaultSyncDelta(data.dynamicGame);
-    if (csharpHost.enabled && data.battleState) {
+    if (csharpHost.enabled && data.battleState && data.dynamicGame && data.dynamicGame.managedCombat) {
       const response = csharpHost.request("buildSync", {
         dynamicGame: data.dynamicGame,
         battleState: data.battleState,
@@ -239,11 +250,12 @@ function createCombatHandler(options = {}) {
       }
       warnCsharpFallback(response.error);
     }
-    return [];
+    const payload = buildSync(data);
+    return payload ? [{ packetId: constants.NPT_GAME_SYNC_DATA_PACK_NOT, payload, label: "dynamic-game-sync" }] : [];
   }
 
   function buildInitialSync(replay) {
-    if (csharpHost.enabled && replay && replay.battleState) {
+    if (csharpHost.enabled && replay && replay.battleState && replay.dynamicGame && replay.dynamicGame.managedCombat) {
       const response = csharpHost.request("buildInitialSync", {
         dynamicGame: replay.dynamicGame,
         battleState: replay.battleState,
@@ -254,11 +266,11 @@ function createCombatHandler(options = {}) {
       }
       warnCsharpFallback(response.error);
     }
-    return null;
+    return syncBuilder.buildInitialBattleSync(replay, { continueBattleStateUnits: tickEngine.continueBattleStateUnits });
   }
 
   function buildInitialPackets(replay) {
-    if (csharpHost.enabled && replay && replay.battleState) {
+    if (csharpHost.enabled && replay && replay.battleState && replay.dynamicGame && replay.dynamicGame.managedCombat) {
       const response = csharpHost.request("buildInitialSync", {
         dynamicGame: replay.dynamicGame,
         battleState: replay.battleState,
@@ -280,7 +292,8 @@ function createCombatHandler(options = {}) {
       }
       warnCsharpFallback(response.error);
     }
-    return [];
+    const payload = buildInitialSync(replay);
+    return payload ? [{ packetId: constants.NPT_GAME_SYNC_DATA_PACK_NOT, payload, label: "dynamic-game-sync" }] : [];
   }
 
   function buildRespawnAck(data = {}) {
@@ -342,6 +355,26 @@ function createCombatHandler(options = {}) {
       payload: response.payload,
       packetType: response.packetType,
       serializedPayloadSize: response.serializedPayloadSize,
+    };
+  }
+
+  function extractJoinLobbyProfile(officialPayload) {
+    if (!csharpHost.enabled) {
+      return { ok: false, error: "C# combat host disabled" };
+    }
+    const response = csharpHost.request("extractJoinLobbyProfile", {
+      packetId: 205,
+      payloadBase64: Buffer.from(officialPayload || Buffer.alloc(0)).toString("base64"),
+    });
+    if (!response.ok || !response.officialProfile) {
+      return { ok: false, error: response.error || "managed lobby profile extraction failed" };
+    }
+    return {
+      ok: true,
+      profile: response.officialProfile,
+      packetType: response.packetType,
+      serializedPayloadSize: response.serializedPayloadSize,
+      summary: response.summary || "",
     };
   }
 
@@ -431,11 +464,16 @@ function createCombatHandler(options = {}) {
       const delta = managedCombat
         ? clampValue(elapsedSeconds, 0.001, defaultSyncDelta(replay.dynamicGame) * 3)
         : clampValue(elapsedSeconds, 0.001, 0.25);
-      if (!replay.battleState || !replay.dynamicGame || !replay.dynamicGame.managedCombat) {
-        console.log("[battle-manager] managed combat state unavailable; JS simulator fallback is disabled");
-        return { running: false, sent: false };
-      }
-      const packets = buildSyncPackets({ dynamicGame: replay.dynamicGame, battleState: replay.battleState, delta });
+      const packets =
+        replay.battleState && replay.dynamicGame
+          ? buildSyncPackets({ dynamicGame: replay.dynamicGame, battleState: replay.battleState, delta })
+          : [
+              {
+                packetId: constants.NPT_GAME_SYNC_DATA_PACK_NOT,
+                payload: buildBattleSimSyncPayload(replay, delta),
+                label: "battle-manager-sync",
+              },
+            ];
       return sendPumpedPackets(packets, pumpOptions);
     };
     for (let index = 0; index < primeFrames; index += 1) {
@@ -488,8 +526,145 @@ function createCombatHandler(options = {}) {
     return { win: Boolean(state.win), gameTime: Number(state.gameTime || 0), state };
   }
 
+  function buildBattleSimSyncPayload(replay, delta) {
+    const sim = deployHandler.initBattleSimulator(replay);
+    if (sim.finished && sim.finishSent) {
+      return buildSync({ gameTime: sim.gameTime, absoluteGameTime: sim.absoluteGameTime, baseEntries: [] });
+    }
+
+    sim.tick += 1;
+    sim.gameTime += delta;
+    sim.absoluteGameTime += delta;
+    sim.remainGameTime = Math.max(0, sim.remainGameTime - delta);
+    sim.respawnCostA1 = tickEngine.clamp(sim.respawnCostA1 + delta * 0.8, 0, 10);
+    sim.respawnCostB1 = tickEngine.clamp(sim.respawnCostB1 + delta * 0.8, 0, 10);
+
+    const livePlayers = sim.units.filter((unit) => unit.team === 1 && unit.alive);
+    for (const unit of livePlayers) advanceBattleUnit(sim, unit, delta);
+
+    settleBattleOutcome(sim);
+
+    const visibleUnits = sim.units
+      .filter((unit) => unit.alive || unit.playState === 2)
+      .map((unit) => {
+        const respawn = unit.respawn;
+        unit.respawn = false;
+        const speedSign = unit.right ? 1 : -1;
+        return {
+          ...unit,
+          respawn,
+          hp: Math.max(0, unit.hp),
+          speedX: Math.abs(unit.speedCurrent || 0),
+          savedPosX: unit.x,
+          right: unit.right,
+          targetUID: unit.targetUID || 0,
+          playState: unit.playState == null ? 1 : unit.playState,
+          damageSpeedXNegative: speedSign < 0,
+        };
+      });
+
+    for (const unit of sim.units) {
+      if (unit.playState === 2) {
+        unit.dyingFrames = (unit.dyingFrames || 0) + 1;
+        if (unit.dyingFrames >= 2 && !unit.deadSynced) {
+          unit.deadSynced = true;
+          unit.playState = 0;
+          sim.pendingDieUnitUIDs.push(unit.gameUnitUID);
+        }
+      }
+    }
+
+    const base = syncBuilder.buildGameSyncDataBase({
+      gameTime: sim.gameTime,
+      remainGameTime: sim.remainGameTime,
+      respawnCostA1: sim.respawnCostA1,
+      respawnCostB1: sim.respawnCostB1,
+      respawnCostAssistA1: sim.respawnCostAssistA1,
+      respawnCostAssistB1: sim.respawnCostAssistB1,
+      usedRespawnCostA1: sim.usedRespawnCostA1,
+      usedRespawnCostB1: sim.usedRespawnCostB1,
+      dieUnits: sim.pendingDieUnitUIDs.length ? [sim.pendingDieUnitUIDs.splice(0)] : [],
+      units: visibleUnits,
+      decks: sim.pendingDeckSyncs.splice(0),
+      gameStates: sim.pendingGameStates.splice(0),
+    });
+
+    if (sim.tick % 10 === 0 && !sim.finished) {
+      const players = sim.units.filter((unit) => unit.team === 1 && unit.alive).length;
+      console.log(`[battle-manager] t=${sim.gameTime.toFixed(1)} players=${players} targetHp=${sim.targetHp.toFixed(0)}`);
+    }
+
+    return buildSync({ gameTime: sim.gameTime, absoluteGameTime: sim.absoluteGameTime, baseEntries: [base] });
+  }
+
+  function advanceBattleUnit(sim, unit, delta) {
+    if (unit.spawnGrace > 0) {
+      unit.spawnGrace = Math.max(0, unit.spawnGrace - delta);
+      tickEngine.setBattleUnitState(unit, 13);
+      unit.speedCurrent = 0;
+      return;
+    }
+
+    unit.attackTimer = Math.max(0, Number(unit.attackTimer || 0) - delta);
+    unit.attackStateTime = Math.max(0, Number(unit.attackStateTime || 0) - delta);
+    const target = sim.targetHp > 0 ? { gameUnitUID: sim.targetUID, x: sim.targetX } : null;
+    unit.targetUID = target ? target.gameUnitUID : 0;
+    if (!target) {
+      unit.speedCurrent = 0;
+      tickEngine.setBattleUnitState(unit, 12);
+      return;
+    }
+
+    const dir = target.x >= unit.x ? 1 : -1;
+    unit.right = dir >= 0;
+    const distance = Math.abs(target.x - unit.x);
+    if (distance > unit.attackRange) {
+      const step = Math.min(unit.speedX * delta, distance - unit.attackRange);
+      unit.speedCurrent = dir * unit.speedX;
+      unit.x += dir * step;
+      tickEngine.setBattleUnitState(unit, 13);
+      unit.hitDone = false;
+      return;
+    }
+
+    unit.speedCurrent = 0;
+    if (unit.attackTimer <= 0) {
+      unit.attackTimer = unit.attackCooldown;
+      unit.attackStateTime = Math.max(unit.hitFrame + 0.1, unit.attackCooldown * 0.55);
+      unit.hitDone = false;
+      tickEngine.setBattleUnitState(unit, 45);
+    }
+
+    if (!unit.hitDone && unit.attackCooldown - unit.attackTimer >= unit.hitFrame) {
+      unit.hitDone = true;
+      sim.targetHp = Math.max(0, sim.targetHp - unit.attackDamage);
+    }
+
+    if (unit.attackStateTime <= 0 && unit.attackTimer > 0) {
+      tickEngine.setBattleUnitState(unit, 12);
+    }
+  }
+
+  function settleBattleOutcome(sim) {
+    if (sim.finished) return;
+    const livePlayers = sim.units.filter((unit) => unit.team === 1 && unit.alive);
+    if (livePlayers.some((unit) => unit.x >= 1460) || (sim.targetHp <= 0 && livePlayers.length > 0)) {
+      finishBattle(sim, true);
+    } else if (sim.remainGameTime <= 0 || (sim.playerUnitCount > 0 && livePlayers.length === 0)) {
+      finishBattle(sim, false);
+    }
+  }
+
+  function finishBattle(sim, win) {
+    sim.finished = true;
+    sim.finishSent = true;
+    sim.win = Boolean(win);
+    sim.gameState = 4;
+    sim.pendingGameStates.push({ state: 4, winTeam: win ? 1 : 3, waveId: sim.waveId });
+  }
+
   function deployStageLineup(replay) {
-    if (csharpHost.enabled && replay && replay.battleState && replay.dynamicGame) {
+    if (csharpHost.enabled && replay && replay.battleState && replay.dynamicGame && replay.dynamicGame.managedCombat) {
       const response = csharpHost.request("deployStageLineup", {
         dynamicGame: replay.dynamicGame,
         battleState: replay.battleState,
@@ -500,7 +675,7 @@ function createCombatHandler(options = {}) {
       }
       warnCsharpFallback(response.error);
     }
-    return [];
+    return stateManager.deployStageLineup(replay);
   }
 
   function applyHostState(replay, response) {
@@ -535,10 +710,14 @@ function createCombatHandler(options = {}) {
     if (csharpWarningPrinted) return;
     csharpWarningPrinted = true;
     console.log(
-      `[combat-host] managed CounterSide local server unavailable; JS combat simulator fallback disabled${
+      `[combat-host] managed CounterSide local server unavailable; using fallback combat host${
         error ? `: ${summarizeHostError(error)}` : ""
       }`
     );
+  }
+
+  function shouldUseJsBattleFallback() {
+    return false;
   }
 
   function summarizeHostError(error) {
@@ -571,8 +750,10 @@ function createCombatHandler(options = {}) {
     buildGameRespawnAckPayload,
     mergeJoinLobbyAck,
     normalizeJoinLobbyAck,
+    extractJoinLobbyProfile,
     buildGameEndNot: syncBuilder.buildGameEndNot,
     buildSyntheticGameSyncPayload,
+    initBattleSimulator: deployHandler.initBattleSimulator,
     startBattleLoop,
     isFinished,
     getResult,
@@ -580,6 +761,7 @@ function createCombatHandler(options = {}) {
     attachGameLoadUnitPools,
     describeRuntimeGameUnitPools: stateManager.describeRuntimeGameUnitPools,
     transitionTutorialReplayToDynamic,
+    buildBattleSimSyncPayload,
   };
 }
 

@@ -43,7 +43,7 @@ else if (!File.Exists(backupPath))
 
 var resolver = new DefaultAssemblyResolver();
 resolver.AddSearchDirectory(managedDir);
-resolver.AddSearchDirectory(Path.GetDirectoryName(typeof(Program).Assembly.Location)!);
+resolver.AddSearchDirectory(AppContext.BaseDirectory);
 
 var reader = new ReaderParameters
 {
@@ -59,8 +59,13 @@ if (options.ApplyEventPassTimeGate && PatchEventPassTimeGate(module)) patches.Ad
 if (options.ApplyEventPassTempletFallback && PatchEventPassTempletFallback(module)) patches.Add("event-pass-templet-fallback");
 if (options.ApplyLobbyEventPassSelfActivation && PatchLobbyEventPassSelfActivation(module)) patches.Add("lobby-event-pass-self-activation");
 if (options.ApplyLobbyCounterPassFallbackRegistration && PatchLobbyCounterPassFallbackRegistration(module)) patches.Add("lobby-counter-pass-fallback-registration");
+if (!options.ApplyLobbyEventPassLayout && RemoveLobbyEventPassLayoutPatch(module)) patches.Add("lobby-event-pass-layout-removed");
 if (options.ApplyLobbyEventPassLayout && PatchLobbyEventPassLayout(module)) patches.Add("lobby-event-pass-layout");
 if (options.ApplyWorldMapRaidRefresh && PatchWorldMapRaidRefresh(module)) patches.Add("world-map-raid-refresh");
+if (options.ApplyGearPresetSelectionFix && PatchGearPresetSelectionFix(module)) patches.Add("gear-preset-selection-fix");
+if (options.ApplyGearInventoryOkBindFix && PatchGearInventoryOkBindFix(module)) patches.Add("gear-inventory-ok-bind-fix");
+if (options.ApplyGearInventoryStateRepair && PatchGearInventoryStateRepair(module)) patches.Add("gear-inventory-state-repair");
+if (options.ApplySteamLocalLogin && PatchSteamLocalLogin(module)) patches.Add("steam-local-login");
 var changed = patches.Count > 0;
 if (!changed)
 {
@@ -111,7 +116,7 @@ static int PrintStatus(string assemblyPath, string backupPath)
     var resolver = new DefaultAssemblyResolver();
     var managedDir = Path.GetDirectoryName(assemblyPath)!;
     resolver.AddSearchDirectory(managedDir);
-    resolver.AddSearchDirectory(Path.GetDirectoryName(typeof(Program).Assembly.Location)!);
+    resolver.AddSearchDirectory(AppContext.BaseDirectory);
 
     using var module = ModuleDefinition.ReadModule(assemblyPath, new ReaderParameters
     {
@@ -129,6 +134,10 @@ static int PrintStatus(string assemblyPath, string backupPath)
     Console.WriteLine($"[counter-pass-patch] lobby-counter-pass-fallback-registration={HasLobbyCounterPassFallbackRegistrationPatch(module)}");
     Console.WriteLine($"[counter-pass-patch] lobby-event-pass-layout={HasLobbyEventPassLayoutPatch(module)}");
     Console.WriteLine($"[counter-pass-patch] world-map-raid-refresh={HasWorldMapRaidRefreshPatch(module)}");
+    Console.WriteLine($"[counter-pass-patch] gear-preset-selection-fix={HasGearPresetSelectionFix(module)}");
+    Console.WriteLine($"[counter-pass-patch] gear-inventory-ok-bind-fix={HasGearInventoryOkBindFix(module)}");
+    Console.WriteLine($"[counter-pass-patch] gear-inventory-state-repair={HasGearInventoryStateRepair(module)}");
+    Console.WriteLine($"[counter-pass-patch] steam-local-login={HasSteamLocalLoginPatch(module)}");
     return 0;
 }
 
@@ -458,6 +467,39 @@ static bool HasLobbyEventPassLayoutPatch(ModuleDefinition module)
         && methodReference.DeclaringType.FullName == type.FullName) == true;
 }
 
+static bool RemoveLobbyEventPassLayoutPatch(ModuleDefinition module)
+{
+    var type = module.Types.FirstOrDefault(item => item.FullName == "NKC.UI.Lobby.NKCUILobbyMenuEventPass");
+    if (type == null) return false;
+    var helper = type.Methods.FirstOrDefault(method => method.Name == "RevivalSideLayoutCounterPassMenu");
+    if (helper == null) return false;
+    var method = type.Methods.FirstOrDefault(item => item.Name == "CheckButtonEnable" && item.HasBody && item.Parameters.Count == 0);
+    if (method == null) return false;
+
+    var changed = false;
+    var il = method.Body.GetILProcessor();
+    foreach (var instruction in method.Body.Instructions.ToArray())
+    {
+        if (instruction.Operand is not MethodReference methodReference
+            || methodReference.Name != helper.Name
+            || methodReference.DeclaringType.FullName != type.FullName) continue;
+
+        var previous = instruction.Previous;
+        if (previous != null && previous.OpCode.Code == Code.Ldarg_0)
+        {
+            il.Remove(previous);
+        }
+        il.Remove(instruction);
+        changed = true;
+    }
+
+    if (changed)
+    {
+        type.Methods.Remove(helper);
+    }
+    return changed;
+}
+
 static MethodDefinition EnsureLobbyEventPassLayoutMethod(ModuleDefinition module, TypeDefinition eventPassType)
 {
     const string methodName = "RevivalSideLayoutCounterPassMenu";
@@ -741,6 +783,681 @@ static bool HasWorldMapRaidRefreshPatch(ModuleDefinition module)
     return sceneHandler != null && ackHandler != null;
 }
 
+static bool PatchGearPresetSelectionFix(ModuleDefinition module)
+{
+    var inventoryType = FindTypeDefinition(module, "NKC.UI.NKCUIInventory")
+        ?? throw new InvalidOperationException("NKC.UI.NKCUIInventory was not found.");
+    var refreshMethod = EnsureGearPresetSelectionRefreshMethod(module, inventoryType);
+    var changed = false;
+
+    foreach (var methodName in new[] { "OpenPresetChangeBoxOrChangeDirectIfEmpty", "OnClickOkButton" })
+    {
+        var method = inventoryType.Methods.FirstOrDefault(method =>
+            method.Name == methodName
+            && method.HasBody
+            && method.Parameters.Count == 0)
+            ?? throw new InvalidOperationException($"NKCUIInventory.{methodName}() was not found.");
+        changed |= EnsureMethodStartsWithCall(method, refreshMethod);
+    }
+
+    changed |= PatchPresetChangePopupCopiesEquipList(module);
+    return changed;
+}
+
+static bool HasGearPresetSelectionFix(ModuleDefinition module)
+{
+    var inventoryType = FindTypeDefinition(module, "NKC.UI.NKCUIInventory");
+    if (inventoryType == null) return false;
+    var refreshMethod = inventoryType.Methods.FirstOrDefault(method => method.Name == "RevivalSideRefreshLatestPresetEquipFromInfoSlot");
+    if (refreshMethod == null) return false;
+
+    foreach (var methodName in new[] { "OpenPresetChangeBoxOrChangeDirectIfEmpty", "OnClickOkButton" })
+    {
+        var method = inventoryType.Methods.FirstOrDefault(method =>
+            method.Name == methodName
+            && method.HasBody
+            && method.Parameters.Count == 0);
+        if (method == null || !MethodStartsWithCall(method, refreshMethod)) return false;
+    }
+
+    return HasPresetChangePopupCopiesEquipList(module);
+}
+
+static MethodDefinition EnsureGearPresetSelectionRefreshMethod(ModuleDefinition module, TypeDefinition inventoryType)
+{
+    var existing = inventoryType.Methods.FirstOrDefault(method => method.Name == "RevivalSideRefreshLatestPresetEquipFromInfoSlot");
+    if (existing != null) return existing;
+
+    var optionField = inventoryType.Fields.FirstOrDefault(field => field.Name == "m_currentOption")
+        ?? throw new InvalidOperationException("NKCUIInventory.m_currentOption was not found.");
+    var optionType = optionField.FieldType.Resolve()
+        ?? throw new InvalidOperationException("NKCUIInventory.EquipSelectListOptions type was not resolved.");
+    var buttonMenuField = optionType.Fields.FirstOrDefault(field => field.Name == "m_ButtonMenuType")
+        ?? throw new InvalidOperationException("EquipSelectListOptions.m_ButtonMenuType was not found.");
+    var slotInfoField = inventoryType.Fields.FirstOrDefault(field => field.Name == "m_slotEquipInfo")
+        ?? throw new InvalidOperationException("NKCUIInventory.m_slotEquipInfo was not found.");
+    var latestEquipField = inventoryType.Fields.FirstOrDefault(field => field.Name == "m_LatestOpenNKMEquipItemData")
+        ?? throw new InvalidOperationException("NKCUIInventory.m_LatestOpenNKMEquipItemData was not found.");
+    var getEquipData = FindMethodInType(module, slotInfoField.FieldType.FullName, "GetNKMEquipItemData", 0)
+        ?? throw new InvalidOperationException("NKCUIInvenEquipSlot.GetNKMEquipItemData was not found.");
+    var presetChangeValue = FindEnumConstant(module, "NKC.UI.NKCPopupItemEquipBox/EQUIP_BOX_BOTTOM_MENU_TYPE", "EBBMT_PRESET_CHANGE");
+
+    var method = new MethodDefinition(
+        "RevivalSideRefreshLatestPresetEquipFromInfoSlot",
+        MethodAttributes.Private | MethodAttributes.HideBySig,
+        module.TypeSystem.Void);
+    method.Body.InitLocals = true;
+    var equipLocal = new VariableDefinition(module.ImportReference(latestEquipField.FieldType));
+    method.Body.Variables.Add(equipLocal);
+
+    var il = method.Body.GetILProcessor();
+    var ret = il.Create(OpCodes.Ret);
+    var slotOk = il.Create(OpCodes.Nop);
+
+    il.Append(il.Create(OpCodes.Ldarg_0));
+    il.Append(il.Create(OpCodes.Ldfld, module.ImportReference(optionField)));
+    il.Append(il.Create(OpCodes.Ldfld, module.ImportReference(buttonMenuField)));
+    il.Append(CreateLoadInt(il, presetChangeValue));
+    il.Append(il.Create(OpCodes.Bne_Un_S, ret));
+    il.Append(il.Create(OpCodes.Ldarg_0));
+    il.Append(il.Create(OpCodes.Ldfld, module.ImportReference(slotInfoField)));
+    il.Append(il.Create(OpCodes.Brtrue_S, slotOk));
+    il.Append(il.Create(OpCodes.Ret));
+    il.Append(slotOk);
+    il.Append(il.Create(OpCodes.Ldarg_0));
+    il.Append(il.Create(OpCodes.Ldfld, module.ImportReference(slotInfoField)));
+    il.Append(il.Create(OpCodes.Callvirt, module.ImportReference(getEquipData)));
+    il.Append(il.Create(OpCodes.Stloc, equipLocal));
+    il.Append(il.Create(OpCodes.Ldloc, equipLocal));
+    il.Append(il.Create(OpCodes.Brfalse_S, ret));
+    il.Append(il.Create(OpCodes.Ldarg_0));
+    il.Append(il.Create(OpCodes.Ldloc, equipLocal));
+    il.Append(il.Create(OpCodes.Stfld, module.ImportReference(latestEquipField)));
+    il.Append(ret);
+
+    inventoryType.Methods.Add(method);
+    return method;
+}
+
+static bool EnsureMethodStartsWithCall(MethodDefinition method, MethodDefinition target)
+{
+    if (MethodStartsWithCall(method, target)) return false;
+
+    var il = method.Body.GetILProcessor();
+    var first = method.Body.Instructions.First();
+    il.InsertBefore(first, il.Create(OpCodes.Ldarg_0));
+    il.InsertBefore(first, il.Create(OpCodes.Call, method.Module.ImportReference(target)));
+    return true;
+}
+
+static bool MethodStartsWithCall(MethodDefinition method, MethodDefinition target)
+{
+    var instructions = method.Body.Instructions;
+    for (var index = 0; index < Math.Min(instructions.Count, 4); index += 1)
+    {
+        if (instructions[index].Operand is MethodReference methodReference
+            && methodReference.Name == target.Name
+            && methodReference.DeclaringType.FullName == target.DeclaringType.FullName)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+static bool MethodContainsCall(MethodDefinition method, MethodDefinition target)
+{
+    return method.Body.Instructions.Any(instruction =>
+        instruction.Operand is MethodReference methodReference
+        && methodReference.Name == target.Name
+        && methodReference.DeclaringType.FullName == target.DeclaringType.FullName);
+}
+
+static bool IsStloc(Instruction instruction)
+{
+    return instruction.OpCode.Code is Code.Stloc or Code.Stloc_0 or Code.Stloc_1 or Code.Stloc_2 or Code.Stloc_3 or Code.Stloc_S;
+}
+
+static VariableDefinition? GetStlocVariable(MethodDefinition method, Instruction instruction)
+{
+    return instruction.OpCode.Code switch
+    {
+        Code.Stloc_0 => method.Body.Variables.Count > 0 ? method.Body.Variables[0] : null,
+        Code.Stloc_1 => method.Body.Variables.Count > 1 ? method.Body.Variables[1] : null,
+        Code.Stloc_2 => method.Body.Variables.Count > 2 ? method.Body.Variables[2] : null,
+        Code.Stloc_3 => method.Body.Variables.Count > 3 ? method.Body.Variables[3] : null,
+        Code.Stloc or Code.Stloc_S => instruction.Operand as VariableDefinition,
+        _ => null,
+    };
+}
+
+static VariableDefinition? GetLdlocVariable(MethodDefinition method, Instruction? instruction)
+{
+    if (instruction == null) return null;
+    return instruction.OpCode.Code switch
+    {
+        Code.Ldloc_0 => method.Body.Variables.Count > 0 ? method.Body.Variables[0] : null,
+        Code.Ldloc_1 => method.Body.Variables.Count > 1 ? method.Body.Variables[1] : null,
+        Code.Ldloc_2 => method.Body.Variables.Count > 2 ? method.Body.Variables[2] : null,
+        Code.Ldloc_3 => method.Body.Variables.Count > 3 ? method.Body.Variables[3] : null,
+        Code.Ldloc or Code.Ldloc_S => instruction.Operand as VariableDefinition,
+        _ => null,
+    };
+}
+
+static bool PatchPresetChangePopupCopiesEquipList(ModuleDefinition module)
+{
+    var popupType = FindTypeDefinition(module, "NKC.UI.NKCPopupItemEquipBox")
+        ?? throw new InvalidOperationException("NKC.UI.NKCPopupItemEquipBox was not found.");
+    var method = popupType.Methods.FirstOrDefault(method =>
+        method.Name == "OpenForPresetChange"
+        && method.HasBody
+        && method.Parameters.Count == 6)
+        ?? throw new InvalidOperationException("NKCPopupItemEquipBox.OpenForPresetChange was not found.");
+    var listField = popupType.Fields.FirstOrDefault(field => field.Name == "m_listPresetEquip")
+        ?? throw new InvalidOperationException("NKCPopupItemEquipBox.m_listPresetEquip was not found.");
+    var store = method.Body.Instructions.FirstOrDefault(instruction =>
+        instruction.OpCode.Code == Code.Stfld
+        && instruction.Operand is FieldReference fieldReference
+        && fieldReference.Name == listField.Name
+        && fieldReference.DeclaringType.FullName == listField.DeclaringType.FullName)
+        ?? throw new InvalidOperationException("NKCPopupItemEquipBox.OpenForPresetChange m_listPresetEquip assignment was not found.");
+
+    if (IsNewListCopyInstruction(store.Previous)) return false;
+
+    var il = method.Body.GetILProcessor();
+    il.InsertBefore(store, il.Create(OpCodes.Newobj, MakeGenericListCopyConstructor(module, listField.FieldType)));
+    return true;
+}
+
+static bool HasPresetChangePopupCopiesEquipList(ModuleDefinition module)
+{
+    var popupType = FindTypeDefinition(module, "NKC.UI.NKCPopupItemEquipBox");
+    var method = popupType?.Methods.FirstOrDefault(method =>
+        method.Name == "OpenForPresetChange"
+        && method.HasBody
+        && method.Parameters.Count == 6);
+    var listField = popupType?.Fields.FirstOrDefault(field => field.Name == "m_listPresetEquip");
+    if (method == null || listField == null) return false;
+
+    var store = method.Body.Instructions.FirstOrDefault(instruction =>
+        instruction.OpCode.Code == Code.Stfld
+        && instruction.Operand is FieldReference fieldReference
+        && fieldReference.Name == listField.Name
+        && fieldReference.DeclaringType.FullName == listField.DeclaringType.FullName);
+    return IsNewListCopyInstruction(store?.Previous);
+}
+
+static bool PatchGearInventoryOkBindFix(ModuleDefinition module)
+{
+    var inventoryType = FindTypeDefinition(module, "NKC.UI.NKCUIInventory")
+        ?? throw new InvalidOperationException("NKC.UI.NKCUIInventory was not found.");
+    var restoreMethod = EnsureGearInventoryOkBindRestoreMethod(module, inventoryType);
+    var setEquipInfo = inventoryType.Methods.FirstOrDefault(method =>
+        method.Name == "SetEquipInfo"
+        && method.HasBody
+        && method.Parameters.Count == 1)
+        ?? throw new InvalidOperationException("NKCUIInventory.SetEquipInfo was not found.");
+
+    if (MethodContainsCall(setEquipInfo, restoreMethod)) return false;
+
+    var setInventoryButtonsCall = setEquipInfo.Body.Instructions.FirstOrDefault(instruction =>
+        instruction.OpCode.Code == Code.Call
+        && instruction.Operand is MethodReference methodReference
+        && methodReference.Name == "SetInventoryButtons"
+        && methodReference.DeclaringType.FullName == inventoryType.FullName)
+        ?? throw new InvalidOperationException("NKCUIInventory.SetEquipInfo SetInventoryButtons call was not found.");
+
+    var il = setEquipInfo.Body.GetILProcessor();
+    il.InsertBefore(setInventoryButtonsCall, il.Create(OpCodes.Ldarg_0));
+    il.InsertBefore(setInventoryButtonsCall, il.Create(OpCodes.Call, module.ImportReference(restoreMethod)));
+    return true;
+}
+
+static bool HasGearInventoryOkBindFix(ModuleDefinition module)
+{
+    var inventoryType = FindTypeDefinition(module, "NKC.UI.NKCUIInventory");
+    if (inventoryType == null) return false;
+    var restoreMethod = inventoryType.Methods.FirstOrDefault(method => method.Name == "RevivalSideRestoreOkButtonDefaultBinding");
+    var setEquipInfo = inventoryType.Methods.FirstOrDefault(method =>
+        method.Name == "SetEquipInfo"
+        && method.HasBody
+        && method.Parameters.Count == 1);
+    return restoreMethod != null && setEquipInfo != null && MethodContainsCall(setEquipInfo, restoreMethod);
+}
+
+static MethodDefinition EnsureGearInventoryOkBindRestoreMethod(ModuleDefinition module, TypeDefinition inventoryType)
+{
+    var existing = inventoryType.Methods.FirstOrDefault(method => method.Name == "RevivalSideRestoreOkButtonDefaultBinding");
+    if (existing != null) return existing;
+
+    var clickDelegateField = inventoryType.Fields.FirstOrDefault(field => field.Name == "m_dOnClickEquipSlot")
+        ?? throw new InvalidOperationException("NKCUIInventory.m_dOnClickEquipSlot was not found.");
+    var okButtonField = inventoryType.Fields.FirstOrDefault(field => field.Name == "m_OkButton")
+        ?? throw new InvalidOperationException("NKCUIInventory.m_OkButton was not found.");
+    var onClickOkButton = inventoryType.Methods.FirstOrDefault(method =>
+        method.Name == "OnClickOkButton"
+        && method.Parameters.Count == 0)
+        ?? throw new InvalidOperationException("NKCUIInventory.OnClickOkButton was not found.");
+    var setBindFunction = FindSetBindFunctionForButton(module, okButtonField.FieldType)
+        ?? throw new InvalidOperationException("NKCUtil.SetBindFunction for the inventory OK button was not found.");
+    var unityActionCtor = FindUnityActionConstructor(module, setBindFunction.Parameters[1].ParameterType)
+        ?? throw new InvalidOperationException("UnityAction(object, IntPtr) constructor was not found.");
+
+    var method = new MethodDefinition(
+        "RevivalSideRestoreOkButtonDefaultBinding",
+        MethodAttributes.Private | MethodAttributes.HideBySig,
+        module.TypeSystem.Void);
+    var il = method.Body.GetILProcessor();
+    var ret = il.Create(OpCodes.Ret);
+
+    il.Append(il.Create(OpCodes.Ldarg_0));
+    il.Append(il.Create(OpCodes.Ldfld, module.ImportReference(clickDelegateField)));
+    il.Append(il.Create(OpCodes.Brtrue_S, ret));
+    il.Append(il.Create(OpCodes.Ldarg_0));
+    il.Append(il.Create(OpCodes.Ldfld, module.ImportReference(okButtonField)));
+    il.Append(il.Create(OpCodes.Ldarg_0));
+    il.Append(il.Create(OpCodes.Ldftn, module.ImportReference(onClickOkButton)));
+    il.Append(il.Create(OpCodes.Newobj, module.ImportReference(unityActionCtor)));
+    il.Append(il.Create(OpCodes.Call, module.ImportReference(setBindFunction)));
+    il.Append(ret);
+
+    inventoryType.Methods.Add(method);
+    return method;
+}
+
+static bool PatchGearInventoryStateRepair(ModuleDefinition module)
+{
+    var inventoryType = FindTypeDefinition(module, "NKC.UI.NKCUIInventory")
+        ?? throw new InvalidOperationException("NKC.UI.NKCUIInventory was not found.");
+    var canonicalizeMethod = EnsureGearInventoryCanonicalizeEquipMethod(module, inventoryType);
+    var repairCurrentMethod = EnsureGearInventoryRepairCurrentMethod(module, inventoryType, canonicalizeMethod);
+    var changed = EnsureSetEquipInfoCanonicalizesSelectedEquip(module, inventoryType, canonicalizeMethod);
+    changed |= EnsurePresetRefreshCanonicalizesSelectedEquip(module, inventoryType, canonicalizeMethod);
+
+    foreach (var method in GetGearInventoryDecisionMethods(inventoryType))
+    {
+        changed |= EnsureMethodStartsWithCall(method, repairCurrentMethod);
+    }
+
+    return changed;
+}
+
+static bool HasGearInventoryStateRepair(ModuleDefinition module)
+{
+    var inventoryType = FindTypeDefinition(module, "NKC.UI.NKCUIInventory");
+    if (inventoryType == null) return false;
+    var canonicalizeMethod = inventoryType.Methods.FirstOrDefault(method => method.Name == "RevivalSideCanonicalizeEquipData");
+    var repairCurrentMethod = inventoryType.Methods.FirstOrDefault(method => method.Name == "RevivalSideRepairCurrentEquipSelection");
+    if (canonicalizeMethod == null || repairCurrentMethod == null) return false;
+
+    var setEquipInfo = inventoryType.Methods.FirstOrDefault(method =>
+        method.Name == "SetEquipInfo"
+        && method.HasBody
+        && method.Parameters.Count == 1);
+    if (setEquipInfo == null || !SetEquipInfoCanonicalizesSelectedEquip(setEquipInfo, canonicalizeMethod)) return false;
+    if (!PresetRefreshCanonicalizesSelectedEquip(inventoryType, canonicalizeMethod)) return false;
+
+    return GetGearInventoryDecisionMethods(inventoryType).All(method => MethodStartsWithCall(method, repairCurrentMethod));
+}
+
+static IEnumerable<MethodDefinition> GetGearInventoryDecisionMethods(TypeDefinition inventoryType)
+{
+    var targets = new (string Name, int ParameterCount)[]
+    {
+        ("OnClickOkButton", 0),
+        ("OpenUnitSelect", 0),
+        ("OpenChangeBoxOrChangeDirectIfEmpty", 0),
+        ("OpenPresetChangeBoxOrChangeDirectIfEmpty", 0),
+        ("CheckEquipChange", 1),
+        ("SendEquipPacket", 1),
+        ("ConfirmChangeEquip", 0),
+        ("ChangeEquipAccessory", 1),
+        ("ChangeEquipItem", 3),
+        ("OnChangeEquip", 0),
+        ("OnClickUnEquip", 0),
+    };
+
+    foreach (var target in targets)
+    {
+        var method = inventoryType.Methods.FirstOrDefault(method =>
+            method.Name == target.Name
+            && method.HasBody
+            && method.Parameters.Count == target.ParameterCount);
+        if (method != null) yield return method;
+    }
+}
+
+static MethodDefinition EnsureGearInventoryCanonicalizeEquipMethod(ModuleDefinition module, TypeDefinition inventoryType)
+{
+    var existing = inventoryType.Methods.FirstOrDefault(method => method.Name == "RevivalSideCanonicalizeEquipData");
+    if (existing != null) return existing;
+
+    var equipType = FindTypeDefinition(module, "NKM.NKMEquipItemData")
+        ?? throw new InvalidOperationException("NKM.NKMEquipItemData was not found.");
+    var userType = FindTypeDefinition(module, "NKM.NKMUserData")
+        ?? throw new InvalidOperationException("NKM.NKMUserData was not found.");
+    var itemUidField = equipType.Fields.FirstOrDefault(field => field.Name == "m_ItemUid")
+        ?? throw new InvalidOperationException("NKMEquipItemData.m_ItemUid was not found.");
+    var latestEquipField = inventoryType.Fields.FirstOrDefault(field => field.Name == "m_LatestOpenNKMEquipItemData")
+        ?? throw new InvalidOperationException("NKCUIInventory.m_LatestOpenNKMEquipItemData was not found.");
+    var inventoryField = userType.Fields.FirstOrDefault(field => field.Name == "m_InventoryData")
+        ?? throw new InvalidOperationException("NKMUserData.m_InventoryData was not found.");
+    var currentUserData = FindMethodReference(module, "NKC.NKCScenManager", "CurrentUserData", 0)
+        ?? throw new InvalidOperationException("NKCScenManager.CurrentUserData was not found.");
+    var getItemEquip = FindMethodInType(module, inventoryField.FieldType.FullName, "GetItemEquip", 1)
+        ?? throw new InvalidOperationException("NKMInventoryData.GetItemEquip was not found.");
+
+    var repairMethod = EnsureGearInventoryRepairDetachedOwnerMethod(module, inventoryType);
+    var method = new MethodDefinition(
+        "RevivalSideCanonicalizeEquipData",
+        MethodAttributes.Private | MethodAttributes.HideBySig,
+        module.ImportReference(equipType));
+    method.Parameters.Add(new ParameterDefinition("equipData", ParameterAttributes.None, module.ImportReference(equipType)));
+    method.Body.InitLocals = true;
+    var userLocal = new VariableDefinition(module.ImportReference(userType));
+    var resultLocal = new VariableDefinition(module.ImportReference(equipType));
+    var canonicalLocal = new VariableDefinition(module.ImportReference(equipType));
+    method.Body.Variables.Add(userLocal);
+    method.Body.Variables.Add(resultLocal);
+    method.Body.Variables.Add(canonicalLocal);
+
+    var il = method.Body.GetILProcessor();
+    var hasInput = il.Create(OpCodes.Nop);
+    var hasUser = il.Create(OpCodes.Nop);
+    var afterCanonicalLookup = il.Create(OpCodes.Nop);
+    var returnResult = il.Create(OpCodes.Nop);
+
+    il.Append(il.Create(OpCodes.Ldarg_1));
+    il.Append(il.Create(OpCodes.Brtrue_S, hasInput));
+    il.Append(il.Create(OpCodes.Ldnull));
+    il.Append(il.Create(OpCodes.Ret));
+    il.Append(hasInput);
+    il.Append(il.Create(OpCodes.Ldarg_1));
+    il.Append(il.Create(OpCodes.Stloc, resultLocal));
+    il.Append(il.Create(OpCodes.Call, module.ImportReference(currentUserData)));
+    il.Append(il.Create(OpCodes.Stloc, userLocal));
+    il.Append(il.Create(OpCodes.Ldloc, userLocal));
+    il.Append(il.Create(OpCodes.Brtrue_S, hasUser));
+    il.Append(il.Create(OpCodes.Ldloc, resultLocal));
+    il.Append(il.Create(OpCodes.Ret));
+    il.Append(hasUser);
+    il.Append(il.Create(OpCodes.Ldloc, userLocal));
+    il.Append(il.Create(OpCodes.Ldfld, module.ImportReference(inventoryField)));
+    il.Append(il.Create(OpCodes.Ldloc, resultLocal));
+    il.Append(il.Create(OpCodes.Ldfld, module.ImportReference(itemUidField)));
+    il.Append(il.Create(OpCodes.Callvirt, module.ImportReference(getItemEquip)));
+    il.Append(il.Create(OpCodes.Stloc, canonicalLocal));
+    il.Append(il.Create(OpCodes.Ldloc, canonicalLocal));
+    il.Append(il.Create(OpCodes.Brfalse_S, afterCanonicalLookup));
+    il.Append(il.Create(OpCodes.Ldloc, canonicalLocal));
+    il.Append(il.Create(OpCodes.Stloc, resultLocal));
+    il.Append(afterCanonicalLookup);
+    il.Append(il.Create(OpCodes.Ldarg_0));
+    il.Append(il.Create(OpCodes.Ldloc, resultLocal));
+    il.Append(il.Create(OpCodes.Call, module.ImportReference(repairMethod)));
+    il.Append(il.Create(OpCodes.Pop));
+    il.Append(il.Create(OpCodes.Ldarg_0));
+    il.Append(il.Create(OpCodes.Ldloc, resultLocal));
+    il.Append(il.Create(OpCodes.Stfld, module.ImportReference(latestEquipField)));
+    il.Append(returnResult);
+    il.Append(il.Create(OpCodes.Ldloc, resultLocal));
+    il.Append(il.Create(OpCodes.Ret));
+
+    inventoryType.Methods.Add(method);
+    return method;
+}
+
+static MethodDefinition EnsureGearInventoryRepairCurrentMethod(ModuleDefinition module, TypeDefinition inventoryType, MethodDefinition canonicalizeMethod)
+{
+    var existing = inventoryType.Methods.FirstOrDefault(method => method.Name == "RevivalSideRepairCurrentEquipSelection");
+    if (existing != null) return existing;
+
+    var latestEquipField = inventoryType.Fields.FirstOrDefault(field => field.Name == "m_LatestOpenNKMEquipItemData")
+        ?? throw new InvalidOperationException("NKCUIInventory.m_LatestOpenNKMEquipItemData was not found.");
+    var method = new MethodDefinition(
+        "RevivalSideRepairCurrentEquipSelection",
+        MethodAttributes.Private | MethodAttributes.HideBySig,
+        module.TypeSystem.Void);
+    var il = method.Body.GetILProcessor();
+    var ret = il.Create(OpCodes.Ret);
+
+    il.Append(il.Create(OpCodes.Ldarg_0));
+    il.Append(il.Create(OpCodes.Ldfld, module.ImportReference(latestEquipField)));
+    il.Append(il.Create(OpCodes.Brfalse_S, ret));
+    il.Append(il.Create(OpCodes.Ldarg_0));
+    il.Append(il.Create(OpCodes.Ldarg_0));
+    il.Append(il.Create(OpCodes.Ldfld, module.ImportReference(latestEquipField)));
+    il.Append(il.Create(OpCodes.Call, module.ImportReference(canonicalizeMethod)));
+    il.Append(il.Create(OpCodes.Stfld, module.ImportReference(latestEquipField)));
+    il.Append(ret);
+
+    inventoryType.Methods.Add(method);
+    return method;
+}
+
+static MethodDefinition EnsureGearInventoryRepairDetachedOwnerMethod(ModuleDefinition module, TypeDefinition inventoryType)
+{
+    var existing = inventoryType.Methods.FirstOrDefault(method => method.Name == "RevivalSideRepairDetachedEquipOwner");
+    if (existing != null) return existing;
+
+    var equipType = FindTypeDefinition(module, "NKM.NKMEquipItemData")
+        ?? throw new InvalidOperationException("NKM.NKMEquipItemData was not found.");
+    var userType = FindTypeDefinition(module, "NKM.NKMUserData")
+        ?? throw new InvalidOperationException("NKM.NKMUserData was not found.");
+    var ownerField = equipType.Fields.FirstOrDefault(field => field.Name == "m_OwnerUnitUID")
+        ?? throw new InvalidOperationException("NKMEquipItemData.m_OwnerUnitUID was not found.");
+    var armyField = userType.Fields.FirstOrDefault(field => field.Name == "m_ArmyData")
+        ?? throw new InvalidOperationException("NKMUserData.m_ArmyData was not found.");
+    var currentUserData = FindMethodReference(module, "NKC.NKCScenManager", "CurrentUserData", 0)
+        ?? throw new InvalidOperationException("NKCScenManager.CurrentUserData was not found.");
+    var getUnitFromUid = FindMethodInType(module, armyField.FieldType.FullName, "GetUnitFromUID", 1)
+        ?? throw new InvalidOperationException("NKMArmyData.GetUnitFromUID was not found.");
+
+    var method = new MethodDefinition(
+        "RevivalSideRepairDetachedEquipOwner",
+        MethodAttributes.Private | MethodAttributes.HideBySig,
+        module.TypeSystem.Boolean);
+    method.Parameters.Add(new ParameterDefinition("equipData", ParameterAttributes.None, module.ImportReference(equipType)));
+    method.Body.InitLocals = true;
+    var userLocal = new VariableDefinition(module.ImportReference(userType));
+    method.Body.Variables.Add(userLocal);
+
+    var il = method.Body.GetILProcessor();
+    var hasPositiveOwner = il.Create(OpCodes.Nop);
+    var hasUser = il.Create(OpCodes.Nop);
+    var clearOwner = il.Create(OpCodes.Nop);
+    var returnFalse = il.Create(OpCodes.Nop);
+
+    il.Append(il.Create(OpCodes.Ldarg_1));
+    il.Append(il.Create(OpCodes.Brfalse_S, returnFalse));
+    il.Append(il.Create(OpCodes.Ldarg_1));
+    il.Append(il.Create(OpCodes.Ldfld, module.ImportReference(ownerField)));
+    il.Append(il.Create(OpCodes.Ldc_I4_0));
+    il.Append(il.Create(OpCodes.Conv_I8));
+    il.Append(il.Create(OpCodes.Bgt_S, hasPositiveOwner));
+    il.Append(il.Create(OpCodes.Br_S, returnFalse));
+    il.Append(hasPositiveOwner);
+    il.Append(il.Create(OpCodes.Call, module.ImportReference(currentUserData)));
+    il.Append(il.Create(OpCodes.Stloc, userLocal));
+    il.Append(il.Create(OpCodes.Ldloc, userLocal));
+    il.Append(il.Create(OpCodes.Brtrue_S, hasUser));
+    il.Append(il.Create(OpCodes.Br_S, returnFalse));
+    il.Append(hasUser);
+    il.Append(il.Create(OpCodes.Ldloc, userLocal));
+    il.Append(il.Create(OpCodes.Ldfld, module.ImportReference(armyField)));
+    il.Append(il.Create(OpCodes.Ldarg_1));
+    il.Append(il.Create(OpCodes.Ldfld, module.ImportReference(ownerField)));
+    il.Append(il.Create(OpCodes.Callvirt, module.ImportReference(getUnitFromUid)));
+    il.Append(il.Create(OpCodes.Brfalse_S, clearOwner));
+    il.Append(il.Create(OpCodes.Br_S, returnFalse));
+    il.Append(clearOwner);
+    il.Append(il.Create(OpCodes.Ldarg_1));
+    il.Append(il.Create(OpCodes.Ldc_I8, -1L));
+    il.Append(il.Create(OpCodes.Stfld, module.ImportReference(ownerField)));
+    il.Append(il.Create(OpCodes.Ldc_I4_1));
+    il.Append(il.Create(OpCodes.Ret));
+    il.Append(returnFalse);
+    il.Append(il.Create(OpCodes.Ldc_I4_0));
+    il.Append(il.Create(OpCodes.Ret));
+
+    inventoryType.Methods.Add(method);
+    return method;
+}
+
+static bool EnsureSetEquipInfoCanonicalizesSelectedEquip(ModuleDefinition module, TypeDefinition inventoryType, MethodDefinition canonicalizeMethod)
+{
+    var setEquipInfo = inventoryType.Methods.FirstOrDefault(method =>
+        method.Name == "SetEquipInfo"
+        && method.HasBody
+        && method.Parameters.Count == 1)
+        ?? throw new InvalidOperationException("NKCUIInventory.SetEquipInfo was not found.");
+    if (SetEquipInfoCanonicalizesSelectedEquip(setEquipInfo, canonicalizeMethod)) return false;
+
+    var slotType = setEquipInfo.Parameters[0].ParameterType;
+    var getEquipData = FindMethodInType(module, slotType.FullName, "GetNKMEquipItemData", 0)
+        ?? throw new InvalidOperationException("NKCUISlotEquip.GetNKMEquipItemData was not found.");
+    var store = setEquipInfo.Body.Instructions
+        .Select(instruction => FindFollowingStoreAfterCall(instruction, getEquipData))
+        .FirstOrDefault(instruction => instruction != null)
+        ?? throw new InvalidOperationException("NKCUIInventory.SetEquipInfo selected equip assignment was not found.");
+
+    var il = setEquipInfo.Body.GetILProcessor();
+    var insertionPoint = store.Next;
+    if (IsStloc(store))
+    {
+        var local = GetStlocVariable(setEquipInfo, store)
+            ?? throw new InvalidOperationException("NKCUIInventory.SetEquipInfo selected equip local was not resolved.");
+        il.InsertBefore(insertionPoint, il.Create(OpCodes.Ldarg_0));
+        il.InsertBefore(insertionPoint, il.Create(OpCodes.Ldloc, local));
+        il.InsertBefore(insertionPoint, il.Create(OpCodes.Call, module.ImportReference(canonicalizeMethod)));
+        il.InsertBefore(insertionPoint, il.Create(OpCodes.Stloc, local));
+        return true;
+    }
+
+    if (store.OpCode.Code == Code.Stfld && store.Operand is FieldReference fieldReference)
+    {
+        var displayLocal = GetLdlocVariable(setEquipInfo, store.Previous?.Previous?.Previous)
+            ?? throw new InvalidOperationException("NKCUIInventory.SetEquipInfo selected equip display local was not resolved.");
+        il.InsertBefore(insertionPoint, il.Create(OpCodes.Ldloc, displayLocal));
+        il.InsertBefore(insertionPoint, il.Create(OpCodes.Ldarg_0));
+        il.InsertBefore(insertionPoint, il.Create(OpCodes.Ldloc, displayLocal));
+        il.InsertBefore(insertionPoint, il.Create(OpCodes.Ldfld, module.ImportReference(fieldReference)));
+        il.InsertBefore(insertionPoint, il.Create(OpCodes.Call, module.ImportReference(canonicalizeMethod)));
+        il.InsertBefore(insertionPoint, il.Create(OpCodes.Stfld, module.ImportReference(fieldReference)));
+        return true;
+    }
+
+    throw new InvalidOperationException("NKCUIInventory.SetEquipInfo selected equip assignment shape was not supported.");
+}
+
+static bool SetEquipInfoCanonicalizesSelectedEquip(MethodDefinition setEquipInfo, MethodDefinition canonicalizeMethod)
+{
+    return MethodContainsCall(setEquipInfo, canonicalizeMethod);
+}
+
+static bool EnsurePresetRefreshCanonicalizesSelectedEquip(ModuleDefinition module, TypeDefinition inventoryType, MethodDefinition canonicalizeMethod)
+{
+    var refreshMethod = inventoryType.Methods.FirstOrDefault(method =>
+        method.Name == "RevivalSideRefreshLatestPresetEquipFromInfoSlot"
+        && method.HasBody
+        && method.Parameters.Count == 0);
+    if (refreshMethod == null || MethodContainsCall(refreshMethod, canonicalizeMethod)) return false;
+
+    var latestEquipField = inventoryType.Fields.FirstOrDefault(field => field.Name == "m_LatestOpenNKMEquipItemData")
+        ?? throw new InvalidOperationException("NKCUIInventory.m_LatestOpenNKMEquipItemData was not found.");
+    var store = refreshMethod.Body.Instructions.FirstOrDefault(instruction =>
+        instruction.OpCode.Code == Code.Stfld
+        && instruction.Operand is FieldReference fieldReference
+        && fieldReference.Name == latestEquipField.Name
+        && fieldReference.DeclaringType.FullName == latestEquipField.DeclaringType.FullName)
+        ?? throw new InvalidOperationException("NKCUIInventory.RevivalSideRefreshLatestPresetEquipFromInfoSlot assignment was not found.");
+
+    var il = refreshMethod.Body.GetILProcessor();
+    var insertionPoint = store.Next;
+    il.InsertBefore(insertionPoint, il.Create(OpCodes.Ldarg_0));
+    il.InsertBefore(insertionPoint, il.Create(OpCodes.Ldarg_0));
+    il.InsertBefore(insertionPoint, il.Create(OpCodes.Ldfld, module.ImportReference(latestEquipField)));
+    il.InsertBefore(insertionPoint, il.Create(OpCodes.Call, module.ImportReference(canonicalizeMethod)));
+    il.InsertBefore(insertionPoint, il.Create(OpCodes.Stfld, module.ImportReference(latestEquipField)));
+    return true;
+}
+
+static bool PresetRefreshCanonicalizesSelectedEquip(TypeDefinition inventoryType, MethodDefinition canonicalizeMethod)
+{
+    var refreshMethod = inventoryType.Methods.FirstOrDefault(method =>
+        method.Name == "RevivalSideRefreshLatestPresetEquipFromInfoSlot"
+        && method.HasBody
+        && method.Parameters.Count == 0);
+    return refreshMethod == null || MethodContainsCall(refreshMethod, canonicalizeMethod);
+}
+
+static Instruction? FindFollowingStoreAfterCall(Instruction instruction, MethodReference target)
+{
+    if (instruction.Operand is not MethodReference methodReference
+        || methodReference.Name != target.Name
+        || methodReference.Parameters.Count != target.Parameters.Count)
+    {
+        return null;
+    }
+
+    var cursor = instruction.Next;
+    for (var hops = 0; cursor != null && hops < 6; hops += 1, cursor = cursor.Next)
+    {
+        if (cursor.OpCode.Code == Code.Nop) continue;
+        if (IsStloc(cursor) || cursor.OpCode.Code == Code.Stfld) return cursor;
+    }
+    return null;
+}
+
+static bool IsNewListCopyInstruction(Instruction? instruction)
+{
+    return instruction?.OpCode.Code == Code.Newobj
+        && instruction.Operand is MethodReference methodReference
+        && methodReference.Name == ".ctor"
+        && methodReference.DeclaringType.FullName.StartsWith("System.Collections.Generic.List`1", StringComparison.Ordinal);
+}
+
+static MethodReference MakeGenericListCopyConstructor(ModuleDefinition module, TypeReference listType)
+{
+    if (listType is not GenericInstanceType listInstance)
+    {
+        throw new InvalidOperationException($"{listType.FullName} is not a generic List<T> type.");
+    }
+
+    var listDefinition = listInstance.ElementType.Resolve()
+        ?? throw new InvalidOperationException($"{listType.FullName} definition was not resolved.");
+    var constructor = listDefinition.Methods.FirstOrDefault(method =>
+        method.IsConstructor
+        && !method.IsStatic
+        && method.Parameters.Count == 1
+        && method.Parameters[0].ParameterType.Name == "IEnumerable`1")
+        ?? throw new InvalidOperationException("List<T>(IEnumerable<T>) constructor was not found.");
+    var constructorReference = new MethodReference(constructor.Name, module.TypeSystem.Void, module.ImportReference(listInstance))
+    {
+        HasThis = true,
+        ExplicitThis = constructor.ExplicitThis,
+        CallingConvention = constructor.CallingConvention,
+    };
+
+    var parameterType = constructor.Parameters[0].ParameterType;
+    if (parameterType is GenericInstanceType enumerableInstance)
+    {
+        var enumerableReference = new GenericInstanceType(module.ImportReference(enumerableInstance.ElementType));
+        foreach (var argument in listInstance.GenericArguments)
+        {
+            enumerableReference.GenericArguments.Add(module.ImportReference(argument));
+        }
+        constructorReference.Parameters.Add(new ParameterDefinition(enumerableReference));
+    }
+    else
+    {
+        constructorReference.Parameters.Add(new ParameterDefinition(module.ImportReference(parameterType)));
+    }
+
+    return constructorReference;
+}
+
 static bool IsWorldMapScenDataReqPatched(MethodDefinition method, MethodReference sender)
 {
     return method.Body.Instructions.Any(instruction =>
@@ -924,6 +1641,226 @@ static MethodDefinition EnsureWorldMapInfoAckHandler(ModuleDefinition module, Me
     return method;
 }
 
+static bool PatchSteamLocalLogin(ModuleDefinition module)
+{
+    var changed = false;
+    changed |= PatchSteamPublisherInit(module);
+    changed |= PatchSteamAuthInit(module);
+    changed |= PatchSteamAuthLoginToPublisher(module);
+    changed |= PatchSteamAuthPrepareCSLogin(module);
+    return changed;
+}
+
+static bool PatchSteamPublisherInit(ModuleDefinition module)
+{
+    var steamType = FindTypeDefinition(module, "NKC.Publisher.NKCPMSteamPC")
+        ?? throw new InvalidOperationException("NKC.Publisher.NKCPMSteamPC was not found.");
+    var method = steamType.Methods.FirstOrDefault(item =>
+        item.Name == "_Init"
+        && item.HasBody
+        && item.Parameters.Count == 1)
+        ?? throw new InvalidOperationException("NKCPMSteamPC._Init was not found.");
+
+    if (HasSteamPublisherInitPatch(method)) return false;
+
+    var publisherType = FindTypeDefinition(module, "NKC.Publisher.NKCPublisherModule")
+        ?? throw new InvalidOperationException("NKC.Publisher.NKCPublisherModule was not found.");
+    var setInitState = publisherType.Methods.FirstOrDefault(item => item.Name == "set_InitState" && item.Parameters.Count == 1)
+        ?? throw new InvalidOperationException("NKCPublisherModule.InitState setter was not found.");
+    var getAuth = publisherType.Methods.FirstOrDefault(item => item.Name == "get_Auth" && item.Parameters.Count == 0)
+        ?? throw new InvalidOperationException("NKCPublisherModule.Auth getter was not found.");
+    var authType = publisherType.NestedTypes.FirstOrDefault(item => item.Name == "NKCPMAuthentication")
+        ?? throw new InvalidOperationException("NKCPublisherModule.NKCPMAuthentication was not found.");
+    var authInit = authType.Methods.FirstOrDefault(item => item.Name == "Init" && item.Parameters.Count == 0)
+        ?? throw new InvalidOperationException("NKCPMAuthentication.Init was not found.");
+    var invoke = FindOnCompleteInvoke(module);
+
+    ClearMethodBody(method, initLocals: false);
+    var il = method.Body.GetILProcessor();
+    var ret = il.Create(OpCodes.Ret);
+    il.Append(il.Create(OpCodes.Ldc_I4_2));
+    il.Append(il.Create(OpCodes.Call, module.ImportReference(setInitState)));
+    il.Append(il.Create(OpCodes.Call, module.ImportReference(getAuth)));
+    il.Append(il.Create(OpCodes.Callvirt, module.ImportReference(authInit)));
+    il.Append(il.Create(OpCodes.Pop));
+    il.Append(il.Create(OpCodes.Ldarg_1));
+    il.Append(il.Create(OpCodes.Brfalse_S, ret));
+    il.Append(il.Create(OpCodes.Ldarg_1));
+    il.Append(il.Create(OpCodes.Ldc_I4_0));
+    il.Append(il.Create(OpCodes.Ldnull));
+    il.Append(il.Create(OpCodes.Callvirt, module.ImportReference(invoke)));
+    il.Append(ret);
+    return true;
+}
+
+static bool PatchSteamAuthInit(ModuleDefinition module)
+{
+    var authType = FindSteamAuthType(module);
+    var method = authType.Methods.FirstOrDefault(item =>
+        item.Name == "Init"
+        && item.HasBody
+        && item.Parameters.Count == 0
+        && item.ReturnType.MetadataType == MetadataType.Boolean)
+        ?? throw new InvalidOperationException("NKCPMSteamPC.AuthSteam.Init was not found.");
+
+    if (HasLocalSteamIdentityMarker(method)) return false;
+
+    ClearMethodBody(method, initLocals: false);
+    var il = method.Body.GetILProcessor();
+    AppendLocalSteamIdentity(il, module, authType);
+    il.Append(il.Create(OpCodes.Ldc_I4_1));
+    il.Append(il.Create(OpCodes.Ret));
+    return true;
+}
+
+static bool PatchSteamAuthLoginToPublisher(ModuleDefinition module)
+{
+    var authType = FindSteamAuthType(module);
+    var method = authType.Methods.FirstOrDefault(item =>
+        item.Name == "LoginToPublisher"
+        && item.HasBody
+        && item.Parameters.Count == 1)
+        ?? throw new InvalidOperationException("NKCPMSteamPC.AuthSteam.LoginToPublisher was not found.");
+
+    if (HasLocalSteamIdentityMarker(method)) return false;
+
+    var invoke = FindOnCompleteInvoke(module);
+    var callbackField = authType.Fields.FirstOrDefault(item => item.Name == "m_onLoginToPublisherComplete");
+
+    ClearMethodBody(method, initLocals: false);
+    var il = method.Body.GetILProcessor();
+    var ret = il.Create(OpCodes.Ret);
+    AppendLocalSteamIdentity(il, module, authType);
+    if (callbackField != null)
+    {
+        il.Append(il.Create(OpCodes.Ldarg_0));
+        il.Append(il.Create(OpCodes.Ldarg_1));
+        il.Append(il.Create(OpCodes.Stfld, module.ImportReference(callbackField)));
+    }
+    il.Append(il.Create(OpCodes.Ldarg_1));
+    il.Append(il.Create(OpCodes.Brfalse_S, ret));
+    il.Append(il.Create(OpCodes.Ldarg_1));
+    il.Append(il.Create(OpCodes.Ldc_I4_0));
+    il.Append(il.Create(OpCodes.Ldnull));
+    il.Append(il.Create(OpCodes.Callvirt, module.ImportReference(invoke)));
+    il.Append(ret);
+    return true;
+}
+
+static bool PatchSteamAuthPrepareCSLogin(ModuleDefinition module)
+{
+    var authType = FindSteamAuthType(module);
+    var method = authType.Methods.FirstOrDefault(item =>
+        item.Name == "PrepareCSLogin"
+        && item.HasBody
+        && item.Parameters.Count == 1)
+        ?? throw new InvalidOperationException("NKCPMSteamPC.AuthSteam.PrepareCSLogin was not found.");
+
+    if (method.Body.Instructions.Any(instruction => instruction.Operand is string value && value == "revivalside-local-ready")) return false;
+
+    var invoke = FindOnCompleteInvoke(module);
+
+    ClearMethodBody(method, initLocals: false);
+    var il = method.Body.GetILProcessor();
+    var ret = il.Create(OpCodes.Ret);
+    il.Append(il.Create(OpCodes.Ldstr, "revivalside-local-ready"));
+    il.Append(il.Create(OpCodes.Pop));
+    AppendLocalSteamIdentity(il, module, authType);
+    il.Append(il.Create(OpCodes.Ldarg_1));
+    il.Append(il.Create(OpCodes.Brfalse_S, ret));
+    il.Append(il.Create(OpCodes.Ldarg_1));
+    il.Append(il.Create(OpCodes.Ldc_I4_0));
+    il.Append(il.Create(OpCodes.Ldnull));
+    il.Append(il.Create(OpCodes.Callvirt, module.ImportReference(invoke)));
+    il.Append(ret);
+    return true;
+}
+
+static bool HasSteamLocalLoginPatch(ModuleDefinition module)
+{
+    var authType = FindTypeDefinition(module, "NKC.Publisher.NKCPMSteamPC/AuthSteam");
+    var loginMethod = authType?.Methods.FirstOrDefault(item => item.Name == "LoginToPublisher" && item.HasBody && item.Parameters.Count == 1);
+    var initMethod = authType?.Methods.FirstOrDefault(item => item.Name == "Init" && item.HasBody && item.Parameters.Count == 0);
+    var steamType = FindTypeDefinition(module, "NKC.Publisher.NKCPMSteamPC");
+    var publisherInit = steamType?.Methods.FirstOrDefault(item => item.Name == "_Init" && item.HasBody);
+    return loginMethod != null
+        && initMethod != null
+        && publisherInit != null
+        && HasLocalSteamIdentityMarker(loginMethod)
+        && HasLocalSteamIdentityMarker(initMethod)
+        && HasSteamPublisherInitPatch(publisherInit);
+}
+
+static bool HasSteamPublisherInitPatch(MethodDefinition method)
+{
+    return method.Body.Instructions.Any(instruction => instruction.Operand is MethodReference methodReference
+            && methodReference.Name == "get_Auth"
+            && methodReference.DeclaringType.FullName == "NKC.Publisher.NKCPublisherModule")
+        && !method.Body.Instructions.Any(instruction => instruction.Operand is MemberReference memberReference
+            && memberReference.DeclaringType.FullName.Contains("SteamManager", StringComparison.Ordinal));
+}
+
+static bool HasLocalSteamIdentityMarker(MethodDefinition method)
+{
+    return method.Body.Instructions.Any(instruction => instruction.Operand is string value && value == "revivalside-local-ticket");
+}
+
+static TypeDefinition FindSteamAuthType(ModuleDefinition module)
+{
+    return FindTypeDefinition(module, "NKC.Publisher.NKCPMSteamPC/AuthSteam")
+        ?? throw new InvalidOperationException("NKC.Publisher.NKCPMSteamPC/AuthSteam was not found.");
+}
+
+static MethodDefinition FindOnCompleteInvoke(ModuleDefinition module)
+{
+    var publisherType = FindTypeDefinition(module, "NKC.Publisher.NKCPublisherModule")
+        ?? throw new InvalidOperationException("NKC.Publisher.NKCPublisherModule was not found.");
+    var onCompleteType = publisherType.NestedTypes.FirstOrDefault(item => item.Name == "OnComplete")
+        ?? throw new InvalidOperationException("NKCPublisherModule.OnComplete was not found.");
+    return onCompleteType.Methods.FirstOrDefault(item => item.Name == "Invoke" && item.Parameters.Count == 2)
+        ?? throw new InvalidOperationException("NKCPublisherModule.OnComplete.Invoke was not found.");
+}
+
+static void AppendLocalSteamIdentity(ILProcessor il, ModuleDefinition module, TypeDefinition authType)
+{
+    var successField = authType.Fields.FirstOrDefault(item => item.Name == "m_bLoginSuccessFromPubAuth")
+        ?? throw new InvalidOperationException("AuthSteam.m_bLoginSuccessFromPubAuth was not found.");
+    var ticketLengthField = authType.Fields.FirstOrDefault(item => item.Name == "m_pcbTicket")
+        ?? throw new InvalidOperationException("AuthSteam.m_pcbTicket was not found.");
+    var ticketField = authType.Fields.FirstOrDefault(item => item.Name == "m_strTicket")
+        ?? throw new InvalidOperationException("AuthSteam.m_strTicket was not found.");
+    var userIdField = authType.Fields.FirstOrDefault(item => item.Name == "m_strUserID")
+        ?? throw new InvalidOperationException("AuthSteam.m_strUserID was not found.");
+    var appIdField = authType.Fields.FirstOrDefault(item => item.Name == "m_appID");
+
+    il.Append(il.Create(OpCodes.Ldarg_0));
+    il.Append(il.Create(OpCodes.Ldc_I4_1));
+    il.Append(il.Create(OpCodes.Stfld, module.ImportReference(successField)));
+    il.Append(il.Create(OpCodes.Ldarg_0));
+    il.Append(il.Create(OpCodes.Ldc_I4_0));
+    il.Append(il.Create(OpCodes.Stfld, module.ImportReference(ticketLengthField)));
+    il.Append(il.Create(OpCodes.Ldarg_0));
+    il.Append(il.Create(OpCodes.Ldstr, "revivalside-local-ticket"));
+    il.Append(il.Create(OpCodes.Stfld, module.ImportReference(ticketField)));
+    il.Append(il.Create(OpCodes.Ldarg_0));
+    il.Append(il.Create(OpCodes.Ldstr, "revivalside-local"));
+    il.Append(il.Create(OpCodes.Stfld, module.ImportReference(userIdField)));
+    if (appIdField != null)
+    {
+        il.Append(il.Create(OpCodes.Ldarg_0));
+        il.Append(il.Create(OpCodes.Ldstr, "0"));
+        il.Append(il.Create(OpCodes.Stfld, module.ImportReference(appIdField)));
+    }
+}
+
+static void ClearMethodBody(MethodDefinition method, bool initLocals)
+{
+    method.Body.Instructions.Clear();
+    method.Body.ExceptionHandlers.Clear();
+    method.Body.Variables.Clear();
+    method.Body.InitLocals = initLocals;
+}
+
 static FieldReference FindInheritedFieldReference(ModuleDefinition module, TypeDefinition type, string fieldName)
 {
     TypeDefinition? current = type;
@@ -966,6 +1903,37 @@ static TypeDefinition? FindTypeDefinitionInType(TypeDefinition type, string type
         if (found != null) return found;
     }
     return null;
+}
+
+static MethodReference? FindMethodInType(ModuleDefinition module, string declaringTypeFullName, string methodName, int parameterCount)
+{
+    var type = FindTypeDefinition(module, declaringTypeFullName);
+    var method = type?.Methods.FirstOrDefault(method =>
+        method.Name == methodName
+        && method.Parameters.Count == parameterCount);
+    return method == null ? null : module.ImportReference(method);
+}
+
+static MethodReference? FindSetBindFunctionForButton(ModuleDefinition module, TypeReference buttonType)
+{
+    var utilType = FindTypeDefinition(module, "NKC.NKCUtil");
+    var method = utilType?.Methods.FirstOrDefault(method =>
+        method.Name == "SetBindFunction"
+        && method.Parameters.Count == 2
+        && method.Parameters[0].ParameterType.FullName == buttonType.FullName);
+    return method == null ? null : module.ImportReference(method);
+}
+
+static MethodReference? FindUnityActionConstructor(ModuleDefinition module, TypeReference unityActionType)
+{
+    var definition = unityActionType.Resolve();
+    var constructor = definition?.Methods.FirstOrDefault(method =>
+        method.IsConstructor
+        && !method.IsStatic
+        && method.Parameters.Count == 2
+        && method.Parameters[0].ParameterType.FullName == "System.Object"
+        && method.Parameters[1].ParameterType.FullName == "System.IntPtr");
+    return constructor == null ? null : module.ImportReference(constructor);
 }
 
 static MethodReference? FindMethodReference(ModuleDefinition module, string declaringTypeFullName, string methodName, int parameterCount)
@@ -1127,7 +2095,11 @@ sealed record PatchOptions(
     bool ApplyLobbyEventPassSelfActivation,
     bool ApplyLobbyCounterPassFallbackRegistration,
     bool ApplyLobbyEventPassLayout,
-    bool ApplyWorldMapRaidRefresh)
+    bool ApplyWorldMapRaidRefresh,
+    bool ApplyGearPresetSelectionFix,
+    bool ApplyGearInventoryOkBindFix,
+    bool ApplyGearInventoryStateRepair,
+    bool ApplySteamLocalLogin)
 {
     public static PatchOptions Parse(string[] args)
     {
@@ -1135,6 +2107,7 @@ sealed record PatchOptions(
         var status = HasArg(args, "--status");
         var envSwitch = HasArg(args, "--env-switch") || HasArg(args, "--from-env");
         var envPatchEnabled = ReadEnvFlag("CS_PATCH_COUNTER_PASS_CLIENT", "CS_COUNTER_PASS_CLIENT_PATCH");
+        var envSteamLocalLoginEnabled = ReadEnvFlag("CS_PATCH_STEAM_LOCAL_LOGIN", "CS_STEAM_LOCAL_LOGIN_PATCH");
         var legacyAll = HasArg(args, "--legacy-all") || HasArg(args, "--all");
         var disabledByEnv = !restore && !status && envSwitch && envPatchEnabled != true;
         var envDrivenCounterPassPatch = envSwitch && envPatchEnabled == true;
@@ -1150,7 +2123,15 @@ sealed record PatchOptions(
             ApplyLobbyCounterPassFallbackRegistration: envDrivenCounterPassPatch || legacyAll || HasArg(args, "--include-lobby-fallback"),
             ApplyLobbyEventPassLayout: HasArg(args, "--include-lobby-layout") && !HasArg(args, "--no-lobby-layout"),
             ApplyWorldMapRaidRefresh: (envDrivenCounterPassPatch || legacyAll || HasArg(args, "--include-world-map-raid-refresh"))
-                && !HasArg(args, "--no-world-map-raid-refresh"));
+                && !HasArg(args, "--no-world-map-raid-refresh"),
+            ApplyGearPresetSelectionFix: (legacyAll || HasArg(args, "--include-gear-preset-selection-fix"))
+                && !HasArg(args, "--no-gear-preset-selection-fix"),
+            ApplyGearInventoryOkBindFix: (legacyAll || HasArg(args, "--include-gear-inventory-ok-bind-fix"))
+                && !HasArg(args, "--no-gear-inventory-ok-bind-fix"),
+            ApplyGearInventoryStateRepair: (legacyAll || HasArg(args, "--include-gear-inventory-state-repair"))
+                && !HasArg(args, "--no-gear-inventory-state-repair"),
+            ApplySteamLocalLogin: (envSteamLocalLoginEnabled == true || HasArg(args, "--include-steam-local-login"))
+                && !HasArg(args, "--no-steam-local-login"));
     }
 
     private static bool HasArg(string[] args, string name)
