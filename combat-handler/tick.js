@@ -52,9 +52,13 @@ function createTickEngine(options = {}) {
     if (!battleState.removedUnitUIDs) battleState.removedUnitUIDs = new Set();
 
     battleState.units = battleState.units.filter(Boolean);
-    for (const unit of battleState.units) normalizeBattleStateUnit(unit);
+    for (const unit of battleState.units) {
+      normalizeBattleStateUnit(unit);
+      ensureBattleRecordForUnit(battleState, unit);
+    }
 
     const liveUnits = battleState.units.filter(isLiveBattleUnit);
+    for (const unit of liveUnits) addBattleRecordPlayTime(battleState, unit, dt);
     const liveTeams = new Set(liveUnits.map((unit) => unit.team));
     if (liveTeams.size < 2) {
       for (const unit of liveUnits) {
@@ -101,8 +105,12 @@ function createTickEngine(options = {}) {
       setBattleUnitState(unit, combatStateId.ATTACK);
       if (unit.attackTimer <= 0) {
         unit.attackTimer = stats.attackCooldown;
-        target.hp = Math.max(0, Number(target.hp || 0) - applyDamageReduction(target, stats.damage));
+        const beforeHp = Math.max(0, Number(target.hp || 0));
+        const damage = applyDamageReduction(target, stats.damage);
+        const appliedDamage = Math.min(beforeHp, damage);
+        target.hp = Math.max(0, beforeHp - damage);
         target.targetUID = unit.gameUnitUID || 0;
+        recordBattleDamage(battleState, unit, target, appliedDamage);
         if (target.hp <= 0) markContinuationUnitDead(target, battleState, unit);
       }
     }
@@ -185,7 +193,64 @@ function createTickEngine(options = {}) {
     unit.playState = 2;
     setBattleUnitState(unit, combatStateId.DEAD);
     applyCostReturn(unit, battleState);
+    recordBattleDeath(battleState, unit, attacker);
     if (battleState) battleState.lastDeadUnitUID = unit.gameUnitUID;
+  }
+
+  function ensureBattleRecordForUnit(battleState, unit) {
+    if (!battleState || !unit) return null;
+    if (!battleState.unitRecords || typeof battleState.unitRecords !== "object") battleState.unitRecords = {};
+    const gameUnitUID = Number(unit.gameUnitUID || unit.GameUnitUID || 0);
+    if (!Number.isFinite(gameUnitUID) || gameUnitUID <= 0) return null;
+    const key = String(gameUnitUID);
+    const existing = battleState.unitRecords[key] || {};
+    const record = {
+      gameUnitUID,
+      sourceUnitUID: existing.sourceUnitUID ?? unit.sourceUnitUID ?? unit.SourceUnitUID ?? "",
+      role: existing.role ?? unit.role ?? unit.Role ?? "",
+      unitId: positiveInt(existing.unitId ?? existing.unitID ?? unit.unitID ?? unit.unitId ?? unit.UnitID),
+      changeUnitName: existing.changeUnitName ?? unit.changeUnitName ?? unit.ChangeUnitName ?? "",
+      unitLevel: Math.max(1, positiveInt(existing.unitLevel ?? unit.unitLevel ?? unit.level ?? unit.Level ?? unit.UnitLevel) || 1),
+      isSummonee: Boolean(existing.isSummonee ?? unit.isSummonee ?? unit.IsSummonee ?? false),
+      isAssistUnit: Boolean(existing.isAssistUnit ?? unit.assistUnit ?? unit.isAssistUnit ?? unit.AssistUnit ?? false),
+      isLeader: Boolean(existing.isLeader ?? unit.isLeader ?? unit.IsLeader ?? false),
+      teamType: normalizeTeamType(existing.teamType ?? unit.teamType ?? unit.team ?? unit.Team),
+      recordGiveDamage: finiteNumber(existing.recordGiveDamage),
+      recordTakeDamage: finiteNumber(existing.recordTakeDamage),
+      recordHeal: finiteNumber(existing.recordHeal),
+      recordSummonCount: Math.max(positiveInt(existing.recordSummonCount), 1),
+      recordDieCount: positiveInt(existing.recordDieCount),
+      recordKillCount: positiveInt(existing.recordKillCount),
+      playtime: finiteNumber(existing.playtime),
+    };
+    battleState.unitRecords[key] = record;
+    return record;
+  }
+
+  function recordBattleDamage(battleState, attacker, target, damage) {
+    const appliedDamage = finiteNumber(damage);
+    if (!battleState || appliedDamage <= 0) return;
+    const attackerRecord = ensureBattleRecordForUnit(battleState, attacker);
+    const targetRecord = ensureBattleRecordForUnit(battleState, target);
+    if (attackerRecord) attackerRecord.recordGiveDamage += appliedDamage;
+    if (targetRecord) targetRecord.recordTakeDamage += appliedDamage;
+  }
+
+  function addBattleRecordPlayTime(battleState, unit, delta) {
+    const record = ensureBattleRecordForUnit(battleState, unit);
+    if (!record) return;
+    record.playtime += Math.max(0, finiteNumber(delta));
+  }
+
+  function recordBattleDeath(battleState, unit, attacker) {
+    if (!battleState || !unit || unit.deathRecorded) return;
+    const record = ensureBattleRecordForUnit(battleState, unit);
+    if (record) record.recordDieCount += 1;
+    const attackerRecord = attacker ? ensureBattleRecordForUnit(battleState, attacker) : null;
+    if (attackerRecord && Number(attacker.gameUnitUID || 0) !== Number(unit.gameUnitUID || 0)) {
+      attackerRecord.recordKillCount += 1;
+    }
+    unit.deathRecorded = true;
   }
 
   function cleanupDeadBattleUnits(battleState) {
@@ -324,6 +389,16 @@ function createTickEngine(options = {}) {
     return 0;
   }
 
+  function normalizeTeamType(value) {
+    const team = positiveInt(value);
+    return team === 2 ? 1 : team === 4 ? 3 : team > 0 ? team : 1;
+  }
+
+  function positiveInt(value) {
+    const number = Number(value);
+    return Number.isFinite(number) && number > 0 ? Math.trunc(number) : 0;
+  }
+
   function setBattleUnitState(unit, stateId) {
     if (unit.stateId !== stateId) {
       unit.stateId = stateId;
@@ -341,6 +416,10 @@ function createTickEngine(options = {}) {
     markContinuationUnitDead,
     cleanupDeadBattleUnits,
     hydrateBattleUnitStats,
+    ensureBattleRecordForUnit,
+    recordBattleDamage,
+    addBattleRecordPlayTime,
+    recordBattleDeath,
     getUnitCombatStats,
     applyTacticUpdateStats,
     applyDamageReduction,

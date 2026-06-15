@@ -2,6 +2,7 @@ const {
   readSignedVarInt,
   readSignedVarLong,
   readSignedVarIntList,
+  readBool,
 } = require("../../packet-codec");
 const { buildPlayerDeckForGameLoad } = require("../../unit");
 
@@ -9,9 +10,15 @@ const SHADOW_PALACE_START_ACK = 1222;
 const PHASE_START_ACK = 1228;
 const TRIM_START_ACK = 1235;
 const FIERCE_DATA_ACK = 845;
+const FIERCE_PROFILE_ACK = 847;
+const FIERCE_RANK_REWARD_ACK = 849;
+const FIERCE_POINT_REWARD_ACK = 851;
+const FIERCE_POINT_REWARD_ALL_ACK = 853;
 const FIERCE_PENALTY_ACK = 858;
 const EXPLORE_INFO_ACK = 1256;
 const EXPLORE_ENTER_ACK = 1258;
+const LEADERBOARD_FIERCE_LIST_ACK = 3205;
+const LEADERBOARD_FIERCE_BOSSGROUP_LIST_ACK = 3207;
 const DEFENCE_GAME_START_ACK = 3901;
 
 module.exports = [
@@ -28,7 +35,59 @@ module.exports = [
     name: "FIERCE_PENALTY_REQ",
     handle(ctx, socket, packet) {
       const req = decodeFiercePenaltyReq(ctx, packet.payload);
-      ctx.sendGameResponse(socket, packet, FIERCE_PENALTY_ACK, ctx.buildFiercePenaltyAckPayload(req), "fierce-penalty");
+      ctx.sendGameResponse(socket, packet, FIERCE_PENALTY_ACK, ctx.buildFiercePenaltyAckPayload(req, socket.session && socket.session.user), "fierce-penalty");
+      return true;
+    },
+  },
+  {
+    packetId: 846,
+    name: "FIERCE_PROFILE_REQ",
+    handle(ctx, socket, packet) {
+      const req = decodeFierceProfileReq(ctx, packet.payload);
+      ctx.sendGameResponse(socket, packet, FIERCE_PROFILE_ACK, ctx.buildFierceProfileAckPayload(req, socket.session && socket.session.user), "fierce-profile");
+      return true;
+    },
+  },
+  {
+    packetId: 848,
+    name: "FIERCE_COMPLETE_RANK_REWARD_REQ",
+    handle(ctx, socket, packet) {
+      ctx.sendGameResponse(socket, packet, FIERCE_RANK_REWARD_ACK, ctx.buildFierceRankRewardAckPayload(socket.session && socket.session.user), "fierce-rank-reward");
+      return true;
+    },
+  },
+  {
+    packetId: 850,
+    name: "FIERCE_COMPLETE_POINT_REWARD_REQ",
+    handle(ctx, socket, packet) {
+      const req = decodeSingleIntReq(ctx, packet.payload, "fiercePointRewardId");
+      ctx.sendGameResponse(socket, packet, FIERCE_POINT_REWARD_ACK, ctx.buildFiercePointRewardAckPayload(req, socket.session && socket.session.user), "fierce-point-reward");
+      return true;
+    },
+  },
+  {
+    packetId: 852,
+    name: "FIERCE_COMPLETE_POINT_REWARD_ALL_REQ",
+    handle(ctx, socket, packet) {
+      ctx.sendGameResponse(socket, packet, FIERCE_POINT_REWARD_ALL_ACK, ctx.buildFiercePointRewardAllAckPayload(socket.session && socket.session.user), "fierce-point-reward-all");
+      return true;
+    },
+  },
+  {
+    packetId: 3204,
+    name: "LEADERBOARD_FIERCE_LIST_REQ",
+    handle(ctx, socket, packet) {
+      const req = decodeLeaderboardFierceListReq(ctx, packet.payload);
+      ctx.sendGameResponse(socket, packet, LEADERBOARD_FIERCE_LIST_ACK, ctx.buildLeaderboardFierceListAckPayload(req, socket.session && socket.session.user), "leaderboard-fierce-list");
+      return true;
+    },
+  },
+  {
+    packetId: 3206,
+    name: "LEADERBOARD_FIERCE_BOSSGROUP_LIST_REQ",
+    handle(ctx, socket, packet) {
+      const req = decodeLeaderboardFierceBossGroupListReq(ctx, packet.payload);
+      ctx.sendGameResponse(socket, packet, LEADERBOARD_FIERCE_BOSSGROUP_LIST_ACK, ctx.buildLeaderboardFierceBossGroupListAckPayload(req, socket.session && socket.session.user), "leaderboard-fierce-bossgroup-list");
       return true;
     },
   },
@@ -164,6 +223,37 @@ function decodeFiercePenaltyReq(ctx, payload) {
     return { fierceBossId: boss.value, penaltyIds: penalties.value };
   } catch (_) {
     return { fierceBossId: 0, penaltyIds: [] };
+  }
+}
+
+function decodeFierceProfileReq(ctx, payload) {
+  try {
+    const decrypted = ctx.decryptCopy(payload);
+    const userUid = readSignedVarLong(decrypted, 0);
+    const isForce = readBool(decrypted, userUid.offset);
+    return { userUid: userUid.value, isForce: isForce.value };
+  } catch (_) {
+    return { userUid: 0n, isForce: false };
+  }
+}
+
+function decodeLeaderboardFierceListReq(ctx, payload) {
+  try {
+    const decrypted = ctx.decryptCopy(payload);
+    return { isAll: readBool(decrypted, 0).value };
+  } catch (_) {
+    return { isAll: false };
+  }
+}
+
+function decodeLeaderboardFierceBossGroupListReq(ctx, payload) {
+  try {
+    const decrypted = ctx.decryptCopy(payload);
+    const group = readSignedVarInt(decrypted, 0);
+    const isAll = readBool(decrypted, group.offset);
+    return { fierceBossGroupId: group.value, isAll: isAll.value };
+  } catch (_) {
+    return { fierceBossGroupId: 0, isAll: false };
   }
 }
 

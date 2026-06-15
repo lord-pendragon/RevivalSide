@@ -110,6 +110,7 @@ function createDeployHandler(options = {}) {
       pendingRemove: false,
     };
     applyPlayerDeckMetadata(unit, deckUnit || pooled.pool);
+    applyPlayerDeckLeaderMetadata(unit, replay);
     tick.hydrateBattleUnitStats(unit);
     battleState.units.push(unit);
     battleState.gameTime = Math.max(Number(battleState.gameTime || 0), Number(req.gameTime || 0));
@@ -131,6 +132,7 @@ function createDeployHandler(options = {}) {
     for (const unit of battleState.units) {
       const deckUnit = findPlayerDeckUnit(replay, unit && unit.sourceUnitUID);
       applyPlayerDeckMetadata(unit, deckUnit || findUnitPoolForBattleUnit(replay, unit));
+      applyPlayerDeckLeaderMetadata(unit, replay);
     }
   }
 
@@ -169,6 +171,10 @@ function createDeployHandler(options = {}) {
     const previousTacticGroup = readNumber(unit.tacticGroup, unit.TacticGroup, 0);
     const unitId = readNumber(source.unitId, source.unitID, source.UnitID, 0);
     if (unitId > 0 && !unit.unitID) unit.unitID = unitId;
+    unit.unitLevel = Math.max(1, readNumber(source.level, source.Level, source.unitLevel, source.UnitLevel, unit.unitLevel, 1));
+    unit.isAssistUnit = Boolean(source.assistUnit ?? source.isAssistUnit ?? source.AssistUnit ?? unit.isAssistUnit ?? false);
+    unit.isSummonee = Boolean(source.isSummonee ?? source.IsSummonee ?? unit.isSummonee ?? false);
+    unit.isLeader = Boolean(source.isLeader ?? source.IsLeader ?? unit.isLeader ?? false);
     unit.limitBreakLevel = readNumber(source.limitBreakLevel, source.LimitBreakLevel, unit.limitBreakLevel, 0);
     unit.tacticLevel = readNumber(source.tacticLevel, source.TacticLevel, unit.tacticLevel, 0);
     unit.tacticGroup = readNumber(source.tacticGroup, source.TacticGroup, unit.tacticGroup, 0);
@@ -178,6 +184,17 @@ function createDeployHandler(options = {}) {
     unit.sourceUnitID = unit.unitID || unit.sourceUnitID || 0;
     if (unit.combatStats && (previousTacticLevel !== unit.tacticLevel || previousTacticGroup !== unit.tacticGroup)) {
       delete unit.combatStats;
+    }
+    return unit;
+  }
+
+  function applyPlayerDeckLeaderMetadata(unit, replay) {
+    const playerDeck = replay && replay.dynamicGame && replay.dynamicGame.playerDeck;
+    const leaderUnitUid = String(
+      (playerDeck && (playerDeck.leaderUnitUid || playerDeck.leaderUnitUID || playerDeck.LeaderUnitUid)) || ""
+    );
+    if (leaderUnitUid && String((unit && unit.sourceUnitUID) || "") === leaderUnitUid) {
+      unit.isLeader = true;
     }
     return unit;
   }

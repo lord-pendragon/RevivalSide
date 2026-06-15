@@ -17,7 +17,7 @@ const {
   getRandomEquipId,
   getRelicRerollCountFactor,
 } = require("../game-data");
-const { ensureInventory, grantMiscItem, spendMiscItem } = require("../inventory");
+const { ensureInventory, getMiscItem, grantMiscItem, spendMiscItem } = require("../inventory");
 const { ensureArmy } = require("../unit");
 
 const DEFAULT_NEXT_EQUIP_UID = 9100000000000001n;
@@ -29,6 +29,9 @@ const DEFAULT_UNLOCKED_CRAFT_SLOTS = 1;
 const CRAFT_SLOT_UNLOCK_ITEM_ID = 101;
 const CRAFT_SLOT_UNLOCK_COST = 300;
 const CREDIT_ITEM_ID = 1;
+const CRAFT_INSTANT_COMPLETE_ITEM_ID = 1012;
+const MAX_EQUIP_CRAFT_COUNT = 10;
+const MAX_MATERIAL_CRAFT_COUNT = 999;
 const TUNING_MATERIAL_ITEM_ID = 1013;
 const TUNING_BONUS_RESET_GROUP_ID = 1013;
 const SET_BONUS_RESET_GROUP_ID = 1035;
@@ -42,6 +45,27 @@ const DEFAULT_STAT_TYPES = Object.freeze([
   "NST_ATTACK_SPEED_RATE",
   "NST_SKILL_COOL_TIME_REDUCE_RATE",
   "NST_DAMAGE_REDUCE_RATE",
+]);
+const CRAFT_ERROR = Object.freeze({
+  OK: 0,
+  INSUFFICIENT_RESOURCE: 110,
+  INSUFFICIENT_ITEM: 111,
+  INVALID_SLOT_INDEX: 295,
+  NOT_ENOUGH_MOLD: 296,
+  MOLD_TEMPLET_NOT_FOUND: 297,
+  SLOT_ALREADY_COMPLETED: 298,
+  SLOT_ALREADY_UNLOCKED_MAX: 300,
+  SLOT_NOT_COMPLETED: 301,
+  SLOT_NOT_EMPTY: 302,
+  SLOT_NOT_CREATING: 303,
+  EXCEEDED_MAX_START_COUNT: 304,
+});
+const EQUIP_CRAFT_TABS = new Set([
+  "MT_EQUIP",
+  "MT_EQUIP_PRIVATE",
+  "MT_EQUIP_RELIC",
+  "MT_EQUIP_RAID",
+  "MT_EQUIP_RAID_2",
 ]);
 const EQUIP_POSITION_INDEX = Object.freeze({
   IEP_WEAPON: 0,
@@ -156,53 +180,116 @@ function grantMoldItem(user, moldId, count = 1) {
 
 function startCraft(user, slotIndex, moldId, count = 1, options = {}) {
   const craft = ensureCraftData(user);
-  const slot = ensureCraftSlot(user, slotIndex);
+  const slot = getExistingCraftSlot(user, slotIndex);
   const moldTemplet = getEquipMoldTemplet(moldId);
-  const craftCount = Math.max(1, Math.trunc(Number(count) || 1));
-  const moldCount = toBigInt((craft.molds[String(moldId)] || {}).count, 0n);
-  const isPermanent = moldTemplet && moldTemplet.m_bPermanent === true;
-  if (!slot || !moldTemplet) return null;
-  if (!isPermanent && moldCount > 0n) {
-    const next = moldCount - BigInt(craftCount);
-    craft.molds[String(moldId)] = { moldId: Number(moldId), count: (next > 0n ? next : 0n).toString() };
+  if (!slot) return craftResult({ errorCode: CRAFT_ERROR.INVALID_SLOT_INDEX });
+  if (!moldTemplet) return craftResult({ errorCode: CRAFT_ERROR.MOLD_TEMPLET_NOT_FOUND, slot });
+  if (Number(slot.moldId || 0) > 0) {
+    const state = getCraftSlotState(slot, dateTimeTicksNow(options.regDate));
+    return craftResult({
+      errorCode: state === "completed" ? CRAFT_ERROR.SLOT_ALREADY_COMPLETED : CRAFT_ERROR.SLOT_NOT_EMPTY,
+      slot,
+    });
   }
-  const costs = spendMiscCosts(user, getMoldMaterialCosts(moldTemplet, craftCount), options);
+
+  const craftCount = normalizeCraftCount(count);
+  const maxCount = maxCraftStartCount(moldTemplet);
+  if (craftCount > maxCount) return craftResult({ errorCode: CRAFT_ERROR.EXCEEDED_MAX_START_COUNT, slot });
+
+  const isPermanent = moldTemplet.m_bPermanent === true;
+  const moldKey = String(Number(moldId));
+  const moldCount = toBigInt((craft.molds[moldKey] || {}).count, 0n);
+  if (!isPermanent && moldCount < BigInt(craftCount)) {
+    return craftResult({ errorCode: CRAFT_ERROR.NOT_ENOUGH_MOLD, slot });
+  }
+
+  const materialCosts = getMoldMaterialCosts(moldTemplet, craftCount);
+  const materialErrorCode = getCraftMaterialErrorCode(user, materialCosts);
+  if (materialErrorCode !== CRAFT_ERROR.OK) return craftResult({ errorCode: materialErrorCode, slot });
+
+  if (!isPermanent) {
+    const next = moldCount - BigInt(craftCount);
+    craft.molds[moldKey] = { moldId: Number(moldId), count: (next > 0n ? next : 0n).toString() };
+  }
+  const costs = spendMiscCosts(user, materialCosts, options);
   slot.moldId = Number(moldId);
   slot.count = craftCount;
   slot.completeDate = (dateTimeTicksNow(options.regDate) + BigInt(Math.max(0, Number(moldTemplet.m_Time || 0)) * 60 * 10000000)).toString();
   craft.slots[String(slot.index)] = slot;
-  return { slot, costItems: costs };
+  return craftResult({ slot, costItems: costs });
 }
 
 function completeCraft(user, slotIndex, options = {}) {
   const craft = ensureCraftData(user);
-  const slot = ensureCraftSlot(user, slotIndex);
-  if (!slot || Number(slot.moldId || 0) <= 0) return { slot, reward: createEmptyEquipReward(), extraCostItem: null };
+  const slot = getExistingCraftSlot(user, slotIndex);
+  if (!slot) return craftResult({ errorCode: CRAFT_ERROR.INVALID_SLOT_INDEX });
+  if (Number(slot.moldId || 0) <= 0) return craftResult({ errorCode: CRAFT_ERROR.SLOT_NOT_CREATING, slot });
+  if (options.force !== true && getCraftSlotState(slot, dateTimeTicksNow(options.regDate)) !== "completed") {
+    return craftResult({ errorCode: CRAFT_ERROR.SLOT_NOT_COMPLETED, slot });
+  }
   const reward = createMoldReward(user, slot.moldId, slot.count, options);
   const completedSlot = createEmptyCraftSlot(slot.index);
   craft.slots[String(slot.index)] = completedSlot;
-  return { slot: completedSlot, reward, extraCostItem: null };
+  return craftResult({ slot: completedSlot, reward });
 }
 
 function instantCraft(user, moldId, count = 1, options = {}) {
   const moldTemplet = getEquipMoldTemplet(moldId);
-  const craftCount = Math.max(1, Math.trunc(Number(count) || 1));
-  if (!moldTemplet) return { moldId: Number(moldId || 0), moldCount: craftCount, reward: createEmptyEquipReward(), costItems: [] };
-  const craft = ensureCraftData(user);
-  if (moldTemplet.m_bPermanent !== true) {
-    const key = String(Number(moldId));
-    const existing = normalizeMoldItem(craft.molds[key], key) || { moldId: Number(moldId), count: "0" };
-    existing.count = (toBigInt(existing.count) - BigInt(craftCount) > 0n ? toBigInt(existing.count) - BigInt(craftCount) : 0n).toString();
-    craft.molds[key] = existing;
+  const craftCount = normalizeCraftCount(count);
+  if (!moldTemplet) {
+    return craftResult({
+      errorCode: CRAFT_ERROR.MOLD_TEMPLET_NOT_FOUND,
+      moldId: Number(moldId || 0),
+      moldCount: craftCount,
+    });
   }
-  const costItems = spendMiscCosts(user, getMoldMaterialCosts(moldTemplet, craftCount), options);
+  const maxCount = maxCraftStartCount(moldTemplet);
+  if (craftCount > maxCount) {
+    return craftResult({
+      errorCode: CRAFT_ERROR.EXCEEDED_MAX_START_COUNT,
+      moldId: Number(moldId || 0),
+      moldCount: craftCount,
+    });
+  }
+  const craft = ensureCraftData(user);
+  const moldKey = String(Number(moldId));
+  const moldCount = toBigInt((craft.molds[moldKey] || {}).count, 0n);
+  if (moldTemplet.m_bPermanent !== true && moldCount < BigInt(craftCount)) {
+    return craftResult({
+      errorCode: CRAFT_ERROR.NOT_ENOUGH_MOLD,
+      moldId: Number(moldId || 0),
+      moldCount: craftCount,
+    });
+  }
+
+  const materialCosts = getMoldMaterialCosts(moldTemplet, craftCount);
+  const materialErrorCode = getCraftMaterialErrorCode(user, materialCosts);
+  if (materialErrorCode !== CRAFT_ERROR.OK) {
+    return craftResult({
+      errorCode: materialErrorCode,
+      moldId: Number(moldId || 0),
+      moldCount: craftCount,
+    });
+  }
+
+  if (moldTemplet.m_bPermanent !== true) {
+    const next = moldCount - BigInt(craftCount);
+    craft.molds[moldKey] = { moldId: Number(moldId), count: (next > 0n ? next : 0n).toString() };
+  }
+  const costItems = spendMiscCosts(user, materialCosts, options);
   const reward = createMoldReward(user, moldId, craftCount, options);
-  return { moldId: Number(moldId), moldCount: craftCount, reward, costItems };
+  return craftResult({ moldId: Number(moldId), moldCount: craftCount, reward, costItems });
 }
 
 function instantCompleteCraft(user, slotIndex, options = {}) {
-  const cost = spendMiscItem(user, 1012, 1, { regDate: options.regDate });
-  const result = completeCraft(user, slotIndex, options);
+  const slot = getExistingCraftSlot(user, slotIndex);
+  if (!slot) return craftResult({ errorCode: CRAFT_ERROR.INVALID_SLOT_INDEX });
+  if (Number(slot.moldId || 0) <= 0) return craftResult({ errorCode: CRAFT_ERROR.SLOT_NOT_CREATING, slot });
+  if (!hasMiscItemCount(user, CRAFT_INSTANT_COMPLETE_ITEM_ID, 1)) {
+    return craftResult({ errorCode: CRAFT_ERROR.INSUFFICIENT_ITEM, slot });
+  }
+  const cost = spendMiscItem(user, CRAFT_INSTANT_COMPLETE_ITEM_ID, 1, { regDate: options.regDate });
+  const result = completeCraft(user, slotIndex, { ...options, force: true });
   result.extraCostItem = cost;
   return result;
 }
@@ -211,13 +298,16 @@ function unlockCraftSlot(user, options = {}) {
   const craft = ensureCraftData(user);
   for (let index = 1; index <= MAX_CRAFT_SLOTS; index += 1) {
     if (!craft.slots[String(index)]) {
+      if (!hasMiscItemCount(user, CRAFT_SLOT_UNLOCK_ITEM_ID, CRAFT_SLOT_UNLOCK_COST)) {
+        return craftResult({ errorCode: CRAFT_ERROR.INSUFFICIENT_RESOURCE });
+      }
       const cost = spendMiscItem(user, CRAFT_SLOT_UNLOCK_ITEM_ID, CRAFT_SLOT_UNLOCK_COST, { regDate: options.regDate });
       const slot = createEmptyCraftSlot(index);
       craft.slots[String(index)] = slot;
-      return { slot, costItems: cost ? [cost] : [] };
+      return craftResult({ slot, costItems: cost ? [cost] : [] });
     }
   }
-  return { slot: null, costItems: [] };
+  return craftResult({ errorCode: CRAFT_ERROR.SLOT_ALREADY_UNLOCKED_MAX });
 }
 
 function grantEquipItem(user, equipId, options = {}) {
@@ -961,10 +1051,12 @@ function pickPotentialOptionRecord(templet, equip, socketIndex, cursor = 0, prec
 
 function getMoldMaterialCosts(moldTemplet, count = 1) {
   const costs = [];
-  const multiplier = Math.max(1, Math.trunc(Number(count) || 1));
+  const multiplier = normalizeCraftCount(count);
   for (let index = 1; index <= 4; index += 1) {
-    if (String(moldTemplet && moldTemplet[`m_MaterialType${index}`] || "") !== "RT_MISC") continue;
+    const type = normalizeRewardType(moldTemplet && moldTemplet[`m_MaterialType${index}`]);
+    if (!type) continue;
     costs.push({
+      type,
       itemId: Number(moldTemplet[`m_MaterialID${index}`] || 0),
       count: Number(moldTemplet[`m_MaterialValue${index}`] || 0) * multiplier,
     });
@@ -975,20 +1067,26 @@ function getMoldMaterialCosts(moldTemplet, count = 1) {
 function createMoldReward(user, moldId, count = 1, options = {}) {
   const reward = createEmptyEquipReward();
   const moldTemplet = getEquipMoldTemplet(moldId);
-  const records = getMoldRewardRecords(Number(moldTemplet && moldTemplet.m_RewardGroupID) || 0);
-  const craftCount = Math.max(1, Math.trunc(Number(count) || 1));
+  const rewardGroupId = Number(moldTemplet && moldTemplet.m_RewardGroupID) || 0;
+  const records = getMoldRewardRecords(rewardGroupId);
+  const craftCount = normalizeCraftCount(count);
   for (let index = 0; index < craftCount; index += 1) {
-    const record = records.length ? records[(Number(options.cursor || 0) + index) % records.length] : null;
-    const type = String(record && record.m_RewardType || "");
+    const cursor = nextMoldRewardCursor(user, rewardGroupId);
+    const record = pickMoldRewardRecord(records, cursor);
+    const type = normalizeRewardType(record && record.m_RewardType);
     const id = Number(record && record.m_RewardID || 0);
+    const rewardCount = Math.max(1, Number(record && (record.m_RewardValue || record.m_Quantity_Min || record.m_FreeQuantity_Min || 1)) || 1);
     if (type === "RT_EQUIP" && id > 0) {
-      const equip = grantEquipItem(user, id, { cursor: index, regDate: options.regDate });
+      const equip = grantEquipItem(user, id, { cursor, regDate: options.regDate });
       if (equip) reward.equips.push(equip);
     } else if (type === "RT_MISC" && id > 0) {
-      const item = grantMiscItem(user, id, BigInt(Number(record.m_RewardValue || record.m_Quantity_Min || 1) || 1), 0n, { regDate: options.regDate });
+      const item = grantMiscItem(user, id, BigInt(rewardCount), 0n, { regDate: options.regDate });
       if (item) reward.miscItems.push(item);
+    } else if (type === "RT_MOLD" && id > 0) {
+      const mold = grantMoldItem(user, id, rewardCount);
+      if (mold) reward.moldItems.push(mold);
     } else {
-      const equip = grantEquipItem(user, 0, { cursor: index, regDate: options.regDate });
+      const equip = grantEquipItem(user, 0, { cursor, regDate: options.regDate });
       if (equip) reward.equips.push(equip);
     }
   }
@@ -996,14 +1094,101 @@ function createMoldReward(user, moldId, count = 1, options = {}) {
 }
 
 function createEmptyEquipReward() {
-  return { miscItems: [], skinIds: [], emoticonIds: [], units: [], operators: [], equips: [], moldItems: [] };
+  return { miscItems: [], skinIds: [], emoticonIds: [], units: [], operators: [], equips: [], moldItems: [], interiors: [] };
+}
+
+function craftResult(result = {}) {
+  return {
+    errorCode: CRAFT_ERROR.OK,
+    slot: null,
+    costItems: [],
+    reward: createEmptyEquipReward(),
+    extraCostItem: null,
+    ...result,
+  };
+}
+
+function normalizeCraftCount(count) {
+  return Math.max(1, Math.trunc(Number(count) || 1));
+}
+
+function maxCraftStartCount(moldTemplet) {
+  return EQUIP_CRAFT_TABS.has(String(moldTemplet && moldTemplet.m_MoldTabID || "")) ? MAX_EQUIP_CRAFT_COUNT : MAX_MATERIAL_CRAFT_COUNT;
+}
+
+function getCraftMaterialErrorCode(user, costs) {
+  for (const cost of Array.isArray(costs) ? costs : []) {
+    const itemId = Number(cost && cost.itemId || 0);
+    const count = Math.max(0, Math.trunc(Number(cost && cost.count || 0) || 0));
+    if (itemId <= 0 || count <= 0) continue;
+    if (normalizeRewardType(cost.type) !== "RT_MISC") return CRAFT_ERROR.INSUFFICIENT_ITEM;
+    if (!hasMiscItemCount(user, itemId, count)) {
+      return itemId === CREDIT_ITEM_ID || itemId === CRAFT_SLOT_UNLOCK_ITEM_ID
+        ? CRAFT_ERROR.INSUFFICIENT_RESOURCE
+        : CRAFT_ERROR.INSUFFICIENT_ITEM;
+    }
+  }
+  return CRAFT_ERROR.OK;
+}
+
+function hasMiscItemCount(user, itemId, count) {
+  const item = getMiscItem(user, itemId);
+  const total = toBigInt(item && item.countFree, 0n) + toBigInt(item && item.countPaid, 0n);
+  return total >= BigInt(Math.max(0, Math.trunc(Number(count) || 0)));
+}
+
+function getCraftSlotState(slot, nowTicks) {
+  if (!slot || Number(slot.moldId || 0) <= 0) return "empty";
+  return toBigInt(nowTicks, 0n) >= toBigInt(slot.completeDate, 0n) ? "completed" : "creating";
+}
+
+function getExistingCraftSlot(user, slotIndex) {
+  const craft = ensureCraftData(user);
+  const index = normalizeCraftSlotIndex(slotIndex);
+  if (!index) return null;
+  return craft.slots[String(index)] ? normalizeCraftSlot(craft.slots[String(index)], index) : null;
 }
 
 function ensureCraftSlot(user, slotIndex) {
   const craft = ensureCraftData(user);
-  const index = Math.max(1, Math.min(MAX_CRAFT_SLOTS, Number(slotIndex || 1) || 1));
+  const index = normalizeCraftSlotIndex(slotIndex) || 1;
   if (!craft.slots[String(index)]) craft.slots[String(index)] = createEmptyCraftSlot(index);
   return craft.slots[String(index)];
+}
+
+function normalizeCraftSlotIndex(slotIndex) {
+  const numeric = Math.trunc(Number(slotIndex || 0));
+  return Number.isInteger(numeric) && numeric >= 1 && numeric <= MAX_CRAFT_SLOTS ? numeric : 0;
+}
+
+function nextMoldRewardCursor(user, rewardGroupId) {
+  if (!user || typeof user !== "object") return 0;
+  user.craft = user.craft && typeof user.craft === "object" ? user.craft : {};
+  user.craft.rewardCursors = user.craft.rewardCursors && typeof user.craft.rewardCursors === "object" ? user.craft.rewardCursors : {};
+  const key = String(rewardGroupId || "default");
+  const cursor = Math.max(0, Math.trunc(Number(user.craft.rewardCursors[key] || 0) || 0));
+  user.craft.rewardCursors[key] = cursor + 1;
+  return cursor;
+}
+
+function pickMoldRewardRecord(records, cursor = 0) {
+  const list = Array.isArray(records) ? records.filter(Boolean) : [];
+  if (!list.length) return null;
+  const totalWeight = list.reduce((sum, record) => sum + Math.max(0, Number(record.m_Ratio || 1)), 0);
+  if (totalWeight <= 0) return list[Math.abs(Number(cursor) || 0) % list.length];
+  let target = Math.abs(Number(cursor) || 0) % totalWeight;
+  for (const record of list) {
+    target -= Math.max(0, Number(record.m_Ratio || 1));
+    if (target < 0) return record;
+  }
+  return list[0];
+}
+
+function normalizeRewardType(type) {
+  const text = String(type || "").trim();
+  if (text === "RT_ITEM_MISC" || text === "RT_RESOURCE") return "RT_MISC";
+  if (text === "RT_ITEM_EQUIP" || text === "RT_EQUIP_ITEM") return "RT_EQUIP";
+  return text;
 }
 
 function createEmptyCraftSlot(index) {

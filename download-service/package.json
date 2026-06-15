@@ -1,0 +1,21 @@
+{
+  "name": "downloadside",
+  "version": "0.1.0",
+  "private": true,
+  "description": "DownloadSide Discord-role-gated release gateway for RevivalSide.",
+  "main": "src/server.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "check": "node --check src/app.js && node --check src/config.js && node --check src/devices.js && node --check src/discord.js && node --check src/env-file.js && node --check src/github.js && node --check src/http-error.js && node --check src/server.js && node --check src/tokens.js && node --check test/device-flow.test.js && node --check test/discord.test.js && node --check test/tokens.test.js",
+    "test": "node --test test/device-flow.test.js test/discord.test.js test/tokens.test.js",
+    "secrets:fly": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/fly-secrets-from-env.ps1",
+    "deploy:fly": "flyctl deploy --ha=false"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

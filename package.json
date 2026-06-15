@@ -1,6 +1,6 @@
 {
   "name": "revivalside",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "private": true,
   "description": "Local CounterSide revival server research tooling.",
   "scripts": {
@@ -11,6 +11,11 @@
     "build:launcher": "dotnet build tools/RevivalSideLauncherApp/RevivalSideLauncherApp.csproj --nologo",
     "publish:installer": "powershell -NoProfile -ExecutionPolicy Bypass -File tools/package-revivalside-universal-installer.ps1",
     "publish:github-release": "powershell -NoProfile -ExecutionPolicy Bypass -File tools/package-revivalside-github-release.ps1",
+    "download-service:dev": "npm --prefix download-service run dev",
+    "download-service:start": "npm --prefix download-service start",
+    "download-service:test": "npm --prefix download-service test",
+    "downloadside:secrets": "cd download-service && npm run secrets:fly",
+    "downloadside:deploy": "cd download-service && npm run deploy:fly",
     "ensure:gameplay-assets": "node tools/ensure-gameplay-assets.js",
     "build:gameplay-jsons": "node tools/build-prepackaged-gameplay-jsons.js",
     "patch:counter-pass-client": "dotnet run --project tools/CounterPassClientPatcher/CounterPassClientPatcher.csproj -- --env-switch",

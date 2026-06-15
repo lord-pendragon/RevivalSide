@@ -18,7 +18,7 @@ const TICKS_PER_MS = 10000n;
 const TICKS_PER_DAY = 24n * 60n * 60n * 10000000n;
 
 function isRealMoneyProduct(record) {
-  return Number(record && record.m_PriceItemID) === 0;
+  return Boolean(record) && Number(record.m_PriceItemID) === 0;
 }
 
 function isRealMoneyResourceProduct(record) {
@@ -51,7 +51,7 @@ function grantShopProduct(ctx, user, record, productCount = 1) {
     toBigInt(record.m_PaidValue || 0, 0n) * BigInt(count),
     { regDate, expandPackages: true }
   );
-  for (const key of ["miscItems", "skinIds", "emoticonIds", "units", "operators", "equips", "moldItems"]) {
+  for (const key of ["miscItems", "skinIds", "emoticonIds", "units", "operators", "equips", "moldItems", "interiors"]) {
     if (Array.isArray(granted[key])) reward[key].push(...granted[key]);
   }
 
@@ -91,7 +91,7 @@ function grantFallbackResource(ctx, user, multiplier = 1) {
   const reward = createEmptyReward();
   const regDate = ctx && ctx.dateTimeBinaryNow ? ctx.dateTimeBinaryNow() : 0n;
   const grant = grantRewardByType(ctx, user, "RT_MISC", FALLBACK_RESOURCE_ITEM_ID, FALLBACK_RESOURCE_COUNT * BigInt(Math.max(1, Number(multiplier) || 1)), null, 0n, { regDate, expandPackages: false });
-  for (const key of ["miscItems", "skinIds", "emoticonIds", "units", "operators", "equips", "moldItems"]) {
+  for (const key of ["miscItems", "skinIds", "emoticonIds", "units", "operators", "equips", "moldItems", "interiors"]) {
     if (Array.isArray(grant[key])) reward[key].push(...grant[key]);
   }
   return reward;

@@ -41,6 +41,7 @@ const SUBSTREAM_EPISODE_CATEGORIES = Object.freeze([
   "EC_SIDESTORY",
   "EC_SIDESTORY_OMEN",
 ]);
+const COLLABORATION_EVENT_EPISODE_CATEGORY = "EC_EVENT";
 const STORY_EPISODE_CATEGORIES = Object.freeze([MAINSTREAM_EPISODE_CATEGORY, ...SUBSTREAM_EPISODE_CATEGORIES]);
 const STORY_EPISODE_CATEGORY_SET = new Set(STORY_EPISODE_CATEGORIES);
 const SUBSTREAM_EPISODE_CATEGORY_SET = new Set(SUBSTREAM_EPISODE_CATEGORIES);
@@ -51,6 +52,7 @@ const STORY_CATEGORY_SORT = Object.freeze({
   EC_SIDESTORY_OMEN: 2,
   EC_SEASONAL: 3,
   EC_COUNTERCASE: 4,
+  EC_EVENT: 5,
 });
 const STORY_DIFFICULTY_NORMAL = 0;
 const STORY_DIFFICULTY_HARD = 1;
@@ -103,11 +105,19 @@ function normalizeTagList(...values) {
     .filter(Boolean);
 }
 
+function isCollaborationEventEpisode(row) {
+  if (String(row && row.m_EPCategory || "") !== COLLABORATION_EVENT_EPISODE_CATEGORY) return false;
+  const text = normalizeTagList(row.m_EpisodeStrID, row.m_OpenTag, row.m_CollectionOpenTag).join(" ").toUpperCase();
+  return text.includes("CLB") || text.includes("COLLAB");
+}
+
 const EPISODE_ROWS = readTable("ab_script", "LUA_EPISODE_TEMPLET_V2.json");
 const STAGE_ROWS = readTable("ab_script", "LUA_STAGE_TEMPLET.json");
 const DUNGEON_ROWS = readTable("ab_script_dungeon_templet", "LUA_DUNGEON_TEMPLET_BASE.json");
 const MAP_ROWS = readTable("ab_script", "LUA_MAP_TEMPLET.json");
 const EVENT_DECK_ROWS = readTable("ab_script", "LUA_EVENTDECK_TEMPLET.json");
+const PHASE_ROWS = readTable("ab_script", "LUA_PHASE_TEMPLET.json");
+const PHASE_ORDER_ROWS = readTable("ab_script", "LUA_PHASE_ORDER_TEMPLET.json");
 
 const MAIN_STORY_EPISODE_BY_ID = new Map();
 const MAIN_STORY_EPISODE_BY_KEY = new Map();
@@ -116,10 +126,11 @@ for (const row of EPISODE_ROWS) {
   const difficulty = normalizeStoryDifficulty(row.m_Difficulty);
   const episodeCategory = String(row.m_EPCategory || "");
   const groupId = Number(row.GroupID || 0);
-  if (!STORY_EPISODE_CATEGORY_SET.has(episodeCategory)) continue;
+  const isCollaborationEvent = isCollaborationEventEpisode(row);
+  if (!STORY_EPISODE_CATEGORY_SET.has(episodeCategory) && !isCollaborationEvent) continue;
   const isMainstream = episodeCategory === MAINSTREAM_EPISODE_CATEGORY;
   const isSubstream = SUBSTREAM_EPISODE_CATEGORY_SET.has(episodeCategory) || SUBSTREAM_GROUP_IDS.has(groupId);
-  if (!isMainstream && !isSubstream) continue;
+  if (!isMainstream && !isSubstream && !isCollaborationEvent) continue;
   const episodeNumber = isMainstream
     ? parseMainStoryEpisodeNumber(row.m_EpisodeStrID || row.m_OpenTag)
     : Number(row.m_SortIndex || row.m_EpisodeID || 0);
@@ -137,6 +148,7 @@ for (const row of EPISODE_ROWS) {
     collectionOpenTag: String(row.m_CollectionOpenTag || ""),
     isMainstream,
     isSubstream,
+    isCollaborationEvent,
   };
   MAIN_STORY_EPISODE_BY_KEY.set(storyEpisodeKey(row.m_EpisodeID, difficulty), episode);
   if (difficulty === STORY_DIFFICULTY_NORMAL) MAIN_STORY_EPISODE_BY_ID.set(Number(row.m_EpisodeID), episode);
@@ -161,13 +173,44 @@ for (const row of EVENT_DECK_ROWS) {
   if (row.NAME && id > 0) EVENT_DECK_ID_BY_NAME.set(String(row.NAME), id);
 }
 
+const PHASE_BY_STR_ID = new Map();
+for (const row of PHASE_ROWS) {
+  if (row && row.m_PhaseStrID) PHASE_BY_STR_ID.set(String(row.m_PhaseStrID), row);
+}
+
+const PHASE_ORDERS_BY_GROUP_ID = new Map();
+for (const row of PHASE_ORDER_ROWS) {
+  if (!row) continue;
+  const groupId = Number(row.m_PhaseGroupID || 0);
+  if (!Number.isInteger(groupId) || groupId <= 0) continue;
+  if (!PHASE_ORDERS_BY_GROUP_ID.has(groupId)) PHASE_ORDERS_BY_GROUP_ID.set(groupId, []);
+  PHASE_ORDERS_BY_GROUP_ID.get(groupId).push(row);
+}
+for (const rows of PHASE_ORDERS_BY_GROUP_ID.values()) {
+  rows.sort((left, right) => Number(left.m_PhaseOrder || 0) - Number(right.m_PhaseOrder || 0));
+}
+
 const TUTORIAL_STAGE_BY_STAGE_ID = new Map(TUTORIAL_STAGE_CHAIN.map((stage) => [Number(stage.stageId), stage]));
 
-function resolveEventDeckId(stageRow, dungeonRow) {
+function resolveEventDeckId(stageRow, dungeonRow, phaseRow = null) {
+  const phaseEventDeckId = Number(phaseRow && phaseRow.m_UseEventDeck);
+  if (phaseEventDeckId > 0) return phaseEventDeckId;
   const dungeonId = Number(dungeonRow && dungeonRow.m_DungeonID);
   if (dungeonId > 0 && EVENT_DECK_BY_ID.has(dungeonId)) return dungeonId;
   const stageBattleStrID = String((stageRow && stageRow.m_StageBattleStrID) || (dungeonRow && dungeonRow.m_DungeonStrID) || "");
   return EVENT_DECK_ID_BY_NAME.get(stageBattleStrID) || 0;
+}
+
+function resolvePhaseRuntime(stageRow) {
+  if (String(stageRow && stageRow.m_StageType || "") !== "ST_PHASE") return null;
+  const phase = PHASE_BY_STR_ID.get(String(stageRow.m_StageBattleStrID || ""));
+  if (!phase) return null;
+  const orders = PHASE_ORDERS_BY_GROUP_ID.get(Number(phase.m_PhaseGroupID || 0)) || [];
+  for (const order of orders) {
+    const dungeon = DUNGEON_BY_STR_ID.get(String(order && order.m_DungeonStrID || ""));
+    if (dungeon) return { phase, order, dungeon };
+  }
+  return null;
 }
 
 function buildStageFromTable(stageRow) {
@@ -177,7 +220,10 @@ function buildStageFromTable(stageRow) {
     MAIN_STORY_EPISODE_BY_KEY.get(storyEpisodeKey(stageRow && stageRow.m_EpisodeID, difficulty)) ||
     MAIN_STORY_EPISODE_BY_ID.get(Number(stageRow && stageRow.m_EpisodeID));
   if (!stageId || !episode) return null;
-  const dungeon = DUNGEON_BY_STR_ID.get(String(stageRow.m_StageBattleStrID || "")) || null;
+  const phaseRuntime = resolvePhaseRuntime(stageRow);
+  const phase = phaseRuntime && phaseRuntime.phase ? phaseRuntime.phase : null;
+  const phaseOrder = phaseRuntime && phaseRuntime.order ? phaseRuntime.order : null;
+  const dungeon = DUNGEON_BY_STR_ID.get(String(stageRow.m_StageBattleStrID || "")) || (phaseRuntime && phaseRuntime.dungeon) || null;
   const dungeonID = Number(dungeon && dungeon.m_DungeonID);
   if (!dungeonID) return null;
   const mapStrID = String((dungeon && dungeon.m_DungeonMapStrID) || "");
@@ -220,9 +266,14 @@ function buildStageFromTable(stageRow) {
     unlockReqType: String(stageRow.m_UnlockReqType || ""),
     unlockReqValue: Number(stageRow.m_UnlockReqValue || 0),
     dungeonType: String((dungeon && dungeon.m_DungeonType) || ""),
-    eventDeckId: cutsceneOnly ? 0 : resolveEventDeckId(stageRow, dungeon),
+    phaseId: Number(phase && phase.m_PhaseID || 0),
+    phaseGroupId: Number(phase && phase.m_PhaseGroupID || 0),
+    phaseOrder: Number(phaseOrder && phaseOrder.m_PhaseOrder || 0),
+    phaseStrID: String(phase && phase.m_PhaseStrID || ""),
+    eventDeckId: cutsceneOnly ? 0 : resolveEventDeckId(stageRow, dungeon, phase),
     isMainstreamStory: Boolean(episode.isMainstream),
     isSubstreamStory: Boolean(episode.isSubstream),
+    isCollaborationEventStory: Boolean(episode.isCollaborationEvent),
     tutorial,
     cutsceneOnly,
   });
@@ -451,6 +502,14 @@ function isStageClearedForStory(user, stageId) {
   return Boolean(state && state.completed === true);
 }
 
+function isPhaseClearedForStory(user, phaseId) {
+  const numericPhaseId = Number(phaseId || 0);
+  if (!numericPhaseId) return false;
+  const phaseStage = MAIN_STORY_STAGE_CHAIN.find((stage) => Number(stage && stage.phaseId || 0) === numericPhaseId);
+  if (!phaseStage) return isStageClearedForStory(user, numericPhaseId);
+  return isStageClearedForStory(user, phaseStage.stageId) || isDungeonClearedForStory(user, phaseStage.dungeonID);
+}
+
 function isStoryStageRequirementSatisfied(user, stage) {
   if (!stage) return false;
   switch (stage.unlockReqType) {
@@ -463,7 +522,7 @@ function isStoryStageRequirementSatisfied(user, stage) {
     case "SURT_CLEAR_DUNGEON_START_DATETIME":
       return isDungeonClearedForStory(user, stage.unlockReqValue);
     case "SURT_CLEAR_PHASE":
-      return isStageClearedForStory(user, stage.unlockReqValue);
+      return isPhaseClearedForStory(user, stage.unlockReqValue);
     case "SURT_ALWAYS_LOCKED":
     case "SURT_ALWAYS_HIDDEN":
       return false;

@@ -17,7 +17,6 @@ const {
 } = require("../packet-codec");
 const {
   getContractRecord,
-  getAllContractIds,
   getVisibleContractIds,
   getContractPoolUnitIds,
   getContractPoolUnitEntries,
@@ -36,7 +35,7 @@ const { grantUnit, grantOperator, grantUnitFromPiece, getPieceRequirement } = re
 const { grantRewardByType, createEmptyReward, mergeReward } = require("../reward");
 const { spendMiscItem, toBigInt } = require("../inventory");
 const { addMissionTrackingCondition, completeMissionTracking, makeMissionTracking, queueMissionTracking } = require("../mission-tracking");
-const { dateTimeBinaryForDate } = require("../server-time");
+const { dateFromDateTime, dateTimeBinaryForDate, utcDateKey } = require("../server-time");
 
 const PACKETS = Object.freeze({
   CONTRACT_REQ: 2800,
@@ -71,6 +70,8 @@ const CONTRACT_COST_TYPE = Object.freeze({
   TICKET: 1,
   MONEY: 2,
 });
+const DAY_MS = 24 * 60 * 60 * 1000;
+const CONTRACT_DAILY_RESET_HOUR_UTC = clampHour(process.env.CS_CONTRACT_DAILY_RESET_HOUR_UTC, 4);
 
 function createContractHandler(packetId, name) {
   return {
@@ -164,7 +165,7 @@ function buildContractAck(ctx, user, request) {
   const count = Math.max(1, Number(request.count || 1));
   const costItems = spendContractCost(ctx, user, contractId, count, request.costType);
   const reward = rollContract(ctx, user, contractId, count, { fromContract: true });
-  applyContractRewards(ctx, user, contractId, count, reward);
+  applyContractRewards(ctx, user, contractId, count, reward, { costType: request.costType });
 
   return Buffer.concat([
     writeSignedVarInt(0),
@@ -231,11 +232,6 @@ function buildCustomPickupSelectTargetAck(user, request) {
   const resolvedTargetId = normalizeCustomPickupTarget(pickup, targetUnitId, {
     includeOperators: String(pickup.m_ContractType || "") === "OPERATOR",
   });
-  if (targetUnitId > 0 && resolvedTargetId <= 0) {
-    console.log(
-      `[contract:custom-pickup] rejected target customPickupId=${customPickupId} targetUnitId=${targetUnitId} poolId=${pickup.m_UnitPoolID || 0}`
-    );
-  }
   if (resolvedTargetId > 0) {
     const previousTargetId = Number(state.customPickupTargetUnitId || 0);
     const maxSelectCount = getCustomPickupMaxSelectCount(pickup);
@@ -366,14 +362,20 @@ function buildInstantContractListAck(user, ctx) {
 }
 
 function getAllContractStates(user, ctx) {
-  return getVisibleActiveContractRecords(ctx).map((entry) => getContractState(user, entry.contractId, ctx));
+  const clockState = getActiveContractClockState(ctx);
+  const contractIds = new Set(getActiveContractRecords(clockState).map((entry) => Number(entry.contractId) || 0));
+  for (const contractId of getStoredContractStateIds(user)) contractIds.add(contractId);
+  return Array.from(contractIds)
+    .filter((contractId) => contractId > 0)
+    .map((contractId) => getContractState(user, contractId, ctx));
 }
 
 function getAllContractBonusStates(user, ctx) {
+  const clockState = getActiveContractClockState(ctx);
   const seen = new Set();
   const states = [];
   for (const record of [
-    ...getVisibleActiveContractRecords(ctx).map((entry) => entry.record),
+    ...getActiveContractRecords(clockState).map((entry) => entry.record),
     ...getActiveCustomPickupContractRecords(ctx),
   ]) {
     const state = getContractBonusState(user, record);
@@ -381,175 +383,55 @@ function getAllContractBonusStates(user, ctx) {
     seen.add(state.bonusGroupId);
     states.push(state);
   }
+  for (const bonusGroupId of getStoredContractBonusGroupIds(user)) {
+    if (seen.has(bonusGroupId)) continue;
+    const state = getContractBonusState(user, bonusGroupId);
+    if (seen.has(state.bonusGroupId)) continue;
+    seen.add(state.bonusGroupId);
+    states.push(state);
+  }
   return states;
 }
 
-function getVisibleActiveContractRecords(ctx) {
-  const clockState = getActiveContractClockState(ctx);
-  const active = getVisibleContractIds()
+function getStoredContractStateIds(user) {
+  const states = user && user.contractStates && typeof user.contractStates === "object" ? user.contractStates : {};
+  return Object.keys(states)
+    .map((key) => Number(key))
+    .filter((contractId) => Number.isInteger(contractId) && contractId > 0);
+}
+
+function getStoredContractBonusGroupIds(user) {
+  const states = user && user.contractBonusStates && typeof user.contractBonusStates === "object" ? user.contractBonusStates : {};
+  return Object.keys(states)
+    .map((key) => Number(key))
+    .filter((bonusGroupId) => Number.isInteger(bonusGroupId) && bonusGroupId > 0);
+}
+
+function getActiveContractRecords(clockState) {
+  const records = getVisibleContractIds()
     .map((contractId) => ({ contractId, record: resolveContractRecord(contractId) }))
-    .filter((entry) => isContractEntryVisibleForContentsTags(entry.record, entry.contractId, clockState))
-    .filter((entry) => !isRetiredContractRecord(entry.record, entry.contractId))
-    .filter((entry) => isContractRecordActiveForClock(entry.record, clockState, "contract"));
+    .filter((entry) => isContractRecordActiveForClock(entry.record, clockState, "contract"))
+    .filter((entry) => !isRetiredContractRecord(entry.record, entry.contractId));
   const bestByKey = new Map();
-  for (const entry of active) {
-    const key = contractDedupeKey(entry.record, entry.contractId);
+  for (const entry of records) {
+    const key = contractDisplayKey(entry.record, entry.contractId);
     if (!key) continue;
     const current = bestByKey.get(key);
-    if (!current || scoreContractDedupeRecord(entry.record, entry.contractId) > scoreContractDedupeRecord(current.record, current.contractId)) {
+    if (!current || scoreContractRecord(entry, clockState) > scoreContractRecord(current, clockState)) {
       bestByKey.set(key, entry);
     }
   }
-  return active.filter((entry) => {
-    const key = contractDedupeKey(entry.record, entry.contractId);
+  return records.filter((entry) => {
+    const key = contractDisplayKey(entry.record, entry.contractId);
     return !key || bestByKey.get(key) === entry;
   });
 }
 
-function filterDuplicateContractOpenTags(tags) {
-  return filterDuplicateContractTags(tags, getContractRecordOpenTags);
-}
-
-function filterDuplicateContractIntervalTags(tags) {
-  return filterDuplicateContractTags(tags, getContractRecordIntervalTags);
-}
-
-function filterDuplicateContractIntervalData(intervalData) {
-  const input = Array.isArray(intervalData) ? intervalData : [];
-  const filteredKeys = new Set(
-    filterDuplicateContractIntervalTags(input.map((interval) => interval && interval.strKey)).map((tag) => normalizeTag(tag))
-  );
-  return input.filter((interval) => {
-    const key = normalizeTag(interval && interval.strKey);
-    return !key || filteredKeys.has(key);
-  });
-}
-
-function filterDuplicateContractTags(tags, getTagsForRecord) {
-  const input = Array.isArray(tags) ? tags : [];
-  const activeTagKeys = new Set(input.map((tag) => normalizeTag(tag)).filter(Boolean));
-  if (!activeTagKeys.size) return input.slice();
-
-  const entriesByDedupeKey = new Map();
-  for (const contractId of getAllContractIds()) {
-    const record = resolveContractRecord(contractId);
-    if (!record || isRetiredContractRecord(record, contractId)) continue;
-    const matchedTags = getTagsForRecord(record, contractId).filter((tag) => activeTagKeys.has(tag));
-    if (!matchedTags.length) continue;
-    const key = contractDedupeKey(record, contractId);
-    if (!key) continue;
-    if (!entriesByDedupeKey.has(key)) entriesByDedupeKey.set(key, []);
-    entriesByDedupeKey.get(key).push({ contractId, record, tags: matchedTags });
-  }
-
-  const suppressed = new Set();
-  for (const entries of entriesByDedupeKey.values()) {
-    if (entries.length <= 1) continue;
-    let keeper = entries[0];
-    for (const entry of entries.slice(1)) {
-      if (scoreContractDedupeRecord(entry.record, entry.contractId) > scoreContractDedupeRecord(keeper.record, keeper.contractId)) {
-        keeper = entry;
-      }
-    }
-    const keeperTags = new Set(keeper.tags);
-    for (const entry of entries) {
-      if (entry === keeper) continue;
-      for (const tag of entry.tags) {
-        if (!keeperTags.has(tag)) suppressed.add(tag);
-      }
-    }
-  }
-
-  if (!suppressed.size) return input.slice();
-  return input.filter((tag) => !suppressed.has(normalizeTag(tag)));
-}
-
-function getContractRecordOpenTags(record, contractId = 0) {
-  const id = Number(record && (record.m_ContractID || record.ContractID || record.contractId)) || Number(contractId) || 0;
-  const baseRecord = getContractRecord(id) || {};
-  return normalizeTags([
-    getRecordOpenTags(record),
-    getRecordOpenTags(baseRecord),
-  ]);
-}
-
-function getContractRecordIntervalTags(record, contractId = 0) {
-  const id = Number(record && (record.m_ContractID || record.ContractID || record.contractId)) || Number(contractId) || 0;
-  const baseRecord = getContractRecord(id) || {};
-  return normalizeTags([
-    getRecordIntervalTags(record),
-    getRecordIntervalTags(baseRecord),
-  ]);
-}
-
-function contractDedupeKey(record, contractId = 0) {
-  if (!record) return "";
-  const baseRecord = getContractRecord(Number(record.m_ContractID || record.ContractID || record.contractId || contractId) || 0) || {};
-  const addUnitStrId = String(record.m_addUnitStrId || baseRecord.m_addUnitStrId || record.addUnitStrId || "").trim().toUpperCase();
-  const category = Number(record.m_ContractCategory || baseRecord.m_ContractCategory || 0);
-  const tags = [
-    ...getRecordOpenTags(record),
-    ...getRecordOpenTags(baseRecord),
-    ...getRecordIntervalTags(record),
-    ...getRecordIntervalTags(baseRecord),
-    String(record.m_ContractName || ""),
-    String(baseRecord.m_ContractName || ""),
-  ].join("|");
-  const pickupLike =
-    category === 200 ||
-    record.m_bPickUp === true ||
-    baseRecord.m_bPickUp === true ||
-    record.m_addUnitPickUp === true ||
-    baseRecord.m_addUnitPickUp === true ||
-    /CLASSIFIED|PICKUP/i.test(tags);
-  const addUnitKey = normalizeContractUnitToken(addUnitStrId);
-  const dedupeUnitKey = isPlaceholderContractUnitKey(addUnitKey) ? "" : addUnitKey;
-  const visibleName = normalizeContractUnitToken(record.m_ContractName || baseRecord.m_ContractName || "");
-  const visibleBanner = normalizeDedupeToken(record.m_MainBannerFileName || baseRecord.m_MainBannerFileName || "");
-  const identity = pickupLike
-    ? dedupeUnitKey || visibleName || visibleBanner
-    : visibleName || visibleBanner || dedupeUnitKey;
-  if (!identity) return "";
-  return `${category || "pickup"}:${identity}`;
-}
-
-function scoreContractDedupeRecord(record, contractId = 0) {
-  const id = Number(record && (record.m_ContractID || record.ContractID || record.contractId)) || Number(contractId) || 0;
-  const baseRecord = getContractRecord(id) || {};
-  const tags = [
-    ...getRecordOpenTags(record),
-    ...getRecordOpenTags(baseRecord),
-    ...getRecordIntervalTags(record),
-    ...getRecordIntervalTags(baseRecord),
-  ].join("|").toUpperCase();
-  return (
-    (/GLOBAL/.test(tags) ? 1000000 : 0) +
-    (/V4/.test(tags) ? 10000 : 0) +
-    Math.max(0, id)
-  );
-}
-
-function isRetiredContractRecord(record, contractId = 0) {
-  const id = Number(record && (record.m_ContractID || record.ContractID || record.contractId)) || Number(contractId) || 0;
-  const baseRecord = getContractRecord(id) || {};
-  const text = [
-    ...getRecordOpenTags(record),
-    ...getRecordOpenTags(baseRecord),
-    ...getRecordIntervalTags(record),
-    ...getRecordIntervalTags(baseRecord),
-    String(record && (record.m_ContractName || record.m_ContractStrID) || ""),
-    String(baseRecord && (baseRecord.m_ContractName || baseRecord.m_ContractStrID) || ""),
-  ].join("|").toUpperCase();
-  return (
-    text.includes("TAG_KOR_CONTRACT_OLD_VERSION") ||
-    text.includes("DATE_KOR_CONTRACT_OLD_VERSION") ||
-    text.includes("DATE_GLOBAL_CLASSIFIED_OLD_VERSION") ||
-    text.includes("SI_NAME_CONTRACT_OLD")
-  );
-}
-
 function resolveContractRecord(contractId) {
-  return getContractTabRecord(contractId) || getContractRecord(contractId);
+  const baseRecord = getContractRecord(contractId);
+  const tabRecord = getContractTabRecord(contractId);
+  if (baseRecord && tabRecord) return { ...baseRecord, ...tabRecord };
+  return tabRecord || baseRecord;
 }
 
 function getActiveContractClockState(ctx) {
@@ -560,7 +442,6 @@ function getActiveContractClockState(ctx) {
     openTags: new Set(),
     intervalTags: new Set(),
     intervalsByTag: new Map(),
-    contentsTags: getContextContentsTagSet(ctx),
   };
   const manager = ctx && ctx.eventManager;
   if (!manager || typeof manager.getActiveEventState !== "function") return empty;
@@ -580,7 +461,6 @@ function getActiveContractClockState(ctx) {
     openTags: new Set(),
     intervalTags: new Set(),
     intervalsByTag: new Map(),
-    contentsTags: getContextContentsTagSet(ctx, state),
   };
   for (const interval of Array.isArray(state.intervalData) ? state.intervalData : []) {
     const tag = normalizeTag(interval && interval.strKey);
@@ -629,8 +509,7 @@ function isShopInheritedEventEntry(entry) {
 }
 
 function isContractRecordActiveForClock(record, clockState, kind = "contract") {
-  if (!record) return false;
-  if (!clockState || !clockState.enabled) return !isClockGatedContractRecord(record, kind);
+  if (!record || !clockState || !clockState.enabled) return true;
   const contractId = Number(record.m_ContractID || record.ContractID || record.contractId || 0);
   const customPickupId = Number(record.customPickupId || record.m_CustomPickupID || record.CustomPickupID || 0);
   if (kind === "custom" && isAlwaysOnCustomPickupRecord(record)) return true;
@@ -638,43 +517,6 @@ function isContractRecordActiveForClock(record, clockState, kind = "contract") {
   if (contractId > 0 && clockState.contractIds.has(contractId)) return true;
   if (hasActiveClockTag(record, clockState)) return true;
   return !isClockGatedContractRecord(record, kind);
-}
-
-function isContractEntryVisibleForContentsTags(record, contractId, clockState) {
-  const id = Number(record && (record.m_ContractID || record.ContractID || record.contractId)) || Number(contractId) || 0;
-  const baseRecord = getContractRecord(id) || {};
-  return isRecordVisibleForContentsTags(record, clockState) && isRecordVisibleForContentsTags(baseRecord, clockState);
-}
-
-function isRecordVisibleForContentsTags(record, clockState) {
-  if (!record) return true;
-  const activeTags = clockState && clockState.contentsTags instanceof Set ? clockState.contentsTags : new Set();
-  const ignoreTags = getRecordContentsIgnoreTags(record);
-  if (ignoreTags.some((tag) => activeTags.has(tag))) return false;
-
-  const allowTags = getRecordContentsAllowTags(record);
-  if (allowTags.length && !allowTags.some((tag) => activeTags.has(tag))) return false;
-  return true;
-}
-
-function getContextContentsTagSet(ctx, activeState = null) {
-  const tags = [];
-  let hasContextTags = false;
-  if (Array.isArray(ctx && ctx.contentsTags)) {
-    tags.push(...ctx.contentsTags);
-    hasContextTags = true;
-  }
-  if (ctx && typeof ctx.getEffectiveContentsTags === "function") {
-    try {
-      tags.push(...ctx.getEffectiveContentsTags((ctx.config && ctx.config.CONTENTS_TAGS) || []));
-      hasContextTags = true;
-    } catch (_) {
-      // keep any explicit context tags collected above
-    }
-  }
-  if (!hasContextTags && activeState && Array.isArray(activeState.contentsTags)) tags.push(...activeState.contentsTags);
-  if (!hasContextTags && activeState && Array.isArray(activeState.counterPassContentsTags)) tags.push(...activeState.counterPassContentsTags);
-  return new Set(normalizeTags(tags).filter((tag) => !isObsoleteContractContentsTag(tag)));
 }
 
 function hasActiveClockTag(record, clockState) {
@@ -715,19 +557,139 @@ function isAlwaysOnContractTag(tag) {
 }
 
 function isAlwaysOnCustomPickupRecord(record) {
+  if (getCustomPickupType(record) === "OPERATOR") return false;
   const tags = [...getRecordOpenTags(record), ...getRecordIntervalTags(record)];
   return tags.some((tag) => tag.includes("CONTRACT_CUSTOM") && !/20\d{2}|LIMITED|EVENT/.test(tag));
 }
 
 function getContractNextResetDate(contractId, ctx) {
-  const clockState = getActiveContractClockState(ctx);
   const record = resolveContractRecord(contractId) || {};
+  if (getContractFreeTryCount(record) > 0 || getContractDailyLimit(record) > 0) {
+    return dateTimeBinaryForDate(getNextContractDailyResetDate(getContractNowDate(ctx)));
+  }
+  const window = getContractIntervalWindow(record, ctx);
+  return window && window.endDate ? dateTimeBinaryForDate(window.endDate) : farFutureDateTimeBinary();
+}
+
+function getContractIntervalWindow(record, ctx) {
+  const clockState = getActiveContractClockState(ctx);
   for (const tag of getRecordIntervalTags(record)) {
     const interval = clockState.intervalsByTag.get(tag);
-    const endDate = interval && interval.endDate instanceof Date && !Number.isNaN(interval.endDate.getTime()) ? interval.endDate : null;
-    if (endDate) return dateTimeBinaryForDate(endDate);
+    const startDate = coerceDate(interval && interval.startDate);
+    const endDate = coerceDate(interval && interval.endDate);
+    if (startDate || endDate) return { tag, startDate, endDate };
   }
-  return farFutureDateTimeBinary();
+  return null;
+}
+
+function getContractNowDate(ctx) {
+  if (ctx && typeof ctx.getServerNowDate === "function") {
+    const date = coerceDate(ctx.getServerNowDate());
+    if (date) return date;
+  }
+  if (ctx && ctx.serverTime && typeof ctx.serverTime.now === "function") {
+    const date = coerceDate(ctx.serverTime.now());
+    if (date) return date;
+  }
+  return new Date();
+}
+
+function getNextContractDailyResetDate(date) {
+  const source = coerceDate(date) || new Date();
+  const resetToday = new Date(
+    Date.UTC(
+      source.getUTCFullYear(),
+      source.getUTCMonth(),
+      source.getUTCDate(),
+      CONTRACT_DAILY_RESET_HOUR_UTC,
+      0,
+      0,
+      0
+    )
+  );
+  if (source.getTime() < resetToday.getTime()) return resetToday;
+  return new Date(resetToday.getTime() + DAY_MS);
+}
+
+function getContractDailyResetKey(date) {
+  const source = coerceDate(date) || new Date();
+  return utcDateKey(new Date(source.getTime() - CONTRACT_DAILY_RESET_HOUR_UTC * 60 * 60 * 1000));
+}
+
+function getContractFreeTryCount(record) {
+  return Math.max(0, Math.trunc(Number(firstDefined(record && record.m_FreeTryCnt, record && record.m_FreeTryEventCnt, 0)) || 0));
+}
+
+function getContractFreeCountDays(record) {
+  return Math.max(0, Math.trunc(Number(record && record.m_freeCountDays) || 0));
+}
+
+function getContractDailyLimit(record) {
+  return Math.max(0, Math.trunc(Number(record && record.m_DailyLimit) || 0));
+}
+
+function getContractTotalLimit(record) {
+  return Math.max(0, Math.trunc(Number(record && record.m_TotalLimit) || 0));
+}
+
+function hasResettingFreeChance(record) {
+  const value = record && record.m_resetFreeCount;
+  if (value == null || value === "") return getContractFreeTryCount(record) > 0 && getContractFreeCountDays(record) <= 0;
+  if (typeof value === "boolean") return value;
+  return /^(1|true|yes|y)$/i.test(String(value).trim());
+}
+
+function calculateAccumulatedFreeGrant(record, existing, ctx, nowDate) {
+  const freeTryCount = getContractFreeTryCount(record);
+  const freeCountDays = getContractFreeCountDays(record);
+  if (freeTryCount <= 0) return { grantCount: 0, grantDays: 0, grantStartDate: null };
+
+  const window = getContractIntervalWindow(record, ctx);
+  const storedStartDate = coerceDate(existing && existing.freeGrantStartIso);
+  const grantStartDate = window && window.startDate ? window.startDate : storedStartDate || nowDate;
+  if (!grantStartDate || nowDate.getTime() < grantStartDate.getTime()) {
+    return { grantCount: 0, grantDays: 0, grantStartDate };
+  }
+
+  if (freeCountDays <= 0) return { grantCount: freeTryCount, grantDays: 1, grantStartDate };
+
+  let grantDays = 1;
+  const firstResetDate = getNextContractDailyResetDate(grantStartDate);
+  if (nowDate.getTime() >= firstResetDate.getTime()) {
+    grantDays += Math.floor((nowDate.getTime() - firstResetDate.getTime()) / DAY_MS) + 1;
+  }
+  grantDays = Math.max(0, Math.min(freeCountDays, grantDays));
+  return { grantCount: freeTryCount * grantDays, grantDays, grantStartDate };
+}
+
+function getContractWindowKey(record, ctx) {
+  const window = getContractIntervalWindow(record, ctx);
+  if (!window || !window.tag) return "";
+  const start = window.startDate ? window.startDate.toISOString() : "";
+  const end = window.endDate ? window.endDate.toISOString() : "";
+  return `${window.tag}|${start}|${end}`;
+}
+
+function coerceDate(value) {
+  if (value instanceof Date && !Number.isNaN(value.getTime())) return value;
+  if (typeof value === "bigint") return dateFromDateTime(value);
+  if (typeof value === "number" || typeof value === "string") {
+    const dateTime = dateFromDateTime(value);
+    if (dateTime) return dateTime;
+    const date = new Date(value);
+    return Number.isNaN(date.getTime()) ? null : date;
+  }
+  return null;
+}
+
+function firstDefined(...values) {
+  return values.find((value) => value !== undefined && value !== null && value !== "");
+}
+
+function clampHour(value, fallback) {
+  const hour = Number(value);
+  if (!Number.isFinite(hour)) return fallback;
+  return Math.max(0, Math.min(23, Math.trunc(hour)));
 }
 
 function getRecordOpenTags(record) {
@@ -751,26 +713,6 @@ function getRecordIntervalTags(record) {
   ]);
 }
 
-function getRecordContentsAllowTags(record) {
-  return normalizeTags([
-    record && record.listContentsTagAllow,
-    record && record.contentsTagAllow,
-    record && record.ContentsTagAllow,
-    record && record.m_ContentsTagAllow,
-    record && record.m_ContentsTag,
-    record && record.listContentsTag,
-  ]);
-}
-
-function getRecordContentsIgnoreTags(record) {
-  return normalizeTags([
-    record && record.listContentsTagIgnore,
-    record && record.contentsTagIgnore,
-    record && record.ContentsTagIgnore,
-    record && record.m_ContentsTagIgnore,
-  ]);
-}
-
 function normalizeTags(values) {
   return (Array.isArray(values) ? values : [values])
     .flatMap((value) => (Array.isArray(value) ? value : String(value || "").split(/[,|;\s]+/)))
@@ -783,66 +725,180 @@ function normalizeTag(value) {
   return tag && tag !== "NONE" && tag !== "NULL" ? tag : "";
 }
 
-function normalizeDedupeToken(value) {
+function contractDisplayKey(record, contractId = 0) {
+  if (!record) return "";
+  const id = Number(record.m_ContractID || record.ContractID || record.contractId || contractId) || 0;
+  const baseRecord = getContractRecord(id) || {};
+  const category = Number(record.m_ContractCategory || baseRecord.m_ContractCategory || 0) || 0;
+  const unitKey = normalizeContractIdentity(record.m_addUnitStrId || baseRecord.m_addUnitStrId || record.addUnitStrId || "");
+  const nameKey = normalizeContractIdentity(record.m_ContractName || baseRecord.m_ContractName || record.m_ContractStrID || "");
+  const bannerKey = normalizeContractIdentity(record.m_MainBannerFileName || baseRecord.m_MainBannerFileName || record.m_ContractBannerName || "");
+  const identity = unitKey || nameKey || bannerKey;
+  return identity ? `${category}:${identity}` : "";
+}
+
+function scoreContractRecord(entry, clockState) {
+  const record = entry && entry.record || {};
+  const contractId = Number(entry && entry.contractId || record.m_ContractID || 0) || 0;
+  const tags = [...getRecordOpenTags(record), ...getRecordIntervalTags(record)];
+  let score = contractId;
+  if (hasActiveClockTag(record, clockState)) score += 1_000_000_000;
+  for (const tag of tags) {
+    const text = String(tag || "").toUpperCase();
+    if (text.includes("GLOBAL")) score += 1_000_000;
+    const version = text.match(/_V(\d+)\b/);
+    if (version) score += Number(version[1] || 0) * 100_000;
+    if (text.includes("TUTORIAL")) score -= 200_000_000;
+    if (text.includes("OLD_VERSION")) score -= 1_000_000_000;
+  }
+  score += Math.max(0, Number(record.m_Priority || 0) || 0);
+  return score;
+}
+
+function isRetiredContractRecord(record, contractId = 0) {
+  const id = Number(record && (record.m_ContractID || record.ContractID || record.contractId)) || Number(contractId) || 0;
+  const baseRecord = getContractRecord(id) || {};
+  const text = [
+    ...getRecordOpenTags(record),
+    ...getRecordOpenTags(baseRecord),
+    ...getRecordIntervalTags(record),
+    ...getRecordIntervalTags(baseRecord),
+    String(record && (record.m_ContractName || record.m_ContractStrID) || ""),
+    String(baseRecord && (baseRecord.m_ContractName || baseRecord.m_ContractStrID) || ""),
+  ].join("|").toUpperCase();
+  return (
+    text.includes("TAG_KOR_CONTRACT_OLD_VERSION") ||
+    text.includes("DATE_KOR_CONTRACT_OLD_VERSION") ||
+    text.includes("DATE_GLOBAL_CLASSIFIED_OLD_VERSION") ||
+    text.includes("SI_NAME_CONTRACT_OLD")
+  );
+}
+
+function normalizeContractIdentity(value) {
   return String(value || "")
     .trim()
     .toUpperCase()
+    .replace(/^NKM_UNIT_/, "")
+    .replace(/^SI_NAME_UNIT_/, "")
+    .replace(/^SI_UNIT_NAME_/, "")
+    .replace(/^SI_UNIT_TITLE_/, "")
     .replace(/[^A-Z0-9]+/g, "_")
     .replace(/^_+|_+$/g, "");
 }
 
-function normalizeContractUnitToken(value) {
-  return normalizeDedupeToken(value)
-    .replace(/^NKM_UNIT_/, "")
-    .replace(/^SI_UNIT_NAME_/, "")
-    .replace(/^SI_UNIT_TITLE_/, "")
-    .replace(/^SI_NAME_UNIT_/, "");
-}
-
-function isObsoleteContractContentsTag(tag) {
-  const key = String(tag || "").toUpperCase();
-  return (
-    key === "TAG_GLOBAL_CONTRACT_BASIC" ||
-    key === "TAG_GLOBAL_CONTRACT_OPERATOR_TUTORIAL" ||
-    key === "TAG_GLOBAL_CONTRACT_CBT" ||
-    key === "TAG_GLOBAL_CONTRACT_OBT"
-  );
-}
-
-function isPlaceholderContractUnitKey(value) {
-  const key = normalizeDedupeToken(value);
-  return key === "NKM_NPC_ADMINISTRATOR" || key === "NPC_ADMINISTRATOR" || key === "ADMINISTRATOR";
-}
-
 function getContractState(user, contractId, ctx) {
   ensureContractStateStore(user);
+  const record = resolveContractRecord(contractId) || {};
   const resetDate = getContractNextResetDate(contractId, ctx);
   if (!user) {
-    return {
-      contractId: Number(contractId) || 0,
-      remainFreeChance: Number((getContractRecord(contractId) || {}).m_FreeTryCnt || 0),
-      nextResetDate: String(resetDate),
-      isActive: true,
-      totalUseCount: 0,
-      dailyUseCount: 0,
-      bonusCandidate: [],
-    };
+    return normalizeContractState(
+      {},
+      record,
+      {
+        contractId: Number(contractId) || 0,
+        remainFreeChance: getContractFreeTryCount(record),
+        nextResetDate: String(resetDate),
+        isActive: true,
+        totalUseCount: 0,
+        dailyUseCount: 0,
+        bonusCandidate: [],
+      },
+      ctx
+    );
   }
   const key = String(contractId);
   const existing = user.contractStates[key] || {};
-  const record = getContractRecord(contractId) || {};
-  const freeChance = existing.remainFreeChance != null ? existing.remainFreeChance : Number(record.m_FreeTryCnt || 0);
-  const state = {
-    contractId: Number(contractId) || 0,
-    remainFreeChance: Math.max(0, Number(freeChance) || 0),
-    nextResetDate: String(resetDate),
-    isActive: existing.isActive !== false,
-    totalUseCount: Number(existing.totalUseCount || 0),
-    dailyUseCount: Number(existing.dailyUseCount || 0),
-    bonusCandidate: Array.isArray(existing.bonusCandidate) ? existing.bonusCandidate : [],
-  };
+  const state = normalizeContractState(
+    existing,
+    record,
+    {
+      contractId: Number(contractId) || 0,
+      remainFreeChance:
+        existing.remainFreeChance != null ? existing.remainFreeChance : getContractFreeTryCount(record),
+      nextResetDate: String(resetDate),
+      isActive: existing.isActive !== false,
+      totalUseCount: Number(existing.totalUseCount || 0),
+      dailyUseCount: Number(existing.dailyUseCount || 0),
+      bonusCandidate: Array.isArray(existing.bonusCandidate) ? existing.bonusCandidate : [],
+    },
+    ctx
+  );
   user.contractStates[key] = state;
   return state;
+}
+
+function normalizeContractState(existing, record, baseState, ctx) {
+  const nowDate = getContractNowDate(ctx);
+  const dailyResetKey = getContractDailyResetKey(nowDate);
+  const freeTryCount = getContractFreeTryCount(record);
+  const freeCountDays = getContractFreeCountDays(record);
+  const hasFreeChance = freeTryCount > 0;
+  const hasDailyReset = hasFreeChance || getContractDailyLimit(record) > 0;
+  const nextDailyResetDate = getNextContractDailyResetDate(nowDate);
+  const windowKey = getContractWindowKey(record, ctx);
+  const previousWindowKey = String(existing && existing.contractWindowKey || "");
+  const changedWindow = previousWindowKey && windowKey && previousWindowKey !== windowKey;
+  const previousDailyResetKey = String(existing && existing.dailyResetKey || "");
+  const changedDay = previousDailyResetKey && previousDailyResetKey !== dailyResetKey;
+  const accumulated = calculateAccumulatedFreeGrant(record, existing, ctx, nowDate);
+  let totalUseCount = Math.max(0, Math.trunc(Number(baseState.totalUseCount || 0) || 0));
+  let dailyUseCount = Math.max(0, Math.trunc(Number(baseState.dailyUseCount || 0) || 0));
+  let freeUseCount = Math.max(0, Math.trunc(Number(existing && existing.freeUseCount || 0) || 0));
+  let dailyFreeUseCount = Math.max(0, Math.trunc(Number(existing && existing.dailyFreeUseCount || 0) || 0));
+  let remainFreeChance = Math.max(0, Math.trunc(Number(baseState.remainFreeChance || 0) || 0));
+  let nextResetDate = baseState.nextResetDate;
+
+  if (changedWindow) {
+    totalUseCount = 0;
+    dailyUseCount = 0;
+    freeUseCount = 0;
+    dailyFreeUseCount = 0;
+    remainFreeChance = freeTryCount;
+  } else if (changedDay) {
+    dailyUseCount = 0;
+    dailyFreeUseCount = 0;
+  }
+
+  if (hasDailyReset) nextResetDate = String(dateTimeBinaryForDate(nextDailyResetDate));
+
+  if (hasFreeChance) {
+    if (hasResettingFreeChance(record)) {
+      if (existing && existing.dailyFreeUseCount == null && existing.remainFreeChance != null && !changedDay) {
+        dailyFreeUseCount = Math.max(0, freeTryCount - Math.max(0, Number(existing.remainFreeChance) || 0));
+      }
+      remainFreeChance = Math.max(0, freeTryCount - dailyFreeUseCount);
+    } else {
+      if (existing && existing.freeUseCount == null && existing.remainFreeChance != null && !changedWindow) {
+        freeUseCount = Math.max(0, accumulated.grantCount - Math.max(0, Number(existing.remainFreeChance) || 0));
+      }
+      remainFreeChance = Math.max(0, accumulated.grantCount - freeUseCount);
+      if (freeCountDays > 0 && accumulated.grantDays >= freeCountDays) {
+        const intervalWindow = getContractIntervalWindow(record, ctx);
+        nextResetDate =
+          intervalWindow && intervalWindow.endDate
+            ? String(dateTimeBinaryForDate(intervalWindow.endDate))
+            : String(farFutureDateTimeBinary());
+      }
+    }
+  }
+
+  const totalLimit = getContractTotalLimit(record);
+  if (totalLimit > 0) totalUseCount = Math.min(totalUseCount, totalLimit);
+
+  return {
+    contractId: Number(baseState.contractId || 0) || 0,
+    remainFreeChance,
+    nextResetDate: String(nextResetDate || farFutureDateTimeBinary()),
+    isActive: baseState.isActive !== false,
+    totalUseCount,
+    dailyUseCount,
+    bonusCandidate: Array.isArray(baseState.bonusCandidate) ? baseState.bonusCandidate : [],
+    freeUseCount,
+    dailyFreeUseCount,
+    dailyResetKey,
+    freeGrantStartIso: accumulated.grantStartDate ? accumulated.grantStartDate.toISOString() : existing && existing.freeGrantStartIso,
+    contractWindowKey: windowKey || previousWindowKey,
+  };
 }
 
 function getContractBonusState(user, contractId) {
@@ -863,12 +919,18 @@ function getContractBonusState(user, contractId) {
 
 function applyContractRewards(ctx, user, contractId, count, reward, options = {}) {
   const state = getContractState(user, contractId, ctx);
-  state.totalUseCount += Math.max(1, Number(count) || 1);
-  state.dailyUseCount += Math.max(1, Number(count) || 1);
-  if (state.remainFreeChance > 0) state.remainFreeChance = Math.max(0, state.remainFreeChance - Math.max(1, Number(count) || 1));
+  const requestCount = Math.max(1, Number(count) || 1);
+  state.totalUseCount += requestCount;
+  state.dailyUseCount += requestCount;
+  if (Number(options.costType) === CONTRACT_COST_TYPE.FREE_CHANCE) {
+    state.freeUseCount = Math.max(0, Number(state.freeUseCount || 0) || 0) + requestCount;
+    state.dailyFreeUseCount = Math.max(0, Number(state.dailyFreeUseCount || 0) || 0) + requestCount;
+    state.remainFreeChance = Math.max(0, state.remainFreeChance - requestCount);
+  }
   if (!options.skipResultRewards && reward && Array.isArray(reward.miscItems)) {
     applyRecordResultRewards(ctx, user, getContractRecord(contractId) || {}, count, reward);
   }
+  getContractState(user, contractId, ctx);
 }
 
 function applyRecordResultRewards(ctx, user, record, count, reward) {
@@ -1191,11 +1253,12 @@ function getCustomPickupContractState(user, customPickupId) {
   ensureContractStateStore(user);
   const record = getCustomPickupContractRecords().find((entry) => Number(entry.customPickupId) === Number(customPickupId)) || {};
   const includeOperators = String(record.m_ContractType || "") === "OPERATOR";
+  const defaultTarget = normalizeCustomPickupTarget(record, 0, { includeOperators });
   if (!user) {
     return {
       customPickupId: Number(customPickupId) || 0,
       totalUseCount: 0,
-      customPickupTargetUnitId: 0,
+      customPickupTargetUnitId: defaultTarget,
       currentSelectCount: 0,
     };
   }
@@ -1203,14 +1266,12 @@ function getCustomPickupContractState(user, customPickupId) {
   const existing = user.customPickupContracts[key] || findCustomPickupStateByType(user, record) || {};
   const maxSelectCount = getCustomPickupMaxSelectCount(record);
   const currentSelectCount = Math.max(0, Number(existing.currentSelectCount || 0));
-  const existingTarget = Number(existing.customPickupTargetUnitId || 0);
-  const selectedTarget = existingTarget > 0 && currentSelectCount > 0
-    ? normalizeCustomPickupTarget(record, existingTarget, { includeOperators })
-    : 0;
   const state = {
     customPickupId: Number(customPickupId) || 0,
     totalUseCount: Number(existing.totalUseCount || 0),
-    customPickupTargetUnitId: selectedTarget,
+    customPickupTargetUnitId: normalizeCustomPickupTarget(record, existing.customPickupTargetUnitId || defaultTarget, {
+      includeOperators,
+    }),
     currentSelectCount: maxSelectCount > 0 ? Math.min(currentSelectCount, maxSelectCount) : currentSelectCount,
   };
   user.customPickupContracts[key] = state;
@@ -1275,10 +1336,21 @@ function findCustomPickupStateByType(user, record) {
 function normalizeCustomPickupTarget(record, targetUnitId, options = {}) {
   const entries = getContractPoolUnitEntries(record && record.m_UnitPoolID, options).filter((entry) => entry.pickupTarget);
   const requested = Number(targetUnitId || 0);
-  if (!Number.isInteger(requested) || requested <= 0) return 0;
   if (requested > 0 && entries.some((entry) => Number(entry.unitId) === requested)) return requested;
-  if (requested <= entries.length) return Number(entries[requested - 1] && entries[requested - 1].unitId) || 0;
-  return 0;
+  if (requested > 0 && isValidCustomPickupFallbackTarget(record, requested, options)) return requested;
+  return Number(entries[0] && entries[0].unitId) || 0;
+}
+
+function isValidCustomPickupFallbackTarget(record, unitId, options = {}) {
+  if (!record || Number(record.customPickupId) <= 0) return false;
+  if (options.includeOperators === true) return false;
+  if (getCustomPickupType(record) !== "AWAKEN") return false;
+
+  const unit = getUnitTemplet(unitId);
+  if (!unit || unit.m_bMonster === true || unit.m_bAwaken !== true || unit.m_bContractable !== true) return false;
+  const type = String(unit.m_NKM_UNIT_TYPE || "");
+  const style = String(unit.m_NKM_UNIT_STYLE_TYPE || "");
+  return type !== "NUT_SYSTEM" && type !== "NUT_SHIP" && type !== "NUT_OPERATOR" && style !== "NUST_TRAINER";
 }
 
 function getSelectableContractState(user, requestedContractId = 0) {
@@ -1495,8 +1567,5 @@ module.exports = {
   buildContractBonusStateData,
   buildCustomPickupContractData,
   getAllCustomPickupContracts,
-  filterDuplicateContractOpenTags,
-  filterDuplicateContractIntervalTags,
-  filterDuplicateContractIntervalData,
   openMiscContract,
 };

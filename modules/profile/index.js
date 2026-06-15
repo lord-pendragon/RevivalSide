@@ -216,7 +216,7 @@ function buildUserProfileData(user) {
     writeNullableObjectList((user.profileEmblems || []).map(buildEmblemData)),
     writeSignedVarInt(Number(user.selfiFrameId || user.frameId || 0) || 0),
     writeNullableObject(buildGuildSimpleData()),
-    writeBool(false),
+    writeBool(Boolean(user.hasOffice || user.office)),
     writeSignedVarInt(0),
   ]);
 }

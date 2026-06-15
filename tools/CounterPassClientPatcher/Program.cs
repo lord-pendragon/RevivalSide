@@ -66,6 +66,7 @@ if (options.ApplyGearPresetSelectionFix && PatchGearPresetSelectionFix(module)) 
 if (options.ApplyGearInventoryOkBindFix && PatchGearInventoryOkBindFix(module)) patches.Add("gear-inventory-ok-bind-fix");
 if (options.ApplyGearInventoryStateRepair && PatchGearInventoryStateRepair(module)) patches.Add("gear-inventory-state-repair");
 if (options.ApplyEpisodeProgressDifficultyFix && PatchEpisodeProgressDifficultyFix(module)) patches.Add("episode-progress-difficulty-fix");
+if (options.ApplyOperatorContractCategoryFix && PatchOperatorContractCategoryFix(module)) patches.Add("operator-contract-category-fix");
 if (options.ApplySteamLocalLogin && PatchSteamLocalLogin(module)) patches.Add("steam-local-login");
 var changed = patches.Count > 0;
 if (!changed)
@@ -139,6 +140,7 @@ static int PrintStatus(string assemblyPath, string backupPath)
     Console.WriteLine($"[counter-pass-patch] gear-inventory-ok-bind-fix={HasGearInventoryOkBindFix(module)}");
     Console.WriteLine($"[counter-pass-patch] gear-inventory-state-repair={HasGearInventoryStateRepair(module)}");
     Console.WriteLine($"[counter-pass-patch] episode-progress-difficulty-fix={HasEpisodeProgressDifficultyFix(module)}");
+    Console.WriteLine($"[counter-pass-patch] operator-contract-category-fix={HasOperatorContractCategoryFix(module)}");
     Console.WriteLine($"[counter-pass-patch] steam-local-login={HasSteamLocalLoginPatch(module)}");
     return 0;
 }
@@ -292,6 +294,78 @@ static MethodDefinition? FindEpisodeProgressByTempletMethod(ModuleDefinition mod
         && item.Parameters[0].ParameterType.FullName == "NKM.NKMUserData"
         && item.Parameters[1].ParameterType.FullName == "NKM.Templet.NKMEpisodeTempletV2"
         && item.ReturnType.MetadataType == MetadataType.Int32);
+}
+
+static bool PatchOperatorContractCategoryFix(ModuleDefinition module)
+{
+    var getter = FindContractCategoryGetter(module)
+        ?? throw new InvalidOperationException("ContractTempletBase.Category getter was not found.");
+    if (HasOperatorContractCategoryFix(module)) return false;
+
+    var baseType = FindTypeDefinition(module, "NKM.Contract2.ContractTempletBase")
+        ?? throw new InvalidOperationException("NKM.Contract2.ContractTempletBase was not found.");
+    var v2Type = FindTypeDefinition(module, "NKM.Contract2.ContractTempletV2")
+        ?? throw new InvalidOperationException("NKM.Contract2.ContractTempletV2 was not found.");
+    var baseDataType = FindTypeDefinition(module, "NKM.Contract2.Detail.ContractBaseData")
+        ?? throw new InvalidOperationException("NKM.Contract2.Detail.ContractBaseData was not found.");
+    var baseDataField = baseType.Fields.FirstOrDefault(field => field.Name == "baseData")
+        ?? throw new InvalidOperationException("ContractTempletBase.baseData was not found.");
+    var unitTypeField = v2Type.Fields.FirstOrDefault(field => field.Name == "m_NKM_UNIT_TYPE")
+        ?? throw new InvalidOperationException("ContractTempletV2.m_NKM_UNIT_TYPE was not found.");
+    var categoryField = baseDataType.Fields.FirstOrDefault(field => field.Name == "m_ContractCategory")
+        ?? throw new InvalidOperationException("ContractBaseData.m_ContractCategory was not found.");
+    var operatorUnitType = FindEnumConstant(module, "NKM.Templet.NKM_UNIT_TYPE", "NUT_OPERATOR");
+
+    ClearMethodBody(getter, initLocals: true);
+    var v2Local = new VariableDefinition(module.ImportReference(v2Type));
+    getter.Body.Variables.Add(v2Local);
+
+    var il = getter.Body.GetILProcessor();
+    var returnOriginalCategory = il.Create(OpCodes.Ldarg_0);
+
+    il.Append(il.Create(OpCodes.Ldarg_0));
+    il.Append(il.Create(OpCodes.Isinst, module.ImportReference(v2Type)));
+    il.Append(il.Create(OpCodes.Stloc_0));
+    il.Append(il.Create(OpCodes.Ldloc_0));
+    il.Append(il.Create(OpCodes.Brfalse_S, returnOriginalCategory));
+    il.Append(il.Create(OpCodes.Ldloc_0));
+    il.Append(il.Create(OpCodes.Ldfld, module.ImportReference(unitTypeField)));
+    il.Append(CreateLoadInt(il, operatorUnitType));
+    il.Append(il.Create(OpCodes.Bne_Un_S, returnOriginalCategory));
+    il.Append(il.Create(OpCodes.Ldarg_0));
+    il.Append(il.Create(OpCodes.Ldfld, module.ImportReference(baseDataField)));
+    il.Append(il.Create(OpCodes.Ldfld, module.ImportReference(categoryField)));
+    il.Append(CreateLoadInt(il, 50));
+    il.Append(il.Create(OpCodes.Bne_Un_S, returnOriginalCategory));
+    il.Append(CreateLoadInt(il, 300));
+    il.Append(il.Create(OpCodes.Ret));
+    il.Append(returnOriginalCategory);
+    il.Append(il.Create(OpCodes.Ldfld, module.ImportReference(baseDataField)));
+    il.Append(il.Create(OpCodes.Ldfld, module.ImportReference(categoryField)));
+    il.Append(il.Create(OpCodes.Ret));
+    return true;
+}
+
+static bool HasOperatorContractCategoryFix(ModuleDefinition module)
+{
+    var getter = FindContractCategoryGetter(module);
+    if (getter == null || !getter.HasBody) return false;
+    return getter.Body.Instructions.Any(instruction =>
+            instruction.OpCode.Code == Code.Isinst
+            && instruction.Operand is TypeReference typeReference
+            && typeReference.FullName == "NKM.Contract2.ContractTempletV2")
+        && getter.Body.Instructions.Any(instruction => IsLoadInt(instruction, 300));
+}
+
+static MethodDefinition? FindContractCategoryGetter(ModuleDefinition module)
+{
+    var baseType = FindTypeDefinition(module, "NKM.Contract2.ContractTempletBase");
+    return baseType?.Properties.FirstOrDefault(property => property.Name == "Category")?.GetMethod
+        ?? baseType?.Methods.FirstOrDefault(method =>
+            method.Name == "get_Category"
+            && method.HasBody
+            && method.Parameters.Count == 0
+            && method.ReturnType.MetadataType == MetadataType.Int32);
 }
 
 static bool PatchCounterPassUnlock(ModuleDefinition module)
@@ -2192,6 +2266,7 @@ sealed record PatchOptions(
     bool ApplyGearInventoryOkBindFix,
     bool ApplyGearInventoryStateRepair,
     bool ApplyEpisodeProgressDifficultyFix,
+    bool ApplyOperatorContractCategoryFix,
     bool ApplySteamLocalLogin)
 {
     public static PatchOptions Parse(string[] args)
@@ -2224,6 +2299,7 @@ sealed record PatchOptions(
             ApplyGearInventoryStateRepair: (legacyAll || HasArg(args, "--include-gear-inventory-state-repair"))
                 && !HasArg(args, "--no-gear-inventory-state-repair"),
             ApplyEpisodeProgressDifficultyFix: !HasArg(args, "--no-episode-progress-difficulty-fix"),
+            ApplyOperatorContractCategoryFix: !HasArg(args, "--no-operator-contract-category-fix"),
             ApplySteamLocalLogin: (envSteamLocalLoginEnabled == true || HasArg(args, "--include-steam-local-login"))
                 && !HasArg(args, "--no-steam-local-login"));
     }

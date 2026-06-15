@@ -134,7 +134,9 @@ function buildWikiAssetCache({ args, cacheRoot, finalRoot, requests, inventory, 
         ],
         args
       );
+      removePathWithRetries(decryptOut);
     }
+    removePathWithRetries(decryptedRoot, { bestEffort: true, attempts: 2 });
 
     const extractedRoots = listExtractedRoots(extractedRoot);
     let copied = 0;
@@ -154,6 +156,8 @@ function buildWikiAssetCache({ args, cacheRoot, finalRoot, requests, inventory, 
     if (copied <= 0) {
       throw new Error(`installed wiki asset extraction copied no PNGs; first missing: ${missing[0] || "(none)"}`);
     }
+
+    removePathWithRetries(workRoot);
 
     const manifest = {
       version: 1,

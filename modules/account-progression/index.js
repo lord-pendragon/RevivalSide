@@ -29,6 +29,7 @@ const DEFAULT_PROFILE_EMBLEM_SLOTS = Number(process.env.CS_PROFILE_EMBLEM_SLOTS 
 const ACHIEVEMENT_POINT_ITEM_ID = 202;
 const DAILY_MISSION_POINT_ID = 203;
 const WEEKLY_MISSION_POINT_ID = 204;
+const ADMIN_COIN_ITEM_ID = 102;
 const DAILY_MISSION_TAB_ID = 2;
 const WEEKLY_MISSION_TAB_ID = 3;
 const TICKS_AT_UNIX_EPOCH = 621355968000000000n;
@@ -627,6 +628,9 @@ function evaluateMissionProgress(user, row, options = {}) {
   if (condition === "MISSION_CLEAR") return countClaimedMissions(user);
 
   const scopedCounter = getMissionScopedCounter(user, row, condition, options.now);
+  if (condition === "USE_RESOURCE" && missionValueNumbers(row).includes(ADMIN_COIN_ITEM_ID)) {
+    return Math.max(scopedCounter, getAdminCoinSpendTotal(user));
+  }
   const derived = evaluateDerivedMissionProgress(user, row, condition);
   return Math.max(scopedCounter, derived);
 }
@@ -721,6 +725,15 @@ function getMissionScopedCounter(user, row, condition, now) {
   const values = missionValueNumbers(row);
   if (!values.length) return Number(counters[condition] || 0);
   return Math.max(...values.map((value) => Number(counters[`${condition}:${value}`] || 0)), 0);
+}
+
+function getAdminCoinSpendTotal(user) {
+  if (!user || typeof user !== "object") return 0;
+  const values = [user.shopTotalPaidAmount, user.totalPaidAmount, user.totalPayment];
+  return values.reduce((max, value) => {
+    const number = Number(value);
+    return Number.isFinite(number) && number > max ? number : max;
+  }, 0);
 }
 
 function getClassifiedMissionCounter(counters, condition, classifier) {

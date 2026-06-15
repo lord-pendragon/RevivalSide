@@ -64,6 +64,7 @@ const {
   addUnitExp,
   addOperatorExp,
 } = require("../modules/unit");
+const { INVENTORY_TYPES, getInventoryCapacity } = require("../modules/inventory-capacity");
 const {
   buildUnitData: buildSerializedUnitData,
   buildOperatorData: buildSerializedOperatorData,
@@ -74,8 +75,10 @@ const {
   buildDeckIndexData: buildSerializedDeckIndexData,
   buildDeckData: buildSerializedDeckData,
   buildRewardData: buildSerializedRewardData,
+  buildMoldItemData: buildSerializedMoldItemData,
+  buildCraftSlotData: buildSerializedCraftSlotData,
 } = require("../modules/packet-codec");
-const { getEquipItems } = require("../modules/equipment");
+const { getEquipItems, getMoldItems, getCraftSlots } = require("../modules/equipment");
 const {
   ensureAccountProgress,
   grantStageClearExp,
@@ -99,7 +102,12 @@ const {
   buildAttendanceData: buildSerializedAttendanceData,
   buildAttendanceIntervalDataList: buildSerializedAttendanceIntervalDataList,
 } = require("../modules/attendance");
-const { loadShopCatalog, buildSerializedRandomShopData, ensureActiveEventShopCurrencies } = require("../modules/shop");
+const {
+  loadShopCatalog,
+  buildSerializedRandomShopData,
+  getActiveEventShopState,
+  ensureActiveEventShopCurrencies,
+} = require("../modules/shop");
 const { getShopPurchaseHistories, getShopTotalPaidAmount } = require("../modules/resource");
 const {
   getContentUnlocksForDungeon,
@@ -114,15 +122,18 @@ const {
   getAllContractBonusStates,
   getSelectableContractState,
   getAllCustomPickupContracts,
-  filterDuplicateContractOpenTags,
-  filterDuplicateContractIntervalData,
   buildCustomPickupContractData: buildSerializedCustomPickupContractData,
 } = require("../modules/contract");
+const { buildMyOfficeStateData: buildSerializedMyOfficeStateData } = require("../modules/office");
 const lobbyCustomization = require("../modules/lobby");
 const simulation = require("../modules/simulation");
 const stamina = require("../modules/stamina");
 const collection = require("../modules/collection");
 const worldMap = require("../modules/world-map");
+const {
+  ensureStageFavorites,
+  buildFavoritesStageAckPayload: buildStageFavoritesAckPayload,
+} = require("../modules/stage-favorites");
 const {
   buildSupportUnitData: buildPersistedSupportUnitData,
   ensureSupportUnit,
@@ -150,6 +161,18 @@ function envFlagDefault(defaultValue, ...keys) {
   return Boolean(defaultValue);
 }
 
+function parseOptionalChanceEnv(value) {
+  if (value == null) return null;
+  const parsed = Number(value);
+  if (!Number.isFinite(parsed)) return null;
+  return clamp(Math.trunc(parsed), 0, STAGE_REWARD_CHANCE_DENOMINATOR);
+}
+
+function parseChanceEnv(value, fallback) {
+  const parsed = parseOptionalChanceEnv(value);
+  return parsed == null ? fallback : parsed;
+}
+
 function resolveNewAccountRosterMode() {
   const explicit = String(process.env.CS_NEW_ACCOUNT_ROSTER_MODE || "").trim().toLowerCase();
   if (["all", "debug-all"].includes(explicit)) return "all";
@@ -175,6 +198,22 @@ function resolveGuideMissionTabs() {
     return uniqueMissionTabs(tabs);
   } catch (_) {
     return [20001, 20002, 20003, 20004, 20005, 20006, 20007, 20008, 20009, 20010, 20011, 20012, 20013];
+  }
+}
+
+function resolvePaybackMissionTabs() {
+  try {
+    const tabs = getMissionTabTemplets()
+      .filter((tab) => {
+        const openTag = String(tab && tab.m_OpenTag || "").toUpperCase();
+        const dateStrId = String(tab && tab.m_DateStrID || "").toUpperCase();
+        return openTag.includes("EVENT_PAYBACK") || dateStrId.includes("EVENT_PAYBACK");
+      })
+      .map((tab) => Number(tab && tab.m_TabID || 0))
+      .filter((tabId) => Number.isInteger(tabId) && tabId > 0);
+    return uniqueMissionTabs(tabs);
+  } catch (_) {
+    return [8001, 8002, 8004, 8006, 8008, 8010, 8012, 8014];
   }
 }
 
@@ -242,6 +281,7 @@ const POST_LIST_ACK = 1615;
 const MISSION_UPDATE_NOT = 1619;
 const MISSION_COMPLETE_REQ = 1620;
 const MISSION_COMPLETE_ACK = 1621;
+const FIERCE_SEASON_NOT = 854;
 const DEFENCE_INFO_ACK = 3905;
 const NPT_GAME_SYNC_DATA_PACK_NOT = 822;
 const NGT_DUNGEON = 3;
@@ -273,6 +313,23 @@ const DUNGEON_TABLE_PATH = process.env.CS_DUNGEON_TABLE_PATH || path.join(ROOT_D
 const STAGE_TABLE_PATH = process.env.CS_STAGE_TABLE_PATH || "";
 const MAP_TABLE_PATH = process.env.CS_MAP_TABLE_PATH || "";
 const USE_LOCAL_USER_DB = process.env.CS_USE_LOCAL_USER_DB !== "0";
+const STAGE_REWARD_CHANCE_DENOMINATOR = 10000;
+const FIERCE_DAY_MS = 24 * 60 * 60 * 1000;
+const STAGE_FULL_ACTOR_REWARD_GROUP_CHANCE = parseChanceEnv(
+  process.env.CS_STAGE_FULL_ACTOR_REWARD_GROUP_CHANCE || process.env.CS_STAGE_UNIT_DROP_CHANCE,
+  500
+);
+const FIERCE_ROTATION_ANCHOR_ISO = process.env.CS_FIERCE_ROTATION_ANCHOR || "2025-10-01T03:00:00.000Z";
+const FIERCE_ROTATION_CYCLE_DAYS = Math.max(1, Number(process.env.CS_FIERCE_ROTATION_CYCLE_DAYS || 14) || 14);
+const FIERCE_ROTATION_GAME_DAYS = Math.min(
+  FIERCE_ROTATION_CYCLE_DAYS,
+  Math.max(1, Number(process.env.CS_FIERCE_ROTATION_GAME_DAYS || 7) || 7)
+);
+const SEND_FIERCE_SEASON_BOOTSTRAP = envFlagDefault(
+  true,
+  "CS_SEND_FIERCE_SEASON_BOOTSTRAP",
+  "CS_FIERCE_SEASON_BOOTSTRAP"
+);
 const REPLAY_CAPTURED_CONTENTS_VERSION = process.env.CS_REPLAY_CAPTURED_CONTENTS_VERSION !== "0";
 const REPLAY_CAPTURED_LOGIN_ACK = process.env.CS_REPLAY_CAPTURED_LOGIN_ACK !== "0";
 const REPLAY_CAPTURED_GAME_FLOW = process.env.CS_REPLAY_CAPTURED_GAME_FLOW !== "0";
@@ -323,6 +380,7 @@ const LOCAL_JOIN_LOBBY_ACK_MODE = String(process.env.CS_USE_LOCAL_JOIN_LOBBY_ACK
 const USE_LOCAL_JOIN_LOBBY_ACK = LOCAL_JOIN_LOBBY_ACK_MODE === "1" || LOCAL_JOIN_LOBBY_ACK_MODE === "true";
 const LOBBY_LOCAL_MISSION_DATA = envFlagDefault(true, "lobbyLocalMissionData", "LOBBYLOCALMISSIONDATA", "CS_LOBBY_LOCAL_MISSION_DATA");
 const GUIDE_MISSION_TABS = Object.freeze(resolveGuideMissionTabs());
+const PAYBACK_MISSION_TABS = Object.freeze(resolvePaybackMissionTabs());
 const SIMULATION_MISSION_TABS = [6, 7, 8];
 const FAST_LOBBY_MISSION_TABS = uniqueMissionTabs([1, 2, 3, ...SIMULATION_MISSION_TABS, ...GUIDE_MISSION_TABS]);
 const POST_TUTORIAL_MIN_USER_LEVEL = Math.max(2, Number(process.env.CS_POST_TUTORIAL_MIN_USER_LEVEL || 2) || 2);
@@ -376,6 +434,13 @@ const SUPPRESSED_STORY_OPEN_TAGS = Object.freeze(getSuppressedStoryOpenTags());
 const SUPPRESSED_STORY_OPEN_TAG_SET = new Set(SUPPRESSED_STORY_OPEN_TAGS.map((tag) => String(tag || "").toUpperCase()));
 const EXPLICIT_OPEN_TAGS = Object.freeze(parseTags(process.env.CS_OPEN_TAGS || ""));
 const EXPLICIT_OPEN_TAG_SET = new Set(EXPLICIT_OPEN_TAGS.map((tag) => String(tag || "").toUpperCase()));
+const CUSTOM_OPERATOR_OPEN_TAG_SET = new Set(["TAG_GLOBAL_CONTRACT_CUSTOM_OPR", "TAG_GLOBAL_CONTRACT_CUSTOM_OPR_COMEBACK"]);
+const OBSOLETE_CONTRACT_OPEN_TAG_SET = new Set([
+  "TAG_GLOBAL_CONTRACT_OPERATOR_TUTORIAL",
+  "TAG_GLOBAL_CONTRACT_CBT",
+  "TAG_GLOBAL_CONTRACT_OBT",
+  "TAG_KOR_CONTRACT_OLD_VERSION",
+]);
 const REQUIRED_INTERVAL_TAGS = Object.freeze([
   "DATE_GLOBAL_CONTRACT_SELECTABLE",
   "DATE_GLOBAL_CONTRACT_CUSTOM_SSR_V2",
@@ -394,7 +459,6 @@ const eventManager = createEventManager({ rootDir: ROOT_DIR, env: process.env })
 const serverTime = createServerTime({
   rootDir: ROOT_DIR,
   statePath: SERVER_TIME_STATE_PATH,
-  eventManager,
   logger: (message) => console.log(message),
 });
 const runtimeEventManager = createRuntimeEventManager(eventManager);
@@ -405,6 +469,12 @@ const EVENT_COUNTER_PASS_CONTENTS_TAGS_ENABLED = envFlagDefault(
   "CS_EVENT_EMIT_COUNTER_PASS_CONTENTS_TAGS",
   "CS_COUNTER_PASS_CONTENTS_TAGS"
 );
+const EVENT_SHOP_CONTENTS_TAGS_ENABLED = envFlagDefault(
+  true,
+  "CS_EVENT_SHOP_EMIT_CONTENTS_TAGS",
+  "CS_EVENT_SHOP_CONTENTS_TAGS"
+);
+const EVENT_SHOP_OPEN_TAGS_ENABLED = envFlagDefault(true, "CS_EVENT_SHOP_EMIT_OPEN_TAGS", "CS_EVENT_SHOP_OPEN_TAGS");
 
 const CRYPTO_MASKS = [
   14170986657190717782n,
@@ -427,6 +497,11 @@ const capturedCombatReplayEntries = buildCapturedCombatReplayEntries(capturedGam
 const capturedFlowMirror = loadCapturedFlowMirror(CAPTURED_FLOW_DIR);
 const gameplayUnitStats = loadGameplayUnitStats(UNIT_TABLE_PATH);
 const userDb = loadUserDb(USER_DB_PATH);
+const repairedDeckReferenceProfiles = repairUserDbDeckReferences(userDb);
+if (repairedDeckReferenceProfiles > 0 && USE_LOCAL_USER_DB) {
+  console.log(`[user-db] repaired stale deck references profiles=${repairedDeckReferenceProfiles}`);
+  saveUserDb();
+}
 const packetHandlers = loadPacketHandlers([PACKET_HANDLER_DIR, MODULE_HANDLER_ROOT], { rootDir: ROOT_DIR });
 const joinLobbyAckPayloadCache = new Map();
 const localProgressResetUsers = new Set();
@@ -500,6 +575,7 @@ const userManager = USER_MANAGER_ENABLED
       ensureUserDefaults,
       makeAccessToken,
       makeToken,
+      invalidateJoinLobbyAckPayloadCache,
     })
   : null;
 
@@ -592,11 +668,11 @@ function logRuntimeConfig() {
   );
   console.log(`[cfg] contentsVersion=${CONTENTS_VERSION}`);
   console.log(`[cfg] contentsTags=${CONTENTS_TAGS.length}`);
-  const eventSummary = eventManager.getSummary();
+  const eventSummary = runtimeEventManager.getSummary();
   const serverTimeSummary = serverTime.getSummary();
   console.log(
-    `[cfg] eventManager=${eventSummary.enabled ? "on" : "off"} date=${
-      eventSummary.dateInput || "(unset)"
+    `[cfg] eventManager=${eventSummary.enabled ? "on" : "off"} clockDate=${
+      eventSummary.dateIso || serverTimeSummary.eventDateKey || "(unset)"
     } profile=${eventSummary.profile} schedule=${eventSummary.officialScheduleEnabled ? "on" : "off"} dateProfiles=${
       eventSummary.dateProfilesEnabled ? "on" : "off"
     } tableScan=${eventSummary.tableScan} tables=${eventSummary.tableCount} entries=${
@@ -607,13 +683,19 @@ function logRuntimeConfig() {
       eventSummary.activeCounterPassCount
     } counterPassContentsTags=${EVENT_COUNTER_PASS_CONTENTS_TAGS_ENABLED ? "on" : "off"} openTags=${eventSummary.activeOpenTagCount}`
   );
+  const eventShopSummary = getActiveEventShopTags();
   console.log(
-    `[cfg] serverTime=${serverTimeSummary.mode || (serverTimeSummary.enabled ? "event-anchor" : "local")} current=${
+    `[cfg] eventShop=products:${eventShopSummary.productIds.length} tabs:${eventShopSummary.tabCount} currencies:${
+      eventShopSummary.priceItemIds.length
+    } contentsTags:${eventShopSummary.contentsTags.length} openTags:${eventShopSummary.openTags.length}`
+  );
+  console.log(
+    `[cfg] serverTime=${serverTimeSummary.mode || "local"} current=${
       serverTimeSummary.currentIso
-    } eventDate=${serverTimeSummary.eventDateKey || "(unset)"} state=${SERVER_TIME_STATE_PATH}`
+    } clockDate=${serverTimeSummary.eventDateKey || "(unset)"} state=${SERVER_TIME_STATE_PATH}`
   );
   if (EVENT_MANAGER_DIAGNOSTICS) {
-    process.stdout.write(eventManager.formatDiagnostics(getServerNowDate(), { limit: 12 }));
+    process.stdout.write(runtimeEventManager.formatDiagnostics(getServerNowDate(), { limit: 12 }));
   }
   if (capturedTcpProfiles.contentsVersionAck) {
     console.log(
@@ -801,13 +883,13 @@ function serveEventManagerDiagnostics(req, res) {
     url.searchParams.has("roots") ||
     url.searchParams.has("manager") ||
     url.searchParams.has("packaged");
-  const manager = hasOverrides ? createEventDiagnosticsManager(url, date) : eventManager;
-  const diagnostics = manager.getDiagnostics(diagnosticsDate || manager.config.eventDate, { limit });
+  const manager = hasOverrides ? createEventDiagnosticsManager(url) : runtimeEventManager;
+  const diagnostics = manager.getDiagnostics(diagnosticsDate, { limit });
   const format = String(url.searchParams.get("format") || "json").toLowerCase();
 
   if (format === "text") {
     res.writeHead(200, { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-store" });
-    res.end(manager.formatDiagnostics(diagnosticsDate || manager.config.eventDate, { limit }));
+    res.end(manager.formatDiagnostics(diagnosticsDate, { limit }));
     return true;
   }
 
@@ -816,9 +898,8 @@ function serveEventManagerDiagnostics(req, res) {
   return true;
 }
 
-function createEventDiagnosticsManager(url, date) {
+function createEventDiagnosticsManager(url) {
   const env = { ...process.env };
-  if (date) env.CS_EVENT_DATE = date;
   if (url.searchParams.has("scan")) env.CS_EVENT_TABLE_SCAN = url.searchParams.get("scan") || "";
   if (url.searchParams.has("roots")) env.CS_EVENT_TABLE_ROOTS = url.searchParams.get("roots") || "";
   if (url.searchParams.has("manager")) env.CS_EVENT_MANAGER = url.searchParams.get("manager") || "";
@@ -959,6 +1040,7 @@ function createPacketContext() {
       EQUIP_PRESET_LIST_ACK,
       FAVORITES_STAGE_ACK,
       POST_LIST_ACK,
+      FIERCE_SEASON_NOT,
       DEFENCE_INFO_ACK,
       NPT_GAME_SYNC_DATA_PACK_NOT,
     },
@@ -986,6 +1068,7 @@ function createPacketContext() {
       CLEAR_OPERATORS_LEVEL1,
       USE_LOCAL_JOIN_LOBBY_ACK,
       LOCAL_JOIN_LOBBY_ACK_MODE,
+      SEND_FIERCE_SEASON_BOOTSTRAP,
       CONTENTS_VERSION,
       REQUIRED_CONTENTS_TAGS,
       CONTENTS_TAGS,
@@ -1102,6 +1185,14 @@ function createPacketContext() {
     buildTrimStartAckPayload,
     buildFierceDataAckPayload,
     buildFiercePenaltyAckPayload,
+    buildFierceProfileAckPayload,
+    buildFierceRankRewardAckPayload,
+    buildFiercePointRewardAckPayload,
+    buildFiercePointRewardAllAckPayload,
+    buildLeaderboardFierceListAckPayload,
+    buildLeaderboardFierceBossGroupListAckPayload,
+    buildFierceSeasonNotPayload,
+    getCurrentFierceSeasonId,
     buildDefenceGameStartAckPayload,
     buildExploreInfoAckPayload,
     buildExploreEnterAckPayload,
@@ -1480,7 +1571,7 @@ function parseCapturedNkmGameDataUnitPools(buffer, offset) {
   offset = readSignedVarInt(buffer, offset).offset; // m_TeamBLevelFix
   offset += 4; // m_fDoubleCostTime
   offset = readSignedVarInt(buffer, offset).offset; // m_MapID
-  offset = skipCapturedSignedIntList(buffer, offset); // m_BattleConditionIDs
+  offset = skipCapturedSignedIntMap(buffer, offset); // m_BattleConditionIDs
 
   const pools = { byUnitUID: new Map(), ordered: [], allGameUnitUIDs: [] };
   const teamA = readCapturedNullableObject(buffer, offset, (inner, innerOffset) =>
@@ -1661,6 +1752,16 @@ function skipCapturedSignedIntList(buffer, offset) {
   const count = readVarInt(buffer, offset);
   offset = count.offset;
   for (let index = 0; index < count.value; index += 1) offset = readSignedVarInt(buffer, offset).offset;
+  return offset;
+}
+
+function skipCapturedSignedIntMap(buffer, offset) {
+  const count = readVarInt(buffer, offset);
+  offset = count.offset;
+  for (let index = 0; index < count.value; index += 1) {
+    offset = readSignedVarInt(buffer, offset).offset;
+    offset = readSignedVarInt(buffer, offset).offset;
+  }
   return offset;
 }
 
@@ -2247,7 +2348,7 @@ function sendManagedOrImmediatePackets(socket, packets) {
   withSocketPacketBurst(socket, () => {
     for (const item of outbound || []) {
       if (!item || !item.packetId || !item.payload) continue;
-      sendManagedOrImmediatePacket(socket, item.packetId, item.payload, item.label || "managed-sync");
+      sendManagedOrImmediatePacket(socket, item.packetId, item.payload, item.label || "managed-sync", item);
     }
   });
   if (endIndex >= 0) {
@@ -2259,8 +2360,8 @@ function sendManagedOrImmediatePackets(socket, packets) {
   }
 }
 
-function sendManagedOrImmediatePacket(socket, packetId, payload, label) {
-  sendServerGamePacket(socket, packetId, normalizeManagedCombatPayload(socket, packetId, payload, label), label);
+function sendManagedOrImmediatePacket(socket, packetId, payload, label, meta = {}) {
+  sendServerGamePacket(socket, packetId, normalizeManagedCombatPayload(socket, packetId, payload, label, meta), label);
 }
 
 function sendPendingGameStartSync(socket, label) {
@@ -2292,30 +2393,70 @@ function sendPendingGameStartSync(socket, label) {
   return true;
 }
 
-function normalizeManagedCombatPayload(socket, packetId, payload, label) {
+function normalizeManagedCombatPayload(socket, packetId, payload, label, meta = {}) {
   if (packetId !== GAME_END_NOT) return payload;
   const replay = socket.session && socket.session.gameReplay;
   if (!replay || !replay.dynamicGame) return payload;
+  const managedBattleRecords = extractManagedBattleRecords(meta);
+  const managedBattleWin = extractManagedBattleWin(meta);
+  const managedBattlePlayTime = extractManagedBattlePlayTime(meta);
+  const gameRecordOverride = {
+    ...(managedBattleRecords.length > 0 ? { managedBattleRecords } : {}),
+    ...(typeof managedBattleWin === "boolean" ? { managedBattleWin, win: managedBattleWin } : {}),
+    ...(managedBattlePlayTime > 0 ? { managedBattlePlayTime } : {}),
+  };
+  if (managedBattleRecords.length > 0) {
+    console.log(
+      `[dynamic-game-end] using managed battle records=${managedBattleRecords.length} win=${
+        typeof managedBattleWin === "boolean" ? (managedBattleWin ? 1 : 0) : "unknown"
+      } playTime=${managedBattlePlayTime || 0}`
+    );
+  }
 
   // NKCGameServerLocal flushes a local-only GAME_END_NOT. The online flow
   // needs server-owned clear data so result screens, mission medals, and local
   // progress all agree after the battle ends.
   if (replay.dynamicGame.tutorial) {
-    const tutorialEnd = buildTutorialGameEndNotPayload(replay, { user: socket.session && socket.session.user });
+    const tutorialEnd = buildTutorialGameEndNotPayload(replay, {
+      user: socket.session && socket.session.user,
+      ...gameRecordOverride,
+    });
     recordTutorialDungeonClear(socket, replay);
     return tutorialEnd || payload;
   }
 
   const gameEnd = buildDynamicGameEndNotPayload(replay, {
     user: socket.session && socket.session.user,
-    // The managed local-server GAME_END_NOT is not the authoritative online
-    // result packet. Its first bool and mirrored battle state can remain false
-    // even after the client reached the clear path, so the online PvE result is
-    // authoritative unless an explicit give-up handler overrides it.
-    fallbackWin: true,
-    preferFallbackWin: true,
+    fallbackWin: false,
+    preferFallbackWin: false,
+    ...gameRecordOverride,
   });
   return gameEnd || payload;
+}
+
+function extractManagedBattleRecords(meta = {}) {
+  const records = meta && (meta.battleRecords || meta.BattleRecords || meta.managedBattleRecords || meta.ManagedBattleRecords);
+  if (!Array.isArray(records)) return [];
+  return records.filter((record) => record && typeof record === "object");
+}
+
+function extractManagedBattleWin(meta = {}) {
+  const explicit = meta && (meta.battleWin ?? meta.BattleWin ?? meta.managedBattleWin ?? meta.ManagedBattleWin);
+  if (typeof explicit === "boolean") return explicit;
+  if (typeof explicit === "string") {
+    const normalized = explicit.trim().toLowerCase();
+    if (normalized === "true" || normalized === "1" || normalized === "win") return true;
+    if (normalized === "false" || normalized === "0" || normalized === "loss" || normalized === "lose") return false;
+  }
+  const team = Number(meta && (meta.battleWinTeam ?? meta.BattleWinTeam ?? meta.managedBattleWinTeam ?? meta.ManagedBattleWinTeam) || 0);
+  if (team > 0) return isATeamType(team);
+  return null;
+}
+
+function extractManagedBattlePlayTime(meta = {}) {
+  const explicit = finiteNumber(meta && (meta.battlePlayTime ?? meta.BattlePlayTime ?? meta.managedBattlePlayTime ?? meta.ManagedBattlePlayTime));
+  if (explicit > 0) return explicit;
+  return getBattleRecordMaxPlayTime(extractManagedBattleRecords(meta));
 }
 
 function startSyntheticGameSync(socket, label) {
@@ -2397,9 +2538,15 @@ function startDynamicBattleManager(socket, label) {
   return combatHandler.startBattleLoop(socket, label, {
     sendGamePacket(socket, packetId, payload, label, meta = {}) {
       if (packetId === GAME_END_NOT) {
-        sendDynamicFinishStateSync(socket, null, "dynamic-finish-state");
+        const managedBattleWin = extractManagedBattleWin(meta);
+        const replay = socket && socket.session && socket.session.gameReplay;
+        const finishState =
+          typeof managedBattleWin === "boolean"
+            ? { ...((replay && replay.battleState) || {}), win: managedBattleWin, Win: managedBattleWin }
+            : null;
+        sendDynamicFinishStateSync(socket, finishState, "dynamic-finish-state");
       }
-      sendManagedOrImmediatePacket(socket, packetId, payload, label);
+      sendManagedOrImmediatePacket(socket, packetId, payload, label, meta);
     },
     onGameEndPacketSent(socket) {
       maybeRecordDynamicBattleClear(socket);
@@ -2409,8 +2556,8 @@ function startDynamicBattleManager(socket, label) {
       const replay = socket && socket.session && socket.session.gameReplay;
       const payload = buildDynamicGameEndNotPayload(replay, {
         battleState: finishedState,
-        fallbackWin: true,
-        preferFallbackWin: true,
+        fallbackWin: false,
+        preferFallbackWin: false,
         user: socket && socket.session && socket.session.user,
       });
       if (!payload) return false;
@@ -2452,7 +2599,7 @@ function buildDynamicFinishStateSyncPayload(replay, finishedState = null) {
     gameStates: [
       {
         state: NGS_FINISH,
-        winTeam: resolveBattleWin(battleState, { fallbackWin: true, preferFallbackWin: true })
+        winTeam: resolveBattleWin(battleState, { fallbackWin: false, preferFallbackWin: false })
           ? NTT_A1
           : NTT_B1,
         waveId: Number(
@@ -2582,6 +2729,7 @@ function applySavedCombatControls(socket) {
 function buildDynamicGameLoadPayload(socket, req, stage) {
   const replay = socket.session && socket.session.gameReplay;
   if (!replay || !req) return null;
+  const user = socket && socket.session && socket.session.user;
   const activeStage = stage || {};
   // Every tutorial phase is a new battle load on the same socket/session.
   // Reset per-battle gates here so heartbeats during phase 2+ loading cannot
@@ -2598,6 +2746,11 @@ function buildDynamicGameLoadPayload(socket, req, stage) {
   const nativeTutorialLoad =
     activeStage.tutorial || isTutorialStageId(activeStage.stageId || req.stageID) || isTutorialDungeonId(activeStage.dungeonID || req.dungeonID);
   const usesEventDeck = Number(activeStage.eventDeckId || activeStage.EventDeckId || 0) > 0;
+  const fierceLoad =
+    String(activeStage.miscMode || "").toLowerCase() === "fierce" ||
+    Number(activeStage.gameType || 0) === NGT_FIERCE ||
+    positiveInt(req.fierceBossId || req.fierceBossID || req.bossId) > 0;
+  const seedGameLoadTemplate = !nativeTutorialLoad && (!usesEventDeck || fierceLoad);
   // Stage data enters combat-handler here, then the listener wraps the resulting
   // state in a managed GAME_LOAD_ACK when possible. Tutorial battles no longer
   // seed the managed bridge from captured 804; the bridge builds NKMGameData
@@ -2607,7 +2760,7 @@ function buildDynamicGameLoadPayload(socket, req, stage) {
     req,
     stage: activeStage,
     gameUID: activeStage.gameUID || activeStage.gameUid || req.gameUID || req.gameUid,
-    gameLoadAckPayloadBase64: !nativeTutorialLoad && !usesEventDeck && gameLoadAckTemplate ? gameLoadAckTemplate.toString("base64") : "",
+    gameLoadAckPayloadBase64: seedGameLoadTemplate && gameLoadAckTemplate ? gameLoadAckTemplate.toString("base64") : "",
   });
   if (!dynamicGame || !replay.dynamicGame) {
     console.log("[dynamic-game-load] battle state creation failed; no GAME_LOAD_ACK sent");
@@ -2624,6 +2777,8 @@ function buildDynamicGameLoadPayload(socket, req, stage) {
     if (activeStage.worldmapEventID) replay.dynamicGame.worldmapEventID = Number(activeStage.worldmapEventID || 0);
     if (activeStage.diveStageID || (req && req.diveStageID)) replay.dynamicGame.diveStageID = Number(activeStage.diveStageID || req.diveStageID || 0);
     if (activeStage.miscMode) replay.dynamicGame.miscMode = String(activeStage.miscMode || "");
+    const battleConditionIds = resolveGameLoadBattleConditionIds(activeStage, req, user);
+    if (Array.isArray(battleConditionIds)) replay.dynamicGame.battleConditionIds = battleConditionIds;
     replay.dynamicGame.isTryAssist = Boolean(req && req.isTryAssist);
   }
   applySavedCombatControls(socket);
@@ -2634,7 +2789,7 @@ function buildDynamicGameLoadPayload(socket, req, stage) {
     Number(replay.dynamicGame.stageID || 0) === 11211 &&
     Number(replay.dynamicGame.dungeonID || 0) === 1004;
   const capturedTutorialLoadPayload = capturedTutorialBootstrap ? gameLoadAckTemplate : null;
-  const payload =
+  let payload =
     replay.managedGameLoadAckPayload ||
     capturedTutorialLoadPayload ||
     buildGameLoadAck({
@@ -2643,6 +2798,10 @@ function buildDynamicGameLoadPayload(socket, req, stage) {
       // dungeon/map so the client routes into the correct script.
       patchStageFields: !replay.dynamicGame.tutorial || Number(replay.dynamicGame.stageID) !== 11211,
     });
+  if (replay.dynamicGame && Array.isArray(replay.dynamicGame.battleConditionIds)) {
+    payload = patchGameLoadAckBattleConditionIds(payload, replay.dynamicGame.battleConditionIds);
+    if (replay.managedGameLoadAckPayload) replay.managedGameLoadAckPayload = payload;
+  }
   combatHandler.attachGameLoadUnitPools(replay, activeStage, payload);
   return {
     replay,
@@ -2825,12 +2984,27 @@ function readCutsceneDungeonReq(payload) {
   }
 }
 
+function isKnownNonTutorialDungeonId(dungeonId) {
+  const resolvedDungeonId = positiveInt(dungeonId);
+  return resolvedDungeonId > 0 && !isTutorialDungeonId(resolvedDungeonId) && Boolean(getDungeonTableEntry(resolvedDungeonId));
+}
+
+function isKnownNonTutorialCutsceneDungeonId(dungeonId) {
+  const resolvedDungeonId = positiveInt(dungeonId);
+  return (
+    isKnownNonTutorialDungeonId(resolvedDungeonId) &&
+    isCutsceneOnlyDungeon(resolvedDungeonId, stageIdForDungeonId(resolvedDungeonId))
+  );
+}
+
 function resolveCutsceneDungeonId(socket, decodedDungeonId) {
   const decoded = Number(decodedDungeonId || 0);
   if (isMainStoryDungeonId(decoded) && !isTutorialDungeonId(decoded)) return decoded;
+  if (isKnownNonTutorialCutsceneDungeonId(decoded)) return decoded;
   const replay = socket && socket.session && socket.session.gameReplay;
   const requestedDungeonId = Number(replay && replay.lastGameLoadReq && replay.lastGameLoadReq.dungeonID);
   if (!decoded && isMainStoryDungeonId(requestedDungeonId) && !isTutorialDungeonId(requestedDungeonId)) return requestedDungeonId;
+  if (!decoded && isKnownNonTutorialCutsceneDungeonId(requestedDungeonId)) return requestedDungeonId;
   if (!decoded && isTutorialDungeonId(requestedDungeonId)) return requestedDungeonId;
   const activeBattleFinished =
     replay &&
@@ -2846,6 +3020,7 @@ function resolveCutsceneDungeonId(socket, decodedDungeonId) {
   }
   const activeDungeonId = Number(replay && replay.dynamicGame && replay.dynamicGame.dungeonID);
   if (isMainStoryDungeonId(activeDungeonId) && !isTutorialDungeonId(activeDungeonId)) return activeDungeonId;
+  if (isKnownNonTutorialCutsceneDungeonId(activeDungeonId)) return activeDungeonId;
   if (isTutorialDungeonId(activeDungeonId) && !activeBattleFinished) return activeDungeonId;
   return nextTutorialDungeonIdForUser(user);
 }
@@ -2853,13 +3028,16 @@ function resolveCutsceneDungeonId(socket, decodedDungeonId) {
 function resolveCutsceneClearDungeonId(socket, decodedDungeonId) {
   const decoded = Number(decodedDungeonId || 0);
   if (isMainStoryDungeonId(decoded) && !isTutorialDungeonId(decoded)) return decoded;
+  if (isKnownNonTutorialCutsceneDungeonId(decoded)) return decoded;
   if (isTutorialDungeonId(decoded)) return decoded;
   const replay = socket && socket.session && socket.session.gameReplay;
   const requestedDungeonId = Number(replay && replay.lastGameLoadReq && replay.lastGameLoadReq.dungeonID);
   if (!decoded && isMainStoryDungeonId(requestedDungeonId) && !isTutorialDungeonId(requestedDungeonId)) return requestedDungeonId;
+  if (!decoded && isKnownNonTutorialCutsceneDungeonId(requestedDungeonId)) return requestedDungeonId;
   if (!decoded && isTutorialDungeonId(requestedDungeonId)) return requestedDungeonId;
   const activeDungeonId = Number(replay && replay.dynamicGame && replay.dynamicGame.dungeonID);
   if (isMainStoryDungeonId(activeDungeonId) && !isTutorialDungeonId(activeDungeonId)) return activeDungeonId;
+  if (isKnownNonTutorialCutsceneDungeonId(activeDungeonId)) return activeDungeonId;
   if (isTutorialDungeonId(activeDungeonId)) return activeDungeonId;
   return nextTutorialDungeonIdForUser(socket && socket.session && socket.session.user);
 }
@@ -3117,7 +3295,7 @@ function maybeRecordDynamicBattleClear(socket, overrideState = null) {
     lastEnd &&
     Number(lastEnd.dungeonId || 0) === dynamicDungeonId &&
     Number(lastEnd.stageId || 0) === dynamicStageId;
-  const battleState = overrideState || (lastEndMatches && lastEnd.battleState) || replay.battleState || {};
+  const battleState = (lastEndMatches && lastEnd.battleState) || overrideState || replay.battleState || {};
   const authoritativeWin = Boolean(lastEndMatches && lastEnd.win === true && !lastEnd.giveup);
   if (!authoritativeWin && !isBattleWin(battleState)) return false;
   return (
@@ -3133,17 +3311,28 @@ function recordMainStoryDungeonClear(socket, dungeonId, battleState = null) {
   if (!resolvedDungeonId || !isMainStoryDungeonId(resolvedDungeonId) || isTutorialDungeonId(resolvedDungeonId)) return false;
   const resolvedStageId = stageIdForDungeonId(resolvedDungeonId);
   const user = socket && socket.session && socket.session.user;
-  const forceMissionSuccess = !isCutsceneOnlyDungeon(resolvedDungeonId, resolvedStageId);
-  const saved = recordMainStoryDungeonClearForUser(user, resolvedDungeonId, resolvedStageId, battleState || (replay && replay.battleState) || {}, {
+  const state = battleState || (replay && replay.battleState) || {};
+  const missionResults = resolveDungeonMissionResults(resolvedDungeonId, {
+    stageId: resolvedStageId,
+    win: true,
+    battleState: state,
+    forceMissionSuccess: false,
+  });
+  if (state && typeof state === "object") {
+    state.missionResult1 = missionResults.missionResult1;
+    state.missionResult2 = missionResults.missionResult2;
+    state.missionResults = { ...missionResults };
+  }
+  const saved = recordMainStoryDungeonClearForUser(user, resolvedDungeonId, resolvedStageId, state, {
     save: USE_LOCAL_USER_DB ? saveUserDb : null,
-    forceMissionSuccess,
+    forceMissionSuccess: false,
   });
   if (saved) {
     const userExp = getDungeonUserExpReward(resolvedDungeonId);
-    maybeGrantBattleStageClearLoot(replay, user, resolvedDungeonId, resolvedStageId, battleState);
+    maybeGrantBattleStageClearLoot(replay, user, resolvedDungeonId, resolvedStageId, state);
     grantStageClearExp(user, resolvedStageId, resolvedDungeonId, userExp > 0 ? { exp: userExp } : undefined);
     recordGameplayUnlockClearForUser(user, resolvedDungeonId, resolvedStageId, { save: false });
-    trackStageClearMissionProgress(user, resolvedDungeonId, resolvedStageId, battleState || (replay && replay.battleState) || {});
+    trackStageClearMissionProgress(user, resolvedDungeonId, resolvedStageId, state);
     sendStageClearMissionUpdate(socket, user);
     if (USE_LOCAL_USER_DB) saveUserDb();
     console.log(
@@ -3166,7 +3355,7 @@ function recordGenericDungeonClear(socket, dungeonId, battleState = null) {
     stageId: resolvedStageId,
     win: true,
     battleState: state,
-    forceMissionSuccess: true,
+    forceMissionSuccess: false,
   });
   if (state && typeof state === "object") {
     state.missionResult1 = missionResults.missionResult1;
@@ -3178,7 +3367,7 @@ function recordGenericDungeonClear(socket, dungeonId, battleState = null) {
   grantStageClearExp(user, resolvedStageId, resolvedDungeonId, userExp > 0 ? { exp: userExp } : undefined);
   const saved = recordGenericDungeonClearForUser(user, resolvedDungeonId, resolvedStageId, state, {
     save: false,
-    forceMissionSuccess: true,
+    forceMissionSuccess: false,
   });
   if (saved) {
     recordGameplayUnlockClearForUser(user, resolvedDungeonId, resolvedStageId, { save: false });
@@ -3279,15 +3468,44 @@ function recordMiscStageClearForUser(user, dungeonId, stageId, battleState = {})
     return true;
   }
   if (miscStage.mode === "fierce") {
-    state.fierce = state.fierce && typeof state.fierce === "object" ? state.fierce : {};
-    state.fierce.bosses = state.fierce.bosses && typeof state.fierce.bosses === "object" ? state.fierce.bosses : {};
     const bossId = positiveInt(miscStage.fierceBossId);
-    state.fierce.bosses[String(bossId)] = {
-      ...(state.fierce.bosses[String(bossId)] || {}),
+    const bossState = ensureFierceBossSeasonState(user, bossId);
+    if (!bossState) return false;
+    const result = buildFierceResultState({
+      dynamicGame: {
+        dungeonID: dungeonId,
+        stageID: stageId,
+        fierceBossId: bossId,
+        miscMode: "fierce",
+      },
+      battleState,
+      user,
+      win: true,
+    });
+    const previousPoint = Math.max(0, Number(bossState.point || 0) || 0);
+    const bestPoint = Math.max(previousPoint, Number(result.bestPoint || result.accquirePoint || 0) || 0);
+    const updated = {
+      ...bossState,
       bossId,
       isCleared: true,
-      point: Math.max(1, Number((state.fierce.bosses[String(bossId)] || {}).point || 0)),
+      point: bestPoint,
+      rankNumber: bestPoint > 0 ? 1 : Math.max(0, Number(bossState.rankNumber || 0) || 0),
+      rankPercent: bestPoint > 0 ? 1 : Math.max(0, Number(bossState.rankPercent || 0) || 0),
+      penaltyIds: uniquePositiveIntList(result.penaltyIds || bossState.penaltyIds || []),
+      penaltyPoint: Math.max(0, Number(result.penaltyPoint || bossState.penaltyPoint || 0) || 0),
+      lastAcquirePoint: Math.max(0, Number(result.accquirePoint || 0) || 0),
+      lastRestTime: Math.max(0, Number(result.restTime || 0) || 0),
+      updatedAt: new Date().toISOString(),
     };
+    const seasonState = ensureFierceSeasonState(user);
+    seasonState.season.bosses[String(bossId)] = updated;
+    seasonState.fierce.bosses[String(bossId)] = updated;
+    const totalPoint = getFierceSeasonTotalPoint(user);
+    seasonState.season.totalPoint = totalPoint;
+    seasonState.season.rankNumber = totalPoint > 0 ? 1 : 0;
+    seasonState.season.rankPercent = totalPoint > 0 ? 1 : 0;
+    seasonState.fierce.rankNumber = seasonState.season.rankNumber;
+    seasonState.fierce.rankPercent = seasonState.season.rankPercent;
     return true;
   }
   if (miscStage.mode === "trim") {
@@ -3390,9 +3608,10 @@ function buildDungeonRewardSet(user, dungeonId, stageId, battleState = {}, loot 
 }
 
 function buildCutsceneDungeonStartAckPayload(dungeonId) {
+  const stageId = stageIdForDungeonId(dungeonId);
   return Buffer.concat([
     writeSignedVarInt(0),
-    writeNullableObject(buildStagePlayData(stageIdForDungeonId(dungeonId))),
+    stageId ? writeNullableObject(buildStagePlayData(stageId)) : writeNullObject(),
   ]);
 }
 
@@ -3403,6 +3622,8 @@ function buildTutorialGameEndNotPayload(replay, override = {}) {
   const stageId = Number(override.stageID || dynamicGame.stageID || stageIdForDungeonId(dungeonId));
   if (!isTutorialDungeonId(dungeonId) || !isTutorialStageId(stageId)) return null;
   const battleState = override.battleState || replay.battleState || {};
+  const gameRecordState = buildBattleGameRecordState(battleState, override);
+  const playTime = getBattleEndPlayTime(battleState, override);
   const episodeCompleteData = buildMainStoryEpisodeCompleteDataForStage(override.user, stageId);
   return Buffer.concat([
     writeBool(true), // win
@@ -3416,17 +3637,17 @@ function buildTutorialGameEndNotPayload(replay, override = {}) {
     writeNullObject(), // pvpResultData
     writeNullObject(), // diveSyncData
     writeNullableObject(buildRaidBossResultData()), // raidBossResultData
-    writeNullObject(), // gameRecord
+    writeNullableObject(buildBattleGameRecordData(replay, gameRecordState, { playTime })), // gameRecord
     writeObjectList([]), // updatedUnits
     writeObjectList([]), // costItemDataList
-    writeNullableObject(buildStagePlayData(stageId, battleState)),
+    writeNullableObject(buildStagePlayData(stageId, { ...battleState, gameTime: playTime })),
     writeNullableObject(buildShadowGameResultData(dynamicGame, battleState)), // shadowGameResult
     writeNullableObject(buildFierceResultData()), // fierceResultData
     writeNullObject(), // phaseModeState
     writeSignedVarLong(0n), // killCountDelta
     writeNullObject(), // killCountData
     writeNullObject(), // trimModeState
-    writeFloatLE(Number(battleState.gameTime || battleState.GameTime || 0)), // totalPlayTime
+    writeFloatLE(playTime), // totalPlayTime
     writeNullObject(), // explore
     writeNullObject(), // exploreSquad
     writeSignedVarInt(0), // exploreEnhancePoint
@@ -3443,8 +3664,11 @@ function buildDynamicGameEndNotPayload(replay, override = {}) {
   const dungeonId = Number(requestedDungeonId || resolveDungeonIdForStageProgress(stageId, dynamicGame) || 0);
   if (!dungeonId && !stageId) return null;
   const isRaidGame = isRaidDynamicGame(dynamicGame);
+  const gameRecordState = buildBattleGameRecordState(battleState, override);
+  const playTime = getBattleEndPlayTime(battleState, override);
+  const missionBattleState = buildBattleMissionState(battleState, { playTime });
   const win = resolveBattleWin(
-    battleState,
+    missionBattleState,
     isRaidGame && override.giveup !== true
       ? {
           ...override,
@@ -3456,11 +3680,17 @@ function buildDynamicGameEndNotPayload(replay, override = {}) {
   const missionResults = resolveDungeonMissionResults(dungeonId, {
     stageId,
     win,
-    battleState,
-    forceMissionSuccess: win && override.forceMissionSuccess !== false,
+    battleState: missionBattleState,
+    forceMissionSuccess: override.forceMissionSuccess === true,
   });
   if (battleState && typeof battleState === "object") {
     normalizeBattleResultState(battleState, win);
+    if (playTime > 0) {
+      battleState.gameTime = playTime;
+      battleState.GameTime = playTime;
+      battleState.totalPlayTime = playTime;
+      battleState.TotalPlayTime = playTime;
+    }
     battleState.missionResult1 = missionResults.missionResult1;
     battleState.missionResult2 = missionResults.missionResult2;
     battleState.missionResults = { ...missionResults };
@@ -3491,8 +3721,13 @@ function buildDynamicGameEndNotPayload(replay, override = {}) {
       ? []
       : spendStageReqItemCostForReplay(replay, override.user, stageId);
   const episodeCompleteData = !isRaidGame && !isDiveGame && win ? buildMainStoryEpisodeCompleteDataForStage(override.user, stageId) : null;
-  const playTime = getBattlePlayTime(battleState);
   const isPhaseGame = Number(dynamicGame.gameType || 0) === NGT_PHASE || String(dynamicGame.miscMode || "") === "phase";
+  const fierceResult = buildFierceResultState({
+    dynamicGame,
+    battleState: missionBattleState,
+    user: override.user,
+    win,
+  });
   return Buffer.concat([
     writeBool(win), // win
     writeBool(Boolean(override.giveup || false)), // giveup
@@ -3502,7 +3737,7 @@ function buildDynamicGameEndNotPayload(replay, override = {}) {
           buildDungeonClearData(dungeonId, {
             stageId,
             win,
-            battleState,
+            battleState: missionBattleState,
             ...missionResults,
             reward: stageLoot && stageLoot.reward,
             unitExp: stageLoot ? stageLoot.unitExp : undefined,
@@ -3523,12 +3758,12 @@ function buildDynamicGameEndNotPayload(replay, override = {}) {
     writeNullObject(), // pvpResultData
     diveBattleResult ? writeNullableObject(worldMap.buildDiveSyncData(diveBattleResult.syncData)) : writeNullObject(), // diveSyncData
     writeNullableObject(buildRaidBossResultData(raidBattleResult && raidBattleResult.bossResult)), // raidBossResultData
-    writeNullObject(), // gameRecord
+    writeNullableObject(buildBattleGameRecordData(replay, gameRecordState, { playTime, fiercePoint: fierceResult.accquirePoint })), // gameRecord
     writeObjectList([]), // updatedUnits
     writeObjectList(costItems.map((item) => writeNullableObject(buildItemMiscData(item)))), // costItemDataList
-    stageId ? writeNullableObject(buildStagePlayData(stageId, { ...battleState, gameTime: playTime })) : writeNullObject(),
-    writeNullableObject(buildShadowGameResultData(dynamicGame, battleState)), // shadowGameResult
-    writeNullableObject(buildFierceResultData()), // fierceResultData
+    stageId ? writeNullableObject(buildStagePlayData(stageId, { ...missionBattleState, gameTime: playTime })) : writeNullObject(),
+    writeNullableObject(buildShadowGameResultData(dynamicGame, missionBattleState)), // shadowGameResult
+    writeNullableObject(buildFierceResultData(fierceResult)), // fierceResultData
     isPhaseGame
       ? writeNullableObject(
           buildPhaseModeState(
@@ -3550,6 +3785,43 @@ function buildDynamicGameEndNotPayload(replay, override = {}) {
   ]);
 }
 
+function buildBattleGameRecordState(battleState = {}, override = {}) {
+  const managedBattleRecords = Array.isArray(override.managedBattleRecords) ? override.managedBattleRecords : [];
+  if (managedBattleRecords.length === 0) return battleState;
+  return {
+    ...(battleState && typeof battleState === "object" ? battleState : {}),
+    unitRecords: managedBattleRecords,
+  };
+}
+
+function buildBattleMissionState(battleState = {}, options = {}) {
+  const state = battleState && typeof battleState === "object" ? { ...battleState } : {};
+  const playTime = finiteNumber(options.playTime);
+  if (playTime > 0) {
+    state.gameTime = playTime;
+    state.GameTime = playTime;
+    state.totalPlayTime = playTime;
+    state.TotalPlayTime = playTime;
+  }
+  return state;
+}
+
+function getBattleEndPlayTime(battleState = {}, override = {}) {
+  const managedPlayTime =
+    finiteNumber(override.managedBattlePlayTime ?? override.ManagedBattlePlayTime) ||
+    getBattleRecordMaxPlayTime(override.managedBattleRecords);
+  if (managedPlayTime > 0) return managedPlayTime;
+  return getBattlePlayTime(battleState);
+}
+
+function getBattleRecordMaxPlayTime(records = []) {
+  if (!Array.isArray(records)) return 0;
+  return records.reduce((max, record) => {
+    if (!record || typeof record !== "object") return max;
+    return Math.max(max, finiteNumber(record.playtime ?? record.Playtime ?? record.PlayTime));
+  }, 0);
+}
+
 function buildBattleDeckIndexData(replay) {
   const dynamicGame = replay && replay.dynamicGame ? replay.dynamicGame : {};
   const playerDeck = dynamicGame.playerDeck && typeof dynamicGame.playerDeck === "object" ? dynamicGame.playerDeck : {};
@@ -3559,6 +3831,162 @@ function buildBattleDeckIndexData(replay) {
       playerDeck.deckIndex != null ? playerDeck.deckIndex : playerDeck.index != null ? playerDeck.index : dynamicGame.deckIndex || 0
     ),
   });
+}
+
+function buildBattleGameRecordData(replay, battleState = {}, options = {}) {
+  const records = collectBattleGameRecords(replay, battleState, options);
+  const fiercePoint = Math.max(0, Number(options.fiercePoint || 0) || 0);
+  return Buffer.concat([
+    writeObjectMapShort(records.map((record) => [record.gameUnitUID, buildBattleGameRecordUnitData(record)])),
+    writeFloatLE(records.reduce((total, record) => total + (isATeamType(record.teamType) ? finiteNumber(record.recordGiveDamage) : 0), 0)),
+    writeFloatLE(records.reduce((total, record) => total + (isBTeamType(record.teamType) ? finiteNumber(record.recordGiveDamage) : 0), 0)),
+    writeSignedVarInt(records.reduce((total, record) => total + (isATeamType(record.teamType) ? positiveInt(record.recordDieCount) : 0), 0)),
+    writeSignedVarInt(records.reduce((total, record) => total + (isBTeamType(record.teamType) ? positiveInt(record.recordDieCount) : 0), 0)),
+    writeFloatLE(fiercePoint), // totalFiercePoint
+  ]);
+}
+
+function collectBattleGameRecords(replay, battleState = {}, options = {}) {
+  const entries = new Map();
+  const sourceRecords = battleState && typeof battleState === "object" ? battleState.unitRecords || battleState.UnitRecords : null;
+  if (sourceRecords && typeof sourceRecords === "object") {
+    const iterable = Array.isArray(sourceRecords)
+      ? sourceRecords.map((record) => [record && (record.gameUnitUID || record.GameUnitUID), record])
+      : Object.entries(sourceRecords);
+    for (const [key, record] of iterable) {
+      const normalized = normalizeBattleGameRecord(record, { gameUnitUID: key });
+      if (normalized) entries.set(normalized.gameUnitUID, normalized);
+    }
+  }
+
+  for (const unit of Array.isArray(battleState && battleState.units) ? battleState.units : []) {
+    const normalized = normalizeBattleGameRecord(unit);
+    if (!normalized) continue;
+    const existing = entries.get(normalized.gameUnitUID);
+    entries.set(
+      normalized.gameUnitUID,
+      existing
+        ? {
+            ...normalized,
+            ...existing,
+            unitId: positiveInt(existing.unitId) || positiveInt(normalized.unitId),
+            unitLevel: Math.max(positiveInt(existing.unitLevel), positiveInt(normalized.unitLevel), 1),
+            isLeader: Boolean(existing.isLeader || normalized.isLeader),
+            isAssistUnit: Boolean(existing.isAssistUnit || normalized.isAssistUnit),
+            isSummonee: Boolean(existing.isSummonee || normalized.isSummonee),
+            sourceUnitUID: existing.sourceUnitUID || normalized.sourceUnitUID || "",
+            role: existing.role || normalized.role || "",
+            teamType: normalizeBattleRecordTeam(existing.teamType || normalized.teamType),
+          }
+        : normalized
+    );
+  }
+
+  applyBattleRecordDeckMetadata(entries, replay);
+  const records = Array.from(entries.values()).filter((record) => positiveInt(record.gameUnitUID) > 0 && positiveInt(record.unitId) > 0);
+  if (records.length === 0) return records;
+
+  const playTime = Math.max(1, Math.round(finiteNumber(options.playTime ?? getBattlePlayTime(battleState)) || 1));
+  const hasDamage = records.some((record) => finiteNumber(record.recordGiveDamage) > 0 || finiteNumber(record.recordTakeDamage) > 0);
+  if (!hasDamage) synthesizeMinimalBattleDamage(records, battleState, playTime);
+  for (const record of records) {
+    record.recordSummonCount = Math.max(1, positiveInt(record.recordSummonCount));
+    record.playtime = Math.max(1, Math.round(finiteNumber(record.playtime) || playTime));
+  }
+  return records.sort((left, right) => positiveInt(left.gameUnitUID) - positiveInt(right.gameUnitUID));
+}
+
+function normalizeBattleGameRecord(source, fallback = {}) {
+  if (!source || typeof source !== "object") return null;
+  const gameUnitUID = positiveInt(
+    source.gameUnitUID ?? source.GameUnitUID ?? source.gameUnitUid ?? source.m_GameUnitUID ?? fallback.gameUnitUID
+  );
+  if (!gameUnitUID) return null;
+  const teamType = normalizeBattleRecordTeam(source.teamType ?? source.TeamType ?? source.team ?? source.Team);
+  return {
+    gameUnitUID,
+    sourceUnitUID: source.sourceUnitUID ?? source.sourceUnitUid ?? source.SourceUnitUID ?? source.SourceUnitUid ?? "",
+    role: source.role ?? source.Role ?? "",
+    unitId: positiveInt(source.unitId ?? source.unitID ?? source.UnitId ?? source.UnitID ?? source.m_UnitID),
+    changeUnitName: source.changeUnitName ?? source.ChangeUnitName ?? "",
+    unitLevel: Math.max(1, positiveInt(source.unitLevel ?? source.UnitLevel ?? source.level ?? source.Level) || 1),
+    isSummonee: Boolean(source.isSummonee ?? source.IsSummonee ?? false),
+    isAssistUnit: Boolean(source.isAssistUnit ?? source.IsAssistUnit ?? source.AssistUnit ?? source.assistUnit ?? false),
+    isLeader: Boolean(source.isLeader ?? source.IsLeader ?? false),
+    teamType,
+    recordGiveDamage: finiteNumber(source.recordGiveDamage ?? source.RecordGiveDamage),
+    recordTakeDamage: finiteNumber(source.recordTakeDamage ?? source.RecordTakeDamage),
+    recordHeal: finiteNumber(source.recordHeal ?? source.RecordHeal),
+    recordSummonCount: Math.max(1, positiveInt(source.recordSummonCount ?? source.RecordSummonCount)),
+    recordDieCount: positiveInt(source.recordDieCount ?? source.RecordDieCount),
+    recordKillCount: positiveInt(source.recordKillCount ?? source.RecordKillCount),
+    playtime: finiteNumber(source.playtime ?? source.Playtime ?? source.PlayTime),
+  };
+}
+
+function applyBattleRecordDeckMetadata(entries, replay) {
+  const dynamicGame = replay && replay.dynamicGame ? replay.dynamicGame : {};
+  const playerDeck = dynamicGame.playerDeck && typeof dynamicGame.playerDeck === "object" ? dynamicGame.playerDeck : {};
+  const leaderUnitUid = String(playerDeck.leaderUnitUid || playerDeck.leaderUnitUID || playerDeck.LeaderUnitUid || "");
+  const units = Array.isArray(playerDeck.units) ? playerDeck.units : [];
+  const deckByUid = new Map(
+    units
+      .map((unit) => [String(unit && (unit.unitUid || unit.unitUID || unit.UnitUid || "")), unit])
+      .filter(([key]) => key)
+  );
+  for (const record of entries.values()) {
+    const sourceUnitUID = String(record.sourceUnitUID || record.SourceUnitUID || "");
+    const deckUnit = sourceUnitUID ? deckByUid.get(sourceUnitUID) : null;
+    if (!deckUnit) continue;
+    record.unitId = positiveInt(record.unitId) || positiveInt(deckUnit.unitId ?? deckUnit.unitID ?? deckUnit.UnitID);
+    record.unitLevel = Math.max(1, positiveInt(record.unitLevel) || positiveInt(deckUnit.level ?? deckUnit.Level) || 1);
+    record.isLeader = Boolean(record.isLeader || (leaderUnitUid && sourceUnitUID === leaderUnitUid));
+  }
+}
+
+function synthesizeMinimalBattleDamage(records, battleState = {}, playTime = 1) {
+  const teamA = records.filter((record) => isATeamType(record.teamType));
+  const teamB = records.filter((record) => isBTeamType(record.teamType));
+  if (teamA.length === 0 || teamB.length === 0) return;
+  const winnerDamage = Math.max(100, Math.round(finiteNumber(battleState.raidBossDamage ?? battleState.RaidBossDamage) || playTime * 25));
+  const attacker = teamA.find((record) => !String(record.role || "").toLowerCase().includes("ship")) || teamA[0];
+  const target = teamB[0];
+  attacker.recordGiveDamage = Math.max(finiteNumber(attacker.recordGiveDamage), winnerDamage);
+  target.recordTakeDamage = Math.max(finiteNumber(target.recordTakeDamage), winnerDamage);
+}
+
+function buildBattleGameRecordUnitData(record = {}) {
+  return Buffer.concat([
+    writeSignedVarInt(positiveInt(record.unitId)),
+    writeString(record.changeUnitName || ""),
+    writeSignedVarInt(Math.max(1, positiveInt(record.unitLevel) || 1)),
+    writeBool(Boolean(record.isSummonee)),
+    writeBool(Boolean(record.isAssistUnit)),
+    writeBool(Boolean(record.isLeader)),
+    writeSignedVarInt(normalizeBattleRecordTeam(record.teamType)),
+    writeFloatLE(finiteNumber(record.recordGiveDamage)),
+    writeFloatLE(finiteNumber(record.recordTakeDamage)),
+    writeFloatLE(finiteNumber(record.recordHeal)),
+    writeSignedVarInt(Math.max(1, positiveInt(record.recordSummonCount))),
+    writeSignedVarInt(positiveInt(record.recordDieCount)),
+    writeSignedVarInt(positiveInt(record.recordKillCount)),
+    writeSignedVarInt(Math.max(1, Math.round(finiteNumber(record.playtime) || 1))),
+  ]);
+}
+
+function normalizeBattleRecordTeam(value) {
+  const team = positiveInt(value);
+  return team === 2 ? NTT_A1 : team === 4 ? NTT_B1 : team || NTT_A1;
+}
+
+function isATeamType(teamType) {
+  const team = normalizeBattleRecordTeam(teamType);
+  return team === NTT_A1 || team === 2;
+}
+
+function isBTeamType(teamType) {
+  const team = normalizeBattleRecordTeam(teamType);
+  return team === NTT_B1 || team === 4;
 }
 
 function buildRaidBossResultData(result = {}) {
@@ -3602,12 +4030,77 @@ function nextShadowDungeonId(palaceId, currentDungeonId) {
   return 0;
 }
 
-function buildFierceResultData() {
+function buildFierceResultState(options = {}) {
+  const dynamicGame = options.dynamicGame || {};
+  const battleState = options.battleState || {};
+  const classifiedStage = dynamicGame.dungeonID ? classifyMiscDungeon(dynamicGame.dungeonID) : null;
+  const bossId = positiveInt(
+    options.fierceBossId ||
+      dynamicGame.fierceBossId ||
+      dynamicGame.fierceBossID ||
+      dynamicGame.bossId ||
+      (classifiedStage && classifiedStage.fierceBossId)
+  );
+  const boss = bossId ? loadMiscStageCatalog().fierceBossById.get(bossId) : null;
+  if (!boss || String(dynamicGame.miscMode || "") !== "fierce" && Number(dynamicGame.gameType || 0) !== NGT_FIERCE && !options.force) {
+    return {
+      hpPercent: 0,
+      restTime: 0,
+      accquirePoint: 0,
+      bestPoint: 0,
+      penaltyPoint: 0,
+      penaltyIds: [],
+    };
+  }
+  const saved = getFierceSavedBossState(options.user, bossId);
+  const penaltyIds = normalizeFiercePenaltyIdsForBoss(bossId, options.penaltyIds || saved.penaltyIds || []);
+  const win = options.win === true || resolveBattleWin(battleState, { fallbackWin: true, preferFallbackWin: false });
+  const playTime = getBattlePlayTime(battleState);
+  const maxTime = Math.max(
+    1,
+    Number(
+      options.maxTime ||
+        battleState.maxGameTime ||
+        battleState.MaxGameTime ||
+        battleState.initialRemainGameTime ||
+        battleState.remainGameTime ||
+        battleState.RemainGameTime ||
+        dynamicGame.initialRemainGameTime ||
+        180
+    ) || 180
+  );
+  const restTime = win ? Math.max(0, Number(battleState.restTime ?? battleState.RestTime ?? maxTime - playTime) || 0) : 0;
+  const hpPercent = win ? 0 : Math.max(0, Math.min(100, Math.round(Number(battleState.bossHpPercent ?? battleState.BossHpPercent ?? 100) || 100)));
+  const basePoint = Math.max(0, Math.trunc(Number(boss.BasePoint || 0) || 0));
+  const damagePoint = win
+    ? Math.max(0, Math.trunc(Number(boss.MaxDamagePoint || 0) || 0))
+    : Math.round(Math.max(0, Math.trunc(Number(boss.MaxDamagePoint || 0) || 0)) * (100 - hpPercent) / 100);
+  const maxTimePoint = Math.max(0, Math.trunc(Number(boss.MaxTimePoint || 0) || 0));
+  const timePoint = win ? Math.round(maxTimePoint * Math.min(1, restTime / maxTime)) : 0;
+  const rawPoint = basePoint + damagePoint + timePoint;
+  const penaltyRate = getFiercePenaltyRate(penaltyIds);
+  const penaltyPoint = Math.round(rawPoint * penaltyRate / 10000);
+  const accquirePoint = Math.max(0, rawPoint + penaltyPoint);
+  const previousBest = Math.max(0, Number(saved.point || 0) || 0);
+  return {
+    hpPercent,
+    restTime,
+    accquirePoint,
+    bestPoint: Math.max(previousBest, accquirePoint),
+    penaltyPoint,
+    penaltyIds,
+    bossId,
+    fierceBossGroupId: positiveInt(boss.FierceBossGroupID),
+  };
+}
+
+function buildFierceResultData(result = null) {
+  const data = result && typeof result === "object" ? result : {};
   return Buffer.concat([
-    writeSignedVarInt(0), // hpPercent
-    writeFloatLE(0), // restTime
-    writeSignedVarInt(0), // accquirePoint
-    writeSignedVarInt(0), // bestPoint
+    writeSignedVarInt(Math.max(0, Number(data.hpPercent || 0) || 0)), // hpPercent
+    writeFloatLE(Math.max(0, Number(data.restTime || 0) || 0)), // restTime
+    writeSignedVarInt(Math.max(0, Number(data.accquirePoint || 0) || 0)), // accquirePoint
+    writeSignedVarInt(Math.max(0, Number(data.bestPoint || 0) || 0)), // bestPoint
     writeNullObject(), // bestDeck
   ]);
 }
@@ -3665,6 +4158,9 @@ function buildGameLoadAck(data = {}) {
         { ...spans.mapID, payload: writeSignedVarInt(Number(data.mapID || mapIdForStageDungeon(data.stageID, data.dungeonID))) }
       );
     }
+    if (Array.isArray(data.battleConditionIds) && spans.battleConditionIds) {
+      replacements.push({ ...spans.battleConditionIds, payload: writeIntIntMap(battleConditionLevelEntries(data.battleConditionIds)) });
+    }
     replacements.sort((a, b) => b.start - a.start);
 
     return replacements.reduce(
@@ -3675,6 +4171,35 @@ function buildGameLoadAck(data = {}) {
     console.log(`[dynamic-game-load] template patch failed: ${err.message}; using captured 804 body`);
     return raw;
   }
+}
+
+function patchGameLoadAckBattleConditionIds(payload, battleConditionIds) {
+  if (!payload || !Array.isArray(battleConditionIds)) return payload;
+  try {
+    const raw = Buffer.from(payload);
+    const spans = getGameLoadAckPatchSpans(raw);
+    if (!spans.battleConditionIds) return raw;
+    return replaceBufferRange(raw, spans.battleConditionIds.start, spans.battleConditionIds.end, writeIntIntMap(battleConditionLevelEntries(battleConditionIds)));
+  } catch (err) {
+    console.log(`[dynamic-game-load] battle-condition patch failed: ${err.message}`);
+    return payload;
+  }
+}
+
+function resolveGameLoadBattleConditionIds(stage = {}, req = {}, user = null) {
+  const gameType = Number(stage.gameType || (req && req.gameType) || 0);
+  const bossId = positiveInt(stage.fierceBossId || req.fierceBossId || req.fierceBossID || req.bossId);
+  if (String(stage.miscMode || "") !== "fierce" && gameType !== NGT_FIERCE && !bossId) return null;
+  let resolvedBossId = bossId;
+  if (!resolvedBossId) {
+    const miscStage = resolveMiscStageRequest(req);
+    resolvedBossId = positiveInt(miscStage && miscStage.fierceBossId);
+  }
+  if (!resolvedBossId) return uniquePositiveIntList(stage.battleConditionIds);
+  const saved = getFierceSavedBossState(user, resolvedBossId);
+  const penaltyIds = Array.isArray(saved.penaltyIds) ? saved.penaltyIds : [];
+  const ids = getFierceBattleConditionIdsForBoss(resolvedBossId, penaltyIds);
+  return ids.length ? ids : uniquePositiveIntList(stage.battleConditionIds);
 }
 
 function buildRespawnAck(data = {}) {
@@ -3782,6 +4307,8 @@ function getGameLoadAckPatchSpans(raw) {
 
   const mapID = readSignedVarInt(raw, offset);
   const mapIDSpan = { start: offset, end: mapID.offset };
+  offset = mapID.offset;
+  const battleConditionIdsSpan = { start: offset, end: skipCapturedSignedIntMap(raw, offset) };
 
   return {
     gameUID: gameUIDSpan,
@@ -3792,6 +4319,7 @@ function getGameLoadAckPatchSpans(raw) {
     teamBLevelAdd: teamBLevelAddSpan,
     teamBLevelFix: teamBLevelFixSpan,
     mapID: mapIDSpan,
+    battleConditionIds: battleConditionIdsSpan,
   };
 }
 
@@ -4093,6 +4621,13 @@ function loadMiscStageCatalog() {
     fierceBossById: new Map(),
     fierceBossByDungeonId: new Map(),
     fierceBossesByGroup: new Map(),
+    fiercePenaltyById: new Map(),
+    fiercePenaltiesByBossPenaltyGroup: new Map(),
+    fiercePointRewardById: new Map(),
+    fiercePointRewardsByGroup: new Map(),
+    fierceRankRewardById: new Map(),
+    fierceRankRewardsByGroup: new Map(),
+    battleConditionByStrId: new Map(),
     trimById: new Map(),
     trimDungeonsByTrimId: new Map(),
     trimDungeonByDungeonId: new Map(),
@@ -4144,6 +4679,52 @@ function loadMiscStageCatalog() {
     if (!catalog.fierceBossById.has(bossId)) catalog.fierceBossById.set(bossId, row);
     if (!catalog.fierceBossByDungeonId.has(dungeonId)) catalog.fierceBossByDungeonId.set(dungeonId, row);
     mapListPush(catalog.fierceBossesByGroup, groupId, row);
+  }
+  for (const row of readMiscStageRecords("LUA_FIERCE_PENALTY.json")) {
+    const penaltyId = positiveInt(row && row.PenaltyID);
+    const bossPenaltyGroupId = positiveInt(row && row.BossPenaltyGroupID);
+    if (penaltyId) catalog.fiercePenaltyById.set(penaltyId, row);
+    mapListPush(catalog.fiercePenaltiesByBossPenaltyGroup, bossPenaltyGroupId, row);
+  }
+  for (const rows of catalog.fiercePenaltiesByBossPenaltyGroup.values()) {
+    rows.sort(
+      (left, right) =>
+        positiveInt(left.PenaltyGroupID) - positiveInt(right.PenaltyGroupID) ||
+        positiveInt(left.PenaltyLevel) - positiveInt(right.PenaltyLevel) ||
+        positiveInt(left.PenaltyID) - positiveInt(right.PenaltyID)
+    );
+  }
+  for (const row of readMiscStageRecords("LUA_FIERCE_POINT_REWARD.json")) {
+    const rewardId = positiveInt(row && row.FiercePointRewardID);
+    const groupId = positiveInt(row && row.FiercePointRewardGroupID);
+    if (rewardId) catalog.fiercePointRewardById.set(rewardId, row);
+    mapListPush(catalog.fiercePointRewardsByGroup, groupId, row);
+  }
+  for (const rows of catalog.fiercePointRewardsByGroup.values()) {
+    rows.sort(
+      (left, right) =>
+        positiveInt(left.Step) - positiveInt(right.Step) ||
+        positiveInt(left.Point) - positiveInt(right.Point) ||
+        positiveInt(left.FiercePointRewardID) - positiveInt(right.FiercePointRewardID)
+    );
+  }
+  for (const row of readMiscStageRecords("LUA_FIERCE_RANK_REWARD.json")) {
+    const rewardId = positiveInt(row && row.FierceRankRewardID);
+    const groupId = positiveInt(row && row.FierceRankRewardGroupID);
+    if (rewardId) catalog.fierceRankRewardById.set(rewardId, row);
+    mapListPush(catalog.fierceRankRewardsByGroup, groupId, row);
+  }
+  for (const rows of catalog.fierceRankRewardsByGroup.values()) {
+    rows.sort(
+      (left, right) =>
+        positiveInt(left.ShowIndex) - positiveInt(right.ShowIndex) ||
+        positiveInt(left.RankValue) - positiveInt(right.RankValue) ||
+        positiveInt(left.FierceRankRewardID) - positiveInt(right.FierceRankRewardID)
+    );
+  }
+  for (const row of readMiscStageRecords("LUA_BATTLE_CONDITION_TEMPLET.json")) {
+    const strId = String(row && row.m_BCondStrID || "");
+    if (strId) catalog.battleConditionByStrId.set(strId, row);
   }
 
   for (const row of readMiscStageRecords("LUA_TRIM_TEMPLET.json")) {
@@ -4236,22 +4817,246 @@ function choosePhaseOrder(phase, phaseIndex = 0) {
   return orders[Math.max(0, Number(phaseIndex || 0) || 0)] || orders[0] || null;
 }
 
+function getFierceRotationSeasonRows() {
+  const catalog = loadMiscStageCatalog();
+  const productionRows = catalog.fierceSeasonRows
+    .filter((row) => isRotatableFierceSeason(row))
+    .sort((left, right) => positiveInt(left.FierceID) - positiveInt(right.FierceID));
+  if (productionRows.length) {
+    const newestBucket = Math.max(...productionRows.map((row) => Math.floor(positiveInt(row && row.FierceID) / 100)));
+    const newestRows = productionRows.filter((row) => Math.floor(positiveInt(row && row.FierceID) / 100) === newestBucket);
+    return newestRows.length ? newestRows : productionRows;
+  }
+  return catalog.fierceSeasonRows
+    .filter((row) => positiveInt(row && row.FierceID) < 9000)
+    .sort((left, right) => positiveInt(left.FierceID) - positiveInt(right.FierceID));
+}
+
+function isRotatableFierceSeason(row) {
+  const fierceId = positiveInt(row && row.FierceID);
+  if (!fierceId || fierceId >= 9000) return false;
+  const openTag = String(row && row.m_OpenTag || "").toUpperCase();
+  const gameDateStrId = String(row && row.m_GameDateStrID || "").toUpperCase();
+  if (!openTag.includes("GLOBAL") || openTag.startsWith("TAG_ZL") || openTag.includes("DEV") || gameDateStrId.includes("_ZL")) return false;
+  const groupId = positiveInt(row && row.FierceBossGroupID_1);
+  return groupId > 0;
+}
+
+function getCurrentFierceSeasonRow(now = getServerNowDate()) {
+  const catalog = loadMiscStageCatalog();
+  const forcedId = positiveInt(process.env.CS_FIERCE_SEASON_ID || process.env.CS_DANGER_CLOSE_SEASON_ID);
+  if (forcedId && catalog.fierceSeasonRows.length) {
+    return catalog.fierceSeasonRows.find((row) => positiveInt(row && row.FierceID) === forcedId) || catalog.fierceSeasonRows[0] || null;
+  }
+  const rows = getFierceRotationSeasonRows();
+  if (!rows.length) return catalog.fierceSeasonRows[0] || null;
+  const slot = getFierceRotationSlot(now);
+  const index = positiveModulo(slot, rows.length);
+  return rows[index] || rows[0] || null;
+}
+
+function getCurrentFierceSeasonId(now = getServerNowDate()) {
+  const season = getCurrentFierceSeasonRow(now);
+  return positiveInt(season && season.FierceID);
+}
+
+function getFierceRotationSlot(now = getServerNowDate()) {
+  const anchor = coerceValidDate(FIERCE_ROTATION_ANCHOR_ISO) || new Date(Date.UTC(2025, 9, 1, 3, 0, 0, 0));
+  const target = coerceValidDate(now) || getServerNowDate();
+  const cycleMs = Math.max(1, FIERCE_ROTATION_CYCLE_DAYS) * FIERCE_DAY_MS;
+  return Math.floor((target.getTime() - anchor.getTime()) / cycleMs);
+}
+
+function getCurrentFierceSeasonWindow(now = getServerNowDate()) {
+  const anchor = coerceValidDate(FIERCE_ROTATION_ANCHOR_ISO) || new Date(Date.UTC(2025, 9, 1, 3, 0, 0, 0));
+  const slot = getFierceRotationSlot(now);
+  const startDate = new Date(anchor.getTime() + slot * FIERCE_ROTATION_CYCLE_DAYS * FIERCE_DAY_MS);
+  const gameEndDate = new Date(startDate.getTime() + FIERCE_ROTATION_GAME_DAYS * FIERCE_DAY_MS);
+  const rewardEndDate = new Date(startDate.getTime() + FIERCE_ROTATION_CYCLE_DAYS * FIERCE_DAY_MS);
+  return {
+    startDate,
+    gameEndDate,
+    rewardStartDate: gameEndDate,
+    rewardEndDate,
+  };
+}
+
+function getCurrentFierceSeasonTags(now = getServerNowDate()) {
+  const season = getCurrentFierceSeasonRow(now);
+  if (!season) return { contentsTags: [], openTags: [] };
+  return {
+    contentsTags: mergeTags(Array.isArray(season.listContentsTagAllow) ? season.listContentsTagAllow : []),
+    openTags: mergeTags([season.m_OpenTag]),
+  };
+}
+
+function buildFierceSeasonIntervalDataList(now = getServerNowDate()) {
+  const season = getCurrentFierceSeasonRow(now);
+  if (!season) return [];
+  const window = getCurrentFierceSeasonWindow(now);
+  const intervals = [];
+  const gameStrKey = String(season.m_GameDateStrID || "");
+  const rewardStrKey = String(season.m_RewardDateStrID || "");
+  if (gameStrKey) {
+    intervals.push({
+      key: 940000,
+      strKey: gameStrKey,
+      startDate: window.startDate,
+      endDate: window.gameEndDate,
+      repeatStartDate: 0,
+      repeatEndDate: 0,
+    });
+  }
+  if (rewardStrKey) {
+    intervals.push({
+      key: 940001,
+      strKey: rewardStrKey,
+      startDate: window.rewardStartDate,
+      endDate: window.rewardEndDate,
+      repeatStartDate: 0,
+      repeatEndDate: 0,
+    });
+  }
+  return intervals;
+}
+
+function getFierceSeasonIntervalStrKeys(now = getServerNowDate()) {
+  return buildFierceSeasonIntervalDataList(now)
+    .map((interval) => String(interval && interval.strKey || ""))
+    .filter(Boolean);
+}
+
+function positiveModulo(value, divisor) {
+  const normalizedDivisor = Math.max(1, Number(divisor || 0) || 1);
+  return ((Math.trunc(Number(value || 0)) % normalizedDivisor) + normalizedDivisor) % normalizedDivisor;
+}
+
+function coerceValidDate(value) {
+  if (value instanceof Date && !Number.isNaN(value.getTime())) return value;
+  if (typeof value === "string" || typeof value === "number") {
+    const date = new Date(value);
+    if (!Number.isNaN(date.getTime())) return date;
+  }
+  return null;
+}
+
 function getFierceSeasonBossRows(seasonRow = null) {
   const catalog = loadMiscStageCatalog();
-  const season = seasonRow || catalog.fierceSeasonRows[0] || null;
+  const season = seasonRow || getCurrentFierceSeasonRow() || catalog.fierceSeasonRows[0] || null;
   if (!season) return Array.from(catalog.fierceBossById.values()).slice(0, 3);
   const seen = new Set();
   const rows = [];
-  for (const key of Object.keys(season).filter((name) => /^FierceBossGroupID_\d+$/.test(name)).sort()) {
+  for (const key of Object.keys(season).filter((name) => /^FierceBossGroupID_\d+$/.test(name)).sort(sortNumberedFieldNames)) {
     const groupRows = catalog.fierceBossesByGroup.get(positiveInt(season[key])) || [];
-    const row = groupRows.find((entry) => positiveInt(entry.Level) <= 1) || groupRows[0];
-    const bossId = positiveInt(row && row.FierceBossID);
-    if (row && bossId && !seen.has(bossId)) {
+    for (const row of groupRows) {
+      const bossId = positiveInt(row && row.FierceBossID);
+      if (!row || !bossId || seen.has(bossId)) continue;
       seen.add(bossId);
       rows.push(row);
     }
   }
   return rows.length ? rows : Array.from(catalog.fierceBossById.values()).slice(0, 3);
+}
+
+function getFierceSeasonBossGroupIds(seasonRow = null) {
+  const catalog = loadMiscStageCatalog();
+  const season = seasonRow || getCurrentFierceSeasonRow() || catalog.fierceSeasonRows[0] || null;
+  if (!season) return [];
+  return Object.keys(season)
+    .filter((name) => /^FierceBossGroupID_\d+$/.test(name))
+    .sort(sortNumberedFieldNames)
+    .map((key) => positiveInt(season[key]))
+    .filter(Boolean);
+}
+
+function sortNumberedFieldNames(left, right) {
+  const leftNumber = Number(String(left || "").match(/\d+$/)?.[0] || 0);
+  const rightNumber = Number(String(right || "").match(/\d+$/)?.[0] || 0);
+  return leftNumber - rightNumber || String(left).localeCompare(String(right));
+}
+
+function normalizePositiveIntList(value) {
+  if (Array.isArray(value)) return value.map(positiveInt).filter(Boolean);
+  if (value instanceof Set) return Array.from(value).map(positiveInt).filter(Boolean);
+  const numeric = positiveInt(value);
+  return numeric ? [numeric] : [];
+}
+
+function uniquePositiveIntList(values) {
+  const seen = new Set();
+  const output = [];
+  for (const value of normalizePositiveIntList(values)) {
+    if (seen.has(value)) continue;
+    seen.add(value);
+    output.push(value);
+  }
+  return output;
+}
+
+function battleConditionLevelEntries(values) {
+  return uniquePositiveIntList(values).map((battleConditionId) => [battleConditionId, 1]);
+}
+
+function getBattleConditionIdByStrId(strId) {
+  const key = String(strId || "");
+  if (!key) return 0;
+  const row = loadMiscStageCatalog().battleConditionByStrId.get(key);
+  return positiveInt(row && row.m_BCondID);
+}
+
+function getFiercePenaltyRowsForBoss(bossId) {
+  const catalog = loadMiscStageCatalog();
+  const boss = catalog.fierceBossById.get(positiveInt(bossId));
+  const groupIds = uniquePositiveIntList(boss && boss.BossPenaltyGroupID);
+  const rows = [];
+  const seen = new Set();
+  for (const groupId of groupIds) {
+    for (const row of catalog.fiercePenaltiesByBossPenaltyGroup.get(groupId) || []) {
+      const penaltyId = positiveInt(row && row.PenaltyID);
+      if (!penaltyId || seen.has(penaltyId)) continue;
+      seen.add(penaltyId);
+      rows.push(row);
+    }
+  }
+  return rows;
+}
+
+function normalizeFiercePenaltyIdsForBoss(bossId, penaltyIds = []) {
+  const requested = uniquePositiveIntList(penaltyIds);
+  if (!requested.length) return [];
+  const allowedById = new Map(getFiercePenaltyRowsForBoss(bossId).map((row) => [positiveInt(row && row.PenaltyID), row]));
+  const selectedByPenaltyGroup = new Map();
+  for (const penaltyId of requested) {
+    const row = allowedById.get(penaltyId);
+    if (!row) continue;
+    const groupId = positiveInt(row.PenaltyGroupID) || penaltyId;
+    if (!selectedByPenaltyGroup.has(groupId)) selectedByPenaltyGroup.set(groupId, penaltyId);
+  }
+  return Array.from(selectedByPenaltyGroup.values());
+}
+
+function getFierceBattleConditionIdsForBoss(bossId, penaltyIds = []) {
+  const catalog = loadMiscStageCatalog();
+  const boss = catalog.fierceBossById.get(positiveInt(bossId));
+  if (!boss) return [];
+  const ids = [
+    getBattleConditionIdByStrId(boss.BCondStrID_1),
+    getBattleConditionIdByStrId(boss.BCondStrID_2),
+  ];
+  const selectedPenaltyIds = normalizeFiercePenaltyIdsForBoss(bossId, penaltyIds);
+  for (const penaltyId of selectedPenaltyIds) {
+    const row = catalog.fiercePenaltyById.get(penaltyId);
+    ids.push(getBattleConditionIdByStrId(row && row.BCondStrID));
+  }
+  return uniquePositiveIntList(ids);
+}
+
+function getFiercePenaltyRate(penaltyIds = []) {
+  const catalog = loadMiscStageCatalog();
+  return uniquePositiveIntList(penaltyIds).reduce((total, penaltyId) => {
+    const row = catalog.fiercePenaltyById.get(penaltyId);
+    return total + Math.trunc(Number(row && row.FierceScoreRate) || 0);
+  }, 0);
 }
 
 function resolveMiscStageRequest(req = {}) {
@@ -4281,6 +5086,10 @@ function resolveMiscStageRequest(req = {}) {
       mode: "fierce",
       gameType: NGT_FIERCE,
       fierceBossId,
+      fierceBossGroupId: positiveInt(boss && boss.FierceBossGroupID),
+      fierceLevel: Math.max(1, positiveInt(boss && boss.Level) || 1),
+      operationPower: positiveInt(boss && boss.OperationPower),
+      battleConditionIds: getFierceBattleConditionIdsForBoss(fierceBossId, []),
       dungeonID,
       stageID: dungeonID,
     };
@@ -4369,7 +5178,16 @@ function classifyMiscDungeon(dungeonID, stageRow = null, dungeon = null) {
   }
   if (resolvedDungeonId && catalog.fierceBossByDungeonId.has(resolvedDungeonId)) {
     const boss = catalog.fierceBossByDungeonId.get(resolvedDungeonId);
-    return { mode: "fierce", gameType: NGT_FIERCE, fierceBossId: positiveInt(boss && boss.FierceBossID) };
+    const bossId = positiveInt(boss && boss.FierceBossID);
+    return {
+      mode: "fierce",
+      gameType: NGT_FIERCE,
+      fierceBossId: bossId,
+      fierceBossGroupId: positiveInt(boss && boss.FierceBossGroupID),
+      fierceLevel: Math.max(1, positiveInt(boss && boss.Level) || 1),
+      operationPower: positiveInt(boss && boss.OperationPower),
+      battleConditionIds: getFierceBattleConditionIdsForBoss(bossId, []),
+    };
   }
   if (resolvedDungeonId && catalog.trimDungeonByDungeonId.has(resolvedDungeonId)) {
     const trimDungeon = catalog.trimDungeonByDungeonId.get(resolvedDungeonId);
@@ -4509,6 +5327,10 @@ function getGenericStageForRequest(req = {}) {
     eventDeckId: cutsceneOnly ? 0 : resolveGenericEventDeckId(stageRow, dungeon, miscStage),
     palaceID: positiveInt(miscStage.palaceID),
     fierceBossId: positiveInt(miscStage.fierceBossId),
+    fierceBossGroupId: positiveInt(miscStage.fierceBossGroupId),
+    fierceLevel: Math.max(0, positiveInt(miscStage.fierceLevel)),
+    operationPower: positiveInt(miscStage.operationPower),
+    battleConditionIds: uniquePositiveIntList(miscStage.battleConditionIds),
     trimId: positiveInt(miscStage.trimId),
     trimLevel: positiveInt(miscStage.trimLevel),
     defenceTempletId: positiveInt(miscStage.defenceTempletId),
@@ -4651,7 +5473,9 @@ function grantStageClearLoot(user, dungeonId, stageId, options = {}) {
   const rewardGroupIds = getDungeonRewardGroupIds(entry);
   result.rewardGroupIds = rewardGroupIds;
   for (const groupId of rewardGroupIds) {
-    const record = pickStageRewardRecord(getRewardGroupRecords(groupId), user, groupId);
+    const records = getRewardGroupRecords(groupId);
+    if (!stageRewardGroupChancePass(user, groupId, records)) continue;
+    const record = pickStageRewardRecord(records, user, groupId);
     if (!record) continue;
     mergeReward(reward, grantRewardRecord(ctx, user, record, { regDate }));
   }
@@ -4712,7 +5536,7 @@ function stageMainRewardProbabilityPass(user, stageId, probability) {
   const chance = Math.max(0, Math.trunc(Number(probability == null ? 10000 : probability) || 0));
   if (chance >= 10000) return true;
   if (chance <= 0) return false;
-  return nextStageRewardCursor(user, `stage-main-prob:${stageId}`) % 10000 < chance;
+  return stableStageRewardRoll(user, `stage-main-prob:${stageId}`, 10000) < chance;
 }
 
 function hasRewardPayload(reward) {
@@ -4786,6 +5610,52 @@ function pickStageRewardRecord(records, user, groupId) {
     if (target < 0) return record;
   }
   return list[0];
+}
+
+function stageRewardGroupChancePass(user, groupId, records) {
+  const chance = getStageRewardGroupChance(groupId, records);
+  if (chance >= STAGE_REWARD_CHANCE_DENOMINATOR) return true;
+  if (chance <= 0) return false;
+  return stableStageRewardRoll(user, `group:${groupId}`, STAGE_REWARD_CHANCE_DENOMINATOR) < chance;
+}
+
+function getStageRewardGroupChance(groupId, records) {
+  const configured = getConfiguredStageRewardGroupChance(groupId);
+  if (configured != null) return configured;
+  if (isFullActorRewardGroup(records)) return STAGE_FULL_ACTOR_REWARD_GROUP_CHANCE;
+  return STAGE_REWARD_CHANCE_DENOMINATOR;
+}
+
+function getConfiguredStageRewardGroupChance(groupId) {
+  const normalizedGroupId = Math.max(0, Math.trunc(Number(groupId || 0) || 0));
+  if (normalizedGroupId <= 0) return null;
+  const keys = [
+    `CS_STAGE_REWARD_GROUP_${normalizedGroupId}_CHANCE`,
+    `CS_STAGE_REWARD_GROUP_CHANCE_${normalizedGroupId}`,
+  ];
+  for (const key of keys) {
+    const parsed = parseOptionalChanceEnv(process.env[key]);
+    if (parsed != null) return parsed;
+  }
+  return null;
+}
+
+function isFullActorRewardGroup(records) {
+  const list = Array.isArray(records) ? records.filter(Boolean) : [];
+  return list.length > 0 && list.every((record) => isFullActorRewardType(record.m_RewardType));
+}
+
+function isFullActorRewardType(type) {
+  const normalized = String(type || "").trim().toUpperCase();
+  return normalized === "RT_UNIT" || normalized === "RT_SHIP" || normalized === "RT_OPERATOR";
+}
+
+function stableStageRewardRoll(user, key, modulo = STAGE_REWARD_CHANCE_DENOMINATOR) {
+  const denominator = Math.max(1, Math.trunc(Number(modulo || 1) || 1));
+  const cursor = nextStageRewardCursor(user, `roll:${key}`);
+  const userUid = user && user.userUid ? String(toBigInt(user.userUid || 0)) : "local";
+  const hashHex = crypto.createHash("sha1").update(`${userUid}:${key}:${cursor}`).digest("hex").slice(0, 8);
+  return Number.parseInt(hashHex, 16) % denominator;
 }
 
 function pickDungeonRewardQuantity(user, key, minValue, maxValue) {
@@ -5114,7 +5984,7 @@ function sendStageClearMissionUpdate(socket, user, options = {}) {
 }
 
 function sendTrackedMissionUpdate(socket, user, options = {}) {
-  return sendMissionUpdateForTabs(socket, user, FAST_LOBBY_MISSION_TABS, {
+  return sendMissionUpdateForTabs(socket, user, uniqueMissionTabs([...FAST_LOBBY_MISSION_TABS, ...getActiveEventMissionTabIds(), ...PAYBACK_MISSION_TABS]), {
     ...options,
     label: options.label || "mission-progress-update",
   });
@@ -5281,7 +6151,7 @@ function mainStoryStageMedalValue(stage, state = null) {
 }
 
 function mainStoryEpisodeMedalValue(stage, state = null) {
-  if (!stage || stage.cutsceneOnly) return 0;
+  if (!stage) return 0;
   return mainStoryStageMedalValue(stage, state);
 }
 
@@ -6071,6 +6941,7 @@ function shouldPersistCutsceneView(dungeonId, stageId) {
     isTutorialDungeonId(resolvedDungeonId) ||
     isTutorialStageId(resolvedStageId) ||
     isMainStoryCutsceneDungeonId(resolvedDungeonId) ||
+    isCutsceneOnlyDungeon(resolvedDungeonId, resolvedStageId) ||
     Boolean(mainStoryStage && mainStoryStage.cutsceneOnly)
   );
 }
@@ -6271,8 +7142,8 @@ function buildGreetingMessageAckPayload(message = "") {
   return Buffer.concat([writeSignedVarInt(0), writeString(message || "")]);
 }
 
-function buildFavoritesStageAckPayload() {
-  return Buffer.concat([writeSignedVarInt(0), writeObjectMapInt([])]);
+function buildFavoritesStageAckPayload(user, errorCode = 0) {
+  return buildStageFavoritesAckPayload(user, errorCode);
 }
 
 function buildDefenceInfoAckPayload(defenceTempletId = 0) {
@@ -6298,6 +7169,81 @@ function ensureMiscStageState(user) {
   if (!user || typeof user !== "object") return null;
   user.miscStages = user.miscStages && typeof user.miscStages === "object" ? user.miscStages : {};
   return user.miscStages;
+}
+
+function ensureFierceSeasonState(user, options = {}) {
+  const root = ensureMiscStageState(user);
+  if (!root) return null;
+  root.fierce = root.fierce && typeof root.fierce === "object" ? root.fierce : {};
+  root.fierce.bosses = root.fierce.bosses && typeof root.fierce.bosses === "object" ? root.fierce.bosses : {};
+  root.fierce.seasons = root.fierce.seasons && typeof root.fierce.seasons === "object" ? root.fierce.seasons : {};
+  const seasonId = getCurrentFierceSeasonId();
+  const seasonKey = String(seasonId || "default");
+  const season = root.fierce.seasons[seasonKey] && typeof root.fierce.seasons[seasonKey] === "object"
+    ? root.fierce.seasons[seasonKey]
+    : {};
+  season.bosses = season.bosses && typeof season.bosses === "object" ? season.bosses : {};
+  season.pointRewardHistory = uniquePositiveIntList(season.pointRewardHistory);
+  root.fierce.seasons[seasonKey] = season;
+  if (seasonId) root.fierce.currentSeasonId = seasonId;
+  return { root, fierce: root.fierce, season, seasonId, seasonKey };
+}
+
+function getFierceSeasonState(user) {
+  const fierce = user && user.miscStages && user.miscStages.fierce && typeof user.miscStages.fierce === "object"
+    ? user.miscStages.fierce
+    : {};
+  const seasonId = getCurrentFierceSeasonId();
+  const seasonKey = String(seasonId || "default");
+  const season = fierce.seasons && fierce.seasons[seasonKey] && typeof fierce.seasons[seasonKey] === "object"
+    ? fierce.seasons[seasonKey]
+    : {};
+  return { fierce, season, seasonId, seasonKey };
+}
+
+function ensureFierceBossSeasonState(user, bossId) {
+  const state = ensureFierceSeasonState(user);
+  const resolvedBossId = positiveInt(bossId);
+  if (!state || !resolvedBossId) return null;
+  const key = String(resolvedBossId);
+  const existing = state.season.bosses[key] && typeof state.season.bosses[key] === "object"
+    ? state.season.bosses[key]
+    : state.fierce.bosses[key] && typeof state.fierce.bosses[key] === "object"
+      ? { ...state.fierce.bosses[key] }
+      : {};
+  existing.bossId = resolvedBossId;
+  state.season.bosses[key] = existing;
+  state.fierce.bosses[key] = existing;
+  return existing;
+}
+
+function getFierceSavedBossState(user, bossId) {
+  const resolvedBossId = positiveInt(bossId);
+  if (!resolvedBossId) return {};
+  const { fierce, season } = getFierceSeasonState(user);
+  return (
+    (season.bosses && season.bosses[String(resolvedBossId)]) ||
+    (fierce.bosses && fierce.bosses[String(resolvedBossId)]) ||
+    {}
+  );
+}
+
+function getFierceSeasonTotalPoint(user, seasonRow = null) {
+  const { season, fierce } = getFierceSeasonState(user);
+  const rows = getFierceSeasonBossRows(seasonRow);
+  const groupBest = new Map();
+  for (const row of rows) {
+    const bossId = positiveInt(row && row.FierceBossID);
+    const groupId = positiveInt(row && row.FierceBossGroupID);
+    if (!bossId || !groupId) continue;
+    const saved =
+      (season.bosses && season.bosses[String(bossId)]) ||
+      (fierce.bosses && fierce.bosses[String(bossId)]) ||
+      {};
+    const point = Math.max(0, Math.trunc(Number(saved.point || 0) || 0));
+    groupBest.set(groupId, Math.max(groupBest.get(groupId) || 0, point));
+  }
+  return Array.from(groupBest.values()).reduce((total, point) => total + point, 0);
 }
 
 function buildShadowPalaceStartAckPayload(req = {}, user = null) {
@@ -6408,26 +7354,38 @@ function buildTrimStageData(index, dungeonId, score, isWin) {
 }
 
 function buildFierceDataAckPayload(user = null) {
-  const state = user && user.miscStages && user.miscStages.fierce && typeof user.miscStages.fierce === "object" ? user.miscStages.fierce : {};
-  const bosses = getFierceSeasonBossRows().map((row) => {
+  const season = getCurrentFierceSeasonRow();
+  const seasonId = getCurrentFierceSeasonId();
+  const { fierce: state, season: seasonState } = getFierceSeasonState(user);
+  const totalPoint = getFierceSeasonTotalPoint(user, season);
+  const bosses = getFierceSeasonBossRows(season).map((row) => {
     const bossId = positiveInt(row && row.FierceBossID);
-    const saved = state.bosses && state.bosses[String(bossId)] ? state.bosses[String(bossId)] : {};
+    const saved =
+      seasonState.bosses && seasonState.bosses[String(bossId)]
+        ? seasonState.bosses[String(bossId)]
+        : state.bosses && state.bosses[String(bossId)]
+          ? state.bosses[String(bossId)]
+          : {};
     return buildFierceBossData({
       bossId,
       point: Math.max(0, Number(saved.point || 0) || 0),
-      rankNumber: Math.max(0, Number(saved.rankNumber || 0) || 0),
-      rankPercent: Math.max(0, Number(saved.rankPercent || 0) || 0),
+      rankNumber: Math.max(0, Number(saved.rankNumber || (Number(saved.point || 0) > 0 ? 1 : 0)) || 0),
+      rankPercent: Math.max(0, Number(saved.rankPercent || (Number(saved.point || 0) > 0 ? 1 : 0)) || 0),
       isCleared: Boolean(saved.isCleared),
     });
   });
   return Buffer.concat([
     writeSignedVarInt(0),
-    writeSignedVarInt(Math.max(0, Number(state.rankNumber || 0) || 0)),
-    writeSignedVarInt(Math.max(0, Number(state.rankPercent || 0) || 0)),
-    writeIntList(Array.isArray(state.pointRewardHistory) ? state.pointRewardHistory : []),
-    writeBool(Boolean(state.isRankRewardGotten)),
+    writeSignedVarInt(Math.max(0, Number(seasonState.rankNumber || state.rankNumber || (totalPoint > 0 ? 1 : 0)) || 0)),
+    writeSignedVarInt(Math.max(0, Number(seasonState.rankPercent || state.rankPercent || (totalPoint > 0 ? 1 : 0)) || 0)),
+    writeIntList(Array.isArray(seasonState.pointRewardHistory) ? seasonState.pointRewardHistory : Array.isArray(state.pointRewardHistory) ? state.pointRewardHistory : []),
+    writeBool(Boolean(seasonState.isRankRewardGotten || state.isRankRewardGotten)),
     writeObjectList(bosses.map((boss) => writeNullableObject(boss))),
   ]);
+}
+
+function buildFierceSeasonNotPayload(now = getServerNowDate()) {
+  return writeSignedVarInt(getCurrentFierceSeasonId(now));
 }
 
 function buildFierceBossData(data = {}) {
@@ -6441,11 +7399,298 @@ function buildFierceBossData(data = {}) {
   ]);
 }
 
-function buildFiercePenaltyAckPayload(req = {}) {
+function buildFiercePenaltyAckPayload(req = {}, user = null) {
+  const bossId = positiveInt(req.fierceBossId || req.fierceBossID || req.bossId);
+  const penaltyIds = normalizeFiercePenaltyIdsForBoss(bossId, Array.isArray(req.penaltyIds) ? req.penaltyIds : []);
+  if (user && bossId) {
+    const bossState = ensureFierceBossSeasonState(user, bossId);
+    if (bossState) {
+      bossState.penaltyIds = penaltyIds;
+      bossState.penaltyPoint = Math.max(0, Number(bossState.penaltyPoint || 0) || 0);
+      bossState.updatedAt = new Date().toISOString();
+      if (USE_LOCAL_USER_DB) saveUserDb();
+    }
+  }
   return Buffer.concat([
     writeSignedVarInt(0),
-    writeSignedVarInt(positiveInt(req.fierceBossId || req.fierceBossID || req.bossId)),
-    writeIntList(Array.isArray(req.penaltyIds) ? req.penaltyIds : []),
+    writeSignedVarInt(bossId),
+    writeIntList(penaltyIds),
+  ]);
+}
+
+function buildFierceProfileAckPayload(req = {}, user = null) {
+  const target = findFierceProfileUser(req.userUid) || user || null;
+  const profile = buildFierceProfileState(target);
+  const identity = getUserProfileIdentity(target);
+  return Buffer.concat([
+    writeSignedVarInt(0),
+    writeNullableObject(buildCommonProfileData(target, identity.userUid, identity.friendCode, identity.nickname)),
+    writeNullableObject(buildGuildSimpleData()),
+    writeString(String((target && target.friendIntro) || "")),
+    writeNullableObject(buildFierceProfileData(profile, target)),
+  ]);
+}
+
+function buildFierceProfileState(user = null) {
+  const season = getCurrentFierceSeasonRow();
+  const rows = getFierceSeasonBossRows(season);
+  const firstRow = rows[0] || {};
+  let bestRow = firstRow;
+  let bestSaved = {};
+  let bestPoint = -1;
+  for (const row of rows) {
+    const saved = getFierceSavedBossState(user, positiveInt(row && row.FierceBossID));
+    const point = Math.max(0, Number(saved.point || 0) || 0);
+    if (point > bestPoint) {
+      bestPoint = point;
+      bestRow = row;
+      bestSaved = saved;
+    }
+  }
+  const bossId = positiveInt(bestRow && bestRow.FierceBossID);
+  const penaltyIds = uniquePositiveIntList(bestSaved.penaltyIds);
+  return {
+    fierceBossGroupId: positiveInt(bestRow && bestRow.FierceBossGroupID),
+    fierceBossId: bossId,
+    operationPower: positiveInt(bestRow && bestRow.OperationPower),
+    totalPoint: Math.max(0, Number(bestSaved.point || 0) || 0),
+    penaltyPoint: Math.max(0, Number(bestSaved.penaltyPoint || 0) || 0),
+    penaltyIds,
+  };
+}
+
+function buildFierceProfileData(profile = {}, user = null) {
+  return Buffer.concat([
+    writeSignedVarInt(positiveInt(profile.fierceBossGroupId)),
+    writeSignedVarInt(positiveInt(profile.fierceBossId)),
+    writeNullObject(), // profileDeck
+    writeSignedVarInt(positiveInt(profile.operationPower)),
+    writeSignedVarInt(Math.max(0, Number(profile.totalPoint || 0) || 0)),
+    writeSignedVarInt(Math.max(0, Number(profile.penaltyPoint || 0) || 0)),
+    writeIntList(profile.penaltyIds || []),
+    writeObjectList(((user && user.profileEmblems) || []).map((emblem) => writeNullableObject(buildProfileEmblemData(emblem)))),
+  ]);
+}
+
+function buildFierceRankRewardAckPayload(user = null) {
+  if (!user) return Buffer.concat([writeSignedVarInt(1), writeNullObject()]);
+  const state = ensureFierceSeasonState(user);
+  const totalPoint = getFierceSeasonTotalPoint(user);
+  const alreadyClaimed = Boolean(state && (state.season.isRankRewardGotten || state.fierce.isRankRewardGotten));
+  if (!state || totalPoint <= 0) return Buffer.concat([writeSignedVarInt(1), writeNullObject()]);
+  if (alreadyClaimed) return Buffer.concat([writeSignedVarInt(0), writeNullableObject(buildSerializedRewardData(createEmptyReward()))]);
+  const row = selectFierceRankRewardRow(user);
+  const reward = row ? grantFierceInlineRewardRow(user, row, "RankReward") : createEmptyReward();
+  state.season.isRankRewardGotten = true;
+  state.fierce.isRankRewardGotten = true;
+  if (USE_LOCAL_USER_DB) saveUserDb();
+  return Buffer.concat([writeSignedVarInt(0), writeNullableObject(buildSerializedRewardData(reward))]);
+}
+
+function buildFiercePointRewardAckPayload(req = {}, user = null) {
+  const rewardId = positiveInt(req.pointRewardId || req.fiercePointRewardId || req.fiercePointRewardID);
+  if (!user || !rewardId) return Buffer.concat([writeSignedVarInt(1), writeNullObject(), writeSignedVarInt(rewardId)]);
+  const row = getCurrentFiercePointRewardRows().find((entry) => positiveInt(entry && entry.FiercePointRewardID) === rewardId);
+  const state = ensureFierceSeasonState(user);
+  const history = state ? uniquePositiveIntList(state.season.pointRewardHistory) : [];
+  const totalPoint = getFierceSeasonTotalPoint(user);
+  const eligible = row && totalPoint >= Math.max(0, Number(row.Point || 0) || 0);
+  let reward = createEmptyReward();
+  const errorCode = eligible ? 0 : 1;
+  if (eligible && !history.includes(rewardId)) {
+    reward = grantFierceInlineRewardRow(user, row, "PointReward");
+    history.push(rewardId);
+    state.season.pointRewardHistory = uniquePositiveIntList(history);
+    state.fierce.pointRewardHistory = uniquePositiveIntList(history);
+    if (USE_LOCAL_USER_DB) saveUserDb();
+  }
+  return Buffer.concat([
+    writeSignedVarInt(errorCode),
+    errorCode === 0 ? writeNullableObject(buildSerializedRewardData(reward)) : writeNullObject(),
+    writeSignedVarInt(rewardId),
+  ]);
+}
+
+function buildFiercePointRewardAllAckPayload(user = null) {
+  if (!user) return Buffer.concat([writeSignedVarInt(1), writeIntList([]), writeNullObject()]);
+  const state = ensureFierceSeasonState(user);
+  if (!state) return Buffer.concat([writeSignedVarInt(1), writeIntList([]), writeNullObject()]);
+  const totalPoint = getFierceSeasonTotalPoint(user);
+  const history = uniquePositiveIntList(state.season.pointRewardHistory);
+  const reward = createEmptyReward();
+  const claimedIds = [];
+  for (const row of getCurrentFiercePointRewardRows()) {
+    const rewardId = positiveInt(row && row.FiercePointRewardID);
+    if (!rewardId || history.includes(rewardId)) continue;
+    if (totalPoint < Math.max(0, Number(row.Point || 0) || 0)) continue;
+    mergeReward(reward, grantFierceInlineRewardRow(user, row, "PointReward"));
+    history.push(rewardId);
+    claimedIds.push(rewardId);
+  }
+  if (claimedIds.length) {
+    state.season.pointRewardHistory = uniquePositiveIntList(history);
+    state.fierce.pointRewardHistory = uniquePositiveIntList(history);
+    if (USE_LOCAL_USER_DB) saveUserDb();
+  }
+  return Buffer.concat([
+    writeSignedVarInt(0),
+    writeIntList(claimedIds),
+    writeNullableObject(buildSerializedRewardData(reward)),
+  ]);
+}
+
+function buildLeaderboardFierceListAckPayload(req = {}, user = null) {
+  const season = getCurrentFierceSeasonRow();
+  const entries = getFierceLeaderboardEntries({ user, isAll: Boolean(req.isAll) });
+  const rank = getFierceLeaderboardRank(entries, user);
+  return Buffer.concat([
+    writeSignedVarInt(0),
+    writeNullableObject(buildLeaderBoardFierceData(entries)),
+    writeSignedVarInt(rank),
+    writeSignedVarInt(rank ? 1 : 0),
+    writeSignedVarInt(positiveInt(season && season.FierceID)),
+    writeObjectList(buildFierceBossDataListForUser(user, season).map((boss) => writeNullableObject(boss))),
+    writeBool(Boolean(req.isAll)),
+  ]);
+}
+
+function buildLeaderboardFierceBossGroupListAckPayload(req = {}, user = null) {
+  const season = getCurrentFierceSeasonRow();
+  const groupId = positiveInt(req.fierceBossGroupId || req.fierceBossGroupID) || getFierceSeasonBossGroupIds(season)[0] || 0;
+  const entries = getFierceLeaderboardEntries({ user, isAll: Boolean(req.isAll), fierceBossGroupId: groupId });
+  const rank = getFierceLeaderboardRank(entries, user);
+  return Buffer.concat([
+    writeSignedVarInt(0),
+    writeNullableObject(buildLeaderBoardFierceData(entries)),
+    writeSignedVarInt(rank),
+    writeSignedVarInt(positiveInt(season && season.FierceID)),
+    writeSignedVarInt(groupId),
+    writeBool(Boolean(req.isAll)),
+  ]);
+}
+
+function findFierceProfileUser(userUid) {
+  const uid = toBigInt(userUid || 0);
+  if (uid <= 0n) return null;
+  return userDb.users[String(uid)] || null;
+}
+
+function getUserProfileIdentity(user = null) {
+  return {
+    userUid: toBigInt(user && user.userUid ? user.userUid : 0),
+    friendCode: toBigInt(user && user.friendCode ? user.friendCode : 0),
+    nickname: String((user && user.nickname) || ""),
+  };
+}
+
+function getCurrentFiercePointRewardRows() {
+  const season = getCurrentFierceSeasonRow();
+  return loadMiscStageCatalog().fiercePointRewardsByGroup.get(positiveInt(season && season.PointRewardGroupID)) || [];
+}
+
+function getCurrentFierceRankRewardRows() {
+  const season = getCurrentFierceSeasonRow();
+  return loadMiscStageCatalog().fierceRankRewardsByGroup.get(positiveInt(season && season.RankRewardGroupID)) || [];
+}
+
+function selectFierceRankRewardRow(user = null) {
+  const totalPoint = getFierceSeasonTotalPoint(user);
+  if (totalPoint <= 0) return null;
+  const rankNumber = 1;
+  const rankPercent = 1;
+  const rows = getCurrentFierceRankRewardRows();
+  return (
+    rows.find((row) => row && row.PercentCheck !== true && rankNumber <= Math.max(1, positiveInt(row.RankValue) || 1)) ||
+    rows.find((row) => row && row.PercentCheck === true && rankPercent <= Math.max(1, positiveInt(row.RankValue) || 100)) ||
+    rows[0] ||
+    null
+  );
+}
+
+function grantFierceInlineRewardRow(user, row, prefix) {
+  const reward = createEmptyReward();
+  if (!user || !row) return reward;
+  const ctx = { dateTimeBinaryNow };
+  const regDate = dateTimeBinaryNow();
+  for (let index = 1; index <= 8; index += 1) {
+    const rewardType = String(row[`${prefix}Type_${index}`] || "");
+    const rewardId = positiveInt(row[`${prefix}ID_${index}`]);
+    const quantity = Math.max(0, Number(row[`${prefix}Quantity_${index}`] || row[`${prefix}Count_${index}`] || 0) || 0);
+    if (!rewardType || rewardType === "RT_NONE" || !rewardId || quantity <= 0) continue;
+    mergeReward(
+      reward,
+      grantRewardByType(ctx, user, rewardType, rewardId, quantity, quantity, 0, {
+        regDate,
+        expandPackages: false,
+      })
+    );
+  }
+  return reward;
+}
+
+function buildFierceBossDataListForUser(user = null, seasonRow = null) {
+  const { fierce, season } = getFierceSeasonState(user);
+  return getFierceSeasonBossRows(seasonRow).map((row) => {
+    const bossId = positiveInt(row && row.FierceBossID);
+    const saved =
+      (season.bosses && season.bosses[String(bossId)]) ||
+      (fierce.bosses && fierce.bosses[String(bossId)]) ||
+      {};
+    const point = Math.max(0, Number(saved.point || 0) || 0);
+    return buildFierceBossData({
+      bossId,
+      point,
+      rankNumber: Math.max(0, Number(saved.rankNumber || (point > 0 ? 1 : 0)) || 0),
+      rankPercent: Math.max(0, Number(saved.rankPercent || (point > 0 ? 1 : 0)) || 0),
+      isCleared: Boolean(saved.isCleared),
+    });
+  });
+}
+
+function getFierceBossGroupPoint(user = null, groupId = 0) {
+  const rows = loadMiscStageCatalog().fierceBossesByGroup.get(positiveInt(groupId)) || [];
+  let best = 0;
+  for (const row of rows) {
+    const saved = getFierceSavedBossState(user, positiveInt(row && row.FierceBossID));
+    best = Math.max(best, Math.max(0, Number(saved.point || 0) || 0));
+  }
+  return best;
+}
+
+function getFierceLeaderboardEntries(options = {}) {
+  const targetUser = options.user || null;
+  const isAll = Boolean(options.isAll);
+  const groupId = positiveInt(options.fierceBossGroupId);
+  const users = Object.values(userDb.users || {}).filter((entry) => entry && typeof entry === "object");
+  if (targetUser && !users.some((entry) => String(entry.userUid || "") === String(targetUser.userUid || ""))) users.push(targetUser);
+  const entries = users
+    .map((entry) => {
+      const point = groupId ? getFierceBossGroupPoint(entry, groupId) : getFierceSeasonTotalPoint(entry);
+      return { user: entry, point };
+    })
+    .filter((entry) => entry.point > 0 || (targetUser && String(entry.user.userUid || "") === String(targetUser.userUid || "")))
+    .sort((left, right) => right.point - left.point || String(left.user.nickname || "").localeCompare(String(right.user.nickname || "")));
+  return isAll ? entries : entries.slice(0, 50);
+}
+
+function getFierceLeaderboardRank(entries = [], user = null) {
+  if (!user) return 0;
+  const targetUid = String(user.userUid || "");
+  const index = entries.findIndex((entry) => String(entry && entry.user && entry.user.userUid || "") === targetUid);
+  return index >= 0 && entries[index].point > 0 ? index + 1 : 0;
+}
+
+function buildLeaderBoardFierceData(entries = []) {
+  return writeObjectList(entries.map((entry) => writeNullableObject(buildLeaderBoardFierceEntry(entry))));
+}
+
+function buildLeaderBoardFierceEntry(entry = {}) {
+  const user = entry.user || null;
+  const identity = getUserProfileIdentity(user);
+  return Buffer.concat([
+    writeNullableObject(buildCommonProfileData(user, identity.userUid, identity.friendCode, identity.nickname)),
+    writeSignedVarLong(BigInt(Math.max(0, Number(entry.point || 0) || 0))),
+    writeNullableObject(buildGuildSimpleData()),
   ]);
 }
 
@@ -6875,8 +8120,17 @@ function buildLoginLikePayload(user) {
 function createRuntimeEventManager(manager) {
   return {
     ...manager,
+    getSummary(date) {
+      return manager.getSummary(date || getServerNowDate());
+    },
     getActiveEventState(date) {
       return manager.getActiveEventState(date || getServerNowDate());
+    },
+    getDiagnostics(date, options) {
+      return manager.getDiagnostics(date || getServerNowDate(), options);
+    },
+    formatDiagnostics(date, options) {
+      return manager.formatDiagnostics(date || getServerNowDate(), options);
     },
     selectEntriesForDate(date) {
       return manager.selectEntriesForDate(date || getServerNowDate());
@@ -6890,44 +8144,46 @@ function getActiveEventState() {
 
 function getEventContentsTagsForContentsVersion() {
   const state = getActiveEventState();
-  return suppressObsoleteContractContentsTags(mergeTags(
+  const fierceTags = getCurrentFierceSeasonTags();
+  return mergeTags(
     EVENT_CONTENTS_TAGS_ENABLED ? state.contentsTags : [],
-    EVENT_COUNTER_PASS_CONTENTS_TAGS_ENABLED ? state.counterPassContentsTags : []
-  ));
+    EVENT_COUNTER_PASS_CONTENTS_TAGS_ENABLED ? state.counterPassContentsTags : [],
+    EVENT_SHOP_CONTENTS_TAGS_ENABLED ? getActiveEventShopTags().contentsTags : [],
+    fierceTags.contentsTags
+  );
 }
 
 function getEffectiveContentsTags(baseTags) {
   const eventTags = getEventContentsTagsForContentsVersion();
-  const activeBaseTags = stripInactiveEventContentsTags(baseTags, eventTags);
-  return mergeTags(activeBaseTags, REQUIRED_CONTENTS_TAGS, eventTags);
+  return mergeTags(baseTags, REQUIRED_CONTENTS_TAGS, eventTags);
 }
 
 function stripInactiveEventContentsTags(baseTags, activeEventTags) {
+  if (!eventManager || !eventManager.config || !eventManager.config.enabled) return Array.isArray(baseTags) ? baseTags : [];
   if (!eventManager.getKnownContentsTags) return Array.isArray(baseTags) ? baseTags : [];
   const knownTags = new Set(eventManager.getKnownContentsTags().map((tag) => String(tag || "").toUpperCase()));
   if (!knownTags.size) return Array.isArray(baseTags) ? baseTags : [];
   const activeTags = new Set((Array.isArray(activeEventTags) ? activeEventTags : []).map((tag) => String(tag || "").toUpperCase()));
-  return suppressObsoleteContractContentsTags((Array.isArray(baseTags) ? baseTags : []).filter((tag) => {
+  return (Array.isArray(baseTags) ? baseTags : []).filter((tag) => {
     const key = String(tag || "").toUpperCase();
     return !knownTags.has(key) || activeTags.has(key);
-  }));
-}
-
-function suppressObsoleteContractContentsTags(tags) {
-  return (Array.isArray(tags) ? tags : []).filter((tag) => {
-    const key = String(tag || "").toUpperCase();
-    return (
-      key !== "TAG_GLOBAL_CONTRACT_BASIC" &&
-      key !== "TAG_GLOBAL_CONTRACT_OPERATOR_TUTORIAL" &&
-      key !== "TAG_GLOBAL_CONTRACT_CBT" &&
-      key !== "TAG_GLOBAL_CONTRACT_OBT"
-    );
   });
 }
 
 function getEffectiveOpenTags(baseTags) {
-  return filterDuplicateContractOpenTags(
-    filterSuppressedOpenTags(mergeTags(baseTags, EXPLICIT_OPEN_TAGS, REQUIRED_STORY_OPEN_TAGS, getActiveEventState().openTags))
+  const activeEventState = getActiveEventState();
+  return filterInactiveCustomOperatorOpenTags(
+    filterSuppressedOpenTags(
+      mergeTags(
+        baseTags,
+        EXPLICIT_OPEN_TAGS,
+        REQUIRED_STORY_OPEN_TAGS,
+        activeEventState.openTags,
+        EVENT_SHOP_OPEN_TAGS_ENABLED ? getActiveEventShopTags().openTags : [],
+        getCurrentFierceSeasonTags().openTags
+      )
+    ),
+    activeEventState.openTags
   );
 }
 
@@ -6938,13 +8194,40 @@ function filterSuppressedOpenTags(tags) {
   });
 }
 
+function filterInactiveCustomOperatorOpenTags(tags, activeOpenTags) {
+  const active = new Set((Array.isArray(activeOpenTags) ? activeOpenTags : []).map((tag) => String(tag || "").toUpperCase()));
+  return (Array.isArray(tags) ? tags : []).filter((tag) => {
+    const key = String(tag || "").toUpperCase();
+    if (OBSOLETE_CONTRACT_OPEN_TAG_SET.has(key)) return EXPLICIT_OPEN_TAG_SET.has(key);
+    if (!CUSTOM_OPERATOR_OPEN_TAG_SET.has(key)) return true;
+    return active.has(key) || EXPLICIT_OPEN_TAG_SET.has(key);
+  });
+}
+
 function getRequiredContentsTags() {
   return mergeTags(REQUIRED_CONTENTS_TAGS, getEventContentsTagsForContentsVersion());
 }
 
+function getActiveEventShopTags() {
+  try {
+    const state = getActiveEventShopState(runtimeEventManager, { includeAllEventShops: false });
+    return {
+      contentsTags: Array.isArray(state && state.contentsTags) ? state.contentsTags : [],
+      openTags: Array.isArray(state && state.openTags) ? state.openTags : [],
+      intervalTags: Array.isArray(state && state.intervalTags) ? state.intervalTags : [],
+      productIds: Array.isArray(state && state.productIds) ? state.productIds : [],
+      priceItemIds: Array.isArray(state && state.priceItemIds) ? state.priceItemIds : [],
+      tabCount: Number(state && state.tabCount || 0) || 0,
+    };
+  } catch (err) {
+    console.log(`[event-shop] failed to resolve active tags: ${err.message}`);
+    return { contentsTags: [], openTags: [], intervalTags: [], productIds: [], priceItemIds: [], tabCount: 0 };
+  }
+}
+
 function buildEventIntervalDataList() {
   const state = getActiveEventState();
-  return state.enabled ? filterDuplicateContractIntervalData(state.intervalData) : [];
+  return state.enabled ? state.intervalData : [];
 }
 
 function buildRequiredIntervalDataList() {
@@ -6962,12 +8245,57 @@ function buildRequiredIntervalDataList() {
   );
 }
 
+function buildEventShopIntervalDataList(existingKeys = new Set()) {
+  const tags = getActiveEventShopTags().intervalTags.filter((tag) => !existingKeys.has(String(tag || "")));
+  if (!tags.length) return [];
+  const window = getActiveEventShopIntervalWindow();
+  return tags.map((strKey, index) =>
+    buildIntervalData({
+      key: 930000 + index,
+      strKey,
+      startDate: window.startDate,
+      endDate: window.endDate,
+      repeatStartDate: 0,
+      repeatEndDate: 0,
+    })
+  );
+}
+
+function getActiveEventShopIntervalWindow() {
+  const activeState = getActiveEventState();
+  const intervals = (Array.isArray(activeState && activeState.intervalData) ? activeState.intervalData : []).filter(
+    (interval) => interval && interval.startDate instanceof Date && interval.endDate instanceof Date
+  );
+  if (intervals.length) {
+    return {
+      startDate: new Date(Math.min(...intervals.map((interval) => interval.startDate.getTime()))),
+      endDate: new Date(Math.max(...intervals.map((interval) => interval.endDate.getTime()))),
+    };
+  }
+  const anchor = getServerNowDate();
+  const startDate = new Date(Date.UTC(anchor.getUTCFullYear(), anchor.getUTCMonth(), anchor.getUTCDate(), 0, 0, 0, 0));
+  const days = Math.max(1, Number(eventManager && eventManager.config && eventManager.config.defaultWindowDays || 28) || 28);
+  return {
+    startDate,
+    endDate: new Date(startDate.getTime() + days * 24 * 60 * 60 * 1000),
+  };
+}
+
 function buildJoinLobbyIntervalDataList(user) {
   const byStrKey = new Map();
   for (const interval of buildEventIntervalDataList()) {
     const strKey = String((interval && interval.strKey) || "");
     if (!strKey) continue;
     byStrKey.set(strKey, buildIntervalData(interval));
+  }
+  for (const payload of buildEventShopIntervalDataList(new Set(byStrKey.keys()))) {
+    const strKey = readIntervalDataStrKey(payload);
+    if (strKey) byStrKey.set(strKey, payload);
+  }
+  for (const interval of buildFierceSeasonIntervalDataList()) {
+    const payload = buildIntervalData(interval);
+    const strKey = readIntervalDataStrKey(payload);
+    if (strKey) byStrKey.set(strKey, payload);
   }
   for (const payload of buildRequiredIntervalDataList()) {
     const strKey = readIntervalDataStrKey(payload);
@@ -7015,6 +8343,11 @@ function getIntervalPayloadStrKeys(intervalPayloads = []) {
   return (Array.isArray(intervalPayloads) ? intervalPayloads : [])
     .map(readIntervalDataStrKey)
     .filter(Boolean);
+}
+
+function isEventMissionIntervalStrKey(strKey) {
+  const key = String(strKey || "").trim().toUpperCase();
+  return key.startsWith("DATE_") && key.includes("_MISSION_EVENT_");
 }
 
 function buildIntervalData(interval) {
@@ -7069,7 +8402,7 @@ function buildMinimalJoinLobbyPayload(user) {
   const worldMapCityIds = worldMap.getWorldMapCityIds(user, { includeDefaults: true, now: lobbyNow });
 
   console.log(
-    `[JOIN_LOBBY_ACK fallback] uid=${userUid} friendCode=${friendCode} nickname=${JSON.stringify(
+    `[JOIN_LOBBY_ACK local] uid=${userUid} friendCode=${friendCode} nickname=${JSON.stringify(
       nickname
     )} level=${user.level || 1} reconnectKey=${JSON.stringify(
       user.reconnectKey || ""
@@ -7115,7 +8448,7 @@ function buildMinimalJoinLobbyPayload(user) {
     writeNullObject(), // leaguePvpRoomData
     writeObjectList([]), // leaguePvpHistories
     writeObjectList([]), // privatePvpHistories
-    writeNullObject(), // officeState
+    writeNullableObject(buildSerializedMyOfficeStateData(user)), // officeState
     writeNullObject(), // kakaoMissionData
     writeIntList(user.unlockedStageIds || []),
     writeObjectList(buildPhaseClearDataList(user)), // phaseClearDataList
@@ -7150,7 +8483,20 @@ function buildJoinLobbyAckPayload(user) {
   const officialPayload = getCapturedServerPayloadTemplate(JOIN_LOBBY_ACK);
   const localIntervalData = buildJoinLobbyIntervalDataList(user);
   const hasGeneratedLobbyIntervals = localIntervalData.length > 0;
+  const preserveOfficialContractData = process.env.CS_JOIN_LOBBY_PRESERVE_OFFICIAL_CONTRACTS !== "0";
+  const overlayLocalContractData = preserveOfficialContractData && hasLocalContractState(user);
   const activeIntervalStrKeys = getIntervalPayloadStrKeys(localIntervalData);
+  const activeEventMissionIntervalStrKeys = activeIntervalStrKeys.filter(isEventMissionIntervalStrKey);
+  const eventShopIntervalStrKeys = getActiveEventShopTags().intervalTags;
+  const fierceIntervalStrKeys = getFierceSeasonIntervalStrKeys();
+  const eventShopMergeIntervalStrKeys =
+    process.env.CS_JOIN_LOBBY_MERGE_EVENT_SHOP_INTERVALS !== "0" ? eventShopIntervalStrKeys : [];
+  const explicitMergeIntervalStrKeys = mergeTags(
+    eventShopMergeIntervalStrKeys,
+    fierceIntervalStrKeys,
+    activeEventMissionIntervalStrKeys
+  );
+  const mergeExplicitIntervalsIntoOfficial = preserveOfficialContractData && explicitMergeIntervalStrKeys.length > 0;
   const inactiveEventIntervalStrKeys = getInactiveEventIntervalStrKeys(localIntervalData);
   if (officialPayload && Buffer.isBuffer(officialPayload)) {
     const cacheKey = [
@@ -7163,11 +8509,14 @@ function buildJoinLobbyAckPayload(user) {
 
     const merged = combatHandler.mergeJoinLobbyAck
       ? combatHandler.mergeJoinLobbyAck(officialPayload, localPayload, {
-          copyIntervalData: hasGeneratedLobbyIntervals,
+          copyIntervalData: hasGeneratedLobbyIntervals && (!preserveOfficialContractData || mergeExplicitIntervalsIntoOfficial),
           replaceIntervalData: false,
-          excludeIntervalStrKeys: inactiveEventIntervalStrKeys,
+          excludeIntervalStrKeys: preserveOfficialContractData ? [] : inactiveEventIntervalStrKeys,
           preserveIntervalStrKeys: activeIntervalStrKeys,
-          filterInactiveEventIntervals: eventManager.config.enabled,
+          mergeIntervalStrKeys: preserveOfficialContractData ? explicitMergeIntervalStrKeys : [],
+          filterInactiveEventIntervals: eventManager.config.enabled && !preserveOfficialContractData,
+          preserveOfficialContractData,
+          overlayLocalContractData,
         })
       : { ok: false, error: "combat handler merge unavailable" };
     if (merged.ok && Buffer.isBuffer(merged.payload)) {
@@ -7299,6 +8648,10 @@ function hasLocalAccountState(user) {
   const completedMissions =
     user.completedMissions && typeof user.completedMissions === "object" ? user.completedMissions : {};
   const contractStates = user.contractStates && typeof user.contractStates === "object" ? user.contractStates : {};
+  const contractBonusStates =
+    user.contractBonusStates && typeof user.contractBonusStates === "object" ? user.contractBonusStates : {};
+  const customPickupContracts =
+    user.customPickupContracts && typeof user.customPickupContracts === "object" ? user.customPickupContracts : {};
   const dungeonClear = user.dungeonClear && typeof user.dungeonClear === "object" ? user.dungeonClear : {};
   const stagePlayData = user.stagePlayData && typeof user.stagePlayData === "object" ? user.stagePlayData : {};
   const persistentCutsceneViews =
@@ -7317,7 +8670,7 @@ function hasLocalAccountState(user) {
   if (Object.keys(army.operators || {}).length > 0) return true;
   if (Object.keys(army.deckSets || {}).length > 0) return true;
   if (Object.keys(completedMissions).length > 0) return true;
-  if (Object.keys(contractStates).length > 0) return true;
+  if (hasLocalContractState(user, { contractStates, contractBonusStates, customPickupContracts })) return true;
   if (Object.keys(dungeonClear).length > 0) return true;
   if (Object.keys(stagePlayData).length > 0) return true;
   if (Object.keys(persistentCutsceneViews).length > 0) return true;
@@ -7329,6 +8682,28 @@ function hasLocalAccountState(user) {
   if (collection.hasCollectionState(user)) return true;
   if (worldMap.hasWorldMapProgress(user)) return true;
   return Boolean(user.nickname && user.nickname !== "LocalAdmin");
+}
+
+function hasLocalContractState(user, stores = {}) {
+  if (!user || typeof user !== "object") return false;
+  const contractStates =
+    stores.contractStates || (user.contractStates && typeof user.contractStates === "object" ? user.contractStates : {});
+  const contractBonusStates =
+    stores.contractBonusStates ||
+    (user.contractBonusStates && typeof user.contractBonusStates === "object" ? user.contractBonusStates : {});
+  const customPickupContracts =
+    stores.customPickupContracts ||
+    (user.customPickupContracts && typeof user.customPickupContracts === "object" ? user.customPickupContracts : {});
+  const selectable =
+    user.selectableContractState && typeof user.selectableContractState === "object" ? user.selectableContractState : {};
+
+  if (Object.keys(contractStates).length > 0) return true;
+  if (Object.keys(contractBonusStates).length > 0) return true;
+  if (Object.keys(customPickupContracts).length > 0) return true;
+  if (Number(selectable.contractId || 0) > 0) return true;
+  if (Array.isArray(selectable.unitIdList) && selectable.unitIdList.length > 0) return true;
+  if (Number(selectable.unitPoolChangeCount || 0) > 0) return true;
+  return selectable.isActive === false;
 }
 
 function getCompletedTutorialStageStates(user) {
@@ -7488,7 +8863,7 @@ function buildMinimalUserData(user, userUid, friendCode, nickname) {
     writeNullableObject(buildMinimalShopData(user)),
     writeNullableObject(buildMinimalMissionData(user)),
     writeObjectMapInt(simulation.buildCounterCaseDataEntries(user)), // m_dicNKMCounterCaseData
-    writeNullableObject(buildCraftData()), // m_CraftData
+    writeNullableObject(buildCraftData(user)), // m_CraftData
     writeObjectMapLong(buildEpisodeCompleteEntries(user)), // m_dicEpisodeCompleteData
     writeNullableObject(buildPvpStateData()), // m_PvpData
     writeNullObject(), // m_SyncPvpHistory
@@ -7511,7 +8886,7 @@ function buildMinimalUserData(user, userUid, friendCode, nickname) {
 function buildMinimalInventoryData(user) {
   const equipEntries = buildInventoryEquipEntries(user);
   return Buffer.concat([
-    writeSignedVarInt(Math.max(300, equipEntries.length + 100)), // m_MaxItemEqipCount
+    writeSignedVarInt(getInventoryCapacity(user, INVENTORY_TYPES.EQUIP)), // m_MaxItemEqipCount
     writeObjectMapInt(buildInventoryMiscEntries(user)), // m_ItemMiscData
     writeObjectMapLong(equipEntries), // m_ItemEquipData
     writeIntList(getSkinIds(user)), // m_ItemSkinData
@@ -7543,10 +8918,10 @@ function buildMinimalArmyData(user) {
   const trophies = getArmyTrophies(user);
   const operators = getArmyOperators(user);
   return Buffer.concat([
-    writeSignedVarInt(Math.max(300, units.length + 100)), // m_MaxUnitCount
-    writeSignedVarInt(Math.max(200, ships.length + 50)), // m_MaxShipCount
-    writeSignedVarInt(Math.max(100, operators.length + 50)), // m_MaxOperatorCount
-    writeSignedVarInt(Math.max(100, trophies.length + 50)), // m_MaxTrophyCount
+    writeSignedVarInt(getInventoryCapacity(user, INVENTORY_TYPES.UNIT)), // m_MaxUnitCount
+    writeSignedVarInt(getInventoryCapacity(user, INVENTORY_TYPES.SHIP)), // m_MaxShipCount
+    writeSignedVarInt(getInventoryCapacity(user, INVENTORY_TYPES.OPERATOR)), // m_MaxOperatorCount
+    writeSignedVarInt(getInventoryCapacity(user, INVENTORY_TYPES.TROPHY)), // m_MaxTrophyCount
     buildDefaultDeckSetArray(user), // deckSets
     writeObjectMapLong(ships.map((unit) => [unit.unitUid, buildSerializedUnitData(unit)])), // ships
     writeObjectMapLong(units.map((unit) => [unit.unitUid, buildSerializedUnitData(unit)])), // units
@@ -7640,10 +9015,10 @@ function buildWorldMapData() {
   return Buffer.concat([writeObjectMapInt([]), writeInt64LE(0n)]);
 }
 
-function buildCraftData() {
+function buildCraftData(user) {
   return Buffer.concat([
-    writeObjectMapInt([]), // m_dicMoldItem
-    writeVarInt(0), // m_dicSlot keyed by byte
+    writeObjectMapInt(getMoldItems(user).map((mold) => [mold.moldId, buildSerializedMoldItemData(mold)])), // m_dicMoldItem
+    writeObjectMapByte(getCraftSlots(user).map((slot) => [slot.index, buildSerializedCraftSlotData(slot)])), // m_dicSlot
   ]);
 }
 
@@ -7793,7 +9168,7 @@ function buildUserProfileData(user, userUid, friendCode, nickname) {
     writeObjectList(((user && user.profileEmblems) || []).map((emblem) => writeNullableObject(buildProfileEmblemData(emblem)))), // emblems
     writeSignedVarInt(Number((user && (user.selfiFrameId || user.frameId)) || 0)),
     writeNullableObject(buildGuildSimpleData()),
-    writeBool(false),
+    writeBool(Boolean(user && (user.hasOffice || user.office))),
     writeSignedVarInt(0),
   ]);
 }
@@ -7987,7 +9362,7 @@ function buildFastLobbyMissionDataEntries(user, options = {}) {
   for (const [groupId, mission] of buildPersistedLobbyMissionEntries(user)) {
     result.set(Number(groupId), [Number(groupId), mission]);
   }
-  const tabIds = uniqueMissionTabs([...FAST_LOBBY_MISSION_TABS, ...getActiveEventMissionTabIds()]);
+  const tabIds = uniqueMissionTabs([...FAST_LOBBY_MISSION_TABS, ...getActiveEventMissionTabIds(), ...PAYBACK_MISSION_TABS]);
   for (const tabId of tabIds) {
     for (const [groupId, mission] of buildAccountMissionDataEntries(user, { ...options, fastLobby: false, tabId })) {
       result.set(Number(groupId), [Number(groupId), mission]);
@@ -8099,10 +9474,6 @@ function getServerClockContext() {
 
 function getServerEventDateKey(nowDate = getServerNowDate()) {
   if (serverTime && typeof serverTime.eventDateKey === "function") return serverTime.eventDateKey(nowDate);
-  const state = serverTime && typeof serverTime.getState === "function" ? serverTime.getState() : {};
-  if (state && /^\d{4}-\d{2}-\d{2}$/.test(String(state.eventDateKey || ""))) return String(state.eventDateKey);
-  const eventDate = eventManager && eventManager.config && eventManager.config.enabled ? eventManager.config.eventDate : null;
-  if (eventDate instanceof Date && !Number.isNaN(eventDate.getTime())) return eventDate.toISOString().slice(0, 10);
   return nowDate instanceof Date && !Number.isNaN(nowDate.getTime()) ? nowDate.toISOString().slice(0, 10) : "";
 }
 
@@ -8125,6 +9496,55 @@ function loadUserDb(filePath) {
     console.log(`[user-db] failed to load ${filePath}: ${err.message}; starting empty`);
     return normalizeUserDb({});
   }
+}
+
+function repairUserDbDeckReferences(db) {
+  const users = db && db.users && typeof db.users === "object" ? db.users : {};
+  let repairedProfiles = 0;
+  for (const user of Object.values(users)) {
+    const army = user && user.army && typeof user.army === "object" ? user.army : null;
+    if (!army || countInvalidDeckReferences(army) === 0) continue;
+    ensureArmy(user);
+    repairedProfiles += 1;
+  }
+  return repairedProfiles;
+}
+
+function countInvalidDeckReferences(army) {
+  const unitUids = uidKeySet(army.units);
+  const shipUids = uidKeySet(army.ships);
+  const operatorUids = uidKeySet(army.operators);
+  let invalid = 0;
+  for (const decks of Object.values(army.deckSets || {})) {
+    if (!Array.isArray(decks)) continue;
+    for (const deck of decks) {
+      if (!deck || typeof deck !== "object") continue;
+      const seenUnits = new Set();
+      for (const uid of Array.isArray(deck.unitUids) ? deck.unitUids : []) {
+        const key = uidKey(uid);
+        if (key === "0") continue;
+        if (!unitUids.has(key) || seenUnits.has(key)) invalid += 1;
+        seenUnits.add(key);
+      }
+      const shipUid = uidKey(deck.shipUid || 0);
+      if (shipUid !== "0" && !shipUids.has(shipUid)) invalid += 1;
+      const operatorUid = uidKey(deck.operatorUid || 0);
+      if (operatorUid !== "0" && !operatorUids.has(operatorUid)) invalid += 1;
+    }
+  }
+  return invalid;
+}
+
+function uidKeySet(map) {
+  return new Set(
+    Object.keys(map && typeof map === "object" ? map : {})
+      .map(uidKey)
+      .filter((uid) => uid !== "0")
+  );
+}
+
+function uidKey(value) {
+  return String(toBigInt(value || 0));
 }
 
 function loadGameplayUnitStats(filePath) {
@@ -8396,14 +9816,13 @@ function ensureUserDefaults(user) {
     REQUIRED_CONTENTS_TAGS
   );
   user.openTags = filterSuppressedOpenTags(
-    filterDuplicateContractOpenTags(
-      mergeTags(Array.isArray(user.openTags) && user.openTags.length ? user.openTags : OPEN_TAGS, EXPLICIT_OPEN_TAGS, REQUIRED_STORY_OPEN_TAGS)
-    )
+    mergeTags(Array.isArray(user.openTags) && user.openTags.length ? user.openTags : OPEN_TAGS, EXPLICIT_OPEN_TAGS, REQUIRED_STORY_OPEN_TAGS)
   );
   user.dungeonClear = user.dungeonClear && typeof user.dungeonClear === "object" ? user.dungeonClear : {};
   user.completedMissions =
     user.completedMissions && typeof user.completedMissions === "object" ? user.completedMissions : {};
   user.stagePlayData = user.stagePlayData && typeof user.stagePlayData === "object" ? user.stagePlayData : {};
+  ensureStageFavorites(user);
   user.unlockedStageIds = Array.isArray(user.unlockedStageIds) ? user.unlockedStageIds : [];
   ensureInventory(user);
   ensureLocalShopInventory(user);
@@ -8448,6 +9867,7 @@ function ensureLocalShopInventory(user) {
       balance: seedBalance,
       regDate: dateTimeBinaryNow(),
       seedMissingOnly: true,
+      includeAllEventShops: false,
     });
     if (eventShopSeed.seeded.length > 0 && process.env.CS_EVENT_SHOP_LOG !== "0") {
       console.log(
@@ -9131,6 +10551,13 @@ function writeStringIntMap(entries) {
   return Buffer.concat([
     writeVarInt(entries.length),
     ...entries.flatMap(([key, value]) => [writeString(key), writeSignedVarInt(value)]),
+  ]);
+}
+
+function writeIntIntMap(entries) {
+  return Buffer.concat([
+    writeVarInt(entries.length),
+    ...entries.flatMap(([key, value]) => [writeSignedVarInt(Number(key || 0)), writeSignedVarInt(Number(value || 0))]),
   ]);
 }
 

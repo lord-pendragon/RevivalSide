@@ -372,7 +372,7 @@ function craftUnlockAck(ctx, user) {
   return {
     packetId: 1011,
     payload: Buffer.concat([
-      writeSignedVarInt(0),
+      writeSignedVarInt(Number(result && result.errorCode) || 0),
       writeNullableObjectOrNull(result && result.slot ? buildCraftSlotData(result.slot) : null),
       writeObjectList((result && result.costItems || []).map((item) => writeNullableObject(buildItemMiscData(item)))),
     ]),
@@ -384,7 +384,7 @@ function craftStartAck(ctx, user, req) {
   return {
     packetId: 1013,
     payload: Buffer.concat([
-      writeSignedVarInt(0),
+      writeSignedVarInt(Number(result && result.errorCode) || 0),
       writeNullableObjectOrNull(result && result.slot ? buildCraftSlotData(result.slot) : null),
       writeObjectList((result && result.costItems || []).map((item) => writeNullableObject(buildItemMiscData(item)))),
       writeNullObject(),
@@ -397,7 +397,7 @@ function craftCompleteAck(ctx, user, req) {
   return {
     packetId: 1015,
     payload: Buffer.concat([
-      writeSignedVarInt(0),
+      writeSignedVarInt(Number(result && result.errorCode) || 0),
       writeNullableObjectOrNull(result && result.slot ? buildCraftSlotData(result.slot) : null),
       writeNullableObject(buildRewardData((result && result.reward) || createEmptyReward())),
     ]),
@@ -409,7 +409,7 @@ function craftInstantCompleteAck(ctx, user, req) {
   return {
     packetId: 1017,
     payload: Buffer.concat([
-      writeSignedVarInt(0),
+      writeSignedVarInt(Number(result && result.errorCode) || 0),
       writeNullableObjectOrNull(result && result.slot ? buildCraftSlotData(result.slot) : null),
       writeNullableObjectOrNull(result && result.extraCostItem ? buildItemMiscData(result.extraCostItem) : null),
       writeNullableObject(buildRewardData((result && result.reward) || createEmptyReward())),
@@ -670,7 +670,7 @@ function craftInstantAck(ctx, user, req) {
   return {
     packetId: 1067,
     payload: Buffer.concat([
-      writeSignedVarInt(0),
+      writeSignedVarInt(Number(result && result.errorCode) || 0),
       writeSignedVarInt(Number((result && result.moldId) || req.moldId || 0) || 0),
       writeSignedVarInt(Number((result && result.moldCount) || req.moldCount || 1) || 1),
       writeObjectList((result && result.costItems || []).map((item) => writeNullableObject(buildItemMiscData(item)))),

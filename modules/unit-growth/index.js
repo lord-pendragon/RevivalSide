@@ -18,6 +18,7 @@ const {
   toBigInt,
 } = require("../packet-codec");
 const {
+  ensureArmy,
   grantUnit,
   getArmyUnitByUid,
   getArmyOperatorByUid,
@@ -43,12 +44,15 @@ const {
 const {
   getMaxLimitBreakRank,
   getPlayableShipIds,
+  getShipLevelUpCosts,
+  getShipMaxLevel,
   getUnitLimitBreakCosts,
   getUnitSkillIndex,
   getUnitSkillMaxLevel,
   getUnitSkillUpgradeCosts,
+  getUnitRemoveRewards,
 } = require("../game-data");
-const { spendMiscItem, getMiscItem, RESOURCE_ITEM_IDS } = require("../inventory");
+const { spendMiscItem, getMiscItem, grantMiscItem, RESOURCE_ITEM_IDS } = require("../inventory");
 const collection = require("../collection");
 const { addMissionTrackingCondition, completeMissionTracking, makeMissionTracking } = require("../mission-tracking");
 
@@ -135,11 +139,19 @@ const NEGOTIATION_OPTIONS = Object.freeze({
 
 const ERROR_CODES = Object.freeze({
   OK: 0,
+  INSUFFICIENT_ITEM: 111,
   UNIT_NOT_EXIST: 133,
+  UNIT_BAD_TYPE: 134,
+  UNIT_LOCKED: 135,
+  UNIT_IN_DECK: 136,
+  UNIT_EQUIP_ITEM: 141,
   UNIT_SKILL_NOT_EXIST: 147,
   UNIT_SKILL_TEMPLET_NOT_EXIST: 148,
   UNIT_SKILL_ALREADY_MAX: 149,
   UNIT_SKILL_NOT_ENOUGH_ITEM: 151,
+  SHIP_MAX_LEVEL: 238,
+  INVALID_ITEM_ID: 244,
+  SHIP_INVALID_LEVEL: 1536,
 });
 
 function createUnitGrowthHandlers() {
@@ -278,8 +290,150 @@ function handleLockUnit(_ctx, user, request) {
 }
 
 function handleRemoveUnit(_ctx, user, request) {
-  const removed = removeArmyUnitUids(user, request.unitUids || []);
-  return response(PACKETS.REMOVE_UNIT_ACK, [ok(), writeSignedVarLongList(removed), emptyItemList()]);
+  return removalResponse(
+    PACKETS.REMOVE_UNIT_ACK,
+    dismissArmyUnits(user, request.unitUids || [], { allowedKinds: new Set(["unit", "trophy"]) })
+  );
+}
+
+function dismissArmyUnits(user, unitUids = [], options = {}) {
+  const uidList = uniqueUidList(unitUids);
+  const targets = [];
+  for (const uid of uidList) {
+    const unit = getArmyUnitByUid(user, uid);
+    const kind = getArmyUnitStorageKind(user, uid);
+    if (!unit) return removalResult(ERROR_CODES.UNIT_NOT_EXIST);
+    if (options.allowedKinds && !options.allowedKinds.has(kind)) return removalResult(ERROR_CODES.UNIT_BAD_TYPE);
+    const errorCode = getDismissUnitError(user, unit, uid, kind);
+    if (errorCode !== ERROR_CODES.OK) return removalResult(errorCode);
+    targets.push(unit);
+  }
+
+  const rewards = collectRemoveRewards(targets);
+  const removed = removeArmyUnitUids(user, uidList);
+  return removalResult(ERROR_CODES.OK, removed, grantRewardItems(user, rewards));
+}
+
+function dismissOperators(user, operatorUids = []) {
+  const uidList = uniqueUidList(operatorUids);
+  const targets = [];
+  for (const uid of uidList) {
+    const operator = getArmyOperatorByUid(user, uid);
+    if (!operator) return removalResult(ERROR_CODES.UNIT_NOT_EXIST);
+    const errorCode = getDismissOperatorError(user, operator, uid);
+    if (errorCode !== ERROR_CODES.OK) return removalResult(errorCode);
+    targets.push(operator);
+  }
+
+  const rewards = collectRemoveRewards(targets);
+  const removed = removeOperatorUids(user, uidList);
+  return removalResult(ERROR_CODES.OK, removed, grantRewardItems(user, rewards));
+}
+
+function getDismissUnitError(user, unit, uid, kind) {
+  if (isRosterEntryLocked(unit)) return ERROR_CODES.UNIT_LOCKED;
+  if (kind !== "ship" && hasEquippedItems(unit)) return ERROR_CODES.UNIT_EQUIP_ITEM;
+  if (isUidInDeck(user, uid, kind)) return ERROR_CODES.UNIT_IN_DECK;
+  return ERROR_CODES.OK;
+}
+
+function getDismissOperatorError(user, operator, uid) {
+  if (isRosterEntryLocked(operator)) return ERROR_CODES.UNIT_LOCKED;
+  if (isUidInDeck(user, uid, "operator")) return ERROR_CODES.UNIT_IN_DECK;
+  return ERROR_CODES.OK;
+}
+
+function collectRemoveRewards(entries) {
+  const byItem = new Map();
+  for (const entry of Array.isArray(entries) ? entries : []) {
+    const unitId = Number(entry && (entry.unitId || entry.id || entry.m_UnitID)) || 0;
+    for (const reward of getUnitRemoveRewards(unitId, { fromContract: isFromContract(entry) })) {
+      byItem.set(reward.itemId, (byItem.get(reward.itemId) || 0) + reward.count);
+    }
+  }
+  return Array.from(byItem.entries())
+    .map(([itemId, count]) => ({ itemId, count }))
+    .sort((a, b) => a.itemId - b.itemId);
+}
+
+function grantRewardItems(user, rewards) {
+  return (Array.isArray(rewards) ? rewards : [])
+    .map((reward) => grantMiscItem(user, reward.itemId, reward.count))
+    .filter(Boolean);
+}
+
+function getArmyUnitStorageKind(user, uid) {
+  const army = ensureArmy(user);
+  const key = String(toBigInt(uid || 0));
+  if (army.ships[key]) return "ship";
+  if (army.trophies[key]) return "trophy";
+  if (army.units[key]) return "unit";
+  return "";
+}
+
+function isRosterEntryLocked(entry) {
+  return Boolean(entry && (entry.locked || entry.bLock || entry.m_bLock));
+}
+
+function hasEquippedItems(unit) {
+  const equipUids = unit && (unit.equipItemUids || unit.m_EquipItemList || unit.equipItems);
+  return Array.isArray(equipUids) && equipUids.some((uid) => toBigInt(uid || 0) > 0n);
+}
+
+function isFromContract(entry) {
+  if (!entry || typeof entry !== "object") return false;
+  if (entry.fromContract === false || entry.FromContract === false || entry.m_bFromContract === false) return false;
+  return entry.fromContract === true || entry.FromContract === true || entry.m_bFromContract === true || entry.fromContract == null;
+}
+
+function isUidInDeck(user, uid, kind) {
+  const army = ensureArmy(user);
+  const normalizedUid = String(toBigInt(uid || 0));
+  for (const deck of getAllDecks(army)) {
+    if (kind === "ship" && String(toBigInt(deck.shipUid || deck.m_ShipUID || 0)) === normalizedUid) return true;
+    if (kind === "operator" && String(toBigInt(deck.operatorUid || deck.m_OperatorUID || 0)) === normalizedUid) return true;
+    if (kind === "unit" || kind === "trophy") {
+      const unitUids = deck.unitUids || deck.m_listDeckUnitUID || deck.m_UnitUIDList || [];
+      if (Array.isArray(unitUids) && unitUids.some((deckUid) => String(toBigInt(deckUid || 0)) === normalizedUid)) return true;
+    }
+  }
+  return false;
+}
+
+function getAllDecks(army) {
+  const deckSets = Object.values((army && army.deckSets) || {}).filter(Array.isArray);
+  const legacyDecks = Array.isArray(army && army.decks) ? [army.decks] : [];
+  return deckSets.concat(legacyDecks).flat();
+}
+
+function uniqueUidList(values) {
+  const seen = new Set();
+  const result = [];
+  for (const value of Array.isArray(values) ? values : []) {
+    const uid = toBigInt(value || 0);
+    if (uid <= 0n) continue;
+    const key = uid.toString();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    result.push(key);
+  }
+  return result;
+}
+
+function removalResult(errorCode, removed = [], rewardItems = []) {
+  return {
+    errorCode: Number(errorCode || 0) || 0,
+    removed: Array.isArray(removed) ? removed : [],
+    rewardItems: Array.isArray(rewardItems) ? rewardItems : [],
+  };
+}
+
+function removalResponse(packetId, result) {
+  return response(packetId, [
+    writeSignedVarInt(result.errorCode),
+    writeSignedVarLongList(result.removed),
+    writeNullableObjectList(result.rewardItems.map(buildItemMiscData)),
+  ]);
 }
 
 function handleLimitBreakUnit(_ctx, user, request) {
@@ -325,8 +479,27 @@ function handleShipBuild(_ctx, user, request) {
 }
 
 function handleShipLevelUp(_ctx, user, request) {
-  const ship = setShipLevel(user, request.shipUid, request.nextLevel) || getArmyUnitByUid(user, request.shipUid);
-  return response(PACKETS.SHIP_LEVELUP_ACK, [ok(), nullableUnit(ship), emptyItemList()]);
+  const currentShip = getArmyUnitByUid(user, request.shipUid);
+  if (!currentShip) return shipLevelUpResponse(ERROR_CODES.UNIT_NOT_EXIST, null, []);
+
+  const currentLevel = Math.max(1, Math.trunc(Number(currentShip.level || 1) || 1));
+  const nextLevel = Math.trunc(Number(request.nextLevel || 0) || 0);
+  const maxLevel = getShipMaxLevel(currentShip);
+  if (nextLevel < 1 || nextLevel < currentLevel) {
+    return shipLevelUpResponse(ERROR_CODES.SHIP_INVALID_LEVEL, currentShip, []);
+  }
+  if (nextLevel > maxLevel) {
+    return shipLevelUpResponse(ERROR_CODES.SHIP_MAX_LEVEL, currentShip, []);
+  }
+
+  const costs = getShipLevelUpCosts(currentShip, currentLevel, nextLevel);
+  if (!hasEnoughShipLevelUpItems(user, costs)) {
+    return shipLevelUpResponse(ERROR_CODES.INVALID_ITEM_ID, currentShip, []);
+  }
+
+  const costItems = spendShipLevelUpCosts(user, costs);
+  const ship = setShipLevel(user, request.shipUid, nextLevel) || getArmyUnitByUid(user, request.shipUid) || currentShip;
+  return shipLevelUpResponse(ERROR_CODES.OK, ship, costItems);
 }
 
 function handleShipUpgrade(_ctx, user, request) {
@@ -335,8 +508,10 @@ function handleShipUpgrade(_ctx, user, request) {
 }
 
 function handleShipDivision(_ctx, user, request) {
-  const removed = removeArmyUnitUids(user, request.shipUids || []);
-  return response(PACKETS.SHIP_DIVISION_ACK, [ok(), writeSignedVarLongList(removed), emptyItemList()]);
+  return removalResponse(
+    PACKETS.SHIP_DIVISION_ACK,
+    dismissArmyUnits(user, request.shipUids || [], { allowedKinds: new Set(["ship"]) })
+  );
 }
 
 function handlePermanentContract(_ctx, user, request) {
@@ -371,8 +546,7 @@ function handleOperatorLock(_ctx, user, request) {
 }
 
 function handleOperatorRemove(_ctx, user, request) {
-  const removed = removeOperatorUids(user, request.operatorUids || []);
-  return response(PACKETS.OPERATOR_REMOVE_ACK, [ok(), writeSignedVarLongList(removed), emptyItemList()]);
+  return removalResponse(PACKETS.OPERATOR_REMOVE_ACK, dismissOperators(user, request.operatorUids || []));
 }
 
 function handleRecallUnit(_ctx, user, request) {
@@ -534,6 +708,14 @@ function skillUpgradeResponse(request, errorCode, skillLevel, costItems) {
   ]);
 }
 
+function shipLevelUpResponse(errorCode, ship, costItems) {
+  return response(PACKETS.SHIP_LEVELUP_ACK, [
+    writeSignedVarInt(errorCode),
+    nullableUnit(ship),
+    writeNullableObjectList((Array.isArray(costItems) ? costItems : []).map(buildItemMiscData)),
+  ]);
+}
+
 function resolveRequestedSkillIndex(unit, skillId) {
   const mappedIndex = getUnitSkillIndex(unit && unit.unitId, skillId);
   if (mappedIndex >= 0) return mappedIndex;
@@ -550,6 +732,10 @@ function hasEnoughSkillUpgradeItems(user, costs) {
   return (Array.isArray(costs) ? costs : []).every((cost) => hasEnoughMiscItem(user, cost.itemId, cost.count));
 }
 
+function hasEnoughShipLevelUpItems(user, costs) {
+  return (Array.isArray(costs) ? costs : []).every((cost) => hasEnoughMiscItem(user, cost.itemId, cost.count));
+}
+
 function hasEnoughMiscItem(user, itemId, count) {
   const amount = Math.max(0, Math.trunc(Number(count || 0)));
   if (amount <= 0) return true;
@@ -559,6 +745,15 @@ function hasEnoughMiscItem(user, itemId, count) {
 }
 
 function spendSkillUpgradeCosts(user, costs) {
+  const updatedByItem = new Map();
+  for (const cost of Array.isArray(costs) ? costs : []) {
+    const item = spendMiscItem(user, cost.itemId, cost.count);
+    if (item) updatedByItem.set(Number(item.itemId), item);
+  }
+  return Array.from(updatedByItem.values()).sort((a, b) => Number(a.itemId) - Number(b.itemId));
+}
+
+function spendShipLevelUpCosts(user, costs) {
   const updatedByItem = new Map();
   for (const cost of Array.isArray(costs) ? costs : []) {
     const item = spendMiscItem(user, cost.itemId, cost.count);

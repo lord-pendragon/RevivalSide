@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Globalization;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text.Json;
 
@@ -49,6 +50,7 @@ internal static class ManagedCombatBridge
         "stagePlayDataList",
         "reconnectKey",
         "backGroundInfo",
+        "officeState",
         "unlockedStageIds",
         "phaseClearDataList",
         "phaseModeState",
@@ -58,6 +60,13 @@ internal static class ManagedCombatBridge
         "lastPlayInfo",
         "customPickupContracts"
     ];
+    private static readonly HashSet<string> OfficialContractJoinLobbyFields = new(StringComparer.Ordinal)
+    {
+        "contractState",
+        "contractBonusState",
+        "selectableContractState",
+        "customPickupContracts"
+    };
     private static readonly string[] LocalJoinLobbyUserDataFields =
     [
         "m_UserUID",
@@ -109,7 +118,11 @@ internal static class ManagedCombatBridge
         }
     }
 
-    private static void MergeIntervalData(ManagedRuntime runtime, object localPacket, object officialPacket)
+    private static void MergeIntervalData(
+        ManagedRuntime runtime,
+        object localPacket,
+        object officialPacket,
+        IEnumerable<string>? mergeStrKeys = null)
     {
         var localIntervalData = runtime.GetField(localPacket, "intervalData");
         if (localIntervalData == null) return;
@@ -127,6 +140,11 @@ internal static class ManagedCombatBridge
             return;
         }
 
+        var includeKeys = new HashSet<string>(
+            (mergeStrKeys ?? Array.Empty<string>())
+                .Where(key => !string.IsNullOrWhiteSpace(key))
+                .Select(key => key.Trim()),
+            StringComparer.OrdinalIgnoreCase);
         var indexByStrKey = new Dictionary<string, int>(StringComparer.Ordinal);
         var usedKeys = new HashSet<int>();
         for (var index = 0; index < officialList.Count; index += 1)
@@ -149,6 +167,7 @@ internal static class ManagedCombatBridge
         {
             var strKey = Convert.ToString(runtime.GetField(localItem, "strKey"), CultureInfo.InvariantCulture);
             if (string.IsNullOrWhiteSpace(strKey)) continue;
+            if (includeKeys.Count > 0 && !includeKeys.Contains(strKey)) continue;
             if (indexByStrKey.TryGetValue(strKey, out var existingIndex))
             {
                 if (!IsFallbackIntervalTiming(runtime, localItem))
@@ -706,7 +725,12 @@ internal static class ManagedCombatBridge
 
             foreach (var fieldName in LocalJoinLobbyFields)
             {
+                if (data.PreserveOfficialContractData && OfficialContractJoinLobbyFields.Contains(fieldName)) continue;
                 CopyField(runtime, local, official, fieldName);
+            }
+            if (data.PreserveOfficialContractData && data.OverlayLocalContractData)
+            {
+                OverlayLocalContractData(runtime, official, local);
             }
             if (data.ReplaceIntervalData)
             {
@@ -720,7 +744,7 @@ internal static class ManagedCombatBridge
                     data.ExcludeIntervalStrKeys,
                     data.PreserveIntervalStrKeys,
                     data.FilterInactiveEventIntervals);
-                MergeIntervalData(runtime, local, official);
+                MergeIntervalData(runtime, local, official, data.MergeIntervalStrKeys);
             }
             EnsureUniqueIntervalKeys(runtime, official);
             MergeJoinLobbyUserData(runtime, local, official);
@@ -740,6 +764,122 @@ internal static class ManagedCombatBridge
             error = ex.ToString();
             response = new HostResponse { Ok = false, Error = error };
             return false;
+        }
+    }
+
+    private static void OverlayLocalContractData(ManagedRuntime runtime, object officialPacket, object localPacket)
+    {
+        // Keep the official JOIN_LOBBY_ACK field layout intact, but let local
+        // recruit counters replace matching official objects after pulls.
+        MergeObjectListByIntKey(runtime, officialPacket, localPacket, "contractState", "contractId", item => HasLocalContractProgress(runtime, item));
+        MergeObjectListByIntKey(runtime, officialPacket, localPacket, "contractBonusState", "bonusGroupId", item => HasLocalContractBonusProgress(runtime, item));
+        MergeObjectListByIntKey(runtime, officialPacket, localPacket, "customPickupContracts", "customPickupId", item => HasLocalCustomPickupProgress(runtime, item));
+
+        var selectable = runtime.GetField(localPacket, "selectableContractState");
+        if (HasMeaningfulSelectableContractState(runtime, selectable))
+        {
+            runtime.SetField(officialPacket, "selectableContractState", selectable);
+        }
+    }
+
+    private static void MergeObjectListByIntKey(
+        ManagedRuntime runtime,
+        object officialPacket,
+        object localPacket,
+        string fieldName,
+        string keyFieldName,
+        Func<object, bool>? shouldMerge = null)
+    {
+        var localValue = runtime.GetField(localPacket, fieldName);
+        if (localValue is not IEnumerable localEnumerable) return;
+
+        var officialValue = runtime.GetField(officialPacket, fieldName);
+        if (officialValue is not IList officialList)
+        {
+            runtime.SetField(officialPacket, fieldName, FilterObjectList(localValue, shouldMerge));
+            return;
+        }
+
+        var indexByKey = new Dictionary<int, int>();
+        for (var index = 0; index < officialList.Count; index += 1)
+        {
+            var key = ReadIntField(runtime, officialList[index], keyFieldName);
+            if (key > 0 && !indexByKey.ContainsKey(key)) indexByKey[key] = index;
+        }
+
+        foreach (var localItem in localEnumerable)
+        {
+            if (shouldMerge != null && !shouldMerge(localItem)) continue;
+            var key = ReadIntField(runtime, localItem, keyFieldName);
+            if (key <= 0) continue;
+            if (indexByKey.TryGetValue(key, out var existingIndex))
+            {
+                officialList[existingIndex] = localItem;
+            }
+            else
+            {
+                indexByKey[key] = officialList.Count;
+                officialList.Add(localItem);
+            }
+        }
+    }
+
+    private static object FilterObjectList(object localValue, Func<object, bool>? shouldMerge)
+    {
+        if (shouldMerge == null || localValue is not IList source) return localValue;
+        var destination = (IList)Activator.CreateInstance(localValue.GetType())!;
+        foreach (var item in source)
+        {
+            if (item != null && shouldMerge(item)) destination.Add(item);
+        }
+        return destination;
+    }
+
+    private static bool HasLocalContractProgress(ManagedRuntime runtime, object? state)
+    {
+        if (state == null) return false;
+        if (ReadIntField(runtime, state, "contractId") <= 0) return false;
+        return ReadIntField(runtime, state, "totalUseCount") > 0 ||
+            ReadIntField(runtime, state, "dailyUseCount") > 0;
+    }
+
+    private static bool HasLocalContractBonusProgress(ManagedRuntime runtime, object? state)
+    {
+        if (state == null) return false;
+        if (ReadIntField(runtime, state, "bonusGroupId") <= 0) return false;
+        return ReadIntField(runtime, state, "useCount") > 0 ||
+            ReadIntField(runtime, state, "resetCount") > 0;
+    }
+
+    private static bool HasLocalCustomPickupProgress(ManagedRuntime runtime, object? state)
+    {
+        if (state == null) return false;
+        if (ReadIntField(runtime, state, "customPickupId") <= 0) return false;
+        return ReadIntField(runtime, state, "totalUseCount") > 0 ||
+            ReadIntField(runtime, state, "customPickupTargetUnitId") > 0 ||
+            ReadIntField(runtime, state, "currentSelectCount") > 0;
+    }
+
+    private static bool HasMeaningfulSelectableContractState(ManagedRuntime runtime, object? state)
+    {
+        if (state == null) return false;
+        if (ReadIntField(runtime, state, "contractId") <= 0) return false;
+        if (ReadIntField(runtime, state, "unitPoolChangeCount") > 0) return true;
+        if (runtime.GetField(state, "unitIdList") is IList units && units.Count > 0) return true;
+        var isActiveValue = runtime.GetField(state, "isActive");
+        return isActiveValue is bool isActive && !isActive;
+    }
+
+    private static int ReadIntField(ManagedRuntime runtime, object? item, string fieldName)
+    {
+        if (item == null) return 0;
+        try
+        {
+            return Convert.ToInt32(runtime.GetField(item, fieldName) ?? 0, CultureInfo.InvariantCulture);
+        }
+        catch
+        {
+            return 0;
         }
     }
 
@@ -853,6 +993,7 @@ internal static class ManagedCombatBridge
                 runtime.SetField(gameData, "m_MapID", dynamicGame.MapID);
             }
             runtime.ApplyGameType(gameData, dynamicGame);
+            runtime.ApplyBattleConditionIds(gameData, dynamicGame.BattleConditionIds);
             var eventDeckId = data.Stage?.EventDeckId ?? dynamicGame.DungeonID;
             var usesEventDeck = ShouldApplyEventDeck(dynamicGame.StageID, dynamicGame.DungeonID, eventDeckId);
             var usesTutorialEventDeck = ShouldApplyTutorialEventDeckTeamA(dynamicGame.StageID, dynamicGame.DungeonID, eventDeckId);
@@ -894,13 +1035,14 @@ internal static class ManagedCombatBridge
                 runtime.ApplyTeamAStartingRespawnCost(gameData, runtimeData);
                 runtime.Invoke(server, "SetGameRuntimeData", runtimeData);
             }
-            if (!usesTutorialEventDeck)
+            if (usesTutorialEventDeck)
             {
                 runtime.SuppressPlayerDynamicRespawns(server, gameData);
             }
             runtime.ApplyPlayerIdentityTeamA(gameData, data.Stage?.PlayerDeck);
             runtime.ClearTeamAUnitOwnersForGameLoadAck(gameData, data.Stage?.PlayerDeck);
             runtime.ApplyGameType(gameData, dynamicGame);
+            runtime.ApplyBattleConditionIds(gameData, dynamicGame.BattleConditionIds);
             // The Unity client builds its unit pool from GAME_LOAD_ACK. Send the
             // same gameData that NKCGameServerLocal just mutated so runtime
             // gameUnitUIDs resolve to the same unit/team on both sides.
@@ -909,6 +1051,7 @@ internal static class ManagedCombatBridge
 
             var sessionId = dynamicGame.GameUID.ToString(CultureInfo.InvariantCulture);
             var session = new ManagedCombatSession(sessionId, runtime, server, setupPackets);
+            session.RememberBattleState(battleState);
             session.CaptureRaidBossState(dynamicGame, battleState);
             Sessions[sessionId] = session;
             dynamicGame.ManagedSessionId = sessionId;
@@ -961,6 +1104,7 @@ internal static class ManagedCombatBridge
 
         try
         {
+            session.RememberBattleState(battleState);
             var packets = new List<HostPacket>();
             session.ApplyRuntimeControls(dynamicGame);
             if (!session.Started)
@@ -1013,6 +1157,7 @@ internal static class ManagedCombatBridge
 
         try
         {
+            session.RememberBattleState(data.BattleState);
             session.ApplyRuntimeControls(data.DynamicGame);
             session.EnsureStarted();
             var packets = session.HandleDeploy(data.Req);
@@ -1057,6 +1202,7 @@ internal static class ManagedCombatBridge
 
         try
         {
+            session.RememberBattleState(data.BattleState);
             session.EnsureStarted();
             var packets = session.HandlePause(data.Req);
             response = new HostResponse
@@ -1095,6 +1241,7 @@ internal static class ManagedCombatBridge
 
         try
         {
+            session.RememberBattleState(data.BattleState);
             session.EnsureStarted();
             var packets = session.HandleUnitSkill(data.Req);
             response = new HostResponse
@@ -1133,6 +1280,7 @@ internal static class ManagedCombatBridge
 
         try
         {
+            session.RememberBattleState(data.BattleState);
             session.EnsureStarted();
             var packets = session.HandleShipSkill(data.Req);
             response = new HostResponse
@@ -1165,6 +1313,7 @@ internal static class ManagedCombatBridge
 
         try
         {
+            session.RememberBattleState(data.BattleState);
             session.ApplyRuntimeControls(data.DynamicGame);
             session.EnsureStarted();
             // Keep managed sync frame-based, but do not let reflection/packet
@@ -1233,6 +1382,11 @@ internal static class ManagedCombatBridge
         private bool finishStateFlushedWithGameEnd;
         private float initialRemainGameTime = -1f;
         private float playStartClientGameTime = -1f;
+        private BattleState? latestBattleState;
+        private List<BattleUnitRecord>? latestGameEndBattleRecords;
+        private bool? latestGameEndBattleWin;
+        private int latestGameEndBattleWinTeam;
+        private float latestGameEndBattlePlayTime = -1f;
 
         public ManagedCombatSession(string sessionId, ManagedRuntime runtime, object server, List<HostPacket> setupPackets)
         {
@@ -1245,6 +1399,14 @@ internal static class ManagedCombatBridge
         }
 
         public bool Started { get; private set; }
+
+        public void RememberBattleState(BattleState? battleState)
+        {
+            if (battleState != null)
+            {
+                latestBattleState = battleState;
+            }
+        }
 
         public void ApplyRuntimeControls(DynamicGameState? dynamicGame)
         {
@@ -1301,7 +1463,7 @@ internal static class ManagedCombatBridge
 
         public List<HostPacket> DrainQueuedPackets(string label)
         {
-            return runtime.DrainClientPackets(label);
+            return DrainCombatPackets(label);
         }
 
         public void EnsureStarted()
@@ -1479,7 +1641,7 @@ internal static class ManagedCombatBridge
             for (var index = 0; index < frameCount; index += 1)
             {
                 runtime.Invoke(server, "Update", ScaleFrameDeltaForRuntimeSpeed(frameDelta));
-                var framePackets = runtime.DrainClientPackets($"managed-session-{sessionId}");
+                var framePackets = DrainCombatPackets($"managed-session-{sessionId}");
                 if (!framePackets.Any(packet => packet.PacketId == GameSync) && IsRuntimeInPlayState())
                 {
                     framePackets.AddRange(FlushSyncDataPackAndDrain());
@@ -1498,7 +1660,7 @@ internal static class ManagedCombatBridge
         {
             forceSyncDataPackFlushThisFrame.Invoke(server, []);
             syncDataPackFlush.Invoke(server, []);
-            return runtime.DrainClientPackets($"managed-forced-sync-{sessionId}");
+            return DrainCombatPackets($"managed-forced-sync-{sessionId}");
         }
 
         private List<HostPacket> NormalizeTimerSyncs(List<HostPacket> packets)
@@ -1719,7 +1881,608 @@ internal static class ManagedCombatBridge
             runtime.GetMethod(server.GetType(), "SyncGameStateChange", gameStateType, teamType, typeof(int)).Invoke(server, [finishState, winTeam, waveId]);
             runtime.GetMethod(server.GetType(), "ForceSyncDataPackFlushThisFrame").Invoke(server, []);
             runtime.GetMethod(server.GetType(), "SyncDataPackFlush").Invoke(server, []);
-            return runtime.DrainClientPackets($"managed-finish-state-{sessionId}");
+            return DrainCombatPackets($"managed-finish-state-{sessionId}");
+        }
+
+        private List<HostPacket> DrainCombatPackets(string label)
+        {
+            latestGameEndBattleRecords = null;
+            latestGameEndBattleWin = null;
+            latestGameEndBattleWinTeam = 0;
+            latestGameEndBattlePlayTime = -1f;
+            var packets = runtime.DrainClientPackets(label, PatchManagedGameEndPacket);
+            foreach (var packet in packets)
+            {
+                if (packet.PacketId != GameEnd) continue;
+                if (latestGameEndBattleWin.HasValue)
+                {
+                    packet.BattleWin = latestGameEndBattleWin.Value;
+                }
+                if (latestGameEndBattleWinTeam > 0)
+                {
+                    packet.BattleWinTeam = latestGameEndBattleWinTeam;
+                }
+                if (latestGameEndBattlePlayTime >= 0f)
+                {
+                    packet.BattlePlayTime = latestGameEndBattlePlayTime;
+                }
+                if (latestGameEndBattleRecords is { Count: > 0 } records)
+                {
+                    packet.BattleRecords = records.Select(CopyBattleRecord).ToList();
+                    packet.Label = string.IsNullOrWhiteSpace(packet.Label)
+                        ? $"managed-game-end records={packet.BattleRecords.Count}"
+                        : $"{packet.Label} records={packet.BattleRecords.Count}";
+                }
+            }
+
+            return packets;
+        }
+
+        private void PatchManagedGameEndPacket(int packetId, object packet)
+        {
+            if (packetId != GameEnd) return;
+            var gameRecord = runtime.GetField(server, "m_GameRecord");
+            gameRecord = BuildManagedGameRecordFromManagedState(gameRecord) ?? gameRecord;
+            if (!HasUsableGameRecordRows(gameRecord))
+            {
+                gameRecord = BuildManagedGameRecordFromBattleState();
+            }
+            if (gameRecord != null)
+            {
+                runtime.SetField(packet, "gameRecord", gameRecord);
+                latestGameEndBattleRecords = ExportManagedGameRecordRecords(gameRecord);
+            }
+
+            var runtimeData = runtime.Invoke(server, "GetGameRuntimeData");
+            var winTeam = runtimeData == null ? null : runtime.GetField(runtimeData, "m_WinTeam");
+            latestGameEndBattleWin = ResolveManagedBattleWin(winTeam);
+            latestGameEndBattleWinTeam = ReadInt(winTeam, 0);
+            var playTime = ReadFloat(runtimeData == null ? null : runtime.GetField(runtimeData, "m_GameTime"), -1f);
+            if (playTime >= 0f)
+            {
+                runtime.SetField(packet, "totalPlayTime", playTime);
+                latestGameEndBattlePlayTime = playTime;
+            }
+        }
+
+        private bool HasUsableGameRecordRows(object? gameRecord)
+        {
+            if (gameRecord == null) return false;
+            if (runtime.GetField(gameRecord, "unitRecords") is not IDictionary records || records.Count == 0) return false;
+            foreach (DictionaryEntry entry in records)
+            {
+                if (ReadInt(runtime.GetField(entry.Value!, "unitId"), 0) > 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private static bool? ResolveManagedBattleWin(object? winTeam)
+        {
+            if (winTeam == null) return null;
+            var text = Convert.ToString(winTeam, CultureInfo.InvariantCulture) ?? "";
+            if (text.IndexOf("NTT_A", StringComparison.OrdinalIgnoreCase) >= 0) return true;
+            if (text.IndexOf("NTT_B", StringComparison.OrdinalIgnoreCase) >= 0) return false;
+
+            var rawTeam = ReadInt(winTeam, 0);
+            if (rawTeam <= 0) return null;
+            return IsRecordTeamA(rawTeam);
+        }
+
+        private List<BattleUnitRecord> ExportManagedGameRecordRecords(object? gameRecord)
+        {
+            var output = new List<BattleUnitRecord>();
+            if (gameRecord == null || runtime.GetField(gameRecord, "unitRecords") is not IDictionary records) return output;
+
+            foreach (DictionaryEntry entry in records)
+            {
+                var record = entry.Value;
+                if (record == null) continue;
+                var gameUnitUid = ReadInt(entry.Key, 0);
+                if (gameUnitUid <= 0) continue;
+
+                var unitId = ReadInt(runtime.GetField(record, "unitId"), 0);
+                if (unitId <= 0) continue;
+
+                output.Add(new BattleUnitRecord
+                {
+                    GameUnitUID = gameUnitUid,
+                    UnitId = unitId,
+                    ChangeUnitName = Convert.ToString(runtime.GetField(record, "changeUnitName"), CultureInfo.InvariantCulture) ?? "",
+                    UnitLevel = Math.Max(1, ReadInt(runtime.GetField(record, "unitLevel"), 1)),
+                    IsSummonee = ReadBool(runtime.GetField(record, "isSummonee"), false),
+                    IsAssistUnit = ReadBool(runtime.GetField(record, "isAssistUnit"), false),
+                    IsLeader = ReadBool(runtime.GetField(record, "isLeader"), false),
+                    TeamType = NormalizeRecordTeamType(ReadInt(runtime.GetField(record, "teamType"), 1)),
+                    RecordGiveDamage = Math.Max(0f, ReadFloat(runtime.GetField(record, "recordGiveDamage"), 0f)),
+                    RecordTakeDamage = Math.Max(0f, ReadFloat(runtime.GetField(record, "recordTakeDamage"), 0f)),
+                    RecordHeal = Math.Max(0f, ReadFloat(runtime.GetField(record, "recordHeal"), 0f)),
+                    RecordSummonCount = Math.Max(1, ReadInt(runtime.GetField(record, "recordSummonCount"), 0)),
+                    RecordDieCount = Math.Max(0, ReadInt(runtime.GetField(record, "recordDieCount"), 0)),
+                    RecordKillCount = Math.Max(0, ReadInt(runtime.GetField(record, "recordKillCount"), 0)),
+                    Playtime = Math.Max(1, ReadInt(runtime.GetField(record, "playtime"), 1))
+                });
+            }
+
+            return output
+                .OrderBy(record => record.GameUnitUID)
+                .ToList();
+        }
+
+        private object? BuildManagedGameRecordFromManagedState(object? existingGameRecord)
+        {
+            var gameRecord = existingGameRecord ?? runtime.Create("NKM.NKMGameRecord");
+            if (runtime.GetField(gameRecord, "unitRecords") is not IDictionary managedRecords) return null;
+
+            var units = CollectManagedUnitsByGameUid();
+            var runtimeData = runtime.Invoke(server, "GetGameRuntimeData");
+            var playTime = Math.Max(1, (int)Math.Ceiling(ReadFloat(runtimeData == null ? null : runtime.GetField(runtimeData, "m_GameTime"), 1f)));
+            UpsertManagedTeamDataRecords(managedRecords, playTime);
+            foreach (var unitEntry in units)
+            {
+                UpsertManagedGameRecordUnit(managedRecords, unitEntry.Key, unitEntry.Value, playTime);
+            }
+
+            if (managedRecords.Count == 0)
+            {
+                return null;
+            }
+
+            if (!ManagedRecordsHaveDamage(managedRecords))
+            {
+                ApplyManagedDamageTakenMap(managedRecords);
+            }
+
+            if (!ManagedRecordsHaveDamage(managedRecords))
+            {
+                ApplyManagedHpDelta(records: managedRecords, units);
+            }
+
+            UpdateManagedGameRecordTotals(gameRecord, managedRecords);
+            return gameRecord;
+        }
+
+        private SortedDictionary<short, object> CollectManagedUnitsByGameUid()
+        {
+            var units = new SortedDictionary<short, object>();
+            CollectManagedUnitsByGameUid(units, "m_dicNKMUnitPool");
+            CollectManagedUnitsByGameUid(units, "m_dicNKMUnit");
+            return units;
+        }
+
+        private void CollectManagedUnitsByGameUid(SortedDictionary<short, object> units, string fieldName)
+        {
+            if (runtime.GetField(server, fieldName) is not IDictionary dictionary) return;
+            foreach (DictionaryEntry entry in dictionary)
+            {
+                var unit = entry.Value;
+                if (unit == null) continue;
+                var gameUnitUid = ReadShort(runtime.Invoke(unit, "GetUnitGameUID"), ReadShort(entry.Key, 0));
+                if (gameUnitUid <= 0) continue;
+
+                var unitData = runtime.Invoke(unit, "GetUnitData");
+                if (ReadInt(unitData == null ? null : runtime.GetField(unitData, "m_UnitID"), 0) <= 0) continue;
+                units[gameUnitUid] = unit;
+            }
+        }
+
+        private void UpsertManagedTeamDataRecords(IDictionary managedRecords, int playTime)
+        {
+            var gameData = runtime.Invoke(server, "GetGameData");
+            if (gameData == null) return;
+            UpsertManagedTeamDataRecords(managedRecords, runtime.GetField(gameData, "m_NKMGameTeamDataA"), playTime);
+            UpsertManagedTeamDataRecords(managedRecords, runtime.GetField(gameData, "m_NKMGameTeamDataB"), playTime);
+        }
+
+        private void UpsertManagedTeamDataRecords(IDictionary managedRecords, object? teamData, int playTime)
+        {
+            if (teamData == null) return;
+            var teamType = NormalizeRecordTeamType(ReadInt(runtime.GetField(teamData, "m_eNKM_TEAM_TYPE"), 1));
+            var leaderUnitUid = ReadLong(runtime.GetField(teamData, "m_LeaderUnitUID"), 0L);
+            UpsertManagedUnitDataRecords(
+                managedRecords,
+                runtime.GetField(teamData, "m_MainShip"),
+                teamData,
+                teamType,
+                isAssistUnit: false,
+                leaderUnitUid,
+                playTime);
+
+            UpsertManagedUnitDataListRecords(managedRecords, runtime.GetField(teamData, "m_listUnitData"), teamData, teamType, isAssistUnit: false, leaderUnitUid, playTime);
+            UpsertManagedUnitDataListRecords(managedRecords, runtime.GetField(teamData, "m_listAssistUnitData"), teamData, teamType, isAssistUnit: true, leaderUnitUid, playTime);
+            UpsertManagedUnitDataListRecords(managedRecords, runtime.GetField(teamData, "m_listEvevtUnitData"), teamData, teamType, isAssistUnit: false, leaderUnitUid, playTime);
+            UpsertManagedUnitDataListRecords(managedRecords, runtime.GetField(teamData, "m_listEnvUnitData"), teamData, teamType, isAssistUnit: false, leaderUnitUid, playTime);
+        }
+
+        private void UpsertManagedUnitDataListRecords(
+            IDictionary managedRecords,
+            object? unitList,
+            object teamData,
+            int teamType,
+            bool isAssistUnit,
+            long leaderUnitUid,
+            int playTime)
+        {
+            if (unitList is not IEnumerable units) return;
+            foreach (var unitData in units)
+            {
+                UpsertManagedUnitDataRecords(managedRecords, unitData, teamData, teamType, isAssistUnit, leaderUnitUid, playTime);
+            }
+        }
+
+        private void UpsertManagedUnitDataRecords(
+            IDictionary managedRecords,
+            object? unitData,
+            object teamData,
+            int teamType,
+            bool isAssistUnit,
+            long leaderUnitUid,
+            int playTime)
+        {
+            if (unitData == null) return;
+            if (runtime.GetField(unitData, "m_listGameUnitUID") is not IEnumerable gameUnitUids) return;
+            foreach (var value in gameUnitUids)
+            {
+                var gameUnitUid = ReadShort(value, 0);
+                if (gameUnitUid <= 0) continue;
+                UpsertManagedGameRecordUnitData(managedRecords, gameUnitUid, unitData, teamData, teamType, isAssistUnit, leaderUnitUid, playTime);
+            }
+        }
+
+        private object? UpsertManagedGameRecordUnitData(
+            IDictionary managedRecords,
+            short gameUnitUid,
+            object unitData,
+            object teamData,
+            int teamType,
+            bool isAssistUnit,
+            long leaderUnitUid,
+            int playTime)
+        {
+            var unitId = ReadInt(runtime.GetField(unitData, "m_UnitID"), 0);
+            if (unitId <= 0) return null;
+
+            var unitUid = ReadLong(runtime.GetField(unitData, "m_UnitUID"), 0L);
+            var record = managedRecords.Contains(gameUnitUid) ? managedRecords[gameUnitUid] : null;
+            record ??= runtime.Create("ClientPacket.Common.NKMGameRecordUnitData");
+
+            runtime.SetField(record, "unitId", unitId);
+            runtime.SetField(record, "changeUnitName", GetManagedChangeUnitName(unitData));
+            runtime.SetField(record, "unitLevel", Math.Max(1, ReadInt(runtime.GetField(unitData, "m_UnitLevel"), 1)));
+            runtime.SetField(record, "isSummonee", ReadBool(runtime.GetField(unitData, "m_bSummonUnit"), false));
+            runtime.SetField(record, "isAssistUnit", isAssistUnit || IsManagedAssistUnit(teamData, unitUid));
+            runtime.SetField(record, "isLeader", unitUid > 0 && leaderUnitUid == unitUid);
+            runtime.SetField(record, "teamType", teamType);
+            runtime.SetField(record, "recordGiveDamage", Math.Max(0f, ReadFloat(runtime.GetField(record, "recordGiveDamage"), 0f)));
+            runtime.SetField(record, "recordTakeDamage", Math.Max(0f, ReadFloat(runtime.GetField(record, "recordTakeDamage"), 0f)));
+            runtime.SetField(record, "recordHeal", Math.Max(0f, ReadFloat(runtime.GetField(record, "recordHeal"), 0f)));
+            runtime.SetField(record, "recordSummonCount", Math.Max(1, ReadInt(runtime.GetField(record, "recordSummonCount"), 0)));
+            runtime.SetField(record, "recordDieCount", Math.Max(0, ReadInt(runtime.GetField(record, "recordDieCount"), 0)));
+            runtime.SetField(record, "recordKillCount", Math.Max(0, ReadInt(runtime.GetField(record, "recordKillCount"), 0)));
+            runtime.SetField(record, "playtime", Math.Max(playTime, ReadInt(runtime.GetField(record, "playtime"), 0)));
+
+            managedRecords[gameUnitUid] = record;
+            return record;
+        }
+
+        private object? UpsertManagedGameRecordUnit(IDictionary managedRecords, short gameUnitUid, object unit, int playTime)
+        {
+            var unitData = runtime.Invoke(unit, "GetUnitData");
+            if (unitData == null) return null;
+            var unitId = ReadInt(runtime.GetField(unitData, "m_UnitID"), 0);
+            if (unitId <= 0) return null;
+
+            var unitDataGame = runtime.Invoke(unit, "GetUnitDataGame");
+            var teamData = runtime.Invoke(unit, "GetTeamData");
+            var unitUid = ReadLong(runtime.GetField(unitData, "m_UnitUID"), 0L);
+            var record = managedRecords.Contains(gameUnitUid) ? managedRecords[gameUnitUid] : null;
+            record ??= runtime.Create("ClientPacket.Common.NKMGameRecordUnitData");
+
+            runtime.SetField(record, "unitId", unitId);
+            runtime.SetField(record, "changeUnitName", GetManagedChangeUnitName(unitData));
+            runtime.SetField(record, "unitLevel", Math.Max(1, ReadInt(runtime.GetField(unitData, "m_UnitLevel"), 1)));
+            runtime.SetField(record, "isSummonee", IsManagedSummonedUnit(unitData, unitDataGame));
+            runtime.SetField(record, "isAssistUnit", IsManagedAssistUnit(teamData, unitUid));
+            runtime.SetField(record, "isLeader", teamData != null && unitUid > 0 && ReadLong(runtime.GetField(teamData, "m_LeaderUnitUID"), 0L) == unitUid);
+            runtime.SetField(record, "teamType", NormalizeRecordTeamType(ReadInt(runtime.Invoke(unit, "GetTeam"), 1)));
+            runtime.SetField(record, "recordGiveDamage", Math.Max(0f, ReadFloat(runtime.GetField(record, "recordGiveDamage"), 0f)));
+            runtime.SetField(record, "recordTakeDamage", Math.Max(0f, ReadFloat(runtime.GetField(record, "recordTakeDamage"), 0f)));
+            runtime.SetField(record, "recordHeal", Math.Max(0f, ReadFloat(runtime.GetField(record, "recordHeal"), 0f)));
+            runtime.SetField(record, "recordSummonCount", Math.Max(1, ReadInt(runtime.GetField(record, "recordSummonCount"), 0)));
+            runtime.SetField(record, "recordDieCount", Math.Max(0, ReadInt(runtime.GetField(record, "recordDieCount"), 0)));
+            runtime.SetField(record, "recordKillCount", Math.Max(0, ReadInt(runtime.GetField(record, "recordKillCount"), 0)));
+            runtime.SetField(record, "playtime", Math.Max(playTime, ReadInt(runtime.GetField(record, "playtime"), 0)));
+
+            managedRecords[gameUnitUid] = record;
+            return record;
+        }
+
+        private string GetManagedChangeUnitName(object unitData)
+        {
+            var respawnTemplet = runtime.GetField(unitData, "m_DungeonRespawnUnitTemplet");
+            var changeName = Convert.ToString(respawnTemplet == null ? null : runtime.GetField(respawnTemplet, "m_ChangeUnitName"), CultureInfo.InvariantCulture);
+            return changeName ?? "";
+        }
+
+        private bool IsManagedSummonedUnit(object unitData, object? unitDataGame)
+        {
+            return ReadShort(unitDataGame == null ? null : runtime.GetField(unitDataGame, "m_MasterGameUnitUID"), 0) != 0
+                || ReadBool(unitDataGame == null ? null : runtime.GetField(unitDataGame, "m_bSummonUnit"), false)
+                || ReadBool(runtime.GetField(unitData, "m_bSummonUnit"), false);
+        }
+
+        private bool IsManagedAssistUnit(object? teamData, long unitUid)
+        {
+            if (teamData == null || unitUid <= 0) return false;
+            try
+            {
+                return ReadBool(runtime.Invoke(teamData, "IsAssistUnit", unitUid), false);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private void ApplyManagedDamageTakenMap(IDictionary managedRecords)
+        {
+            if (runtime.GetField(server, "m_dicDamageTakenByUnit") is not IDictionary damageTakenByUnit) return;
+            foreach (DictionaryEntry defenderEntry in damageTakenByUnit)
+            {
+                var defenderGameUid = ReadShort(defenderEntry.Key, 0);
+                if (defenderGameUid <= 0 || defenderEntry.Value is not IDictionary attackerDamage) continue;
+
+                foreach (DictionaryEntry attackerEntry in attackerDamage)
+                {
+                    var attackerGameUid = ReadShort(attackerEntry.Key, 0);
+                    var damage = Math.Max(0f, ReadFloat(attackerEntry.Value, 0f));
+                    if (attackerGameUid <= 0 || damage <= 0f) continue;
+                    AddManagedRecordFloat(managedRecords, attackerGameUid, "recordGiveDamage", damage);
+                    AddManagedRecordFloat(managedRecords, defenderGameUid, "recordTakeDamage", damage);
+                }
+            }
+        }
+
+        private void ApplyManagedHpDelta(IDictionary records, SortedDictionary<short, object> units)
+        {
+            foreach (var unitEntry in units)
+            {
+                if (!records.Contains(unitEntry.Key)) continue;
+                var currentHp = Math.Max(0f, ReadFloat(runtime.Invoke(unitEntry.Value, "GetHP"), 0f));
+                var maxHp = Math.Max(0f, ReadFloat(runtime.Invoke(unitEntry.Value, "GetMaxHP"), 0f));
+                var damageTaken = Math.Max(0f, maxHp - currentHp);
+                if (damageTaken <= 0f) continue;
+                AddManagedRecordFloat(records, unitEntry.Key, "recordTakeDamage", damageTaken);
+            }
+        }
+
+        private void AddManagedRecordFloat(IDictionary records, short gameUnitUid, string fieldName, float value)
+        {
+            if (!records.Contains(gameUnitUid) || value <= 0f) return;
+            var record = records[gameUnitUid];
+            if (record == null) return;
+            runtime.SetField(record, fieldName, ReadFloat(runtime.GetField(record, fieldName), 0f) + value);
+        }
+
+        private bool ManagedRecordsHaveDamage(IDictionary records)
+        {
+            foreach (DictionaryEntry entry in records)
+            {
+                var record = entry.Value;
+                if (record == null) continue;
+                if (ReadFloat(runtime.GetField(record, "recordGiveDamage"), 0f) > 0f
+                    || ReadFloat(runtime.GetField(record, "recordTakeDamage"), 0f) > 0f
+                    || ReadFloat(runtime.GetField(record, "recordHeal"), 0f) > 0f)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void UpdateManagedGameRecordTotals(object gameRecord, IDictionary records)
+        {
+            var totalDamageA = 0f;
+            var totalDamageB = 0f;
+            var totalDieCountA = 0;
+            var totalDieCountB = 0;
+            foreach (DictionaryEntry entry in records)
+            {
+                var record = entry.Value;
+                if (record == null) continue;
+                var teamType = NormalizeRecordTeamType(ReadInt(runtime.GetField(record, "teamType"), 1));
+                var giveDamage = Math.Max(0f, ReadFloat(runtime.GetField(record, "recordGiveDamage"), 0f));
+                var dieCount = Math.Max(0, ReadInt(runtime.GetField(record, "recordDieCount"), 0));
+                if (IsRecordTeamA(teamType))
+                {
+                    totalDamageA += giveDamage;
+                    totalDieCountA += dieCount;
+                }
+                else
+                {
+                    totalDamageB += giveDamage;
+                    totalDieCountB += dieCount;
+                }
+            }
+
+            runtime.SetField(gameRecord, "totalDamageA", totalDamageA);
+            runtime.SetField(gameRecord, "totalDamageB", totalDamageB);
+            runtime.SetField(gameRecord, "totalDieCountA", totalDieCountA);
+            runtime.SetField(gameRecord, "totalDieCountB", totalDieCountB);
+        }
+
+        private object? BuildManagedGameRecordFromBattleState()
+        {
+            if (latestBattleState == null) return null;
+            var records = CollectBattleStateRecords();
+            if (records.Count == 0) return null;
+
+            var gameRecord = runtime.Create("NKM.NKMGameRecord");
+            if (runtime.GetField(gameRecord, "unitRecords") is not IDictionary managedRecords) return null;
+            foreach (var record in records)
+            {
+                var managedRecord = runtime.Create("ClientPacket.Common.NKMGameRecordUnitData");
+                runtime.SetField(managedRecord, "unitId", record.UnitId);
+                runtime.SetField(managedRecord, "changeUnitName", record.ChangeUnitName ?? "");
+                runtime.SetField(managedRecord, "unitLevel", Math.Max(1, record.UnitLevel));
+                runtime.SetField(managedRecord, "isSummonee", record.IsSummonee);
+                runtime.SetField(managedRecord, "isAssistUnit", record.IsAssistUnit);
+                runtime.SetField(managedRecord, "isLeader", record.IsLeader);
+                runtime.SetField(managedRecord, "teamType", NormalizeRecordTeamType(record.TeamType));
+                runtime.SetField(managedRecord, "recordGiveDamage", (float)Math.Max(0, record.RecordGiveDamage));
+                runtime.SetField(managedRecord, "recordTakeDamage", (float)Math.Max(0, record.RecordTakeDamage));
+                runtime.SetField(managedRecord, "recordHeal", (float)Math.Max(0, record.RecordHeal));
+                runtime.SetField(managedRecord, "recordSummonCount", Math.Max(1, record.RecordSummonCount));
+                runtime.SetField(managedRecord, "recordDieCount", Math.Max(0, record.RecordDieCount));
+                runtime.SetField(managedRecord, "recordKillCount", Math.Max(0, record.RecordKillCount));
+                runtime.SetField(managedRecord, "playtime", Math.Max(1, (int)Math.Round(record.Playtime)));
+                managedRecords[(short)record.GameUnitUID] = managedRecord;
+            }
+
+            runtime.SetField(gameRecord, "totalDamageA", (float)records.Where(record => IsRecordTeamA(record.TeamType)).Sum(record => Math.Max(0, record.RecordGiveDamage)));
+            runtime.SetField(gameRecord, "totalDamageB", (float)records.Where(record => !IsRecordTeamA(record.TeamType)).Sum(record => Math.Max(0, record.RecordGiveDamage)));
+            runtime.SetField(gameRecord, "totalDieCountA", records.Where(record => IsRecordTeamA(record.TeamType)).Sum(record => Math.Max(0, record.RecordDieCount)));
+            runtime.SetField(gameRecord, "totalDieCountB", records.Where(record => !IsRecordTeamA(record.TeamType)).Sum(record => Math.Max(0, record.RecordDieCount)));
+            return gameRecord;
+        }
+
+        private List<BattleUnitRecord> CollectBattleStateRecords()
+        {
+            var byGameUnitUid = new Dictionary<int, BattleUnitRecord>();
+            if (latestBattleState == null) return [];
+
+            foreach (var record in latestBattleState.UnitRecords.Values)
+            {
+                if (record.GameUnitUID <= 0) continue;
+                byGameUnitUid[record.GameUnitUID] = CopyBattleRecord(record);
+            }
+
+            foreach (var unit in latestBattleState.Units)
+            {
+                if (unit.GameUnitUID <= 0) continue;
+                if (!byGameUnitUid.TryGetValue(unit.GameUnitUID, out var record))
+                {
+                    record = new BattleUnitRecord
+                    {
+                        GameUnitUID = unit.GameUnitUID,
+                        RecordSummonCount = 1,
+                        Playtime = Math.Max(1, latestBattleState.GameTime)
+                    };
+                    byGameUnitUid[unit.GameUnitUID] = record;
+                }
+
+                record.SourceUnitUID = string.IsNullOrWhiteSpace(record.SourceUnitUID) ? unit.SourceUnitUID : record.SourceUnitUID;
+                record.Role = string.IsNullOrWhiteSpace(record.Role) ? unit.Role : record.Role;
+                record.UnitId = record.UnitId > 0 ? record.UnitId : unit.UnitID;
+                record.ChangeUnitName = string.IsNullOrWhiteSpace(record.ChangeUnitName) ? unit.ChangeUnitName : record.ChangeUnitName;
+                record.UnitLevel = Math.Max(1, Math.Max(record.UnitLevel, unit.UnitLevel));
+                record.IsSummonee = record.IsSummonee || unit.IsSummonee;
+                record.IsAssistUnit = record.IsAssistUnit || unit.IsAssistUnit;
+                record.IsLeader = record.IsLeader || unit.IsLeader;
+                record.TeamType = NormalizeRecordTeamType(record.TeamType != 0 ? record.TeamType : unit.Team);
+                record.RecordSummonCount = Math.Max(1, record.RecordSummonCount);
+                record.Playtime = Math.Max(1, record.Playtime);
+            }
+
+            return byGameUnitUid.Values
+                .Where(record => record.GameUnitUID > 0 && record.UnitId > 0)
+                .OrderBy(record => record.GameUnitUID)
+                .ToList();
+        }
+
+        private static BattleUnitRecord CopyBattleRecord(BattleUnitRecord source)
+        {
+            return new BattleUnitRecord
+            {
+                GameUnitUID = source.GameUnitUID,
+                SourceUnitUID = source.SourceUnitUID,
+                Role = source.Role,
+                UnitId = source.UnitId,
+                ChangeUnitName = source.ChangeUnitName,
+                UnitLevel = source.UnitLevel,
+                IsSummonee = source.IsSummonee,
+                IsAssistUnit = source.IsAssistUnit,
+                IsLeader = source.IsLeader,
+                TeamType = source.TeamType,
+                RecordGiveDamage = source.RecordGiveDamage,
+                RecordTakeDamage = source.RecordTakeDamage,
+                RecordHeal = source.RecordHeal,
+                RecordSummonCount = source.RecordSummonCount,
+                RecordDieCount = source.RecordDieCount,
+                RecordKillCount = source.RecordKillCount,
+                Playtime = source.Playtime
+            };
+        }
+
+        private static int NormalizeRecordTeamType(int teamType)
+        {
+            return teamType switch
+            {
+                2 => 1,
+                4 => 3,
+                > 0 => teamType,
+                _ => 1
+            };
+        }
+
+        private static bool IsRecordTeamA(int teamType)
+        {
+            return NormalizeRecordTeamType(teamType) is 1 or 2;
+        }
+
+        private static int ReadInt(object? value, int fallback)
+        {
+            if (value == null) return fallback;
+            try
+            {
+                return Convert.ToInt32(value, CultureInfo.InvariantCulture);
+            }
+            catch
+            {
+                return fallback;
+            }
+        }
+
+        private static short ReadShort(object? value, short fallback)
+        {
+            if (value == null) return fallback;
+            try
+            {
+                return Convert.ToInt16(value, CultureInfo.InvariantCulture);
+            }
+            catch
+            {
+                return fallback;
+            }
+        }
+
+        private static long ReadLong(object? value, long fallback)
+        {
+            if (value == null) return fallback;
+            try
+            {
+                return Convert.ToInt64(value, CultureInfo.InvariantCulture);
+            }
+            catch
+            {
+                return fallback;
+            }
+        }
+
+        private static bool ReadBool(object? value, bool fallback)
+        {
+            if (value == null) return fallback;
+            try
+            {
+                return Convert.ToBoolean(value, CultureInfo.InvariantCulture);
+            }
+            catch
+            {
+                return fallback;
+            }
         }
     }
 
@@ -1906,6 +2669,7 @@ internal static class ManagedCombatBridge
             if (clientTablesInitialized) return;
             var nkcMainType = GetType("NKC.NKCMain");
             nkcMainType.GetMethod("NKCInit", BindingFlags.Public | BindingFlags.Static)!.Invoke(null, null);
+            LoadOptionalStaticTable("NKM.NKMBattleConditionManager", "LoadFromLua");
             LoadOptionalStaticTable("NKM.NKMTacticUpdateTemplet", "LoadFromLua");
             clientTablesInitialized = true;
         }
@@ -2278,6 +3042,18 @@ internal static class ManagedCombatBridge
             SetField(gameData, "m_NKM_GAME_TYPE", Enum.Parse(GetType("NKM.NKM_GAME_TYPE"), gameTypeName));
         }
 
+        public void ApplyBattleConditionIds(object gameData, IEnumerable<int>? battleConditionIds)
+        {
+            var dictionary = GetField(gameData, "m_BattleConditionIDs");
+            if (dictionary is not IDictionary battleConditions) return;
+
+            battleConditions.Clear();
+            foreach (var battleConditionId in (battleConditionIds ?? Enumerable.Empty<int>()).Where(id => id > 0).Distinct())
+            {
+                battleConditions[battleConditionId] = 1;
+            }
+        }
+
         private static string ResolveGameTypeName(DynamicGameState dynamicGame)
         {
             if (IsTutorialDungeon(dynamicGame.DungeonID)) return "NGT_TUTORIAL";
@@ -2383,6 +3159,8 @@ internal static class ManagedCombatBridge
             ClearCollectionField(teamA, "m_listOperatorUnitData");
             ClearCollectionField(teamA, "m_listDynamicRespawnUnitData");
             ClearCollectionField(teamA, "m_ItemEquipData");
+            PopulatePlayerDeckEquipItems(teamA, playerDeck);
+            var validEquipItemUids = GetPlayerDeckEquipUidSet(playerDeck);
 
             var unitList = GetField(teamA, "m_listUnitData");
             long firstUnitUid = 0;
@@ -2399,7 +3177,7 @@ internal static class ManagedCombatBridge
                     unitData.LimitBreakLevel,
                     userUid,
                     unitData.SkillLevels,
-                    unitData.EquipItemUids.Select(ParseLong));
+                    GetValidUnitEquipItemUids(unitData, validEquipItemUids));
                 AddCollectionItem(unitList, unit);
                 if (firstUnitUid <= 0) firstUnitUid = unitUid;
             }
@@ -2452,6 +3230,8 @@ internal static class ManagedCombatBridge
 
             var unitList = GetField(teamA, "m_listUnitData");
             if (unitList == null) return;
+            PopulatePlayerDeckEquipItems(teamA, playerDeck);
+            var validEquipItemUids = GetPlayerDeckEquipUidSet(playerDeck);
             var eventDeckSlotPositions = GetEventDeckGeneratedUnitPositions(eventDeckId);
 
             var usedPlayerUnitUids = new HashSet<long>();
@@ -2482,7 +3262,7 @@ internal static class ManagedCombatBridge
                     unitData.LimitBreakLevel,
                     userUid,
                     unitData.SkillLevels,
-                    unitData.EquipItemUids.Select(ParseLong));
+                    GetValidUnitEquipItemUids(unitData, validEquipItemUids));
                 if (!eventDeckSlotPositions.TryGetValue(slotIndex, out var existingUnitIndex) ||
                     !TrySetCollectionItem(unitList, existingUnitIndex, unit))
                 {
@@ -2763,6 +3543,7 @@ internal static class ManagedCombatBridge
             SetField(gameData, "m_TeamASupply", (byte)2);
             SetField(gameData, "m_bBossDungeon", false);
             ApplyGameType(gameData, dynamicGame);
+            ApplyBattleConditionIds(gameData, dynamicGame.BattleConditionIds);
 
             var eventDeckId = data.Stage?.EventDeckId ?? dynamicGame.DungeonID;
             if (ShouldApplyTutorialEventDeckTeamA(dynamicGame.StageID, dynamicGame.DungeonID, eventDeckId))
@@ -2890,14 +3671,132 @@ internal static class ManagedCombatBridge
 
             if (equipItemUids != null)
             {
-                // Combat stat hydration dereferences every UID in m_EquipItemList
-                // through NKMGameTeamData.m_ItemEquipData. Until the local deck
-                // bridge serializes full NKMEquipItemData objects, keep these
-                // slots empty so maxed/equipped units do not hand managed combat
-                // dangling equipment references.
-                SetField(unit, "m_EquipItemList", Enumerable.Repeat(0L, 4).ToArray());
+                SetField(unit, "m_EquipItemList", NormalizeEquipItemUidArray(equipItemUids));
             }
             return unit;
+        }
+
+        private void PopulatePlayerDeckEquipItems(object teamA, PlayerDeckData playerDeck)
+        {
+            var dictionary = GetField(teamA, "m_ItemEquipData");
+            if (dictionary == null) return;
+
+            foreach (var equipData in playerDeck.EquipItems ?? Enumerable.Empty<PlayerEquipItemData>())
+            {
+                var equipUid = ParseLong(equipData.EquipUid);
+                if (equipUid <= 0 || equipData.ItemEquipId <= 0) continue;
+                SetDictionaryItem(dictionary, equipUid, CreateEquipItem(equipData));
+            }
+        }
+
+        private object CreateEquipItem(PlayerEquipItemData data)
+        {
+            var equip = Create("NKM.NKMEquipItemData");
+            SetField(equip, "m_ItemUid", ParseLong(data.EquipUid));
+            SetField(equip, "m_ItemEquipID", data.ItemEquipId);
+            SetField(equip, "m_EnchantLevel", Math.Max(0, data.EnchantLevel));
+            SetField(equip, "m_EnchantExp", Math.Max(0, data.EnchantExp));
+            SetField(equip, "m_OwnerUnitUID", ParseLong(data.OwnerUnitUid));
+            SetField(equip, "m_bLock", data.Locked);
+            SetField(equip, "m_Precision", data.Precision);
+            SetField(equip, "m_Precision2", data.Precision2);
+            SetField(equip, "m_SetOptionId", data.SetOptionId);
+            SetField(equip, "m_ImprintUnitId", data.ImprintUnitId);
+
+            ClearCollectionField(equip, "m_Stat");
+            var stats = GetField(equip, "m_Stat");
+            foreach (var statData in data.Stats ?? Enumerable.Empty<PlayerEquipStatData>())
+            {
+                AddCollectionItem(stats, CreateEquipItemStat(statData));
+            }
+
+            ClearCollectionField(equip, "potentialOptions");
+            var potentialOptions = GetField(equip, "potentialOptions");
+            foreach (var optionData in data.PotentialOptions ?? Enumerable.Empty<PlayerPotentialOptionData>())
+            {
+                AddCollectionItem(potentialOptions, CreatePotentialOption(optionData));
+            }
+
+            return equip;
+        }
+
+        private object CreateEquipItemStat(PlayerEquipStatData data)
+        {
+            var stat = Create("NKM.EQUIP_ITEM_STAT");
+            SetField(stat, "type", ParseStatType(data.Type));
+            SetField(stat, "stat_value", data.Value);
+            SetField(stat, "stat_level_value", data.LevelValue);
+            return stat;
+        }
+
+        private object CreatePotentialOption(PlayerPotentialOptionData data)
+        {
+            var option = Create("NKM.NKMPotentialOption");
+            SetField(option, "optionKey", data.OptionKey);
+            SetField(option, "statType", ParseStatType(data.StatType));
+            SetField(option, "precisionChangeCount", Math.Max(0, data.PrecisionChangeCount));
+
+            if (GetField(option, "sockets") is Array sockets)
+            {
+                var socketDataList = data.Sockets ?? [];
+                var socketCount = Math.Min(sockets.Length, socketDataList.Count);
+                for (var index = 0; index < socketCount; index += 1)
+                {
+                    var socketData = socketDataList[index];
+                    sockets.SetValue(socketData == null ? null : CreatePotentialSocket(socketData), index);
+                }
+            }
+
+            return option;
+        }
+
+        private object CreatePotentialSocket(PlayerPotentialSocketData data)
+        {
+            var socket = Create("NKM.NKMPotentialOption+SocketData");
+            SetField(socket, "statValue", data.StatValue);
+            SetField(socket, "precision", data.Precision);
+            return socket;
+        }
+
+        private object ParseStatType(string? value)
+        {
+            var statType = GetType("NKM.NKM_STAT_TYPE");
+            var text = string.IsNullOrWhiteSpace(value) ? "NST_RANDOM" : value.Trim();
+            return Enum.TryParse(statType, text, false, out var parsed)
+                ? parsed!
+                : Enum.Parse(statType, "NST_RANDOM");
+        }
+
+        private static HashSet<long> GetPlayerDeckEquipUidSet(PlayerDeckData playerDeck)
+        {
+            return (playerDeck.EquipItems ?? [])
+                .Select(item => ParseLong(item.EquipUid))
+                .Where(uid => uid > 0)
+                .ToHashSet();
+        }
+
+        private static IEnumerable<long> GetValidUnitEquipItemUids(PlayerUnitData unitData, HashSet<long> validEquipItemUids)
+        {
+            return NormalizeEquipItemUidArray(
+                unitData.EquipItemUids
+                    .Select(ParseLong)
+                    .Select(uid => uid > 0 && validEquipItemUids.Contains(uid) ? uid : 0L));
+        }
+
+        private static long[] NormalizeEquipItemUidArray(IEnumerable<long>? equipItemUids)
+        {
+            var normalized = new long[4];
+            if (equipItemUids == null) return normalized;
+
+            var index = 0;
+            foreach (var equipUid in equipItemUids)
+            {
+                if (index >= normalized.Length) break;
+                normalized[index] = Math.Max(0L, equipUid);
+                index += 1;
+            }
+
+            return normalized;
         }
 
         private void ApplyEventDeckUnits(object teamA, Type dungeonManagerType, object eventDeckTemplet)
@@ -3051,10 +3950,10 @@ internal static class ManagedCombatBridge
 
         public void SuppressPlayerDynamicRespawns(object server, object gameData)
         {
-            // Player deck units can carry unit-template summon pools. In the
-            // online tutorial those server-side dynamic spawns are not useful
-            // for our local bridge and can materialize extra units at the
-            // player's deploy position. Keep dungeon/team-B event waves intact.
+            // Tutorial event decks can carry preloaded summon pools that
+            // materialize as setup artifacts in the local bridge. Normal
+            // combat must keep these pools: NKMEventRespawn uses them for
+            // skill/passive summons such as Karin's summon and Kyle's wall.
             var teamA = GetField(gameData, "m_NKMGameTeamDataA");
             if (teamA != null)
             {
@@ -3145,6 +4044,19 @@ internal static class ManagedCombatBridge
         private static void AddCollectionItem(object? collection, object item)
         {
             collection?.GetType().GetMethod("Add", BindingFlags.Public | BindingFlags.Instance)?.Invoke(collection, [item]);
+        }
+
+        private static void SetDictionaryItem(object? dictionary, object key, object value)
+        {
+            if (dictionary is IDictionary values)
+            {
+                values[key] = value;
+                return;
+            }
+
+            dictionary?.GetType()
+                .GetProperty("Item", BindingFlags.Public | BindingFlags.Instance)
+                ?.SetValue(dictionary, value, [key]);
         }
 
         private static long ParseLong(string? value)
@@ -3342,12 +4254,188 @@ internal static class ManagedCombatBridge
                 Army = ExportArmy(Field(userData, "m_ArmyData")),
                 StagePlayData = ExportStagePlayData(Field(packet, "stagePlayDataList")),
                 DungeonClear = ExportDungeonClear(Field(userData, "m_dicNKMDungeonClearData")),
+                OfficialSnapshot = ExportJoinLobbySnapshot(packet),
             };
 
             profile.OfficialImport["packetType"] = packet.GetType().FullName ?? "";
             profile.OfficialImport["capturedAt"] = DateTimeOffset.UtcNow.ToString("O", CultureInfo.InvariantCulture);
             profile.OfficialImport["source"] = "join_lobby_ack";
             return profile;
+        }
+
+        private Dictionary<string, object?> ExportJoinLobbySnapshot(object packet)
+        {
+            var capturedAt = DateTimeOffset.UtcNow.ToString("O", CultureInfo.InvariantCulture);
+            var snapshot = new Dictionary<string, object?>
+            {
+                ["schemaVersion"] = 1,
+                ["packetType"] = packet.GetType().FullName ?? "",
+                ["capturedAt"] = capturedAt,
+            };
+
+            var packetContext = new ManagedJsonExportContext();
+            snapshot["packet"] = ExportManagedJsonValue(packet, packetContext, 0);
+
+            // Duplicate the high-value roots at predictable names so the Node importer
+            // does not need to know every official packet nesting variant.
+            var userData = Field(packet, "userData");
+            var userDataContext = new ManagedJsonExportContext();
+            snapshot["userData"] = ExportManagedJsonValue(userData, userDataContext, 0);
+
+            var profileContext = new ManagedJsonExportContext();
+            snapshot["userProfileData"] = ExportManagedJsonValue(Field(packet, "userProfileData"), profileContext, 0);
+
+            var officeContext = new ManagedJsonExportContext();
+            snapshot["officeState"] = ExportManagedJsonValue(Field(packet, "officeState"), officeContext, 0);
+
+            var lobbyContext = new ManagedJsonExportContext();
+            snapshot["backGroundInfo"] = ExportManagedJsonValue(Prefer(Field(userData, "backGroundInfo"), Field(packet, "backGroundInfo")), lobbyContext, 0);
+
+            var intervalContext = new ManagedJsonExportContext(maxDepth: 6);
+            snapshot["intervalData"] = ExportManagedJsonValue(Field(packet, "intervalData"), intervalContext, 0);
+
+            return snapshot;
+        }
+
+        private static object? ExportManagedJsonValue(object? value, ManagedJsonExportContext context, int depth)
+        {
+            if (value == null) return null;
+            if (value is string text) return text;
+            if (value is char character) return character.ToString();
+            if (value is bool) return value;
+            if (value is byte or sbyte or short or ushort or int or uint or float or double or decimal) return value;
+            if (value is long or ulong) return Convert.ToString(value, CultureInfo.InvariantCulture);
+            if (value is DateTime dateTime) return dateTime == DateTime.MinValue ? "0" : dateTime.ToString("O", CultureInfo.InvariantCulture);
+            if (value is DateTimeOffset dateTimeOffset) return dateTimeOffset.ToString("O", CultureInfo.InvariantCulture);
+            if (value is TimeSpan timeSpan) return timeSpan.ToString("c", CultureInfo.InvariantCulture);
+            if (value is Guid guid) return guid.ToString("D", CultureInfo.InvariantCulture);
+            if (value is byte[] bytes) return Convert.ToBase64String(bytes);
+
+            var type = value.GetType();
+            if (type.IsEnum) return Convert.ToString(value, CultureInfo.InvariantCulture) ?? "";
+            if (depth >= context.MaxDepth)
+            {
+                return new Dictionary<string, object?>
+                {
+                    ["$type"] = type.FullName ?? type.Name,
+                    ["$summary"] = SummarizeValue(value),
+                    ["$truncated"] = "maxDepth"
+                };
+            }
+
+            var shouldTrackReference = !type.IsValueType;
+            if (shouldTrackReference && !context.Visiting.Add(value))
+            {
+                return new Dictionary<string, object?>
+                {
+                    ["$type"] = type.FullName ?? type.Name,
+                    ["$summary"] = SummarizeValue(value),
+                    ["$circular"] = true
+                };
+            }
+
+            try
+            {
+                if (value is IDictionary dictionary)
+                {
+                    var output = new Dictionary<string, object?>(StringComparer.Ordinal);
+                    var index = 0;
+                    foreach (DictionaryEntry entry in dictionary)
+                    {
+                        if (index >= context.MaxCollectionItems)
+                        {
+                            output["$truncated"] = dictionary.Count > context.MaxCollectionItems
+                                ? $"items:{dictionary.Count - context.MaxCollectionItems}"
+                                : "items";
+                            break;
+                        }
+
+                        var key = Convert.ToString(entry.Key, CultureInfo.InvariantCulture);
+                        if (string.IsNullOrEmpty(key)) key = $"item{index.ToString(CultureInfo.InvariantCulture)}";
+                        output[key] = ExportManagedJsonValue(entry.Value, context, depth + 1);
+                        index += 1;
+                    }
+                    return output;
+                }
+
+                if (value is IEnumerable enumerable && value is not string)
+                {
+                    var output = new List<object?>();
+                    var index = 0;
+                    foreach (var item in enumerable)
+                    {
+                        if (index >= context.MaxCollectionItems)
+                        {
+                            output.Add(new Dictionary<string, object?>
+                            {
+                                ["$truncated"] = "items",
+                                ["$summary"] = SummarizeValue(value)
+                            });
+                            break;
+                        }
+
+                        output.Add(ExportManagedJsonValue(item, context, depth + 1));
+                        index += 1;
+                    }
+                    return output;
+                }
+
+                var fields = new Dictionary<string, object?>(StringComparer.Ordinal)
+                {
+                    ["$type"] = type.FullName ?? type.Name
+                };
+                var fieldCount = 0;
+                foreach (var field in GetAllInstanceFields(type))
+                {
+                    if (fieldCount >= context.MaxObjectFields)
+                    {
+                        fields["$truncated"] = "fields";
+                        break;
+                    }
+
+                    try
+                    {
+                        fields[field.Name] = ExportManagedJsonValue(field.GetValue(value), context, depth + 1);
+                    }
+                    catch (Exception ex)
+                    {
+                        fields[field.Name] = new Dictionary<string, object?>
+                        {
+                            ["$error"] = ex.GetType().Name
+                        };
+                    }
+
+                    fieldCount += 1;
+                }
+
+                return fields;
+            }
+            finally
+            {
+                if (shouldTrackReference) context.Visiting.Remove(value);
+            }
+        }
+
+        private sealed class ManagedJsonExportContext
+        {
+            public ManagedJsonExportContext(int maxDepth = 16, int maxCollectionItems = 50000, int maxObjectFields = 512)
+            {
+                MaxDepth = maxDepth;
+                MaxCollectionItems = maxCollectionItems;
+                MaxObjectFields = maxObjectFields;
+            }
+
+            public int MaxDepth { get; }
+            public int MaxCollectionItems { get; }
+            public int MaxObjectFields { get; }
+            public HashSet<object> Visiting { get; } = new(new ReferenceEqualityComparer());
+        }
+
+        private sealed class ReferenceEqualityComparer : IEqualityComparer<object>
+        {
+            public new bool Equals(object? left, object? right) => ReferenceEquals(left, right);
+
+            public int GetHashCode(object value) => RuntimeHelpers.GetHashCode(value);
         }
 
         private OfficialInventorySnapshot ExportInventory(object? inventory)
@@ -4077,7 +5165,7 @@ internal static class ManagedCombatBridge
             return Convert.ToBase64String(output);
         }
 
-        public List<HostPacket> DrainClientPackets(string label)
+        public List<HostPacket> DrainClientPackets(string label, Action<int, object>? beforeSerialize = null)
         {
             var output = new List<HostPacket>();
             var queue = messageQueueField.GetValue(null);
@@ -4094,6 +5182,7 @@ internal static class ManagedCombatBridge
                 var packet = messageParamField.GetValue(message);
                 if (packet == null) continue;
                 var packetId = Convert.ToInt32(messageIdField.GetValue(message), CultureInfo.InvariantCulture);
+                beforeSerialize?.Invoke(packetId, packet);
                 output.Add(SerializePacket(packet, packetId, label));
             }
 

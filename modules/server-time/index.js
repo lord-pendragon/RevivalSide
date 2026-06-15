@@ -11,7 +11,6 @@ const DATE_TIME_TICKS_MASK = 0x3fffffffffffffffn;
 function createServerTime(options = {}) {
   const rootDir = path.resolve(options.rootDir || path.resolve(__dirname, "..", ".."));
   const statePath = path.resolve(options.statePath || path.join(rootDir, "server-data", "server-time.json"));
-  const eventManager = options.eventManager || null;
   const logger = typeof options.logger === "function" ? options.logger : null;
   let state = loadState(statePath, logger);
 
@@ -19,47 +18,19 @@ function createServerTime(options = {}) {
     const localNow = validDate(localNowInput) || new Date();
     const manualNow = getManualNow(state, localNow);
     if (manualNow) return manualNow;
-
-    const eventDate = getConfiguredEventDate(eventManager);
-    if (!eventDate) return new Date(localNow.getTime());
-
-    const eventDateKey = utcDateKey(eventDate);
-    const localDayKeyValue = localDayKey(localNow);
-    let changed = false;
-
-    if (!isUsableState(state) || state.eventDateKey !== eventDateKey) {
-      state = createAnchoredState(eventDateKey, localDayKeyValue);
-      changed = true;
-    }
-
-    const elapsedDays = Math.max(0, daysBetweenDateKeys(state.anchorLocalDayKey, localDayKeyValue));
-    let serverDateKey = addDaysToDateKey(state.anchorServerDateKey, elapsedDays);
-    if (isDateKey(state.lastServerDateKey) && compareDateKeys(serverDateKey, state.lastServerDateKey) < 0) {
-      serverDateKey = state.lastServerDateKey;
-    }
-
-    if (state.lastLocalDayKey !== localDayKeyValue || state.lastServerDateKey !== serverDateKey) {
-      state.lastLocalDayKey = localDayKeyValue;
-      state.lastServerDateKey = serverDateKey;
-      state.updatedAt = new Date().toISOString();
-      changed = true;
-    }
-
-    if (changed) saveState(statePath, state, logger);
-    return combineUtcDateWithLocalTime(serverDateKey, localNow);
+    return new Date(localNow.getTime());
   }
 
   function getSummary() {
     const current = now();
-    const eventDate = getConfiguredEventDate(eventManager);
     const manualCurrent = getManualNow(state, new Date());
     return {
-      enabled: Boolean(eventDate || manualCurrent),
-      mode: manualCurrent ? "manual" : eventDate ? "event-anchor" : "local",
+      enabled: true,
+      mode: manualCurrent ? "manual" : "local",
       manual: Boolean(manualCurrent),
       statePath,
       currentIso: current.toISOString(),
-      eventDateKey: manualCurrent ? utcDateKey(manualCurrent) : eventDate ? utcDateKey(eventDate) : "",
+      eventDateKey: utcDateKey(current),
       state: { ...state },
     };
   }
@@ -81,8 +52,7 @@ function createServerTime(options = {}) {
 
   function clearManualTime(localNowInput = new Date()) {
     const localNow = validDate(localNowInput) || new Date();
-    const eventDate = getConfiguredEventDate(eventManager);
-    state = eventDate ? createAnchoredState(utcDateKey(eventDate), localDayKey(localNow)) : {};
+    state = {};
     saveState(statePath, state, logger);
     return now(localNow);
   }
@@ -100,12 +70,6 @@ function createServerTime(options = {}) {
       return dateTimeBinaryForDate(now(localNowInput));
     },
     eventDateKey(localNowInput) {
-      const manualNow = getManualNow(state, new Date());
-      if (manualNow) return utcDateKey(manualNow);
-      const stateSnapshot = isUsableState(state) ? state : null;
-      if (stateSnapshot && isDateKey(stateSnapshot.eventDateKey)) return stateSnapshot.eventDateKey;
-      const eventDate = getConfiguredEventDate(eventManager);
-      if (eventDate) return utcDateKey(eventDate);
       return utcDateKey(now(localNowInput));
     },
     getSummary,
@@ -113,12 +77,6 @@ function createServerTime(options = {}) {
       return { ...state };
     },
   };
-}
-
-function getConfiguredEventDate(eventManager) {
-  const config = eventManager && eventManager.config;
-  if (!config || !config.enabled) return null;
-  return validDate(config.eventDate);
 }
 
 function createAnchoredState(eventDateKey, localDayKeyValue) {

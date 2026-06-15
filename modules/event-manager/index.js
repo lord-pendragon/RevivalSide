@@ -238,14 +238,15 @@ function createEventManager(options = {}) {
     return cachedRegistry;
   }
 
-  function getSummary() {
+  function getSummary(date = config.eventDate || new Date()) {
     const registry = getRegistry();
-    const activeState = buildActiveEventState(registry, config, config.eventDate);
+    const targetDate = parseEventDateInput(date);
+    const activeState = buildActiveEventState(registry, config, targetDate);
     return {
       enabled: config.enabled,
       mode: config.mode,
       dateInput: config.dateInput,
-      dateIso: config.eventDate ? config.eventDate.toISOString() : "",
+      dateIso: targetDate ? targetDate.toISOString() : "",
       timezone: config.timezone,
       profile: config.profile,
       officialScheduleEnabled: config.officialScheduleEnabled,
@@ -273,7 +274,7 @@ function createEventManager(options = {}) {
     reader,
     getRegistry,
     getSummary,
-    getActiveEventState(date = config.eventDate) {
+    getActiveEventState(date = config.eventDate || new Date()) {
       return buildActiveEventState(getRegistry(), config, date);
     },
     getKnownContentsTags() {
@@ -287,13 +288,13 @@ function createEventManager(options = {}) {
         ...registry.entries.flatMap((entry) => entry.intervalTags || []),
       ]);
     },
-    getDiagnostics(date = config.eventDate, options = {}) {
+    getDiagnostics(date = config.eventDate || new Date(), options = {}) {
       return buildEventDiagnostics(getRegistry(), config, date, options);
     },
-    formatDiagnostics(date = config.eventDate, options = {}) {
+    formatDiagnostics(date = config.eventDate || new Date(), options = {}) {
       return formatEventDiagnostics(buildEventDiagnostics(getRegistry(), config, date, options));
     },
-    selectEntriesForDate(date = config.eventDate) {
+    selectEntriesForDate(date = config.eventDate || new Date()) {
       return selectRegistryEntriesForDate(getRegistry(), date);
     },
   };
@@ -472,7 +473,7 @@ function resolveEventManagerConfig(options = {}) {
   ]);
   const eventDate = parseEventDateInput(dateInput);
   const disabled = ["0", "false", "off", "no", "disabled"].includes(mode);
-  const enabled = !disabled && (["1", "true", "on", "yes", "enabled"].includes(mode) || (mode === "auto" && Boolean(eventDate)));
+  const enabled = !disabled && (["1", "true", "on", "yes", "enabled"].includes(mode) || mode === "auto");
   const tableScan = normalizeTableScan(env.CS_EVENT_TABLE_SCAN || "known");
   const counterPassMode = String(env.CS_EVENT_COUNTER_PASS || env.CS_COUNTER_PASS || "auto").trim().toLowerCase() || "auto";
   const counterPassDisabled = ["0", "false", "off", "no", "disabled"].includes(counterPassMode);
@@ -487,7 +488,7 @@ function resolveEventManagerConfig(options = {}) {
     tableScan,
     defaultWindowDays: readPositiveInt(env.CS_EVENT_DEFAULT_WINDOW_DAYS, 28),
     officialScheduleEnabled: parseEnvBool(env.CS_EVENT_OFFICIAL_SCHEDULE, true),
-    dateProfilesEnabled: parseEnvBool(env.CS_EVENT_DATE_PROFILES, Boolean(eventDate)),
+    dateProfilesEnabled: parseEnvBool(env.CS_EVENT_DATE_PROFILES, true),
     inferYearOnly: parseEnvBool(env.CS_EVENT_INFER_YEAR_ONLY, false),
     inferSeasonalIntervals: parseEnvBool(env.CS_EVENT_INFER_SEASONAL_INTERVALS, false),
     emitRequiredIntervals: parseEnvBool(env.CS_EVENT_EMIT_REQUIRED_INTERVALS, false),
@@ -1054,8 +1055,8 @@ function buildEventDiagnostics(registry, config = {}, date = config.eventDate, o
   const errors = Array.isArray(registry.errors) ? registry.errors : [];
   const warnings = [];
 
-  if (!config.enabled) warnings.push("event manager is disabled; set CS_EVENT_MANAGER=auto with CS_EVENT_DATE, or CS_EVENT_MANAGER=1");
-  if (!targetDate) warnings.push("no valid event date is configured; set CS_EVENT_DATE=YYYY-MM-DD");
+  if (!config.enabled) warnings.push("event manager is disabled; set CS_EVENT_MANAGER=auto or CS_EVENT_MANAGER=1");
+  if (!targetDate) warnings.push("no valid server clock date is available");
   if (missingTables.length) warnings.push(`${missingTables.length} required event table(s) are missing`);
   if (errors.length) warnings.push(`${errors.length} table parse/read error(s) were reported`);
   if (config.enabled && targetDate && !activeState.entries.length) warnings.push("no active or inferred event entries matched the selected date");
@@ -1127,7 +1128,7 @@ function buildEventDiagnostics(registry, config = {}, date = config.eventDate, o
       entriesByCategory: countBy(activeState.entries, (entry) => entry.source && entry.source.category || "table"),
     },
     checks: {
-      serverClockUsesEventDate: Boolean(config.enabled && targetDate),
+      serverClockDateProvided: Boolean(config.enabled && targetDate),
       loginTagsEmitted: activeState.contentsTags.length > 0 || activeState.openTags.length > 0,
       lobbyIntervalsEmitted: activeState.intervalData.length > 0,
       packagedRootsAvailable: (config.tableRoots || []).some((root) => /gameplay-jsons/i.test(root) && fs.existsSync(root)),
@@ -1146,10 +1147,10 @@ function formatEventDiagnostics(diagnostics) {
   const checks = diag.checks || {};
 
   lines.push(`Event manager diagnostics: ${diag.status || "unknown"}`);
-  lines.push(`date=${config.dateIso || config.dateInput || "(unset)"} enabled=${config.enabled ? "yes" : "no"} mode=${config.mode || "(unset)"} scan=${config.tableScan || "(unset)"}`);
+  lines.push(`clockDate=${config.dateIso || config.dateInput || "(unset)"} enabled=${config.enabled ? "yes" : "no"} mode=${config.mode || "(unset)"} scan=${config.tableScan || "(unset)"}`);
   lines.push(`tables=${tables.count || 0} missing=${tables.missingCount || 0} errors=${tables.errorCount || 0} entries=${registry.entryCount || 0} intervalTemplates=${registry.intervalTemplateCount || 0} intervalRefs=${registry.requiredIntervalReferenceCount || 0}`);
   lines.push(`active seeds=${active.seedEntryCount || 0} entries=${active.entryCount || 0} intervals=${active.intervalCount || 0} requiredIntervals=${active.requiredIntervalCount || 0} officialSchedules=${active.officialScheduleCount || 0} counterPasses=${active.counterPassCount || 0} contentsTags=${active.contentsTagCount || 0} openTags=${active.openTagCount || 0}`);
-  lines.push(`checks serverClock=${checks.serverClockUsesEventDate ? "event-date" : "real-time"} loginTags=${checks.loginTagsEmitted ? "yes" : "no"} lobbyIntervals=${checks.lobbyIntervalsEmitted ? "yes" : "no"} packagedRoots=${checks.packagedRootsAvailable ? "yes" : "no"}`);
+  lines.push(`checks serverClockDate=${checks.serverClockDateProvided ? "yes" : "no"} loginTags=${checks.loginTagsEmitted ? "yes" : "no"} lobbyIntervals=${checks.lobbyIntervalsEmitted ? "yes" : "no"} packagedRoots=${checks.packagedRootsAvailable ? "yes" : "no"}`);
 
   if (Array.isArray(diag.warnings) && diag.warnings.length) {
     lines.push("");

@@ -69,6 +69,7 @@ const combatHostConfig = {
   CSHARP_COMBAT_HOST: true,
   CSHARP_COMBAT_HOST_PROJECT: path.join(ROOT_DIR, "combat-host", "CombatHost.csproj"),
   CSHARP_COMBAT_HOST_TIMEOUT_MS: Number(process.env.CS_CSHARP_COMBAT_HOST_TIMEOUT_MS || 60000),
+  CSHARP_COMBAT_HOST_RESPONSE_BUFFER_BYTES: Number(process.env.CS_CSHARP_COMBAT_HOST_RESPONSE_BUFFER_BYTES || 128 * 1024 * 1024),
   CSHARP_COMBAT_HOST_DOTNET: process.env.CS_DOTNET_PATH || findDefaultDotnetRuntime(),
   COUNTERSIDE_MANAGED_DIR: managedDir,
   GAMEPLAY_TABLES_DIR: gameplayTablesDir,

@@ -19,6 +19,7 @@ module.exports = {
     const user = socket.session && socket.session.user;
     const requestedStageId = Number((req && req.stageID) || 0);
     const requestedDungeonId = Number((req && req.dungeonID) || 0);
+    const requestedFierceBossId = Number((req && req.fierceBossId) || 0);
     const explicitTutorial = isTutorialStageId(requestedStageId) || isTutorialDungeonId(requestedDungeonId);
     const diveGameLoad = req && Number(req.diveStageID || 0) > 0 ? worldMap.prepareDiveGameLoad(user, req) : null;
     let stage = null;
@@ -48,6 +49,8 @@ module.exports = {
       console.log(
         `[game-load:dive] diveStageID=${diveGameLoad.diveStageID} dungeonID=${diveGameLoad.dungeonID} deck=${diveGameLoad.deckIndex}`
       );
+    } else if (requestedFierceBossId > 0 && ctx.getGenericStageForRequest) {
+      stage = ctx.getGenericStageForRequest(req);
     } else {
       stage = (explicitTutorial
         ? getTutorialStageForRequest({ stageID: requestedStageId, dungeonID: requestedDungeonId })
@@ -55,6 +58,19 @@ module.exports = {
         getMainStoryStageForRequest(req) ||
         getTutorialStageForRequest(req) ||
         (ctx.getGenericStageForRequest ? ctx.getGenericStageForRequest(req) : null);
+    }
+    if (requestedFierceBossId > 0) {
+      if (stage) {
+        console.log(
+          `[game-load:fierce] bossId=${requestedFierceBossId} stageID=${stage.stageId || 0} dungeonID=${
+            stage.dungeonID || 0
+          } gameType=${stage.gameType || 0} mode=${stage.miscMode || ""} eventDeck=${
+            stage.eventDeckId || stage.EventDeckId || 0
+          } eventDeckData=${req && req.eventDeckData ? 1 : 0}`
+        );
+      } else {
+        console.log(`[game-load:fierce] unresolved bossId=${requestedFierceBossId} dungeonID=${requestedDungeonId}`);
+      }
     }
     if (stage) {
       req.stageID = stage.stageId;

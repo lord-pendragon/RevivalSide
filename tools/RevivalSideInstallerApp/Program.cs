@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.IO.Compression;
+using System.Net.Http.Headers;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
@@ -56,10 +57,12 @@ internal sealed class InstallerWindow : Window
     private static readonly JsonSerializerOptions JsonOptions = new() { PropertyNameCaseInsensitive = true };
     private readonly string localPayloadRoot = Path.Combine(AppContext.BaseDirectory, "payload");
     private string payloadRoot = Path.Combine(AppContext.BaseDirectory, "payload");
+    private string downloadedPayloadCacheRoot = "";
     private readonly Bitmap? backgroundImage;
     private readonly string backgroundName;
 
     private readonly TextBox targetBox = new() { MinWidth = 360 };
+    private readonly CheckBox removeSetupFilesInput = new() { Content = "Remove setup files after install", IsChecked = true };
     private readonly Button browseButton = new() { Content = "Browse", MinWidth = 96, Height = 36 };
     private readonly Button installButton = new() { Content = "Install", MinWidth = 150, Height = 46 };
     private readonly Button launchButton = new() { Content = "Launch", MinWidth = 108, Height = 38, IsEnabled = false };
@@ -182,7 +185,7 @@ internal sealed class InstallerWindow : Window
         var card = Glass(new Thickness(22), new Thickness(0), Color.FromArgb(216, 9, 13, 21));
         var layout = new Grid
         {
-            RowDefinitions = new RowDefinitions("Auto,Auto,Auto,Auto,Auto,*"),
+            RowDefinitions = new RowDefinitions("Auto,Auto,Auto,Auto,Auto,Auto,*"),
         };
 
         var titleRow = new Grid { ColumnDefinitions = new ColumnDefinitions("Auto,*") };
@@ -212,6 +215,9 @@ internal sealed class InstallerWindow : Window
         pathRow.Children.Add(browseButton);
         AddRow(layout, pathRow, 2);
 
+        removeSetupFilesInput.Margin = new Thickness(0, 0, 0, 12);
+        AddRow(layout, removeSetupFilesInput, 3);
+
         var buttonRow = new StackPanel
         {
             Orientation = Orientation.Horizontal,
@@ -220,12 +226,12 @@ internal sealed class InstallerWindow : Window
         };
         buttonRow.Children.Add(installButton);
         buttonRow.Children.Add(launchButton);
-        AddRow(layout, buttonRow, 3);
-        AddRow(layout, progress, 4);
+        AddRow(layout, buttonRow, 4);
+        AddRow(layout, progress, 5);
 
         var logCard = Glass(new Thickness(12), new Thickness(0, 16, 0, 0), Color.FromArgb(170, 5, 8, 13));
         logCard.Child = Scrollable(logBox);
-        AddRow(layout, logCard, 5);
+        AddRow(layout, logCard, 6);
 
         card.Child = layout;
         return card;
@@ -293,6 +299,9 @@ internal sealed class InstallerWindow : Window
         targetBox.VerticalContentAlignment = VerticalAlignment.Center;
         targetBox.TextWrapping = TextWrapping.NoWrap;
 
+        removeSetupFilesInput.Foreground = Brush(218, 228, 240);
+        removeSetupFilesInput.FontSize = 13;
+
         logBox.Background = Brush(6, 9, 14);
         logBox.Foreground = Brush(218, 228, 240);
         logBox.FontFamily = "Cascadia Code, Consolas";
@@ -353,15 +362,22 @@ internal sealed class InstallerWindow : Window
         installButton.IsEnabled = false;
         launchButton.IsEnabled = false;
         browseButton.IsEnabled = false;
+        removeSetupFilesInput.IsEnabled = false;
         progress.Value = 0;
         progress.IsIndeterminate = true;
         SetStatus("Installing");
 
         var target = NormalizeTargetPath(targetBox.Text ?? "");
+        var removeSetupFiles = removeSetupFilesInput.IsChecked == true;
         try
         {
+            downloadedPayloadCacheRoot = "";
             payloadRoot = await EnsurePayloadReadyAsync();
             await Task.Run(() => InstallCore(target));
+            if (removeSetupFiles)
+            {
+                await Task.Run(CleanupSetupFilesAfterInstall);
+            }
             var canLaunch = await PromptInstallDotNet8IfMissingAsync(target);
             progress.IsIndeterminate = false;
             progress.Value = 100;
@@ -389,6 +405,7 @@ internal sealed class InstallerWindow : Window
         {
             installButton.IsEnabled = true;
             browseButton.IsEnabled = true;
+            removeSetupFilesInput.IsEnabled = true;
         }
     }
 
@@ -447,6 +464,7 @@ internal sealed class InstallerWindow : Window
         RequireMatchingFile(Path.Combine(target, "runtime", "installers", "npcap"), "npcap-*.exe", "installed Npcap installer");
         SetGameplayStatus("Built on launch");
         AppendLog($"Installed app ready: {installedApp.FileCount:N0} files; no gameplay JSON dump was installed.");
+        WriteLauncherAuthConfig(target);
         CreateDesktopShortcut(target);
     }
 
@@ -474,8 +492,10 @@ internal sealed class InstallerWindow : Window
         payloadText.Text = "Downloading";
         AppendLog($"Release manifest: {manifestUrl}");
 
+        var manifestUri = new Uri(manifestUrl);
         using var client = new HttpClient { Timeout = TimeSpan.FromMinutes(20) };
-        using var manifestResponse = await client.GetAsync(manifestUrl);
+        await AuthorizeReleaseDownloadClientAsync(client, manifestUri);
+        using var manifestResponse = await client.GetAsync(manifestUri);
         manifestResponse.EnsureSuccessStatusCode();
         var manifestJson = await manifestResponse.Content.ReadAsStringAsync();
         var manifest = JsonSerializer.Deserialize<ReleasePayloadManifest>(manifestJson, JsonOptions)
@@ -489,7 +509,8 @@ internal sealed class InstallerWindow : Window
             manifestPayloadId = $"{manifestPayloadId}-{archiveHashToken}";
         }
         var payloadId = SanitizeFileName(manifestPayloadId);
-        var cacheRoot = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "RevivalSideSetup", "payload-cache", payloadId);
+        var cacheRoot = Path.Combine(GetSetupPayloadCacheRoot(), payloadId);
+        downloadedPayloadCacheRoot = cacheRoot;
         var extractedPayloadRoot = Path.Combine(cacheRoot, "extract", "payload");
         if (IsReleasePayloadReady(extractedPayloadRoot))
         {
@@ -501,7 +522,7 @@ internal sealed class InstallerWindow : Window
 
         Directory.CreateDirectory(cacheRoot);
         var archivePath = Path.Combine(cacheRoot, manifest.ArchiveName);
-        await DownloadPayloadChunksAsync(client, new Uri(manifestUrl), manifest, cacheRoot);
+        await DownloadPayloadChunksAsync(client, manifestUri, manifest, cacheRoot);
         if (ManifestUsesSingleArchiveAsset(manifest))
         {
             AppendLog($"Payload archive cached: {manifest.ArchiveName}");
@@ -528,6 +549,178 @@ internal sealed class InstallerWindow : Window
         return extractedPayloadRoot;
     }
 
+    private async Task AuthorizeReleaseDownloadClientAsync(HttpClient client, Uri manifestUri)
+    {
+        var gatewayBaseUri = TryResolveDownloadGatewayBaseUri(manifestUri);
+        if (gatewayBaseUri == null) return;
+
+        SetStatus("Discord sign-in");
+        payloadText.Text = "Authorize";
+        progress.IsIndeterminate = true;
+        AppendLog($"Requesting Discord authorization from {gatewayBaseUri}");
+
+        var startUri = new Uri(gatewayBaseUri, "auth/device/start");
+        using var startContent = new StringContent("{}", Encoding.UTF8, "application/json");
+        using var startResponse = await client.PostAsync(startUri, startContent);
+        var startJson = await startResponse.Content.ReadAsStringAsync();
+        if (!startResponse.IsSuccessStatusCode)
+        {
+            throw new InvalidOperationException($"Download authorization failed: {ExtractErrorMessage(startJson, startResponse.ReasonPhrase)}");
+        }
+
+        var start = JsonSerializer.Deserialize<DeviceStartResponse>(startJson, JsonOptions)
+            ?? throw new InvalidOperationException("Download authorization response was empty or invalid.");
+        start.Validate();
+
+        AppendLog("Opening Discord sign-in in your browser.");
+        TryOpenBrowser(start.VerificationUri);
+        AppendLog($"Waiting for authorization. If the browser did not open, visit: {start.VerificationUri}");
+
+        var installToken = await PollDeviceAuthorizationAsync(client, start);
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", installToken);
+        SetStatus("Authorized");
+        payloadText.Text = "Authorized";
+        AppendLog("Discord authorization complete.");
+    }
+
+    private async Task<string> PollDeviceAuthorizationAsync(HttpClient client, DeviceStartResponse start)
+    {
+        var statusUri = new Uri(start.StatusUri);
+        var expiresAt = DateTimeOffset.UtcNow.AddMinutes(10);
+        if (!string.IsNullOrWhiteSpace(start.ExpiresAt) && DateTimeOffset.TryParse(start.ExpiresAt, out var parsedExpiresAt))
+        {
+            expiresAt = parsedExpiresAt.ToUniversalTime();
+        }
+
+        while (DateTimeOffset.UtcNow < expiresAt)
+        {
+            SetStatus("Waiting for Discord");
+            await Task.Delay(TimeSpan.FromSeconds(2));
+
+            using var statusResponse = await client.GetAsync(statusUri);
+            var statusJson = await statusResponse.Content.ReadAsStringAsync();
+            var status = string.IsNullOrWhiteSpace(statusJson)
+                ? new DeviceStatusResponse()
+                : JsonSerializer.Deserialize<DeviceStatusResponse>(statusJson, JsonOptions) ?? new DeviceStatusResponse();
+
+            var currentStatus = status.Status ?? "";
+            if (currentStatus.Equals("authorized", StringComparison.OrdinalIgnoreCase))
+            {
+                if (string.IsNullOrWhiteSpace(status.InstallToken))
+                {
+                    throw new InvalidOperationException("Download authorization succeeded without an install token.");
+                }
+                return status.InstallToken;
+            }
+
+            if (currentStatus.Equals("denied", StringComparison.OrdinalIgnoreCase) || statusResponse.StatusCode == System.Net.HttpStatusCode.Forbidden)
+            {
+                throw new InvalidOperationException(GetDeviceAuthorizationDeniedMessage(status.Reason ?? ""));
+            }
+
+            if (currentStatus.Equals("expired", StringComparison.OrdinalIgnoreCase) || statusResponse.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                throw new InvalidOperationException("Discord authorization expired. Start the installer again and sign in within the time limit.");
+            }
+
+            if (!statusResponse.IsSuccessStatusCode)
+            {
+                throw new InvalidOperationException($"Download authorization failed: {ExtractErrorMessage(statusJson, statusResponse.ReasonPhrase)}");
+            }
+        }
+
+        throw new InvalidOperationException("Discord authorization expired. Start the installer again and sign in within the time limit.");
+    }
+
+    private static string GetDeviceAuthorizationDeniedMessage(string reason)
+    {
+        if (reason.Equals("missing_required_discord_role", StringComparison.OrdinalIgnoreCase))
+        {
+            return "Access denied. Your Discord account does not have the required RevivalSide role.";
+        }
+
+        return string.IsNullOrWhiteSpace(reason)
+            ? "Access denied by the RevivalSide download gateway."
+            : $"Access denied by the RevivalSide download gateway: {reason}";
+    }
+
+    private static string ExtractErrorMessage(string json, string? fallback)
+    {
+        if (!string.IsNullOrWhiteSpace(json))
+        {
+            try
+            {
+                using var document = JsonDocument.Parse(json);
+                if (document.RootElement.TryGetProperty("error", out var error) && error.ValueKind == JsonValueKind.String)
+                {
+                    return error.GetString() ?? fallback ?? "unknown error";
+                }
+            }
+            catch
+            {
+                return json.Length > 240 ? json[..240] : json;
+            }
+        }
+
+        return string.IsNullOrWhiteSpace(fallback) ? "unknown error" : fallback;
+    }
+
+    private static Uri? TryResolveDownloadGatewayBaseUri(Uri manifestUri)
+    {
+        if (!manifestUri.IsAbsoluteUri) return null;
+        if (manifestUri.Scheme != Uri.UriSchemeHttp && manifestUri.Scheme != Uri.UriSchemeHttps) return null;
+        if (manifestUri.Host.Equals("github.com", StringComparison.OrdinalIgnoreCase) || manifestUri.Host.EndsWith(".github.com", StringComparison.OrdinalIgnoreCase)) return null;
+
+        var releasePathIndex = manifestUri.AbsolutePath.IndexOf("/releases/", StringComparison.OrdinalIgnoreCase);
+        if (releasePathIndex < 0) return null;
+
+        var basePath = releasePathIndex == 0 ? "/" : manifestUri.AbsolutePath[..releasePathIndex].TrimEnd('/') + "/";
+        var builder = new UriBuilder(manifestUri.Scheme, manifestUri.Host, manifestUri.IsDefaultPort ? -1 : manifestUri.Port, basePath);
+        return builder.Uri;
+    }
+
+    private void WriteLauncherAuthConfig(string target)
+    {
+        var path = Path.Combine(target, "RevivalSideLauncher.auth.json");
+        var manifestUrl = ResolveReleaseManifestUrl();
+        if (string.IsNullOrWhiteSpace(manifestUrl) || !Uri.TryCreate(manifestUrl, UriKind.Absolute, out var manifestUri))
+        {
+            if (File.Exists(path)) File.Delete(path);
+            return;
+        }
+
+        var gatewayBaseUri = TryResolveDownloadGatewayBaseUri(manifestUri);
+        if (gatewayBaseUri == null)
+        {
+            if (File.Exists(path)) File.Delete(path);
+            return;
+        }
+
+        var config = new LauncherAuthConfig
+        {
+            GatewayBaseUrl = gatewayBaseUri.ToString().TrimEnd('/'),
+            ReleaseManifestUrl = manifestUri.ToString(),
+        };
+        File.WriteAllText(path, JsonSerializer.Serialize(config, JsonOptions) + Environment.NewLine, Encoding.UTF8);
+        AppendLog($"Launcher auth gateway: {config.GatewayBaseUrl}");
+    }
+
+    private void TryOpenBrowser(string url)
+    {
+        try
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = url,
+                UseShellExecute = true,
+            });
+        }
+        catch (Exception ex)
+        {
+            AppendLog($"Browser open failed: {ex.Message}");
+        }
+    }
+
     private async Task DownloadPayloadChunksAsync(HttpClient client, Uri manifestUri, ReleasePayloadManifest manifest, string cacheRoot)
     {
         progress.IsIndeterminate = false;
@@ -546,7 +739,7 @@ internal sealed class InstallerWindow : Window
             }
 
             SetStatus($"Downloading {index + 1}/{manifest.Chunks.Count}");
-            var chunkUri = new Uri(manifestUri, chunk.Name);
+            var chunkUri = ResolvePayloadChunkUri(manifestUri, chunk.Name);
             AppendLog($"Downloading {chunk.Name}");
             using var response = await client.GetAsync(chunkUri, HttpCompletionOption.ResponseHeadersRead);
             response.EnsureSuccessStatusCode();
@@ -604,8 +797,18 @@ internal sealed class InstallerWindow : Window
             var releaseUrl = ResolveReleaseManifestUrl();
             payloadText.Text = string.IsNullOrWhiteSpace(releaseUrl) ? "Missing" : "Download";
             gameplayText.Text = string.IsNullOrWhiteSpace(releaseUrl) ? "Not ready" : "Client luac";
-            AppendLog(string.IsNullOrWhiteSpace(releaseUrl) ? $"Payload check: {ex.Message}" : "Payload will download from GitHub release.");
+            AppendLog(string.IsNullOrWhiteSpace(releaseUrl) ? $"Payload check: {ex.Message}" : "Payload will download from the configured release gateway.");
         }
+    }
+
+    private static Uri ResolvePayloadChunkUri(Uri manifestUri, string chunkName)
+    {
+        if (manifestUri.AbsolutePath.TrimEnd('/').EndsWith("/manifest", StringComparison.OrdinalIgnoreCase))
+        {
+            return new Uri(manifestUri, $"assets/{Uri.EscapeDataString(chunkName)}");
+        }
+
+        return new Uri(manifestUri, Uri.EscapeDataString(chunkName));
     }
 
     private async Task<bool> PromptInstallDotNet8IfMissingAsync(string target)
@@ -821,6 +1024,67 @@ internal sealed class InstallerWindow : Window
         {
             AppendLog($"Runtime cache cleanup skipped: {ex.Message}");
         }
+    }
+
+    private void CleanupSetupFilesAfterInstall()
+    {
+        if (string.IsNullOrWhiteSpace(downloadedPayloadCacheRoot))
+        {
+            AppendLog("No downloaded setup files to remove.");
+            return;
+        }
+
+        var cacheRoot = Path.GetFullPath(downloadedPayloadCacheRoot);
+        var setupPayloadCacheRoot = Path.GetFullPath(GetSetupPayloadCacheRoot());
+        if (!IsChildPath(setupPayloadCacheRoot, cacheRoot))
+        {
+            AppendLog($"Setup file cleanup skipped for unexpected path: {cacheRoot}");
+            return;
+        }
+
+        SetStatus("Cleaning setup files");
+        try
+        {
+            if (Directory.Exists(cacheRoot))
+            {
+                Directory.Delete(cacheRoot, recursive: true);
+                AppendLog("Removed downloaded setup payload cache.");
+            }
+            else
+            {
+                AppendLog("Downloaded setup payload cache was already removed.");
+            }
+
+            DeleteDirectoryIfEmpty(setupPayloadCacheRoot);
+            DeleteDirectoryIfEmpty(Path.GetDirectoryName(setupPayloadCacheRoot) ?? "");
+        }
+        catch (Exception ex)
+        {
+            AppendLog($"Setup file cleanup skipped: {ex.Message}");
+        }
+    }
+
+    private static string GetSetupPayloadCacheRoot()
+    {
+        return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "RevivalSideSetup", "payload-cache");
+    }
+
+    private static bool IsChildPath(string parentPath, string childPath)
+    {
+        var parent = Path.GetFullPath(parentPath)
+            .TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar)
+            + Path.DirectorySeparatorChar;
+        var child = Path.GetFullPath(childPath)
+            .TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar)
+            + Path.DirectorySeparatorChar;
+        return child.StartsWith(parent, StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static void DeleteDirectoryIfEmpty(string path)
+    {
+        if (string.IsNullOrWhiteSpace(path) || !Directory.Exists(path)) return;
+        if (Directory.EnumerateFileSystemEntries(path).Any()) return;
+        Directory.Delete(path);
     }
 
     private void EnsureCleanUserDbSeed(string target)
@@ -1175,6 +1439,12 @@ internal sealed class ReleaseInstallerConfig
     public string ManifestUrl { get; set; } = "";
 }
 
+internal sealed class LauncherAuthConfig
+{
+    public string GatewayBaseUrl { get; set; } = "";
+    public string ReleaseManifestUrl { get; set; } = "";
+}
+
 internal sealed class ReleasePayloadManifest
 {
     public int SchemaVersion { get; set; } = 1;
@@ -1208,6 +1478,32 @@ internal sealed class ReleasePayloadChunk
         if (Size <= 0) throw new InvalidOperationException($"Payload chunk {Name} has an invalid size.");
         if (string.IsNullOrWhiteSpace(Sha256) || Sha256.Length < 16) throw new InvalidOperationException($"Payload chunk {Name} is missing sha256.");
     }
+}
+
+internal sealed class DeviceStartResponse
+{
+    public string DeviceCode { get; set; } = "";
+    public string VerificationUri { get; set; } = "";
+    public string StatusUri { get; set; } = "";
+    public string ExpiresAt { get; set; } = "";
+
+    public void Validate()
+    {
+        if (string.IsNullOrWhiteSpace(DeviceCode)) throw new InvalidOperationException("Download authorization response is missing deviceCode.");
+        if (string.IsNullOrWhiteSpace(VerificationUri)) throw new InvalidOperationException("Download authorization response is missing verificationUri.");
+        if (!Uri.TryCreate(VerificationUri, UriKind.Absolute, out _)) throw new InvalidOperationException("Download authorization response contains an invalid verificationUri.");
+        if (string.IsNullOrWhiteSpace(StatusUri)) throw new InvalidOperationException("Download authorization response is missing statusUri.");
+        if (!Uri.TryCreate(StatusUri, UriKind.Absolute, out _)) throw new InvalidOperationException("Download authorization response contains an invalid statusUri.");
+    }
+}
+
+internal sealed class DeviceStatusResponse
+{
+    public string Status { get; set; } = "";
+    public string InstallToken { get; set; } = "";
+    public string TokenType { get; set; } = "";
+    public string ExpiresAt { get; set; } = "";
+    public string Reason { get; set; } = "";
 }
 
 internal sealed record AppPayloadStatus(string Path, int FileCount);

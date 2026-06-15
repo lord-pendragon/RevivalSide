@@ -38,6 +38,7 @@ const RANDOM_SHOP_REFRESH_COST = readNonNegativeIntEnv("CS_RANDOM_SHOP_REFRESH_C
 const RANDOM_SHOP_REFRESH_MAX_COUNT = readNonNegativeIntEnv("CS_RANDOM_SHOP_REFRESH_MAX_COUNT", 5);
 const RANDOM_SHOP_STATE_VERSION = 1;
 const EVENT_SHOP_SEED_CURRENCIES = process.env.CS_EVENT_SHOP_SEED_CURRENCIES !== "0";
+const EVENT_SHOP_INCLUDE_ALL = process.env.CS_EVENT_SHOP_INCLUDE_ALL === "1";
 const EVENT_SHOP_CURRENCY_BALANCE = toBigInt(
   process.env.CS_EVENT_SHOP_CURRENCY_BALANCE || process.env.CS_LOCAL_SHOP_BALANCE || process.env.CS_LOCAL_SHOP_CURRENCY_BALANCE,
   DEFAULT_LOCAL_SHOP_BALANCE
@@ -139,7 +140,7 @@ function createShopHandler(packetId, name) {
 
 function buildCashBuyPossibleResponse(ctx, request) {
   const productMarketID = request.productMarketID || "";
-  const productId = resolveProductId(findProductIdByMarketId(productMarketID));
+  const productId = resolveProductId(findProductIdByMarketId(productMarketID), { fallbackToFirst: false });
   const record = findProductRecord(productId);
   if (isRealMoneyProduct(record)) {
     console.log(`[resource] bypass external payment validation productId=${productId} marketId=${JSON.stringify(productMarketID)}`);
@@ -150,12 +151,12 @@ function buildCashBuyPossibleResponse(ctx, request) {
   }
   return {
     packetId: PACKETS.SHOP_FIX_SHOP_CASH_BUY_POSSIBLE_ACK,
-    payload: buildCashBuyPossibleAck(ctx, productMarketID, request.selectIndices || [], productId),
+    payload: buildCashBuyPossibleAck(ctx, productMarketID, request.selectIndices || [], productId, record ? ERROR_CODES.OK : ERROR_CODES.INVALID_SHOP_ID),
   };
 }
 
 function buildSteamBuyInitResponse(ctx, request) {
-  const productId = resolveProductId(request.productId || 0);
+  const productId = resolveProductId(request.productId || 0, { fallbackToFirst: false });
   const record = findProductRecord(productId);
   if (isRealMoneyProduct(record)) {
     console.log(`[resource] bypass Steam overlay productId=${productId}`);
@@ -187,12 +188,12 @@ function buildShopResponseInner(ctx, packetId, request) {
     case PACKETS.SHOP_FIX_SHOP_BUY_REQ:
       return {
         packetId: PACKETS.SHOP_FIX_SHOP_BUY_ACK,
-        payload: buildShopFixBuyAck(ctx, request, resolveProductId(request.productID)),
+        payload: buildShopFixBuyAck(ctx, request, resolveProductId(request.productID, { fallbackToFirst: false })),
       };
     case PACKETS.SHOP_FIX_SHOP_CASH_BUY_REQ:
       return {
         packetId: PACKETS.SHOP_FIX_SHOP_BUY_ACK,
-        payload: buildShopFixBuyAck(ctx, request, resolveProductId(findProductIdByMarketId(request.productMarketID)), {
+        payload: buildShopFixBuyAck(ctx, request, resolveProductId(findProductIdByMarketId(request.productMarketID), { fallbackToFirst: false }), {
           source: "cash",
           dedupe: false,
         }),
@@ -206,14 +207,15 @@ function buildShopResponseInner(ctx, packetId, request) {
           resolveProductId(
             findProductIdByPaymentId(request.paymentId) ||
               findProductIdByPaymentId(request.paymentSeq) ||
-              findProductIdByMarketId(request.paymentId)
+              findProductIdByMarketId(request.paymentId),
+            { fallbackToFirst: false }
           )
         ),
       };
     case PACKETS.STEAM_BUY_REQ:
       return {
         packetId: PACKETS.SHOP_FIX_SHOP_BUY_ACK,
-        payload: buildShopFixBuyAck(ctx, request, resolveProductId(request.productId), { source: "steam" }),
+        payload: buildShopFixBuyAck(ctx, request, resolveProductId(request.productId, { fallbackToFirst: false }), { source: "steam" }),
       };
     case PACKETS.SHOP_RANDOM_SHOP_BUY_REQ:
       return {
@@ -337,9 +339,9 @@ function buildShopRefreshAck(ctx, request = {}) {
   ]);
 }
 
-function buildCashBuyPossibleAck(ctx, productMarketID, selectIndices, productId = 0) {
+function buildCashBuyPossibleAck(ctx, productMarketID, selectIndices, productId = 0, errorCode = ERROR_CODES.OK) {
   return Buffer.concat([
-    ctx.writeSignedVarInt(0),
+    ctx.writeSignedVarInt(errorCode),
     writeString(productMarketID || ""),
     writeNullableObject(buildPurchaseHistory(ctx, productId || 0, 0)),
     writeIntList(ctx, selectIndices),
@@ -835,6 +837,8 @@ function loadShopCatalog() {
   const productIds = new Set();
   const marketToProductId = new Map();
   const recordsByProductId = new Map();
+  const recordsByProductIdAll = new Map();
+  const records = [];
   const priceItemIds = new Set();
   const tabRecords = [];
   let suppressedProducts = 0;
@@ -844,17 +848,19 @@ function loadShopCatalog() {
       for (const record of readGameplayTableRecords("ab_script", fileName, { rootDir: ROOT_DIR, logLabel: "shop" })) {
         const productId = Number(record && record.m_ProductID);
         if (!Number.isInteger(productId) || productId <= 0) continue;
-        recordsByProductId.set(productId, pickPreferredProductRecord(recordsByProductId.get(productId), record));
         const priceItemId = Number(record && record.m_PriceItemID);
         if (Number.isInteger(priceItemId) && priceItemId > 0) priceItemIds.add(priceItemId);
+        addProductRecord(recordsByProductIdAll, productId, record);
+        if (record.m_MarketID != null && String(record.m_MarketID).length > 0) {
+          marketToProductId.set(String(record.m_MarketID), productId);
+        }
         if (shouldSuppressShopProduct(record)) {
           suppressedProducts += 1;
           continue;
         }
-        productIds.add(productId);
-        if (record.m_MarketID != null && String(record.m_MarketID).length > 0) {
-          marketToProductId.set(String(record.m_MarketID), productId);
-        }
+        records.push(record);
+        recordsByProductId.set(productId, pickPreferredProductRecord(recordsByProductId.get(productId), record));
+        if (shouldAdvertiseFixedShopProduct(record)) productIds.add(productId);
       }
     } catch (err) {
       console.log(`[shop] failed to load ${fileName}: ${err.message}`);
@@ -876,7 +882,8 @@ function loadShopCatalog() {
     productIds: Array.from(productIds).sort((a, b) => a - b),
     marketToProductId,
     recordsByProductId,
-    records: Array.from(recordsByProductId.values()),
+    recordsByProductIdAll,
+    records,
     tabRecords,
     priceItemIds: Array.from(priceItemIds).sort((a, b) => a - b),
   };
@@ -884,6 +891,15 @@ function loadShopCatalog() {
     `[shop] catalog loaded products=${cachedCatalog.productIds.length} tabs=${tabRecords.length} marketIds=${marketToProductId.size} priceItems=${cachedCatalog.priceItemIds.length} suppressed=${suppressedProducts}`
   );
   return cachedCatalog;
+}
+
+function addProductRecord(map, productId, record) {
+  const records = map.get(productId);
+  if (records) {
+    records.push(record);
+  } else {
+    map.set(productId, [record]);
+  }
 }
 
 function pickPreferredProductRecord(existing, incoming) {
@@ -920,10 +936,29 @@ function shouldSuppressShopProduct(record) {
   return text.includes("NEWBIE") || text.includes("BEGINNER") || text.includes("STARTER");
 }
 
+function shouldAdvertiseFixedShopProduct(record) {
+  return Boolean(record) && !isEventLimitedShopRecord(record);
+}
+
 function findProductIdByMarketId(marketId) {
-  if (!marketId) return 0;
+  const raw = String(marketId || "").trim();
+  if (!raw) return 0;
   const catalog = loadShopCatalog();
-  return catalog.marketToProductId.get(String(marketId)) || Number(marketId) || 0;
+  const exact = catalog.marketToProductId.get(raw);
+  if (exact) return exact;
+
+  const normalized = normalizeMarketId(raw);
+  for (const [candidate, productId] of catalog.marketToProductId.entries()) {
+    if (normalizeMarketId(candidate) === normalized) return productId;
+  }
+
+  const directProductId = parsePositiveInt(raw);
+  if (hasCatalogProductId(catalog, directProductId)) return directProductId;
+
+  const trailingMatch = raw.match(/(\d+)(?!.*\d)/);
+  const trailingProductId = trailingMatch ? parsePositiveInt(trailingMatch[1]) : 0;
+  if (hasCatalogProductId(catalog, trailingProductId)) return trailingProductId;
+  return 0;
 }
 
 function findProductIdByPaymentId(paymentId) {
@@ -931,24 +966,58 @@ function findProductIdByPaymentId(paymentId) {
   return Number.isInteger(number) && number > 0 ? number : 0;
 }
 
-function resolveProductId(productId) {
+function resolveProductId(productId, options = {}) {
   const number = Number(productId);
   if (Number.isInteger(number) && number > 0) return number;
+  if (options.fallbackToFirst === false) return 0;
   return loadShopCatalog().productIds[0] || 0;
 }
 
-function findProductRecord(productId) {
-  return loadShopCatalog().recordsByProductId.get(Number(productId)) || null;
+function normalizeMarketId(value) {
+  return String(value || "").trim().toLowerCase();
 }
 
-function getActiveEventShopState(ctxOrState = null) {
+function parsePositiveInt(value) {
+  const text = String(value || "").trim();
+  if (!/^\d+$/.test(text)) return 0;
+  const number = Number(text);
+  return Number.isSafeInteger(number) && number > 0 ? number : 0;
+}
+
+function hasCatalogProductId(catalog, productId) {
+  const id = Number(productId);
+  return Number.isInteger(id) && id > 0 && (
+    (catalog.recordsByProductIdAll && catalog.recordsByProductIdAll.has(id)) ||
+    (catalog.recordsByProductId && catalog.recordsByProductId.has(id)) ||
+    (Array.isArray(catalog.productIds) && catalog.productIds.includes(id))
+  );
+}
+
+function findProductRecord(productId, ctxOrState = null) {
+  const catalog = loadShopCatalog();
+  const id = Number(productId);
+  const records = catalog.recordsByProductIdAll.get(id) || [];
+  if (!records.length) return catalog.recordsByProductId.get(id) || null;
+  const activeTags = buildShopTagStateForCatalog(resolveEventShopActiveState(ctxOrState), catalog);
+  const activeRecords = records.filter((record) => isShopRecordActiveByState(record, activeTags));
+  return pickBestProductRecord(activeRecords.length ? activeRecords : records, activeTags) || catalog.recordsByProductId.get(id) || null;
+}
+
+function getActiveEventShopState(ctxOrState = null, options = {}) {
   const state = resolveEventShopActiveState(ctxOrState);
   const catalog = loadShopCatalog();
   const activeTags = buildActiveShopTagState(state);
+  const includeAllEventShops = shouldIncludeAllEventShops(options);
+  const allEventTabs = includeAllEventShops ? collectAllEventShopTags(catalog, activeTags) : new Set();
   const activeTabs = new Set();
+  const activeTabRecords = [];
 
   for (const tab of catalog.tabRecords || []) {
-    if (isShopRecordActive(tab, activeTags)) activeTabs.add(shopRecordTabKey(tab));
+    const key = shopRecordTabKey(tab);
+    if (isShopRecordActive(tab, activeTags) || (includeAllEventShops && isEventLimitedShopRecord(tab))) {
+      if (key) activeTabs.add(key);
+      activeTabRecords.push(tab);
+    }
   }
 
   const productIds = [];
@@ -957,13 +1026,21 @@ function getActiveEventShopState(ctxOrState = null) {
   const openTags = new Set();
   const contentsTags = new Set();
 
+  for (const tab of activeTabRecords) {
+    for (const tag of getShopRecordIntervalTags(tab)) intervalTags.add(tag);
+    for (const tag of getShopRecordOpenTags(tab)) openTags.add(tag);
+    for (const tag of getShopRecordContentsTags(tab)) contentsTags.add(tag);
+  }
+
   for (const record of catalog.records || []) {
-    const active = isShopRecordActive(record, activeTags) || activeTabs.has(shopRecordTabKey(record));
+    const tabKey = shopRecordTabKey(record);
+    const eventLimited = isEventLimitedShopRecord(record) || allEventTabs.has(tabKey);
+    const active = isShopRecordActiveByState(record, activeTags) || activeTabs.has(tabKey) || (includeAllEventShops && eventLimited);
     if (!active) continue;
     const productId = Number(record && record.m_ProductID);
     if (Number.isInteger(productId) && productId > 0) productIds.push(productId);
     const priceItemId = Number(record && record.m_PriceItemID);
-    if (Number.isInteger(priceItemId) && priceItemId > 0 && isEventLimitedShopRecord(record)) {
+    if (Number.isInteger(priceItemId) && priceItemId > 0 && eventLimited) {
       priceItemIds.add(priceItemId);
     }
     for (const tag of getShopRecordIntervalTags(record)) intervalTags.add(tag);
@@ -977,13 +1054,13 @@ function getActiveEventShopState(ctxOrState = null) {
     intervalTags: Array.from(intervalTags).sort(),
     openTags: Array.from(openTags).sort(),
     contentsTags: Array.from(contentsTags).sort(),
-    tabCount: activeTabs.size,
+    tabCount: new Set([...activeTabs, ...allEventTabs]).size,
   };
 }
 
 function ensureActiveEventShopCurrencies(user, eventManagerOrState = null, options = {}) {
-  if (!EVENT_SHOP_SEED_CURRENCIES || !user) return { seeded: [], active: getActiveEventShopState(eventManagerOrState) };
-  const active = getActiveEventShopState(eventManagerOrState);
+  if (!EVENT_SHOP_SEED_CURRENCIES || !user) return { seeded: [], active: getActiveEventShopState(eventManagerOrState, options) };
+  const active = getActiveEventShopState(eventManagerOrState, options);
   const seedItemIds = (active.priceItemIds || []).filter((itemId) => itemId > 0 && !isCommonResourceItemId(itemId));
   if (!seedItemIds.length) return { seeded: [], active };
   seedShopCurrency(user, seedItemIds, {
@@ -1004,6 +1081,45 @@ function resolveEventShopActiveState(ctxOrState) {
   return null;
 }
 
+function shouldIncludeAllEventShops(options = {}) {
+  if (Object.prototype.hasOwnProperty.call(options, "includeAllEventShops")) return Boolean(options.includeAllEventShops);
+  return EVENT_SHOP_INCLUDE_ALL;
+}
+
+function buildShopTagStateForCatalog(state, catalog, options = {}) {
+  const activeTags = buildActiveShopTagState(state);
+  if (shouldIncludeAllEventShops(options)) collectAllEventShopTags(catalog, activeTags);
+  return activeTags;
+}
+
+function collectAllEventShopTags(catalog, activeTags = buildActiveShopTagState(null)) {
+  const eventTabs = new Set();
+  const addRecord = (record) => {
+    if (!record) return;
+    const key = shopRecordTabKey(record);
+    if (key) eventTabs.add(key);
+    addShopRecordTags(activeTags, record);
+  };
+
+  for (const tab of catalog && catalog.tabRecords || []) {
+    if (isEventLimitedShopRecord(tab)) addRecord(tab);
+  }
+  for (const record of catalog && catalog.records || []) {
+    if (isEventLimitedShopRecord(record)) addRecord(record);
+  }
+  for (const record of catalog && catalog.records || []) {
+    if (eventTabs.has(shopRecordTabKey(record))) addRecord(record);
+  }
+
+  return eventTabs;
+}
+
+function addShopRecordTags(activeTags, record) {
+  for (const tag of getShopRecordIntervalTags(record)) addUsableShopTag(activeTags.intervals, tag);
+  for (const tag of getShopRecordOpenTags(record)) addUsableShopTag(activeTags.openTags, tag);
+  for (const tag of getShopRecordContentsTags(record)) addUsableShopTag(activeTags.contentsTags, tag);
+}
+
 function buildActiveShopTagState(state) {
   const intervals = new Set();
   const openTags = new Set();
@@ -1020,6 +1136,13 @@ function buildActiveShopTagState(state) {
 function isShopRecordActive(record, activeTags) {
   if (!record || !activeTags) return false;
   return (
+    isShopRecordActiveByState(record, activeTags)
+  );
+}
+
+function isShopRecordActiveByState(record, activeTags) {
+  if (!record || !activeTags) return false;
+  return (
     hasUsableTagIntersection(activeTags.intervals, getShopRecordIntervalTags(record)) ||
     hasUsableTagIntersection(activeTags.openTags, getShopRecordOpenTags(record)) ||
     hasUsableTagIntersection(activeTags.contentsTags, getShopRecordContentsTags(record))
@@ -1029,19 +1152,31 @@ function isShopRecordActive(record, activeTags) {
 function isEventLimitedShopRecord(record) {
   if (!record) return false;
   const tabId = String(record.m_TabID || record.ShopTabID || "").trim().toUpperCase();
+  const availabilityIntervalTags = getShopRecordAvailabilityIntervalTags(record);
   const text = [
     tabId,
-    ...getShopRecordIntervalTags(record),
+    ...availabilityIntervalTags,
     ...getShopRecordOpenTags(record),
     ...getShopRecordContentsTags(record),
   ].join("|");
   return (
+    availabilityIntervalTags.length > 0 ||
     tabId === "TAB_EVENT" ||
     tabId === "TAB_EVENT_V2" ||
     tabId.startsWith("TAB_PACKAGE_CLB") ||
     /\bCLB_\d+\b/.test(text) ||
+    /SHOP_TAB_PACKAGE_CLB/i.test(text) ||
+    /DATE_COMMON_SHOP_EVENT/i.test(text) ||
     /SHOP_EVENT|COMMON_EVENT|POINT_EXCHANGE|BINGO|COLLAB/i.test(text)
   );
+}
+
+function getShopRecordAvailabilityIntervalTags(record) {
+  return normalizeShopTags([
+    record && record.m_DateStrID,
+    record && record.m_DateStrId,
+    record && record.m_EventDateStrID,
+  ]);
 }
 
 function getShopRecordIntervalTags(record) {
@@ -1107,7 +1242,7 @@ function shopRecordTabKey(record) {
 }
 
 function processProductPurchase(ctx, productId, productCount, options = {}) {
-  const record = findProductRecord(productId);
+  const record = findProductRecord(productId, ctx);
   const user = getSessionUser(ctx);
   const count = Math.max(1, Number(productCount) || 1);
   const source = options.source || "shop-buy";
@@ -1116,6 +1251,16 @@ function processProductPurchase(ctx, productId, productCount, options = {}) {
   if (shouldDedupe && hasCompletedPurchase(ctx.socket, purchaseKey)) {
     return {
       errorCode: ERROR_CODES.OK,
+      reward: createEmptyReward(),
+      costItem: null,
+      history: getPurchaseHistory(user, productId),
+      totalPaidAmount: getShopTotalPaidAmount(user),
+    };
+  }
+  if (!record) {
+    console.log(`[shop] invalid product purchase source=${source} productId=${Number(productId) || 0}`);
+    return {
+      errorCode: ERROR_CODES.INVALID_SHOP_ID,
       reward: createEmptyReward(),
       costItem: null,
       history: getPurchaseHistory(user, productId),
@@ -1133,15 +1278,31 @@ function processProductPurchase(ctx, productId, productCount, options = {}) {
       totalPaidAmount: getShopTotalPaidAmount(user),
     };
   }
-  const reward = record
-    ? grantShopProduct(ctx, user, record, count)
-    : grantFallbackResource(ctx, user, count);
-  const costItem = record ? spendShopPrice(ctx, user, record, count) : null;
+  const reward = grantShopProduct(ctx, user, record, count);
+  const costItem = spendShopPrice(ctx, user, record, count);
   trackShopPurchaseMission(ctx, user, record, productId, count, costItem);
   const history = getPurchaseHistory(user, productId);
   if (shouldDedupe) markCompletedPurchase(ctx.socket, purchaseKey);
   persistUserDb(ctx);
   return { errorCode: ERROR_CODES.OK, reward, costItem, history, totalPaidAmount: getShopTotalPaidAmount(user) };
+}
+
+function pickBestProductRecord(records, activeTags) {
+  let best = null;
+  for (const record of Array.isArray(records) ? records : []) {
+    if (!record) continue;
+    if (!best || productRecordScoreForState(record, activeTags) > productRecordScoreForState(best, activeTags)) best = record;
+  }
+  return best;
+}
+
+function productRecordScoreForState(record, activeTags) {
+  let score = productRecordScore(record);
+  if (isShopRecordActiveByState(record, activeTags)) score += 1000;
+  if (isEventLimitedShopRecord(record)) score += 100;
+  const tabId = String(record && record.m_TabID || "").toUpperCase();
+  if (tabId === "TAB_EVENT" || tabId === "TAB_EVENT_V2") score += 50;
+  return score;
 }
 
 function getShopProductTotalPrice(record, productCount = 1) {
@@ -1200,6 +1361,7 @@ function buildRewardData(ctx, reward) {
   const operators = Array.isArray(data.operators) ? data.operators : [];
   const equips = Array.isArray(data.equips) ? data.equips : [];
   const moldItems = Array.isArray(data.moldItems) ? data.moldItems : [];
+  const interiors = Array.isArray(data.interiors) ? data.interiors : [];
 
   return Buffer.concat([
     ctx.writeSignedVarInt(0), // userExp
@@ -1219,7 +1381,15 @@ function buildRewardData(ctx, reward) {
     ctx.writeSignedVarLong(0n), // achievePoint
     writeObjectList(operators.map((operator) => writeNullableObject(buildOperatorData(operator)))),
     writeObjectList([]), // contractList
-    writeObjectList([]), // interiors
+    writeObjectList(interiors.map((interior) => writeNullableObject(buildInteriorData(ctx, interior)))),
+  ]);
+}
+
+function buildInteriorData(ctx, interior) {
+  const data = interior || {};
+  return Buffer.concat([
+    ctx.writeSignedVarInt(Number(data.itemId || data.interiorId || 0) || 0),
+    ctx.writeSignedVarLong(toBigInt(data.count || data.itemCount || 0)),
   ]);
 }
 

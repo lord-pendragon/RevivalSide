@@ -171,6 +171,7 @@ internal sealed class CombatEngine
             ExploreStageId = stage.ExploreStageId,
             PhaseId = stage.PhaseId,
             PhaseIndex = stage.PhaseIndex,
+            BattleConditionIds = stage.BattleConditionIds.Where(id => id > 0).Distinct().ToList(),
             GameUID = gameUID,
             GameUnitUIDIndex = stage.GameUnitUIDIndex != 0 ? stage.GameUnitUIDIndex : 18,
             DeployableGameUnitUIDGroups = groups.Select(group => group.ToList()).ToList(),
@@ -205,6 +206,7 @@ internal sealed class CombatEngine
         {
             NormalizeUnit(unit);
             HydrateStats(unit);
+            EnsureBattleRecord(battleState, unit);
         }
 
         ManagedCombatBridge.TryStart(options, data, dynamicGame, battleState, out var managedGameLoadAck, out var managedError);
@@ -259,6 +261,7 @@ internal sealed class CombatEngine
                 };
                 NormalizeUnit(runtime);
                 HydrateStats(runtime);
+                EnsureBattleRecord(battleState, runtime);
                 battleState.Units.Add(runtime);
                 dynamicGame.UsedPooledGameUnitUIDs.Add(gameUnitUID);
                 deployed.Add(runtime);
@@ -507,6 +510,7 @@ internal sealed class CombatEngine
         };
         NormalizeUnit(unit);
         HydrateStats(unit);
+        EnsureBattleRecord(battleState, unit);
         battleState.Units.Add(unit);
         battleState.GameTime = Math.Max(battleState.GameTime, req.GameTime);
         battleState.AbsoluteGameTime = Math.Max(battleState.AbsoluteGameTime, battleState.GameTime);
@@ -647,6 +651,10 @@ internal sealed class CombatEngine
         }
 
         var liveUnits = battleState.Units.Where(IsLive).ToList();
+        foreach (var unit in liveUnits)
+        {
+            AddBattleRecordPlayTime(battleState, unit, dt);
+        }
         if (liveUnits.Select(unit => unit.Team).Distinct().Count() < 2)
         {
             foreach (var unit in liveUnits)
@@ -695,8 +703,12 @@ internal sealed class CombatEngine
             if (unit.AttackTimer <= 0)
             {
                 unit.AttackTimer = stats.AttackCooldown;
-                target.Hp = Math.Max(0, target.Hp - ApplyDamageReduction(target, stats.Damage));
+                var beforeHp = Math.Max(0, target.Hp);
+                var damage = ApplyDamageReduction(target, stats.Damage);
+                var appliedDamage = Math.Min(beforeHp, damage);
+                target.Hp = Math.Max(0, beforeHp - damage);
                 target.TargetUID = unit.GameUnitUID;
+                RecordBattleDamage(battleState, unit, target, appliedDamage);
                 if (target.Hp <= 0) MarkDead(target, battleState, unit);
             }
         }
@@ -715,6 +727,7 @@ internal sealed class CombatEngine
         unit.StateId = unit.StateId == 0 ? StateIds.Idle : unit.StateId;
         unit.StateChangeCount = unit.StateChangeCount == 0 ? 1 : unit.StateChangeCount;
         unit.Seed = unit.Seed == 0 ? 51 : unit.Seed;
+        unit.UnitLevel = unit.UnitLevel <= 0 ? 1 : unit.UnitLevel;
     }
 
     private void HydrateStats(UnitState unit)
@@ -835,6 +848,7 @@ internal sealed class CombatEngine
         unit.PlayState = 2;
         SetUnitState(unit, StateIds.Dead);
         ApplyCostReturn(unit, battleState);
+        RecordBattleDeath(battleState, unit, attacker);
     }
 
     private static void CleanupDeadUnits(BattleState battleState)
@@ -962,8 +976,74 @@ internal sealed class CombatEngine
             TacticStatsApplied = unit.TacticStatsApplied,
             DeadTicks = unit.DeadTicks,
             PendingRemove = unit.PendingRemove,
+            DeathRecorded = unit.DeathRecorded,
             Role = unit.Role,
+            ChangeUnitName = unit.ChangeUnitName,
+            UnitLevel = unit.UnitLevel,
+            IsSummonee = unit.IsSummonee,
+            IsAssistUnit = unit.IsAssistUnit,
+            IsLeader = unit.IsLeader,
             DamageSpeedXNegative = unit.DamageSpeedXNegative
+        };
+    }
+
+    private static BattleUnitRecord? EnsureBattleRecord(BattleState battleState, UnitState unit)
+    {
+        if (unit.GameUnitUID <= 0) return null;
+        if (!battleState.UnitRecords.TryGetValue(unit.GameUnitUID, out var record))
+        {
+            record = new BattleUnitRecord { GameUnitUID = unit.GameUnitUID };
+            battleState.UnitRecords[unit.GameUnitUID] = record;
+        }
+
+        record.SourceUnitUID = string.IsNullOrWhiteSpace(record.SourceUnitUID) ? unit.SourceUnitUID : record.SourceUnitUID;
+        record.Role = string.IsNullOrWhiteSpace(record.Role) ? unit.Role : record.Role;
+        record.UnitId = record.UnitId > 0 ? record.UnitId : unit.UnitID;
+        record.ChangeUnitName = string.IsNullOrWhiteSpace(record.ChangeUnitName) ? unit.ChangeUnitName : record.ChangeUnitName;
+        record.UnitLevel = Math.Max(1, Math.Max(record.UnitLevel, unit.UnitLevel));
+        record.IsSummonee = record.IsSummonee || unit.IsSummonee;
+        record.IsAssistUnit = record.IsAssistUnit || unit.IsAssistUnit;
+        record.IsLeader = record.IsLeader || unit.IsLeader;
+        record.TeamType = NormalizeTeamType(record.TeamType != 0 ? record.TeamType : unit.Team);
+        record.RecordSummonCount = Math.Max(1, record.RecordSummonCount);
+        return record;
+    }
+
+    private static void RecordBattleDamage(BattleState battleState, UnitState attacker, UnitState target, double damage)
+    {
+        var appliedDamage = Math.Max(0, damage);
+        if (appliedDamage <= 0) return;
+        var attackerRecord = EnsureBattleRecord(battleState, attacker);
+        var targetRecord = EnsureBattleRecord(battleState, target);
+        if (attackerRecord != null) attackerRecord.RecordGiveDamage += appliedDamage;
+        if (targetRecord != null) targetRecord.RecordTakeDamage += appliedDamage;
+    }
+
+    private static void AddBattleRecordPlayTime(BattleState battleState, UnitState unit, double delta)
+    {
+        var record = EnsureBattleRecord(battleState, unit);
+        if (record == null) return;
+        record.Playtime += Math.Max(0, delta);
+    }
+
+    private static void RecordBattleDeath(BattleState battleState, UnitState unit, UnitState? attacker)
+    {
+        if (unit.DeathRecorded) return;
+        var record = EnsureBattleRecord(battleState, unit);
+        if (record != null) record.RecordDieCount += 1;
+        var attackerRecord = attacker == null ? null : EnsureBattleRecord(battleState, attacker);
+        if (attacker != null && attackerRecord != null && attacker.GameUnitUID != unit.GameUnitUID) attackerRecord.RecordKillCount += 1;
+        unit.DeathRecorded = true;
+    }
+
+    private static int NormalizeTeamType(int team)
+    {
+        return team switch
+        {
+            2 => 1,
+            4 => 3,
+            > 0 => team,
+            _ => 1
         };
     }
 

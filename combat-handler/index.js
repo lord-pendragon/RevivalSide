@@ -21,6 +21,7 @@ function createCombatHandler(options = {}) {
     managedDir: config.COUNTERSIDE_MANAGED_DIR,
     gameplayTablesDir: config.GAMEPLAY_TABLES_DIR,
     dotnetPath: config.CSHARP_COMBAT_HOST_DOTNET,
+    responseBufferBytes: config.CSHARP_COMBAT_HOST_RESPONSE_BUFFER_BYTES,
     syncIntervalSeconds: Number(config.MANAGED_HOST_TICK_INTERVAL_MS || 33) / 1000,
     defaultUnitDamage: options.defaultCombatStats && options.defaultCombatStats.damage,
     defaultUnitAttackRange: options.defaultCombatStats && options.defaultCombatStats.attackRange,
@@ -115,7 +116,7 @@ function createCombatHandler(options = {}) {
         const sync = (response.packets || []).find((packet) => packet.packetId === 822);
         const packets = (response.packets || [])
           .filter((packet) => packet && packet.packetId && packet.payload)
-          .map((packet) => ({ packetId: packet.packetId, payload: packet.payload, label: packet.label || "managed-deploy" }));
+          .map((packet) => toListenerPacket(packet, "managed-deploy"));
         return {
           handled: true,
           mode: response.deployed.mode || "battleState",
@@ -149,7 +150,7 @@ function createCombatHandler(options = {}) {
         applyHostState(replay, response);
         const packets = (response.packets || [])
           .filter((packet) => packet && packet.packetId && packet.payload)
-          .map((packet) => ({ packetId: packet.packetId, payload: packet.payload, label: packet.label || "managed-pause" }));
+          .map((packet) => toListenerPacket(packet, "managed-pause"));
         return {
           handled: true,
           packets,
@@ -184,7 +185,7 @@ function createCombatHandler(options = {}) {
         applyHostState(replay, response);
         const packets = (response.packets || [])
           .filter((packet) => packet && packet.packetId && packet.payload)
-          .map((packet) => ({ packetId: packet.packetId, payload: packet.payload, label: packet.label || fallbackLabel }));
+          .map((packet) => toListenerPacket(packet, fallbackLabel));
         return {
           handled: true,
           mode: "managed-local-server",
@@ -237,7 +238,7 @@ function createCombatHandler(options = {}) {
         if (Array.isArray(response.packets) && response.packets.length > 0) {
           return response.packets
             .filter((packet) => packet && packet.packetId && packet.payload)
-            .map((packet) => ({ packetId: packet.packetId, payload: packet.payload, label: packet.label || "managed-sync" }));
+            .map((packet) => toListenerPacket(packet, "managed-sync"));
         }
         if (response.payload) {
           return [{ packetId: constants.NPT_GAME_SYNC_DATA_PACK_NOT, payload: response.payload, label: "managed-sync" }];
@@ -280,7 +281,7 @@ function createCombatHandler(options = {}) {
         if (Array.isArray(response.packets) && response.packets.length > 0) {
           return response.packets
             .filter((packet) => packet && packet.packetId && packet.payload)
-            .map((packet) => ({ packetId: packet.packetId, payload: packet.payload, label: packet.label || "managed-initial" }));
+            .map((packet) => toListenerPacket(packet, "managed-initial"));
         }
         if (response.payload) {
           return [{ packetId: constants.NPT_GAME_SYNC_DATA_PACK_NOT, payload: response.payload, label: "managed-initial-sync" }];
@@ -327,7 +328,12 @@ function createCombatHandler(options = {}) {
       preserveIntervalStrKeys: Array.isArray(options.preserveIntervalStrKeys)
         ? options.preserveIntervalStrKeys.map((key) => String(key || "")).filter(Boolean)
         : [],
+      mergeIntervalStrKeys: Array.isArray(options.mergeIntervalStrKeys)
+        ? options.mergeIntervalStrKeys.map((key) => String(key || "")).filter(Boolean)
+        : [],
       filterInactiveEventIntervals: Boolean(options.filterInactiveEventIntervals),
+      preserveOfficialContractData: Boolean(options.preserveOfficialContractData),
+      overlayLocalContractData: Boolean(options.overlayLocalContractData),
     });
     if (!response.ok || !response.payload) {
       return { ok: false, error: response.error || "managed lobby merge failed" };
@@ -415,7 +421,7 @@ function createCombatHandler(options = {}) {
       if (canCork) socket.cork();
       try {
         for (const packet of outboundPackets) {
-          callbacks.sendGamePacket(socket, packet.packetId, packet.payload, packet.label || "battle-manager-sync");
+          callbacks.sendGamePacket(socket, packet.packetId, packet.payload, packet.label || "battle-manager-sync", packet);
         }
       } finally {
         if (canCork) socket.uncork();
@@ -689,6 +695,31 @@ function createCombatHandler(options = {}) {
       else replay.battleState = response.battleState;
       deployHandler.enrichBattleStateUnitsFromPlayerDeck(replay);
     }
+  }
+
+  function toListenerPacket(packet, fallbackLabel) {
+    const output = {
+      packetId: packet.packetId,
+      payload: packet.payload,
+      label: packet.label || fallbackLabel,
+    };
+    const battleWin = packet.battleWin ?? packet.BattleWin;
+    const battleWinTeam = packet.battleWinTeam ?? packet.BattleWinTeam;
+    const battleRecords = packet.battleRecords || packet.BattleRecords;
+    const battlePlayTime = packet.battlePlayTime ?? packet.BattlePlayTime;
+    if (battleWin != null) {
+      output.battleWin = battleWin;
+    }
+    if (battleWinTeam != null) {
+      output.battleWinTeam = battleWinTeam;
+    }
+    if (battlePlayTime != null) {
+      output.battlePlayTime = battlePlayTime;
+    }
+    if (Array.isArray(battleRecords) && battleRecords.length > 0) {
+      output.battleRecords = battleRecords;
+    }
+    return output;
   }
 
   function replaceMutable(target, source) {

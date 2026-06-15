@@ -17,6 +17,8 @@ function createUserManager(options) {
     ensureUserDefaults: options.ensureUserDefaults || ((user) => user),
     makeAccessToken: options.makeAccessToken || (() => crypto.randomBytes(16).toString("hex")),
     makeToken: options.makeToken || ((prefix) => `${prefix}_${crypto.randomBytes(24).toString("hex")}`),
+    invalidateJoinLobbyAckPayloadCache:
+      typeof options.invalidateJoinLobbyAckPayloadCache === "function" ? options.invalidateJoinLobbyAckPayloadCache : null,
   };
   const html = buildUserManagerHtml(config.basePath);
 
@@ -537,6 +539,9 @@ function persist(config, reason) {
   createBackup(config, reason);
   if (typeof config.saveUserDb !== "function") throw httpError(500, "User database save function is unavailable.");
   config.saveUserDb();
+  if (typeof config.invalidateJoinLobbyAckPayloadCache === "function") {
+    config.invalidateJoinLobbyAckPayloadCache(`user-manager:${reason || "edit"}`);
+  }
 }
 
 function createBackup(config, reason) {

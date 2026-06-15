@@ -1,7 +1,12 @@
 const { ensureLoginRewardPosts } = require("../modules/admin");
 const { buildAttendanceNotifyPayload, ensureAttendanceRewardPosts } = require("../modules/attendance");
 const { sendCounterPassLobbyNotifications } = require("../modules/event-pass");
+const { buildOfficeGuestListNotData } = require("../modules/office");
 const worldMap = require("../modules/world-map");
+
+const OFFICE_GUEST_LIST_NOT = 3636;
+const FIERCE_DATA_ACK = 845;
+const FIERCE_LOBBY_REFRESH_RETRY_MS = 1000;
 
 module.exports = {
   packetId: 204,
@@ -42,7 +47,7 @@ module.exports = {
         const joinLobbyPayload = ctx.buildJoinLobbyAckPayload(user);
         if (ctx.config.USE_LOCAL_USER_DB && user.userUid) ctx.saveUserDb();
         if (shouldUseOfficialTutorialLobbyOrder(user)) {
-          sendOfficialTutorialJoinLobby(ctx, socket, replay, joinLobbyPayload);
+          sendOfficialTutorialJoinLobby(ctx, socket, replay, joinLobbyPayload, user);
           return true;
         }
         ctx.sendGameResponse(
@@ -53,9 +58,15 @@ module.exports = {
           "join-lobby-local-progress"
         );
         replay.inGameFlow = true;
+        sendFierceSeasonBootstrap(ctx, socket, user, {
+          includeData: false,
+          scheduleRefresh: false,
+          seasonLabel: "join-lobby-fierce-season-preload",
+        });
         if (!replay.bootLobbyTemplateSent) {
           sendJoinLobbyBootTemplates(ctx, socket, replay, user);
         }
+        sendOfficeGuestListBootstrap(ctx, socket);
         sendCounterPassLobbyBootstrap(ctx, socket);
         sendJoinLobbyRaidBootstrap(ctx, socket, user);
         if (typeof ctx.repairPostTutorialGuideMissionsForSocket === "function") {
@@ -67,6 +78,7 @@ module.exports = {
         sendJoinLobbyPostBootStart(ctx, socket, replay);
         ctx.sendStaminaChargeNotifications(socket, "join-lobby-charge-item", { includeUnchanged: true, itemIds: [2, 13] });
         sendJoinLobbyPostBootRest(ctx, socket, replay);
+        sendFierceSeasonBootstrap(ctx, socket, user);
         markPostLobbyBootTemplatesHandled(replay);
         replay.localJoinLobbyAckSent = true;
         ctx.skipCapturedGameThroughPacketId(socket, ctx.constants.JOIN_LOBBY_ACK);
@@ -76,8 +88,15 @@ module.exports = {
           console.log("[JOIN_LOBBY_REQ] using captured lobby ACK; local account overlay disabled");
         }
         ctx.sendCapturedGameThroughPacketId(socket, ctx.constants.JOIN_LOBBY_ACK, "join-lobby");
+        sendFierceSeasonBootstrap(ctx, socket, user, {
+          includeData: false,
+          scheduleRefresh: false,
+          seasonLabel: "join-lobby-fierce-season-preload",
+        });
+        sendOfficeGuestListBootstrap(ctx, socket);
         sendCounterPassLobbyBootstrap(ctx, socket);
         sendJoinLobbyRaidBootstrap(ctx, socket, user);
+        sendFierceSeasonBootstrap(ctx, socket, user);
         if (typeof ctx.repairPostTutorialGuideMissionsForSocket === "function") {
           ctx.repairPostTutorialGuideMissionsForSocket(socket, {
             label: "join-lobby-post-tutorial-guide-mission-repair",
@@ -91,7 +110,7 @@ module.exports = {
     const joinLobbyPayload = ctx.buildJoinLobbyAckPayload(user);
     if (ctx.config.USE_LOCAL_USER_DB && user.userUid) ctx.saveUserDb();
     if (shouldUseOfficialTutorialLobbyOrder(user)) {
-      sendOfficialTutorialJoinLobby(ctx, socket, replay, joinLobbyPayload);
+      sendOfficialTutorialJoinLobby(ctx, socket, replay, joinLobbyPayload, user);
       return true;
     }
     ctx.sendGameResponse(
@@ -102,9 +121,15 @@ module.exports = {
       "join-lobby-local-progress"
     );
     replay.inGameFlow = true;
+    sendFierceSeasonBootstrap(ctx, socket, user, {
+      includeData: false,
+      scheduleRefresh: false,
+      seasonLabel: "join-lobby-fierce-season-preload",
+    });
     if (!replay.bootLobbyTemplateSent) {
       sendJoinLobbyBootTemplates(ctx, socket, replay, user);
     }
+    sendOfficeGuestListBootstrap(ctx, socket);
     sendCounterPassLobbyBootstrap(ctx, socket);
     sendJoinLobbyRaidBootstrap(ctx, socket, user);
     if (typeof ctx.repairPostTutorialGuideMissionsForSocket === "function") {
@@ -117,6 +142,7 @@ module.exports = {
     sendJoinLobbyPostBootStart(ctx, socket, replay);
     ctx.sendStaminaChargeNotifications(socket, "join-lobby-charge-item", { includeUnchanged: true, itemIds: [2, 13] });
     sendJoinLobbyPostBootRest(ctx, socket, replay);
+    sendFierceSeasonBootstrap(ctx, socket, user);
     markPostLobbyBootTemplatesHandled(replay);
     replay.localJoinLobbyAckSent = true;
     return true;
@@ -128,13 +154,18 @@ function shouldUseOfficialTutorialLobbyOrder(user) {
   return Boolean(tutorial && tutorial.enabled !== false && tutorial.completed !== true && tutorial.loginMode !== "post-tutorial");
 }
 
-function sendOfficialTutorialJoinLobby(ctx, socket, replay, joinLobbyPayload) {
+function sendOfficialTutorialJoinLobby(ctx, socket, replay, joinLobbyPayload, user) {
   replay.inGameFlow = true;
   if (!replay.bootLobbyTemplateSent) {
     ctx.sendCapturedGameTemplateRange(socket, 1, 7, "tutorial-join-lobby-boot", { forceReframe: false });
     replay.bootLobbyTemplateSent = true;
   }
   ctx.sendServerGamePacket(socket, ctx.constants.JOIN_LOBBY_ACK, joinLobbyPayload, "tutorial-join-lobby-local-progress");
+  sendFierceSeasonBootstrap(ctx, socket, user, {
+    includeData: false,
+    scheduleRefresh: false,
+    seasonLabel: "join-lobby-fierce-season-preload",
+  });
   ctx.sendCapturedGameTemplateRange(socket, 9, 18, "tutorial-join-lobby-post-boot", { forceReframe: false });
   replay.bootPostListTemplateSent = true;
   replay.postLobbyBootTemplateSent = true;
@@ -145,6 +176,10 @@ function sendOfficialTutorialJoinLobby(ctx, socket, replay, joinLobbyPayload) {
 
 function sendCounterPassLobbyBootstrap(ctx, socket) {
   sendCounterPassLobbyNotifications(ctx, socket, "join-lobby-counter-pass");
+}
+
+function sendOfficeGuestListBootstrap(ctx, socket) {
+  ctx.sendServerGamePacket(socket, OFFICE_GUEST_LIST_NOT, buildOfficeGuestListNotData([]), "join-lobby-office-guest-list");
 }
 
 function sendJoinLobbyRaidBootstrap(ctx, socket, user) {
@@ -167,6 +202,53 @@ function sendJoinLobbyRaidBootstrap(ctx, socket, user) {
   } catch (error) {
     console.log(`[join-lobby-raid] skipped bootstrap: ${error && error.message ? error.message : error}`);
   }
+}
+
+function sendFierceSeasonBootstrap(ctx, socket, user, options = {}) {
+  if (!ctx || !ctx.config || !ctx.config.SEND_FIERCE_SEASON_BOOTSTRAP) {
+    return;
+  }
+  if (!ctx || !ctx.constants || !ctx.constants.FIERCE_SEASON_NOT || typeof ctx.buildFierceSeasonNotPayload !== "function") {
+    return;
+  }
+  const seasonId = typeof ctx.getCurrentFierceSeasonId === "function" ? ctx.getCurrentFierceSeasonId() : 0;
+  if (!seasonId) return;
+  socket.session = socket.session || {};
+  if (Number(socket.session.fierceSeasonBootstrapId || 0) !== Number(seasonId)) {
+    socket.session.fierceSeasonBootstrapId = seasonId;
+    ctx.sendServerGamePacket(
+      socket,
+      ctx.constants.FIERCE_SEASON_NOT,
+      ctx.buildFierceSeasonNotPayload(),
+      options.seasonLabel || "join-lobby-fierce-season"
+    );
+  }
+  if (options.includeData !== false) {
+    sendFierceDataBootstrap(ctx, socket, user, options.dataLabel || "join-lobby-fierce-data");
+  }
+  if (options.scheduleRefresh !== false) {
+    scheduleFierceLobbyRefresh(ctx, socket, seasonId);
+  }
+}
+
+function sendFierceDataBootstrap(ctx, socket, user, label) {
+  if (!ctx || typeof ctx.buildFierceDataAckPayload !== "function") return false;
+  ctx.sendServerGamePacket(socket, FIERCE_DATA_ACK, ctx.buildFierceDataAckPayload(user), label || "join-lobby-fierce-data");
+  return true;
+}
+
+function scheduleFierceLobbyRefresh(ctx, socket, seasonId) {
+  const session = socket && socket.session;
+  if (!session || Number(session.fierceLobbyRefreshSeasonId || 0) === Number(seasonId)) return;
+  session.fierceLobbyRefreshSeasonId = seasonId;
+
+  const timer = setTimeout(() => {
+    if (!socket || socket.destroyed || socket.writableEnded) return;
+    const user = socket.session && socket.session.user;
+    sendFierceDataBootstrap(ctx, socket, user, "join-lobby-fierce-data-refresh");
+  }, FIERCE_LOBBY_REFRESH_RETRY_MS);
+
+  if (typeof timer.unref === "function") timer.unref();
 }
 
 function sendJoinLobbyBootTemplates(ctx, socket, replay, user) {

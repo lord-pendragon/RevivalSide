@@ -38,6 +38,7 @@ public sealed class StageData
     public int EventDeckId { get; set; }
     public bool UsesHybridEventDeck { get; set; }
     public bool EventDeckFreeShipSlot { get; set; }
+    public List<int> BattleConditionIds { get; set; } = [];
     public int GameUnitUIDIndex { get; set; } = 18;
     public double InitialGameTime { get; set; } = 4;
     public double InitialRemainGameTime { get; set; } = 180;
@@ -67,7 +68,45 @@ public sealed class PlayerDeckData
     public string OperatorUid { get; set; } = "0";
     public int OperatorId { get; set; }
     public int OperatorLevel { get; set; } = 1;
+    public List<PlayerEquipItemData> EquipItems { get; set; } = [];
     public List<PlayerUnitData> Units { get; set; } = [];
+}
+
+public sealed class PlayerEquipItemData
+{
+    public string EquipUid { get; set; } = "0";
+    public int ItemEquipId { get; set; }
+    public int EnchantLevel { get; set; }
+    public int EnchantExp { get; set; }
+    public List<PlayerEquipStatData> Stats { get; set; } = [];
+    public string OwnerUnitUid { get; set; } = "-1";
+    public bool Locked { get; set; }
+    public int Precision { get; set; }
+    public int Precision2 { get; set; }
+    public int SetOptionId { get; set; }
+    public int ImprintUnitId { get; set; }
+    public List<PlayerPotentialOptionData> PotentialOptions { get; set; } = [];
+}
+
+public sealed class PlayerEquipStatData
+{
+    public string Type { get; set; } = "NST_RANDOM";
+    public float Value { get; set; }
+    public float LevelValue { get; set; }
+}
+
+public sealed class PlayerPotentialOptionData
+{
+    public int OptionKey { get; set; }
+    public string StatType { get; set; } = "NST_RANDOM";
+    public List<PlayerPotentialSocketData?> Sockets { get; set; } = [];
+    public int PrecisionChangeCount { get; set; }
+}
+
+public sealed class PlayerPotentialSocketData
+{
+    public float StatValue { get; set; }
+    public int Precision { get; set; }
 }
 
 public sealed class PlayerUnitData
@@ -102,6 +141,7 @@ public sealed class DynamicGameState
     public int ExploreStageId { get; set; }
     public int PhaseId { get; set; }
     public int PhaseIndex { get; set; }
+    public List<int> BattleConditionIds { get; set; } = [];
     public long GameUID { get; set; }
     public int GameUnitUIDIndex { get; set; } = 18;
     public List<List<int>> DeployableGameUnitUIDGroups { get; set; } = [];
@@ -152,6 +192,7 @@ public sealed class BattleState
     public List<GameStateSync> PendingGameStates { get; set; } = [];
     public List<DungeonEventSync> PendingDungeonEvents { get; set; } = [];
     public HashSet<int> RemovedUnitUIDs { get; set; } = [];
+    public Dictionary<int, BattleUnitRecord> UnitRecords { get; set; } = [];
     public int DeployCount { get; set; }
     public bool Finished { get; set; }
     public bool Win { get; set; }
@@ -215,6 +256,11 @@ public sealed class UnitState
     public string SourceUnitUID { get; set; } = "";
     public int UnitID { get; set; }
     public string UnitStrID { get; set; } = "";
+    public string ChangeUnitName { get; set; } = "";
+    public int UnitLevel { get; set; } = 1;
+    public bool IsSummonee { get; set; }
+    public bool IsAssistUnit { get; set; }
+    public bool IsLeader { get; set; }
     public int GameUnitUID { get; set; }
     public int Team { get; set; }
     public double Hp { get; set; }
@@ -249,8 +295,30 @@ public sealed class UnitState
     public bool TacticStatsApplied { get; set; }
     public int DeadTicks { get; set; }
     public bool PendingRemove { get; set; }
+    public bool DeathRecorded { get; set; }
     public string Role { get; set; } = "";
     public bool DamageSpeedXNegative { get; set; }
+}
+
+public sealed class BattleUnitRecord
+{
+    public int GameUnitUID { get; set; }
+    public string SourceUnitUID { get; set; } = "";
+    public string Role { get; set; } = "";
+    public int UnitId { get; set; }
+    public string ChangeUnitName { get; set; } = "";
+    public int UnitLevel { get; set; } = 1;
+    public bool IsSummonee { get; set; }
+    public bool IsAssistUnit { get; set; }
+    public bool IsLeader { get; set; }
+    public int TeamType { get; set; } = 1;
+    public double RecordGiveDamage { get; set; }
+    public double RecordTakeDamage { get; set; }
+    public double RecordHeal { get; set; }
+    public int RecordSummonCount { get; set; } = 1;
+    public int RecordDieCount { get; set; }
+    public int RecordKillCount { get; set; }
+    public double Playtime { get; set; }
 }
 
 public sealed class BattleSimState

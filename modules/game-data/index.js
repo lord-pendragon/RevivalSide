@@ -185,6 +185,31 @@ function loadGameData() {
     unitExpTable.set(level, record);
   }
 
+  const shipLevelUpByKey = new Map();
+  for (const record of readRecords("ab_script", "LUA_SHIP_LEVELUP_TEMPLET.json")) {
+    const starGrade = Number(record && record.m_ShipStarGrade);
+    const grade = normalizeUnitGrade(record && record.m_ShipRareGrade);
+    const maxLevel = Number(record && record.m_ShipMaxLevel);
+    if (!Number.isInteger(starGrade) || starGrade <= 0 || !grade || !Number.isInteger(maxLevel) || maxLevel <= 0) continue;
+    const normalized = {
+      ...record,
+      m_ShipStarGrade: starGrade,
+      m_ShipRareGrade: grade,
+      m_ShipLimitBreakGrade: Math.max(0, Math.trunc(Number(record.m_ShipLimitBreakGrade || 0) || 0)),
+      m_ShipMaxLevel: maxLevel,
+    };
+    const key = makeShipLevelUpKey(grade, starGrade);
+    if (!shipLevelUpByKey.has(key)) shipLevelUpByKey.set(key, []);
+    shipLevelUpByKey.get(key).push(normalized);
+  }
+  for (const records of shipLevelUpByKey.values()) {
+    records.sort(
+      (left, right) =>
+        Number(left.m_ShipLimitBreakGrade || 0) - Number(right.m_ShipLimitBreakGrade || 0) ||
+        Number(left.m_ShipMaxLevel || 0) - Number(right.m_ShipMaxLevel || 0)
+    );
+  }
+
   const playerExpTable = new Map();
   for (const record of readRecords("ab_script", "LUA_PLAYER_EXP_TABLE.json")) {
     const level = Number(record && record.m_iLevel);
@@ -297,6 +322,7 @@ function loadGameData() {
     skinById,
     emoticonById,
     unitExpTable,
+    shipLevelUpByKey,
     playerExpTable,
     operatorExpTable,
     limitBreakInfoByRank,
@@ -328,6 +354,23 @@ function getUnitTemplet(unitIdOrStrId) {
     return data.unitByStrId.get(unitIdOrStrId) || null;
   }
   return data.unitById.get(Number(unitIdOrStrId)) || null;
+}
+
+function getUnitRemoveRewards(unitIdOrStrId, options = {}) {
+  const record = getUnitTemplet(unitIdOrStrId);
+  if (!record) return [];
+  const rewards = [];
+  for (let index = 1; index <= 2; index += 1) {
+    const itemId = Number(record[`m_OnRemoveItemID_${index}`] || 0);
+    const count = Math.max(0, Math.trunc(Number(record[`m_OnRemoveItemCount_${index}`] || 0)));
+    if (itemId > 0 && count > 0) rewards.push({ itemId, count });
+  }
+  if (options.fromContract === true) {
+    const itemId = Number(record.m_OnRemoveItemID_Contract || 0);
+    const count = Math.max(0, Math.trunc(Number(record.m_OnRemoveItemCount_Contract || 0)));
+    if (itemId > 0 && count > 0) rewards.push({ itemId, count });
+  }
+  return mergeItemCosts(rewards);
 }
 
 function getCollectionUnitTemplet(unitIdOrStrId) {
@@ -381,6 +424,111 @@ function getUnitSkillUpgradeCosts(skillId, targetLevel) {
     if (itemId > 0 && count > 0) costs.push({ itemId, count });
   }
   return mergeItemCosts(costs);
+}
+
+function getShipMaxLevel(unitOrShipId, options = {}) {
+  const record = getShipLevelUpRecordForUnit(unitOrShipId, options);
+  return Number(record && record.m_ShipMaxLevel) || Number(options.fallbackMaxLevel || 100) || 100;
+}
+
+function getShipLevelUpCosts(unitOrShipId, startLevel, endLevel, options = {}) {
+  const templet = getShipTemplet(unitOrShipId);
+  const starGrade = getShipStarGrade(unitOrShipId, templet);
+  const grade = getShipGrade(unitOrShipId, templet);
+  if (!starGrade || !grade) return [];
+
+  const limitBreakLevel = getShipLimitBreakLevel(unitOrShipId, options);
+  const maxLevel = getShipMaxLevel(unitOrShipId, { ...options, limitBreakLevel });
+  const from = Math.max(1, Math.trunc(Number(startLevel || 1) || 1));
+  const to = Math.min(Math.max(1, Math.trunc(Number(endLevel || from) || from)), maxLevel);
+  if (to <= from) return [];
+
+  const costs = [];
+  for (let level = from; level < to; level += 1) {
+    const record = getShipLevelUpRecordByLevel(starGrade, grade, limitBreakLevel, level);
+    if (!record) continue;
+    const credit = Math.max(0, Math.trunc(Number(record.m_Credit || 0) || 0));
+    const eternium = Math.max(0, Math.trunc(Number(record.m_Eternium || 0) || 0));
+    if (credit > 0) costs.push({ itemId: 1, count: credit });
+    if (eternium > 0) costs.push({ itemId: 2, count: eternium });
+    for (let index = 1; index <= 3; index += 1) {
+      const itemId = Number(record[`m_LevelupMaterialItemID${index}`] || 0);
+      const count = Math.max(0, Math.trunc(Number(record[`m_LevelupMaterialCount${index}`] || 0) || 0));
+      if (itemId > 0 && count > 0) costs.push({ itemId, count });
+    }
+  }
+  return mergeItemCosts(costs);
+}
+
+function getShipLevelUpRecordForUnit(unitOrShipId, options = {}) {
+  const templet = getShipTemplet(unitOrShipId);
+  return getShipLevelUpRecord(
+    getShipStarGrade(unitOrShipId, templet),
+    getShipGrade(unitOrShipId, templet),
+    getShipLimitBreakLevel(unitOrShipId, options)
+  );
+}
+
+function getShipLevelUpRecordByLevel(starGrade, grade, limitBreakLevel, currentLevel) {
+  const record = getShipLevelUpRecord(starGrade, grade, limitBreakLevel);
+  if (record && Number(record.m_ShipMaxLevel || 0) > Number(currentLevel || 0)) return record;
+  return record;
+}
+
+function getShipLevelUpRecord(starGrade, grade, limitBreakLevel = 0) {
+  const records = getShipLevelUpRecords(starGrade, grade);
+  if (!records.length) return null;
+  const requestedLimitBreak = Math.max(0, Math.trunc(Number(limitBreakLevel || 0) || 0));
+  const exact = records.find((record) => Number(record.m_ShipLimitBreakGrade || 0) === requestedLimitBreak);
+  if (exact) return exact;
+  return (
+    records
+      .filter((record) => Number(record.m_ShipLimitBreakGrade || 0) <= requestedLimitBreak)
+      .sort((left, right) => Number(right.m_ShipLimitBreakGrade || 0) - Number(left.m_ShipLimitBreakGrade || 0))[0] ||
+    records[0] ||
+    null
+  );
+}
+
+function getShipLevelUpRecords(starGrade, grade) {
+  const key = makeShipLevelUpKey(normalizeUnitGrade(grade), Number(starGrade));
+  return (loadGameData().shipLevelUpByKey.get(key) || []).slice();
+}
+
+function getShipTemplet(unitOrShipId) {
+  const unitId =
+    unitOrShipId && typeof unitOrShipId === "object"
+      ? Number(unitOrShipId.unitId != null ? unitOrShipId.unitId : unitOrShipId.m_UnitID || 0)
+      : Number(unitOrShipId || 0);
+  return getUnitTemplet(unitId);
+}
+
+function getShipStarGrade(unitOrShipId, templet = getShipTemplet(unitOrShipId)) {
+  if (unitOrShipId && typeof unitOrShipId === "object") {
+    const direct = Number(unitOrShipId.starGrade != null ? unitOrShipId.starGrade : unitOrShipId.m_StarGrade || 0);
+    if (Number.isInteger(direct) && direct > 0) return direct;
+  }
+  return Number(templet && (templet.m_StarGradeMax || templet.m_StarGrade || 0)) || 0;
+}
+
+function getShipGrade(unitOrShipId, templet = getShipTemplet(unitOrShipId)) {
+  if (unitOrShipId && typeof unitOrShipId === "object") {
+    const direct = normalizeUnitGrade(unitOrShipId.grade || unitOrShipId.unitGrade || unitOrShipId.m_NKM_UNIT_GRADE);
+    if (direct) return direct;
+  }
+  return normalizeUnitGrade(templet && templet.m_NKM_UNIT_GRADE);
+}
+
+function getShipLimitBreakLevel(unitOrShipId, options = {}) {
+  if (options.limitBreakLevel != null) return Math.max(0, Math.trunc(Number(options.limitBreakLevel || 0) || 0));
+  if (unitOrShipId && typeof unitOrShipId === "object") {
+    return Math.max(0, Math.trunc(Number(unitOrShipId.limitBreakLevel != null ? unitOrShipId.limitBreakLevel : unitOrShipId.m_LimitBreakLevel || 0) || 0));
+  }
+  return 0;
+}
+
+function makeShipLevelUpKey(grade, starGrade) {
+  return `${normalizeUnitGrade(grade)}|${Number(starGrade) || 0}`;
 }
 
 function resolveUnitId(unitIdOrStrId) {
@@ -474,16 +622,6 @@ function getVisibleContractIds() {
       const bTab = data.contractTabs.get(b) || {};
       return Number(aTab.m_Priority || 0) - Number(bTab.m_Priority || 0) || a - b;
     });
-}
-
-function getAllContractIds() {
-  const data = loadGameData();
-  const ids = new Set([...data.contracts.keys(), ...data.contractTabs.keys()]);
-  return Array.from(ids).sort((a, b) => {
-    const aTab = data.contractTabs.get(a) || {};
-    const bTab = data.contractTabs.get(b) || {};
-    return Number(aTab.m_Priority || 0) - Number(bTab.m_Priority || 0) || a - b;
-  });
 }
 
 function getContractPoolUnitIds(contractIdOrPoolId) {
@@ -1062,6 +1200,7 @@ module.exports = {
   getMiscItemTemplet,
   getAllMiscItemIds,
   getUnitTemplet,
+  getUnitRemoveRewards,
   getCollectionUnitTemplet,
   isCollectionVisibleUnitId,
   getUnitSkillStrId,
@@ -1069,6 +1208,8 @@ module.exports = {
   getUnitSkillMaxLevel,
   getUnitSkillIndex,
   getUnitSkillUpgradeCosts,
+  getShipMaxLevel,
+  getShipLevelUpCosts,
   resolveUnitId,
   getPlayableUnitIds,
   getPlayableShipIds,
@@ -1078,7 +1219,6 @@ module.exports = {
   getContractTabRecord,
   getSelectableContractRecord,
   getSelectableContractRecords,
-  getAllContractIds,
   getVisibleContractIds,
   getContractPoolUnitIds,
   getContractPoolUnitEntries,

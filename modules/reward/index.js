@@ -25,13 +25,14 @@ function createEmptyReward() {
     operators: [],
     equips: [],
     moldItems: [],
+    interiors: [],
   };
 }
 
 function mergeReward(target, source) {
   const result = target || createEmptyReward();
   const incoming = source || createEmptyReward();
-  for (const key of ["miscItems", "skinIds", "emoticonIds", "units", "operators", "equips", "moldItems"]) {
+  for (const key of ["miscItems", "skinIds", "emoticonIds", "units", "operators", "equips", "moldItems", "interiors"]) {
     if (!Array.isArray(result[key])) result[key] = [];
     if (Array.isArray(incoming[key])) result[key].push(...incoming[key]);
   }
@@ -57,6 +58,12 @@ function grantRewardByType(ctx, user, rewardType, rewardId, value = 1, freeValue
         regDate,
       });
       if (expanded) return expanded;
+    }
+    const { isOfficeInteriorItem, grantOfficeInterior } = require("../office");
+    if (isOfficeInteriorItem(id)) {
+      const interior = grantOfficeInterior(user, id, count);
+      if (interior) reward.interiors.push(interior);
+      return reward;
     }
     const granted = grantMiscItem(user, id, free, paid, { regDate });
     if (granted) reward.miscItems.push(granted);
@@ -85,6 +92,10 @@ function grantRewardByType(ctx, user, rewardType, rewardId, value = 1, freeValue
   } else if (type === "RT_EMOTICON") {
     const emoticonId = grantEmoticon(user, id);
     if (emoticonId) reward.emoticonIds.push(emoticonId);
+  } else if (type === "RT_INTERIOR" || type === "RT_ITEM_INTERIOR") {
+    const { grantOfficeInterior } = require("../office");
+    const interior = grantOfficeInterior(user, id, count);
+    if (interior) reward.interiors.push(interior);
   } else {
     const granted = grantMiscItem(user, FALLBACK_RESOURCE_ITEM_ID, FALLBACK_RESOURCE_COUNT, 0n, { regDate });
     if (granted) reward.miscItems.push(granted);

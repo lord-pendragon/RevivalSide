@@ -486,7 +486,7 @@ function mainStoryStageMedalValue(stage, state = {}) {
 }
 
 function mainStoryEpisodeMedalValue(stage, state = {}) {
-  if (!stage || stage.cutsceneOnly) return 0;
+  if (!stage) return 0;
   return mainStoryStageMedalValue(stage, state);
 }
 
@@ -927,7 +927,6 @@ function normalizeEpisodeDifficulty(value) {
 
 function normalizeRewardIndex(value) {
   const numeric = Number(value || 0);
-  if (numeric >= 1 && numeric <= 3) return numeric - 1;
   return numeric >= 0 && numeric <= 2 ? numeric : -1;
 }
 

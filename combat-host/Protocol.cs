@@ -48,6 +48,10 @@ public sealed class HostPacket
     public int PacketId { get; set; }
     public string Label { get; set; } = "";
     public string PayloadBase64 { get; set; } = "";
+    public bool? BattleWin { get; set; }
+    public int? BattleWinTeam { get; set; }
+    public double? BattlePlayTime { get; set; }
+    public List<BattleUnitRecord>? BattleRecords { get; set; }
 }
 
 public sealed class HostDeployResult
@@ -89,7 +93,10 @@ public sealed class JoinLobbyMergeData
     public bool ReplaceIntervalData { get; set; }
     public List<string> ExcludeIntervalStrKeys { get; set; } = new();
     public List<string> PreserveIntervalStrKeys { get; set; } = new();
+    public List<string> MergeIntervalStrKeys { get; set; } = new();
     public bool FilterInactiveEventIntervals { get; set; }
+    public bool PreserveOfficialContractData { get; set; }
+    public bool OverlayLocalContractData { get; set; }
 }
 
 public sealed class JoinLobbyNormalizeData
@@ -125,6 +132,7 @@ public sealed class OfficialProfileSnapshot
     public OfficialArmySnapshot Army { get; set; } = new();
     public Dictionary<string, OfficialStagePlaySnapshot> StagePlayData { get; set; } = new();
     public Dictionary<string, OfficialDungeonClearSnapshot> DungeonClear { get; set; } = new();
+    public Dictionary<string, object?> OfficialSnapshot { get; set; } = new();
     public Dictionary<string, object> OfficialImport { get; set; } = new();
 }
 

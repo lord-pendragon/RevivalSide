@@ -302,7 +302,7 @@ function buildCraftSlotData(slot) {
     writeByte(Number(data.index != null ? data.index : data.Index || 0) || 0),
     writeSignedVarInt(Number(data.moldId != null ? data.moldId : data.MoldID || 0) || 0),
     writeSignedVarInt(Number(data.count != null ? data.count : data.Count || 0) || 0),
-    writeInt64LE(toBigInt(data.completeDate != null ? data.completeDate : data.CompleteDate || 0)),
+    writeSignedVarLong(toBigInt(data.completeDate != null ? data.completeDate : data.CompleteDate || 0)),
   ]);
 }
 
@@ -402,6 +402,14 @@ function buildOperatorData(operator) {
   ]);
 }
 
+function buildInteriorData(interior) {
+  const data = interior || {};
+  return Buffer.concat([
+    writeSignedVarInt(Number(data.itemId || data.interiorId || 0) || 0),
+    writeSignedVarLong(toBigInt(data.count || data.itemCount || 0)),
+  ]);
+}
+
 function buildRewardData(reward) {
   const data = reward || {};
   const miscItems = Array.isArray(data.miscItems) ? data.miscItems : [];
@@ -423,6 +431,11 @@ function buildRewardData(reward) {
     ? data.unitExpDataList
     : Array.isArray(data.unitExpData)
       ? data.unitExpData
+      : [];
+  const interiors = Array.isArray(data.interiors)
+    ? data.interiors
+    : Array.isArray(data.interiorDataList)
+      ? data.interiorDataList
       : [];
   const equips = Array.isArray(data.equips)
     ? data.equips
@@ -450,7 +463,7 @@ function buildRewardData(reward) {
     writeSignedVarLong(toBigInt(data.achievePoint || 0)),
     writeNullableObjectList(operators.map(buildOperatorData)),
     writeNullableObjectList(data.contractList || []),
-    writeNullableObjectList([]), // interiors
+    writeNullableObjectList(interiors.map(buildInteriorData)),
   ]);
 }
 
@@ -756,6 +769,7 @@ module.exports = {
   buildUnitData,
   buildOperatorData,
   buildRewardData,
+  buildInteriorData,
   buildContractStateData,
   buildContractBonusStateData,
   buildSelectableContractStateData,
