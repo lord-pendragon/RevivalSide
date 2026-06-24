@@ -8553,11 +8553,13 @@ function getActiveEventState() {
 function getEventContentsTagsForContentsVersion() {
   const state = getActiveEventState();
   const fierceTags = getCurrentFierceSeasonTags();
-  return mergeTags(
-    EVENT_CONTENTS_TAGS_ENABLED ? state.contentsTags : [],
-    EVENT_COUNTER_PASS_CONTENTS_TAGS_ENABLED ? state.counterPassContentsTags : [],
-    EVENT_SHOP_CONTENTS_TAGS_ENABLED ? getActiveEventShopTags().contentsTags : [],
-    fierceTags.contentsTags
+  return filterCapturedContentsVersionTags(
+    mergeTags(
+      EVENT_CONTENTS_TAGS_ENABLED ? state.contentsTags : [],
+      EVENT_COUNTER_PASS_CONTENTS_TAGS_ENABLED ? state.counterPassContentsTags : [],
+      EVENT_SHOP_CONTENTS_TAGS_ENABLED ? getActiveEventShopTags().contentsTags : [],
+      fierceTags.contentsTags
+    )
   );
 }
 
@@ -8570,6 +8572,15 @@ function getCapturedContentsVersionTags() {
   return capturedTcpProfiles && capturedTcpProfiles.contentsVersionAck
     ? capturedTcpProfiles.contentsVersionAck.contentsTag
     : [];
+}
+
+function filterCapturedContentsVersionTags(tags) {
+  const capturedTags = getCapturedContentsVersionTags();
+  if (!capturedTags.length) return Array.isArray(tags) ? tags : [];
+  const allowed = new Set(
+    mergeTags(capturedTags, REQUIRED_CONTENTS_TAGS).map((tag) => String(tag || "").toUpperCase())
+  );
+  return (Array.isArray(tags) ? tags : []).filter((tag) => allowed.has(String(tag || "").toUpperCase()));
 }
 
 function stripInactiveEventContentsTags(baseTags, activeEventTags) {
