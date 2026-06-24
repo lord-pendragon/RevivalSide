@@ -63,6 +63,7 @@ module.exports = {
           "join-lobby-local-progress"
         );
         replay.inGameFlow = true;
+        ctx.skipCapturedGameThroughPacketId(socket, ctx.constants.JOIN_LOBBY_ACK);
         sendFierceSeasonBootstrap(ctx, socket, user, {
           includeData: false,
           scheduleRefresh: false,
@@ -86,7 +87,6 @@ module.exports = {
         sendFierceSeasonBootstrap(ctx, socket, user);
         markPostLobbyBootTemplatesHandled(replay);
         replay.localJoinLobbyAckSent = true;
-        ctx.skipCapturedGameThroughPacketId(socket, ctx.constants.JOIN_LOBBY_ACK);
       } else {
         replay.inGameFlow = true;
         if (ctx.hasTutorialProgress(user)) {
@@ -127,6 +127,7 @@ module.exports = {
       "join-lobby-local-progress"
     );
     replay.inGameFlow = true;
+    if (ctx.capturedGameFlow) ctx.skipCapturedGameThroughPacketId(socket, ctx.constants.JOIN_LOBBY_ACK);
     sendFierceSeasonBootstrap(ctx, socket, user, {
       includeData: false,
       scheduleRefresh: false,
@@ -258,7 +259,6 @@ function scheduleFierceLobbyRefresh(ctx, socket, seasonId) {
 }
 
 function sendJoinLobbyBootTemplates(ctx, socket, replay, user) {
-  ctx.sendCapturedGameTemplateRange(socket, 1, 1, "join-lobby-boot");
   ctx.sendServerGamePacket(
     socket,
     1644,

@@ -1,6 +1,8 @@
 # DownloadSide
 
-DownloadSide is the Discord front door for RevivalSide release downloads. It keeps Discord and GitHub secrets on the server, verifies a user's Discord guild role, and proxies private GitHub release assets to Setup.
+DownloadSide is the legacy Discord front door for RevivalSide release downloads. It keeps Discord and GitHub secrets on the server, verifies a user's Discord guild role, and proxies private GitHub release assets.
+
+RevivalSide v0.3.1 Setup and Launcher do not use DownloadSide. Setup downloads GitHub release assets directly from the manifest URL baked into the setup executable, and Launcher starts the local listener without Discord entitlement checks.
 
 ## Local Setup
 
@@ -47,6 +49,8 @@ Authorization: Bearer <installToken>
 7. On success, the status response returns a short-lived install token.
 8. Setup downloads release assets through this service with `Authorization: Bearer <token>`.
 9. Launcher starts the installed local listener directly after Setup completes.
+
+This device flow is not used by RevivalSide v0.3.1 release builds.
 
 ## GitHub Assets
 
@@ -107,20 +111,18 @@ Invoke-RestMethod https://downloadside.fly.dev/health
 
 ## Packaging
 
-Build the installer with the gateway release URL:
+Build the v0.3.1 installer with the direct GitHub release URL:
 
 ```powershell
-npm run publish:github-release -- -ReleaseBaseUrl https://downloadside.fly.dev/releases/v0.3.0
+npm run publish:github-release -- -ReleaseTag v0.3.1
 ```
 
-For gateway URLs, the package script bakes the installer manifest URL as:
+The package script bakes the installer manifest URL as:
 
 ```text
-https://downloadside.fly.dev/releases/v0.3.0/manifest
+https://github.com/MadlyMoe/RevivalSide/releases/download/v0.3.1/RevivalSidePayloadManifest.json
 ```
 
-When Setup runs, it opens Discord sign-in, waits for the gateway to issue an install token, and uses that bearer token for the manifest and payload downloads.
+When Setup runs, it downloads the manifest and payload assets directly from the GitHub release and validates SHA-256 hashes from `RevivalSidePayloadManifest.json`.
 
-After a gateway install, Launcher does not perform Discord entitlement checks. `START` uses the existing `npm run listen` path without prompting for Discord in the launcher process.
-
-Or set `DOWNLOAD_PUBLIC_BASE_URL=https://downloadside.fly.dev` before running `tools\package-revivalside-github-release.ps1`; the packaging script will resolve `https://downloadside.fly.dev/releases/<tag>`.
+Launcher does not perform Discord entitlement checks. `START` uses the existing `npm run listen` path without prompting for Discord in the launcher process.

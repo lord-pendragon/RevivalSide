@@ -31,10 +31,7 @@ function createCsharpCombatHost(options = {}) {
     const dllPath = resolveHostDllPath();
     if (ready && worker && workerDllPath === dllPath && fs.existsSync(dllPath)) return true;
     if (worker && workerDllPath !== dllPath) {
-      worker.terminate();
-      worker = null;
-      ready = false;
-      workerDllPath = "";
+      resetWorker();
     }
     if (needsHostPublish(dllPath)) {
       const outDir = path.dirname(dllPath);
@@ -74,18 +71,24 @@ function createCsharpCombatHost(options = {}) {
       if (typeof worker.unref === "function") worker.unref();
       worker.on("error", (err) => {
         lastError = err.stack || err.message;
-        ready = false;
-        worker = null;
-        workerDllPath = "";
+        resetWorker();
       });
       worker.on("exit", (code) => {
         if (code !== 0) lastError = `C# combat host worker exited ${code}`;
-        ready = false;
-        worker = null;
-        workerDllPath = "";
+        resetWorker({ terminate: false });
       });
     }
     return ready;
+  }
+
+  function resetWorker(options = {}) {
+    const current = worker;
+    worker = null;
+    ready = false;
+    workerDllPath = "";
+    if (current && options.terminate !== false && typeof current.terminate === "function") {
+      current.terminate().catch(() => {});
+    }
   }
 
   function resolveHostDllPath() {
@@ -112,11 +115,14 @@ function createCsharpCombatHost(options = {}) {
     const waitResult = Atomics.wait(header, 0, 0, timeoutMs);
     if (waitResult === "timed-out") {
       lastError = `combat host request timed out after ${timeoutMs}ms`;
+      resetWorker();
       return { ok: false, error: lastError };
     }
     const length = Atomics.load(header, 1);
     const stdout = Buffer.from(sharedBuffer, 8, length).toString("utf8");
-    return parseHostResponse(stdout);
+    const response = parseHostResponse(stdout);
+    if (!response.ok && isHostProcessDeathError(response.error)) resetWorker();
+    return response;
   }
 
   function buildHostInput(command, data, requestOptions = {}) {
@@ -159,6 +165,9 @@ function createCsharpCombatHost(options = {}) {
     enabled,
     ensureReady,
     request,
+    shutdown() {
+      resetWorker();
+    },
     get hostPath() {
       return resolveHostDllPath();
     },
@@ -166,6 +175,18 @@ function createCsharpCombatHost(options = {}) {
       return lastError;
     },
   };
+}
+
+function isHostProcessDeathError(error) {
+  const text = String(error || "").toLowerCase();
+  return (
+    text.includes("c# combat host process is not running") ||
+    text.includes("c# combat host exited") ||
+    text.includes("combat host request timed out") ||
+    text.includes("failed to start") ||
+    text.includes("stdin failed") ||
+    text.includes("sigsegv")
+  );
 }
 
 function findPreferredDotnetRuntime(managedDir) {

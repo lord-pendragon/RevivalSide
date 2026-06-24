@@ -1,8 +1,8 @@
 # DownloadSide
 
-RevivalSide release payloads should live in private GitHub releases on `MadlyMoe/RevivalSide`. The public entry point is DownloadSide, the Discord-gated download service in `download-service`.
+RevivalSide v0.3.1 release payloads live in GitHub releases on `MadlyMoe/RevivalSide`. Setup downloads the manifest and payload assets directly from the release URL baked into the setup executable.
 
-The service verifies Discord role membership with OAuth and keeps all secrets server-side. Setup receives a short-lived bearer token for release downloads. Redistributable apps must never contain a GitHub token, Discord client secret, or GitHub App private key.
+DownloadSide remains in `download-service` as a legacy Discord-gated proxy service, but v0.3.1 Setup and Launcher do not use Discord OAuth, device codes, install tokens, or bearer-token release downloads. Redistributable apps must never contain a GitHub token, Discord client secret, or GitHub App private key.
 
 ## Required Environment
 
@@ -24,20 +24,19 @@ DOWNLOAD_PUBLIC_BASE_URL=https://downloadside.fly.dev
 
 ## Packaging Command
 
-For a gateway-hosted `v0.3.0` release:
+For the direct GitHub `v0.3.1` release:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File tools\package-revivalside-github-release.ps1 -ReleaseBaseUrl https://downloadside.fly.dev/releases/v0.3.0
+powershell -NoProfile -ExecutionPolicy Bypass -File tools\package-revivalside-github-release.ps1 -ReleaseTag v0.3.1 -Upload
 ```
 
-If `DOWNLOAD_PUBLIC_BASE_URL` is set to `https://downloadside.fly.dev`, the packaging script can derive the release base URL:
+The package script derives the base URL from the `RevivalSide` or `origin` GitHub remote:
 
-```powershell
-$env:DOWNLOAD_PUBLIC_BASE_URL = "https://downloadside.fly.dev"
-npm run publish:github-release
+```text
+https://github.com/MadlyMoe/RevivalSide/releases/download/v0.3.1
 ```
 
-Upload the generated manifest and payload assets to the private `MadlyMoe/RevivalSide` release. Do not upload the payload to Discord, and do not point Setup at a private GitHub asset URL directly.
+Upload the generated setup executable, `RevivalSidePayloadManifest.json`, and payload archive or parts to the `MadlyMoe/RevivalSide` release. Do not upload the payload to Discord.
 
 ## Hosting
 
@@ -54,19 +53,15 @@ Invoke-RestMethod https://downloadside.fly.dev/health
 
 `npm run secrets:fly` reads non-empty DownloadSide deploy variables from `download-service\.env` and stages them with `flyctl secrets import --stage`. `npm run deploy:fly` applies the staged secrets.
 
-## Installer Flow
+## Setup Flow
 
-1. Setup creates or requests a random device code.
-2. Setup opens the returned Discord verification URL in the user's browser.
-3. The gateway verifies the user's Discord guild role by role ID.
-4. Setup polls `/auth/device/:deviceCode/status`.
-5. The gateway returns a short-lived install token.
-6. Setup requests `/releases/:tag/manifest` and `/releases/:tag/assets/:assetName` with `Authorization: Bearer <token>`.
+1. Setup fetches the baked `RevivalSidePayloadManifest.json` URL.
+2. Setup downloads the archive or split payload parts listed in the manifest.
+3. Setup validates payload SHA-256 hashes.
+4. Setup extracts the payload and installs it into `%LOCALAPPDATA%\RevivalSide`.
 
-The installer still validates payload SHA-256 hashes from `RevivalSidePayloadManifest.json` after the gateway proxies the private release assets.
-
-The installer now performs this flow automatically whenever the baked manifest URL points at a non-GitHub `/releases/...` gateway URL. Direct GitHub release manifest URLs remain unauthenticated and backward-compatible.
+Setup does not open Discord, request a device code, poll `/auth/device`, or send `Authorization: Bearer` for release downloads.
 
 ## Launcher Flow
 
-Launcher no longer performs Discord entitlement checks. After Setup finishes downloading and installing the payload, Launcher starts the local listener directly through the existing `npm run listen` path.
+Launcher does not perform Discord entitlement checks. After Setup finishes downloading and installing the payload, Launcher starts the local listener directly through the existing `npm run listen` path.

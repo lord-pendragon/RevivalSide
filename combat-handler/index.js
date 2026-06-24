@@ -690,6 +690,10 @@ function createCombatHandler(options = {}) {
     return stateManager.deployStageLineup(replay);
   }
 
+  function shutdown() {
+    if (csharpHost && typeof csharpHost.shutdown === "function") csharpHost.shutdown();
+  }
+
   function applyHostState(replay, response) {
     if (!replay || !response) return;
     if (response.dynamicGame) {
@@ -807,6 +811,7 @@ function createCombatHandler(options = {}) {
     describeRuntimeGameUnitPools: stateManager.describeRuntimeGameUnitPools,
     transitionTutorialReplayToDynamic,
     buildBattleSimSyncPayload,
+    shutdown,
   };
 }
 

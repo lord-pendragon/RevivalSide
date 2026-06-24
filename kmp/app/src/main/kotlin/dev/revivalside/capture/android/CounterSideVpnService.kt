@@ -43,7 +43,11 @@ class CounterSideVpnService : VpnService() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         when (intent?.action) {
             ACTION_START -> startCapture(intent)
-            ACTION_STOP -> stopCapture()
+            ACTION_STOP -> {
+                stopCapture()
+                stopSelf(startId)
+                return START_NOT_STICKY
+            }
         }
         return START_STICKY
     }
@@ -107,7 +111,11 @@ class CounterSideVpnService : VpnService() {
     }
 
     private fun stopCapture() {
-        if (!running.getAndSet(false)) return
+        if (!running.getAndSet(false)) {
+            stopForeground(STOP_FOREGROUND_REMOVE)
+            publishStatus("Stopped")
+            return
+        }
         sessions.values.forEach { it.close() }
         sessions.clear()
         try {
@@ -404,6 +412,7 @@ class CounterSideVpnService : VpnService() {
 
     private fun publishStatus(message: String, export: java.io.File? = null) {
         Log.i(TAG, message)
+        AndroidRuntimeState.writeVpn(this, running.get(), vpnMode, message)
         sendBroadcast(Intent(ACTION_STATUS).apply {
             setPackage(packageName)
             putExtra(EXTRA_MESSAGE, message)

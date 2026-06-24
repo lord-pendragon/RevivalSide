@@ -45,22 +45,13 @@ if ($universalPath -ne $prebuiltRoot -and -not $universalPath.StartsWith($prebui
 
 function Resolve-ReleaseBaseUrl {
   if ($ReleaseBaseUrl) { return $ReleaseBaseUrl.TrimEnd("/") }
-  $downloadPublicBaseUrl = [Environment]::GetEnvironmentVariable("DOWNLOAD_PUBLIC_BASE_URL")
-  if ($downloadPublicBaseUrl) {
-    return "$($downloadPublicBaseUrl.TrimEnd("/"))/releases/$ReleaseTag"
-  }
   $remote = (& git -C $rootPath remote get-url RevivalSide 2>$null)
   if (-not $remote) { $remote = (& git -C $rootPath remote get-url origin 2>$null) }
-  if (-not $remote) { throw "Could not detect git remote. Pass -ReleaseBaseUrl https://downloadside.fly.dev/releases/$ReleaseTag" }
+  if (-not $remote) { throw "Could not detect git remote. Pass -ReleaseBaseUrl explicitly." }
   if ($remote -match "github\.com[:/](?<owner>[^/]+)/(?<repo>[^/.]+)(\.git)?$") {
     return "https://github.com/$($Matches.owner)/$($Matches.repo)/releases/download/$ReleaseTag"
   }
   throw "Could not parse GitHub owner/repo from remote '$remote'. Pass -ReleaseBaseUrl explicitly."
-}
-
-function Test-DownloadGatewayReleaseBaseUrl([string]$Url) {
-  if ($Url -match "github\.com/.+/releases/download/") { return $false }
-  return $Url -match "/releases/[^/]+$"
 }
 
 function Remove-PdbFiles([string]$Directory) {
@@ -157,12 +148,7 @@ function Split-File([string]$SourcePath, [string]$DestinationDir, [string]$PartP
 
 $releaseBaseUrlResolved = Resolve-ReleaseBaseUrl
 $manifestAssetName = "RevivalSidePayloadManifest.json"
-if (Test-DownloadGatewayReleaseBaseUrl $releaseBaseUrlResolved) {
-  $manifestUrl = "$releaseBaseUrlResolved/manifest"
-}
-else {
-  $manifestUrl = "$releaseBaseUrlResolved/$manifestAssetName"
-}
+$manifestUrl = "$releaseBaseUrlResolved/$manifestAssetName"
 
 if (-not $SkipUniversalBuild) {
   $universalArgs = @(
@@ -260,9 +246,8 @@ It downloads $manifestAssetName and payload parts from:
 
   $releaseBaseUrlResolved
 
-For Discord-gated releases, set ReleaseBaseUrl to:
-
-  https://downloadside.fly.dev/releases/$ReleaseTag
+The setup executable downloads release assets directly. It does not perform a
+Discord OAuth or device-code authorization flow.
 "@ | Set-Content -LiteralPath (Join-Path $outputPath "README.txt") -Encoding UTF8
 
 if ($Upload) {

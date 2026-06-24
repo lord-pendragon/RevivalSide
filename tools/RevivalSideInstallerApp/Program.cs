@@ -1,6 +1,5 @@
 using System.Diagnostics;
 using System.IO.Compression;
-using System.Net.Http.Headers;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
@@ -493,7 +492,6 @@ internal sealed class InstallerWindow : Window
 
         var manifestUri = new Uri(manifestUrl);
         using var client = new HttpClient { Timeout = TimeSpan.FromMinutes(20) };
-        await AuthorizeReleaseDownloadClientAsync(client, manifestUri);
         using var manifestResponse = await client.GetAsync(manifestUri);
         manifestResponse.EnsureSuccessStatusCode();
         var manifestJson = await manifestResponse.Content.ReadAsStringAsync();
@@ -546,152 +544,6 @@ internal sealed class InstallerWindow : Window
         payloadText.Text = "Downloaded";
         AppendLog($"Payload ready: {extractedPayloadRoot}");
         return extractedPayloadRoot;
-    }
-
-    private async Task AuthorizeReleaseDownloadClientAsync(HttpClient client, Uri manifestUri)
-    {
-        var gatewayBaseUri = TryResolveDownloadGatewayBaseUri(manifestUri);
-        if (gatewayBaseUri == null) return;
-
-        SetStatus("Discord sign-in");
-        payloadText.Text = "Authorize";
-        progress.IsIndeterminate = true;
-        AppendLog($"Requesting Discord authorization from {gatewayBaseUri}");
-
-        var startUri = new Uri(gatewayBaseUri, "auth/device/start");
-        using var startContent = new StringContent("{}", Encoding.UTF8, "application/json");
-        using var startResponse = await client.PostAsync(startUri, startContent);
-        var startJson = await startResponse.Content.ReadAsStringAsync();
-        if (!startResponse.IsSuccessStatusCode)
-        {
-            throw new InvalidOperationException($"Download authorization failed: {ExtractErrorMessage(startJson, startResponse.ReasonPhrase)}");
-        }
-
-        var start = JsonSerializer.Deserialize<DeviceStartResponse>(startJson, JsonOptions)
-            ?? throw new InvalidOperationException("Download authorization response was empty or invalid.");
-        start.Validate();
-
-        AppendLog("Opening Discord sign-in in your browser.");
-        TryOpenBrowser(start.VerificationUri);
-        AppendLog($"Waiting for authorization. If the browser did not open, visit: {start.VerificationUri}");
-
-        var installToken = await PollDeviceAuthorizationAsync(client, start);
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", installToken);
-        SetStatus("Authorized");
-        payloadText.Text = "Authorized";
-        AppendLog("Discord authorization complete.");
-    }
-
-    private async Task<string> PollDeviceAuthorizationAsync(HttpClient client, DeviceStartResponse start)
-    {
-        var statusUri = new Uri(start.StatusUri);
-        var expiresAt = DateTimeOffset.UtcNow.AddMinutes(10);
-        if (!string.IsNullOrWhiteSpace(start.ExpiresAt) && DateTimeOffset.TryParse(start.ExpiresAt, out var parsedExpiresAt))
-        {
-            expiresAt = parsedExpiresAt.ToUniversalTime();
-        }
-
-        while (DateTimeOffset.UtcNow < expiresAt)
-        {
-            SetStatus("Waiting for Discord");
-            await Task.Delay(TimeSpan.FromSeconds(2));
-
-            using var statusResponse = await client.GetAsync(statusUri);
-            var statusJson = await statusResponse.Content.ReadAsStringAsync();
-            var status = string.IsNullOrWhiteSpace(statusJson)
-                ? new DeviceStatusResponse()
-                : JsonSerializer.Deserialize<DeviceStatusResponse>(statusJson, JsonOptions) ?? new DeviceStatusResponse();
-
-            var currentStatus = status.Status ?? "";
-            if (currentStatus.Equals("authorized", StringComparison.OrdinalIgnoreCase))
-            {
-                if (string.IsNullOrWhiteSpace(status.InstallToken))
-                {
-                    throw new InvalidOperationException("Download authorization succeeded without an install token.");
-                }
-                return status.InstallToken;
-            }
-
-            if (currentStatus.Equals("denied", StringComparison.OrdinalIgnoreCase) || statusResponse.StatusCode == System.Net.HttpStatusCode.Forbidden)
-            {
-                throw new InvalidOperationException(GetDeviceAuthorizationDeniedMessage(status.Reason ?? ""));
-            }
-
-            if (currentStatus.Equals("expired", StringComparison.OrdinalIgnoreCase) || statusResponse.StatusCode == System.Net.HttpStatusCode.NotFound)
-            {
-                throw new InvalidOperationException("Discord authorization expired. Start the installer again and sign in within the time limit.");
-            }
-
-            if (!statusResponse.IsSuccessStatusCode)
-            {
-                throw new InvalidOperationException($"Download authorization failed: {ExtractErrorMessage(statusJson, statusResponse.ReasonPhrase)}");
-            }
-        }
-
-        throw new InvalidOperationException("Discord authorization expired. Start the installer again and sign in within the time limit.");
-    }
-
-    private static string GetDeviceAuthorizationDeniedMessage(string reason)
-    {
-        if (reason.Equals("missing_required_discord_role", StringComparison.OrdinalIgnoreCase))
-        {
-            return "Access denied. Your Discord account does not have the required RevivalSide role.";
-        }
-
-        return string.IsNullOrWhiteSpace(reason)
-            ? "Access denied by the RevivalSide download gateway."
-            : $"Access denied by the RevivalSide download gateway: {reason}";
-    }
-
-    private static string ExtractErrorMessage(string json, string? fallback)
-    {
-        if (!string.IsNullOrWhiteSpace(json))
-        {
-            try
-            {
-                using var document = JsonDocument.Parse(json);
-                if (document.RootElement.TryGetProperty("error", out var error) && error.ValueKind == JsonValueKind.String)
-                {
-                    return error.GetString() ?? fallback ?? "unknown error";
-                }
-            }
-            catch
-            {
-                return json.Length > 240 ? json[..240] : json;
-            }
-        }
-
-        return string.IsNullOrWhiteSpace(fallback) ? "unknown error" : fallback;
-    }
-
-    private static Uri? TryResolveDownloadGatewayBaseUri(Uri manifestUri)
-    {
-        if (!manifestUri.IsAbsoluteUri) return null;
-        if (manifestUri.Scheme != Uri.UriSchemeHttp && manifestUri.Scheme != Uri.UriSchemeHttps) return null;
-        if (manifestUri.Host.Equals("github.com", StringComparison.OrdinalIgnoreCase) || manifestUri.Host.EndsWith(".github.com", StringComparison.OrdinalIgnoreCase)) return null;
-
-        var releasePathIndex = manifestUri.AbsolutePath.IndexOf("/releases/", StringComparison.OrdinalIgnoreCase);
-        if (releasePathIndex < 0) return null;
-
-        var basePath = releasePathIndex == 0 ? "/" : manifestUri.AbsolutePath[..releasePathIndex].TrimEnd('/') + "/";
-        var builder = new UriBuilder(manifestUri.Scheme, manifestUri.Host, manifestUri.IsDefaultPort ? -1 : manifestUri.Port, basePath);
-        return builder.Uri;
-    }
-
-    private void TryOpenBrowser(string url)
-    {
-        try
-        {
-            Process.Start(new ProcessStartInfo
-            {
-                FileName = url,
-                UseShellExecute = true,
-            });
-        }
-        catch (Exception ex)
-        {
-            AppendLog($"Browser open failed: {ex.Message}");
-        }
     }
 
     private async Task DownloadPayloadChunksAsync(HttpClient client, Uri manifestUri, ReleasePayloadManifest manifest, string cacheRoot)
@@ -770,7 +622,7 @@ internal sealed class InstallerWindow : Window
             var releaseUrl = ResolveReleaseManifestUrl();
             payloadText.Text = string.IsNullOrWhiteSpace(releaseUrl) ? "Missing" : "Download";
             gameplayText.Text = string.IsNullOrWhiteSpace(releaseUrl) ? "Not ready" : "Client luac";
-            AppendLog(string.IsNullOrWhiteSpace(releaseUrl) ? $"Payload check: {ex.Message}" : "Payload will download from the configured release gateway.");
+            AppendLog(string.IsNullOrWhiteSpace(releaseUrl) ? $"Payload check: {ex.Message}" : "Payload will download from the configured release manifest.");
         }
     }
 
@@ -1445,32 +1297,6 @@ internal sealed class ReleasePayloadChunk
         if (Size <= 0) throw new InvalidOperationException($"Payload chunk {Name} has an invalid size.");
         if (string.IsNullOrWhiteSpace(Sha256) || Sha256.Length < 16) throw new InvalidOperationException($"Payload chunk {Name} is missing sha256.");
     }
-}
-
-internal sealed class DeviceStartResponse
-{
-    public string DeviceCode { get; set; } = "";
-    public string VerificationUri { get; set; } = "";
-    public string StatusUri { get; set; } = "";
-    public string ExpiresAt { get; set; } = "";
-
-    public void Validate()
-    {
-        if (string.IsNullOrWhiteSpace(DeviceCode)) throw new InvalidOperationException("Download authorization response is missing deviceCode.");
-        if (string.IsNullOrWhiteSpace(VerificationUri)) throw new InvalidOperationException("Download authorization response is missing verificationUri.");
-        if (!Uri.TryCreate(VerificationUri, UriKind.Absolute, out _)) throw new InvalidOperationException("Download authorization response contains an invalid verificationUri.");
-        if (string.IsNullOrWhiteSpace(StatusUri)) throw new InvalidOperationException("Download authorization response is missing statusUri.");
-        if (!Uri.TryCreate(StatusUri, UriKind.Absolute, out _)) throw new InvalidOperationException("Download authorization response contains an invalid statusUri.");
-    }
-}
-
-internal sealed class DeviceStatusResponse
-{
-    public string Status { get; set; } = "";
-    public string InstallToken { get; set; } = "";
-    public string TokenType { get; set; } = "";
-    public string ExpiresAt { get; set; } = "";
-    public string Reason { get; set; } = "";
 }
 
 internal sealed record AppPayloadStatus(string Path, int FileCount);

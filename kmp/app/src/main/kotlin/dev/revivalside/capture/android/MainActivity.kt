@@ -23,6 +23,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.LinearLayout
+import android.widget.ProgressBar
 import android.widget.ScrollView
 import android.widget.Space
 import android.widget.TextView
@@ -48,6 +49,8 @@ class MainActivity : Activity() {
     private lateinit var captureButton: Button
     private lateinit var extractButton: Button
     private lateinit var userManagerOpenButton: Button
+    private lateinit var startupProgressBar: ProgressBar
+    private lateinit var startupProgressText: TextView
     private val timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss")
     private val handler = Handler(Looper.getMainLooper())
     private var pendingVpnMode = CounterSideVpnService.MODE_CAPTURE
@@ -55,7 +58,9 @@ class MainActivity : Activity() {
     private var launchAfterCapture = false
     private var listenerReadyForLaunch = false
     private var vpnReadyForLaunch = false
+    private var serverReadyForLaunch = false
     private var startFlowToken = 0
+    private var startupProgressValue = 0
 
     private val statusReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
@@ -68,7 +73,10 @@ class MainActivity : Activity() {
                     appendLog("VPN: $message")
                     if (message.startsWith("Redirecting") || message.contains("already", ignoreCase = true)) {
                         vpnReadyForLaunch = true
+                        if (launchAfterStart) setStartupProgress(if (serverReadyForLaunch) 95 else 80, "VPN ready")
                         tryLaunchAfterStart()
+                    } else if (launchAfterStart && message.startsWith("Failed", ignoreCase = true)) {
+                        failStartOperation("VPN failed: $message")
                     }
                     if (launchAfterCapture && message.startsWith("Recording")) {
                         launchAfterCapture = false
@@ -96,6 +104,11 @@ class MainActivity : Activity() {
         appendLog("Ready")
     }
 
+    override fun onResume() {
+        super.onResume()
+        refreshRuntimeState()
+    }
+
     override fun onDestroy() {
         runCatching { unregisterReceiver(statusReceiver) }
         super.onDestroy()
@@ -105,6 +118,7 @@ class MainActivity : Activity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == VPN_REQUEST && resultCode == RESULT_OK) {
+            if (launchAfterStart) setStartupProgress(58, "VPN permission granted")
             startVpnService(pendingVpnMode)
         } else if (requestCode == VPN_REQUEST && launchAfterStart) {
             failStartOperation("VPN permission was not granted")
@@ -121,7 +135,7 @@ class MainActivity : Activity() {
 
         val content = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
-            setPadding(dp(22), dp(22), dp(22), dp(174))
+            setPadding(dp(22), dp(22), dp(22), dp(214))
         }
 
         content.addView(TextView(this).apply {
@@ -235,6 +249,22 @@ class MainActivity : Activity() {
                 bottomMargin = dp(10)
             })
 
+            startupProgressText = mutedText("Startup idle", 12f).apply {
+                visibility = View.GONE
+                setTextColor(0xffcbd5e1.toInt())
+            }
+            startupProgressBar = ProgressBar(this@MainActivity, null, android.R.attr.progressBarStyleHorizontal).apply {
+                max = 100
+                progress = 0
+                isIndeterminate = false
+                visibility = View.GONE
+            }
+            addView(startupProgressText, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT))
+            addView(startupProgressBar, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dp(8)).apply {
+                topMargin = dp(6)
+                bottomMargin = dp(12)
+            })
+
             val controls = LinearLayout(this@MainActivity).apply {
                 orientation = LinearLayout.HORIZONTAL
                 gravity = Gravity.CENTER_VERTICAL
@@ -244,8 +274,6 @@ class MainActivity : Activity() {
                 text = "START"
                 textSize = 17f
                 typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
-                setTextColor(0xff06111f.toInt())
-                background = rounded(0xfff8fafc.toInt(), dp(10), 0xffffffff.toInt())
                 setPadding(dp(10), 0, dp(10), 0)
                 minHeight = dp(58)
                 setOnClickListener { startOperation() }
@@ -254,6 +282,7 @@ class MainActivity : Activity() {
                     true
                 }
             }
+            setStartButtonStarting(false)
             stopButton = Button(this@MainActivity).apply {
                 text = "STOP"
                 textSize = 17f
@@ -302,11 +331,12 @@ class MainActivity : Activity() {
         val settings = saveSettingsFromInputs()
         val token = ++startFlowToken
         setUserManagerButtonBusy(false)
-        startButton.isEnabled = false
-        startButton.text = "STARTING"
+        setStartButtonStarting(true)
+        setStartupProgress(5, "Starting listener")
         launchAfterStart = true
         listenerReadyForLaunch = false
         vpnReadyForLaunch = false
+        serverReadyForLaunch = false
         appendLog("Start requested")
         startListener(settings)
         waitForListenerHealth(settings, token, attempt = 0)
@@ -318,11 +348,12 @@ class MainActivity : Activity() {
         launchAfterCapture = true
         listenerReadyForLaunch = false
         vpnReadyForLaunch = false
+        serverReadyForLaunch = false
         setUserManagerButtonBusy(false)
         if (::startButton.isInitialized) {
-            startButton.isEnabled = true
-            startButton.text = "START"
+            setStartButtonStarting(false)
         }
+        hideStartupProgress()
         appendLog("JOIN_LOBBY_ACK capture requested")
         beginVpnFlow(CounterSideVpnService.MODE_CAPTURE)
     }
@@ -334,7 +365,9 @@ class MainActivity : Activity() {
         launchAfterCapture = false
         listenerReadyForLaunch = false
         vpnReadyForLaunch = false
+        serverReadyForLaunch = false
         setUserManagerButtonBusy(false)
+        hideStartupProgress()
         setExtractButtonBusy(true)
         appendLog("Extract + copy requested")
         Thread {
@@ -364,15 +397,19 @@ class MainActivity : Activity() {
         launchAfterCapture = false
         listenerReadyForLaunch = false
         vpnReadyForLaunch = false
+        serverReadyForLaunch = false
         setUserManagerButtonBusy(false)
         if (::startButton.isInitialized) {
-            startButton.isEnabled = true
-            startButton.text = "START"
+            setStartButtonStarting(false)
         }
+        hideStartupProgress()
         setExtractButtonBusy(false)
         appendLog("Stop requested")
+        listenerStatusText.text = "Stopping listener"
+        vpnStatusText.text = "Stopping VPN"
         stopVpnService()
         stopListener()
+        handler.postDelayed({ refreshRuntimeState() }, 800)
     }
 
     private fun setExtractButtonBusy(busy: Boolean) {
@@ -381,30 +418,67 @@ class MainActivity : Activity() {
         extractButton.text = if (busy) "COPYING" else "EXTRACT"
     }
 
+    private fun setStartButtonStarting(starting: Boolean) {
+        if (!::startButton.isInitialized) return
+        startButton.isEnabled = !starting
+        startButton.text = "START"
+        startButton.alpha = if (starting) 0.82f else 1f
+        startButton.setTextColor(if (starting) 0xff94a3b8.toInt() else 0xff06111f.toInt())
+        startButton.background = if (starting) {
+            rounded(0xff1f2937.toInt(), dp(10), 0xff475569.toInt())
+        } else {
+            rounded(0xfff8fafc.toInt(), dp(10), 0xffffffff.toInt())
+        }
+    }
+
+    private fun setStartupProgress(progress: Int, message: String) {
+        if (!::startupProgressBar.isInitialized || !::startupProgressText.isInitialized) return
+        val requested = progress.coerceIn(0, 100)
+        val value = if (requested == 0) 0 else maxOf(requested, startupProgressValue)
+        startupProgressValue = value
+        startupProgressText.visibility = View.VISIBLE
+        startupProgressBar.visibility = View.VISIBLE
+        startupProgressText.text = "$value% - $message"
+        startupProgressBar.progress = value
+    }
+
+    private fun hideStartupProgress() {
+        if (!::startupProgressBar.isInitialized || !::startupProgressText.isInitialized) return
+        startupProgressBar.progress = 0
+        startupProgressValue = 0
+        startupProgressText.visibility = View.GONE
+        startupProgressBar.visibility = View.GONE
+    }
+
     private fun tryLaunchAfterStart() {
-        if (!launchAfterStart || !listenerReadyForLaunch || !vpnReadyForLaunch) return
+        if (!launchAfterStart || !listenerReadyForLaunch || !vpnReadyForLaunch || !serverReadyForLaunch) return
         launchAfterStart = false
         appendLog("Launching CounterSide")
-        startButton.isEnabled = true
-        startButton.text = "START"
+        setStartupProgress(100, "Launching game")
+        setStartButtonStarting(false)
         launchCounterSide()
+        handler.postDelayed({ hideStartupProgress() }, 1600)
     }
 
     private fun failStartOperation(message: String) {
         launchAfterStart = false
         listenerReadyForLaunch = false
         vpnReadyForLaunch = false
+        serverReadyForLaunch = false
         appendLog(message)
+        setStartupProgress(0, message)
+        stopVpnService()
         if (::startButton.isInitialized) {
-            startButton.isEnabled = true
-            startButton.text = "START"
+            setStartButtonStarting(false)
         }
+        handler.postDelayed({ hideStartupProgress() }, 2400)
     }
 
     private fun waitForListenerHealth(settings: RevivalSideSettings, token: Int, attempt: Int) {
         if (!launchAfterStart || token != startFlowToken) return
         if (attempt == 0) {
             listenerStatusText.text = "Waiting for listener health"
+            setStartupProgress(15, "Waiting for listener")
             appendLog("Waiting for listener health on 127.0.0.1:${settings.httpPort}")
         }
         Thread {
@@ -412,8 +486,11 @@ class MainActivity : Activity() {
             runOnUiThread {
                 if (!launchAfterStart || token != startFlowToken) return@runOnUiThread
                 if (ready) {
+                    listenerReadyForLaunch = true
                     listenerStatusText.text = "Listener ready"
+                    setStartupProgress(45, "Listener ready")
                     appendLog("Listener health ready")
+                    beginVpnFlow(CounterSideVpnService.MODE_LISTENER)
                     waitForListenerWarmup(settings, token)
                     return@runOnUiThread
                 }
@@ -424,6 +501,7 @@ class MainActivity : Activity() {
                 if (attempt > 0 && attempt % 10 == 0) {
                     appendLog("Still waiting for listener health (${attempt}s)")
                 }
+                setStartupProgress((15 + attempt).coerceAtMost(40), "Waiting for listener")
                 handler.postDelayed({
                     waitForListenerHealth(settings, token, attempt + 1)
                 }, LISTENER_HEALTH_INTERVAL_MS)
@@ -434,21 +512,51 @@ class MainActivity : Activity() {
     private fun waitForListenerWarmup(settings: RevivalSideSettings, token: Int) {
         if (!launchAfterStart || token != startFlowToken) return
         listenerStatusText.text = "Warming lobby data"
-        appendLog("Warming lobby data before launch")
+        setStartupProgress(70, "Preparing server data")
+        appendLog("Warming lobby data while VPN starts")
         Thread {
             val result = requestListenerWarmup(settings)
             runOnUiThread {
                 if (!launchAfterStart || token != startFlowToken) return@runOnUiThread
                 if (result.ok) {
-                    listenerReadyForLaunch = true
+                    serverReadyForLaunch = true
                     listenerStatusText.text = "Listener ready"
-                    appendLog("Lobby warmup ready${result.summary.takeIf { it.isNotBlank() }?.let { ": $it" } ?: ""}")
-                    beginVpnFlow(CounterSideVpnService.MODE_LISTENER)
+                    appendLog("Server ready${result.summary.takeIf { it.isNotBlank() }?.let { ": $it" } ?: ""}")
+                    if (markVpnReadyFromSnapshot(AndroidRuntimeState.snapshot(applicationContext))) {
+                        setStartupProgress(95, "VPN ready")
+                    } else {
+                        setStartupProgress(90, "Server ready, waiting for VPN")
+                    }
+                    tryLaunchAfterStart()
+                    if (launchAfterStart && !vpnReadyForLaunch) {
+                        waitForVpnReady(token, attempt = 0)
+                    }
                 } else {
-                    failStartOperation("Lobby warmup failed${result.summary.takeIf { it.isNotBlank() }?.let { ": $it" } ?: ""}")
+                    failStartOperation("Server warmup failed${result.summary.takeIf { it.isNotBlank() }?.let { ": $it" } ?: ""}")
                 }
             }
         }.start()
+    }
+
+    private fun waitForVpnReady(token: Int, attempt: Int) {
+        if (!launchAfterStart || token != startFlowToken || vpnReadyForLaunch) return
+        val snapshot = AndroidRuntimeState.snapshot(this)
+        if (markVpnReadyFromSnapshot(snapshot)) {
+            setStartupProgress(95, "VPN ready")
+            tryLaunchAfterStart()
+            return
+        }
+        if (attempt >= VPN_READY_MAX_ATTEMPTS) {
+            failStartOperation("VPN readiness timed out")
+            return
+        }
+        if (attempt > 0 && attempt % 5 == 0) {
+            appendLog("Still waiting for VPN readiness (${attempt}s): ${snapshot.vpnMessage}")
+        }
+        setStartupProgress(90, "Server ready, waiting for VPN")
+        handler.postDelayed({
+            waitForVpnReady(token, attempt + 1)
+        }, VPN_READY_INTERVAL_MS)
     }
 
     private fun waitForListenerHealthForImport(settings: RevivalSideSettings, token: Int, attempt: Int) {
@@ -518,10 +626,59 @@ class MainActivity : Activity() {
         }
     }
 
+    private fun refreshRuntimeState() {
+        if (!::listenerStatusText.isInitialized || !::vpnStatusText.isInitialized) return
+        val snapshot = AndroidRuntimeState.snapshot(this)
+        listenerStatusText.text = if (snapshot.listenerRunning) snapshot.listenerMessage.ifBlank { "Listener running" } else "Idle"
+        vpnStatusText.text = if (snapshot.vpnRunning) snapshot.vpnMessage.ifBlank { "VPN running" } else "VPN idle"
+        if (snapshot.vpnRunning && snapshot.vpnMode == CounterSideVpnService.MODE_LISTENER) {
+            vpnReadyForLaunch = true
+            tryLaunchAfterStart()
+        }
+
+        val settings = RevivalSideSettingsStore.load(this)
+        Thread {
+            val listenerReady = isListenerHealthReady(settings)
+            val latest = AndroidRuntimeState.snapshot(applicationContext)
+            runOnUiThread {
+                if (listenerReady) {
+                    listenerStatusText.text = "Listener ready"
+                    listenerReadyForLaunch = true
+                } else {
+                    listenerStatusText.text = if (latest.listenerRunning) latest.listenerMessage.ifBlank { "Listener starting" } else "Idle"
+                    listenerReadyForLaunch = false
+                }
+                if (latest.vpnRunning) {
+                    vpnStatusText.text = latest.vpnMessage.ifBlank { "VPN running" }
+                    markVpnReadyFromSnapshot(latest)
+                } else {
+                    vpnStatusText.text = "VPN idle"
+                    vpnReadyForLaunch = false
+                }
+                tryLaunchAfterStart()
+            }
+        }.start()
+    }
+
+    private fun markVpnReadyFromSnapshot(snapshot: AndroidRuntimeSnapshot): Boolean {
+        val ready = snapshot.vpnRunning && (
+            snapshot.vpnMode == CounterSideVpnService.MODE_LISTENER ||
+                snapshot.vpnMessage.startsWith("Redirecting") ||
+                snapshot.vpnMessage.contains("already", ignoreCase = true)
+            )
+        if (ready) {
+            vpnReadyForLaunch = true
+            if (::vpnStatusText.isInitialized) {
+                vpnStatusText.text = snapshot.vpnMessage.ifBlank { "VPN running" }
+            }
+        }
+        return ready
+    }
+
     private fun requestListenerWarmup(settings: RevivalSideSettings): WarmupResult {
         var connection: HttpURLConnection? = null
         return try {
-            connection = (URL("http://127.0.0.1:${settings.httpPort}/launcher/api/warmup").openConnection() as HttpURLConnection).apply {
+            connection = (URL("http://127.0.0.1:${settings.httpPort}/launcher/api/warmup?activeOnly=1").openConnection() as HttpURLConnection).apply {
                 connectTimeout = LISTENER_WARMUP_CONNECT_TIMEOUT_MS
                 readTimeout = LISTENER_WARMUP_READ_TIMEOUT_MS
                 requestMethod = "POST"
@@ -611,9 +768,11 @@ class MainActivity : Activity() {
     }
 
     private fun stopListener() {
-        startService(Intent(this, RevivalSideListenerService::class.java).apply {
+        val service = Intent(this, RevivalSideListenerService::class.java).apply {
             action = RevivalSideListenerService.ACTION_STOP
-        })
+        }
+        startService(service)
+        stopService(Intent(this, RevivalSideListenerService::class.java))
         appendLog("Stopping listener")
     }
 
@@ -622,6 +781,7 @@ class MainActivity : Activity() {
         pendingVpnMode = mode
         val intent = VpnService.prepare(this)
         if (intent != null) {
+            if (launchAfterStart && mode == CounterSideVpnService.MODE_LISTENER) setStartupProgress(52, "Waiting for VPN permission")
             startActivityForResult(intent, VPN_REQUEST)
         } else {
             startVpnService(mode)
@@ -639,13 +799,16 @@ class MainActivity : Activity() {
             putExtra(CounterSideVpnService.EXTRA_REDIRECT_PORTS, settings.redirectPortsText)
         }
         if (Build.VERSION.SDK_INT >= 26) startForegroundService(service) else startService(service)
+        if (launchAfterStart && mode == CounterSideVpnService.MODE_LISTENER) setStartupProgress(62, "Starting VPN")
         appendLog(if (mode == CounterSideVpnService.MODE_LISTENER) "Starting VPN redirect" else "Starting official login capture")
     }
 
     private fun stopVpnService() {
-        startService(Intent(this, CounterSideVpnService::class.java).apply {
+        val service = Intent(this, CounterSideVpnService::class.java).apply {
             action = CounterSideVpnService.ACTION_STOP
-        })
+        }
+        startService(service)
+        stopService(Intent(this, CounterSideVpnService::class.java))
         appendLog("Stopping VPN")
     }
 
@@ -940,6 +1103,8 @@ class MainActivity : Activity() {
         const val VPN_REQUEST = 100
         const val LISTENER_HEALTH_MAX_ATTEMPTS = 240
         const val LISTENER_HEALTH_INTERVAL_MS = 1000L
+        const val VPN_READY_MAX_ATTEMPTS = 45
+        const val VPN_READY_INTERVAL_MS = 1000L
         const val LISTENER_WARMUP_CONNECT_TIMEOUT_MS = 2000
         const val LISTENER_WARMUP_READ_TIMEOUT_MS = 240000
     }
