@@ -19,6 +19,8 @@ const {
 const { grantSkin } = require("../inventory");
 
 const DEFAULT_NEXT_UNIT_UID = 9000000000000001n;
+const DEFAULT_NEW_UNIT_LOYALTY = 0;
+const MAX_UNIT_LOYALTY = 10000;
 const UNIT_LIMIT_BREAK_MAX_LEVEL = 120;
 const DECK_TYPE_NORMAL = 1;
 const DECK_TYPE_DAILY = 3;
@@ -474,7 +476,7 @@ function createUnitData(user, unitId, unitUid, options = {}) {
     nearTargetRange: [],
     skillLevels: normalizeSkillLevels(options.skillLevels),
     equipItemUids: [0, 0, 0, 0],
-    loyalty: Number(options.loyalty || 10000),
+    loyalty: resolveInitialUnitLoyalty(options),
     isPermanentContract: false,
     isSeized: false,
     fromContract: options.fromContract !== false,
@@ -934,6 +936,16 @@ function isStaleAwakenedMaxLevelOverride(unit, override, resolvedMaxLevel) {
   return templet && templet.m_bAwaken === true;
 }
 
+function resolveInitialUnitLoyalty(options = {}) {
+  if (options.loyalty != null) return clampInt(options.loyalty, 0, MAX_UNIT_LOYALTY);
+  return isEnvEnabled("CS_NEW_UNIT_MAX_LOYALTY") ? MAX_UNIT_LOYALTY : DEFAULT_NEW_UNIT_LOYALTY;
+}
+
+function isEnvEnabled(name) {
+  const value = String(process.env[name] || "").trim().toLowerCase();
+  return value === "1" || value === "true" || value === "yes" || value === "on";
+}
+
 function normalizeUnitExpShape(unit, options = {}) {
   if (!unit || typeof unit !== "object") return unit;
   const maxLevel = getUnitMaxLevel(unit, options);
@@ -1135,8 +1147,7 @@ function normalizeArmyUnitBuckets(army) {
     for (const key of Object.keys(bucket)) delete bucket[key];
   }
   for (const unit of units) {
-    const storageKey = getUnitStorageKey(unit.unitId);
-    if (!storageKey) continue;
+    const storageKey = getUnitStorageKey(unit.unitId) || "units";
     army[storageKey][unit.unitUid] = unit;
   }
 }
