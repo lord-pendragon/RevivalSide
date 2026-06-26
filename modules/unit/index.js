@@ -20,7 +20,7 @@ const { grantSkin } = require("../inventory");
 
 const DEFAULT_NEXT_UNIT_UID = 9000000000000001n;
 const DEFAULT_NEW_UNIT_LOYALTY = 0;
-const MAX_UNIT_LOYALTY = 100;
+const MAX_UNIT_LOYALTY = 10000;
 const UNIT_LIMIT_BREAK_MAX_LEVEL = 120;
 const DECK_TYPE_NORMAL = 1;
 const DECK_TYPE_DAILY = 3;
